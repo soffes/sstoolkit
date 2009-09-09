@@ -7,13 +7,75 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA747D9F0F9514B9006C5449 /* TWToolkit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* TWToolkit_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		B215045F10583A7300409ED4 /* TWToolkit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */; };
+		B21504B110583AA200409ED4 /* TWDataController.h in Headers */ = {isa = PBXBuildFile; fileRef = B21504AF10583AA200409ED4 /* TWDataController.h */; };
+		B21504B210583AA200409ED4 /* TWDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21504B010583AA200409ED4 /* TWDataController.m */; };
+		B21504B510583AA900409ED4 /* TWDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = B21504B310583AA900409ED4 /* TWDataSource.h */; };
+		B21504B610583AA900409ED4 /* TWDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B21504B410583AA900409ED4 /* TWDataSource.m */; };
+		B21504B910583AB700409ED4 /* TWRemoteDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = B21504B710583AB700409ED4 /* TWRemoteDataSource.h */; };
+		B21504BA10583AB700409ED4 /* TWRemoteDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B21504B810583AB700409ED4 /* TWRemoteDataSource.m */; };
+		B21504BD10583ABF00409ED4 /* TWSQLiteDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = B21504BB10583ABF00409ED4 /* TWSQLiteDataSource.h */; };
+		B21504BE10583ABF00409ED4 /* TWSQLiteDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B21504BC10583ABF00409ED4 /* TWSQLiteDataSource.m */; };
+		B21504C110583AD300409ED4 /* TWModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B21504BF10583AD300409ED4 /* TWModel.h */; };
+		B21504C210583AD300409ED4 /* TWModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B21504C010583AD300409ED4 /* TWModel.m */; };
+		B21504C710583B0600409ED4 /* TWConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = B21504C510583B0600409ED4 /* TWConnection.h */; };
+		B21504C810583B0600409ED4 /* TWConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B21504C610583B0600409ED4 /* TWConnection.m */; };
+		B21504CA10583B4000409ED4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504C910583B4000409ED4 /* SystemConfiguration.framework */; };
+		B21504CE10583B4600409ED4 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504CD10583B4600409ED4 /* libsqlite3.dylib */; };
+		B21504FC10583B7500409ED4 /* CDataScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = B21504E810583B7500409ED4 /* CDataScanner.h */; };
+		B21504FD10583B7500409ED4 /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = B21504E910583B7500409ED4 /* CDataScanner.m */; };
+		B21504FE10583B7500409ED4 /* CDataScanner_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = B21504EB10583B7500409ED4 /* CDataScanner_Extensions.h */; };
+		B21504FF10583B7500409ED4 /* CDataScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B21504EC10583B7500409ED4 /* CDataScanner_Extensions.m */; };
+		B215050010583B7500409ED4 /* NSCharacterSet_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = B21504ED10583B7500409ED4 /* NSCharacterSet_Extensions.h */; };
+		B215050110583B7500409ED4 /* NSCharacterSet_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B21504EE10583B7500409ED4 /* NSCharacterSet_Extensions.m */; };
+		B215050210583B7500409ED4 /* NSDictionary_JSONExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = B21504EF10583B7500409ED4 /* NSDictionary_JSONExtensions.h */; };
+		B215050310583B7500409ED4 /* NSDictionary_JSONExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B21504F010583B7500409ED4 /* NSDictionary_JSONExtensions.m */; };
+		B215050410583B7500409ED4 /* NSScanner_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = B21504F110583B7500409ED4 /* NSScanner_Extensions.h */; };
+		B215050510583B7500409ED4 /* NSScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B21504F210583B7500409ED4 /* NSScanner_Extensions.m */; };
+		B215050610583B7500409ED4 /* CJSONDeserializer.h in Headers */ = {isa = PBXBuildFile; fileRef = B21504F410583B7500409ED4 /* CJSONDeserializer.h */; };
+		B215050710583B7500409ED4 /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B21504F510583B7500409ED4 /* CJSONDeserializer.m */; };
+		B215050810583B7500409ED4 /* CJSONScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = B21504F610583B7500409ED4 /* CJSONScanner.h */; };
+		B215050910583B7500409ED4 /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = B21504F710583B7500409ED4 /* CJSONScanner.m */; };
+		B215050A10583B7500409ED4 /* CJSONSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = B21504F810583B7500409ED4 /* CJSONSerializer.h */; };
+		B215050B10583B7500409ED4 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B21504F910583B7500409ED4 /* CJSONSerializer.m */; };
+		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA747D9E0F9514B9006C5449 /* TWToolkit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit_Prefix.pch; sourceTree = "<group>"; };
+		B21504AF10583AA200409ED4 /* TWDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWDataController.h; sourceTree = "<group>"; };
+		B21504B010583AA200409ED4 /* TWDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWDataController.m; sourceTree = "<group>"; };
+		B21504B310583AA900409ED4 /* TWDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWDataSource.h; sourceTree = "<group>"; };
+		B21504B410583AA900409ED4 /* TWDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWDataSource.m; sourceTree = "<group>"; };
+		B21504B710583AB700409ED4 /* TWRemoteDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRemoteDataSource.h; sourceTree = "<group>"; };
+		B21504B810583AB700409ED4 /* TWRemoteDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRemoteDataSource.m; sourceTree = "<group>"; };
+		B21504BB10583ABF00409ED4 /* TWSQLiteDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWSQLiteDataSource.h; sourceTree = "<group>"; };
+		B21504BC10583ABF00409ED4 /* TWSQLiteDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSQLiteDataSource.m; sourceTree = "<group>"; };
+		B21504BF10583AD300409ED4 /* TWModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWModel.h; sourceTree = "<group>"; };
+		B21504C010583AD300409ED4 /* TWModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWModel.m; sourceTree = "<group>"; };
+		B21504C510583B0600409ED4 /* TWConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWConnection.h; sourceTree = "<group>"; };
+		B21504C610583B0600409ED4 /* TWConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWConnection.m; sourceTree = "<group>"; };
+		B21504C910583B4000409ED4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B21504CD10583B4600409ED4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		B21504E810583B7500409ED4 /* CDataScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner.h; sourceTree = "<group>"; };
+		B21504E910583B7500409ED4 /* CDataScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner.m; sourceTree = "<group>"; };
+		B21504EB10583B7500409ED4 /* CDataScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner_Extensions.h; sourceTree = "<group>"; };
+		B21504EC10583B7500409ED4 /* CDataScanner_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner_Extensions.m; sourceTree = "<group>"; };
+		B21504ED10583B7500409ED4 /* NSCharacterSet_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCharacterSet_Extensions.h; sourceTree = "<group>"; };
+		B21504EE10583B7500409ED4 /* NSCharacterSet_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSCharacterSet_Extensions.m; sourceTree = "<group>"; };
+		B21504EF10583B7500409ED4 /* NSDictionary_JSONExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionary_JSONExtensions.h; sourceTree = "<group>"; };
+		B21504F010583B7500409ED4 /* NSDictionary_JSONExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionary_JSONExtensions.m; sourceTree = "<group>"; };
+		B21504F110583B7500409ED4 /* NSScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSScanner_Extensions.h; sourceTree = "<group>"; };
+		B21504F210583B7500409ED4 /* NSScanner_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSScanner_Extensions.m; sourceTree = "<group>"; };
+		B21504F410583B7500409ED4 /* CJSONDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONDeserializer.h; sourceTree = "<group>"; };
+		B21504F510583B7500409ED4 /* CJSONDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONDeserializer.m; sourceTree = "<group>"; };
+		B21504F610583B7500409ED4 /* CJSONScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONScanner.h; sourceTree = "<group>"; };
+		B21504F710583B7500409ED4 /* CJSONScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONScanner.m; sourceTree = "<group>"; };
+		B21504F810583B7500409ED4 /* CJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializer.h; sourceTree = "<group>"; };
+		B21504F910583B7500409ED4 /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
+		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libTWToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTWToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -23,6 +85,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+				B21504CA10583B4000409ED4 /* SystemConfiguration.framework in Frameworks */,
+				B21504CE10583B4600409ED4 /* libsqlite3.dylib in Frameworks */,
+				B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,8 +105,8 @@
 		0867D691FE84028FC02AAC07 /* TWToolkit */ = {
 			isa = PBXGroup;
 			children = (
-				08FB77AEFE84172EC02AAC07 /* Classes */,
-				32C88DFF0371C24200C91783 /* Other Sources */,
+				B215045B10583A6000409ED4 /* Classes */,
+				B215045D10583A7300409ED4 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -52,23 +117,102 @@
 			isa = PBXGroup;
 			children = (
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+				B21504C910583B4000409ED4 /* SystemConfiguration.framework */,
+				B215051110583BBB00409ED4 /* UIKit.framework */,
+				B21504CD10583B4600409ED4 /* libsqlite3.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+		B215045B10583A6000409ED4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B21504C410583B0600409ED4 /* Connection */,
+				B215045C10583A6000409ED4 /* Data */,
+				B21504E610583B7500409ED4 /* Vendor */,
 			);
-			name = Classes;
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		32C88DFF0371C24200C91783 /* Other Sources */ = {
+		B215045C10583A6000409ED4 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				AA747D9E0F9514B9006C5449 /* TWToolkit_Prefix.pch */,
+				B21504AF10583AA200409ED4 /* TWDataController.h */,
+				B21504B010583AA200409ED4 /* TWDataController.m */,
+				B21504B310583AA900409ED4 /* TWDataSource.h */,
+				B21504B410583AA900409ED4 /* TWDataSource.m */,
+				B21504B710583AB700409ED4 /* TWRemoteDataSource.h */,
+				B21504B810583AB700409ED4 /* TWRemoteDataSource.m */,
+				B21504BB10583ABF00409ED4 /* TWSQLiteDataSource.h */,
+				B21504BC10583ABF00409ED4 /* TWSQLiteDataSource.m */,
+				B21504BF10583AD300409ED4 /* TWModel.h */,
+				B21504C010583AD300409ED4 /* TWModel.m */,
 			);
-			name = "Other Sources";
+			path = Data;
+			sourceTree = "<group>";
+		};
+		B215045D10583A7300409ED4 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */,
+			);
+			path = "Other Sources";
+			sourceTree = "<group>";
+		};
+		B21504C410583B0600409ED4 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				B21504C510583B0600409ED4 /* TWConnection.h */,
+				B21504C610583B0600409ED4 /* TWConnection.m */,
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		B21504E610583B7500409ED4 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				B21504E710583B7500409ED4 /* TouchJSON */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		B21504E710583B7500409ED4 /* TouchJSON */ = {
+			isa = PBXGroup;
+			children = (
+				B21504E810583B7500409ED4 /* CDataScanner.h */,
+				B21504E910583B7500409ED4 /* CDataScanner.m */,
+				B21504EA10583B7500409ED4 /* Extensions */,
+				B21504F310583B7500409ED4 /* JSON */,
+			);
+			path = TouchJSON;
+			sourceTree = "<group>";
+		};
+		B21504EA10583B7500409ED4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B21504EB10583B7500409ED4 /* CDataScanner_Extensions.h */,
+				B21504EC10583B7500409ED4 /* CDataScanner_Extensions.m */,
+				B21504ED10583B7500409ED4 /* NSCharacterSet_Extensions.h */,
+				B21504EE10583B7500409ED4 /* NSCharacterSet_Extensions.m */,
+				B21504EF10583B7500409ED4 /* NSDictionary_JSONExtensions.h */,
+				B21504F010583B7500409ED4 /* NSDictionary_JSONExtensions.m */,
+				B21504F110583B7500409ED4 /* NSScanner_Extensions.h */,
+				B21504F210583B7500409ED4 /* NSScanner_Extensions.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B21504F310583B7500409ED4 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				B21504F410583B7500409ED4 /* CJSONDeserializer.h */,
+				B21504F510583B7500409ED4 /* CJSONDeserializer.m */,
+				B21504F610583B7500409ED4 /* CJSONScanner.h */,
+				B21504F710583B7500409ED4 /* CJSONScanner.m */,
+				B21504F810583B7500409ED4 /* CJSONSerializer.h */,
+				B21504F910583B7500409ED4 /* CJSONSerializer.m */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,7 +222,21 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA747D9F0F9514B9006C5449 /* TWToolkit_Prefix.pch in Headers */,
+				B215045F10583A7300409ED4 /* TWToolkit_Prefix.pch in Headers */,
+				B21504B110583AA200409ED4 /* TWDataController.h in Headers */,
+				B21504B510583AA900409ED4 /* TWDataSource.h in Headers */,
+				B21504B910583AB700409ED4 /* TWRemoteDataSource.h in Headers */,
+				B21504BD10583ABF00409ED4 /* TWSQLiteDataSource.h in Headers */,
+				B21504C110583AD300409ED4 /* TWModel.h in Headers */,
+				B21504C710583B0600409ED4 /* TWConnection.h in Headers */,
+				B21504FC10583B7500409ED4 /* CDataScanner.h in Headers */,
+				B21504FE10583B7500409ED4 /* CDataScanner_Extensions.h in Headers */,
+				B215050010583B7500409ED4 /* NSCharacterSet_Extensions.h in Headers */,
+				B215050210583B7500409ED4 /* NSDictionary_JSONExtensions.h in Headers */,
+				B215050410583B7500409ED4 /* NSScanner_Extensions.h in Headers */,
+				B215050610583B7500409ED4 /* CJSONDeserializer.h in Headers */,
+				B215050810583B7500409ED4 /* CJSONScanner.h in Headers */,
+				B215050A10583B7500409ED4 /* CJSONSerializer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +265,9 @@
 /* Begin PBXProject section */
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Tasteful Works, Inc";
+			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "TWToolkit" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
@@ -125,6 +286,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B21504B210583AA200409ED4 /* TWDataController.m in Sources */,
+				B21504B610583AA900409ED4 /* TWDataSource.m in Sources */,
+				B21504BA10583AB700409ED4 /* TWRemoteDataSource.m in Sources */,
+				B21504BE10583ABF00409ED4 /* TWSQLiteDataSource.m in Sources */,
+				B21504C210583AD300409ED4 /* TWModel.m in Sources */,
+				B21504C810583B0600409ED4 /* TWConnection.m in Sources */,
+				B21504FD10583B7500409ED4 /* CDataScanner.m in Sources */,
+				B21504FF10583B7500409ED4 /* CDataScanner_Extensions.m in Sources */,
+				B215050110583B7500409ED4 /* NSCharacterSet_Extensions.m in Sources */,
+				B215050310583B7500409ED4 /* NSDictionary_JSONExtensions.m in Sources */,
+				B215050510583B7500409ED4 /* NSScanner_Extensions.m in Sources */,
+				B215050710583B7500409ED4 /* CJSONDeserializer.m in Sources */,
+				B215050910583B7500409ED4 /* CJSONScanner.m in Sources */,
+				B215050B10583B7500409ED4 /* CJSONSerializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +318,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TWToolkit_Prefix.pch;
+				GCC_PREFIX_HEADER = "Other Sources/TWToolkit_Prefix.pch";
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = TWToolkit;
 			};

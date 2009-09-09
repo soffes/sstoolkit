@@ -1,0 +1,13 @@
+//
+//  TWToolkit_Prefix.pch
+//  TWToolkit
+//
+//  Created by Sam Soffes on 9/9/09.
+//  Copyright 2009 Tasteful Works, Inc. All rights reserved.
+//
+//	Prefix header for all source files of the 'CocoaTouchStaticLibrary' target in the 'CocoaTouchStaticLibrary' project.
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
