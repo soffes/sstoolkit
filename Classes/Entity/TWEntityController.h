@@ -1,5 +1,5 @@
 //
-//  TWDataSource.h
+//  TWEntityController.h
 //  TWToolkit
 //
 //  Created by Sam Soffes on 9/9/09.
@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-
-@interface TWDataSource : NSObject {
+@interface TWEntityController : NSObject {
 
 }
 
