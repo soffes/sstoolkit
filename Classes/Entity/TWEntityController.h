@@ -10,6 +10,10 @@
 
 @interface TWEntityController : NSObject {
 
+	NSMutableArray *_objectsCache;
 }
+
++ (TWEntityController *)sharedController;
++ (Class)entityClass;
 
 @end

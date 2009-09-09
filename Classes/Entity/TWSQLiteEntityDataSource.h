@@ -7,9 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <sqlite3.h>
+#import "TWSEntityDataSource.h"
 
-@interface TWSQLiteEntityDataSource : NSObject {
+@interface TWSQLiteEntityDataSource : TWSEntityDataSource {
 
+	sqlite3 *_database;
 }
+
++ (NSString *)databaseFilename;
++ (NSString *)bundleDatabasePath;
++ (NSString *)cachesDatabasePath;
 
 @end

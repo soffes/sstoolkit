@@ -10,6 +10,12 @@
 
 @interface TWEntity : NSObject {
 
+	BOOL _hydrated;
 }
+
+@property (nonatomic, readonly, getter=isHydrated) BOOL hydrated;
+
+- (void)hydrate;
+- (void)dehydrate;
 
 @end
