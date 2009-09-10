@@ -26,7 +26,8 @@
 
 @optional
 
-- (void)entityDataSource:(TWEntityDataSource *)dataSource didFetchData:(id)data;
+- (void)entityDataSourceDidStart:(TWEntityDataSource *)dataSource
+- (void)entityDataSource:(TWEntityDataSource *)dataSource didFinishWithData:(id)data;
 - (void)entityDataSource:(TWEntityDataSource *)dataSource failedWithError:(NSError *)error;
 
 @end
