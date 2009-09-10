@@ -8,13 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol TWEntityDataSourceDelegate;
+
 @interface TWEntityDataSource : NSObject {
 
-	id delegate;
+	id<TWEntityDataSourceDelegate> delegate;
 }
 
-@property (nonatomic, assign) id delegate;
+@property (nonatomic, assign) id<TWEntityDataSourceDelegate> delegate;
 
 - (id)initWithDelegate:(id)aDelegate;
+
+@end
+
+
+@protocol TWEntityDataSourceDelegate <NSObject>
+
+//@optional
 
 @end
