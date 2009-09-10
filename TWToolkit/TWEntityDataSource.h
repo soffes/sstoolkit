@@ -24,6 +24,9 @@
 
 @protocol TWEntityDataSourceDelegate <NSObject>
 
-//@optional
+@optional
+
+- (void)entityDataSource:(TWEntityDataSource *)dataSource didFetchData:(id)data;
+- (void)entityDataSource:(TWEntityDataSource *)dataSource failedWithError:(NSError *)error;
 
 @end

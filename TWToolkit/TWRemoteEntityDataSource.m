@@ -10,4 +10,16 @@
 
 @implementation TWRemoteEntityDataSource
 
+#pragma mark -
+#pragma mark TWConnectionDelegate
+#pragma mark -
+
+- (void)connection:(TWConnection *)aConnection didFinishLoadingRequest:(NSURLRequest *)aRequest withResult:(id)object {
+	
+}
+
+- (void)connection:(TWConnection *)aConnection failedWithError:(NSError *)error {
+	
+}
+
 @end
