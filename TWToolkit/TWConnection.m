@@ -8,6 +8,7 @@
 
 #import "TWConnection.h"
 #import "CJSONDeserializer.h"
+#import "NSString+encoding.h"
 #import <SystemConfiguration/SystemConfiguration.h>
 #include <netinet/in.h>
 
@@ -77,6 +78,17 @@
 - (void)requestURL:(NSURL *)url HTTPMethod:(TWConnectionHTTPMethod)HTTPMethod {
 	NSMutableURLRequest* aRequest = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:kTimeout];	
 	
+	// Setup basic auth headers if user and pass are provided
+	NSString *username = [url user];
+	NSString *password = [url password];
+	if (username || password) {
+		NSString* auth = [[NSString alloc] initWithFormat:@"%@:%@", username, password];
+		NSString* basicauth = [[NSString alloc] initWithFormat:@"Basic %@", [NSString base64encode:auth]];
+		[aRequest setValue:basicauth forHTTPHeaderField:@"Authorization"];
+		[auth release];
+		[basicauth release];
+	}
+	
 	// Setup POST data
 	if (HTTPMethod == TWConnectionHTTPMethodPOST) {
 		[aRequest setHTTPMethod:@"POST"];
@@ -94,6 +106,8 @@
 
 - (void)startRequest:(NSURLRequest *)aRequest {
 	
+	NSLog(@"headers: %@", [aRequest allHTTPHeaderFields]);
+	
 	// Cancel any current requests
 	[self cancel];
 	
@@ -102,13 +116,14 @@
 	}
 	
 	// Check network
-	if ([TWConnection isConnectedToNetwork] == NO) {
-		if ([delegate respondsToSelector:@selector(connection:didFailWithError:)]) {
-			// TODO: Send useful error
-			[delegate connection:self failedWithError:nil];
-		}
-		return;
-	}
+	// TODO: Experienced issues with this, so commenting out for now
+	//	if ([TWConnection isConnectedToNetwork] == NO) {
+	//		if ([delegate respondsToSelector:@selector(connection:didFailWithError:)]) {
+	//			// TODO: Send useful error
+	//			[delegate connection:self failedWithError:nil];
+	//		}
+	//		return;
+	//	}
 	
 	// Retain the request
 	_request = [aRequest retain];
@@ -212,6 +227,10 @@
 			default:
 			case TWConnectionDataTypeData: {
 				result = [NSData dataWithData:_receivedData];
+				break;
+			}
+			case TWConnectionDataTypeString: {
+				result = [[[NSString alloc] initWithData:_receivedData encoding:NSUTF8StringEncoding] autorelease];
 				break;
 			}
 			case TWConnectionDataTypeJSONDictionary: {

@@ -17,6 +17,7 @@ typedef enum {
 
 typedef enum {
 	TWConnectionDataTypeData,
+	TWConnectionDataTypeString,
 	TWConnectionDataTypeJSONArray,
 	TWConnectionDataTypeJSONDictionary,
 	TWConnectionDataTypeJSON = TWConnectionDataTypeJSONArray
