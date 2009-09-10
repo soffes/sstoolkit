@@ -10,6 +10,11 @@
 
 @interface TWEntityDataSource : NSObject {
 
+	id delegate;
 }
+
+@property (nonatomic, assign) id delegate;
+
+- (id)initWithDelegate:(id)aDelegate;
 
 @end

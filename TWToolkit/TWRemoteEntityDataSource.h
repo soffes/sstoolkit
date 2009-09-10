@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TWEntityDataSource.h"
+#import "TWConnection.h"
 
-@interface TWRemoteEntityDataSource : NSObject {
+@interface TWRemoteEntityDataSource : TWEntityDataSource <TWConnectionDelegate> {
 
 }
 

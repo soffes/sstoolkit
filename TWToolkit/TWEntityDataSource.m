@@ -10,4 +10,13 @@
 
 @implementation TWEntityDataSource
 
+@synthesize delegate;
+
+- (id)initWithDelegate:(id)aDelegate {
+	if (self = [super init]) {
+		self.delegate = aDelegate;
+	}
+	return self;
+}
+
 @end

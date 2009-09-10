@@ -41,6 +41,8 @@
 		B277C83810585E2900E1B82F /* TWRemoteEntityDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B277C82E10585E2900E1B82F /* TWRemoteEntityDataSource.m */; };
 		B277C83910585E2900E1B82F /* TWSQLiteEntityDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = B277C82F10585E2900E1B82F /* TWSQLiteEntityDataSource.h */; };
 		B277C83A10585E2900E1B82F /* TWSQLiteEntityDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B277C83010585E2900E1B82F /* TWSQLiteEntityDataSource.m */; };
+		B277C93F10589A4C00E1B82F /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B277C93D10589A4C00E1B82F /* Reachability.h */; };
+		B277C94010589A4C00E1B82F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B277C93E10589A4C00E1B82F /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,8 @@
 		B277C82E10585E2900E1B82F /* TWRemoteEntityDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRemoteEntityDataSource.m; sourceTree = "<group>"; };
 		B277C82F10585E2900E1B82F /* TWSQLiteEntityDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWSQLiteEntityDataSource.h; sourceTree = "<group>"; };
 		B277C83010585E2900E1B82F /* TWSQLiteEntityDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSQLiteEntityDataSource.m; sourceTree = "<group>"; };
+		B277C93D10589A4C00E1B82F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		B277C93E10589A4C00E1B82F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTWToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTWToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -149,6 +153,7 @@
 		B21504E610583B7500409ED4 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				B277C93C10589A4C00E1B82F /* Reachability */,
 				B21504E710583B7500409ED4 /* TouchJSON */,
 			);
 			path = Vendor;
@@ -219,6 +224,15 @@
 			name = Entity;
 			sourceTree = "<group>";
 		};
+		B277C93C10589A4C00E1B82F /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				B277C93D10589A4C00E1B82F /* Reachability.h */,
+				B277C93E10589A4C00E1B82F /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -242,6 +256,7 @@
 				B277C83510585E2900E1B82F /* TWEntityDataSource.h in Headers */,
 				B277C83710585E2900E1B82F /* TWRemoteEntityDataSource.h in Headers */,
 				B277C83910585E2900E1B82F /* TWSQLiteEntityDataSource.h in Headers */,
+				B277C93F10589A4C00E1B82F /* Reachability.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +320,7 @@
 				B277C83610585E2900E1B82F /* TWEntityDataSource.m in Sources */,
 				B277C83810585E2900E1B82F /* TWRemoteEntityDataSource.m in Sources */,
 				B277C83A10585E2900E1B82F /* TWSQLiteEntityDataSource.m in Sources */,
+				B277C94010589A4C00E1B82F /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,12 +10,21 @@
 
 @interface TWEntityController : NSObject {
 
+	NSMutableArray *_objectsCache;
 }
+
+// ---- Singleton ----
+
+// Shared instance of controller
++ (TWEntityController *)sharedController;
 
 // ---- Configuration ----
 
+// Class of the entity to control
++ (Class)entityClass;
+
 // Return the classes of all supported data sources
-- (NSArray *)dataSources;
++ (NSArray *)dataSources;
 
 // ---- Request ----
 
