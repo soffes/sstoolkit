@@ -1,6 +1,6 @@
 //
 //  NSData+MD5Sum.m
-//  Four80
+//  TWToolkit
 //
 //  Created by Sam Soffes on 9/29/08.
 //  Copyright 2008 Sam Soffes. All rights reserved.

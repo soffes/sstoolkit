@@ -1,6 +1,6 @@
 //
 //  NSString+encoding.h
-//  Four80
+//  TWToolkit
 //
 //  Created by Sam Soffes on 7/02/09.
 //  Copyright 2008 Sam Soffes. All rights reserved.

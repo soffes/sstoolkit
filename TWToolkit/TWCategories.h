@@ -11,3 +11,13 @@
 #import "NSString+containsString.h"
 #import "NSString+encoding.h"
 #import "NSString+MD5Sum.h"
+
+#import "UIApplication+undocumented.h"
+#import "UIButton+setTitle.h"
+#import "UIColor+blackColorWithAlpha.h"
+#import "UIDevice+isSimulator.h"
+#import "UIImage+crop.h"
+#import "UIScrollView+scroller.h"
+#import "UITextView+HTML.h"
+#import "UIWebView+scrolling.h"
+#import "UIWebView+setFontSize.h"

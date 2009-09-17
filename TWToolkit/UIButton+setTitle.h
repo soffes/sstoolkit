@@ -1,6 +1,6 @@
 //
 //  UIButton+setTitle.h
-//  Four80
+//  TWToolkit
 //
 //  Created by Sam Soffes on 7/31/08.
 //  Copyright 2008 Sam Soffes. All rights reserved.
