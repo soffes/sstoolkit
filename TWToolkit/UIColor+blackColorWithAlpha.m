@@ -3,7 +3,7 @@
 //  TWToolkit
 //
 //  Created by Sam Soffes on 7/22/09.
-//  Copyright 2009 Sam Soffes. All rights reserved.
+//  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
 #import "UIColor+blackColorWithAlpha.h"

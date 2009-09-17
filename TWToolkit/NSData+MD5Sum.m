@@ -3,7 +3,7 @@
 //  TWToolkit
 //
 //  Created by Sam Soffes on 9/29/08.
-//  Copyright 2008 Sam Soffes. All rights reserved.
+//  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
 #import "NSData+MD5Sum.h"

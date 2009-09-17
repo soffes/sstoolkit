@@ -3,7 +3,7 @@
 //  Four80
 //
 //  Created by Sam Soffes on 7/18/09.
-//  Copyright 2009 Sam Soffes. All rights reserved.
+//  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
