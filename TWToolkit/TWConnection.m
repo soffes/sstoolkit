@@ -106,8 +106,6 @@
 
 - (void)startRequest:(NSURLRequest *)aRequest {
 	
-	NSLog(@"headers: %@", [aRequest allHTTPHeaderFields]);
-	
 	// Cancel any current requests
 	[self cancel];
 	
