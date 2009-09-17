@@ -12,33 +12,17 @@
 		B21504CA10583B4000409ED4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504C910583B4000409ED4 /* SystemConfiguration.framework */; };
 		B21504CE10583B4600409ED4 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504CD10583B4600409ED4 /* libsqlite3.dylib */; };
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
-		B2FA61861059616200499856 /* NSArray+shuffle.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61451059616200499856 /* NSArray+shuffle.h */; };
-		B2FA61871059616200499856 /* NSArray+shuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61461059616200499856 /* NSArray+shuffle.m */; };
-		B2FA61881059616200499856 /* NSData+MD5Sum.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61471059616200499856 /* NSData+MD5Sum.h */; };
-		B2FA61891059616200499856 /* NSData+MD5Sum.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61481059616200499856 /* NSData+MD5Sum.m */; };
-		B2FA618A1059616200499856 /* NSString+containsString.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61491059616200499856 /* NSString+containsString.h */; };
-		B2FA618B1059616200499856 /* NSString+containsString.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA614A1059616200499856 /* NSString+containsString.m */; };
-		B2FA618C1059616200499856 /* NSString+encoding.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA614B1059616200499856 /* NSString+encoding.h */; };
-		B2FA618D1059616200499856 /* NSString+encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA614C1059616200499856 /* NSString+encoding.m */; };
-		B2FA618E1059616200499856 /* NSString+MD5Sum.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA614D1059616200499856 /* NSString+MD5Sum.h */; };
-		B2FA618F1059616200499856 /* NSString+MD5Sum.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA614E1059616200499856 /* NSString+MD5Sum.m */; };
-		B2FA61901059616200499856 /* UIApplication+undocumented.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA614F1059616200499856 /* UIApplication+undocumented.h */; };
-		B2FA61911059616200499856 /* UIButton+setTitle.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61501059616200499856 /* UIButton+setTitle.h */; };
-		B2FA61921059616200499856 /* UIButton+setTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61511059616200499856 /* UIButton+setTitle.m */; };
-		B2FA61931059616200499856 /* UIColor+blackColorWithAlpha.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61521059616200499856 /* UIColor+blackColorWithAlpha.h */; };
-		B2FA61941059616200499856 /* UIColor+blackColorWithAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61531059616200499856 /* UIColor+blackColorWithAlpha.m */; };
-		B2FA61951059616200499856 /* UIDevice+isSimulator.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61541059616200499856 /* UIDevice+isSimulator.h */; };
-		B2FA61961059616200499856 /* UIDevice+isSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61551059616200499856 /* UIDevice+isSimulator.m */; };
-		B2FA61971059616200499856 /* UIImage+crop.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61561059616200499856 /* UIImage+crop.h */; };
-		B2FA61981059616200499856 /* UIImage+crop.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61571059616200499856 /* UIImage+crop.m */; };
-		B2FA61991059616200499856 /* UIScrollView+scroller.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61581059616200499856 /* UIScrollView+scroller.h */; };
-		B2FA619A1059616200499856 /* UITextView+HTML.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61591059616200499856 /* UITextView+HTML.h */; };
-		B2FA619B1059616200499856 /* UIView+fading.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA615A1059616200499856 /* UIView+fading.h */; };
-		B2FA619C1059616200499856 /* UIView+fading.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA615B1059616200499856 /* UIView+fading.m */; };
-		B2FA619D1059616200499856 /* UIWebView+scrolling.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA615C1059616200499856 /* UIWebView+scrolling.h */; };
-		B2FA619E1059616200499856 /* UIWebView+scrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA615D1059616200499856 /* UIWebView+scrolling.m */; };
-		B2FA619F1059616200499856 /* UIWebView+setFontSize.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA615E1059616200499856 /* UIWebView+setFontSize.h */; };
-		B2FA61A01059616200499856 /* UIWebView+setFontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA615F1059616200499856 /* UIWebView+setFontSize.m */; };
+		B2C20770106296FB00AE1B56 /* NSArray+shuffle.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C20766106296FB00AE1B56 /* NSArray+shuffle.h */; };
+		B2C20771106296FB00AE1B56 /* NSArray+shuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C20767106296FB00AE1B56 /* NSArray+shuffle.m */; };
+		B2C20772106296FB00AE1B56 /* NSData+MD5Sum.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C20768106296FB00AE1B56 /* NSData+MD5Sum.h */; };
+		B2C20773106296FB00AE1B56 /* NSData+MD5Sum.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C20769106296FB00AE1B56 /* NSData+MD5Sum.m */; };
+		B2C20774106296FB00AE1B56 /* NSString+containsString.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C2076A106296FB00AE1B56 /* NSString+containsString.h */; };
+		B2C20775106296FB00AE1B56 /* NSString+containsString.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C2076B106296FB00AE1B56 /* NSString+containsString.m */; };
+		B2C20776106296FB00AE1B56 /* NSString+encoding.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C2076C106296FB00AE1B56 /* NSString+encoding.h */; };
+		B2C20777106296FB00AE1B56 /* NSString+encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C2076D106296FB00AE1B56 /* NSString+encoding.m */; };
+		B2C20778106296FB00AE1B56 /* NSString+MD5Sum.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C2076E106296FB00AE1B56 /* NSString+MD5Sum.h */; };
+		B2C20779106296FB00AE1B56 /* NSString+MD5Sum.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C2076F106296FB00AE1B56 /* NSString+MD5Sum.m */; };
+		B2C207841062973000AE1B56 /* TWCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C207831062973000AE1B56 /* TWCategories.h */; };
 		B2FA61A11059616200499856 /* TWConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61601059616200499856 /* TWConnection.h */; };
 		B2FA61A21059616200499856 /* TWConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61611059616200499856 /* TWConnection.m */; };
 		B2FA61A31059616200499856 /* TWEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61621059616200499856 /* TWEntity.h */; };
@@ -78,33 +62,17 @@
 		B21504C910583B4000409ED4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B21504CD10583B4600409ED4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B2FA61451059616200499856 /* NSArray+shuffle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+shuffle.h"; sourceTree = "<group>"; };
-		B2FA61461059616200499856 /* NSArray+shuffle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+shuffle.m"; sourceTree = "<group>"; };
-		B2FA61471059616200499856 /* NSData+MD5Sum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MD5Sum.h"; sourceTree = "<group>"; };
-		B2FA61481059616200499856 /* NSData+MD5Sum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MD5Sum.m"; sourceTree = "<group>"; };
-		B2FA61491059616200499856 /* NSString+containsString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+containsString.h"; sourceTree = "<group>"; };
-		B2FA614A1059616200499856 /* NSString+containsString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+containsString.m"; sourceTree = "<group>"; };
-		B2FA614B1059616200499856 /* NSString+encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+encoding.h"; sourceTree = "<group>"; };
-		B2FA614C1059616200499856 /* NSString+encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+encoding.m"; sourceTree = "<group>"; };
-		B2FA614D1059616200499856 /* NSString+MD5Sum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Sum.h"; sourceTree = "<group>"; };
-		B2FA614E1059616200499856 /* NSString+MD5Sum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Sum.m"; sourceTree = "<group>"; };
-		B2FA614F1059616200499856 /* UIApplication+undocumented.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+undocumented.h"; sourceTree = "<group>"; };
-		B2FA61501059616200499856 /* UIButton+setTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+setTitle.h"; sourceTree = "<group>"; };
-		B2FA61511059616200499856 /* UIButton+setTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+setTitle.m"; sourceTree = "<group>"; };
-		B2FA61521059616200499856 /* UIColor+blackColorWithAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+blackColorWithAlpha.h"; sourceTree = "<group>"; };
-		B2FA61531059616200499856 /* UIColor+blackColorWithAlpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+blackColorWithAlpha.m"; sourceTree = "<group>"; };
-		B2FA61541059616200499856 /* UIDevice+isSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+isSimulator.h"; sourceTree = "<group>"; };
-		B2FA61551059616200499856 /* UIDevice+isSimulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+isSimulator.m"; sourceTree = "<group>"; };
-		B2FA61561059616200499856 /* UIImage+crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+crop.h"; sourceTree = "<group>"; };
-		B2FA61571059616200499856 /* UIImage+crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+crop.m"; sourceTree = "<group>"; };
-		B2FA61581059616200499856 /* UIScrollView+scroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+scroller.h"; sourceTree = "<group>"; };
-		B2FA61591059616200499856 /* UITextView+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+HTML.h"; sourceTree = "<group>"; };
-		B2FA615A1059616200499856 /* UIView+fading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+fading.h"; sourceTree = "<group>"; };
-		B2FA615B1059616200499856 /* UIView+fading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+fading.m"; sourceTree = "<group>"; };
-		B2FA615C1059616200499856 /* UIWebView+scrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+scrolling.h"; sourceTree = "<group>"; };
-		B2FA615D1059616200499856 /* UIWebView+scrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+scrolling.m"; sourceTree = "<group>"; };
-		B2FA615E1059616200499856 /* UIWebView+setFontSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+setFontSize.h"; sourceTree = "<group>"; };
-		B2FA615F1059616200499856 /* UIWebView+setFontSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+setFontSize.m"; sourceTree = "<group>"; };
+		B2C20766106296FB00AE1B56 /* NSArray+shuffle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+shuffle.h"; sourceTree = "<group>"; };
+		B2C20767106296FB00AE1B56 /* NSArray+shuffle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+shuffle.m"; sourceTree = "<group>"; };
+		B2C20768106296FB00AE1B56 /* NSData+MD5Sum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MD5Sum.h"; sourceTree = "<group>"; };
+		B2C20769106296FB00AE1B56 /* NSData+MD5Sum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MD5Sum.m"; sourceTree = "<group>"; };
+		B2C2076A106296FB00AE1B56 /* NSString+containsString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+containsString.h"; sourceTree = "<group>"; };
+		B2C2076B106296FB00AE1B56 /* NSString+containsString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+containsString.m"; sourceTree = "<group>"; };
+		B2C2076C106296FB00AE1B56 /* NSString+encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+encoding.h"; sourceTree = "<group>"; };
+		B2C2076D106296FB00AE1B56 /* NSString+encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+encoding.m"; sourceTree = "<group>"; };
+		B2C2076E106296FB00AE1B56 /* NSString+MD5Sum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Sum.h"; sourceTree = "<group>"; };
+		B2C2076F106296FB00AE1B56 /* NSString+MD5Sum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Sum.m"; sourceTree = "<group>"; };
+		B2C207831062973000AE1B56 /* TWCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCategories.h; sourceTree = "<group>"; };
 		B2FA61601059616200499856 /* TWConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWConnection.h; sourceTree = "<group>"; };
 		B2FA61611059616200499856 /* TWConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWConnection.m; sourceTree = "<group>"; };
 		B2FA61621059616200499856 /* TWEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEntity.h; sourceTree = "<group>"; };
@@ -194,12 +162,35 @@
 			path = "Other Sources";
 			sourceTree = "<group>";
 		};
-		B2FA61431059616200499856 /* TWToolkit */ = {
+		B2C20765106296F200AE1B56 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				B2FA61441059616200499856 /* Categories */,
+				B2C20766106296FB00AE1B56 /* NSArray+shuffle.h */,
+				B2C20767106296FB00AE1B56 /* NSArray+shuffle.m */,
+				B2C20768106296FB00AE1B56 /* NSData+MD5Sum.h */,
+				B2C20769106296FB00AE1B56 /* NSData+MD5Sum.m */,
+				B2C2076A106296FB00AE1B56 /* NSString+containsString.h */,
+				B2C2076B106296FB00AE1B56 /* NSString+containsString.m */,
+				B2C2076C106296FB00AE1B56 /* NSString+encoding.h */,
+				B2C2076D106296FB00AE1B56 /* NSString+encoding.m */,
+				B2C2076E106296FB00AE1B56 /* NSString+MD5Sum.h */,
+				B2C2076F106296FB00AE1B56 /* NSString+MD5Sum.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		B2C2077A106296FE00AE1B56 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
 				B2FA61601059616200499856 /* TWConnection.h */,
 				B2FA61611059616200499856 /* TWConnection.m */,
+			);
+			name = Connection;
+			sourceTree = "<group>";
+		};
+		B2C2077B1062970B00AE1B56 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
 				B2FA61621059616200499856 /* TWEntity.h */,
 				B2FA61631059616200499856 /* TWEntity.m */,
 				B2FA61641059616200499856 /* TWEntityController.h */,
@@ -210,44 +201,21 @@
 				B2FA61691059616200499856 /* TWRemoteEntityDataSource.m */,
 				B2FA616A1059616200499856 /* TWSQLiteEntityDataSource.h */,
 				B2FA616B1059616200499856 /* TWSQLiteEntityDataSource.m */,
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
+		B2FA61431059616200499856 /* TWToolkit */ = {
+			isa = PBXGroup;
+			children = (
 				B2FA616C1059616200499856 /* TWToolkit.h */,
+				B2C207831062973000AE1B56 /* TWCategories.h */,
+				B2C2077A106296FE00AE1B56 /* Connection */,
+				B2C2077B1062970B00AE1B56 /* Entity */,
+				B2C20765106296F200AE1B56 /* Categories */,
 				B2FA616D1059616200499856 /* Vendor */,
 			);
 			path = TWToolkit;
-			sourceTree = "<group>";
-		};
-		B2FA61441059616200499856 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				B2FA61451059616200499856 /* NSArray+shuffle.h */,
-				B2FA61461059616200499856 /* NSArray+shuffle.m */,
-				B2FA61471059616200499856 /* NSData+MD5Sum.h */,
-				B2FA61481059616200499856 /* NSData+MD5Sum.m */,
-				B2FA61491059616200499856 /* NSString+containsString.h */,
-				B2FA614A1059616200499856 /* NSString+containsString.m */,
-				B2FA614B1059616200499856 /* NSString+encoding.h */,
-				B2FA614C1059616200499856 /* NSString+encoding.m */,
-				B2FA614D1059616200499856 /* NSString+MD5Sum.h */,
-				B2FA614E1059616200499856 /* NSString+MD5Sum.m */,
-				B2FA614F1059616200499856 /* UIApplication+undocumented.h */,
-				B2FA61501059616200499856 /* UIButton+setTitle.h */,
-				B2FA61511059616200499856 /* UIButton+setTitle.m */,
-				B2FA61521059616200499856 /* UIColor+blackColorWithAlpha.h */,
-				B2FA61531059616200499856 /* UIColor+blackColorWithAlpha.m */,
-				B2FA61541059616200499856 /* UIDevice+isSimulator.h */,
-				B2FA61551059616200499856 /* UIDevice+isSimulator.m */,
-				B2FA61561059616200499856 /* UIImage+crop.h */,
-				B2FA61571059616200499856 /* UIImage+crop.m */,
-				B2FA61581059616200499856 /* UIScrollView+scroller.h */,
-				B2FA61591059616200499856 /* UITextView+HTML.h */,
-				B2FA615A1059616200499856 /* UIView+fading.h */,
-				B2FA615B1059616200499856 /* UIView+fading.m */,
-				B2FA615C1059616200499856 /* UIWebView+scrolling.h */,
-				B2FA615D1059616200499856 /* UIWebView+scrolling.m */,
-				B2FA615E1059616200499856 /* UIWebView+setFontSize.h */,
-				B2FA615F1059616200499856 /* UIWebView+setFontSize.m */,
-			);
-			path = Categories;
 			sourceTree = "<group>";
 		};
 		B2FA616D1059616200499856 /* Vendor */ = {
@@ -317,21 +285,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B215045F10583A7300409ED4 /* TWToolkit_Prefix.pch in Headers */,
-				B2FA61861059616200499856 /* NSArray+shuffle.h in Headers */,
-				B2FA61881059616200499856 /* NSData+MD5Sum.h in Headers */,
-				B2FA618A1059616200499856 /* NSString+containsString.h in Headers */,
-				B2FA618C1059616200499856 /* NSString+encoding.h in Headers */,
-				B2FA618E1059616200499856 /* NSString+MD5Sum.h in Headers */,
-				B2FA61901059616200499856 /* UIApplication+undocumented.h in Headers */,
-				B2FA61911059616200499856 /* UIButton+setTitle.h in Headers */,
-				B2FA61931059616200499856 /* UIColor+blackColorWithAlpha.h in Headers */,
-				B2FA61951059616200499856 /* UIDevice+isSimulator.h in Headers */,
-				B2FA61971059616200499856 /* UIImage+crop.h in Headers */,
-				B2FA61991059616200499856 /* UIScrollView+scroller.h in Headers */,
-				B2FA619A1059616200499856 /* UITextView+HTML.h in Headers */,
-				B2FA619B1059616200499856 /* UIView+fading.h in Headers */,
-				B2FA619D1059616200499856 /* UIWebView+scrolling.h in Headers */,
-				B2FA619F1059616200499856 /* UIWebView+setFontSize.h in Headers */,
 				B2FA61A11059616200499856 /* TWConnection.h in Headers */,
 				B2FA61A31059616200499856 /* TWEntity.h in Headers */,
 				B2FA61A51059616200499856 /* TWEntityController.h in Headers */,
@@ -348,6 +301,12 @@
 				B2FA61BA1059616200499856 /* CJSONDeserializer.h in Headers */,
 				B2FA61BC1059616200499856 /* CJSONScanner.h in Headers */,
 				B2FA61BE1059616200499856 /* CJSONSerializer.h in Headers */,
+				B2C20770106296FB00AE1B56 /* NSArray+shuffle.h in Headers */,
+				B2C20772106296FB00AE1B56 /* NSData+MD5Sum.h in Headers */,
+				B2C20774106296FB00AE1B56 /* NSString+containsString.h in Headers */,
+				B2C20776106296FB00AE1B56 /* NSString+encoding.h in Headers */,
+				B2C20778106296FB00AE1B56 /* NSString+MD5Sum.h in Headers */,
+				B2C207841062973000AE1B56 /* TWCategories.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,18 +356,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2FA61871059616200499856 /* NSArray+shuffle.m in Sources */,
-				B2FA61891059616200499856 /* NSData+MD5Sum.m in Sources */,
-				B2FA618B1059616200499856 /* NSString+containsString.m in Sources */,
-				B2FA618D1059616200499856 /* NSString+encoding.m in Sources */,
-				B2FA618F1059616200499856 /* NSString+MD5Sum.m in Sources */,
-				B2FA61921059616200499856 /* UIButton+setTitle.m in Sources */,
-				B2FA61941059616200499856 /* UIColor+blackColorWithAlpha.m in Sources */,
-				B2FA61961059616200499856 /* UIDevice+isSimulator.m in Sources */,
-				B2FA61981059616200499856 /* UIImage+crop.m in Sources */,
-				B2FA619C1059616200499856 /* UIView+fading.m in Sources */,
-				B2FA619E1059616200499856 /* UIWebView+scrolling.m in Sources */,
-				B2FA61A01059616200499856 /* UIWebView+setFontSize.m in Sources */,
 				B2FA61A21059616200499856 /* TWConnection.m in Sources */,
 				B2FA61A41059616200499856 /* TWEntity.m in Sources */,
 				B2FA61A61059616200499856 /* TWEntityController.m in Sources */,
@@ -424,6 +371,11 @@
 				B2FA61BB1059616200499856 /* CJSONDeserializer.m in Sources */,
 				B2FA61BD1059616200499856 /* CJSONScanner.m in Sources */,
 				B2FA61BF1059616200499856 /* CJSONSerializer.m in Sources */,
+				B2C20771106296FB00AE1B56 /* NSArray+shuffle.m in Sources */,
+				B2C20773106296FB00AE1B56 /* NSData+MD5Sum.m in Sources */,
+				B2C20775106296FB00AE1B56 /* NSString+containsString.m in Sources */,
+				B2C20777106296FB00AE1B56 /* NSString+encoding.m in Sources */,
+				B2C20779106296FB00AE1B56 /* NSString+MD5Sum.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
