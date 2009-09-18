@@ -12,6 +12,12 @@
 		B21504CA10583B4000409ED4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504C910583B4000409ED4 /* SystemConfiguration.framework */; };
 		B21504CE10583B4600409ED4 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504CD10583B4600409ED4 /* libsqlite3.dylib */; };
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
+		B28517DA1063E43E008D42E7 /* SSPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517D81063E43E008D42E7 /* SSPickerViewController.h */; };
+		B28517DB1063E43E008D42E7 /* SSPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517D91063E43E008D42E7 /* SSPickerViewController.m */; };
+		B28517E01063E442008D42E7 /* SSLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517DC1063E442008D42E7 /* SSLoadingView.h */; };
+		B28517E11063E442008D42E7 /* SSLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517DD1063E442008D42E7 /* SSLoadingView.m */; };
+		B28517E21063E442008D42E7 /* SSStripView.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517DE1063E442008D42E7 /* SSStripView.h */; };
+		B28517E31063E442008D42E7 /* SSStripView.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517DF1063E442008D42E7 /* SSStripView.m */; };
 		B2974D6D106299CB00C9F4A6 /* UIApplication+undocumented.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D5C106299CB00C9F4A6 /* UIApplication+undocumented.h */; };
 		B2974D6E106299CB00C9F4A6 /* UIButton+setTitle.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D5D106299CB00C9F4A6 /* UIButton+setTitle.h */; };
 		B2974D6F106299CB00C9F4A6 /* UIButton+setTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D5E106299CB00C9F4A6 /* UIButton+setTitle.m */; };
@@ -79,6 +85,12 @@
 		B21504C910583B4000409ED4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B21504CD10583B4600409ED4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B28517D81063E43E008D42E7 /* SSPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPickerViewController.h; sourceTree = "<group>"; };
+		B28517D91063E43E008D42E7 /* SSPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPickerViewController.m; sourceTree = "<group>"; };
+		B28517DC1063E442008D42E7 /* SSLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLoadingView.h; sourceTree = "<group>"; };
+		B28517DD1063E442008D42E7 /* SSLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSLoadingView.m; sourceTree = "<group>"; };
+		B28517DE1063E442008D42E7 /* SSStripView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSStripView.h; sourceTree = "<group>"; };
+		B28517DF1063E442008D42E7 /* SSStripView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSStripView.m; sourceTree = "<group>"; };
 		B2974D5C106299CB00C9F4A6 /* UIApplication+undocumented.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+undocumented.h"; sourceTree = "<group>"; };
 		B2974D5D106299CB00C9F4A6 /* UIButton+setTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+setTitle.h"; sourceTree = "<group>"; };
 		B2974D5E106299CB00C9F4A6 /* UIButton+setTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+setTitle.m"; sourceTree = "<group>"; };
@@ -196,6 +208,26 @@
 			path = "Other Sources";
 			sourceTree = "<group>";
 		};
+		B28517D51063E42A008D42E7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B28517D81063E43E008D42E7 /* SSPickerViewController.h */,
+				B28517D91063E43E008D42E7 /* SSPickerViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B28517D71063E433008D42E7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B28517DC1063E442008D42E7 /* SSLoadingView.h */,
+				B28517DD1063E442008D42E7 /* SSLoadingView.m */,
+				B28517DE1063E442008D42E7 /* SSStripView.h */,
+				B28517DF1063E442008D42E7 /* SSStripView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		B2C20765106296F200AE1B56 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +295,8 @@
 				B2C207831062973000AE1B56 /* TWCategories.h */,
 				B2C2077A106296FE00AE1B56 /* Connection */,
 				B2C2077B1062970B00AE1B56 /* Entity */,
+				B28517D51063E42A008D42E7 /* View Controllers */,
+				B28517D71063E433008D42E7 /* Views */,
 				B2C20765106296F200AE1B56 /* Categories */,
 				B2FA616D1059616200499856 /* Vendor */,
 			);
@@ -368,6 +402,9 @@
 				B2974D78106299CB00C9F4A6 /* UIView+fading.h in Headers */,
 				B2974D7A106299CB00C9F4A6 /* UIWebView+scrolling.h in Headers */,
 				B2974D7C106299CB00C9F4A6 /* UIWebView+setFontSize.h in Headers */,
+				B28517DA1063E43E008D42E7 /* SSPickerViewController.h in Headers */,
+				B28517E01063E442008D42E7 /* SSLoadingView.h in Headers */,
+				B28517E21063E442008D42E7 /* SSStripView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +481,9 @@
 				B2974D79106299CB00C9F4A6 /* UIView+fading.m in Sources */,
 				B2974D7B106299CB00C9F4A6 /* UIWebView+scrolling.m in Sources */,
 				B2974D7D106299CB00C9F4A6 /* UIWebView+setFontSize.m in Sources */,
+				B28517DB1063E43E008D42E7 /* SSPickerViewController.m in Sources */,
+				B28517E11063E442008D42E7 /* SSLoadingView.m in Sources */,
+				B28517E31063E442008D42E7 /* SSStripView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
