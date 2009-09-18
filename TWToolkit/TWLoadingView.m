@@ -8,6 +8,10 @@
 
 #import "TWLoadingView.h"
 
+static CGFloat interiorPadding = 20.0;
+static CGFloat indicatorSize = 20.0;
+static CGFloat indicatorRightMargin = 8.0;
+
 @implementation TWLoadingView
 
 @synthesize indicator;
@@ -43,26 +47,26 @@
 
 - (void)drawRect:(CGRect)rect {
 	
-	// Indicator is 20px x 20px
-	// There are 8px of space between the indicator and the text
-	
-	CGSize maxSize = CGSizeMake(self.frame.size.width - 68.0, 20.0);
+	// Calculate sizes
+	CGSize maxSize = CGSizeMake(self.frame.size.width - (interiorPadding * 2.0) - indicatorSize - indicatorRightMargin, indicatorSize);
 	CGSize textSize = [text sizeWithFont:font constrainedToSize:maxSize lineBreakMode:UILineBreakModeWordWrap];
 	
-	CGFloat totalWidth = textSize.width + 28.0;
-	NSInteger y = (NSInteger)((self.frame.size.height / 2.0) - 10.0);
+	// Calculate position
+	CGFloat totalWidth = textSize.width + indicatorSize + indicatorRightMargin;
+	NSInteger y = (NSInteger)((self.frame.size.height / 2.0) - (indicatorSize / 2.0));
 	
-	indicator.frame = CGRectMake((NSInteger)((self.frame.size.width - totalWidth) / 2.0), y, 20.0, 20.0);
+	// Position the indicator
+	indicator.frame = CGRectMake((NSInteger)((self.frame.size.width - totalWidth) / 2.0), y, indicatorSize, indicatorSize);
 	
-	CGRect textRect = CGRectMake(indicator.frame.origin.x + 28.0, y, textSize.width, textSize.height);
+	// Calculate text position
+	CGRect textRect = CGRectMake(indicator.frame.origin.x + indicatorSize + indicatorRightMargin, y, textSize.width, textSize.height);
 	
-	// Shadow
-	// The offset is (0, 1)
+	// Draw shadow. The offset is (0, 1)
 	[shadowColor set];
 	CGRect shadowRect = CGRectMake(textRect.origin.x, textRect.origin.y + 1.0, textRect.size.width, textRect.size.height);
 	[text drawInRect:shadowRect withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];	
 	
-	// Text
+	// Draw text
 	[textColor set];
 	[text drawInRect:textRect withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];
 }
