@@ -1,22 +1,22 @@
 //
-//  SSStripView.h
-//  Four80
+//  TWStripView.h
+//  TWToolkit
 //
 //  Created by Sam Soffes on 8/18/08.
-//  Copyright 2008 Sam Soffes. All rights reserved.
+//  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 typedef enum {
-	SSStripViewStyleCustom,
-    SSStripViewStyleLight = 1,
-    SSStripViewStyleDark = 2,
-	SSStripViewStyleBlue = 3,
-	SSStripViewStyleDefault = SSStripViewStyleBlue
-} SSStripViewStyle;
+	TWStripViewStyleCustom,
+    TWStripViewStyleLight = 1,
+    TWStripViewStyleDark = 2,
+	TWStripViewStyleBlue = 3,
+	TWStripViewStyleDefault = TWStripViewStyleBlue
+} TWStripViewStyle;
 
-@interface SSStripView : UIView {
+@interface TWStripView : UIView {
 
 	CGGradientRef gradient;
 	CGContextRef context;
@@ -25,7 +25,7 @@ typedef enum {
 	UIColor *startColor;
 	UIColor *endColor;
 	NSInteger borderHeight;
-	SSStripViewStyle style;
+	TWStripViewStyle style;
 
 	NSDictionary *styles;
 }
@@ -34,9 +34,9 @@ typedef enum {
 @property (nonatomic, retain) UIColor *startColor;
 @property (nonatomic, retain) UIColor *endColor;
 @property (nonatomic) NSInteger borderHeight;
-@property (nonatomic) SSStripViewStyle style;
+@property (nonatomic) TWStripViewStyle style;
 
-- (void)setStyle:(SSStripViewStyle)aStyle;
+- (void)setStyle:(TWStripViewStyle)aStyle;
 
 // You must call this after setting the start and end color. This is done
 // manually for performance reasons. I guess it doesn't matter that much.

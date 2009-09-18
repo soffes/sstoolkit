@@ -1,14 +1,14 @@
 //
-//  SSLoadingView.h
-//  Four80
+//  TWLoadingView.h
+//  TWToolkit
 //
 //  Created by Sam Soffes on 7/8/09.
-//  Copyright 2009 Sam Soffes. All rights reserved.
+//  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface SSLoadingView : UIView {
+@interface TWLoadingView : UIView {
 
 	UIActivityIndicatorView *indicator;
 	NSString *text;

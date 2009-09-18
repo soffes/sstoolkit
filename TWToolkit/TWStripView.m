@@ -1,14 +1,14 @@
 //
-//  SSStripView.m
-//  Four80
+//  TWStripView.m
+//  TWToolkit
 //
 //  Created by Sam Soffes on 8/18/08.
-//  Copyright 2008 Trimonix LLC. All rights reserved.
+//  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "SSStripView.h"
+#import "TWStripView.h"
 
-@implementation SSStripView
+@implementation TWStripView
 
 @synthesize borderColor, startColor, endColor, borderHeight, style;
 
@@ -22,7 +22,7 @@
 
 		// Defaults
 		self.borderHeight = 1;
-		self.style = SSStripViewStyleDefault;
+		self.style = TWStripViewStyleDefault;
 		self.contentMode = UIViewContentModeTop;
 	}
 	return self;
@@ -32,20 +32,20 @@
 #pragma mark Style Methods
 #pragma mark -
 
-- (void)setStyle:(SSStripViewStyle)aStyle {
+- (void)setStyle:(TWStripViewStyle)aStyle {
 	style = aStyle;
 	
-	if (aStyle == SSStripViewStyleBlue) {
+	if (aStyle == TWStripViewStyleBlue) {
 		self.borderColor = [UIColor colorWithRed:32.0 / 255.0 green:36.0 / 255.0 blue:42.0 / 255.0 alpha:1.0];
 		self.startColor = [UIColor colorWithRed:127.0 / 255.0 green:141.0 / 255.0 blue:157.0 / 255.0 alpha:1.0];
 		self.endColor = [UIColor colorWithRed:66.0 / 255.0 green:80.0 / 255.0 blue:99.0 / 255.0 alpha:1.0];
 		[self refreshBackground];
-	} else if(aStyle == SSStripViewStyleLight) {
+	} else if(aStyle == TWStripViewStyleLight) {
 		self.borderColor = [UIColor colorWithRed:169.0 / 255.0 green:174.0 / 255.0 blue:183.0 / 255.0 alpha:1.0];
 		self.startColor = [UIColor colorWithRed:222.0 / 255.0 green:222.0 / 255.0 blue:222.0 / 255.0 alpha:1.0];
 		self.endColor = [UIColor colorWithRed:190.0 / 255.0 green:190.0 / 255.0 blue:190.0 / 255.0 alpha:1.0];
 		[self refreshBackground];
-	} else if (aStyle == SSStripViewStyleDark) {
+	} else if (aStyle == TWStripViewStyleDark) {
 		self.borderColor = [UIColor colorWithRed:50.0 / 255.0 green:50.0 / 255.0 blue:50.0 / 255.0 alpha:1.0];
 		self.startColor = [UIColor colorWithRed:37.0 / 255.0 green:37.0 / 255.0 blue:37.0 / 255.0 alpha:1.0];
 		self.endColor = [UIColor colorWithRed:20.0 / 255.0 green:20.0 / 255.0 blue:20.0 / 255.0 alpha:1.0];

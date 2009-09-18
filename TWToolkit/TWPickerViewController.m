@@ -1,14 +1,14 @@
 //
-//  SSPickerViewController.m
-//  Four80
+//  TWPickerViewController.m
+//  TWToolkit
 //
 //  Created by Sam Soffes on 10/9/08.
-//  Copyright 2008 Sam Soffes. All rights reserved.
+//  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "SSPickerViewController.h"
+#import "TWPickerViewController.h"
 
-@implementation SSPickerViewController
+@implementation TWPickerViewController
 
 @synthesize selectedKey = _selectedKey, keys = _keys, currentIndexPath = _currentIndexPath;
 

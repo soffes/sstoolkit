@@ -1,14 +1,14 @@
 //
 //  SSLoadingView.m
-//  Four80
+//  TWToolkit
 //
 //  Created by Sam Soffes on 7/8/09.
-//  Copyright 2009 Sam Soffes. All rights reserved.
+//  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "SSLoadingView.h"
+#import "TWLoadingView.h"
 
-@implementation SSLoadingView
+@implementation TWLoadingView
 
 @synthesize indicator;
 @synthesize text;
