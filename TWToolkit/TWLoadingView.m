@@ -13,7 +13,7 @@
 @synthesize indicator;
 @synthesize text;
 @synthesize font;
-@synthesize color;
+@synthesize textColor;
 @synthesize shadowColor;
 
 - (id)initWithFrame:(CGRect)frame {
@@ -34,7 +34,7 @@
 		self.text = @"Loading...";
 		self.font = [UIFont systemFontOfSize:16.0];
 		UIColor *aColor = [[UIColor alloc] initWithHue:0.613 saturation:0.3 brightness:0.42 alpha:1.0];
-		self.color = aColor;
+		self.textColor = aColor;
 		[aColor release];
 		self.shadowColor = [UIColor whiteColor];
     }
@@ -63,13 +63,13 @@
 	[text drawInRect:shadowRect withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];	
 	
 	// Text
-	[color set];
+	[textColor set];
 	[text drawInRect:textRect withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];
 }
 
 - (void)dealloc {
 	[font release];
-	[color release];
+	[textColor release];
 	[shadowColor release];
 	[indicator release];
 	[super dealloc];

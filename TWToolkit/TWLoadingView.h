@@ -13,14 +13,14 @@
 	UIActivityIndicatorView *indicator;
 	NSString *text;
 	UIFont *font;
-	UIColor *color;
+	UIColor *textColor;
 	UIColor *shadowColor;
 }
 
 @property (nonatomic, retain) UIActivityIndicatorView *indicator;
 @property (nonatomic, retain) NSString *text;
 @property (nonatomic, retain) UIFont *font;
-@property (nonatomic, retain) UIColor *color;
+@property (nonatomic, retain) UIColor *textColor;
 @property (nonatomic, retain) UIColor *shadowColor;
 
 @end
