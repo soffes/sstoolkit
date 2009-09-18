@@ -60,6 +60,7 @@
 		B2D2FB711063FFBB00537F3A /* NSDictionary_JSONExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2FB631063FFBB00537F3A /* NSDictionary_JSONExtensions.m */; };
 		B2D2FB721063FFBB00537F3A /* NSScanner_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2D2FB641063FFBB00537F3A /* NSScanner_Extensions.h */; };
 		B2D2FB731063FFBB00537F3A /* NSScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2FB651063FFBB00537F3A /* NSScanner_Extensions.m */; };
+		B2D2FBA4106401BE00537F3A /* TouchJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B2D2FBA3106401BE00537F3A /* TouchJSON.h */; };
 		B2FA61A11059616200499856 /* TWConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61601059616200499856 /* TWConnection.h */; };
 		B2FA61A21059616200499856 /* TWConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61611059616200499856 /* TWConnection.m */; };
 		B2FA61A31059616200499856 /* TWEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61621059616200499856 /* TWEntity.h */; };
@@ -133,6 +134,7 @@
 		B2D2FB631063FFBB00537F3A /* NSDictionary_JSONExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionary_JSONExtensions.m; sourceTree = "<group>"; };
 		B2D2FB641063FFBB00537F3A /* NSScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSScanner_Extensions.h; sourceTree = "<group>"; };
 		B2D2FB651063FFBB00537F3A /* NSScanner_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSScanner_Extensions.m; sourceTree = "<group>"; };
+		B2D2FBA3106401BE00537F3A /* TouchJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchJSON.h; sourceTree = "<group>"; };
 		B2FA61601059616200499856 /* TWConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWConnection.h; sourceTree = "<group>"; };
 		B2FA61611059616200499856 /* TWConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWConnection.m; sourceTree = "<group>"; };
 		B2FA61621059616200499856 /* TWEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEntity.h; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		B2C20765106296F200AE1B56 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				B2C207831062973000AE1B56 /* TWCategories.h */,
 				B2C20766106296FB00AE1B56 /* NSArray+shuffle.h */,
 				B2C20767106296FB00AE1B56 /* NSArray+shuffle.m */,
 				B2C20768106296FB00AE1B56 /* NSData+MD5Sum.h */,
@@ -290,7 +293,6 @@
 			isa = PBXGroup;
 			children = (
 				B2FA616C1059616200499856 /* TWToolkit.h */,
-				B2C207831062973000AE1B56 /* TWCategories.h */,
 				B2C2077A106296FE00AE1B56 /* Connection */,
 				B2C2077B1062970B00AE1B56 /* Entity */,
 				B28517D51063E42A008D42E7 /* View Controllers */,
@@ -322,6 +324,7 @@
 		B2FA61711059616200499856 /* TouchJSON */ = {
 			isa = PBXGroup;
 			children = (
+				B2D2FBA3106401BE00537F3A /* TouchJSON.h */,
 				B2D2FB5E1063FFBB00537F3A /* CJSONSerializer.h */,
 				B2D2FB5F1063FFBB00537F3A /* CJSONSerializer.m */,
 				B2D2FB5A1063FFBB00537F3A /* CJSONDeserializer.h */,
@@ -385,6 +388,7 @@
 				B2D2FB6E1063FFBB00537F3A /* NSCharacterSet_Extensions.h in Headers */,
 				B2D2FB701063FFBB00537F3A /* NSDictionary_JSONExtensions.h in Headers */,
 				B2D2FB721063FFBB00537F3A /* NSScanner_Extensions.h in Headers */,
+				B2D2FBA4106401BE00537F3A /* TouchJSON.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
