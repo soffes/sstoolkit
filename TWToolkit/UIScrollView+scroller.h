@@ -17,5 +17,7 @@
 - (void)setAdjustForContentSizeChange:(BOOL)fp8;
 - (BOOL)adjustForContentSizeChange;
 - (void)setAllowsRubberBanding:(BOOL)allowsRubberBanding;
+- (void)setScrollingEnabled:(BOOL)arg1;
+- (BOOL)_scrollToTop;
 
 @end
