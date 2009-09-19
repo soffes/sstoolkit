@@ -12,6 +12,8 @@
 		B21504CA10583B4000409ED4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504C910583B4000409ED4 /* SystemConfiguration.framework */; };
 		B21504CE10583B4600409ED4 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504CD10583B4600409ED4 /* libsqlite3.dylib */; };
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
+		B22C4F021065392C00EF3D24 /* TWWebViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B22C4F001065392C00EF3D24 /* TWWebViewCell.h */; };
+		B22C4F031065392C00EF3D24 /* TWWebViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B22C4F011065392C00EF3D24 /* TWWebViewCell.m */; };
 		B2807EE010642A3400E4F6C6 /* TWRoundedView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */; };
 		B2807EE110642A3400E4F6C6 /* TWRoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */; };
 		B28517DA1063E43E008D42E7 /* TWPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517D81063E43E008D42E7 /* TWPickerViewController.h */; };
@@ -88,6 +90,8 @@
 		B21504C910583B4000409ED4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B21504CD10583B4600409ED4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B22C4F001065392C00EF3D24 /* TWWebViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWWebViewCell.h; sourceTree = "<group>"; };
+		B22C4F011065392C00EF3D24 /* TWWebViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWWebViewCell.m; sourceTree = "<group>"; };
 		B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRoundedView.h; sourceTree = "<group>"; };
 		B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRoundedView.m; sourceTree = "<group>"; };
 		B28517D81063E43E008D42E7 /* TWPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPickerViewController.h; sourceTree = "<group>"; };
@@ -212,6 +216,15 @@
 			path = "Other Sources";
 			sourceTree = "<group>";
 		};
+		B22C4EFF1065391900EF3D24 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B22C4F001065392C00EF3D24 /* TWWebViewCell.h */,
+				B22C4F011065392C00EF3D24 /* TWWebViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		B28517D51063E42A008D42E7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +316,7 @@
 				B2C2077B1062970B00AE1B56 /* Entity */,
 				B28517D51063E42A008D42E7 /* View Controllers */,
 				B28517D71063E433008D42E7 /* Views */,
+				B22C4EFF1065391900EF3D24 /* Cells */,
 				B2C20765106296F200AE1B56 /* Categories */,
 				B2FA616D1059616200499856 /* Vendor */,
 			);
@@ -396,6 +410,7 @@
 				B2D2FB721063FFBB00537F3A /* NSScanner_Extensions.h in Headers */,
 				B2D2FBA4106401BE00537F3A /* TouchJSON.h in Headers */,
 				B2807EE010642A3400E4F6C6 /* TWRoundedView.h in Headers */,
+				B22C4F021065392C00EF3D24 /* TWWebViewCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +491,7 @@
 				B2D2FB711063FFBB00537F3A /* NSDictionary_JSONExtensions.m in Sources */,
 				B2D2FB731063FFBB00537F3A /* NSScanner_Extensions.m in Sources */,
 				B2807EE110642A3400E4F6C6 /* TWRoundedView.m in Sources */,
+				B22C4F031065392C00EF3D24 /* TWWebViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
