@@ -11,8 +11,10 @@
 @interface TWWebViewCell : UITableViewCell {
 
 	UIWebView *_webView;
+	NSString *_html;
 }
 
 @property (nonatomic, retain, readonly) UIWebView *webView;
+@property (nonatomic, copy) NSString *html;
 
 @end
