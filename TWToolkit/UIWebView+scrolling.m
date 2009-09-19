@@ -20,7 +20,12 @@
 	[[self scroller] scrollRectToVisible:rect animated:animated];
 }
 
-- (void)scrollingEnabled:(BOOL)enabled {
+- (void)scrollToTop {
+	[[self scroller] _scrollToTop];
+}
+
+- (void)setScrollingEnabled:(BOOL)enabled {
+	[[self scroller] setScrollingEnabled:enabled];
 	[[self scroller] setAllowsRubberBanding:enabled];
 }
 

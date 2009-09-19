@@ -12,6 +12,7 @@
 
 - (UIScrollView *)scroller;
 - (void)scrollRectToVisible:(CGRect)rect animated:(BOOL)animated;
-- (void)scrollingEnabled:(BOOL)enabled;
+- (void)scrollToTop;
+- (void)setScrollingEnabled:(BOOL)enabled;
 
 @end
