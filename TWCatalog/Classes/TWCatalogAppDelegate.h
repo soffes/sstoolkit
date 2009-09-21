@@ -3,16 +3,19 @@
 //  TWCatalog
 //
 //  Created by Sam Soffes on 9/21/09.
-//  Copyright __MyCompanyName__ 2009. All rights reserved.
+//  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@class WebViewCellViewController;
 
 @interface TWCatalogAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
+    
+	UIWindow *window;
+	WebViewCellViewController *rootViewController;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) UIWindow *window;
+@property (nonatomic, retain) UIViewController *rootViewController;
 
 @end
 

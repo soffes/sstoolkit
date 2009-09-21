@@ -12,7 +12,6 @@
 		B21504CA10583B4000409ED4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504C910583B4000409ED4 /* SystemConfiguration.framework */; };
 		B21504CE10583B4600409ED4 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504CD10583B4600409ED4 /* libsqlite3.dylib */; };
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
-		B21B84891067D36300E5C076 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B21B84881067D36300E5C076 /* main.m */; };
 		B22C4F021065392C00EF3D24 /* TWWebViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B22C4F001065392C00EF3D24 /* TWWebViewCell.h */; };
 		B22C4F031065392C00EF3D24 /* TWWebViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B22C4F011065392C00EF3D24 /* TWWebViewCell.m */; };
 		B2807EE010642A3400E4F6C6 /* TWRoundedView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */; };
@@ -495,7 +494,6 @@
 				B2D2FB731063FFBB00537F3A /* NSScanner_Extensions.m in Sources */,
 				B2807EE110642A3400E4F6C6 /* TWRoundedView.m in Sources */,
 				B22C4F031065392C00EF3D24 /* TWWebViewCell.m in Sources */,
-				B21B84891067D36300E5C076 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
