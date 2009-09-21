@@ -22,6 +22,7 @@ static NSString *kDocumentTemplate = @"<!DOCTYPE html><html lang=\"en\"><head><m
 #pragma mark -
 
 + (CGFloat)heightForHTML:(NSString *)html {
+		
 	UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, 290.0, 0.0)];
 	NSString *document = [TWWebViewCell documentHTMLForBodyHTML:html];
 	NSURL *baseURL = [[NSURL alloc] initWithString:@"about:blank"];
@@ -70,7 +71,6 @@ static NSString *kDocumentTemplate = @"<!DOCTYPE html><html lang=\"en\"><head><m
 		[_webView setScrollingEnabled:NO];
 		[self.contentView addSubview:_webView];
 		
-		self.contentView.backgroundColor = [UIColor redColor];
 		_webViewWidth = 290.0; //self.contentView.frame.size.width - (kWebViewMargin * 2.0);
 		
     }
@@ -84,6 +84,8 @@ static NSString *kDocumentTemplate = @"<!DOCTYPE html><html lang=\"en\"><head><m
 
 - (void)layoutSubviews {
 	[super layoutSubviews];
+	
+	self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, 100.0);
 	
 	_webView.frame = CGRectMake(kWebViewMargin, kWebViewMargin, 
 								self.contentView.frame.size.width - (kWebViewMargin * 2.0), 

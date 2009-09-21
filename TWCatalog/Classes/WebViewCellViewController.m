@@ -23,7 +23,7 @@ static NSString *kHTML = @"<p>Lorem ipsum dolor sit amet, consectetur adipisicin
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 3;
 }
 
 
@@ -47,7 +47,7 @@ static NSString *kHTML = @"<p>Lorem ipsum dolor sit amet, consectetur adipisicin
 #pragma mark -
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return [TWWebViewCell heightForHTML:kHTML];
+	return 100.0; //[TWWebViewCell heightForHTML:kHTML];
 }
 
 @end
