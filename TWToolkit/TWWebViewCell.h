@@ -12,9 +12,14 @@
 
 	UIWebView *_webView;
 	NSString *_html;
+	
+	CGFloat _webViewWidth;
 }
 
 @property (nonatomic, retain, readonly) UIWebView *webView;
 @property (nonatomic, copy) NSString *html;
+
++ (CGFloat)heightForHTML:(NSString *)html;
++ (NSString *)documentHTMLForBodyHTML:(NSString *)html;
 
 @end
