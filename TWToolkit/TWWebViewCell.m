@@ -10,7 +10,7 @@
 #import "UIWebView+scrolling.h"
 
 static CGFloat kWebViewMargin = 5.0;
-static NSString *kDocumentTemplate = @"<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\" /><meta name=\"viewport\" content=\"width=258, user-scalable=no\" /><title>365 Days of</title><style type=\"text/css\">html,body,div,a{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-size:100%%;font-family:inherit;vertical-align:baseline;}body{-webkit-user-select:none;line-height:1;color:#000;font-family:\"Helvetica Neue\",Helvetica;font-size:14px;}a{color:#2765a5;}</style></head><body>%@</body></html>";
+static NSString *kDocumentTemplate = @"<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\" /><meta name=\"viewport\" content=\"width=258, user-scalable=no\" /><title>365 Days of</title><style type=\"text/css\">html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline}body{line-height:1;color:black;background:white}ol,ul{list-style:none}table{border-collapse:separate;border-spacing:0}caption,th,td{text-align:left;font-weight:normal}blockquote:before,blockquote:after,q:before,q:after{content:""}blockquote,q{quotes:"" ""}.clear:after{clear:both;content:" ";display:block;height:0;zoom:1}body{-webkit-user-select:none;font-family:\"Helvetica Neue\",Helvetica;font-size:14px;}*{line-height:1.4em}a{color:#2765a5;}</style></head><body>%@</body></html>";
 
 @implementation TWWebViewCell
 
@@ -72,8 +72,15 @@ static NSString *kDocumentTemplate = @"<!DOCTYPE html><html lang=\"en\"><head><m
 	
 	_html = [html copy];
 	
-	NSString *document = [[NSString alloc] initWithFormat:kDocumentTemplate, _html];
-	[_webView loadHTMLString:document baseURL:[NSURL URLWithString:@"about:blank"]];
+	NSString *document = [[NSString alloc] initWithString:@""];
+	
+	if ([_html length] > 1) {
+		document = [[NSString alloc] initWithFormat:kDocumentTemplate, _html];
+	}
+
+	NSURL *baseURL = [[NSURL alloc] initWithString:@"about:blank"];
+	[_webView loadHTMLString:document baseURL:baseURL];
+	[baseURL release];
 	[document release];
 }
 
