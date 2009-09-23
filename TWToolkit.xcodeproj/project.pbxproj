@@ -25,8 +25,6 @@
 		B2974D6D106299CB00C9F4A6 /* UIApplication+undocumented.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D5C106299CB00C9F4A6 /* UIApplication+undocumented.h */; };
 		B2974D6E106299CB00C9F4A6 /* UIButton+setTitle.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D5D106299CB00C9F4A6 /* UIButton+setTitle.h */; };
 		B2974D6F106299CB00C9F4A6 /* UIButton+setTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D5E106299CB00C9F4A6 /* UIButton+setTitle.m */; };
-		B2974D70106299CB00C9F4A6 /* UIColor+blackColorWithAlpha.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D5F106299CB00C9F4A6 /* UIColor+blackColorWithAlpha.h */; };
-		B2974D71106299CB00C9F4A6 /* UIColor+blackColorWithAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D60106299CB00C9F4A6 /* UIColor+blackColorWithAlpha.m */; };
 		B2974D72106299CB00C9F4A6 /* UIDevice+isSimulator.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D61106299CB00C9F4A6 /* UIDevice+isSimulator.h */; };
 		B2974D73106299CB00C9F4A6 /* UIDevice+isSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D62106299CB00C9F4A6 /* UIDevice+isSimulator.m */; };
 		B2974D74106299CB00C9F4A6 /* UIImage+crop.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D63106299CB00C9F4A6 /* UIImage+crop.h */; };
@@ -104,8 +102,6 @@
 		B2974D5C106299CB00C9F4A6 /* UIApplication+undocumented.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+undocumented.h"; sourceTree = "<group>"; };
 		B2974D5D106299CB00C9F4A6 /* UIButton+setTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+setTitle.h"; sourceTree = "<group>"; };
 		B2974D5E106299CB00C9F4A6 /* UIButton+setTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+setTitle.m"; sourceTree = "<group>"; };
-		B2974D5F106299CB00C9F4A6 /* UIColor+blackColorWithAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+blackColorWithAlpha.h"; sourceTree = "<group>"; };
-		B2974D60106299CB00C9F4A6 /* UIColor+blackColorWithAlpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+blackColorWithAlpha.m"; sourceTree = "<group>"; };
 		B2974D61106299CB00C9F4A6 /* UIDevice+isSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+isSimulator.h"; sourceTree = "<group>"; };
 		B2974D62106299CB00C9F4A6 /* UIDevice+isSimulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+isSimulator.m"; sourceTree = "<group>"; };
 		B2974D63106299CB00C9F4A6 /* UIImage+crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+crop.h"; sourceTree = "<group>"; };
@@ -266,8 +262,6 @@
 				B2974D5C106299CB00C9F4A6 /* UIApplication+undocumented.h */,
 				B2974D5D106299CB00C9F4A6 /* UIButton+setTitle.h */,
 				B2974D5E106299CB00C9F4A6 /* UIButton+setTitle.m */,
-				B2974D5F106299CB00C9F4A6 /* UIColor+blackColorWithAlpha.h */,
-				B2974D60106299CB00C9F4A6 /* UIColor+blackColorWithAlpha.m */,
 				B2974D61106299CB00C9F4A6 /* UIDevice+isSimulator.h */,
 				B2974D62106299CB00C9F4A6 /* UIDevice+isSimulator.m */,
 				B2974D63106299CB00C9F4A6 /* UIImage+crop.h */,
@@ -392,7 +386,6 @@
 				B2C207841062973000AE1B56 /* TWCategories.h in Headers */,
 				B2974D6D106299CB00C9F4A6 /* UIApplication+undocumented.h in Headers */,
 				B2974D6E106299CB00C9F4A6 /* UIButton+setTitle.h in Headers */,
-				B2974D70106299CB00C9F4A6 /* UIColor+blackColorWithAlpha.h in Headers */,
 				B2974D72106299CB00C9F4A6 /* UIDevice+isSimulator.h in Headers */,
 				B2974D74106299CB00C9F4A6 /* UIImage+crop.h in Headers */,
 				B2974D76106299CB00C9F4A6 /* UIScrollView+scroller.h in Headers */,
@@ -476,7 +469,6 @@
 				B2C20777106296FB00AE1B56 /* NSString+encoding.m in Sources */,
 				B2C20779106296FB00AE1B56 /* NSString+MD5Sum.m in Sources */,
 				B2974D6F106299CB00C9F4A6 /* UIButton+setTitle.m in Sources */,
-				B2974D71106299CB00C9F4A6 /* UIColor+blackColorWithAlpha.m in Sources */,
 				B2974D73106299CB00C9F4A6 /* UIDevice+isSimulator.m in Sources */,
 				B2974D75106299CB00C9F4A6 /* UIImage+crop.m in Sources */,
 				B2974D79106299CB00C9F4A6 /* UIView+fading.m in Sources */,
