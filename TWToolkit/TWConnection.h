@@ -44,7 +44,7 @@ typedef enum {
 
 - (id)initWithDelegate:(id)aDelegate;
 - (void)requestURL:(NSURL *)url;
-- (void)requestURL:(NSURL *)url HTTPMethod:(TWConnectionHTTPMethod)HTTPMethod;
+- (void)requestURL:(NSURL *)url HTTPMethod:(TWConnectionHTTPMethod)HTTPMethod additionalHeaders:(NSDictionary *)additionalHeaders;
 - (void)startRequest:(NSURLRequest *)aRequest;
 - (void)cancel;
 

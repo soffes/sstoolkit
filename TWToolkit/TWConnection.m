@@ -72,10 +72,10 @@
 #pragma mark -
 
 - (void)requestURL:(NSURL *)url {
-	[self requestURL:url HTTPMethod:TWConnectionHTTPMethodGET];
+	[self requestURL:url HTTPMethod:TWConnectionHTTPMethodGET additionalHeaders:nil];
 }
 
-- (void)requestURL:(NSURL *)url HTTPMethod:(TWConnectionHTTPMethod)HTTPMethod {
+- (void)requestURL:(NSURL *)url HTTPMethod:(TWConnectionHTTPMethod)HTTPMethod additionalHeaders:(NSDictionary *)additionalHeaders {
 	NSMutableURLRequest* aRequest = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:kTimeout];	
 	
 	// Setup basic auth headers if user and pass are provided
@@ -100,6 +100,11 @@
 		[body release];
 	}
 	
+	// Additional headers
+	for (NSString *field in additionalHeaders) {
+		[aRequest setValue:[additionalHeaders objectForKey:field] forHTTPHeaderField:field];
+	}
+	
 	[self startRequest:aRequest];
 	[aRequest release];
 }
@@ -115,13 +120,13 @@
 	
 	// Check network
 	// TODO: Experienced issues with this, so commenting out for now
-	//	if ([TWConnection isConnectedToNetwork] == NO) {
-	//		if ([delegate respondsToSelector:@selector(connection:didFailWithError:)]) {
-	//			// TODO: Send useful error
-	//			[delegate connection:self failedWithError:nil];
-	//		}
-	//		return;
-	//	}
+//	if ([TWConnection isConnectedToNetwork] == NO) {
+//		if ([delegate respondsToSelector:@selector(connection:didFailWithError:)]) {
+//			// TODO: Send useful error
+//			[delegate connection:self failedWithError:nil];
+//		}
+//		return;
+//	}
 	
 	// Retain the request
 	_request = [aRequest retain];
