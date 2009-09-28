@@ -51,12 +51,11 @@
 #import <arpa/inet.h>
 #import <ifaddrs.h>
 #import <netdb.h>
-
 #import <CoreFoundation/CoreFoundation.h>
 
 #import "Reachability.h"
 
-#define kShouldPrintReachabilityFlags 1
+#define kShouldPrintReachabilityFlags 0
 
 static void PrintReachabilityFlags(SCNetworkReachabilityFlags    flags, const char* comment)
 {
@@ -78,8 +77,8 @@ static void PrintReachabilityFlags(SCNetworkReachabilityFlags    flags, const ch
 #endif
 }
 
-
 @implementation Reachability
+
 static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void* info)
 {
 	#pragma unused (target, flags)
@@ -97,6 +96,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	[myPool release];
 }
 
+
 - (BOOL) startNotifer
 {
 	BOOL retVal = NO;
@@ -111,6 +111,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	return retVal;
 }
 
+
 - (void) stopNotifer
 {
 	if(reachabilityRef!= NULL)
@@ -118,6 +119,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 		SCNetworkReachabilityUnscheduleFromRunLoop(reachabilityRef, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
 	}
 }
+
 
 - (void) dealloc
 {
@@ -128,6 +130,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	}
 	[super dealloc];
 }
+
 
 + (Reachability*) reachabilityWithHostName: (NSString*) hostName;
 {
@@ -145,6 +148,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	return retVal;
 }
 
+
 + (Reachability*) reachabilityWithAddress: (const struct sockaddr_in*) hostAddress;
 {
 	SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr*)hostAddress);
@@ -161,6 +165,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	return retVal;
 }
 
+
 + (Reachability*) reachabilityForInternetConnection;
 {
 	struct sockaddr_in zeroAddress;
@@ -169,6 +174,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	zeroAddress.sin_family = AF_INET;
 	return [self reachabilityWithAddress: &zeroAddress];
 }
+
 
 + (Reachability*) reachabilityForLocalWiFi;
 {
@@ -187,7 +193,9 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	return retVal;
 }
 
+#pragma mark -
 #pragma mark Network Flag Handling
+#pragma mark -
 
 - (NetworkStatus) localWiFiStatusForFlags: (SCNetworkReachabilityFlags) flags
 {
@@ -200,6 +208,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	}
 	return retVal;
 }
+
 
 - (NetworkStatus) networkStatusForFlags: (SCNetworkReachabilityFlags) flags
 {
@@ -242,6 +251,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	return retVal;
 }
 
+
 - (BOOL) connectionRequired;
 {
 	NSAssert(reachabilityRef != NULL, @"connectionRequired called with NULL reachabilityRef");
@@ -252,6 +262,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	}
 	return NO;
 }
+
 
 - (NetworkStatus) currentReachabilityStatus
 {
@@ -271,4 +282,5 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	}
 	return retVal;
 }
+
 @end
