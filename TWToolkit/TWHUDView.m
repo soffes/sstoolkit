@@ -48,11 +48,11 @@
 		label.font = [UIFont boldSystemFontOfSize:14];
 		label.backgroundColor = [UIColor clearColor];
 		label.textColor = [UIColor whiteColor];
-		label.shadowColor = [UIColor darkGrayColor];
-		label.shadowOffset = CGSizeMake(1, 1);
+		label.shadowColor = [UIColor blackColor];
+		label.shadowOffset = CGSizeMake(0.0, 1.0);
 		label.textAlignment = UITextAlignmentCenter;
 		label.lineBreakMode = UILineBreakModeTailTruncation;
-		label.text = @"Loading...";
+		label.text = @"Loading";
 		
 		[self addSubview:label];
     }
