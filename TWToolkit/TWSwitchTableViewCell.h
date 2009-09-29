@@ -10,6 +10,9 @@
 
 @interface TWSwitchTableViewCell : UITableViewCell {
 
+	UISwitch *switchView;
 }
+
+@property (nonatomic, retain, readonly) UISwitch *switchView;
 
 @end
