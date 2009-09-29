@@ -21,6 +21,7 @@
 - (void)dealloc {
 	[activityIndicator release];
 	[label release];
+	[background release];
     [super dealloc];
 }
 
@@ -39,14 +40,11 @@
 		
 		self.background = [UIImage imageWithContentsOfFile:imagePath];
 		
-		self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-		activityIndicator.frame = CGRectMake(60, 60, 40, 40);
-		
+		activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 		[activityIndicator startAnimating];
+		[self addSubview:activityIndicator];
 		
-		[self addSubview:self.activityIndicator];
-		
-		self.label = [[UILabel alloc] initWithFrame:CGRectMake(10, 130, 140, 20)];
+		label = [[UILabel alloc] initWithFrame:CGRectZero];
 		label.font = [UIFont boldSystemFontOfSize:14];
 		label.backgroundColor = [UIColor clearColor];
 		label.textColor = [UIColor whiteColor];
@@ -56,15 +54,26 @@
 		label.lineBreakMode = UILineBreakModeTailTruncation;
 		label.text = @"Loading...";
 		
-		[self addSubview:self.label];
+		[self addSubview:label];
     }
     return self;
 }
 
 
 - (void)drawRect:(CGRect)rect {
-	CGRect theRect = CGRectMake(0, 0, 160, 160);
-	[self.background drawInRect:theRect];
+	CGRect backgroundRect = CGRectMake(round((self.frame.size.width - background.size.width) / 2.0), round((self.frame.size.height - background.size.height) / 2.0), background.size.width, background.size.height);
+	[background drawInRect:backgroundRect];
+}
+
+- (void)layoutSubviews {
+	[super layoutSubviews];
+	
+	static CGFloat indicatorSize = 40.0;
+	
+	//60, 130
+	
+	activityIndicator.frame = CGRectMake(round((self.frame.size.width - indicatorSize) / 2.0), round((self.frame.size.height - indicatorSize) / 2.0), indicatorSize, indicatorSize);
+	label.frame = CGRectMake(round((self.frame.size.width - background.size.width) / 2.0), (round((self.frame.size.height - background.size.height) / 2.0)) + (background.size.height - 30.0), background.size.width, 20);
 }
 
 @end
