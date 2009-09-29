@@ -11,8 +11,10 @@
 #define kTimeout 60.0
 
 typedef enum {
-	TWConnectionHTTPMethodGET,
-	TWConnectionHTTPMethodPOST
+	TWConnectionHTTPMethodGET = 0,
+	TWConnectionHTTPMethodPOST = 1,
+	TWConnectionHTTPMethodPUT = 2,
+	TWConnectionHTTPMethodDELETE = 3
 } TWConnectionHTTPMethod;
 
 typedef enum {

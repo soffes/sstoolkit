@@ -89,9 +89,17 @@
 		[basicauth release];
 	}
 	
+	static NSString *methods[4] = {
+		@"GET",
+		@"POST",
+		@"PUT",
+		@"DELETE"
+	};
+	
 	// Setup POST data
-	if (HTTPMethod == TWConnectionHTTPMethodPOST) {
-		[aRequest setHTTPMethod:@"POST"];
+	if (HTTPMethod != TWConnectionHTTPMethodGET) {
+		
+		[aRequest setHTTPMethod:methods[HTTPMethod]];
 		NSString *parametersString = [url query];
 		NSInteger contentLength = [parametersString lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
 		[aRequest setValue:[NSString stringWithFormat:@"%d", contentLength] forHTTPHeaderField:@"Content-Length"];
