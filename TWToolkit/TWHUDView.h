@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface TWHUDView : UIView {
-	UIImage *background;
-	UILabel *label;
+	UIImage *backgroundImage;
+	UILabel *textLabel;
 	UIActivityIndicatorView *activityIndicator;
 }
 
-@property (nonatomic, retain) UIImage *background;
-@property (nonatomic, retain) UILabel *label;
+@property (nonatomic, retain) UIImage *backgroundImage;
+@property (nonatomic, retain) UILabel *textLabel;
 @property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
 
 @end

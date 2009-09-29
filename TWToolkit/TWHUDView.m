@@ -10,8 +10,8 @@
 
 @implementation TWHUDView
 
-@synthesize background;
-@synthesize label;
+@synthesize backgroundImage;
+@synthesize textLabel;
 @synthesize activityIndicator;
 
 #pragma mark -
@@ -20,8 +20,8 @@
 
 - (void)dealloc {
 	[activityIndicator release];
-	[label release];
-	[background release];
+	[textLabel release];
+	[backgroundImage release];
     [super dealloc];
 }
 
@@ -41,32 +41,32 @@
 		NSString *imagePath = [resourcePath stringByAppendingPathComponent:@"TWToolkit.bundle/images/HUD.png"];
 		
 		// Background image
-		self.background = [UIImage imageWithContentsOfFile:imagePath];
+		self.backgroundImage = [UIImage imageWithContentsOfFile:imagePath];
 		
 		// Indicator
 		activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 		[activityIndicator startAnimating];
 		[self addSubview:activityIndicator];
 		
-		// Label
-		label = [[UILabel alloc] initWithFrame:CGRectZero];
-		label.font = [UIFont boldSystemFontOfSize:14];
-		label.backgroundColor = [UIColor clearColor];
-		label.textColor = [UIColor whiteColor];
-		label.shadowColor = [UIColor blackColor];
-		label.shadowOffset = CGSizeMake(0.0, 1.0);
-		label.textAlignment = UITextAlignmentCenter;
-		label.lineBreakMode = UILineBreakModeTailTruncation;
-		label.text = @"Loading";
-		[self addSubview:label];
+		// Text Label
+		textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+		textLabel.font = [UIFont boldSystemFontOfSize:14];
+		textLabel.backgroundColor = [UIColor clearColor];
+		textLabel.textColor = [UIColor whiteColor];
+		textLabel.shadowColor = [UIColor blackColor];
+		textLabel.shadowOffset = CGSizeMake(0.0, 1.0);
+		textLabel.textAlignment = UITextAlignmentCenter;
+		textLabel.lineBreakMode = UILineBreakModeTailTruncation;
+		textLabel.text = @"Loading";
+		[self addSubview:textLabel];
     }
     return self;
 }
 
 
 - (void)drawRect:(CGRect)rect {
-	CGRect backgroundRect = CGRectMake(round((self.frame.size.width - background.size.width) / 2.0), round((self.frame.size.height - background.size.height) / 2.0), background.size.width, background.size.height);
-	[background drawInRect:backgroundRect];
+	CGRect backgroundImageRect = CGRectMake(round((self.frame.size.width - backgroundImage.size.width) / 2.0), round((self.frame.size.height - backgroundImage.size.height) / 2.0), backgroundImage.size.width, backgroundImage.size.height);
+	[backgroundImage drawInRect:backgroundImageRect];
 }
 
 - (void)layoutSubviews {
@@ -75,7 +75,7 @@
 	static CGFloat indicatorSize = 40.0;
 	
 	activityIndicator.frame = CGRectMake(round((self.frame.size.width - indicatorSize) / 2.0), round((self.frame.size.height - indicatorSize) / 2.0), indicatorSize, indicatorSize);
-	label.frame = CGRectMake(round((self.frame.size.width - background.size.width) / 2.0), (round((self.frame.size.height - background.size.height) / 2.0)) + (background.size.height - 30.0), background.size.width, 20);
+	textLabel.frame = CGRectMake(round((self.frame.size.width - backgroundImage.size.width) / 2.0), (round((self.frame.size.height - backgroundImage.size.height) / 2.0)) + (backgroundImage.size.height - 30.0), backgroundImage.size.width, 20);
 }
 
 @end
