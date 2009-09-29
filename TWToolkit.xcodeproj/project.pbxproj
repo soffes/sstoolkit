@@ -35,6 +35,8 @@
 		B2974D7B106299CB00C9F4A6 /* UIWebView+scrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D6A106299CB00C9F4A6 /* UIWebView+scrolling.m */; };
 		B2974D7C106299CB00C9F4A6 /* UIWebView+setFontSize.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D6B106299CB00C9F4A6 /* UIWebView+setFontSize.h */; };
 		B2974D7D106299CB00C9F4A6 /* UIWebView+setFontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D6C106299CB00C9F4A6 /* UIWebView+setFontSize.m */; };
+		B2A41E9A107287BA006EF521 /* TWSwitchTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2A41E98107287BA006EF521 /* TWSwitchTableViewCell.h */; };
+		B2A41E9B107287BA006EF521 /* TWSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A41E99107287BA006EF521 /* TWSwitchTableViewCell.m */; };
 		B2C20770106296FB00AE1B56 /* NSArray+shuffle.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C20766106296FB00AE1B56 /* NSArray+shuffle.h */; };
 		B2C20771106296FB00AE1B56 /* NSArray+shuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C20767106296FB00AE1B56 /* NSArray+shuffle.m */; };
 		B2C20772106296FB00AE1B56 /* NSData+MD5Sum.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C20768106296FB00AE1B56 /* NSData+MD5Sum.h */; };
@@ -110,6 +112,8 @@
 		B2974D6A106299CB00C9F4A6 /* UIWebView+scrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+scrolling.m"; sourceTree = "<group>"; };
 		B2974D6B106299CB00C9F4A6 /* UIWebView+setFontSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+setFontSize.h"; sourceTree = "<group>"; };
 		B2974D6C106299CB00C9F4A6 /* UIWebView+setFontSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+setFontSize.m"; sourceTree = "<group>"; };
+		B2A41E98107287BA006EF521 /* TWSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWSwitchTableViewCell.h; sourceTree = "<group>"; };
+		B2A41E99107287BA006EF521 /* TWSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSwitchTableViewCell.m; sourceTree = "<group>"; };
 		B2C20766106296FB00AE1B56 /* NSArray+shuffle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+shuffle.h"; sourceTree = "<group>"; };
 		B2C20767106296FB00AE1B56 /* NSArray+shuffle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+shuffle.m"; sourceTree = "<group>"; };
 		B2C20768106296FB00AE1B56 /* NSData+MD5Sum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MD5Sum.h"; sourceTree = "<group>"; };
@@ -232,6 +236,15 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		B2A41E97107287A5006EF521 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B2A41E98107287BA006EF521 /* TWSwitchTableViewCell.h */,
+				B2A41E99107287BA006EF521 /* TWSwitchTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		B2C20765106296F200AE1B56 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +312,7 @@
 				B2C2077B1062970B00AE1B56 /* Entity */,
 				B28517D51063E42A008D42E7 /* View Controllers */,
 				B28517D71063E433008D42E7 /* Views */,
+				B2A41E97107287A5006EF521 /* Cells */,
 				B2C20765106296F200AE1B56 /* Categories */,
 				B2FA616D1059616200499856 /* Vendor */,
 			);
@@ -391,6 +405,7 @@
 				B2D2FB721063FFBB00537F3A /* NSScanner_Extensions.h in Headers */,
 				B2D2FBA4106401BE00537F3A /* TouchJSON.h in Headers */,
 				B2807EE010642A3400E4F6C6 /* TWRoundedView.h in Headers */,
+				B2A41E9A107287BA006EF521 /* TWSwitchTableViewCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +485,7 @@
 				B2D2FB711063FFBB00537F3A /* NSDictionary_JSONExtensions.m in Sources */,
 				B2D2FB731063FFBB00537F3A /* NSScanner_Extensions.m in Sources */,
 				B2807EE110642A3400E4F6C6 /* TWRoundedView.m in Sources */,
+				B2A41E9B107287BA006EF521 /* TWSwitchTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
