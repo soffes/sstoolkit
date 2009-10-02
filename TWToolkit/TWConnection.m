@@ -169,6 +169,35 @@
 	_receivedData = nil;
 }
 
+- (id)_parseData:(NSData *)data {
+	id parsedData = nil;
+	
+	// TODO: Message delegate if there is an error
+	
+	switch (self.dataType) {
+		default:
+		case TWConnectionDataTypeData: {
+			parsedData = [NSData dataWithData:data];
+			break;
+		}
+		case TWConnectionDataTypeString: {
+			parsedData = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+			break;
+		}
+		case TWConnectionDataTypeJSONDictionary: {
+			parsedData = [[CJSONDeserializer deserializer] deserializeAsDictionary:data error:nil];
+			break;
+		}
+		case TWConnectionDataTypeJSONArray: {
+			// This method is deprecated. This one is being used to support illegal (but common) JSON strings.
+			// @see http://stackoverflow.com/questions/288412#289193
+			parsedData = [[CJSONDeserializer deserializer] deserialize:data error:nil];
+			break;
+		}
+	}
+	return parsedData;
+}
+
 #pragma mark -
 #pragma mark NSURLConnection Delegate
 #pragma mark -
@@ -208,6 +237,11 @@
 	if ([delegate respondsToSelector:@selector(connection:didReceiveBytes:totalReceivedBytes:totalExpectedBytes:)]) {
 		[delegate connection:self didReceiveBytes:receivedBytes totalReceivedBytes:_totalReceivedBytes totalExpectedBytes:_totalExpectedBytes];
 	}
+	
+	// Send chunk to delegate
+	if ([delegate respondsToSelector:@selector(connection:didReceiveChunk:)]) {
+		[delegate connection:self didReceiveChunk:[self _parseData:data]];
+	}
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
@@ -231,31 +265,7 @@
 	// Send the result to the delegate
 	if ([delegate respondsToSelector:@selector(connection:didFinishLoadingRequest:withResult:)]) {
 		
-		NSError *error = nil;
-		id result = nil;
-		
-		switch (self.dataType) {
-			default:
-			case TWConnectionDataTypeData: {
-				result = [NSData dataWithData:_receivedData];
-				break;
-			}
-			case TWConnectionDataTypeString: {
-				result = [[[NSString alloc] initWithData:_receivedData encoding:NSUTF8StringEncoding] autorelease];
-				break;
-			}
-			case TWConnectionDataTypeJSONDictionary: {
-				result = [[CJSONDeserializer deserializer] deserializeAsDictionary:_receivedData error:&error];
-				break;
-			}
-			case TWConnectionDataTypeJSONArray: {
-				// This method is deprecated. This one is being used to support illegal (but common) JSON strings.
-				// @see http://stackoverflow.com/questions/288412#289193
-				result = [[CJSONDeserializer deserializer] deserialize:_receivedData error:&error];
-				break;
-			}
-				
-		}
+		id result = [self _parseData:_receivedData];
 		
 		[delegate connection:self didFinishLoadingRequest:_request withResult:result];
 	}
