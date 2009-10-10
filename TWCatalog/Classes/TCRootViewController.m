@@ -8,7 +8,7 @@
 
 #import "TCRootViewController.h"
 #import "TCConnectionDemoViewController.h"
-#import "TCImageViewDemoViewController.h"
+#import "TCRemoteImageViewDemoViewController.h"
 #import "TCPickerDemoViewController.h"
 
 #define kTitleKey @"title"
@@ -49,7 +49,7 @@
 			[NSDictionary dictionaryWithObjectsAndKeys:
 			 @"Image View", kTitleKey,
 			 @"Easily load and cache remote images", kDescriptionKey,
-			 @"TCImageViewDemoViewController", kClassNameKey,
+			 @"TCRemoteImageViewDemoViewController", kClassNameKey,
 			 nil],
 			[NSDictionary dictionaryWithObjectsAndKeys:
 			 @"Picker View Controller", kTitleKey,
