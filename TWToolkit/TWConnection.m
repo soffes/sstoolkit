@@ -136,7 +136,6 @@
 	// TODO: Experienced issues with this, so commenting out for now
 //	if ([TWConnection isConnectedToNetwork] == NO) {
 //		if ([delegate respondsToSelector:@selector(connection:didFailWithError:)]) {
-//			// TODO: Send useful error
 //			[delegate connection:self failedWithError:nil];
 //		}
 //		return;
@@ -181,8 +180,6 @@
 
 - (id)_parseData:(NSData *)data error:(NSError **)outError {
 	id parsedData = nil;
-	
-	// TODO: Message delegate if there is an error
 	
 	switch (self.dataType) {
 		default:
@@ -236,7 +233,6 @@
 	} else {
 		// Send error to delegate
 		if ([delegate respondsToSelector:@selector(connection:didFailWithError:)]) {
-			// TODO: Send useful error
 			[delegate connection:self failedWithError:nil];
 		}
 		
