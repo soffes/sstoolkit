@@ -11,7 +11,7 @@
 int main(int argc, char *argv[]) {
     
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-    int retVal = UIApplicationMain(argc, argv, nil, @"TWCatalogAppDelegate");
+    int retVal = UIApplicationMain(argc, argv, nil, @"TCAppDelegate");
     [pool release];
     return retVal;
 }

@@ -16,7 +16,10 @@
 - (struct CGRect)scrollerIndicatorSubrect;
 - (void)setAdjustForContentSizeChange:(BOOL)fp8;
 - (BOOL)adjustForContentSizeChange;
-- (void)setAllowsRubberBanding:(BOOL)allowsRubberBanding;
+- (void)setAllowsRubberBanding:(BOOL)arg1;
+- (void)setAllowsVerticalRubberBanding:(BOOL)arg1;
+- (void)setAllowsHorizontalRubberBanding:(BOOL)arg1;
+- (void)setAllowsFourWayRubberBanding:(BOOL)arg1;
 - (void)setScrollingEnabled:(BOOL)arg1;
 - (BOOL)_scrollToTop;
 

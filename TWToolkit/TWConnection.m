@@ -184,6 +184,10 @@
 			parsedData = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 			break;
 		}
+		case TWConnectionDataTypeImage: {
+			parsedData = [UIImage imageWithData:data];
+			break;
+		}
 		case TWConnectionDataTypeJSONDictionary: {
 			parsedData = [[CJSONDeserializer deserializer] deserializeAsDictionary:data error:nil];
 			break;
@@ -267,7 +271,7 @@
 		
 		id result = [self _parseData:_receivedData];
 		
-		[delegate connection:self didFinishLoadingRequest:_request withResult:result];
+		[delegate connection:self didFinishLoadingRequest:[[_request copy] autorelease] withResult:result];
 	}
 	
 	// Stop request and free up resources

@@ -1,25 +1,25 @@
 //
-//  TWCatalogAppDelegate.m
+//  TCAppDelegate.m
 //  TWCatalog
 //
 //  Created by Sam Soffes on 9/21/09.
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "TWCatalogAppDelegate.h"
-#import "WebViewCellViewController.h"
+#import "TCAppDelegate.h"
+#import "TCRootViewController.h"
 
-@implementation TWCatalogAppDelegate
+@implementation TCAppDelegate
 
 @synthesize window;
-@synthesize rootViewController;
+@synthesize navigationController;
 
 #pragma mark -
 #pragma mark NSObject
 #pragma mark -
 
 - (void)dealloc {
-	[rootViewController release];
+	[navigationController release];
     [window release];
     [super dealloc];
 }
@@ -33,11 +33,15 @@
 
     window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
-	WebViewCellViewController *viewController = [[WebViewCellViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	self.rootViewController = viewController;
+	TCRootViewController *viewController = [[TCRootViewController alloc] initWithStyle:UITableViewStylePlain];
+	UINavigationController *aNavigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+
+	self.navigationController = aNavigationController;
+
 	[viewController release];
+	[aNavigationController release];
 	
-	[window addSubview:self.rootViewController.view];
+	[window addSubview:navigationController.view];
     [window makeKeyAndVisible];
 }
 
