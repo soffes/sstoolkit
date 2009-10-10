@@ -96,6 +96,7 @@
 		B253C1F910728DC500E0CE10 /* TWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWHUDView.m; sourceTree = "<group>"; };
 		B27C60B2107FFA5300F7FBD7 /* TWRemoteImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRemoteImageView.h; sourceTree = "<group>"; };
 		B27C60B3107FFA5300F7FBD7 /* TWRemoteImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRemoteImageView.m; sourceTree = "<group>"; };
+		B27C623D10800EE300F7FBD7 /* Todo.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo.markdown; sourceTree = SOURCE_ROOT; };
 		B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRoundedView.h; sourceTree = "<group>"; };
 		B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRoundedView.m; sourceTree = "<group>"; };
 		B28517D81063E43E008D42E7 /* TWPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPickerViewController.h; sourceTree = "<group>"; };
@@ -258,6 +259,7 @@
 		B2A41EDD10728C09006EF521 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B27C623D10800EE300F7FBD7 /* Todo.markdown */,
 				B253C1F310728DB900E0CE10 /* TWToolkit.bundle */,
 			);
 			path = Resources;

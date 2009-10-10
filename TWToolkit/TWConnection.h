@@ -50,7 +50,6 @@ typedef enum {
 - (void)requestURL:(NSURL *)url HTTPMethod:(TWConnectionHTTPMethod)HTTPMethod additionalHeaders:(NSDictionary *)additionalHeaders;
 - (void)startRequest:(NSURLRequest *)aRequest;
 - (void)cancel;
-- (id)_parseData:(NSData *)data;
 
 @end
 
@@ -61,8 +60,10 @@ typedef enum {
 
 - (void)connection:(TWConnection *)aConnection startedLoadingRequest:(NSURLRequest *)aRequest;
 - (void)connection:(TWConnection *)aConnection didReceiveBytes:(NSInteger)receivedBytes totalReceivedBytes:(NSInteger)totalReceivedBytes totalExpectedBytes:(NSInteger)totalExpectedBytes;
-- (void)connection:(TWConnection *)aConnection didFinishLoadingRequest:(NSURLRequest *)aRequest withResult:(id)object;
-- (void)connection:(TWConnection *)aConnection failedWithError:(NSError *)error;
 - (void)connection:(TWConnection *)aConnection didReceiveChunk:(id)chunk;
+- (void)connection:(TWConnection *)aConnection failedToParseChunkWithError:(NSError *)error;
+- (void)connection:(TWConnection *)aConnection didFinishLoadingRequest:(NSURLRequest *)aRequest withResult:(id)result;
+- (void)connection:(TWConnection *)aConnection didFinishLoadingRequest:(NSURLRequest *)aRequest failedToParseResultWithError:(NSError *)error;
+- (void)connection:(TWConnection *)aConnection failedWithError:(NSError *)error;
 
 @end

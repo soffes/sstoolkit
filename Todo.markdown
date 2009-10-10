@@ -2,8 +2,8 @@
 
 * TWConnectionQueue
 * TWConnectionQueueController
+
+## In Progress
+
 * TWRemoteImageView
-
-## Improvements
-
-* Add multiple simultaneous request support to TWEntityDataSource
+* TWEntity

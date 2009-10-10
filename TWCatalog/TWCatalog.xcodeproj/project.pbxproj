@@ -22,6 +22,7 @@
 		B27C613D108000FC00F7FBD7 /* TCPickerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27C613C108000FC00F7FBD7 /* TCPickerDemoViewController.m */; };
 		B27C61841080037D00F7FBD7 /* TCPickerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27C61831080037D00F7FBD7 /* TCPickerDetailViewController.m */; };
 		B27C6196108006C900F7FBD7 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = B27C6195108006C900F7FBD7 /* placeholder.png */; };
+		B27C624510800F3500F7FBD7 /* TWToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B27C624410800F3500F7FBD7 /* TWToolkit.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		B27C61821080037D00F7FBD7 /* TCPickerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPickerDetailViewController.h; sourceTree = "<group>"; };
 		B27C61831080037D00F7FBD7 /* TCPickerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPickerDetailViewController.m; sourceTree = "<group>"; };
 		B27C6195108006C900F7FBD7 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		B27C624410800F3500F7FBD7 /* TWToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TWToolkit.bundle; path = ../Resources/TWToolkit.bundle; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 		B21B85BF1067D4FD00E5C076 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B27C624410800F3500F7FBD7 /* TWToolkit.bundle */,
 				B27C6195108006C900F7FBD7 /* placeholder.png */,
 				B27C61261080003700F7FBD7 /* Default.png */,
 				B21B85C01067D4FD00E5C076 /* TWCatalog-Info.plist */,
@@ -228,6 +231,7 @@
 			files = (
 				B27C61271080003700F7FBD7 /* Default.png in Resources */,
 				B27C6196108006C900F7FBD7 /* placeholder.png in Resources */,
+				B27C624510800F3500F7FBD7 /* TWToolkit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

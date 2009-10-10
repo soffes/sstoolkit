@@ -60,10 +60,10 @@
 }
 
 
-- (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-	[self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-}
+//- (void)viewDidAppear:(BOOL)animated {
+//	[super viewDidAppear:animated];
+//	[self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+//}
 
 
 #pragma mark -

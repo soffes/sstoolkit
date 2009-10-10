@@ -12,6 +12,11 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 #include <netinet/in.h>
 
+@interface TWConnection (PrivateMethods)
+- (id)_parseData:(NSData *)data error:(NSError **)outError;
+@end
+
+
 @implementation TWConnection
 
 @synthesize delegate, dataType = _dataType;
@@ -64,6 +69,7 @@
 
 - (void)dealloc {
 	[self cancel];
+	self.delegate = nil;
 	[super dealloc];
 }
 
@@ -159,6 +165,10 @@
 
 - (void)cancel {
 	[_urlConnection cancel];
+	
+	// Hide the network activity
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+	
 	[_urlConnection release];
 	_urlConnection = nil;
 	
@@ -169,7 +179,7 @@
 	_receivedData = nil;
 }
 
-- (id)_parseData:(NSData *)data {
+- (id)_parseData:(NSData *)data error:(NSError **)outError {
 	id parsedData = nil;
 	
 	// TODO: Message delegate if there is an error
@@ -189,13 +199,21 @@
 			break;
 		}
 		case TWConnectionDataTypeJSONDictionary: {
-			parsedData = [[CJSONDeserializer deserializer] deserializeAsDictionary:data error:nil];
+			NSError *error = nil;
+			parsedData = [[CJSONDeserializer deserializer] deserializeAsDictionary:data error:&error];
+			if (error) {
+				*outError = error;
+			}
 			break;
 		}
 		case TWConnectionDataTypeJSONArray: {
 			// This method is deprecated. This one is being used to support illegal (but common) JSON strings.
 			// @see http://stackoverflow.com/questions/288412#289193
-			parsedData = [[CJSONDeserializer deserializer] deserialize:data error:nil];
+			NSError *error = nil;
+			parsedData = [[CJSONDeserializer deserializer] deserialize:data error:&error];
+			if (error) {
+				*outError = error;
+			}
 			break;
 		}
 	}
@@ -226,7 +244,7 @@
 	}
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {	
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 	_totalExpectedBytes = [response expectedContentLength];
 	[_receivedData setLength:0];
 }
@@ -244,15 +262,22 @@
 	
 	// Send chunk to delegate
 	if ([delegate respondsToSelector:@selector(connection:didReceiveChunk:)]) {
-		[delegate connection:self didReceiveChunk:[self _parseData:data]];
+		NSError *error = nil;
+		id parsedChunk = [self _parseData:data error:&error];
+		
+		// If there was an error parsing the chunk, send the error instead of the parsed chunk
+		if (error) {
+			if ([delegate respondsToSelector:@selector(connection:failedToParseChunkWithError:)]) {
+				[delegate connection:self failedToParseChunkWithError:error];
+			}			
+			return;
+		}
+		
+		[delegate connection:self didReceiveChunk:parsedChunk];
 	}
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	
-	// Hide the network activity
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-	
 	// Send error to delegate
 	if ([delegate respondsToSelector:@selector(connection:failedWithError:)]) {
 		[delegate connection:self failedWithError:error];
@@ -262,16 +287,22 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	
-	// Hide the network activity
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-	
+
 	// Send the result to the delegate
 	if ([delegate respondsToSelector:@selector(connection:didFinishLoadingRequest:withResult:)]) {
 		
-		id result = [self _parseData:_receivedData];
+		NSError *error = nil;
+		id result = [self _parseData:_receivedData error:&error];
 		
-		[delegate connection:self didFinishLoadingRequest:[[_request copy] autorelease] withResult:result];
+		// Check for an error parsing the result
+		if (error) {
+			if ([delegate respondsToSelector:@selector(connection:didFinishLoadingRequest:failedToParseResultWithError:)]) {
+				[delegate connection:self didFinishLoadingRequest:_request failedToParseResultWithError:error];
+			}
+			return;
+		}
+		
+		[delegate connection:self didFinishLoadingRequest:_request withResult:result];
 	}
 	
 	// Stop request and free up resources

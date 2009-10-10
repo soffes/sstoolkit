@@ -21,6 +21,10 @@
 #pragma mark -
 
 - (void)dealloc {
+	[connection cancel];
+	[connection release];
+	connection = nil;
+	
 	[URL release];
 	[remoteImageView release];
 	[placeholderImageView release];
@@ -76,6 +80,7 @@
 	
 	[connection release];
 	connection = [[TWConnection alloc] initWithDelegate:self];
+	NSLog(@"Connection alloced");
 	connection.dataType = TWConnectionDataTypeImage;
 	[connection requestURL:URL];
 }
@@ -92,7 +97,7 @@
 
 
 - (void)connection:(TWConnection *)aConnection didReceiveBytes:(NSInteger)receivedBytes totalReceivedBytes:(NSInteger)totalReceivedBytes totalExpectedBytes:(NSInteger)totalExpectedBytes {
-	NSLog(@"receivedBytes: %i, totalReceivedBytes: %i, totalExpectedBytes: %i", receivedBytes, totalReceivedBytes, totalExpectedBytes);
+	
 }
 
 
