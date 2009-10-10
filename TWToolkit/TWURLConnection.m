@@ -15,7 +15,7 @@
 @implementation TWURLConnection
 
 @synthesize delegate;
-@synthesize request;
+@synthesize request = _request;
 
 #pragma mark -
 #pragma mark Class Methods

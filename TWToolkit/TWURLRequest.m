@@ -26,6 +26,10 @@
 - (id)initWithURL:(NSURL *)theURL {
 	if (self = [super initWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:kTWURLRequestTimeout]) {
 		[self _updateHeaders];
+		
+		dataType = TWURLRequestDataTypeData;
+		hash = nil;
+		cacheLifetime = -1.0;
 	}
 	return self;
 }

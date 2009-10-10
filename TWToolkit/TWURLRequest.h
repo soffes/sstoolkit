@@ -11,14 +11,6 @@
 #define kTWURLRequestTimeout 60
 
 typedef enum {
-	TWURLRequestHTTPMethodGET = 0,
-	TWURLRequestHTTPMethodPOST = 1,
-	TWURLRequestHTTPMethodPUT = 2,
-	TWURLRequestHTTPMethodDELETE = 3
-} TWURLRequestHTTPMethod;
-
-
-typedef enum {
 	TWURLRequestDataTypeData = 0,
 	TWURLRequestDataTypeString = 1,
 	TWURLRequestDataTypeImage = 2,
