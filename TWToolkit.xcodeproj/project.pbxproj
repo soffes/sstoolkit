@@ -67,16 +67,6 @@
 		B2D2FBA4106401BE00537F3A /* TouchJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B2D2FBA3106401BE00537F3A /* TouchJSON.h */; };
 		B2FA61A11059616200499856 /* TWConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61601059616200499856 /* TWConnection.h */; };
 		B2FA61A21059616200499856 /* TWConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61611059616200499856 /* TWConnection.m */; };
-		B2FA61A31059616200499856 /* TWEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61621059616200499856 /* TWEntity.h */; };
-		B2FA61A41059616200499856 /* TWEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61631059616200499856 /* TWEntity.m */; };
-		B2FA61A51059616200499856 /* TWEntityController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61641059616200499856 /* TWEntityController.h */; };
-		B2FA61A61059616200499856 /* TWEntityController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61651059616200499856 /* TWEntityController.m */; };
-		B2FA61A71059616200499856 /* TWEntityDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61661059616200499856 /* TWEntityDataSource.h */; };
-		B2FA61A81059616200499856 /* TWEntityDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61671059616200499856 /* TWEntityDataSource.m */; };
-		B2FA61A91059616200499856 /* TWRemoteEntityDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61681059616200499856 /* TWRemoteEntityDataSource.h */; };
-		B2FA61AA1059616200499856 /* TWRemoteEntityDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61691059616200499856 /* TWRemoteEntityDataSource.m */; };
-		B2FA61AB1059616200499856 /* TWSQLiteEntityDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA616A1059616200499856 /* TWSQLiteEntityDataSource.h */; };
-		B2FA61AC1059616200499856 /* TWSQLiteEntityDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA616B1059616200499856 /* TWSQLiteEntityDataSource.m */; };
 		B2FA61AD1059616200499856 /* TWToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA616C1059616200499856 /* TWToolkit.h */; };
 		B2FA61AE1059616200499856 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA616F1059616200499856 /* Reachability.h */; };
 		B2FA61AF1059616200499856 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61701059616200499856 /* Reachability.m */; };
@@ -148,16 +138,6 @@
 		B2D2FBA3106401BE00537F3A /* TouchJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchJSON.h; sourceTree = "<group>"; };
 		B2FA61601059616200499856 /* TWConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWConnection.h; sourceTree = "<group>"; };
 		B2FA61611059616200499856 /* TWConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWConnection.m; sourceTree = "<group>"; };
-		B2FA61621059616200499856 /* TWEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEntity.h; sourceTree = "<group>"; };
-		B2FA61631059616200499856 /* TWEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEntity.m; sourceTree = "<group>"; };
-		B2FA61641059616200499856 /* TWEntityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEntityController.h; sourceTree = "<group>"; };
-		B2FA61651059616200499856 /* TWEntityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEntityController.m; sourceTree = "<group>"; };
-		B2FA61661059616200499856 /* TWEntityDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEntityDataSource.h; sourceTree = "<group>"; };
-		B2FA61671059616200499856 /* TWEntityDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEntityDataSource.m; sourceTree = "<group>"; };
-		B2FA61681059616200499856 /* TWRemoteEntityDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRemoteEntityDataSource.h; sourceTree = "<group>"; };
-		B2FA61691059616200499856 /* TWRemoteEntityDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRemoteEntityDataSource.m; sourceTree = "<group>"; };
-		B2FA616A1059616200499856 /* TWSQLiteEntityDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWSQLiteEntityDataSource.h; sourceTree = "<group>"; };
-		B2FA616B1059616200499856 /* TWSQLiteEntityDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSQLiteEntityDataSource.m; sourceTree = "<group>"; };
 		B2FA616C1059616200499856 /* TWToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit.h; sourceTree = "<group>"; };
 		B2FA616F1059616200499856 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		B2FA61701059616200499856 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -305,29 +285,11 @@
 			name = Connection;
 			sourceTree = "<group>";
 		};
-		B2C2077B1062970B00AE1B56 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				B2FA61621059616200499856 /* TWEntity.h */,
-				B2FA61631059616200499856 /* TWEntity.m */,
-				B2FA61641059616200499856 /* TWEntityController.h */,
-				B2FA61651059616200499856 /* TWEntityController.m */,
-				B2FA61661059616200499856 /* TWEntityDataSource.h */,
-				B2FA61671059616200499856 /* TWEntityDataSource.m */,
-				B2FA61681059616200499856 /* TWRemoteEntityDataSource.h */,
-				B2FA61691059616200499856 /* TWRemoteEntityDataSource.m */,
-				B2FA616A1059616200499856 /* TWSQLiteEntityDataSource.h */,
-				B2FA616B1059616200499856 /* TWSQLiteEntityDataSource.m */,
-			);
-			name = Entity;
-			sourceTree = "<group>";
-		};
 		B2FA61431059616200499856 /* TWToolkit */ = {
 			isa = PBXGroup;
 			children = (
 				B2FA616C1059616200499856 /* TWToolkit.h */,
 				B2C2077A106296FE00AE1B56 /* Connection */,
-				B2C2077B1062970B00AE1B56 /* Entity */,
 				B28517D51063E42A008D42E7 /* View Controllers */,
 				B28517D71063E433008D42E7 /* Views */,
 				B2A41E97107287A5006EF521 /* Cells */,
@@ -388,11 +350,6 @@
 			files = (
 				B215045F10583A7300409ED4 /* TWToolkit_Prefix.pch in Headers */,
 				B2FA61A11059616200499856 /* TWConnection.h in Headers */,
-				B2FA61A31059616200499856 /* TWEntity.h in Headers */,
-				B2FA61A51059616200499856 /* TWEntityController.h in Headers */,
-				B2FA61A71059616200499856 /* TWEntityDataSource.h in Headers */,
-				B2FA61A91059616200499856 /* TWRemoteEntityDataSource.h in Headers */,
-				B2FA61AB1059616200499856 /* TWSQLiteEntityDataSource.h in Headers */,
 				B2FA61AD1059616200499856 /* TWToolkit.h in Headers */,
 				B2FA61AE1059616200499856 /* Reachability.h in Headers */,
 				B2FA61B01059616200499856 /* CDataScanner.h in Headers */,
@@ -475,11 +432,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2FA61A21059616200499856 /* TWConnection.m in Sources */,
-				B2FA61A41059616200499856 /* TWEntity.m in Sources */,
-				B2FA61A61059616200499856 /* TWEntityController.m in Sources */,
-				B2FA61A81059616200499856 /* TWEntityDataSource.m in Sources */,
-				B2FA61AA1059616200499856 /* TWRemoteEntityDataSource.m in Sources */,
-				B2FA61AC1059616200499856 /* TWSQLiteEntityDataSource.m in Sources */,
 				B2FA61AF1059616200499856 /* Reachability.m in Sources */,
 				B2FA61B11059616200499856 /* CDataScanner.m in Sources */,
 				B2C20771106296FB00AE1B56 /* NSArray+shuffle.m in Sources */,

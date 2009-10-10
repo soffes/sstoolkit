@@ -9,13 +9,6 @@
 // Connection
 #import "TWConnection.h"
 
-// Entity
-//#import "TWEntity.h"
-//#import "TWEntityController.h"
-//#import "TWEntityDataSource.h"
-//#import "TWRemoteEntityDataSource.h"
-//#import "TWSQLiteEntityDataSource.h"
-
 // Views
 #import "TWHUDView.h"
 #import "TWLoadingView.h"
