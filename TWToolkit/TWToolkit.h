@@ -14,7 +14,7 @@
 #import "TWLoadingView.h"
 #import "TWStripView.h"
 #import "TWRoundedView.h"
-#import "TWRemoteImageView.h"
+//#import "TWRemoteImageView.h"
 
 // Cells
 #import "TWSwitchTableViewCell.h"

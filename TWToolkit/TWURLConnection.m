@@ -1,25 +1,21 @@
 //
-//  TWConnection.m
+//  TWURLConnection.m
 //  TWToolkit
 //
 //  Created by Sam Soffes on 3/19/09.
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "TWConnection.h"
-#import "CJSONDeserializer.h"
+#import "TWURLConnection.h"
 #import "NSString+encoding.h"
+#import "CJSONDeserializer.h"
 #import <SystemConfiguration/SystemConfiguration.h>
 #include <netinet/in.h>
 
-@interface TWConnection (PrivateMethods)
-- (id)_parseData:(NSData *)data error:(NSError **)outError;
-@end
+@implementation TWURLConnection
 
-
-@implementation TWConnection
-
-@synthesize delegate, dataType = _dataType;
+@synthesize delegate;
+@synthesize request;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -47,25 +43,95 @@
 	return (didRetrieveFlags && (flags & kSCNetworkFlagsReachable) && !(flags & kSCNetworkFlagsConnectionRequired));
 }
 
+
++ (id)parseData:(NSData *)data dataType:(TWURLRequestDataType)dataType error:(NSError **)outError {
+	id parsedObject = nil;
+	
+	switch (dataType) {
+		default:
+		case TWURLRequestDataTypeData: {
+			parsedObject = [NSData dataWithData:data];
+			break;
+		}
+		case TWURLRequestDataTypeString: {
+			parsedObject = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+			break;
+		}
+		case TWURLRequestDataTypeImage: {
+			parsedObject = [UIImage imageWithData:data];
+			break;
+		}
+		case TWURLRequestDataTypeJSONDictionary: {
+			NSError *error = nil;
+			parsedObject = [[CJSONDeserializer deserializer] deserializeAsDictionary:data error:&error];
+			if (error) {
+				*outError = error;
+			}
+			break;
+		}
+		case TWURLRequestDataTypeJSONArray: {
+			// This method is deprecated. This one is being used to support illegal (but common) JSON strings.
+			// @see http://stackoverflow.com/questions/288412#289193
+			NSError *error = nil;
+			parsedObject = [[CJSONDeserializer deserializer] deserialize:data error:&error];
+			if (error) {
+				*outError = error;
+			}
+			break;
+		}
+	}
+	return parsedObject;
+}
+
+
 #pragma mark -
 #pragma mark NSObject
 #pragma mark -
 
 - (id)init {
+	return [self initWithRequest:nil delegate:nil startImmediately:NO];
+}
+
+- (id)initWithDelegate:(id<TWURLConnectionDelegate>)aDelegate {
+	return [self initWithRequest:nil delegate:aDelegate startImmediately:NO];
+}
+
+
+- (id)initWithRequest:(TWURLRequest *)aRequest delegate:(id<TWURLConnectionDelegate>)aDelegate {
+	return [self initWithRequest:aRequest delegate:aDelegate startImmediately:NO];
+}
+
+
+- (id)initWithRequest:(TWURLRequest *)aRequest delegate:(id<TWURLConnectionDelegate>)aDelegate startImmediately:(BOOL)startImmediately {
 	if (self = [super init]) {
-		self.delegate = nil;
-		self.dataType = TWConnectionDataTypeData;
+		self.delegate = aDelegate;
+		self.request = aRequest;
+		_loading = NO;
+		
+		if (startImmediately) {
+			[self start];
+		}
 	}
 	return self;
 }
 
-- (id)initWithDelegate:(id)aDelegate {
-	if (self = [super init]) {
-		self.delegate = aDelegate;
-		self.dataType = TWConnectionDataTypeData;
+
+- (id)initWithURL:(NSURL *)aURL delegate:(id<TWURLConnectionDelegate>)aDelegate {
+	return [self initWithURL:aURL delegate:aDelegate startImmediately:NO];
+}
+
+
+- (id)initWithURL:(NSURL *)aURL delegate:(id<TWURLConnectionDelegate>)aDelegate startImmediately:(BOOL)startImmediately {
+	self = [self initWithRequest:nil delegate:aDelegate startImmediately:NO];
+	[self setURL:aURL];
+	
+	if (startImmediately) {
+		[self start];
 	}
+
 	return self;
 }
+
 
 - (void)dealloc {
 	[self cancel];
@@ -73,62 +139,46 @@
 	[super dealloc];
 }
 
+
+#pragma mark -
+#pragma mark Accessors
+#pragma mark -
+
+- (void)setURL:(NSURL *)aURL {
+	
+	// Don't do anything if request is loading
+	if ([self isLoading]) {
+		return;
+	}
+	
+	if (!_request) {
+		_request = [[TWURLRequest alloc] initWithURL:aURL];
+	} else {
+		[_request setURL:aURL];
+	}
+}
+
+
+- (NSURL *)URL {
+	return [_request URL];
+}
+
+
+- (BOOL)isLoading {
+	return _loading;
+}
+
+
 #pragma mark -
 #pragma mark Request Methods
 #pragma mark -
 
-- (void)requestURL:(NSURL *)url {
-	[self requestURL:url HTTPMethod:TWConnectionHTTPMethodGET additionalHeaders:nil];
-}
-
-- (void)requestURL:(NSURL *)url HTTPMethod:(TWConnectionHTTPMethod)HTTPMethod additionalHeaders:(NSDictionary *)additionalHeaders {
-	NSMutableURLRequest* aRequest = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:kTimeout];	
-	
-	// Setup basic auth headers if user and pass are provided
-	NSString *username = [url user];
-	NSString *password = [url password];
-	if (username || password) {
-		NSString* auth = [[NSString alloc] initWithFormat:@"%@:%@", username, password];
-		NSString* basicauth = [[NSString alloc] initWithFormat:@"Basic %@", [NSString base64encode:auth]];
-		[aRequest setValue:basicauth forHTTPHeaderField:@"Authorization"];
-		[auth release];
-		[basicauth release];
-	}
-	
-	static NSString *methods[4] = {
-		@"GET",
-		@"POST",
-		@"PUT",
-		@"DELETE"
-	};
-	
-	// Setup POST data
-	if (HTTPMethod != TWConnectionHTTPMethodGET) {
-		
-		[aRequest setHTTPMethod:methods[HTTPMethod]];
-		NSString *parametersString = [url query];
-		NSInteger contentLength = [parametersString lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
-		[aRequest setValue:[NSString stringWithFormat:@"%d", contentLength] forHTTPHeaderField:@"Content-Length"];
-		NSData *body = [[NSData alloc] initWithBytes:[parametersString UTF8String] length:contentLength];
-		[aRequest setHTTPBody:body];
-		[body release];
-	}
-	
-	// Additional headers
-	for (NSString *field in additionalHeaders) {
-		[aRequest setValue:[additionalHeaders objectForKey:field] forHTTPHeaderField:field];
-	}
-	
-	[self startRequest:aRequest];
-	[aRequest release];
-}
-
-- (void)startRequest:(NSURLRequest *)aRequest {
+- (void)start {
 	
 	// Cancel any current requests
 	[self cancel];
 	
-	if (aRequest == nil) {
+	if (_request == nil) {
 		return;
 	}
 	
@@ -141,8 +191,8 @@
 //		return;
 //	}
 	
-	// Retain the request
-	_request = [aRequest retain];
+	// Set loading
+	_loading = YES;
 	
 	// Show activity indicator
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -162,6 +212,7 @@
 	}
 }
 
+
 - (void)cancel {
 	[_urlConnection cancel];
 	
@@ -176,46 +227,10 @@
 	
 	[_receivedData release];
 	_receivedData = nil;
+	
+	_loading = NO;
 }
 
-- (id)_parseData:(NSData *)data error:(NSError **)outError {
-	id parsedData = nil;
-	
-	switch (self.dataType) {
-		default:
-		case TWConnectionDataTypeData: {
-			parsedData = [NSData dataWithData:data];
-			break;
-		}
-		case TWConnectionDataTypeString: {
-			parsedData = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-			break;
-		}
-		case TWConnectionDataTypeImage: {
-			parsedData = [UIImage imageWithData:data];
-			break;
-		}
-		case TWConnectionDataTypeJSONDictionary: {
-			NSError *error = nil;
-			parsedData = [[CJSONDeserializer deserializer] deserializeAsDictionary:data error:&error];
-			if (error) {
-				*outError = error;
-			}
-			break;
-		}
-		case TWConnectionDataTypeJSONArray: {
-			// This method is deprecated. This one is being used to support illegal (but common) JSON strings.
-			// @see http://stackoverflow.com/questions/288412#289193
-			NSError *error = nil;
-			parsedData = [[CJSONDeserializer deserializer] deserialize:data error:&error];
-			if (error) {
-				*outError = error;
-			}
-			break;
-		}
-	}
-	return parsedData;
-}
 
 #pragma mark -
 #pragma mark NSURLConnection Delegate
@@ -240,10 +255,12 @@
 	}
 }
 
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 	_totalExpectedBytes = [response expectedContentLength];
 	[_receivedData setLength:0];
 }
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
 	[_receivedData appendData:data];
@@ -259,7 +276,7 @@
 	// Send chunk to delegate
 	if ([delegate respondsToSelector:@selector(connection:didReceiveChunk:)]) {
 		NSError *error = nil;
-		id parsedChunk = [self _parseData:data error:&error];
+		id parsedChunk = [TWURLConnection parseData:_receivedData dataType:_request.dataType error:&error];
 		
 		// If there was an error parsing the chunk, send the error instead of the parsed chunk
 		if (error) {
@@ -273,6 +290,7 @@
 	}
 }
 
+
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	// Send error to delegate
 	if ([delegate respondsToSelector:@selector(connection:failedWithError:)]) {
@@ -282,13 +300,14 @@
 	[self cancel];
 }
 
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 
 	// Send the result to the delegate
 	if ([delegate respondsToSelector:@selector(connection:didFinishLoadingRequest:withResult:)]) {
 		
 		NSError *error = nil;
-		id result = [self _parseData:_receivedData error:&error];
+		id result = [TWURLConnection parseData:_receivedData dataType:_request.dataType error:&error];
 		
 		// Check for an error parsing the result
 		if (error) {

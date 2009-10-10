@@ -12,10 +12,10 @@
 		B21504CA10583B4000409ED4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504C910583B4000409ED4 /* SystemConfiguration.framework */; };
 		B21504CE10583B4600409ED4 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504CD10583B4600409ED4 /* libsqlite3.dylib */; };
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
+		B23E8979108040010065E392 /* TWURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B23E8977108040010065E392 /* TWURLRequest.h */; };
+		B23E897A108040010065E392 /* TWURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E8978108040010065E392 /* TWURLRequest.m */; };
 		B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */ = {isa = PBXBuildFile; fileRef = B253C1F810728DC500E0CE10 /* TWHUDView.h */; };
 		B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = B253C1F910728DC500E0CE10 /* TWHUDView.m */; };
-		B27C60B4107FFA5300F7FBD7 /* TWRemoteImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = B27C60B2107FFA5300F7FBD7 /* TWRemoteImageView.h */; };
-		B27C60B5107FFA5300F7FBD7 /* TWRemoteImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B27C60B3107FFA5300F7FBD7 /* TWRemoteImageView.m */; };
 		B2807EE010642A3400E4F6C6 /* TWRoundedView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */; };
 		B2807EE110642A3400E4F6C6 /* TWRoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */; };
 		B28517DA1063E43E008D42E7 /* TWPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517D81063E43E008D42E7 /* TWPickerViewController.h */; };
@@ -65,8 +65,8 @@
 		B2D2FB721063FFBB00537F3A /* NSScanner_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2D2FB641063FFBB00537F3A /* NSScanner_Extensions.h */; };
 		B2D2FB731063FFBB00537F3A /* NSScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2FB651063FFBB00537F3A /* NSScanner_Extensions.m */; };
 		B2D2FBA4106401BE00537F3A /* TouchJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B2D2FBA3106401BE00537F3A /* TouchJSON.h */; };
-		B2FA61A11059616200499856 /* TWConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61601059616200499856 /* TWConnection.h */; };
-		B2FA61A21059616200499856 /* TWConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61611059616200499856 /* TWConnection.m */; };
+		B2FA61A11059616200499856 /* TWURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61601059616200499856 /* TWURLConnection.h */; };
+		B2FA61A21059616200499856 /* TWURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61611059616200499856 /* TWURLConnection.m */; };
 		B2FA61AD1059616200499856 /* TWToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA616C1059616200499856 /* TWToolkit.h */; };
 		B2FA61AE1059616200499856 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA616F1059616200499856 /* Reachability.h */; };
 		B2FA61AF1059616200499856 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61701059616200499856 /* Reachability.m */; };
@@ -81,11 +81,11 @@
 		B21504CD10583B4600409ED4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B21B84881067D36300E5C076 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B23E8977108040010065E392 /* TWURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLRequest.h; sourceTree = "<group>"; };
+		B23E8978108040010065E392 /* TWURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLRequest.m; sourceTree = "<group>"; };
 		B253C1F310728DB900E0CE10 /* TWToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TWToolkit.bundle; sourceTree = "<group>"; };
 		B253C1F810728DC500E0CE10 /* TWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWHUDView.h; sourceTree = "<group>"; };
 		B253C1F910728DC500E0CE10 /* TWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWHUDView.m; sourceTree = "<group>"; };
-		B27C60B2107FFA5300F7FBD7 /* TWRemoteImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRemoteImageView.h; sourceTree = "<group>"; };
-		B27C60B3107FFA5300F7FBD7 /* TWRemoteImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRemoteImageView.m; sourceTree = "<group>"; };
 		B27C623D10800EE300F7FBD7 /* Todo.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo.markdown; sourceTree = SOURCE_ROOT; };
 		B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRoundedView.h; sourceTree = "<group>"; };
 		B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRoundedView.m; sourceTree = "<group>"; };
@@ -136,8 +136,8 @@
 		B2D2FB641063FFBB00537F3A /* NSScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSScanner_Extensions.h; sourceTree = "<group>"; };
 		B2D2FB651063FFBB00537F3A /* NSScanner_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSScanner_Extensions.m; sourceTree = "<group>"; };
 		B2D2FBA3106401BE00537F3A /* TouchJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchJSON.h; sourceTree = "<group>"; };
-		B2FA61601059616200499856 /* TWConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWConnection.h; sourceTree = "<group>"; };
-		B2FA61611059616200499856 /* TWConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWConnection.m; sourceTree = "<group>"; };
+		B2FA61601059616200499856 /* TWURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLConnection.h; sourceTree = "<group>"; };
+		B2FA61611059616200499856 /* TWURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLConnection.m; sourceTree = "<group>"; };
 		B2FA616C1059616200499856 /* TWToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit.h; sourceTree = "<group>"; };
 		B2FA616F1059616200499856 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		B2FA61701059616200499856 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -221,8 +221,6 @@
 				B28517DF1063E442008D42E7 /* TWStripView.m */,
 				B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */,
 				B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */,
-				B27C60B2107FFA5300F7FBD7 /* TWRemoteImageView.h */,
-				B27C60B3107FFA5300F7FBD7 /* TWRemoteImageView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -279,8 +277,10 @@
 		B2C2077A106296FE00AE1B56 /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				B2FA61601059616200499856 /* TWConnection.h */,
-				B2FA61611059616200499856 /* TWConnection.m */,
+				B2FA61601059616200499856 /* TWURLConnection.h */,
+				B2FA61611059616200499856 /* TWURLConnection.m */,
+				B23E8977108040010065E392 /* TWURLRequest.h */,
+				B23E8978108040010065E392 /* TWURLRequest.m */,
 			);
 			name = Connection;
 			sourceTree = "<group>";
@@ -349,7 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B215045F10583A7300409ED4 /* TWToolkit_Prefix.pch in Headers */,
-				B2FA61A11059616200499856 /* TWConnection.h in Headers */,
+				B2FA61A11059616200499856 /* TWURLConnection.h in Headers */,
 				B2FA61AD1059616200499856 /* TWToolkit.h in Headers */,
 				B2FA61AE1059616200499856 /* Reachability.h in Headers */,
 				B2FA61B01059616200499856 /* CDataScanner.h in Headers */,
@@ -381,7 +381,7 @@
 				B2807EE010642A3400E4F6C6 /* TWRoundedView.h in Headers */,
 				B2A41E9A107287BA006EF521 /* TWSwitchTableViewCell.h in Headers */,
 				B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */,
-				B27C60B4107FFA5300F7FBD7 /* TWRemoteImageView.h in Headers */,
+				B23E8979108040010065E392 /* TWURLRequest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2FA61A21059616200499856 /* TWConnection.m in Sources */,
+				B2FA61A21059616200499856 /* TWURLConnection.m in Sources */,
 				B2FA61AF1059616200499856 /* Reachability.m in Sources */,
 				B2FA61B11059616200499856 /* CDataScanner.m in Sources */,
 				B2C20771106296FB00AE1B56 /* NSArray+shuffle.m in Sources */,
@@ -457,7 +457,7 @@
 				B2807EE110642A3400E4F6C6 /* TWRoundedView.m in Sources */,
 				B2A41E9B107287BA006EF521 /* TWSwitchTableViewCell.m in Sources */,
 				B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */,
-				B27C60B5107FFA5300F7FBD7 /* TWRemoteImageView.m in Sources */,
+				B23E897A108040010065E392 /* TWURLRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
