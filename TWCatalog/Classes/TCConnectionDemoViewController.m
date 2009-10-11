@@ -25,6 +25,7 @@
 
 - (void)dealloc {
 	[outputView release];
+	[connection release];
 	[super dealloc];
 }
 
