@@ -15,7 +15,7 @@
 @implementation TWURLConnection
 
 @synthesize delegate;
-@synthesize request = _request;
+@synthesize request;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -105,7 +105,7 @@
 - (id)initWithRequest:(TWURLRequest *)aRequest delegate:(id<TWURLConnectionDelegate>)aDelegate startImmediately:(BOOL)startImmediately {
 	if (self = [super init]) {
 		self.delegate = aDelegate;
-		self.request = aRequest;
+		request = [aRequest retain];
 		_loading = NO;
 		
 		if (startImmediately) {
@@ -136,6 +136,8 @@
 - (void)dealloc {
 	[self cancel];
 	self.delegate = nil;
+	[request release];
+	request = nil;
 	[super dealloc];
 }
 
@@ -151,16 +153,16 @@
 		return;
 	}
 	
-	if (!_request) {
-		_request = [[TWURLRequest alloc] initWithURL:aURL];
+	if (!request) {
+		request = [[TWURLRequest alloc] initWithURL:aURL];
 	} else {
-		[_request setURL:aURL];
+		[request setURL:aURL];
 	}
 }
 
 
 - (NSURL *)URL {
-	return [_request URL];
+	return [request URL];
 }
 
 
@@ -178,7 +180,7 @@
 	// Cancel any current requests
 	[self cancel];
 	
-	if (_request == nil) {
+	if (request == nil) {
 		return;
 	}
 	
@@ -198,7 +200,7 @@
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 	
 	// Initialize the connection
-	_urlConnection = [[NSURLConnection alloc] initWithRequest:_request delegate:self];
+	_urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	
 	// Initialize the data
 	_receivedData = [[NSMutableData alloc] init];
@@ -208,7 +210,7 @@
 	
 	// Notify the delegate the request started
 	if ([delegate respondsToSelector:@selector(connection:startedLoadingRequest:)]) {
-		[delegate connection:self startedLoadingRequest:_request];
+		[delegate connection:self startedLoadingRequest:request];
 	}
 }
 
@@ -221,9 +223,6 @@
 	
 	[_urlConnection release];
 	_urlConnection = nil;
-	
-	[_request release];
-	_request = nil;
 	
 	[_receivedData release];
 	_receivedData = nil;
@@ -238,8 +237,8 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
 	
-	NSString *user = [[_request URL] user];
-	NSString *password = [[_request URL] password];
+	NSString *user = [[request URL] user];
+	NSString *password = [[request URL] password];
 	
 	if (user|| password) {
 		NSURLCredential *credential = [[NSURLCredential alloc] initWithUser:user password:password persistence:NSURLCredentialPersistenceForSession];
@@ -276,7 +275,7 @@
 	// Send chunk to delegate
 	if ([delegate respondsToSelector:@selector(connection:didReceiveChunk:)]) {
 		NSError *error = nil;
-		id parsedChunk = [TWURLConnection parseData:_receivedData dataType:_request.dataType error:&error];
+		id parsedChunk = [TWURLConnection parseData:_receivedData dataType:request.dataType error:&error];
 		
 		// If there was an error parsing the chunk, send the error instead of the parsed chunk
 		if (error) {
@@ -307,17 +306,17 @@
 	if ([delegate respondsToSelector:@selector(connection:didFinishLoadingRequest:withResult:)]) {
 		
 		NSError *error = nil;
-		id result = [TWURLConnection parseData:_receivedData dataType:_request.dataType error:&error];
+		id result = [TWURLConnection parseData:_receivedData dataType:request.dataType error:&error];
 		
 		// Check for an error parsing the result
 		if (error) {
 			if ([delegate respondsToSelector:@selector(connection:didFinishLoadingRequest:failedToParseResultWithError:)]) {
-				[delegate connection:self didFinishLoadingRequest:_request failedToParseResultWithError:error];
+				[delegate connection:self didFinishLoadingRequest:request failedToParseResultWithError:error];
 			}
 			return;
 		}
 		
-		[delegate connection:self didFinishLoadingRequest:_request withResult:result];
+		[delegate connection:self didFinishLoadingRequest:request withResult:result];
 	}
 	
 	// Stop request and free up resources

@@ -14,8 +14,8 @@
 @interface TWURLConnection : NSObject {
 
 	id<TWURLConnectionDelegate> delegate;
+	TWURLRequest *request;
 	NSURLConnection *_urlConnection;
-	TWURLRequest *_request;
 	NSMutableData *_receivedData;
 	NSInteger _totalReceivedBytes;
 	NSInteger _totalExpectedBytes;
@@ -24,7 +24,7 @@
 }
 
 @property (nonatomic, assign) id<TWURLConnectionDelegate> delegate;
-@property (nonatomic, copy) TWURLRequest *request;
+@property (nonatomic, retain) TWURLRequest *request;
 
 + (BOOL)isConnectedToNetwork;
 + (id)parseData:(NSData *)data dataType:(TWURLRequestDataType)dataType error:(NSError **)outError;

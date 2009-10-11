@@ -21,7 +21,7 @@
 	
 	@private
 	
-	TWConnection *connection;
+	TWURLConnection *connection;
 }
 
 @property (nonatomic, assign) id<TWRemoteImageViewDelegate> delegate;

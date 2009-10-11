@@ -6,17 +6,19 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "NSArray+shuffle.h"
-#import "NSData+MD5Sum.h"
-#import "NSString+containsString.h"
-#import "NSString+encoding.h"
-#import "NSString+MD5Sum.h"
+// Foundation
+#import "TWToolkit/NSArray+shuffle.h"
+#import "TWToolkit/NSData+MD5Sum.h"
+#import "TWToolkit/NSString+containsString.h"
+#import "TWToolkit/NSString+encoding.h"
+#import "TWToolkit/NSString+MD5Sum.h"
 
-#import "UIApplication+undocumented.h"
-#import "UIDevice+isSimulator.h"
-#import "UIImage+crop.h"
-#import "UIScrollView+scroller.h"
-#import "UITextView+HTML.h"
-#import "UIView+fading.h"
-#import "UIWebView+scrolling.h"
-#import "UIWebView+setFontSize.h"
+// UIKit
+#import "TWToolkit/UIApplication+undocumented.h"
+#import "TWToolkit/UIDevice+isSimulator.h"
+#import "TWToolkit/UIImage+crop.h"
+#import "TWToolkit/UIScrollView+scroller.h"
+#import "TWToolkit/UITextView+HTML.h"
+#import "TWToolkit/UIView+fading.h"
+#import "TWToolkit/UIWebView+scrolling.h"
+#import "TWToolkit/UIWebView+setFontSize.h"

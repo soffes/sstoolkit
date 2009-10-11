@@ -6,10 +6,11 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "TWToolkit/TWConnection.h"
+#import "TWToolkit/TWToolkit.h"
 
-@interface TCConnectionDemoViewController : UIViewController<TWConnectionDelegate> {
+@interface TCConnectionDemoViewController : UIViewController <TWURLConnectionDelegate> {
 
+	TWURLConnection *connection;
 	UITextView *outputView;
 }
 

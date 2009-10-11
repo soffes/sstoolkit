@@ -38,6 +38,7 @@
 	
 	outputView = [[UITextView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)];
 	outputView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	outputView.editable = NO;
 	[self.view addSubview:outputView];
 }
 
@@ -63,35 +64,41 @@
 	// Update output
 	outputView.text = @"Connecting...";
 	
-	// Start connection
+	// Setup request
 	NSURL *url = [[NSURL alloc] initWithString:@"http://twitter.com/statuses/user_timeline/samsoffes.json?count=5"];
-	TWConnection *connection =  [[[TWConnection alloc] initWithDelegate:self] autorelease];
-	connection.dataType = TWConnectionDataTypeJSONArray;
-	[connection requestURL:url];
+	TWURLRequest *request = [[TWURLRequest alloc] initWithURL:url];
+	request.dataType = TWURLRequestDataTypeJSONArray;
+	
+	// Start connection
+	[connection cancel];
+	[connection release];
+	connection =  [[TWURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+	
+	[request release];
 	[url release];
 }
 
 
 #pragma mark -
-#pragma mark TWConnectionDelegate
+#pragma mark TWURLConnectionDelegate
 #pragma mark -
 
-- (void)connection:(TWConnection *)aConnection startedLoadingRequest:(NSURLRequest *)aRequest {
+- (void)connection:(TWURLConnection *)aConnection startedLoadingRequest:(TWURLRequest *)aRequest {
 	outputView.text = @"Loading...";
 }
 
 
-- (void)connection:(TWConnection *)aConnection didReceiveBytes:(NSInteger)receivedBytes totalReceivedBytes:(NSInteger)totalReceivedBytes totalExpectedBytes:(NSInteger)totalExpectedBytes {
+- (void)connection:(TWURLConnection *)aConnection didReceiveBytes:(NSInteger)receivedBytes totalReceivedBytes:(NSInteger)totalReceivedBytes totalExpectedBytes:(NSInteger)totalExpectedBytes {
 	NSLog(@"receivedBytes: %i, totalReceivedBytes: %i, totalExpectedBytes: %i", receivedBytes, totalReceivedBytes, totalExpectedBytes);
 }
 
 
-- (void)connection:(TWConnection *)aConnection didFinishLoadingRequest:(NSURLRequest *)aRequest withResult:(id)result {
+- (void)connection:(TWURLConnection *)aConnection didFinishLoadingRequest:(TWURLRequest *)aRequest withResult:(id)result {
 	outputView.text = [(NSArray *)result description];
 }
 
 
-- (void)connection:(TWConnection *)aConnection failedWithError:(NSError *)error {	
+- (void)connection:(TWURLConnection *)aConnection failedWithError:(NSError *)error {	
 	outputView.text = @"";
 	
 	// Display alert error

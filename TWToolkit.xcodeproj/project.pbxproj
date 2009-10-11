@@ -247,10 +247,9 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		B2C20765106296F200AE1B56 /* Categories */ = {
+		B2B9EC0A10826D670025F5AC /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				B2C207831062973000AE1B56 /* TWCategories.h */,
 				B2C20766106296FB00AE1B56 /* NSArray+shuffle.h */,
 				B2C20767106296FB00AE1B56 /* NSArray+shuffle.m */,
 				B2C20768106296FB00AE1B56 /* NSData+MD5Sum.h */,
@@ -261,6 +260,13 @@
 				B2C2076D106296FB00AE1B56 /* NSString+encoding.m */,
 				B2C2076E106296FB00AE1B56 /* NSString+MD5Sum.h */,
 				B2C2076F106296FB00AE1B56 /* NSString+MD5Sum.m */,
+			);
+			name = Foundation;
+			sourceTree = "<group>";
+		};
+		B2B9EC0B10826D710025F5AC /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
 				B2974D5C106299CB00C9F4A6 /* UIApplication+undocumented.h */,
 				B2974D61106299CB00C9F4A6 /* UIDevice+isSimulator.h */,
 				B2974D62106299CB00C9F4A6 /* UIDevice+isSimulator.m */,
@@ -274,6 +280,16 @@
 				B2974D6A106299CB00C9F4A6 /* UIWebView+scrolling.m */,
 				B2974D6B106299CB00C9F4A6 /* UIWebView+setFontSize.h */,
 				B2974D6C106299CB00C9F4A6 /* UIWebView+setFontSize.m */,
+			);
+			name = UIKit;
+			sourceTree = "<group>";
+		};
+		B2C20765106296F200AE1B56 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				B2C207831062973000AE1B56 /* TWCategories.h */,
+				B2B9EC0A10826D670025F5AC /* Foundation */,
+				B2B9EC0B10826D710025F5AC /* UIKit */,
 			);
 			name = Categories;
 			sourceTree = "<group>";

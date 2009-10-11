@@ -7,7 +7,6 @@
 //
 
 #import "TCRemoteImageViewDemoViewController.h"
-#import "TWToolkit/TWLoadingView.h"
 #import "TWToolkit/UIView+fading.h"
 
 @implementation TCRemoteImageViewDemoViewController
@@ -26,7 +25,7 @@
 #pragma mark -
 
 - (void)dealloc {
-	[remoteImageView release];
+//	[remoteImageView release];
 	[loadingView release];
 	[super dealloc];
 }
@@ -42,10 +41,10 @@
 	self.title = @"Image View";
 	self.view.backgroundColor = [UIColor whiteColor];
 	
-	remoteImageView = [[TWRemoteImageView alloc] initWithFrame:CGRectMake(20.0, 20.0, 280.0, 280.0)];
-	remoteImageView.placeholderImageView.image = [UIImage imageNamed:@"placeholder.png"];
-	remoteImageView.URL = [NSURL URLWithString:@"http://farm3.static.flickr.com/2421/3534460712_3930f69415.jpg"];
-	[self.view addSubview:remoteImageView];
+//	remoteImageView = [[TWRemoteImageView alloc] initWithFrame:CGRectMake(20.0, 20.0, 280.0, 280.0)];
+//	remoteImageView.placeholderImageView.image = [UIImage imageNamed:@"placeholder.png"];
+//	remoteImageView.URL = [NSURL URLWithString:@"http://farm3.static.flickr.com/2421/3534460712_3930f69415.jpg"];
+//	[self.view addSubview:remoteImageView];
 	
 	loadingView  = [[TWLoadingView alloc] initWithFrame:CGRectMake(20.0, 340.0, 280.0, 20.0)];
 	[self.view addSubview:loadingView];

@@ -11,6 +11,7 @@
 
 @interface TWURLRequest (PrivateMethods)
 - (void)_updateHeaders;
+- (void)_generateHash;
 @end
 
 @implementation TWURLRequest
@@ -87,6 +88,23 @@
 		[self setHTTPBody:body];
 		[body release];
 	}
+}
+
+
+- (void)_generateHash {
+	// TODO: Make better hash
+	hash = [[self URL] absoluteString];
+}
+
+#pragma mark -
+#pragma mark Getters
+#pragma mark -
+
+- (NSString *)hash {
+	if (!hash) {
+		[self _generateHash];
+	}
+	return hash;
 }
 
 @end
