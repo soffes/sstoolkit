@@ -10,9 +10,9 @@
 
 @class TWLoadingView;
 
-@interface TCRemoteImageViewDemoViewController : UIViewController { //<TWRemoteImageViewDelegate> {
+@interface TCRemoteImageViewDemoViewController : UIViewController <TWRemoteImageViewDelegate> {
 
-	//TWRemoteImageView *remoteImageView;
+	TWRemoteImageView *remoteImageView;
 	TWLoadingView *loadingView;
 }
 

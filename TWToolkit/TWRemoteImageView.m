@@ -79,37 +79,42 @@
 	URL = [aURL retain];
 	
 	[connection release];
-	connection = [[TWConnection alloc] initWithDelegate:self];
-	NSLog(@"Connection alloced");
-	connection.dataType = TWConnectionDataTypeImage;
-	[connection requestURL:URL];
+	
+	TWURLRequest *request = [[TWURLRequest alloc] initWithURL:URL];
+	request.dataType = TWURLRequestDataTypeImage;
+	connection = [[TWURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+	[request release];
 }
 
 
 #pragma mark -
-#pragma mark TWConnectionDelegate
+#pragma mark TWURLConnectionDelegate
 #pragma mark -
 
-
-- (void)connection:(TWConnection *)aConnection startedLoadingRequest:(NSURLRequest *)aRequest {
-	
+- (void)connection:(TWURLConnection *)aConnection startedLoadingRequest:(TWURLRequest *)aRequest {
+	if ([delegate respondsToSelector:@selector(remoteImageViewDidStartLoading:)]) {
+		[delegate remoteImageViewDidStartLoading:self];
+	}
 }
 
 
-- (void)connection:(TWConnection *)aConnection didReceiveBytes:(NSInteger)receivedBytes totalReceivedBytes:(NSInteger)totalReceivedBytes totalExpectedBytes:(NSInteger)totalExpectedBytes {
-	
-}
-
-
-- (void)connection:(TWConnection *)aConnection didFinishLoadingRequest:(NSURLRequest *)aRequest withResult:(id)result {
+- (void)connection:(TWURLConnection *)aConnection didFinishLoadingRequest:(TWURLRequest *)aRequest withResult:(id)result {
+	// Fade in image
 	remoteImageView.image = (UIImage *)result;
 	[self addSubview:remoteImageView];
 	[remoteImageView fadeIn];
+	
+	// Notify delegate
+	if ([delegate respondsToSelector:@selector(remoteImageView:didLoadImage:)]) {
+		[delegate remoteImageView:self didLoadImage:remoteImageView.image];
+	}
 }
 
 
-- (void)connection:(TWConnection *)aConnection failedWithError:(NSError *)error {	
-
+- (void)connection:(TWURLConnection *)aConnection failedWithError:(NSError *)error {	
+	if ([delegate respondsToSelector:@selector(remoteImageView:didFailWithError:)]) {
+		[delegate remoteImageView:self didFailWithError:error];
+	}
 }
 
 @end

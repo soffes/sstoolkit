@@ -14,6 +14,8 @@
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
 		B23E8979108040010065E392 /* TWURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B23E8977108040010065E392 /* TWURLRequest.h */; };
 		B23E897A108040010065E392 /* TWURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E8978108040010065E392 /* TWURLRequest.m */; };
+		B24E03F51083FB6400F6A7B7 /* TWRemoteImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E03F31083FB6400F6A7B7 /* TWRemoteImageView.h */; };
+		B24E03F61083FB6400F6A7B7 /* TWRemoteImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E03F41083FB6400F6A7B7 /* TWRemoteImageView.m */; };
 		B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */ = {isa = PBXBuildFile; fileRef = B253C1F810728DC500E0CE10 /* TWHUDView.h */; };
 		B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = B253C1F910728DC500E0CE10 /* TWHUDView.m */; };
 		B2807EE010642A3400E4F6C6 /* TWRoundedView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */; };
@@ -85,6 +87,8 @@
 		B21B84881067D36300E5C076 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B23E8977108040010065E392 /* TWURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLRequest.h; sourceTree = "<group>"; };
 		B23E8978108040010065E392 /* TWURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLRequest.m; sourceTree = "<group>"; };
+		B24E03F31083FB6400F6A7B7 /* TWRemoteImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRemoteImageView.h; sourceTree = "<group>"; };
+		B24E03F41083FB6400F6A7B7 /* TWRemoteImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRemoteImageView.m; sourceTree = "<group>"; };
 		B253C1F310728DB900E0CE10 /* TWToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TWToolkit.bundle; sourceTree = "<group>"; };
 		B253C1F810728DC500E0CE10 /* TWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWHUDView.h; sourceTree = "<group>"; };
 		B253C1F910728DC500E0CE10 /* TWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWHUDView.m; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 				B28517DF1063E442008D42E7 /* TWStripView.m */,
 				B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */,
 				B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */,
+				B24E03F31083FB6400F6A7B7 /* TWRemoteImageView.h */,
+				B24E03F41083FB6400F6A7B7 /* TWRemoteImageView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -405,6 +411,7 @@
 				B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */,
 				B23E8979108040010065E392 /* TWURLRequest.h in Headers */,
 				B2A0753F1080F27D002FD0CA /* TWURLConnectionCacheController.h in Headers */,
+				B24E03F51083FB6400F6A7B7 /* TWRemoteImageView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +489,7 @@
 				B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */,
 				B23E897A108040010065E392 /* TWURLRequest.m in Sources */,
 				B2A075401080F27D002FD0CA /* TWURLConnectionCacheController.m in Sources */,
+				B24E03F61083FB6400F6A7B7 /* TWRemoteImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
