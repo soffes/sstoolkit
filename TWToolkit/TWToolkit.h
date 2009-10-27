@@ -7,14 +7,14 @@
 //
 
 // Connection
-#import "TWConnection.h"
+#import "TWToolkit/TWConnection.h"
 
 // Views
-#import "TWHUDView.h"
-#import "TWLoadingView.h"
-#import "TWStripView.h"
-#import "TWRoundedView.h"
-#import "TWRemoteImageView.h"
+#import "TWToolkit/TWHUDView.h"
+#import "TWToolkit/TWLoadingView.h"
+#import "TWToolkit/TWRoundedView.h"
+#import "TWToolkit/TWRemoteImageView.h"
+#import "TWToolkit/TWGradientView.h"
 
 // Cells
-#import "TWSwitchTableViewCell.h"
+#import "TWToolkit/TWSwitchTableViewCell.h"

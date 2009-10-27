@@ -11,6 +11,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		B21339E110974A0100E124D6 /* TCGradientViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21339E010974A0100E124D6 /* TCGradientViewDemoViewController.m */; };
 		B21B85B41067D4A600E5C076 /* libTWToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B21B85B31067D4A300E5C076 /* libTWToolkit.a */; };
 		B21B85B81067D4B500E5C076 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21B85B71067D4B500E5C076 /* SystemConfiguration.framework */; };
 		B21B85BE1067D4F300E5C076 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B21B85BC1067D4F300E5C076 /* main.m */; };
@@ -49,6 +50,8 @@
 		1D6058910D05DD3D006BFB54 /* TWCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TWCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B21339DF10974A0100E124D6 /* TCGradientViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCGradientViewDemoViewController.h; sourceTree = "<group>"; };
+		B21339E010974A0100E124D6 /* TCGradientViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCGradientViewDemoViewController.m; sourceTree = "<group>"; };
 		B21B85AB1067D4A300E5C076 /* TWToolkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TWToolkit.xcodeproj; path = ../TWToolkit.xcodeproj; sourceTree = SOURCE_ROOT; };
 		B21B85B71067D4B500E5C076 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B21B85BC1067D4F300E5C076 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 				B27C613C108000FC00F7FBD7 /* TCPickerDemoViewController.m */,
 				B27C61821080037D00F7FBD7 /* TCPickerDetailViewController.h */,
 				B27C61831080037D00F7FBD7 /* TCPickerDetailViewController.m */,
+				B21339DF10974A0100E124D6 /* TCGradientViewDemoViewController.h */,
+				B21339E010974A0100E124D6 /* TCGradientViewDemoViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 				B27C613A108000EF00F7FBD7 /* TCRemoteImageViewDemoViewController.m in Sources */,
 				B27C613D108000FC00F7FBD7 /* TCPickerDemoViewController.m in Sources */,
 				B27C61841080037D00F7FBD7 /* TCPickerDetailViewController.m in Sources */,
+				B21339E110974A0100E124D6 /* TCGradientViewDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

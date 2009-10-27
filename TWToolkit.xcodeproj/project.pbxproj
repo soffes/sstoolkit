@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		B21339E810974AC300E124D6 /* TWGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = B21339E610974AC300E124D6 /* TWGradientView.h */; };
+		B21339E910974AC300E124D6 /* TWGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B21339E710974AC300E124D6 /* TWGradientView.m */; };
 		B215045F10583A7300409ED4 /* TWToolkit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */; };
 		B21504CA10583B4000409ED4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504C910583B4000409ED4 /* SystemConfiguration.framework */; };
 		B21504CE10583B4600409ED4 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504CD10583B4600409ED4 /* libsqlite3.dylib */; };
@@ -22,8 +24,6 @@
 		B28517DB1063E43E008D42E7 /* TWPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517D91063E43E008D42E7 /* TWPickerViewController.m */; };
 		B28517E01063E442008D42E7 /* TWLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517DC1063E442008D42E7 /* TWLoadingView.h */; };
 		B28517E11063E442008D42E7 /* TWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517DD1063E442008D42E7 /* TWLoadingView.m */; };
-		B28517E21063E442008D42E7 /* TWStripView.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517DE1063E442008D42E7 /* TWStripView.h */; };
-		B28517E31063E442008D42E7 /* TWStripView.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517DF1063E442008D42E7 /* TWStripView.m */; };
 		B2974D6D106299CB00C9F4A6 /* UIApplication+undocumented.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D5C106299CB00C9F4A6 /* UIApplication+undocumented.h */; };
 		B2974D72106299CB00C9F4A6 /* UIDevice+isSimulator.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D61106299CB00C9F4A6 /* UIDevice+isSimulator.h */; };
 		B2974D73106299CB00C9F4A6 /* UIDevice+isSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D62106299CB00C9F4A6 /* UIDevice+isSimulator.m */; };
@@ -76,6 +76,8 @@
 
 /* Begin PBXFileReference section */
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B21339E610974AC300E124D6 /* TWGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWGradientView.h; sourceTree = "<group>"; };
+		B21339E710974AC300E124D6 /* TWGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWGradientView.m; sourceTree = "<group>"; };
 		B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit_Prefix.pch; sourceTree = "<group>"; };
 		B21504C910583B4000409ED4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B21504CD10583B4600409ED4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -93,8 +95,6 @@
 		B28517D91063E43E008D42E7 /* TWPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPickerViewController.m; sourceTree = "<group>"; };
 		B28517DC1063E442008D42E7 /* TWLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWLoadingView.h; sourceTree = "<group>"; };
 		B28517DD1063E442008D42E7 /* TWLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWLoadingView.m; sourceTree = "<group>"; };
-		B28517DE1063E442008D42E7 /* TWStripView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWStripView.h; sourceTree = "<group>"; };
-		B28517DF1063E442008D42E7 /* TWStripView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWStripView.m; sourceTree = "<group>"; };
 		B2974D5C106299CB00C9F4A6 /* UIApplication+undocumented.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+undocumented.h"; sourceTree = "<group>"; };
 		B2974D61106299CB00C9F4A6 /* UIDevice+isSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+isSimulator.h"; sourceTree = "<group>"; };
 		B2974D62106299CB00C9F4A6 /* UIDevice+isSimulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+isSimulator.m"; sourceTree = "<group>"; };
@@ -217,12 +217,12 @@
 				B253C1F910728DC500E0CE10 /* TWHUDView.m */,
 				B28517DC1063E442008D42E7 /* TWLoadingView.h */,
 				B28517DD1063E442008D42E7 /* TWLoadingView.m */,
-				B28517DE1063E442008D42E7 /* TWStripView.h */,
-				B28517DF1063E442008D42E7 /* TWStripView.m */,
 				B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */,
 				B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */,
 				B27C60B2107FFA5300F7FBD7 /* TWRemoteImageView.h */,
 				B27C60B3107FFA5300F7FBD7 /* TWRemoteImageView.m */,
+				B21339E610974AC300E124D6 /* TWGradientView.h */,
+				B21339E710974AC300E124D6 /* TWGradientView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -369,7 +369,6 @@
 				B2974D7C106299CB00C9F4A6 /* UIWebView+setFontSize.h in Headers */,
 				B28517DA1063E43E008D42E7 /* TWPickerViewController.h in Headers */,
 				B28517E01063E442008D42E7 /* TWLoadingView.h in Headers */,
-				B28517E21063E442008D42E7 /* TWStripView.h in Headers */,
 				B2D2FB661063FFBB00537F3A /* CDataScanner_Extensions.h in Headers */,
 				B2D2FB681063FFBB00537F3A /* CJSONDeserializer.h in Headers */,
 				B2D2FB6A1063FFBB00537F3A /* CJSONScanner.h in Headers */,
@@ -382,6 +381,7 @@
 				B2A41E9A107287BA006EF521 /* TWSwitchTableViewCell.h in Headers */,
 				B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */,
 				B27C60B4107FFA5300F7FBD7 /* TWRemoteImageView.h in Headers */,
+				B21339E810974AC300E124D6 /* TWGradientView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +446,6 @@
 				B2974D7D106299CB00C9F4A6 /* UIWebView+setFontSize.m in Sources */,
 				B28517DB1063E43E008D42E7 /* TWPickerViewController.m in Sources */,
 				B28517E11063E442008D42E7 /* TWLoadingView.m in Sources */,
-				B28517E31063E442008D42E7 /* TWStripView.m in Sources */,
 				B2D2FB671063FFBB00537F3A /* CDataScanner_Extensions.m in Sources */,
 				B2D2FB691063FFBB00537F3A /* CJSONDeserializer.m in Sources */,
 				B2D2FB6B1063FFBB00537F3A /* CJSONScanner.m in Sources */,
@@ -458,6 +457,7 @@
 				B2A41E9B107287BA006EF521 /* TWSwitchTableViewCell.m in Sources */,
 				B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */,
 				B27C60B5107FFA5300F7FBD7 /* TWRemoteImageView.m in Sources */,
+				B21339E910974AC300E124D6 /* TWGradientView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

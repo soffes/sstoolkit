@@ -10,6 +10,7 @@
 #import "TCConnectionDemoViewController.h"
 #import "TCRemoteImageViewDemoViewController.h"
 #import "TCPickerDemoViewController.h"
+#import "TCGradientViewDemoViewController.h"
 
 #define kTitleKey @"title"
 #define kDescriptionKey @"description"
@@ -55,6 +56,11 @@
 			 @"Picker View Controller", kTitleKey,
 			 @"Easily create pickers like the Settings app", kDescriptionKey,
 			 @"TCPickerDemoViewController", kClassNameKey,
+			 nil],
+			[NSDictionary dictionaryWithObjectsAndKeys:
+			 @"Gradient View", kTitleKey,
+			 @"Gradients made easy", kDescriptionKey,
+			 @"TCGradientViewDemoViewController", kClassNameKey,
 			 nil],
 			nil];
 }
