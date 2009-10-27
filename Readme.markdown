@@ -26,9 +26,9 @@ TWToolkit is a minimalist iPhone framework that simplifies common tasks in iPhon
 
 Several categories are included in TWToolkit used throughout TWToolkit.
 
-[TWConnection]: blob/master/TWToolkit/TWConnection.h
-[TWPickerViewController]: blob/master/TWToolkit/TWPickerViewController.h
-[TWHUDView]: blob/master/TWToolkit/TWHUDView.h
-[TWLoadingView]: blob/master/TWToolkit/TWLoadingView.h
-[TWGradientView]: blob/master/TWToolkit/TWGradientView.h
-[TWSwitchTableViewCell]: blob/master/TWToolkit/TWSwitchTableViewCell.h
+[TWConnection]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWConnection.h
+[TWPickerViewController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWPickerViewController.h
+[TWHUDView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWHUDView.h
+[TWLoadingView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLoadingView.h
+[TWGradientView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWGradientView.h
+[TWSwitchTableViewCell]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWSwitchTableViewCell.h
