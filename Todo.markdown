@@ -5,5 +5,6 @@
 
 ## In Progress
 
+* TWGradientView
 * TWRemoteImageView
 * TWEntity

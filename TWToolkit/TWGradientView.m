@@ -27,6 +27,40 @@
 @synthesize hasBottomBorder;
 
 #pragma mark -
+#pragma mark Class Methods
+#pragma mark -
+
++ (UIColor *)defaultTopColor {
+	return [UIColor colorWithRed:0.676 green:0.722 blue:0.765 alpha:1.0];
+}
+
+
++ (UIColor *)defaultBottomColor {
+	return [UIColor colorWithRed:0.514 green:0.568 blue:0.617 alpha:1.0];
+}
+
+
++ (UIColor *)defaultTopBorderColor {
+	return [UIColor colorWithRed:0.558 green:0.599 blue:0.643 alpha:1.0];
+}
+
+
++ (UIColor *)defaultBottomBorderColor {
+	return [UIColor colorWithRed:0.428 green:0.479 blue:0.520 alpha:1.0];
+}
+
+
++ (CGFloat)defaultTopInsetAlpha {
+	return 0.3;
+}
+
+
++ (CGFloat)defaultBottomInsetAlpha {
+	return 0.0;
+}
+
+
+#pragma mark -
 #pragma mark NSObject
 #pragma mark -
 
@@ -47,12 +81,12 @@
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
 		self.opaque = YES;
-		self.topColor = [UIColor colorWithRed:0.676 green:0.722 blue:0.765 alpha:1.0];
-		self.bottomColor = [UIColor colorWithRed:0.514 green:0.568 blue:0.617 alpha:1.0];
-		self.topBorderColor = [UIColor colorWithRed:0.558 green:0.599 blue:0.643 alpha:1.0];
-		self.bottomBorderColor = [UIColor colorWithRed:0.428 green:0.479 blue:0.520 alpha:1.0];
-		self.topInsetAlpha = 0.3;
-		self.bottomInsetAlpha = 0.0;
+		self.topColor = [TWGradientView defaultTopColor];
+		self.bottomColor = [TWGradientView defaultBottomColor];
+		self.topBorderColor = [TWGradientView defaultTopBorderColor];
+		self.bottomBorderColor = [TWGradientView defaultBottomBorderColor];
+		self.topInsetAlpha = [TWGradientView defaultTopInsetAlpha];
+		self.bottomInsetAlpha = [TWGradientView defaultBottomInsetAlpha];
 		self.hasTopBorder = YES;
 		self.hasBottomBorder = YES;
 		
@@ -66,6 +100,8 @@
 		[self addObserver:self forKeyPath:@"hasTopBorder" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"hasBottomBorder" options:NSKeyValueObservingOptionNew context:nil];
 		
+		// Draw gradient
+		gradient = nil;
 		[self _refreshGradient];
 		
 	}
@@ -83,11 +119,12 @@
 	CGPoint end = CGPointMake(0.0, rect.size.height);
 	CGContextDrawLinearGradient(context, gradient, start, end, 0);
 	
+	CGContextSetLineWidth(context, 2.0);
+	
 	if (hasTopBorder) {
 		// Top inset
 		if (topInsetAlpha > 0) {
 			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0 alpha:topInsetAlpha].CGColor);
-			CGContextSetLineWidth(context, 2.0);
 			CGContextMoveToPoint(context, 0.0, 1.0);
 			CGContextAddLineToPoint(context, rect.size.width, 1.0);
 			CGContextStrokePath(context);
@@ -95,7 +132,6 @@
 		
 		// Top border
 		CGContextSetStrokeColorWithColor(context, topBorderColor.CGColor);
-		CGContextSetLineWidth(context, 2.0);
 		CGContextMoveToPoint(context, 0.0, 0.0);
 		CGContextAddLineToPoint(context, rect.size.width, 0.0);
 		CGContextStrokePath(context);
@@ -105,7 +141,6 @@
 		// Bottom inset
 		if (bottomInsetAlpha > 0) {
 			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0 alpha:bottomInsetAlpha].CGColor);
-			CGContextSetLineWidth(context, 2.0);
 			CGContextMoveToPoint(context, 0.0, rect.size.height - 1.0);
 			CGContextAddLineToPoint(context, rect.size.width, rect.size.height - 1.0);
 			CGContextStrokePath(context);
@@ -113,7 +148,6 @@
 		
 		// Bottom border
 		CGContextSetStrokeColorWithColor(context, bottomBorderColor.CGColor);
-		CGContextSetLineWidth(context, 2.0);
 		CGContextMoveToPoint(context, 0.0, rect.size.height);
 		CGContextAddLineToPoint(context, rect.size.width, rect.size.height);
 		CGContextStrokePath(context);
@@ -126,12 +160,12 @@
 #pragma mark -
 
 - (void)_refreshGradient {
-	CGColorSpaceRef rgb = CGColorSpaceCreateDeviceRGB();
+	// TODO: Automatically convert colors into the same colorspace
+	CGColorSpaceRef colorSpace = CGColorGetColorSpace(topColor.CGColor);
 	NSArray *colors = [NSArray arrayWithObjects:(id)topColor.CGColor, (id)bottomColor.CGColor, nil];
 	CGGradientRelease(gradient);
-	gradient = CGGradientCreateWithColors(rgb, (CFArrayRef)colors, NULL);
-	CGColorSpaceRelease(rgb);
-	[self setNeedsDisplay];
+	gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)colors, NULL);
+	[self setNeedsDisplay];	
 }
 
 

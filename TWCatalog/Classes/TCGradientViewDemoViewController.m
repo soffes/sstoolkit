@@ -58,7 +58,13 @@
 #pragma mark -
 
 - (void)changeColor:(id)sender {
-	gradientView.topColor = [gradientView.topColor isEqual:[UIColor redColor]] ? [UIColor colorWithRed:0.676 green:0.722 blue:0.765 alpha:1.0] : [UIColor redColor];
+	if ([gradientView.topColor isEqual:[TWGradientView defaultTopColor]]) {
+		gradientView.topColor = [UIColor whiteColor];
+		gradientView.bottomColor = [UIColor grayColor];
+	} else {
+		gradientView.topColor = [TWGradientView defaultTopColor];
+		gradientView.bottomColor = [TWGradientView defaultBottomColor];
+	}	
 }
 
 @end
