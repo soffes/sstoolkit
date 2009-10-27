@@ -59,7 +59,15 @@
 		// Add observers
 		[self addObserver:self forKeyPath:@"topColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"bottomColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"topBorderColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"bottomBorderColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"topInsetAlpha" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"bottomInsetAlpha" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"hasTopBorder" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"hasBottomBorder" options:NSKeyValueObservingOptionNew context:nil];
+		
 		[self _refreshGradient];
+		
 	}
 	return self;
 }
@@ -128,12 +136,23 @@
 
 
 #pragma mark -
-#pragma mark KVO
+#pragma mark Observer
 #pragma mark -
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+	
+	// Update the gradient and redraw if gradient colors changed
 	if ([keyPath isEqualToString:@"topColor"] || [keyPath isEqualToString:@"bottomColor"]) {
 		[self _refreshGradient];
+		return;
+	}
+	
+	// Redraw if colors or borders changed
+	if ([keyPath isEqualToString:@"topBorderColor"] || [keyPath isEqualToString:@"bottomBorderColor"] || 
+		[keyPath isEqualToString:@"topInsetAlpha"] || [keyPath isEqualToString:@"bottomInsetAlpha"] || 
+		[keyPath isEqualToString:@"hasTopBorder"] || [keyPath isEqualToString:@"hasBottomBorder"]) {
+		[self setNeedsDisplay];
 	}
 }
 
