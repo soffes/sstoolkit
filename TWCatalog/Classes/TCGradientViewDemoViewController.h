@@ -6,10 +6,15 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
+@class TWGradientView;
+
 @interface TCGradientViewDemoViewController : UIViewController {
 
+	TWGradientView *gradientView;
 }
 
 + (TCGradientViewDemoViewController *)setup;
+
+- (void)changeColor:(id)sender;
 
 @end

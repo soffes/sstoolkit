@@ -21,6 +21,16 @@
 
 
 #pragma mark -
+#pragma mark NSObject
+#pragma mark -
+
+- (void)dealloc {
+	[gradientView release];
+	[super dealloc];
+}
+
+
+#pragma mark -
 #pragma mark UIViewController
 #pragma mark -
 
@@ -31,10 +41,24 @@
 	self.view.backgroundColor = [UIColor whiteColor];
 	
 	// Gradient view
-	TWGradientView *gradientView = [[TWGradientView alloc] initWithFrame:CGRectMake(20.0, 20.0, 280.0, 280.0)];
+	gradientView = [[TWGradientView alloc] initWithFrame:CGRectMake(20.0, 20.0, 280.0, 280.0)];
 	[self.view addSubview:gradientView];
-	[gradientView release];
 	
+	UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	button.frame = CGRectMake(20.0, 320.0, 280.0, 37.0);
+	[button setTitle:@"Change Color" forState:UIControlStateNormal];
+	[button addTarget:self action:@selector(changeColor:) forControlEvents:UIControlEventTouchUpInside];
+	[self.view addSubview:button];
+	
+}
+
+
+#pragma mark -
+#pragma mark Actions
+#pragma mark -
+
+- (void)changeColor:(id)sender {
+	gradientView.topColor = [gradientView.topColor isEqual:[UIColor redColor]] ? [UIColor colorWithRed:0.676 green:0.722 blue:0.765 alpha:1.0] : [UIColor redColor];
 }
 
 @end

@@ -123,6 +123,7 @@
 	CGGradientRelease(gradient);
 	gradient = CGGradientCreateWithColors(rgb, (CFArrayRef)colors, NULL);
 	CGColorSpaceRelease(rgb);
+	[self setNeedsDisplay];
 }
 
 
