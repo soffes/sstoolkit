@@ -140,8 +140,6 @@
 #pragma mark -
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-	
 	// Update the gradient and redraw if gradient colors changed
 	if ([keyPath isEqualToString:@"topColor"] || [keyPath isEqualToString:@"bottomColor"]) {
 		[self _refreshGradient];
@@ -153,7 +151,10 @@
 		[keyPath isEqualToString:@"topInsetAlpha"] || [keyPath isEqualToString:@"bottomInsetAlpha"] || 
 		[keyPath isEqualToString:@"hasTopBorder"] || [keyPath isEqualToString:@"hasBottomBorder"]) {
 		[self setNeedsDisplay];
+		return;
 	}
+	
+	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end
