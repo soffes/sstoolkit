@@ -2,6 +2,30 @@
 
 TWToolkit makes life easy as an iPhone developer.
 
+## Classes
+
+### Connection
+
+* [TWConnection][] - simple remote connections
+
+### View Controllers
+
+* [TWPickerViewController][] - easily create picker view controllers like the Settings app
+
+### Views
+
+* [TWHUDView][] - simple heads-up display
+* [TWLoadingView][] - flexible loading view
+* [TWGradientView][] - easily create gradients
+
+### Table View Cells
+
+* [TWSwitchTableViewCell][] - cell with a switch
+
+### Categories
+
+Several categories are included in TWToolkit used throughout TWToolkit.
+
 ## Adding TWToolkit to your project
 
 1. Run the following command to add the submodule. Be sure you have been added to the project on GitHub.
@@ -34,3 +58,13 @@ To use TWToolkit, simply add the following line to your source file.
 
 You can also import individual files instead of the whole framework (for faster compile times) by doing something like `#import TWToolkit/TWLoadingView.h`.
 
+## Known Bugs
+
+* [TWGradientView][]'s `startColor` and `endColor` must be in the same colorspace. The colorspace of the first color is used to draw the gradient. If you did a gradient from white to blue, it would look like a gradient from white to black because the first color, white, is in the gray color space, not the RGB color space. If you did it from blue to white, it would look like blue to black because white in the gray colorspace isn't a valid color in the RGB colorspace (because there are only 2 components in the gray colorspace and 4 in the RGB colorspace). Automatic colorspace conversions are planned for the future.
+
+[TWConnection]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWConnection.h
+[TWPickerViewController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWPickerViewController.h
+[TWHUDView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWHUDView.h
+[TWLoadingView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLoadingView.h
+[TWGradientView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWGradientView.h
+[TWSwitchTableViewCell]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWSwitchTableViewCell.h

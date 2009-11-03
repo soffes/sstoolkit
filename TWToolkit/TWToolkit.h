@@ -7,11 +7,14 @@
 //
 
 // Connection
-#import "TWConnection.h"
+#import "TWToolkit/TWConnection.h"
 
-// Entity
-#import "TWEntity.h"
-#import "TWEntityController.h"
-#import "TWEntityDataSource.h"
-#import "TWRemoteEntityDataSource.h"
-#import "TWSQLiteEntityDataSource.h"
+// Views
+#import "TWToolkit/TWHUDView.h"
+#import "TWToolkit/TWLoadingView.h"
+#import "TWToolkit/TWRoundedView.h"
+#import "TWToolkit/TWRemoteImageView.h"
+#import "TWToolkit/TWGradientView.h"
+
+// Cells
+#import "TWToolkit/TWSwitchTableViewCell.h"

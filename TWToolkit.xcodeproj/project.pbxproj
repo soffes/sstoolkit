@@ -8,23 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		B21339E810974AC300E124D6 /* TWGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = B21339E610974AC300E124D6 /* TWGradientView.h */; };
+		B21339E910974AC300E124D6 /* TWGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B21339E710974AC300E124D6 /* TWGradientView.m */; };
 		B215045F10583A7300409ED4 /* TWToolkit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */; };
 		B21504CA10583B4000409ED4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504C910583B4000409ED4 /* SystemConfiguration.framework */; };
 		B21504CE10583B4600409ED4 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504CD10583B4600409ED4 /* libsqlite3.dylib */; };
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
 		B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */ = {isa = PBXBuildFile; fileRef = B253C1F810728DC500E0CE10 /* TWHUDView.h */; };
 		B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = B253C1F910728DC500E0CE10 /* TWHUDView.m */; };
+		B27C60B4107FFA5300F7FBD7 /* TWRemoteImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = B27C60B2107FFA5300F7FBD7 /* TWRemoteImageView.h */; };
+		B27C60B5107FFA5300F7FBD7 /* TWRemoteImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B27C60B3107FFA5300F7FBD7 /* TWRemoteImageView.m */; };
 		B2807EE010642A3400E4F6C6 /* TWRoundedView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */; };
 		B2807EE110642A3400E4F6C6 /* TWRoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */; };
 		B28517DA1063E43E008D42E7 /* TWPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517D81063E43E008D42E7 /* TWPickerViewController.h */; };
 		B28517DB1063E43E008D42E7 /* TWPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517D91063E43E008D42E7 /* TWPickerViewController.m */; };
 		B28517E01063E442008D42E7 /* TWLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517DC1063E442008D42E7 /* TWLoadingView.h */; };
 		B28517E11063E442008D42E7 /* TWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517DD1063E442008D42E7 /* TWLoadingView.m */; };
-		B28517E21063E442008D42E7 /* TWStripView.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517DE1063E442008D42E7 /* TWStripView.h */; };
-		B28517E31063E442008D42E7 /* TWStripView.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517DF1063E442008D42E7 /* TWStripView.m */; };
 		B2974D6D106299CB00C9F4A6 /* UIApplication+undocumented.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D5C106299CB00C9F4A6 /* UIApplication+undocumented.h */; };
-		B2974D6E106299CB00C9F4A6 /* UIButton+setTitle.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D5D106299CB00C9F4A6 /* UIButton+setTitle.h */; };
-		B2974D6F106299CB00C9F4A6 /* UIButton+setTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D5E106299CB00C9F4A6 /* UIButton+setTitle.m */; };
 		B2974D72106299CB00C9F4A6 /* UIDevice+isSimulator.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D61106299CB00C9F4A6 /* UIDevice+isSimulator.h */; };
 		B2974D73106299CB00C9F4A6 /* UIDevice+isSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D62106299CB00C9F4A6 /* UIDevice+isSimulator.m */; };
 		B2974D74106299CB00C9F4A6 /* UIImage+crop.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D63106299CB00C9F4A6 /* UIImage+crop.h */; };
@@ -67,16 +67,6 @@
 		B2D2FBA4106401BE00537F3A /* TouchJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B2D2FBA3106401BE00537F3A /* TouchJSON.h */; };
 		B2FA61A11059616200499856 /* TWConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61601059616200499856 /* TWConnection.h */; };
 		B2FA61A21059616200499856 /* TWConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61611059616200499856 /* TWConnection.m */; };
-		B2FA61A31059616200499856 /* TWEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61621059616200499856 /* TWEntity.h */; };
-		B2FA61A41059616200499856 /* TWEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61631059616200499856 /* TWEntity.m */; };
-		B2FA61A51059616200499856 /* TWEntityController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61641059616200499856 /* TWEntityController.h */; };
-		B2FA61A61059616200499856 /* TWEntityController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61651059616200499856 /* TWEntityController.m */; };
-		B2FA61A71059616200499856 /* TWEntityDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61661059616200499856 /* TWEntityDataSource.h */; };
-		B2FA61A81059616200499856 /* TWEntityDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61671059616200499856 /* TWEntityDataSource.m */; };
-		B2FA61A91059616200499856 /* TWRemoteEntityDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61681059616200499856 /* TWRemoteEntityDataSource.h */; };
-		B2FA61AA1059616200499856 /* TWRemoteEntityDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61691059616200499856 /* TWRemoteEntityDataSource.m */; };
-		B2FA61AB1059616200499856 /* TWSQLiteEntityDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA616A1059616200499856 /* TWSQLiteEntityDataSource.h */; };
-		B2FA61AC1059616200499856 /* TWSQLiteEntityDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA616B1059616200499856 /* TWSQLiteEntityDataSource.m */; };
 		B2FA61AD1059616200499856 /* TWToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA616C1059616200499856 /* TWToolkit.h */; };
 		B2FA61AE1059616200499856 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA616F1059616200499856 /* Reachability.h */; };
 		B2FA61AF1059616200499856 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61701059616200499856 /* Reachability.m */; };
@@ -86,24 +76,26 @@
 
 /* Begin PBXFileReference section */
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B21339E610974AC300E124D6 /* TWGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWGradientView.h; sourceTree = "<group>"; };
+		B21339E710974AC300E124D6 /* TWGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWGradientView.m; sourceTree = "<group>"; };
 		B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit_Prefix.pch; sourceTree = "<group>"; };
 		B21504C910583B4000409ED4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B21504CD10583B4600409ED4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B21B84881067D36300E5C076 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B253C1F310728DB900E0CE10 /* TWToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TWToolkit.bundle; sourceTree = "<group>"; };
 		B253C1F810728DC500E0CE10 /* TWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWHUDView.h; sourceTree = "<group>"; };
 		B253C1F910728DC500E0CE10 /* TWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWHUDView.m; sourceTree = "<group>"; };
+		B27C60B2107FFA5300F7FBD7 /* TWRemoteImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRemoteImageView.h; sourceTree = "<group>"; };
+		B27C60B3107FFA5300F7FBD7 /* TWRemoteImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRemoteImageView.m; sourceTree = "<group>"; };
+		B27C623D10800EE300F7FBD7 /* Todo.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo.markdown; sourceTree = SOURCE_ROOT; };
 		B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRoundedView.h; sourceTree = "<group>"; };
 		B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRoundedView.m; sourceTree = "<group>"; };
 		B28517D81063E43E008D42E7 /* TWPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPickerViewController.h; sourceTree = "<group>"; };
 		B28517D91063E43E008D42E7 /* TWPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPickerViewController.m; sourceTree = "<group>"; };
 		B28517DC1063E442008D42E7 /* TWLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWLoadingView.h; sourceTree = "<group>"; };
 		B28517DD1063E442008D42E7 /* TWLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWLoadingView.m; sourceTree = "<group>"; };
-		B28517DE1063E442008D42E7 /* TWStripView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWStripView.h; sourceTree = "<group>"; };
-		B28517DF1063E442008D42E7 /* TWStripView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWStripView.m; sourceTree = "<group>"; };
 		B2974D5C106299CB00C9F4A6 /* UIApplication+undocumented.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+undocumented.h"; sourceTree = "<group>"; };
-		B2974D5D106299CB00C9F4A6 /* UIButton+setTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+setTitle.h"; sourceTree = "<group>"; };
-		B2974D5E106299CB00C9F4A6 /* UIButton+setTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+setTitle.m"; sourceTree = "<group>"; };
 		B2974D61106299CB00C9F4A6 /* UIDevice+isSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+isSimulator.h"; sourceTree = "<group>"; };
 		B2974D62106299CB00C9F4A6 /* UIDevice+isSimulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+isSimulator.m"; sourceTree = "<group>"; };
 		B2974D63106299CB00C9F4A6 /* UIImage+crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+crop.h"; sourceTree = "<group>"; };
@@ -146,16 +138,6 @@
 		B2D2FBA3106401BE00537F3A /* TouchJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchJSON.h; sourceTree = "<group>"; };
 		B2FA61601059616200499856 /* TWConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWConnection.h; sourceTree = "<group>"; };
 		B2FA61611059616200499856 /* TWConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWConnection.m; sourceTree = "<group>"; };
-		B2FA61621059616200499856 /* TWEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEntity.h; sourceTree = "<group>"; };
-		B2FA61631059616200499856 /* TWEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEntity.m; sourceTree = "<group>"; };
-		B2FA61641059616200499856 /* TWEntityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEntityController.h; sourceTree = "<group>"; };
-		B2FA61651059616200499856 /* TWEntityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEntityController.m; sourceTree = "<group>"; };
-		B2FA61661059616200499856 /* TWEntityDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWEntityDataSource.h; sourceTree = "<group>"; };
-		B2FA61671059616200499856 /* TWEntityDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWEntityDataSource.m; sourceTree = "<group>"; };
-		B2FA61681059616200499856 /* TWRemoteEntityDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRemoteEntityDataSource.h; sourceTree = "<group>"; };
-		B2FA61691059616200499856 /* TWRemoteEntityDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRemoteEntityDataSource.m; sourceTree = "<group>"; };
-		B2FA616A1059616200499856 /* TWSQLiteEntityDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWSQLiteEntityDataSource.h; sourceTree = "<group>"; };
-		B2FA616B1059616200499856 /* TWSQLiteEntityDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSQLiteEntityDataSource.m; sourceTree = "<group>"; };
 		B2FA616C1059616200499856 /* TWToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit.h; sourceTree = "<group>"; };
 		B2FA616F1059616200499856 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		B2FA61701059616200499856 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -213,6 +195,7 @@
 		B215045D10583A7300409ED4 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B21B84881067D36300E5C076 /* main.m */,
 				B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */,
 			);
 			path = "Other Sources";
@@ -234,10 +217,12 @@
 				B253C1F910728DC500E0CE10 /* TWHUDView.m */,
 				B28517DC1063E442008D42E7 /* TWLoadingView.h */,
 				B28517DD1063E442008D42E7 /* TWLoadingView.m */,
-				B28517DE1063E442008D42E7 /* TWStripView.h */,
-				B28517DF1063E442008D42E7 /* TWStripView.m */,
 				B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */,
 				B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */,
+				B27C60B2107FFA5300F7FBD7 /* TWRemoteImageView.h */,
+				B27C60B3107FFA5300F7FBD7 /* TWRemoteImageView.m */,
+				B21339E610974AC300E124D6 /* TWGradientView.h */,
+				B21339E710974AC300E124D6 /* TWGradientView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -254,6 +239,7 @@
 		B2A41EDD10728C09006EF521 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B27C623D10800EE300F7FBD7 /* Todo.markdown */,
 				B253C1F310728DB900E0CE10 /* TWToolkit.bundle */,
 			);
 			path = Resources;
@@ -274,8 +260,6 @@
 				B2C2076E106296FB00AE1B56 /* NSString+MD5Sum.h */,
 				B2C2076F106296FB00AE1B56 /* NSString+MD5Sum.m */,
 				B2974D5C106299CB00C9F4A6 /* UIApplication+undocumented.h */,
-				B2974D5D106299CB00C9F4A6 /* UIButton+setTitle.h */,
-				B2974D5E106299CB00C9F4A6 /* UIButton+setTitle.m */,
 				B2974D61106299CB00C9F4A6 /* UIDevice+isSimulator.h */,
 				B2974D62106299CB00C9F4A6 /* UIDevice+isSimulator.m */,
 				B2974D63106299CB00C9F4A6 /* UIImage+crop.h */,
@@ -301,29 +285,11 @@
 			name = Connection;
 			sourceTree = "<group>";
 		};
-		B2C2077B1062970B00AE1B56 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				B2FA61621059616200499856 /* TWEntity.h */,
-				B2FA61631059616200499856 /* TWEntity.m */,
-				B2FA61641059616200499856 /* TWEntityController.h */,
-				B2FA61651059616200499856 /* TWEntityController.m */,
-				B2FA61661059616200499856 /* TWEntityDataSource.h */,
-				B2FA61671059616200499856 /* TWEntityDataSource.m */,
-				B2FA61681059616200499856 /* TWRemoteEntityDataSource.h */,
-				B2FA61691059616200499856 /* TWRemoteEntityDataSource.m */,
-				B2FA616A1059616200499856 /* TWSQLiteEntityDataSource.h */,
-				B2FA616B1059616200499856 /* TWSQLiteEntityDataSource.m */,
-			);
-			name = Entity;
-			sourceTree = "<group>";
-		};
 		B2FA61431059616200499856 /* TWToolkit */ = {
 			isa = PBXGroup;
 			children = (
 				B2FA616C1059616200499856 /* TWToolkit.h */,
 				B2C2077A106296FE00AE1B56 /* Connection */,
-				B2C2077B1062970B00AE1B56 /* Entity */,
 				B28517D51063E42A008D42E7 /* View Controllers */,
 				B28517D71063E433008D42E7 /* Views */,
 				B2A41E97107287A5006EF521 /* Cells */,
@@ -384,11 +350,6 @@
 			files = (
 				B215045F10583A7300409ED4 /* TWToolkit_Prefix.pch in Headers */,
 				B2FA61A11059616200499856 /* TWConnection.h in Headers */,
-				B2FA61A31059616200499856 /* TWEntity.h in Headers */,
-				B2FA61A51059616200499856 /* TWEntityController.h in Headers */,
-				B2FA61A71059616200499856 /* TWEntityDataSource.h in Headers */,
-				B2FA61A91059616200499856 /* TWRemoteEntityDataSource.h in Headers */,
-				B2FA61AB1059616200499856 /* TWSQLiteEntityDataSource.h in Headers */,
 				B2FA61AD1059616200499856 /* TWToolkit.h in Headers */,
 				B2FA61AE1059616200499856 /* Reachability.h in Headers */,
 				B2FA61B01059616200499856 /* CDataScanner.h in Headers */,
@@ -399,7 +360,6 @@
 				B2C20778106296FB00AE1B56 /* NSString+MD5Sum.h in Headers */,
 				B2C207841062973000AE1B56 /* TWCategories.h in Headers */,
 				B2974D6D106299CB00C9F4A6 /* UIApplication+undocumented.h in Headers */,
-				B2974D6E106299CB00C9F4A6 /* UIButton+setTitle.h in Headers */,
 				B2974D72106299CB00C9F4A6 /* UIDevice+isSimulator.h in Headers */,
 				B2974D74106299CB00C9F4A6 /* UIImage+crop.h in Headers */,
 				B2974D76106299CB00C9F4A6 /* UIScrollView+scroller.h in Headers */,
@@ -409,7 +369,6 @@
 				B2974D7C106299CB00C9F4A6 /* UIWebView+setFontSize.h in Headers */,
 				B28517DA1063E43E008D42E7 /* TWPickerViewController.h in Headers */,
 				B28517E01063E442008D42E7 /* TWLoadingView.h in Headers */,
-				B28517E21063E442008D42E7 /* TWStripView.h in Headers */,
 				B2D2FB661063FFBB00537F3A /* CDataScanner_Extensions.h in Headers */,
 				B2D2FB681063FFBB00537F3A /* CJSONDeserializer.h in Headers */,
 				B2D2FB6A1063FFBB00537F3A /* CJSONScanner.h in Headers */,
@@ -421,6 +380,8 @@
 				B2807EE010642A3400E4F6C6 /* TWRoundedView.h in Headers */,
 				B2A41E9A107287BA006EF521 /* TWSwitchTableViewCell.h in Headers */,
 				B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */,
+				B27C60B4107FFA5300F7FBD7 /* TWRemoteImageView.h in Headers */,
+				B21339E810974AC300E124D6 /* TWGradientView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,11 +432,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2FA61A21059616200499856 /* TWConnection.m in Sources */,
-				B2FA61A41059616200499856 /* TWEntity.m in Sources */,
-				B2FA61A61059616200499856 /* TWEntityController.m in Sources */,
-				B2FA61A81059616200499856 /* TWEntityDataSource.m in Sources */,
-				B2FA61AA1059616200499856 /* TWRemoteEntityDataSource.m in Sources */,
-				B2FA61AC1059616200499856 /* TWSQLiteEntityDataSource.m in Sources */,
 				B2FA61AF1059616200499856 /* Reachability.m in Sources */,
 				B2FA61B11059616200499856 /* CDataScanner.m in Sources */,
 				B2C20771106296FB00AE1B56 /* NSArray+shuffle.m in Sources */,
@@ -483,7 +439,6 @@
 				B2C20775106296FB00AE1B56 /* NSString+containsString.m in Sources */,
 				B2C20777106296FB00AE1B56 /* NSString+encoding.m in Sources */,
 				B2C20779106296FB00AE1B56 /* NSString+MD5Sum.m in Sources */,
-				B2974D6F106299CB00C9F4A6 /* UIButton+setTitle.m in Sources */,
 				B2974D73106299CB00C9F4A6 /* UIDevice+isSimulator.m in Sources */,
 				B2974D75106299CB00C9F4A6 /* UIImage+crop.m in Sources */,
 				B2974D79106299CB00C9F4A6 /* UIView+fading.m in Sources */,
@@ -491,7 +446,6 @@
 				B2974D7D106299CB00C9F4A6 /* UIWebView+setFontSize.m in Sources */,
 				B28517DB1063E43E008D42E7 /* TWPickerViewController.m in Sources */,
 				B28517E11063E442008D42E7 /* TWLoadingView.m in Sources */,
-				B28517E31063E442008D42E7 /* TWStripView.m in Sources */,
 				B2D2FB671063FFBB00537F3A /* CDataScanner_Extensions.m in Sources */,
 				B2D2FB691063FFBB00537F3A /* CJSONDeserializer.m in Sources */,
 				B2D2FB6B1063FFBB00537F3A /* CJSONScanner.m in Sources */,
@@ -502,6 +456,8 @@
 				B2807EE110642A3400E4F6C6 /* TWRoundedView.m in Sources */,
 				B2A41E9B107287BA006EF521 /* TWSwitchTableViewCell.m in Sources */,
 				B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */,
+				B27C60B5107FFA5300F7FBD7 /* TWRemoteImageView.m in Sources */,
+				B21339E910974AC300E124D6 /* TWGradientView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
