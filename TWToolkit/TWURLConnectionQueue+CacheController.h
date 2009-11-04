@@ -6,6 +6,8 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
+#import "TWURLConnectionQueue.h"
+
 @class TWURLRequest;
 
 @interface TWURLConnectionQueue (CacheController)

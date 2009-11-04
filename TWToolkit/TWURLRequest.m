@@ -8,6 +8,7 @@
 
 #import "TWURLRequest.h"
 #import "NSString+encoding.h"
+#import "NSString+SBJSON.h"
 
 @interface TWURLRequest (PrivateMethods)
 - (void)_updateHeaders;

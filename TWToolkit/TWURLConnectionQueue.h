@@ -6,26 +6,29 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "TWURLConnectionQueueDelegate.h"
+#import "TWURLConnection.h"
 
 @class TWURLRequest;
 
-@interface TWURLConnectionQueue : NSObject {
+@interface TWURLConnectionQueue : NSObject <TWURLConnectionDelegate> {
 
 	NSMutableArray *queue;
 	NSMutableArray *connections;
-	NSMutableDictionary *delegates;
 }
 
 + (TWURLConnectionQueue *)defaultQueue;
 
-- (void)startRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionQueueDelegate>)delegate;
-- (void)startRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionQueueDelegate>)delegate priority:(NSUInteger)priority;
+- (void)startRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate;
+- (void)startRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate priority:(NSUInteger)priority;
 
 - (void)cancelRequest:(TWURLRequest *)request;
-- (void)removeDelegate:(id<TWURLConnectionQueueDelegate>)delegate;
+- (void)cancelRequests:(NSArray *)requests;
+- (NSArray *)requestsBelongingTo:(id<TWURLConnectionDelegate>)delegate;
+- (void)cancelRequestsBelongingTo:(id<TWURLConnectionDelegate>)delegate;
+- (void)removeDelegate:(id<TWURLConnectionDelegate>)delegate;
 
 - (NSUInteger)requestsInQueue;
-- (BOOL)isRequesting;
+- (BOOL)isLoading;
+- (BOOL)isLoadingRequest:(TWURLRequest *)request;
 
 @end

@@ -7,11 +7,11 @@
 //
 
 #import "TWURLConnectionQueue.h"
+#import "TWURLConnection.h"
 
 @interface TWURLConnectionQueue (Private)
 
-- (TWURLRequest *)_nextRequest;
-- (void)removeDelegate:(id<TWURLConnectionQueueDelegate>)delegate;
+- (TWURLRequest *)_removeNextRequestFromQueue:(BOOL)remove;
 
 @end
 
@@ -22,13 +22,53 @@
 #pragma mark Singleton Methods
 #pragma mark -
 
-+ (TWURLConnectionQueue *)defaultQueue {
-	return nil;
+static TWURLConnectionQueue *defaultQueue = nil;
+
++ (TWURLConnectionQueue*)defaultQueue {
+    if (defaultQueue == nil) {
+        defaultQueue = [[super allocWithZone:NULL] init];
+    }
+    return defaultQueue;
+}
+
++ (id)allocWithZone:(NSZone *)zone {
+    return [[self defaultQueue] retain];
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    return self;
+}
+
+- (id)retain {
+    return self;
+}
+
+- (NSUInteger)retainCount {
+    return NSUIntegerMax;  // Denotes an object that cannot be released
+}
+
+- (void)release {
+    // Do nothing
+}
+
+- (id)autorelease {
+    return self;
 }
 
 #pragma mark -
 #pragma mark NSObject
 #pragma mark -
+
+- (id)init {
+	if (self = [super init]) {
+		NSLog(@"INIT");
+		// TODO: Check for init
+		queue = [[NSMutableArray alloc] init];
+		connections = [[NSMutableArray alloc] init];
+	}
+	return self;
+}
+
 
 - (void)dealloc {
 	[queue release];
@@ -41,12 +81,12 @@
 #pragma mark Request Methods
 #pragma mark -
 
-- (void)startRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionQueueDelegate>)delegate {
+- (void)startRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate {
 	[self startRequest:request delegate:delegate priority:1];
 }
 
 
-- (void)startRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionQueueDelegate>)delegate priority:(NSUInteger)priority {
+- (void)startRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate priority:(NSUInteger)priority {
 
 	// Fix priority
 	if (priority < 1) {
@@ -58,16 +98,37 @@
 	}
 	
 	// TODO: Request
-	
 }
+
 
 - (void)cancelRequest:(TWURLRequest *)request {
-	
+	// TODO: Implement
 }
 
 
-- (void)removeDelegate:(id<TWURLConnectionQueueDelegate>)delegate {
-	
+- (void)cancelRequests:(NSArray *)requests {
+	for (TWURLRequest *request in requests) {
+		[self cancelRequest:request];
+	}
+}
+
+
+- (NSArray *)requestsBelongingTo:(id<TWURLConnectionDelegate>)delegate {
+	// TODO: Implement
+}
+
+
+- (void)cancelRequestsBelongingTo:(id<TWURLConnectionDelegate>)delegate {
+	// TODO: Implement
+}
+
+
+- (void)removeDelegate:(id<TWURLConnectionDelegate>)delegate {
+	for (TWURLConnection *connection in connections) {
+		if (connection.delegate == delegate) {
+			connection.delegate = nil;
+		}
+	}
 }
 
 
@@ -80,8 +141,19 @@
 }
 
 
-- (BOOL)isRequesting {
-	return [self requestsInQueue] > 0;
+- (BOOL)isLoading {
+	for (TWURLConnection *connection in connections) {
+		if ([connection isLoading]) {
+			return YES;
+		}
+	}
+	return NO;
+}
+
+
+- (BOOL)isLoadingRequest:(TWURLRequest *)request {
+	// TODO: Implement
+	return NO;
 }
 
 
@@ -89,7 +161,8 @@
 #pragma mark Private Methods
 #pragma mark -
 
-- (TWURLRequest *)_nextRequest {
+- (TWURLRequest *)_removeNextRequestFromQueue:(BOOL)remove; {
+	// TODO: Implement
 	return nil;
 }
 

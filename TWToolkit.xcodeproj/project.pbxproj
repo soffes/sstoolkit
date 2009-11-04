@@ -11,8 +11,6 @@
 		B215045F10583A7300409ED4 /* TWToolkit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */; };
 		B21504CA10583B4000409ED4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504C910583B4000409ED4 /* SystemConfiguration.framework */; };
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
-		B22BAB4C10A134DE0011B963 /* TWTwitterOAuthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B22BAB4A10A134DE0011B963 /* TWTwitterOAuthViewController.h */; };
-		B22BAB4D10A134DE0011B963 /* TWTwitterOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22BAB4B10A134DE0011B963 /* TWTwitterOAuthViewController.m */; };
 		B22BAB7110A135E60011B963 /* TWURLRequest+OAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B22BAB6F10A135E60011B963 /* TWURLRequest+OAuth.h */; };
 		B22BAB7210A135E60011B963 /* TWURLRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = B22BAB7010A135E60011B963 /* TWURLRequest+OAuth.m */; };
 		B22BAC3710A1440E0011B963 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = B22BAC1F10A1440E0011B963 /* Base64Transcoder.c */; };
@@ -52,12 +50,10 @@
 		B233E31310A1DB5600EA4DC3 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E30610A1DB5600EA4DC3 /* SBJsonWriter.m */; };
 		B233E33210A1EBCD00EA4DC3 /* TWURLConnectionQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E33010A1EBCD00EA4DC3 /* TWURLConnectionQueue.h */; };
 		B233E33310A1EBCD00EA4DC3 /* TWURLConnectionQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E33110A1EBCD00EA4DC3 /* TWURLConnectionQueue.m */; };
-		B233E34D10A20CA600EA4DC3 /* TWTwitterOAuthViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E34C10A20CA600EA4DC3 /* TWTwitterOAuthViewControllerDelegate.h */; };
-		B233E35210A20D2900EA4DC3 /* TWURLConnectionQueueDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E35110A20D2900EA4DC3 /* TWURLConnectionQueueDelegate.h */; };
+		B233E3F710A21D4700EA4DC3 /* TWURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E3F510A21D4700EA4DC3 /* TWURLConnection.h */; };
+		B233E3F810A21D4700EA4DC3 /* TWURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E3F610A21D4700EA4DC3 /* TWURLConnection.m */; };
 		B23E8979108040010065E392 /* TWURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B23E8977108040010065E392 /* TWURLRequest.h */; };
 		B23E897A108040010065E392 /* TWURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E8978108040010065E392 /* TWURLRequest.m */; };
-		B24E03F51083FB6400F6A7B7 /* TWRemoteImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E03F31083FB6400F6A7B7 /* TWRemoteImageView.h */; };
-		B24E03F61083FB6400F6A7B7 /* TWRemoteImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E03F41083FB6400F6A7B7 /* TWRemoteImageView.m */; };
 		B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */ = {isa = PBXBuildFile; fileRef = B253C1F810728DC500E0CE10 /* TWHUDView.h */; };
 		B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = B253C1F910728DC500E0CE10 /* TWHUDView.m */; };
 		B2807EE010642A3400E4F6C6 /* TWRoundedView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */; };
@@ -96,8 +92,6 @@
 		B2C20778106296FB00AE1B56 /* NSString+MD5Sum.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C2076E106296FB00AE1B56 /* NSString+MD5Sum.h */; };
 		B2C20779106296FB00AE1B56 /* NSString+MD5Sum.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C2076F106296FB00AE1B56 /* NSString+MD5Sum.m */; };
 		B2C207841062973000AE1B56 /* TWCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C207831062973000AE1B56 /* TWCategories.h */; };
-		B2FA61A11059616200499856 /* TWURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA61601059616200499856 /* TWURLConnection.h */; };
-		B2FA61A21059616200499856 /* TWURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61611059616200499856 /* TWURLConnection.m */; };
 		B2FA61AD1059616200499856 /* TWToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA616C1059616200499856 /* TWToolkit.h */; };
 		B2FA61AE1059616200499856 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA616F1059616200499856 /* Reachability.h */; };
 		B2FA61AF1059616200499856 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61701059616200499856 /* Reachability.m */; };
@@ -108,9 +102,6 @@
 		B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit_Prefix.pch; sourceTree = "<group>"; };
 		B21504C910583B4000409ED4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B21B84881067D36300E5C076 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B22BAB4A10A134DE0011B963 /* TWTwitterOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTwitterOAuthViewController.h; sourceTree = "<group>"; };
-		B22BAB4B10A134DE0011B963 /* TWTwitterOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTwitterOAuthViewController.m; sourceTree = "<group>"; };
 		B22BAB6F10A135E60011B963 /* TWURLRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TWURLRequest+OAuth.h"; sourceTree = "<group>"; };
 		B22BAB7010A135E60011B963 /* TWURLRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TWURLRequest+OAuth.m"; sourceTree = "<group>"; };
 		B22BAC1F10A1440E0011B963 /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
@@ -150,12 +141,10 @@
 		B233E30610A1DB5600EA4DC3 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		B233E33010A1EBCD00EA4DC3 /* TWURLConnectionQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLConnectionQueue.h; sourceTree = "<group>"; };
 		B233E33110A1EBCD00EA4DC3 /* TWURLConnectionQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLConnectionQueue.m; sourceTree = "<group>"; };
-		B233E34C10A20CA600EA4DC3 /* TWTwitterOAuthViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTwitterOAuthViewControllerDelegate.h; sourceTree = "<group>"; };
-		B233E35110A20D2900EA4DC3 /* TWURLConnectionQueueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLConnectionQueueDelegate.h; sourceTree = "<group>"; };
+		B233E3F510A21D4700EA4DC3 /* TWURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLConnection.h; sourceTree = "<group>"; };
+		B233E3F610A21D4700EA4DC3 /* TWURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLConnection.m; sourceTree = "<group>"; };
 		B23E8977108040010065E392 /* TWURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLRequest.h; sourceTree = "<group>"; };
 		B23E8978108040010065E392 /* TWURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLRequest.m; sourceTree = "<group>"; };
-		B24E03F31083FB6400F6A7B7 /* TWRemoteImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRemoteImageView.h; sourceTree = "<group>"; };
-		B24E03F41083FB6400F6A7B7 /* TWRemoteImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRemoteImageView.m; sourceTree = "<group>"; };
 		B253C1F310728DB900E0CE10 /* TWToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TWToolkit.bundle; sourceTree = "<group>"; };
 		B253C1F810728DC500E0CE10 /* TWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWHUDView.h; sourceTree = "<group>"; };
 		B253C1F910728DC500E0CE10 /* TWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWHUDView.m; sourceTree = "<group>"; };
@@ -196,8 +185,6 @@
 		B2C2076E106296FB00AE1B56 /* NSString+MD5Sum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Sum.h"; sourceTree = "<group>"; };
 		B2C2076F106296FB00AE1B56 /* NSString+MD5Sum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Sum.m"; sourceTree = "<group>"; };
 		B2C207831062973000AE1B56 /* TWCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCategories.h; sourceTree = "<group>"; };
-		B2FA61601059616200499856 /* TWURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLConnection.h; sourceTree = "<group>"; };
-		B2FA61611059616200499856 /* TWURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLConnection.m; sourceTree = "<group>"; };
 		B2FA616C1059616200499856 /* TWToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit.h; sourceTree = "<group>"; };
 		B2FA616F1059616200499856 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		B2FA61701059616200499856 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -251,7 +238,6 @@
 		B215045D10583A7300409ED4 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				B21B84881067D36300E5C076 /* main.m */,
 				B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */,
 			);
 			path = "Other Sources";
@@ -320,9 +306,6 @@
 			children = (
 				B28517D81063E43E008D42E7 /* TWPickerViewController.h */,
 				B28517D91063E43E008D42E7 /* TWPickerViewController.m */,
-				B22BAB4A10A134DE0011B963 /* TWTwitterOAuthViewController.h */,
-				B22BAB4B10A134DE0011B963 /* TWTwitterOAuthViewController.m */,
-				B233E34C10A20CA600EA4DC3 /* TWTwitterOAuthViewControllerDelegate.h */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -338,8 +321,6 @@
 				B28517DF1063E442008D42E7 /* TWStripView.m */,
 				B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */,
 				B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */,
-				B24E03F31083FB6400F6A7B7 /* TWRemoteImageView.h */,
-				B24E03F41083FB6400F6A7B7 /* TWRemoteImageView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -413,13 +394,12 @@
 		B2C2077A106296FE00AE1B56 /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				B2FA61601059616200499856 /* TWURLConnection.h */,
-				B2FA61611059616200499856 /* TWURLConnection.m */,
-				B23E8977108040010065E392 /* TWURLRequest.h */,
-				B23E8978108040010065E392 /* TWURLRequest.m */,
 				B233E33010A1EBCD00EA4DC3 /* TWURLConnectionQueue.h */,
 				B233E33110A1EBCD00EA4DC3 /* TWURLConnectionQueue.m */,
-				B233E35110A20D2900EA4DC3 /* TWURLConnectionQueueDelegate.h */,
+				B233E3F510A21D4700EA4DC3 /* TWURLConnection.h */,
+				B233E3F610A21D4700EA4DC3 /* TWURLConnection.m */,
+				B23E8977108040010065E392 /* TWURLRequest.h */,
+				B23E8978108040010065E392 /* TWURLRequest.m */,
 				B2A0753D1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.h */,
 				B2A0753E1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.m */,
 			);
@@ -467,7 +447,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B215045F10583A7300409ED4 /* TWToolkit_Prefix.pch in Headers */,
-				B2FA61A11059616200499856 /* TWURLConnection.h in Headers */,
 				B2FA61AD1059616200499856 /* TWToolkit.h in Headers */,
 				B2FA61AE1059616200499856 /* Reachability.h in Headers */,
 				B2C20770106296FB00AE1B56 /* NSArray+shuffle.h in Headers */,
@@ -492,8 +471,6 @@
 				B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */,
 				B23E8979108040010065E392 /* TWURLRequest.h in Headers */,
 				B2A0753F1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.h in Headers */,
-				B24E03F51083FB6400F6A7B7 /* TWRemoteImageView.h in Headers */,
-				B22BAB4C10A134DE0011B963 /* TWTwitterOAuthViewController.h in Headers */,
 				B22BAB7110A135E60011B963 /* TWURLRequest+OAuth.h in Headers */,
 				B22BAC3810A1440E0011B963 /* Base64Transcoder.h in Headers */,
 				B22BAC3910A1440E0011B963 /* NSMutableURLRequest+Parameters.h in Headers */,
@@ -515,8 +492,7 @@
 				B233E31010A1DB5600EA4DC3 /* SBJsonParser.h in Headers */,
 				B233E31210A1DB5600EA4DC3 /* SBJsonWriter.h in Headers */,
 				B233E33210A1EBCD00EA4DC3 /* TWURLConnectionQueue.h in Headers */,
-				B233E34D10A20CA600EA4DC3 /* TWTwitterOAuthViewControllerDelegate.h in Headers */,
-				B233E35210A20D2900EA4DC3 /* TWURLConnectionQueueDelegate.h in Headers */,
+				B233E3F710A21D4700EA4DC3 /* TWURLConnection.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,7 +542,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2FA61A21059616200499856 /* TWURLConnection.m in Sources */,
 				B2FA61AF1059616200499856 /* Reachability.m in Sources */,
 				B2C20771106296FB00AE1B56 /* NSArray+shuffle.m in Sources */,
 				B2C20773106296FB00AE1B56 /* NSData+MD5Sum.m in Sources */,
@@ -586,8 +561,6 @@
 				B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */,
 				B23E897A108040010065E392 /* TWURLRequest.m in Sources */,
 				B2A075401080F27D002FD0CA /* TWURLConnectionQueue+CacheController.m in Sources */,
-				B24E03F61083FB6400F6A7B7 /* TWRemoteImageView.m in Sources */,
-				B22BAB4D10A134DE0011B963 /* TWTwitterOAuthViewController.m in Sources */,
 				B22BAB7210A135E60011B963 /* TWURLRequest+OAuth.m in Sources */,
 				B22BAC3710A1440E0011B963 /* Base64Transcoder.c in Sources */,
 				B22BAC3A10A1440E0011B963 /* NSMutableURLRequest+Parameters.m in Sources */,
@@ -606,6 +579,7 @@
 				B233E31110A1DB5600EA4DC3 /* SBJsonParser.m in Sources */,
 				B233E31310A1DB5600EA4DC3 /* SBJsonWriter.m in Sources */,
 				B233E33310A1EBCD00EA4DC3 /* TWURLConnectionQueue.m in Sources */,
+				B233E3F810A21D4700EA4DC3 /* TWURLConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
