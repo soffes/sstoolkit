@@ -21,6 +21,38 @@
 @synthesize cacheLifetime;
 
 #pragma mark -
+#pragma mark Class Methods
+#pragma mark -
+
++ (id)parseData:(NSData *)data dataType:(TWURLRequestDataType)dataType error:(NSError **)outError {
+	id parsedObject = nil;
+	
+	switch (dataType) {
+		default:
+		case TWURLRequestDataTypeData: {
+			parsedObject = [NSData dataWithData:data];
+			break;
+		}
+		case TWURLRequestDataTypeString: {
+			parsedObject = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+			break;
+		}
+		case TWURLRequestDataTypeImage: {
+			parsedObject = [UIImage imageWithData:data];
+			break;
+		}
+		case TWURLRequestDataTypeJSON: {
+			NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+			parsedObject = [jsonString JSONValue];
+			[jsonString release];
+			break;
+		}
+	}
+	return parsedObject;
+}
+
+
+#pragma mark -
 #pragma mark NSObject
 #pragma mark -
 

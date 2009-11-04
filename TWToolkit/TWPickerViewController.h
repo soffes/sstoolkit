@@ -12,8 +12,6 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface TWPickerViewController : UITableViewController {
 
 	NSArray *_keys;

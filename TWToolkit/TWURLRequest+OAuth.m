@@ -7,7 +7,8 @@
 //
 
 #import "TWURLRequest+OAuth.h"
-#import "OAuthConsumer/OAuthConsumer.h"
+#import "OAuthConsumer.h"
+#import "NSString+encoding.h"
 
 @implementation TWURLRequest (OAuth)
 

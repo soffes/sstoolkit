@@ -6,7 +6,6 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "TWURLRequest.h"
 
 @protocol TWURLConnectionDelegate;
@@ -27,7 +26,6 @@
 @property (nonatomic, retain) TWURLRequest *request;
 
 + (BOOL)isConnectedToNetwork;
-+ (id)parseData:(NSData *)data dataType:(TWURLRequestDataType)dataType error:(NSError **)outError;
 
 - (id)initWithDelegate:(id<TWURLConnectionDelegate>)aDelegate;
 - (id)initWithRequest:(TWURLRequest *)aRequest delegate:(id<TWURLConnectionDelegate>)aDelegate;
@@ -48,12 +46,12 @@
 
 @optional
 
-- (void)connection:(TWURLConnection *)aConnection startedLoadingRequest:(TWURLRequest *)aRequest;
+- (void)connectionStartedLoading:(TWURLConnection *)aConnection;
 - (void)connection:(TWURLConnection *)aConnection didReceiveBytes:(NSInteger)receivedBytes totalReceivedBytes:(NSInteger)totalReceivedBytes totalExpectedBytes:(NSInteger)totalExpectedBytes;
 - (void)connection:(TWURLConnection *)aConnection didReceiveChunk:(id)chunk;
 - (void)connection:(TWURLConnection *)aConnection failedToParseChunkWithError:(NSError *)error;
-- (void)connection:(TWURLConnection *)aConnection didFinishLoadingRequest:(TWURLRequest *)aRequest withResult:(id)result;
-- (void)connection:(TWURLConnection *)aConnection didFinishLoadingRequest:(TWURLRequest *)aRequest failedToParseResultWithError:(NSError *)error;
+- (void)connection:(TWURLConnection *)aConnection didFinishLoadingWithResult:(id)result;
+- (void)connection:(TWURLConnection *)aConnection failedToParseResultWithError:(NSError *)error;
 - (void)connection:(TWURLConnection *)aConnection failedWithError:(NSError *)error;
 
 @end

@@ -6,17 +6,16 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 #define kTWURLRequestTimeout 60
 
 typedef enum {
 	TWURLRequestDataTypeData = 0,
 	TWURLRequestDataTypeString = 1,
 	TWURLRequestDataTypeImage = 2,
-	TWURLRequestDataTypeJSONArray = 3,
-	TWURLRequestDataTypeJSONDictionary = 4,
-	TWURLRequestDataTypeJSON = TWURLRequestDataTypeJSONArray
+	TWURLRequestDataTypeJSON = 3,
+	TWURLRequestDataTypeJSONArray = TWURLRequestDataTypeJSON, // Deprecated
+	TWURLRequestDataTypeJSONDictionary = TWURLRequestDataTypeJSON, // Deprecated
+	
 } TWURLRequestDataType;
 
 
@@ -34,5 +33,7 @@ typedef enum {
 @property (nonatomic, assign) TWURLRequestDataType dataType;
 @property (nonatomic, copy) NSString *hash;
 @property (nonatomic, assign) NSTimeInterval cacheLifetime;
+
++ (id)parseData:(NSData *)data dataType:(TWURLRequestDataType)dataType error:(NSError **)outError;
 
 @end

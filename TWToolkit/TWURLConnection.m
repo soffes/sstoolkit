@@ -8,7 +8,7 @@
 
 #import "TWURLConnection.h"
 #import "NSString+encoding.h"
-#import "CJSONDeserializer.h"
+#import "NSString+SBJSON.h"
 #import <SystemConfiguration/SystemConfiguration.h>
 #include <netinet/in.h>
 
@@ -42,47 +42,6 @@
 	
 	return (didRetrieveFlags && (flags & kSCNetworkFlagsReachable) && !(flags & kSCNetworkFlagsConnectionRequired));
 }
-
-
-+ (id)parseData:(NSData *)data dataType:(TWURLRequestDataType)dataType error:(NSError **)outError {
-	id parsedObject = nil;
-	
-	switch (dataType) {
-		default:
-		case TWURLRequestDataTypeData: {
-			parsedObject = [NSData dataWithData:data];
-			break;
-		}
-		case TWURLRequestDataTypeString: {
-			parsedObject = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-			break;
-		}
-		case TWURLRequestDataTypeImage: {
-			parsedObject = [UIImage imageWithData:data];
-			break;
-		}
-		case TWURLRequestDataTypeJSONDictionary: {
-			NSError *error = nil;
-			parsedObject = [[CJSONDeserializer deserializer] deserializeAsDictionary:data error:&error];
-			if (error) {
-				*outError = error;
-			}
-			break;
-		}
-		case TWURLRequestDataTypeJSONArray: {
-			// This method is deprecated. This one is being used to support illegal (but common) JSON strings.
-			// @see http://stackoverflow.com/questions/288412#289193
-			NSError *error = nil;
-			parsedObject = [[CJSONDeserializer deserializer] deserialize:data error:&error];
-			if (error) {
-				*outError = error;
-			}
-			break;
-		}
-	}
-	return parsedObject;
-}
-
 
 #pragma mark -
 #pragma mark NSObject

@@ -37,27 +37,23 @@
 		B22BAC4A10A1440E0011B963 /* OAToken.h in Headers */ = {isa = PBXBuildFile; fileRef = B22BAC3210A1440E0011B963 /* OAToken.h */; };
 		B22BAC4B10A1440E0011B963 /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = B22BAC3310A1440E0011B963 /* OAToken.m */; };
 		B22BAC5910A144B80011B963 /* OAuthConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = B22BAC5810A144B80011B963 /* OAuthConsumer.h */; };
-		B233E2E110A1DA6200EA4DC3 /* CDataScanner_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E2CD10A1DA6200EA4DC3 /* CDataScanner_Extensions.h */; };
-		B233E2E210A1DA6200EA4DC3 /* CDataScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E2CE10A1DA6200EA4DC3 /* CDataScanner_Extensions.m */; };
-		B233E2E310A1DA6200EA4DC3 /* CDataScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E2CF10A1DA6200EA4DC3 /* CDataScanner.h */; };
-		B233E2E410A1DA6200EA4DC3 /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E2D010A1DA6200EA4DC3 /* CDataScanner.m */; };
-		B233E2E510A1DA6200EA4DC3 /* CJSONDataSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E2D110A1DA6200EA4DC3 /* CJSONDataSerializer.h */; };
-		B233E2E610A1DA6200EA4DC3 /* CJSONDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E2D210A1DA6200EA4DC3 /* CJSONDataSerializer.m */; };
-		B233E2E710A1DA6200EA4DC3 /* CJSONDeserializer.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E2D310A1DA6200EA4DC3 /* CJSONDeserializer.h */; };
-		B233E2E810A1DA6200EA4DC3 /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E2D410A1DA6200EA4DC3 /* CJSONDeserializer.m */; };
-		B233E2E910A1DA6200EA4DC3 /* CJSONScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E2D510A1DA6200EA4DC3 /* CJSONScanner.h */; };
-		B233E2EA10A1DA6200EA4DC3 /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E2D610A1DA6200EA4DC3 /* CJSONScanner.m */; };
-		B233E2EB10A1DA6200EA4DC3 /* CJSONSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E2D710A1DA6200EA4DC3 /* CJSONSerializer.h */; };
-		B233E2EC10A1DA6200EA4DC3 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E2D810A1DA6200EA4DC3 /* CJSONSerializer.m */; };
-		B233E2ED10A1DA6200EA4DC3 /* CSerializedJSONData.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E2D910A1DA6200EA4DC3 /* CSerializedJSONData.h */; };
-		B233E2EE10A1DA6200EA4DC3 /* CSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E2DA10A1DA6200EA4DC3 /* CSerializedJSONData.m */; };
-		B233E2EF10A1DA6200EA4DC3 /* NSCharacterSet_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E2DB10A1DA6200EA4DC3 /* NSCharacterSet_Extensions.h */; };
-		B233E2F010A1DA6200EA4DC3 /* NSCharacterSet_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E2DC10A1DA6200EA4DC3 /* NSCharacterSet_Extensions.m */; };
-		B233E2F110A1DA6200EA4DC3 /* NSDictionary_JSONExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E2DD10A1DA6200EA4DC3 /* NSDictionary_JSONExtensions.h */; };
-		B233E2F210A1DA6200EA4DC3 /* NSDictionary_JSONExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E2DE10A1DA6200EA4DC3 /* NSDictionary_JSONExtensions.m */; };
-		B233E2F310A1DA6200EA4DC3 /* NSScanner_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E2DF10A1DA6200EA4DC3 /* NSScanner_Extensions.h */; };
-		B233E2F410A1DA6200EA4DC3 /* NSScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E2E010A1DA6200EA4DC3 /* NSScanner_Extensions.m */; };
-		B233E2F610A1DA7800EA4DC3 /* TouchJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E2F510A1DA7800EA4DC3 /* TouchJSON.h */; };
+		B233E30710A1DB5600EA4DC3 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E2FA10A1DB5600EA4DC3 /* JSON.h */; };
+		B233E30810A1DB5600EA4DC3 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E2FB10A1DB5600EA4DC3 /* NSObject+SBJSON.h */; };
+		B233E30910A1DB5600EA4DC3 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E2FC10A1DB5600EA4DC3 /* NSObject+SBJSON.m */; };
+		B233E30A10A1DB5600EA4DC3 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E2FD10A1DB5600EA4DC3 /* NSString+SBJSON.h */; };
+		B233E30B10A1DB5600EA4DC3 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E2FE10A1DB5600EA4DC3 /* NSString+SBJSON.m */; };
+		B233E30C10A1DB5600EA4DC3 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E2FF10A1DB5600EA4DC3 /* SBJSON.h */; };
+		B233E30D10A1DB5600EA4DC3 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E30010A1DB5600EA4DC3 /* SBJSON.m */; };
+		B233E30E10A1DB5600EA4DC3 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E30110A1DB5600EA4DC3 /* SBJsonBase.h */; };
+		B233E30F10A1DB5600EA4DC3 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E30210A1DB5600EA4DC3 /* SBJsonBase.m */; };
+		B233E31010A1DB5600EA4DC3 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E30310A1DB5600EA4DC3 /* SBJsonParser.h */; };
+		B233E31110A1DB5600EA4DC3 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E30410A1DB5600EA4DC3 /* SBJsonParser.m */; };
+		B233E31210A1DB5600EA4DC3 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E30510A1DB5600EA4DC3 /* SBJsonWriter.h */; };
+		B233E31310A1DB5600EA4DC3 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E30610A1DB5600EA4DC3 /* SBJsonWriter.m */; };
+		B233E33210A1EBCD00EA4DC3 /* TWURLConnectionQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E33010A1EBCD00EA4DC3 /* TWURLConnectionQueue.h */; };
+		B233E33310A1EBCD00EA4DC3 /* TWURLConnectionQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E33110A1EBCD00EA4DC3 /* TWURLConnectionQueue.m */; };
+		B233E34D10A20CA600EA4DC3 /* TWTwitterOAuthViewControllerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E34C10A20CA600EA4DC3 /* TWTwitterOAuthViewControllerDelegate.h */; };
+		B233E35210A20D2900EA4DC3 /* TWURLConnectionQueueDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E35110A20D2900EA4DC3 /* TWURLConnectionQueueDelegate.h */; };
 		B23E8979108040010065E392 /* TWURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B23E8977108040010065E392 /* TWURLRequest.h */; };
 		B23E897A108040010065E392 /* TWURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E8978108040010065E392 /* TWURLRequest.m */; };
 		B24E03F51083FB6400F6A7B7 /* TWRemoteImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E03F31083FB6400F6A7B7 /* TWRemoteImageView.h */; };
@@ -85,8 +81,8 @@
 		B2974D7B106299CB00C9F4A6 /* UIWebView+scrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D6A106299CB00C9F4A6 /* UIWebView+scrolling.m */; };
 		B2974D7C106299CB00C9F4A6 /* UIWebView+setFontSize.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D6B106299CB00C9F4A6 /* UIWebView+setFontSize.h */; };
 		B2974D7D106299CB00C9F4A6 /* UIWebView+setFontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D6C106299CB00C9F4A6 /* UIWebView+setFontSize.m */; };
-		B2A0753F1080F27D002FD0CA /* TWURLConnectionCacheController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2A0753D1080F27D002FD0CA /* TWURLConnectionCacheController.h */; };
-		B2A075401080F27D002FD0CA /* TWURLConnectionCacheController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A0753E1080F27D002FD0CA /* TWURLConnectionCacheController.m */; };
+		B2A0753F1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2A0753D1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.h */; };
+		B2A075401080F27D002FD0CA /* TWURLConnectionQueue+CacheController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A0753E1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.m */; };
 		B2A41E9A107287BA006EF521 /* TWSwitchTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2A41E98107287BA006EF521 /* TWSwitchTableViewCell.h */; };
 		B2A41E9B107287BA006EF521 /* TWSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A41E99107287BA006EF521 /* TWSwitchTableViewCell.m */; };
 		B2C20770106296FB00AE1B56 /* NSArray+shuffle.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C20766106296FB00AE1B56 /* NSArray+shuffle.h */; };
@@ -139,27 +135,23 @@
 		B22BAC3210A1440E0011B963 /* OAToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken.h; sourceTree = "<group>"; };
 		B22BAC3310A1440E0011B963 /* OAToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAToken.m; sourceTree = "<group>"; };
 		B22BAC5810A144B80011B963 /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
-		B233E2CD10A1DA6200EA4DC3 /* CDataScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner_Extensions.h; sourceTree = "<group>"; };
-		B233E2CE10A1DA6200EA4DC3 /* CDataScanner_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner_Extensions.m; sourceTree = "<group>"; };
-		B233E2CF10A1DA6200EA4DC3 /* CDataScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner.h; sourceTree = "<group>"; };
-		B233E2D010A1DA6200EA4DC3 /* CDataScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner.m; sourceTree = "<group>"; };
-		B233E2D110A1DA6200EA4DC3 /* CJSONDataSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONDataSerializer.h; sourceTree = "<group>"; };
-		B233E2D210A1DA6200EA4DC3 /* CJSONDataSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONDataSerializer.m; sourceTree = "<group>"; };
-		B233E2D310A1DA6200EA4DC3 /* CJSONDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONDeserializer.h; sourceTree = "<group>"; };
-		B233E2D410A1DA6200EA4DC3 /* CJSONDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONDeserializer.m; sourceTree = "<group>"; };
-		B233E2D510A1DA6200EA4DC3 /* CJSONScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONScanner.h; sourceTree = "<group>"; };
-		B233E2D610A1DA6200EA4DC3 /* CJSONScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONScanner.m; sourceTree = "<group>"; };
-		B233E2D710A1DA6200EA4DC3 /* CJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializer.h; sourceTree = "<group>"; };
-		B233E2D810A1DA6200EA4DC3 /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
-		B233E2D910A1DA6200EA4DC3 /* CSerializedJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSerializedJSONData.h; sourceTree = "<group>"; };
-		B233E2DA10A1DA6200EA4DC3 /* CSerializedJSONData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSerializedJSONData.m; sourceTree = "<group>"; };
-		B233E2DB10A1DA6200EA4DC3 /* NSCharacterSet_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCharacterSet_Extensions.h; sourceTree = "<group>"; };
-		B233E2DC10A1DA6200EA4DC3 /* NSCharacterSet_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSCharacterSet_Extensions.m; sourceTree = "<group>"; };
-		B233E2DD10A1DA6200EA4DC3 /* NSDictionary_JSONExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionary_JSONExtensions.h; sourceTree = "<group>"; };
-		B233E2DE10A1DA6200EA4DC3 /* NSDictionary_JSONExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionary_JSONExtensions.m; sourceTree = "<group>"; };
-		B233E2DF10A1DA6200EA4DC3 /* NSScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSScanner_Extensions.h; sourceTree = "<group>"; };
-		B233E2E010A1DA6200EA4DC3 /* NSScanner_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSScanner_Extensions.m; sourceTree = "<group>"; };
-		B233E2F510A1DA7800EA4DC3 /* TouchJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchJSON.h; sourceTree = "<group>"; };
+		B233E2FA10A1DB5600EA4DC3 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		B233E2FB10A1DB5600EA4DC3 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		B233E2FC10A1DB5600EA4DC3 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		B233E2FD10A1DB5600EA4DC3 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		B233E2FE10A1DB5600EA4DC3 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		B233E2FF10A1DB5600EA4DC3 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		B233E30010A1DB5600EA4DC3 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		B233E30110A1DB5600EA4DC3 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		B233E30210A1DB5600EA4DC3 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		B233E30310A1DB5600EA4DC3 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		B233E30410A1DB5600EA4DC3 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		B233E30510A1DB5600EA4DC3 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		B233E30610A1DB5600EA4DC3 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		B233E33010A1EBCD00EA4DC3 /* TWURLConnectionQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLConnectionQueue.h; sourceTree = "<group>"; };
+		B233E33110A1EBCD00EA4DC3 /* TWURLConnectionQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLConnectionQueue.m; sourceTree = "<group>"; };
+		B233E34C10A20CA600EA4DC3 /* TWTwitterOAuthViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTwitterOAuthViewControllerDelegate.h; sourceTree = "<group>"; };
+		B233E35110A20D2900EA4DC3 /* TWURLConnectionQueueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLConnectionQueueDelegate.h; sourceTree = "<group>"; };
 		B23E8977108040010065E392 /* TWURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLRequest.h; sourceTree = "<group>"; };
 		B23E8978108040010065E392 /* TWURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLRequest.m; sourceTree = "<group>"; };
 		B24E03F31083FB6400F6A7B7 /* TWRemoteImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRemoteImageView.h; sourceTree = "<group>"; };
@@ -189,8 +181,8 @@
 		B2974D6A106299CB00C9F4A6 /* UIWebView+scrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+scrolling.m"; sourceTree = "<group>"; };
 		B2974D6B106299CB00C9F4A6 /* UIWebView+setFontSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+setFontSize.h"; sourceTree = "<group>"; };
 		B2974D6C106299CB00C9F4A6 /* UIWebView+setFontSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+setFontSize.m"; sourceTree = "<group>"; };
-		B2A0753D1080F27D002FD0CA /* TWURLConnectionCacheController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLConnectionCacheController.h; sourceTree = "<group>"; };
-		B2A0753E1080F27D002FD0CA /* TWURLConnectionCacheController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLConnectionCacheController.m; sourceTree = "<group>"; };
+		B2A0753D1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TWURLConnectionQueue+CacheController.h"; sourceTree = "<group>"; };
+		B2A0753E1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TWURLConnectionQueue+CacheController.m"; sourceTree = "<group>"; };
 		B2A41E98107287BA006EF521 /* TWSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWSwitchTableViewCell.h; sourceTree = "<group>"; };
 		B2A41E99107287BA006EF521 /* TWSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSwitchTableViewCell.m; sourceTree = "<group>"; };
 		B2C20766106296FB00AE1B56 /* NSArray+shuffle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+shuffle.h"; sourceTree = "<group>"; };
@@ -303,6 +295,26 @@
 			path = OAuthConsumer;
 			sourceTree = "<group>";
 		};
+		B233E2F910A1DB5600EA4DC3 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				B233E2FA10A1DB5600EA4DC3 /* JSON.h */,
+				B233E2FB10A1DB5600EA4DC3 /* NSObject+SBJSON.h */,
+				B233E2FC10A1DB5600EA4DC3 /* NSObject+SBJSON.m */,
+				B233E2FD10A1DB5600EA4DC3 /* NSString+SBJSON.h */,
+				B233E2FE10A1DB5600EA4DC3 /* NSString+SBJSON.m */,
+				B233E2FF10A1DB5600EA4DC3 /* SBJSON.h */,
+				B233E30010A1DB5600EA4DC3 /* SBJSON.m */,
+				B233E30110A1DB5600EA4DC3 /* SBJsonBase.h */,
+				B233E30210A1DB5600EA4DC3 /* SBJsonBase.m */,
+				B233E30310A1DB5600EA4DC3 /* SBJsonParser.h */,
+				B233E30410A1DB5600EA4DC3 /* SBJsonParser.m */,
+				B233E30510A1DB5600EA4DC3 /* SBJsonWriter.h */,
+				B233E30610A1DB5600EA4DC3 /* SBJsonWriter.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 		B28517D51063E42A008D42E7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +322,7 @@
 				B28517D91063E43E008D42E7 /* TWPickerViewController.m */,
 				B22BAB4A10A134DE0011B963 /* TWTwitterOAuthViewController.h */,
 				B22BAB4B10A134DE0011B963 /* TWTwitterOAuthViewController.m */,
+				B233E34C10A20CA600EA4DC3 /* TWTwitterOAuthViewControllerDelegate.h */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -404,8 +417,11 @@
 				B2FA61611059616200499856 /* TWURLConnection.m */,
 				B23E8977108040010065E392 /* TWURLRequest.h */,
 				B23E8978108040010065E392 /* TWURLRequest.m */,
-				B2A0753D1080F27D002FD0CA /* TWURLConnectionCacheController.h */,
-				B2A0753E1080F27D002FD0CA /* TWURLConnectionCacheController.m */,
+				B233E33010A1EBCD00EA4DC3 /* TWURLConnectionQueue.h */,
+				B233E33110A1EBCD00EA4DC3 /* TWURLConnectionQueue.m */,
+				B233E35110A20D2900EA4DC3 /* TWURLConnectionQueueDelegate.h */,
+				B2A0753D1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.h */,
+				B2A0753E1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.m */,
 			);
 			name = Connection;
 			sourceTree = "<group>";
@@ -427,9 +443,9 @@
 		B2FA616D1059616200499856 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				B233E2F910A1DB5600EA4DC3 /* JSON */,
 				B22BAC1E10A1440E0011B963 /* OAuthConsumer */,
 				B2FA616E1059616200499856 /* Reachability */,
-				B2FA61711059616200499856 /* TouchJSON */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -441,34 +457,6 @@
 				B2FA61701059616200499856 /* Reachability.m */,
 			);
 			path = Reachability;
-			sourceTree = "<group>";
-		};
-		B2FA61711059616200499856 /* TouchJSON */ = {
-			isa = PBXGroup;
-			children = (
-				B233E2F510A1DA7800EA4DC3 /* TouchJSON.h */,
-				B233E2CD10A1DA6200EA4DC3 /* CDataScanner_Extensions.h */,
-				B233E2CE10A1DA6200EA4DC3 /* CDataScanner_Extensions.m */,
-				B233E2CF10A1DA6200EA4DC3 /* CDataScanner.h */,
-				B233E2D010A1DA6200EA4DC3 /* CDataScanner.m */,
-				B233E2D110A1DA6200EA4DC3 /* CJSONDataSerializer.h */,
-				B233E2D210A1DA6200EA4DC3 /* CJSONDataSerializer.m */,
-				B233E2D310A1DA6200EA4DC3 /* CJSONDeserializer.h */,
-				B233E2D410A1DA6200EA4DC3 /* CJSONDeserializer.m */,
-				B233E2D510A1DA6200EA4DC3 /* CJSONScanner.h */,
-				B233E2D610A1DA6200EA4DC3 /* CJSONScanner.m */,
-				B233E2D710A1DA6200EA4DC3 /* CJSONSerializer.h */,
-				B233E2D810A1DA6200EA4DC3 /* CJSONSerializer.m */,
-				B233E2D910A1DA6200EA4DC3 /* CSerializedJSONData.h */,
-				B233E2DA10A1DA6200EA4DC3 /* CSerializedJSONData.m */,
-				B233E2DB10A1DA6200EA4DC3 /* NSCharacterSet_Extensions.h */,
-				B233E2DC10A1DA6200EA4DC3 /* NSCharacterSet_Extensions.m */,
-				B233E2DD10A1DA6200EA4DC3 /* NSDictionary_JSONExtensions.h */,
-				B233E2DE10A1DA6200EA4DC3 /* NSDictionary_JSONExtensions.m */,
-				B233E2DF10A1DA6200EA4DC3 /* NSScanner_Extensions.h */,
-				B233E2E010A1DA6200EA4DC3 /* NSScanner_Extensions.m */,
-			);
-			path = TouchJSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -503,7 +491,7 @@
 				B2A41E9A107287BA006EF521 /* TWSwitchTableViewCell.h in Headers */,
 				B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */,
 				B23E8979108040010065E392 /* TWURLRequest.h in Headers */,
-				B2A0753F1080F27D002FD0CA /* TWURLConnectionCacheController.h in Headers */,
+				B2A0753F1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.h in Headers */,
 				B24E03F51083FB6400F6A7B7 /* TWRemoteImageView.h in Headers */,
 				B22BAB4C10A134DE0011B963 /* TWTwitterOAuthViewController.h in Headers */,
 				B22BAB7110A135E60011B963 /* TWURLRequest+OAuth.h in Headers */,
@@ -519,17 +507,16 @@
 				B22BAC4910A1440E0011B963 /* OASignatureProviding.h in Headers */,
 				B22BAC4A10A1440E0011B963 /* OAToken.h in Headers */,
 				B22BAC5910A144B80011B963 /* OAuthConsumer.h in Headers */,
-				B233E2E110A1DA6200EA4DC3 /* CDataScanner_Extensions.h in Headers */,
-				B233E2E310A1DA6200EA4DC3 /* CDataScanner.h in Headers */,
-				B233E2E510A1DA6200EA4DC3 /* CJSONDataSerializer.h in Headers */,
-				B233E2E710A1DA6200EA4DC3 /* CJSONDeserializer.h in Headers */,
-				B233E2E910A1DA6200EA4DC3 /* CJSONScanner.h in Headers */,
-				B233E2EB10A1DA6200EA4DC3 /* CJSONSerializer.h in Headers */,
-				B233E2ED10A1DA6200EA4DC3 /* CSerializedJSONData.h in Headers */,
-				B233E2EF10A1DA6200EA4DC3 /* NSCharacterSet_Extensions.h in Headers */,
-				B233E2F110A1DA6200EA4DC3 /* NSDictionary_JSONExtensions.h in Headers */,
-				B233E2F310A1DA6200EA4DC3 /* NSScanner_Extensions.h in Headers */,
-				B233E2F610A1DA7800EA4DC3 /* TouchJSON.h in Headers */,
+				B233E30710A1DB5600EA4DC3 /* JSON.h in Headers */,
+				B233E30810A1DB5600EA4DC3 /* NSObject+SBJSON.h in Headers */,
+				B233E30A10A1DB5600EA4DC3 /* NSString+SBJSON.h in Headers */,
+				B233E30C10A1DB5600EA4DC3 /* SBJSON.h in Headers */,
+				B233E30E10A1DB5600EA4DC3 /* SBJsonBase.h in Headers */,
+				B233E31010A1DB5600EA4DC3 /* SBJsonParser.h in Headers */,
+				B233E31210A1DB5600EA4DC3 /* SBJsonWriter.h in Headers */,
+				B233E33210A1EBCD00EA4DC3 /* TWURLConnectionQueue.h in Headers */,
+				B233E34D10A20CA600EA4DC3 /* TWTwitterOAuthViewControllerDelegate.h in Headers */,
+				B233E35210A20D2900EA4DC3 /* TWURLConnectionQueueDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,7 +585,7 @@
 				B2A41E9B107287BA006EF521 /* TWSwitchTableViewCell.m in Sources */,
 				B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */,
 				B23E897A108040010065E392 /* TWURLRequest.m in Sources */,
-				B2A075401080F27D002FD0CA /* TWURLConnectionCacheController.m in Sources */,
+				B2A075401080F27D002FD0CA /* TWURLConnectionQueue+CacheController.m in Sources */,
 				B24E03F61083FB6400F6A7B7 /* TWRemoteImageView.m in Sources */,
 				B22BAB4D10A134DE0011B963 /* TWTwitterOAuthViewController.m in Sources */,
 				B22BAB7210A135E60011B963 /* TWURLRequest+OAuth.m in Sources */,
@@ -612,16 +599,13 @@
 				B22BAC4610A1440E0011B963 /* OAPlaintextSignatureProvider.m in Sources */,
 				B22BAC4810A1440E0011B963 /* OARequestParameter.m in Sources */,
 				B22BAC4B10A1440E0011B963 /* OAToken.m in Sources */,
-				B233E2E210A1DA6200EA4DC3 /* CDataScanner_Extensions.m in Sources */,
-				B233E2E410A1DA6200EA4DC3 /* CDataScanner.m in Sources */,
-				B233E2E610A1DA6200EA4DC3 /* CJSONDataSerializer.m in Sources */,
-				B233E2E810A1DA6200EA4DC3 /* CJSONDeserializer.m in Sources */,
-				B233E2EA10A1DA6200EA4DC3 /* CJSONScanner.m in Sources */,
-				B233E2EC10A1DA6200EA4DC3 /* CJSONSerializer.m in Sources */,
-				B233E2EE10A1DA6200EA4DC3 /* CSerializedJSONData.m in Sources */,
-				B233E2F010A1DA6200EA4DC3 /* NSCharacterSet_Extensions.m in Sources */,
-				B233E2F210A1DA6200EA4DC3 /* NSDictionary_JSONExtensions.m in Sources */,
-				B233E2F410A1DA6200EA4DC3 /* NSScanner_Extensions.m in Sources */,
+				B233E30910A1DB5600EA4DC3 /* NSObject+SBJSON.m in Sources */,
+				B233E30B10A1DB5600EA4DC3 /* NSString+SBJSON.m in Sources */,
+				B233E30D10A1DB5600EA4DC3 /* SBJSON.m in Sources */,
+				B233E30F10A1DB5600EA4DC3 /* SBJsonBase.m in Sources */,
+				B233E31110A1DB5600EA4DC3 /* SBJsonParser.m in Sources */,
+				B233E31310A1DB5600EA4DC3 /* SBJsonWriter.m in Sources */,
+				B233E33310A1EBCD00EA4DC3 /* TWURLConnectionQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
