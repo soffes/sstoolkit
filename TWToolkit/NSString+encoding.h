@@ -10,10 +10,13 @@
 
 @interface NSString (encoding)
 
++ (NSString*)localizedString:(NSString*)key;
++ (NSString*)base64encode:(NSString*)str;
+
 - (NSString*)encodeAsURIComponent;
 - (NSString*)escapeHTML;
 - (NSString*)unescapeHTML;
-+ (NSString*)localizedString:(NSString*)key;
-+ (NSString*)base64encode:(NSString*)str;
+- (NSString *)URLEncodedString;
+- (NSString*)URLDecodedString;
 
 @end

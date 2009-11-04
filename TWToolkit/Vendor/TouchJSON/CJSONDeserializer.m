@@ -1,9 +1,9 @@
 //
 //  CJSONDeserializer.m
-//  TouchJSON
+//  TouchCode
 //
 //  Created by Jonathan Wight on 12/15/2005.
-//  Copyright (c) 2005 Jonathan Wight
+//  Copyright 2005 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -41,6 +41,23 @@ NSString *const kJSONDeserializerErrorDomain  = @"CJSONDeserializerErrorDomain";
 return([[[self alloc] init] autorelease]);
 }
 
+- (id)deserialize:(NSData *)inData error:(NSError **)outError
+{
+if (inData == NULL || [inData length] == 0)
+	{
+	if (outError)
+		*outError = [NSError errorWithDomain:kJSONDeserializerErrorDomain code:-1 userInfo:NULL];
+
+	return(NULL);
+	}
+CJSONScanner *theScanner = [CJSONScanner scannerWithData:inData];
+id theObject = NULL;
+if ([theScanner scanJSONObject:&theObject error:outError] == YES)
+	return(theObject);
+else
+	return(NULL);
+}
+
 - (id)deserializeAsDictionary:(NSData *)inData error:(NSError **)outError;
 {
 if (inData == NULL || [inData length] == 0)
@@ -58,13 +75,7 @@ else
 	return(NULL);
 }
 
-@end
-
-#pragma mark -
-
-@implementation CJSONDeserializer (CJSONDeserializer_Deprecated)
-
-- (id)deserialize:(NSData *)inData error:(NSError **)outError
+- (id)deserializeAsArray:(NSData *)inData error:(NSError **)outError;
 {
 if (inData == NULL || [inData length] == 0)
 	{
@@ -74,9 +85,9 @@ if (inData == NULL || [inData length] == 0)
 	return(NULL);
 	}
 CJSONScanner *theScanner = [CJSONScanner scannerWithData:inData];
-id theObject = NULL;
-if ([theScanner scanJSONObject:&theObject error:outError] == YES)
-	return(theObject);
+NSArray *theArray = NULL;
+if ([theScanner scanJSONArray:&theArray error:outError] == YES)
+	return(theArray);
 else
 	return(NULL);
 }

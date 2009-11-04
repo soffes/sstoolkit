@@ -1,8 +1,8 @@
 //
-//  NSScanner_Extensions.h
+//  CJSONSerializer.h
 //  TouchCode
 //
-//  Created by Jonathan Wight on 12/08/2005.
+//  Created by Jonathan Wight on 12/07/2005.
 //  Copyright 2005 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -29,16 +29,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSScanner (NSScanner_Extensions)
+@interface CJSONDataSerializer : NSObject {
+}
 
-- (NSString *)remainingString;
++ (id)serializer;
 
-- (unichar)currentCharacter;
-- (unichar)scanCharacter;
-- (BOOL)scanCharacter:(unichar)inCharacter;
-- (void)backtrack:(unsigned)inCount;
+/// Take any JSON compatible object (generally NSNull, NSNumber, NSString, NSArray and NSDictionary) and produce an NSData containing the serialized JSON.
+- (NSData *)serializeObject:(id)inObject;
 
-- (BOOL)scanCStyleComment:(NSString **)outComment;
-- (BOOL)scanCPlusPlusStyleComment:(NSString **)outComment;
+- (NSData *)serializeNull:(NSNull *)inNull;
+- (NSData *)serializeNumber:(NSNumber *)inNumber;
+- (NSData *)serializeString:(NSString *)inString;
+- (NSData *)serializeArray:(NSArray *)inArray;
+- (NSData *)serializeDictionary:(NSDictionary *)inDictionary;
 
 @end

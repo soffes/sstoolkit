@@ -1,9 +1,9 @@
 //
 //  CJSONSerializer.h
-//  TouchJSON
+//  TouchCode
 //
 //  Created by Jonathan Wight on 12/07/2005.
-//  Copyright (c) 2005 Jonathan Wight
+//  Copyright 2005 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -29,16 +29,18 @@
 
 #import <Foundation/Foundation.h>
 
+@class CJSONDataSerializer;
+
+/// Serialize JSON compatible objects (NSNull, NSNumber, NSString, NSArray, NSDictionary) into a JSON formatted string. Note this class is just a wrapper around CJSONDataSerializer which you really should be using instead.
 @interface CJSONSerializer : NSObject {
+	CJSONDataSerializer *serializer;
 }
 
 + (id)serializer;
 
+/// Take any JSON compatible object (generally NSNull, NSNumber, NSString, NSArray and NSDictionary) and produce a JSON string.
 - (NSString *)serializeObject:(id)inObject;
 
-- (NSString *)serializeNull:(NSNull *)inNull;
-- (NSString *)serializeNumber:(NSNumber *)inNumber;
-- (NSString *)serializeString:(NSString *)inString;
 - (NSString *)serializeArray:(NSArray *)inArray;
 - (NSString *)serializeDictionary:(NSDictionary *)inDictionary;
 

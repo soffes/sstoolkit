@@ -1,9 +1,9 @@
 //
 //  CJSONDeserializer.h
-//  TouchJSON
+//  TouchCode
 //
 //  Created by Jonathan Wight on 12/15/2005.
-//  Copyright (c) 2005 Jonathan Wight
+//  Copyright 2005 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -31,29 +31,15 @@
 
 extern NSString *const kJSONDeserializerErrorDomain /* = @"CJSONDeserializerErrorDomain" */;
 
-@protocol CDeserializerProtocol <NSObject>
-
-- (id)deserializeAsDictionary:(NSData *)inData error:(NSError **)outError;
-
-@end
-
-#pragma mark -
-
-@interface CJSONDeserializer : NSObject <CDeserializerProtocol> {
+@interface CJSONDeserializer : NSObject {
 
 }
 
 + (id)deserializer;
 
-- (id)deserializeAsDictionary:(NSData *)inData error:(NSError **)outError;
-
-@end
-
-#pragma mark -
-
-@interface CJSONDeserializer (CJSONDeserializer_Deprecated)
-
-/// You should switch to using deserializeAsDictionary:error: instead.
 - (id)deserialize:(NSData *)inData error:(NSError **)outError;
+
+- (id)deserializeAsDictionary:(NSData *)inData error:(NSError **)outError;
+- (id)deserializeAsArray:(NSData *)inData error:(NSError **)outError;
 
 @end

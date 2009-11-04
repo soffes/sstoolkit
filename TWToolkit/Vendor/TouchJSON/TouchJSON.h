@@ -6,5 +6,5 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "CJSONSerializer.h"
-#import "CJSONDeserializer.h"
+#import "TWToolkit/Vendor/TouchJSON/CJSONSerializer.h"
+#import "TWToolkit/Vendor/TouchJSON/CJSONDeserializer.h"
