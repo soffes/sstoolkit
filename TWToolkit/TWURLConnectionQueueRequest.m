@@ -7,6 +7,8 @@
 //
 
 #import "TWURLConnectionQueueRequest.h"
+#import "TWURLRequest.h"
+#import "TWURLConnection.h"
 
 @implementation TWURLConnectionQueueRequest
 
@@ -34,6 +36,7 @@
 	}
 	return self;
 }
+
 
 #pragma mark -
 #pragma mark Setters

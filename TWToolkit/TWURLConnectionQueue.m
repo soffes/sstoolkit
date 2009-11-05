@@ -14,8 +14,8 @@
 
 @interface TWURLConnectionQueue (Private)
 
-- (TWURLRequest *)_nextRequest;
-- (void)_removeRequestFromQueue:(TWURLRequest *)request;
+- (TWURLConnectionQueueRequest *)_nextQueueRequest;
+- (void)_removeRequestFromQueue:(TWURLConnectionQueueRequest *)queueRequest;
 
 @end
 
@@ -85,15 +85,15 @@ static TWURLConnectionQueue *defaultQueue = nil;
 #pragma mark Request Methods
 #pragma mark -
 
-- (void)addRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate {
-	[self addRequest:request delegate:delegate priority:1];
+- (TWURLConnectionQueueRequest *)addRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate {
+	return [self addRequest:request delegate:delegate priority:1];
 }
 
 
-- (void)addRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate priority:(NSUInteger)priority {
-	TWURLConnectionQueueRequest *queueRequest = [[TWURLConnectionQueueRequest alloc] initWithRequest:request delegate:delegate priority:priority];
+- (TWURLConnectionQueueRequest *)addRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate priority:(NSUInteger)priority {
+	TWURLConnectionQueueRequest *queueRequest = [[[TWURLConnectionQueueRequest alloc] initWithRequest:request delegate:delegate priority:priority] autorelease];
 	[self addQueueRequest:queueRequest];
-	[queueRequest release];	
+	return queueRequest;
 }
 
 
@@ -106,26 +106,26 @@ static TWURLConnectionQueue *defaultQueue = nil;
 }
 
 
-- (void)cancelRequest:(TWURLRequest *)request {
+- (void)cancelQueueRequest:(TWURLConnectionQueueRequest *)queueRequest {
 	// TODO: Implement
 }
 
 
-- (void)cancelRequests:(NSArray *)requests {
-	for (TWURLRequest *request in requests) {
-		[self cancelRequest:request];
+- (void)cancelQueueRequests:(NSArray *)queueRequests {
+	for (TWURLConnectionQueueRequest *queueRequest in queueRequests) {
+		[self cancelQueueRequest:queueRequest];
 	}
 }
 
 
-- (NSArray *)requestsBelongingTo:(id<TWURLConnectionDelegate>)delegate {
+- (NSArray *)queueRequestsBelongingTo:(id<TWURLConnectionDelegate>)delegate {
 	// TODO: Implement
 	return nil;
 }
 
 
-- (void)cancelRequestsBelongingTo:(id<TWURLConnectionDelegate>)delegate {
-	// TODO: Implement
+- (void)cancelQueueRequestsBelongingTo:(id<TWURLConnectionDelegate>)delegate {
+	[self cancelQueueRequests:[self queueRequestsBelongingTo:delegate]];
 }
 
 
@@ -138,11 +138,17 @@ static TWURLConnectionQueue *defaultQueue = nil;
 }
 
 
+- (NSArray *)queueRequestsWithRequest:(TWURLRequest *)request {
+	// TODO: Implement
+	return nil;
+}
+
+
 #pragma mark -
 #pragma mark Status Methods
 #pragma mark -
 
-- (NSUInteger)requestsInQueue {
+- (NSUInteger)queueRequestsInQueue {
 	return [queue count];
 }
 
@@ -163,17 +169,23 @@ static TWURLConnectionQueue *defaultQueue = nil;
 }
 
 
+- (BOOL)isLoadingQueueRequest:(TWURLConnectionQueueRequest *)queueRequest {
+	// TODO: Implement
+	return NO;
+}
+
+
 #pragma mark -
 #pragma mark Private Methods
 #pragma mark -
 
-- (TWURLRequest *)_nextRequest {
+- (TWURLConnectionQueueRequest *)_nextQueueRequest {
 	// TODO: Implement
 	return nil;
 }
 
 
-- (void)_removeRequestFromQueue:(TWURLRequest *)request {
+- (void)_removeQueueRequestFromQueue:(TWURLConnectionQueueRequest *)queueRequest {
 	// TODO: Implement	
 }
 
