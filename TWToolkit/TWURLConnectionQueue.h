@@ -9,6 +9,7 @@
 #import "TWURLConnection.h"
 
 @class TWURLRequest;
+@class TWURLConnectionQueueRequest;
 
 @interface TWURLConnectionQueue : NSObject <TWURLConnectionDelegate> {
 
@@ -18,8 +19,9 @@
 
 + (TWURLConnectionQueue *)defaultQueue;
 
-- (void)startRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate;
-- (void)startRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate priority:(NSUInteger)priority;
+- (void)addRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate;
+- (void)addRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate priority:(NSUInteger)priority;
+- (void)addQueueRequest:(TWURLConnectionQueueRequest *)queueRequest;
 
 - (void)cancelRequest:(TWURLRequest *)request;
 - (void)cancelRequests:(NSArray *)requests;

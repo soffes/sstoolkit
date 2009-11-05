@@ -168,8 +168,8 @@
 	[_urlConnection start];
 	
 	// Notify the delegate the request started
-	if ([delegate respondsToSelector:@selector(connection:startedLoadingRequest:)]) {
-		[delegate connection:self startedLoadingRequest:request];
+	if ([delegate respondsToSelector:@selector(connectionStartedLoading:)]) {
+		[delegate connectionStartedLoading:self];
 	}
 }
 
@@ -234,7 +234,7 @@
 	// Send chunk to delegate
 	if ([delegate respondsToSelector:@selector(connection:didReceiveChunk:)]) {
 		NSError *error = nil;
-		id parsedChunk = [TWURLConnection parseData:_receivedData dataType:request.dataType error:&error];
+		id parsedChunk = [TWURLRequest parseData:_receivedData dataType:request.dataType error:&error];
 		
 		// If there was an error parsing the chunk, send the error instead of the parsed chunk
 		if (error) {
@@ -262,20 +262,20 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 
 	// Send the result to the delegate
-	if ([delegate respondsToSelector:@selector(connection:didFinishLoadingRequest:withResult:)]) {
+	if ([delegate respondsToSelector:@selector(connection:didFinishLoadingWithResult:)]) {
 		
 		NSError *error = nil;
-		id result = [TWURLConnection parseData:_receivedData dataType:request.dataType error:&error];
+		id result = [TWURLRequest parseData:_receivedData dataType:request.dataType error:&error];
 		
 		// Check for an error parsing the result
 		if (error) {
-			if ([delegate respondsToSelector:@selector(connection:didFinishLoadingRequest:failedToParseResultWithError:)]) {
-				[delegate connection:self didFinishLoadingRequest:request failedToParseResultWithError:error];
+			if ([delegate respondsToSelector:@selector(connection:failedToParseResultWithError:)]) {
+				[delegate connection:self failedToParseResultWithError:error];
 			}
 			return;
 		}
 		
-		[delegate connection:self didFinishLoadingRequest:request withResult:result];
+		[delegate connection:self didFinishLoadingWithResult:result];
 	}
 	
 	// Stop request and free up resources

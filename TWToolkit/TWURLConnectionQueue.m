@@ -8,10 +8,14 @@
 
 #import "TWURLConnectionQueue.h"
 #import "TWURLConnection.h"
+#import "TWURLConnectionQueueRequest.h"
+
+#define kTWURLConnectionQueueConnections 3
 
 @interface TWURLConnectionQueue (Private)
 
-- (TWURLRequest *)_removeNextRequestFromQueue:(BOOL)remove;
+- (TWURLRequest *)_nextRequest;
+- (void)_removeRequestFromQueue:(TWURLRequest *)request;
 
 @end
 
@@ -81,23 +85,24 @@ static TWURLConnectionQueue *defaultQueue = nil;
 #pragma mark Request Methods
 #pragma mark -
 
-- (void)startRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate {
-	[self startRequest:request delegate:delegate priority:1];
+- (void)addRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate {
+	[self addRequest:request delegate:delegate priority:1];
 }
 
 
-- (void)startRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate priority:(NSUInteger)priority {
+- (void)addRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate priority:(NSUInteger)priority {
+	TWURLConnectionQueueRequest *queueRequest = [[TWURLConnectionQueueRequest alloc] initWithRequest:request delegate:delegate priority:priority];
+	[self addQueueRequest:queueRequest];
+	[queueRequest release];	
+}
 
-	// Fix priority
-	if (priority < 1) {
-		priority = 1;
-	}
+
+- (void)addQueueRequest:(TWURLConnectionQueueRequest *)queueRequest {
+	// TODO: Post notification
+	// TODO: Insert pased on priority
+	[queue addObject:queueRequest];
 	
-	if (priority > 3) {
-		priority = 3;
-	}
-	
-	// TODO: Request
+	// TODO: Check to see if we need to start the request
 }
 
 
@@ -115,6 +120,7 @@ static TWURLConnectionQueue *defaultQueue = nil;
 
 - (NSArray *)requestsBelongingTo:(id<TWURLConnectionDelegate>)delegate {
 	// TODO: Implement
+	return nil;
 }
 
 
@@ -161,9 +167,14 @@ static TWURLConnectionQueue *defaultQueue = nil;
 #pragma mark Private Methods
 #pragma mark -
 
-- (TWURLRequest *)_removeNextRequestFromQueue:(BOOL)remove; {
+- (TWURLRequest *)_nextRequest {
 	// TODO: Implement
 	return nil;
+}
+
+
+- (void)_removeRequestFromQueue:(TWURLRequest *)request {
+	// TODO: Implement	
 }
 
 @end

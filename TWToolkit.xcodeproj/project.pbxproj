@@ -92,6 +92,8 @@
 		B2C20778106296FB00AE1B56 /* NSString+MD5Sum.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C2076E106296FB00AE1B56 /* NSString+MD5Sum.h */; };
 		B2C20779106296FB00AE1B56 /* NSString+MD5Sum.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C2076F106296FB00AE1B56 /* NSString+MD5Sum.m */; };
 		B2C207841062973000AE1B56 /* TWCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C207831062973000AE1B56 /* TWCategories.h */; };
+		B2CC756510A23727002916AC /* TWURLConnectionQueueRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B2CC756310A23727002916AC /* TWURLConnectionQueueRequest.h */; };
+		B2CC756610A23727002916AC /* TWURLConnectionQueueRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CC756410A23727002916AC /* TWURLConnectionQueueRequest.m */; };
 		B2FA61AD1059616200499856 /* TWToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA616C1059616200499856 /* TWToolkit.h */; };
 		B2FA61AE1059616200499856 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA616F1059616200499856 /* Reachability.h */; };
 		B2FA61AF1059616200499856 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA61701059616200499856 /* Reachability.m */; };
@@ -185,6 +187,8 @@
 		B2C2076E106296FB00AE1B56 /* NSString+MD5Sum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Sum.h"; sourceTree = "<group>"; };
 		B2C2076F106296FB00AE1B56 /* NSString+MD5Sum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Sum.m"; sourceTree = "<group>"; };
 		B2C207831062973000AE1B56 /* TWCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCategories.h; sourceTree = "<group>"; };
+		B2CC756310A23727002916AC /* TWURLConnectionQueueRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLConnectionQueueRequest.h; sourceTree = "<group>"; };
+		B2CC756410A23727002916AC /* TWURLConnectionQueueRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLConnectionQueueRequest.m; sourceTree = "<group>"; };
 		B2FA616C1059616200499856 /* TWToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit.h; sourceTree = "<group>"; };
 		B2FA616F1059616200499856 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		B2FA61701059616200499856 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -394,12 +398,14 @@
 		B2C2077A106296FE00AE1B56 /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				B233E33010A1EBCD00EA4DC3 /* TWURLConnectionQueue.h */,
-				B233E33110A1EBCD00EA4DC3 /* TWURLConnectionQueue.m */,
-				B233E3F510A21D4700EA4DC3 /* TWURLConnection.h */,
-				B233E3F610A21D4700EA4DC3 /* TWURLConnection.m */,
 				B23E8977108040010065E392 /* TWURLRequest.h */,
 				B23E8978108040010065E392 /* TWURLRequest.m */,
+				B233E3F510A21D4700EA4DC3 /* TWURLConnection.h */,
+				B233E3F610A21D4700EA4DC3 /* TWURLConnection.m */,
+				B233E33010A1EBCD00EA4DC3 /* TWURLConnectionQueue.h */,
+				B233E33110A1EBCD00EA4DC3 /* TWURLConnectionQueue.m */,
+				B2CC756310A23727002916AC /* TWURLConnectionQueueRequest.h */,
+				B2CC756410A23727002916AC /* TWURLConnectionQueueRequest.m */,
 				B2A0753D1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.h */,
 				B2A0753E1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.m */,
 			);
@@ -493,6 +499,7 @@
 				B233E31210A1DB5600EA4DC3 /* SBJsonWriter.h in Headers */,
 				B233E33210A1EBCD00EA4DC3 /* TWURLConnectionQueue.h in Headers */,
 				B233E3F710A21D4700EA4DC3 /* TWURLConnection.h in Headers */,
+				B2CC756510A23727002916AC /* TWURLConnectionQueueRequest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +587,7 @@
 				B233E31310A1DB5600EA4DC3 /* SBJsonWriter.m in Sources */,
 				B233E33310A1EBCD00EA4DC3 /* TWURLConnectionQueue.m in Sources */,
 				B233E3F810A21D4700EA4DC3 /* TWURLConnection.m in Sources */,
+				B2CC756610A23727002916AC /* TWURLConnectionQueueRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
