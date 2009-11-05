@@ -102,28 +102,8 @@
 
 
 #pragma mark -
-#pragma mark Accessors
+#pragma mark Status
 #pragma mark -
-
-- (void)setURL:(NSURL *)aURL {
-	
-	// Don't do anything if request is loading
-	if ([self isLoading]) {
-		return;
-	}
-	
-	if (!request) {
-		request = [[TWURLRequest alloc] initWithURL:aURL];
-	} else {
-		[request setURL:aURL];
-	}
-}
-
-
-- (NSURL *)URL {
-	return [request URL];
-}
-
 
 - (BOOL)isLoading {
 	return _loading;
@@ -187,6 +167,46 @@
 	_receivedData = nil;
 	
 	_loading = NO;
+}
+
+
+#pragma mark -
+#pragma mark Getters
+#pragma mark -
+
+- (NSURL *)URL {
+	return [request URL];
+}
+
+
+#pragma mark -
+#pragma mark Setters
+#pragma mark -
+
+- (void)setRequest:(TWURLRequest *)aRequest {
+	
+	// Don't do anything if request is loading
+	if ([self isLoading]) {
+		return;
+	}
+	
+	[request release];
+	request = [aRequest retain];
+}
+
+
+- (void)setURL:(NSURL *)aURL {
+	
+	// Don't do anything if request is loading
+	if ([self isLoading]) {
+		return;
+	}
+	
+	if (!request) {
+		request = [[TWURLRequest alloc] initWithURL:aURL];
+	} else {
+		[request setURL:aURL];
+	}
 }
 
 
