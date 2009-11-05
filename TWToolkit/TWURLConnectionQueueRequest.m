@@ -16,6 +16,7 @@
 @synthesize priority;
 @synthesize delegate;
 @synthesize loading;
+@synthesize timestamp;
 
 #pragma mark -
 #pragma mark NSObject

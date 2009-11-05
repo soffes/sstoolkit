@@ -93,7 +93,7 @@ static TWURLConnectionQueue *defaultQueue = nil;
 
 
 #pragma mark -
-#pragma mark Request Methods
+#pragma mark Requesting
 #pragma mark -
 
 - (TWURLConnectionQueueRequest *)addRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate {
@@ -110,9 +110,38 @@ static TWURLConnectionQueue *defaultQueue = nil;
 
 - (void)addQueueRequest:(TWURLConnectionQueueRequest *)queueRequest {
 	// TODO: Insert pased on priority
+	// KVO is used to start requests
 	[queue addObject:queueRequest];
-	
-	// TODO: Check to see if we need to start the request
+}
+
+
+#pragma mark -
+#pragma mark Queue Manipulation
+#pragma mark -
+
+- (void)cancelQueueRequest:(TWURLConnectionQueueRequest *)queueRequest {
+	// TODO: Implement
+}
+
+
+- (void)cancelQueueRequests:(NSArray *)queueRequests {
+	for (TWURLConnectionQueueRequest *queueRequest in queueRequests) {
+		[self cancelQueueRequest:queueRequest];
+	}
+}
+
+
+- (void)cancelQueueRequestsWithDelegate:(id<TWURLConnectionDelegate>)delegate {
+	[self cancelQueueRequests:[self queueRequestsWithDelegate:delegate]];
+}
+
+
+- (void)removeDelegate:(id<TWURLConnectionDelegate>)delegate {
+	for (TWURLConnection *connection in connections) {
+		if (connection.delegate == delegate) {
+			connection.delegate = nil;
+		}
+	}
 }
 
 
@@ -150,44 +179,14 @@ static TWURLConnectionQueue *defaultQueue = nil;
 }
 
 
-#pragma mark -
-#pragma mark Queue Manipulation
-#pragma mark -
-
-- (void)cancelQueueRequest:(TWURLConnectionQueueRequest *)queueRequest {
-	// TODO: Implement
-}
-
-
-- (void)cancelQueueRequests:(NSArray *)queueRequests {
-	for (TWURLConnectionQueueRequest *queueRequest in queueRequests) {
-		[self cancelQueueRequest:queueRequest];
-	}
-}
-
-
-- (void)cancelQueueRequestsBelongingTo:(id<TWURLConnectionDelegate>)delegate {
-	[self cancelQueueRequests:[self queueRequestsBelongingTo:delegate]];
-}
-
-
-- (void)removeDelegate:(id<TWURLConnectionDelegate>)delegate {
-	for (TWURLConnection *connection in connections) {
-		if (connection.delegate == delegate) {
-			connection.delegate = nil;
-		}
-	}
-}
-
-
-#pragma mark -
-#pragma mark Status Methods
-#pragma mark -
-
 - (NSUInteger)queueRequestsInQueue {
 	return [queue count];
 }
 
+
+#pragma mark -
+#pragma mark Connection Status
+#pragma mark -
 
 - (BOOL)isLoading {
 	return [self connectionsLoading] > 0;
@@ -195,7 +194,7 @@ static TWURLConnectionQueue *defaultQueue = nil;
 
 
 - (NSUInteger)connectionsLoading {
-	return [connections valueForKeyPath:@"@sum.loading"];
+	return [[connections valueForKeyPath:@"@sum.loading"] unsignedIntegerValue];
 }
 
 
@@ -214,7 +213,7 @@ static TWURLConnectionQueue *defaultQueue = nil;
 
 
 #pragma mark -
-#pragma mark KVO
+#pragma mark NSKeyValueObserving
 #pragma mark -
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

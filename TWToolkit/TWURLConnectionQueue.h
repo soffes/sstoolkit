@@ -20,7 +20,7 @@
 // Singleton
 + (TWURLConnectionQueue *)defaultQueue;
 
-// Request
+// Requesting
 - (TWURLConnectionQueueRequest *)addRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate;
 - (TWURLConnectionQueueRequest *)addRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate priority:(NSUInteger)priority;
 - (void)addQueueRequest:(TWURLConnectionQueueRequest *)queueRequest;
@@ -32,16 +32,16 @@
 - (NSArray *)queueRequestsWithPriority:(NSUInteger)priority;
 - (NSArray *)queueRequestsLoading;
 - (NSArray *)queueRequestsNotLoading;
+- (NSUInteger)queueRequestsInQueue;
+
+// Connection Status
+- (NSUInteger)connectionsLoading;
+- (BOOL)isLoading;
 
 // Queue Manipulation
 - (void)cancelQueueRequest:(TWURLConnectionQueueRequest *)queueRequest;
 - (void)cancelQueueRequests:(NSArray *)queueRequests;
-- (void)cancelQueueRequestsBelongingTo:(id<TWURLConnectionDelegate>)delegate;
+- (void)cancelQueueRequestsWithDelegate:(id<TWURLConnectionDelegate>)delegate;
 - (void)removeDelegate:(id<TWURLConnectionDelegate>)delegate;
-
-// Queue Status
-- (NSUInteger)queueRequestsInQueue;
-- (BOOL)isLoading;
-- (NSUInteger)connectionsLoading;
 
 @end

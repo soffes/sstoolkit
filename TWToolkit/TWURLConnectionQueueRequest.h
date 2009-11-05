@@ -22,6 +22,7 @@
 @property (nonatomic, assign) NSUInteger priority;
 @property (nonatomic, assign) id<TWURLConnectionDelegate> delegate;
 @property (nonatomic, assign, getter=isLoading) BOOL loading;
+@property (nonatomic, assign, readonly) NSDate *timestamp;
 
 - (id)initWithRequest:(TWURLRequest *)aRequest delegate:(id<TWURLConnectionDelegate>)aDelegate priority:(NSUInteger)aPriority;
 
