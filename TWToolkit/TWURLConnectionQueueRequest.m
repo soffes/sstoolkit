@@ -15,6 +15,7 @@
 @synthesize request;
 @synthesize priority;
 @synthesize delegate;
+@synthesize loading;
 
 #pragma mark -
 #pragma mark NSObject
@@ -22,6 +23,9 @@
 
 - (id)init {
 	if (self = [super init]) {
+		self.loading = NO;
+		timestamp = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
+		
 		self.priority = 1;
 	}
 	return self;
@@ -29,12 +33,18 @@
 
 
 - (id)initWithRequest:(TWURLRequest *)aRequest delegate:(id<TWURLConnectionDelegate>)aDelegate priority:(NSUInteger)aPriority {
-	if (self = [super init]) {
+	if (self = [self init]) {
 		self.request = aRequest;
 		self.delegate = aDelegate;
 		self.priority = aPriority;
 	}
 	return self;
+}
+
+- (void)dealloc {
+	[request release];
+	[timestamp release];
+	[super dealloc];
 }
 
 

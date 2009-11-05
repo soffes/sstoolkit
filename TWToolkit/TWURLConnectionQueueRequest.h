@@ -14,12 +14,17 @@
 	TWURLRequest *request;
 	NSUInteger priority;
 	id<TWURLConnectionDelegate> delegate;
+	BOOL loading;
+	NSDate *timestamp;
 }
 
 @property (nonatomic, retain) TWURLRequest *request;
 @property (nonatomic, assign) NSUInteger priority;
 @property (nonatomic, assign) id<TWURLConnectionDelegate> delegate;
+@property (nonatomic, assign, getter=isLoading) BOOL loading;
 
 - (id)initWithRequest:(TWURLRequest *)aRequest delegate:(id<TWURLConnectionDelegate>)aDelegate priority:(NSUInteger)aPriority;
+
+- (NSDate *)timestamp;
 
 @end

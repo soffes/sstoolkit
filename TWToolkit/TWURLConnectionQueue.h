@@ -25,17 +25,23 @@
 - (TWURLConnectionQueueRequest *)addRequest:(TWURLRequest *)request delegate:(id<TWURLConnectionDelegate>)delegate priority:(NSUInteger)priority;
 - (void)addQueueRequest:(TWURLConnectionQueueRequest *)queueRequest;
 
+// Queue Querying
+- (NSArray *)queueRequestsWithPredicate:(NSPredicate *)predicate;
+- (NSArray *)queueRequestsWithDelegate:(id<TWURLConnectionDelegate>)delegate;
+- (NSArray *)queueRequestsWithRequest:(TWURLRequest *)request;
+- (NSArray *)queueRequestsWithPriority:(NSUInteger)priority;
+- (NSArray *)queueRequestsLoading;
+- (NSArray *)queueRequestsNotLoading;
+
 // Queue Manipulation
 - (void)cancelQueueRequest:(TWURLConnectionQueueRequest *)queueRequest;
 - (void)cancelQueueRequests:(NSArray *)queueRequests;
-- (NSArray *)queueRequestsBelongingTo:(id<TWURLConnectionDelegate>)delegate;
 - (void)cancelQueueRequestsBelongingTo:(id<TWURLConnectionDelegate>)delegate;
 - (void)removeDelegate:(id<TWURLConnectionDelegate>)delegate;
 
 // Queue Status
 - (NSUInteger)queueRequestsInQueue;
 - (BOOL)isLoading;
-- (BOOL)isLoadingRequest:(TWURLRequest *)request;
-- (BOOL)isLoadingQueueRequest:(TWURLConnectionQueueRequest *)queueRequest;
+- (NSUInteger)connectionsLoading;
 
 @end
