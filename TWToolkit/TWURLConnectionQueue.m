@@ -15,7 +15,6 @@
 @interface TWURLConnectionQueue (Private)
 
 - (TWURLConnectionQueueRequest *)_nextQueueRequest;
-- (void)_removeRequestFromQueue:(TWURLConnectionQueueRequest *)queueRequest;
 
 @end
 
@@ -134,7 +133,21 @@ static TWURLConnectionQueue *defaultQueue = nil;
 #pragma mark -
 
 - (void)cancelQueueRequest:(TWURLConnectionQueueRequest *)queueRequest {
-	[[connections filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"request = %@", queueRequest.request]] makeObjectsPerformSelector:@selector(cancel)];
+	
+	// Cancel request
+//	[queueRequest.connection cancel];
+	
+	// Remove references to delegate
+//	queueRequest.connection.delegate = nil;
+//	queueRequest.delegate = nil;
+	
+	// Stop request
+//	[queueRequest.connection release];
+//	queueRequest.connection = nil;
+	
+	// Remove request from queue
+	NSLog(@"Removing queueRequest: %@ from queue: %@", queueRequest, queue);
+	[queue removeObject:queueRequest];
 }
 
 
@@ -164,6 +177,7 @@ static TWURLConnectionQueue *defaultQueue = nil;
 #pragma mark -
 
 - (NSArray *)queueRequestsWithPredicate:(NSPredicate *)predicate {
+	NSLog(@"Queue: %@, Predicate: %@", queue, predicate);
 	return [queue filteredArrayUsingPredicate:predicate];
 }
 
@@ -223,11 +237,6 @@ static TWURLConnectionQueue *defaultQueue = nil;
 
 - (TWURLConnectionQueueRequest *)_nextQueueRequest {
 	return [queue objectAtIndex:0];
-}
-
-
-- (void)_removeQueueRequestFromQueue:(TWURLConnectionQueueRequest *)queueRequest {
-	[queue removeObject:queueRequest];
 }
 
 @end

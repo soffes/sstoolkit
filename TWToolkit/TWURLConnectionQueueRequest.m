@@ -44,6 +44,9 @@
 }
 
 - (void)dealloc {
+	[connection cancel];
+	connection.delegate = nil;
+	self.delegate = nil;
 	[request release];
 	[timestamp release];
 	[super dealloc];

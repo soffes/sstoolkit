@@ -24,8 +24,15 @@
 #pragma mark -
 
 - (void)dealloc {
+	[[TWURLConnectionQueue defaultQueue] cancelQueueRequestsWithDelegate:self];
 	[outputView release];
 	[super dealloc];
+}
+
+
+- (void)release {
+	NSLog(@"RELEASE: %i -> %i", [self retainCount], [self retainCount] - 1);
+	[super release];
 }
 
 

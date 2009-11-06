@@ -95,7 +95,7 @@
 	[self cancel];
 	self.delegate = nil;
 	[request release];
-	request = nil;
+	self.request = nil;
 	[super dealloc];
 }
 
@@ -285,7 +285,6 @@
 		
 		NSError *error = nil;
 		id result = [TWURLRequest parseData:_receivedData dataType:request.dataType error:&error];
-		NSLog(@"RESULT: %@", [TWURLRequest parseData:_receivedData dataType:TWURLRequestDataTypeString error:nil]);
 		
 		// Check for an error parsing the result
 		if (error) {
