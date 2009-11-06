@@ -73,13 +73,11 @@ static TWURLConnectionQueue *defaultQueue = nil;
 
 - (id)init {
 	if (self = [super init]) {
-		NSLog(@"INIT");
-		// TODO: Check for init
 		queue = [[NSMutableArray alloc] init];
 		connections = [[NSMutableArray alloc] init];
 		
-		// Register for KVO on queue
-		[self addObserver:self forKeyPath:@"queue" options:NSKeyValueChangeInsertion context:nil];
+		// Register KVO observer
+		[self addObserver:self forKeyPath:@"@sum.queue" options:NSKeyValueObservingOptionNew context:nil];
 	}
 	return self;
 }
@@ -112,6 +110,22 @@ static TWURLConnectionQueue *defaultQueue = nil;
 	// TODO: Insert pased on priority
 	// KVO is used to start requests
 	[queue addObject:queueRequest];
+	
+	// Check to see if we need to spawn a request
+	NSUInteger connectionsLoading = [self connectionsLoading];
+	if (connectionsLoading == kTWURLConnectionQueueConnections) {
+		return;
+	}
+	
+	// Spawn a new connection if under limit
+	if (connectionsLoading < kTWURLConnectionQueueConnections) {
+		TWURLConnection *connection = [[TWURLConnection alloc] initWithRequest:queueRequest.request delegate:queueRequest.delegate];
+		queueRequest.connection = connection;
+		[connection start];
+	}
+	
+	// There are already the maximum number of connections loading.
+	// The request will wait until it gets to the top of the queue.
 }
 
 
@@ -120,7 +134,7 @@ static TWURLConnectionQueue *defaultQueue = nil;
 #pragma mark -
 
 - (void)cancelQueueRequest:(TWURLConnectionQueueRequest *)queueRequest {
-	// TODO: Implement
+	[[connections filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"request = %@", queueRequest.request]] makeObjectsPerformSelector:@selector(cancel)];
 }
 
 
@@ -169,12 +183,17 @@ static TWURLConnectionQueue *defaultQueue = nil;
 }
 
 
+- (NSArray *)queueRequestsWithConnection:(TWURLConnection *)connection {
+	return [self queueRequestsWithPredicate:[NSPredicate predicateWithFormat:@"connection = %u", connection]];
+}
+
+
 - (NSArray *)queueRequestsLoading {
 	return [self queueRequestsWithPredicate:[NSPredicate predicateWithFormat:@"loading = %u", 1]];
 }
 
 
-- (NSArray *)queueRequestsNotLoading  {
+- (NSArray *)queueRequestsNotLoading {
 	return [self queueRequestsWithPredicate:[NSPredicate predicateWithFormat:@"loading = %u", 0]];
 }
 
@@ -209,19 +228,6 @@ static TWURLConnectionQueue *defaultQueue = nil;
 
 - (void)_removeQueueRequestFromQueue:(TWURLConnectionQueueRequest *)queueRequest {
 	[queue removeObject:queueRequest];
-}
-
-
-#pragma mark -
-#pragma mark NSKeyValueObserving
-#pragma mark -
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ([self connectionsLoading] == kTWURLConnectionQueueConnections) {
-		return;
-	}
-	
-	// TODO: Implement
 }
 
 @end

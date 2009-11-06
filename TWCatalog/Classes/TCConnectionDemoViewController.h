@@ -10,7 +10,6 @@
 
 @interface TCConnectionDemoViewController : UIViewController <TWURLConnectionDelegate> {
 
-	TWURLConnection *connection;
 	UITextView *outputView;
 }
 

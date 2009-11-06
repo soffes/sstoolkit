@@ -7,6 +7,7 @@
 //
 
 @class TWURLRequest;
+@class TWURLConnection;
 @protocol TWURLConnectionDelegate;
 
 @interface TWURLConnectionQueueRequest : NSObject {
@@ -16,6 +17,7 @@
 	id<TWURLConnectionDelegate> delegate;
 	BOOL loading;
 	NSDate *timestamp;
+	TWURLConnection *connection;
 }
 
 @property (nonatomic, retain) TWURLRequest *request;
@@ -23,6 +25,7 @@
 @property (nonatomic, assign) id<TWURLConnectionDelegate> delegate;
 @property (nonatomic, assign, getter=isLoading) BOOL loading;
 @property (nonatomic, assign, readonly) NSDate *timestamp;
+@property (nonatomic, assign) TWURLConnection *connection;
 
 - (id)initWithRequest:(TWURLRequest *)aRequest delegate:(id<TWURLConnectionDelegate>)aDelegate priority:(NSUInteger)aPriority;
 

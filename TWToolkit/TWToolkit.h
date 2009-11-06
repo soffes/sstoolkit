@@ -9,6 +9,8 @@
 // Connection
 #import "TWToolkit/TWURLConnection.h"
 #import "TWToolkit/TWURLRequest.h"
+#import "TWToolkit/TWURLConnectionQueue.h"
+#import "TWToolkit/TWURLConnectionQueueRequest.h"
 
 // View Controllers
 #import "TWToolkit/TWPickerViewController.h"

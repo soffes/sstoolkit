@@ -17,6 +17,7 @@
 @synthesize delegate;
 @synthesize loading;
 @synthesize timestamp;
+@synthesize connection;
 
 #pragma mark -
 #pragma mark NSObject

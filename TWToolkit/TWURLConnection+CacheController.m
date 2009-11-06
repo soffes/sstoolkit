@@ -1,16 +1,16 @@
 //
-//  TWURLConnectionQueue+CacheController.m
+//  TWURLConnection+CacheController.m
 //  TWToolkit
 //
 //  Created by Sam Soffes on 10/10/09.
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "TWURLConnectionQueue+CacheController.h"
+#import "TWURLConnection+CacheController.h"
 
 #define kTWURLConnectionCacheDefaultsKey @"_TWURLConnectionCache"
 
-@implementation TWURLConnectionQueue (CacheController)
+@implementation TWURLConnection (CacheController)
 
 + (void)clearAllCaches {
 	NSDictionary *cachesDictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:kTWURLConnectionCacheDefaultsKey];

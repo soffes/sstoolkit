@@ -30,6 +30,7 @@
 - (NSArray *)queueRequestsWithDelegate:(id<TWURLConnectionDelegate>)delegate;
 - (NSArray *)queueRequestsWithRequest:(TWURLRequest *)request;
 - (NSArray *)queueRequestsWithPriority:(NSUInteger)priority;
+- (NSArray *)queueRequestsWithConnection:(TWURLConnection *)connection;
 - (NSArray *)queueRequestsLoading;
 - (NSArray *)queueRequestsNotLoading;
 - (NSUInteger)queueRequestsInQueue;

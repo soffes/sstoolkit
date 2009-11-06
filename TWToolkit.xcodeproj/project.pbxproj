@@ -77,8 +77,8 @@
 		B2974D7B106299CB00C9F4A6 /* UIWebView+scrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D6A106299CB00C9F4A6 /* UIWebView+scrolling.m */; };
 		B2974D7C106299CB00C9F4A6 /* UIWebView+setFontSize.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D6B106299CB00C9F4A6 /* UIWebView+setFontSize.h */; };
 		B2974D7D106299CB00C9F4A6 /* UIWebView+setFontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D6C106299CB00C9F4A6 /* UIWebView+setFontSize.m */; };
-		B2A0753F1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2A0753D1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.h */; };
-		B2A075401080F27D002FD0CA /* TWURLConnectionQueue+CacheController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A0753E1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.m */; };
+		B2A0753F1080F27D002FD0CA /* TWURLConnection+CacheController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2A0753D1080F27D002FD0CA /* TWURLConnection+CacheController.h */; };
+		B2A075401080F27D002FD0CA /* TWURLConnection+CacheController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A0753E1080F27D002FD0CA /* TWURLConnection+CacheController.m */; };
 		B2A41E9A107287BA006EF521 /* TWSwitchTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2A41E98107287BA006EF521 /* TWSwitchTableViewCell.h */; };
 		B2A41E9B107287BA006EF521 /* TWSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A41E99107287BA006EF521 /* TWSwitchTableViewCell.m */; };
 		B2C20770106296FB00AE1B56 /* NSArray+shuffle.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C20766106296FB00AE1B56 /* NSArray+shuffle.h */; };
@@ -172,8 +172,8 @@
 		B2974D6A106299CB00C9F4A6 /* UIWebView+scrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+scrolling.m"; sourceTree = "<group>"; };
 		B2974D6B106299CB00C9F4A6 /* UIWebView+setFontSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+setFontSize.h"; sourceTree = "<group>"; };
 		B2974D6C106299CB00C9F4A6 /* UIWebView+setFontSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+setFontSize.m"; sourceTree = "<group>"; };
-		B2A0753D1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TWURLConnectionQueue+CacheController.h"; sourceTree = "<group>"; };
-		B2A0753E1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TWURLConnectionQueue+CacheController.m"; sourceTree = "<group>"; };
+		B2A0753D1080F27D002FD0CA /* TWURLConnection+CacheController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TWURLConnection+CacheController.h"; sourceTree = "<group>"; };
+		B2A0753E1080F27D002FD0CA /* TWURLConnection+CacheController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TWURLConnection+CacheController.m"; sourceTree = "<group>"; };
 		B2A41E98107287BA006EF521 /* TWSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWSwitchTableViewCell.h; sourceTree = "<group>"; };
 		B2A41E99107287BA006EF521 /* TWSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSwitchTableViewCell.m; sourceTree = "<group>"; };
 		B2C20766106296FB00AE1B56 /* NSArray+shuffle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+shuffle.h"; sourceTree = "<group>"; };
@@ -406,8 +406,8 @@
 				B233E33110A1EBCD00EA4DC3 /* TWURLConnectionQueue.m */,
 				B2CC756310A23727002916AC /* TWURLConnectionQueueRequest.h */,
 				B2CC756410A23727002916AC /* TWURLConnectionQueueRequest.m */,
-				B2A0753D1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.h */,
-				B2A0753E1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.m */,
+				B2A0753D1080F27D002FD0CA /* TWURLConnection+CacheController.h */,
+				B2A0753E1080F27D002FD0CA /* TWURLConnection+CacheController.m */,
 			);
 			name = Connection;
 			sourceTree = "<group>";
@@ -476,7 +476,7 @@
 				B2A41E9A107287BA006EF521 /* TWSwitchTableViewCell.h in Headers */,
 				B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */,
 				B23E8979108040010065E392 /* TWURLRequest.h in Headers */,
-				B2A0753F1080F27D002FD0CA /* TWURLConnectionQueue+CacheController.h in Headers */,
+				B2A0753F1080F27D002FD0CA /* TWURLConnection+CacheController.h in Headers */,
 				B22BAB7110A135E60011B963 /* TWURLRequest+OAuth.h in Headers */,
 				B22BAC3810A1440E0011B963 /* Base64Transcoder.h in Headers */,
 				B22BAC3910A1440E0011B963 /* NSMutableURLRequest+Parameters.h in Headers */,
@@ -567,7 +567,7 @@
 				B2A41E9B107287BA006EF521 /* TWSwitchTableViewCell.m in Sources */,
 				B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */,
 				B23E897A108040010065E392 /* TWURLRequest.m in Sources */,
-				B2A075401080F27D002FD0CA /* TWURLConnectionQueue+CacheController.m in Sources */,
+				B2A075401080F27D002FD0CA /* TWURLConnection+CacheController.m in Sources */,
 				B22BAB7210A135E60011B963 /* TWURLRequest+OAuth.m in Sources */,
 				B22BAC3710A1440E0011B963 /* Base64Transcoder.c in Sources */,
 				B22BAC3A10A1440E0011B963 /* NSMutableURLRequest+Parameters.m in Sources */,

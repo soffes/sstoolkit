@@ -25,7 +25,6 @@
 
 - (void)dealloc {
 	[outputView release];
-	[connection release];
 	[super dealloc];
 }
 
@@ -70,10 +69,9 @@
 	TWURLRequest *request = [[TWURLRequest alloc] initWithURL:url];
 	request.dataType = TWURLRequestDataTypeJSONArray;
 	
-	// Start connection
-	[connection cancel];
-	[connection release];
-	connection =  [[TWURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+	// Add request to queue
+	[[TWURLConnectionQueue defaultQueue] cancelQueueRequestsWithDelegate:self];
+	[[TWURLConnectionQueue defaultQueue] addRequest:request delegate:self];
 	
 	[request release];
 	[url release];
@@ -84,7 +82,7 @@
 #pragma mark TWURLConnectionDelegate
 #pragma mark -
 
-- (void)connection:(TWURLConnection *)aConnection startedLoadingRequest:(TWURLRequest *)aRequest {
+- (void)connectionStartedLoading:(TWURLConnection *)aConnection {
 	outputView.text = @"Loading...";
 }
 
@@ -94,13 +92,13 @@
 }
 
 
-- (void)connection:(TWURLConnection *)aConnection didFinishLoadingRequest:(TWURLRequest *)aRequest withResult:(id)result {
+- (void)connection:(TWURLConnection *)aConnection didFinishLoadingWithResult:(id)result{
 	outputView.text = [(NSArray *)result description];
 }
 
 
 - (void)connection:(TWURLConnection *)aConnection failedWithError:(NSError *)error {	
-	outputView.text = @"";
+	outputView.text = @"Failed";
 	
 	// Display alert error
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"The request failed. Maybe try again later." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

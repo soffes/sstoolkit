@@ -1,16 +1,16 @@
 //
-//  TWURLConnectionQueue+CacheController.h
+//  TWURLConnection+CacheController.h
 //  TWToolkit
 //
 //  Created by Sam Soffes on 10/10/09.
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "TWURLConnectionQueue.h"
+#import "TWURLConnection.h"
 
 @class TWURLRequest;
 
-@interface TWURLConnectionQueue (CacheController)
+@interface TWURLConnection (CacheController)
 
 + (void)clearAllCaches;
 + (void)removeInvalidCaches;
