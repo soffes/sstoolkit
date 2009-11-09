@@ -151,7 +151,7 @@
 	// User lookup
 	if ([path isEqualToString:@"/account/verify_credentials.json"]) {
 		
-		NSDictionary *user = (NSDictionary *)object;
+		//NSDictionary *user = (NSDictionary *)object;
 		
 		// TODO: Notify delegate of user object and tokens
 	}
