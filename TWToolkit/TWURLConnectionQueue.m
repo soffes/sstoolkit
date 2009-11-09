@@ -15,6 +15,7 @@
 @interface TWURLConnectionQueue (Private)
 
 - (TWURLConnectionQueueRequest *)_nextQueueRequest;
+- (NSArray *)_connectionsWithDelegate:(id<TWURLConnectionDelegate>)delegate;
 
 @end
 
@@ -135,15 +136,15 @@ static TWURLConnectionQueue *defaultQueue = nil;
 - (void)cancelQueueRequest:(TWURLConnectionQueueRequest *)queueRequest {
 	
 	// Cancel request
-//	[queueRequest.connection cancel];
+	[queueRequest.connection cancel];
 	
 	// Remove references to delegate
-//	queueRequest.connection.delegate = nil;
-//	queueRequest.delegate = nil;
+	queueRequest.connection.delegate = nil;
+	queueRequest.delegate = nil;
 	
 	// Stop request
-//	[queueRequest.connection release];
-//	queueRequest.connection = nil;
+	[queueRequest.connection release];
+	queueRequest.connection = nil;
 	
 	// Remove request from queue
 	NSLog(@"Removing queueRequest: %@ from queue: %@", queueRequest, queue);
@@ -152,6 +153,10 @@ static TWURLConnectionQueue *defaultQueue = nil;
 
 
 - (void)cancelQueueRequests:(NSArray *)queueRequests {
+	if (!queueRequests || [queueRequests count] == 0) {
+		return;
+	}
+	
 	for (TWURLConnectionQueueRequest *queueRequest in queueRequests) {
 		[self cancelQueueRequest:queueRequest];
 	}
@@ -164,10 +169,9 @@ static TWURLConnectionQueue *defaultQueue = nil;
 
 
 - (void)removeDelegate:(id<TWURLConnectionDelegate>)delegate {
-	for (TWURLConnection *connection in connections) {
-		if (connection.delegate == delegate) {
-			connection.delegate = nil;
-		}
+	NSArray *someConnections = [self _connectionsWithDelegate:delegate];
+	if ([someConnections count] > 0) {
+		[someConnections makeObjectsPerformSelector:@selector(setDelegate:) withObject:nil];
 	}
 }
 
@@ -177,18 +181,31 @@ static TWURLConnectionQueue *defaultQueue = nil;
 #pragma mark -
 
 - (NSArray *)queueRequestsWithPredicate:(NSPredicate *)predicate {
-	NSLog(@"Queue: %@, Predicate: %@", queue, predicate);
 	return [queue filteredArrayUsingPredicate:predicate];
 }
 
 
 - (NSArray *)queueRequestsWithDelegate:(id<TWURLConnectionDelegate>)delegate {
-	return [self queueRequestsWithPredicate:[NSPredicate predicateWithFormat:@"delegate = %@", delegate]];
+	NSMutableArray *results = [[NSMutableArray alloc] init];
+	for (TWURLConnectionQueueRequest *queueRequest in queue) {
+		if (queueRequest.delegate == delegate) {
+			[results addObject:queueRequest];
+		}
+	}
+	
+	if ([results count] == 0) {
+		[results release];
+		return nil;
+	}
+	
+	return [results autorelease];
 }
 
 
 - (NSArray *)queueRequestsWithRequest:(TWURLRequest *)request {
-	return [self queueRequestsWithPredicate:[NSPredicate predicateWithFormat:@"request = %@", request]];
+	NSArray *results = [self queueRequestsWithPredicate:[NSPredicate predicateWithFormat:@"request = %u", request]];
+	[request release];
+	return results;
 }
 
 
@@ -237,6 +254,13 @@ static TWURLConnectionQueue *defaultQueue = nil;
 
 - (TWURLConnectionQueueRequest *)_nextQueueRequest {
 	return [queue objectAtIndex:0];
+}
+
+
+- (NSArray *)_connectionsWithDelegate:(id<TWURLConnectionDelegate>)delegate {
+	NSArray *result =  [connections filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"delegate = %@", delegate]];
+	[delegate release];
+	return result;
 }
 
 @end
