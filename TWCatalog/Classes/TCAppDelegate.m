@@ -33,7 +33,7 @@
 
     window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
-	TCRootViewController *viewController = [[TCRootViewController alloc] initWithStyle:UITableViewStylePlain];
+	TCRootViewController *viewController = [[TCRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	UINavigationController *aNavigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
 
 	self.navigationController = aNavigationController;

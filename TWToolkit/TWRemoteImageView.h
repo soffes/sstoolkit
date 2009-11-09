@@ -6,7 +6,6 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "TWURLConnection.h"
 
 @protocol TWRemoteImageViewDelegate;
@@ -18,10 +17,6 @@
 	
 	UIImageView *remoteImageView;
 	UIImageView *placeholderImageView;
-	
-	@private
-	
-	TWURLConnection *connection;
 }
 
 @property (nonatomic, assign) id<TWRemoteImageViewDelegate> delegate;

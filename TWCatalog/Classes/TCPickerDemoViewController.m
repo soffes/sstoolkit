@@ -38,7 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.title = @"Picker View Controller";
+	self.title = @"Picker";
 	self.selectedAbbreviation = [[NSTimeZone defaultTimeZone] abbreviation];
 }
 

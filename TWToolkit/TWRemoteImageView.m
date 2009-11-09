@@ -7,6 +7,8 @@
 //
 
 #import "TWRemoteImageView.h"
+#import "TWURLRequest.h"
+#import "TWURLConnectionQueue.h"
 #import "UIView+fading.h"
 
 @implementation TWRemoteImageView
@@ -21,10 +23,6 @@
 #pragma mark -
 
 - (void)dealloc {
-	[connection cancel];
-	[connection release];
-	connection = nil;
-	
 	[URL release];
 	[remoteImageView release];
 	[placeholderImageView release];
@@ -39,7 +37,6 @@
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
 		URL = nil;
-		connection = nil;
 		
 		self.clipsToBounds = YES;
 		
@@ -78,11 +75,9 @@
 	[URL release];
 	URL = [aURL retain];
 	
-	[connection release];
-	
 	TWURLRequest *request = [[TWURLRequest alloc] initWithURL:URL];
 	request.dataType = TWURLRequestDataTypeImage;
-	connection = [[TWURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+	[[TWURLConnectionQueue defaultQueue] addRequest:request delegate:self];
 	[request release];
 }
 
@@ -91,14 +86,14 @@
 #pragma mark TWURLConnectionDelegate
 #pragma mark -
 
-- (void)connection:(TWURLConnection *)aConnection startedLoadingRequest:(TWURLRequest *)aRequest {
+- (void)connectionStartedLoading:(TWURLConnection *)aConnection {
 	if ([delegate respondsToSelector:@selector(remoteImageViewDidStartLoading:)]) {
 		[delegate remoteImageViewDidStartLoading:self];
 	}
 }
 
 
-- (void)connection:(TWURLConnection *)aConnection didFinishLoadingRequest:(TWURLRequest *)aRequest withResult:(id)result {
+- (void)connection:(TWURLConnection *)aConnection didFinishLoadingWithResult:(id)result {
 	// Fade in image
 	remoteImageView.image = (UIImage *)result;
 	[self addSubview:remoteImageView];
@@ -111,7 +106,7 @@
 }
 
 
-- (void)connection:(TWURLConnection *)aConnection failedWithError:(NSError *)error {	
+- (void)connection:(TWURLConnection *)aConnection failedWithError:(NSError *)error {
 	if ([delegate respondsToSelector:@selector(remoteImageView:didFailWithError:)]) {
 		[delegate remoteImageView:self didFailWithError:error];
 	}
