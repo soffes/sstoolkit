@@ -94,7 +94,7 @@
 - (void)dealloc {
 	[self cancel];
 	self.delegate = nil;
-	[request release];
+	//[request release]; // Possible leak?
 	self.request = nil;
 	[super dealloc];
 }

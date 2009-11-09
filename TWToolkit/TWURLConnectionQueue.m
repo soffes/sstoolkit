@@ -147,7 +147,6 @@ static TWURLConnectionQueue *defaultQueue = nil;
 	queueRequest.connection = nil;
 	
 	// Remove request from queue
-	NSLog(@"Removing queueRequest: %@ from queue: %@", queueRequest, queue);
 	[queue removeObject:queueRequest];
 }
 
@@ -187,25 +186,23 @@ static TWURLConnectionQueue *defaultQueue = nil;
 
 - (NSArray *)queueRequestsWithDelegate:(id<TWURLConnectionDelegate>)delegate {
 	NSMutableArray *results = [[NSMutableArray alloc] init];
-	for (TWURLConnectionQueueRequest *queueRequest in queue) {
-		if (queueRequest.delegate == delegate) {
+    for (TWURLConnectionQueueRequest *queueRequest in queue) {
+        if (queueRequest.delegate == delegate) {
 			[results addObject:queueRequest];
-		}
-	}
-	
-	if ([results count] == 0) {
-		[results release];
-		return nil;
-	}
-	
-	return [results autorelease];
+        }
+    }
+    return [results autorelease];
 }
 
 
 - (NSArray *)queueRequestsWithRequest:(TWURLRequest *)request {
-	NSArray *results = [self queueRequestsWithPredicate:[NSPredicate predicateWithFormat:@"request = %u", request]];
-	[request release];
-	return results;
+	NSMutableArray *results = [[NSMutableArray alloc] init];
+    for (TWURLConnectionQueueRequest *queueRequest in queue) {
+        if (queueRequest.request == request) {
+			[results addObject:queueRequest];
+        }
+    }
+    return [results autorelease];
 }
 
 
@@ -215,7 +212,13 @@ static TWURLConnectionQueue *defaultQueue = nil;
 
 
 - (NSArray *)queueRequestsWithConnection:(TWURLConnection *)connection {
-	return [self queueRequestsWithPredicate:[NSPredicate predicateWithFormat:@"connection = %u", connection]];
+	NSMutableArray *results = [[NSMutableArray alloc] init];
+    for (TWURLConnectionQueueRequest *queueRequest in queue) {
+        if (queueRequest.connection == connection) {
+			[results addObject:queueRequest];
+        }
+    }
+    return [results autorelease];
 }
 
 
@@ -258,9 +261,13 @@ static TWURLConnectionQueue *defaultQueue = nil;
 
 
 - (NSArray *)_connectionsWithDelegate:(id<TWURLConnectionDelegate>)delegate {
-	NSArray *result =  [connections filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"delegate = %@", delegate]];
-	[delegate release];
-	return result;
+	NSMutableArray *results = [[NSMutableArray alloc] init];
+    for (TWURLConnection *connection in connections) {
+        if (connection.delegate == delegate) {
+			[results addObject:connection];
+        }
+    }
+    return [results autorelease];
 }
 
 @end

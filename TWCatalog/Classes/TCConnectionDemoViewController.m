@@ -27,9 +27,6 @@
 	[[TWURLConnectionQueue defaultQueue] cancelQueueRequestsWithDelegate:self];
 	[outputView release];
 	[super dealloc];
-	
-	NSArray *data = [NSArray arrayWithObject:[NSMutableDictionary dictionaryWithObject:@"foo" forKey:@"BAR"]];    
-	NSArray *filtered = [data filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(BAR == %@)", @"foo"]];
 }
 
 
