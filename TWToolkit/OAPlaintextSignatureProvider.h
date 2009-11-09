@@ -1,5 +1,6 @@
 //
-//  OASignatureProviding.h
+//  OAPlaintextSignatureProvider.h
+//  OAuthConsumer
 //
 //  Created by Jon Crosby on 10/19/07.
 //  Copyright 2007 Kaboomerang LLC. All rights reserved.
@@ -22,13 +23,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+#import "OASignatureProviding.h"
 
-#import <Foundation/Foundation.h>
-
-
-@protocol OASignatureProviding <NSObject>
-
-- (NSString *)name;
-- (NSString *)signClearText:(NSString *)text withSecret:(NSString *)secret;
-
+@interface OAPlaintextSignatureProvider : NSObject <OASignatureProviding>
 @end

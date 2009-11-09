@@ -6,10 +6,14 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-@interface TCTwitterDemoViewController : UIViewController {
+#import <TWToolkit/TWToolkit.h>
+
+@interface TCTwitterDemoViewController : UIViewController <TWTwitterOAuthViewControllerDelegate, UIAlertViewDelegate> {
 
 }
 
 + (TCTwitterDemoViewController *)setup;
+
+- (void)authorize:(id)sender;
 
 @end

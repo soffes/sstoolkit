@@ -6,11 +6,11 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "TWToolkit/TWURLConnection.h"
+#import "TWURLConnection.h"
 
 @class TWLoadingView;
-@class OAToken;
 @class OAConsumer;
+@class OAToken;
 @protocol TWTwitterOAuthViewControllerDelegate;
 
 @interface TWTwitterOAuthViewController : UIViewController <UIWebViewDelegate, TWURLConnectionDelegate> {
@@ -26,7 +26,10 @@
 	OAConsumer *consumer;
 }
 
+@property (nonatomic, assign) id<TWTwitterOAuthViewControllerDelegate> delegate;
 @property (nonatomic, retain) OAConsumer *consumer;
+
+- (id)initWithDelegate:(id<TWTwitterOAuthViewControllerDelegate>)aDelegate consumer:(OAConsumer *)aConsumer;
 
 @end
 
@@ -34,6 +37,7 @@
 
 @protocol TWTwitterOAuthViewControllerDelegate <NSObject>
 
+- (void)twitterOAuthViewController:(TWTwitterOAuthViewController *)viewController didFailWithError:(NSError *)error;
 - (void)twitterOAuthViewController:(TWTwitterOAuthViewController *)viewController didAuthorizeWithAccessToken:(OAToken *)accessToken userDictionary:(NSDictionary *)userDictionary;
 
 @end

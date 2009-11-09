@@ -1,5 +1,5 @@
 //
-//  OAHMAC_SHA1SignatureProvider.h
+//  OARequestParameter.m
 //  OAuthConsumer
 //
 //  Created by Jon Crosby on 10/19/07.
@@ -23,10 +23,46 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+#import "OARequestParameter.h"
 
-#import <Foundation/Foundation.h>
-#import "OASignatureProviding.h"
+@implementation OARequestParameter
+@synthesize name, value;
 
++ (id)requestParameterWithName:(NSString *)aName value:(NSString *)aValue 
+{
+	return [[[OARequestParameter alloc] initWithName:aName value:aValue] autorelease];
+}
 
-@interface OAHMAC_SHA1SignatureProvider : NSObject <OASignatureProviding>
+- (id)initWithName:(NSString *)aName value:(NSString *)aValue 
+{
+    if (self = [super init])
+	{
+		self.name = aName;
+		self.value = aValue;
+	}
+    return self;
+}
+
+- (void)dealloc
+{
+	[name release];
+	[value release];
+	[super dealloc];
+}
+
+- (NSString *)URLEncodedName 
+{
+	return [self.name URLEncodedString];
+}
+
+- (NSString *)URLEncodedValue 
+{
+    return [self.value URLEncodedString];
+}
+
+- (NSString *)URLEncodedNameValuePair 
+{
+    return [NSString stringWithFormat:@"%@=%@", [self URLEncodedName], [self URLEncodedValue]];
+}
+
 @end

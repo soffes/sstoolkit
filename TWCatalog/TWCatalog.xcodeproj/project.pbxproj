@@ -334,7 +334,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TWCatalog_Prefix.pch;
+				GCC_PREFIX_HEADER = "Other Sources/TWCatalog_Prefix.pch";
+				HEADER_SEARCH_PATHS = ../;
 				INFOPLIST_FILE = "TWCatalog-Info.plist";
 				PRODUCT_NAME = TWCatalog;
 			};

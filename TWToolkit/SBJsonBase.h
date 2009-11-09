@@ -27,24 +27,58 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+extern NSString * SBJSONErrorDomain;
+
+
+enum {
+    EUNSUPPORTED = 1,
+    EPARSENUM,
+    EPARSE,
+    EFRAGMENT,
+    ECTRL,
+    EUNICODE,
+    EDEPTH,
+    EESCAPE,
+    ETRAILCOMMA,
+    ETRAILGARBAGE,
+    EEOF,
+    EINPUT
+};
+
 /**
- @mainpage A strict JSON parser and generator for Objective-C
+ @brief Common base class for parsing & writing.
 
- JSON (JavaScript Object Notation) is a lightweight data-interchange
- format. This framework provides two apis for parsing and generating
- JSON. One standard object-based and a higher level api consisting of
- categories added to existing Objective-C classes.
+ This class contains the common error-handling code and option between the parser/writer.
+ */
+@interface SBJsonBase : NSObject {
+    NSMutableArray *errorTrace;
 
- Learn more on the http://code.google.com/p/json-framework project site.
+@protected
+    NSUInteger depth, maxDepth;
+}
+
+/**
+ @brief The maximum recursing depth.
  
- This framework does its best to be as strict as possible, both in what it
- accepts and what it generates. For example, it does not support trailing commas
- in arrays or objects. Nor does it support embedded comments, or
- anything else not in the JSON specification. This is considered a feature. 
+ Defaults to 512. If the input is nested deeper than this the input will be deemed to be
+ malicious and the parser returns nil, signalling an error. ("Nested too deep".) You can
+ turn off this security feature by setting the maxDepth value to 0.
+ */
+@property NSUInteger maxDepth;
+
+/**
+ @brief Return an error trace, or nil if there was no errors.
  
-*/
+ Note that this method returns the trace of the last method that failed.
+ You need to check the return value of the call you're making to figure out
+ if the call actually failed, before you know call this method.
+ */
+ @property(copy,readonly) NSArray* errorTrace;
 
-#import "TWToolkit/Vendor/JSON/SBJSON.h"
-#import "TWToolkit/Vendor/JSON/NSObject+SBJSON.h"
-#import "TWToolkit/Vendor/JSON/NSString+SBJSON.h"
+/// @internal for use in subclasses to add errors to the stack trace
+- (void)addErrorWithCode:(NSUInteger)code description:(NSString*)str;
 
+/// @internal for use in subclasess to clear the error before a new parsing attempt
+- (void)clearErrorTrace;
+
+@end

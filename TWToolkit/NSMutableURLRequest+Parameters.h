@@ -1,6 +1,5 @@
 //
-//  OAPlaintextSignatureProvider.h
-//  OAuthConsumer
+//  NSMutableURLRequest+Parameters.h
 //
 //  Created by Jon Crosby on 10/19/07.
 //  Copyright 2007 Kaboomerang LLC. All rights reserved.
@@ -23,9 +22,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+#import "OARequestParameter.h"
+#import "NSURL+Base.h"
 
-#import <Foundation/Foundation.h>
-#import "OASignatureProviding.h"
+@interface NSMutableURLRequest (OAParameterAdditions)
 
-@interface OAPlaintextSignatureProvider : NSObject <OASignatureProviding>
+- (NSArray *)parameters;
+- (void)setParameters:(NSArray *)parameters;
+
 @end

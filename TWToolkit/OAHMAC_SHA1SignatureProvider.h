@@ -1,5 +1,5 @@
 //
-//  NSURL+Base.h
+//  OAHMAC_SHA1SignatureProvider.h
 //  OAuthConsumer
 //
 //  Created by Jon Crosby on 10/19/07.
@@ -23,12 +23,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+#import "OASignatureProviding.h"
 
-#import <Foundation/Foundation.h>
-
-
-@interface NSURL (OABaseAdditions)
-
-- (NSString *)URLStringWithoutQuery;
-
+@interface OAHMAC_SHA1SignatureProvider : NSObject <OASignatureProviding>
 @end

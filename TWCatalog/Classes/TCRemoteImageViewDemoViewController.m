@@ -7,7 +7,7 @@
 //
 
 #import "TCRemoteImageViewDemoViewController.h"
-#import "TWToolkit/UIView+fading.h"
+#import <TWToolkit/UIView+fading.h>
 
 @implementation TCRemoteImageViewDemoViewController
 

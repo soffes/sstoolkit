@@ -1,5 +1,5 @@
 //
-//  OAConsumer.h
+//  OAToken.h
 //  OAuthConsumer
 //
 //  Created by Jon Crosby on 10/19/07.
@@ -23,11 +23,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-
-#import <Foundation/Foundation.h>
-
-
-@interface OAConsumer : NSObject {
+@interface OAToken : NSObject <NSCoding, NSCopying> {
 @protected
 	NSString *key;
 	NSString *secret;
@@ -36,5 +32,8 @@
 @property(nonatomic, retain) NSString *secret;
 
 - (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret;
+- (id)initWithUserDefaultsUsingServiceProviderName:(NSString *)provider prefix:(NSString *)prefix;
+- (id)initWithHTTPResponseBody:(NSString *)body;
+- (int)storeInUserDefaultsWithServiceProviderName:(NSString *)provider prefix:(NSString *)prefix;
 
 @end

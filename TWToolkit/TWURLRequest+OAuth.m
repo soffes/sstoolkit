@@ -7,7 +7,16 @@
 //
 
 #import "TWURLRequest+OAuth.h"
-#import "OAuthConsumer.h"
+#import "OAToken.h"
+#import "OAConsumer.h"
+#import "OAMutableURLRequest.h"
+#import "NSString+URLEncoding.h"
+#import "NSMutableURLRequest+Parameters.h"
+#import "NSURL+Base.h"
+#import "OASignatureProviding.h"
+#import "OAHMAC_SHA1SignatureProvider.h"
+#import "OAPlaintextSignatureProvider.h"
+#import "OARequestParameter.h"
 #import "NSString+encoding.h"
 
 @implementation TWURLRequest (OAuth)

@@ -9,8 +9,9 @@
 #import "TWTwitterOAuthViewController.h"
 #import "TWLoadingView.h"
 #import "UIView+fading.h"
-#import "OAuthConsumer.h"
 #import "TWURLRequest+OAuth.h"
+#import "OAConsumer.h"
+#import "OAToken.h"
 
 #define kTextKey @"text"
 #define kUserKey @"user"
@@ -28,6 +29,7 @@
 
 @implementation TWTwitterOAuthViewController
 
+@synthesize delegate;
 @synthesize consumer;
 
 #pragma mark -
@@ -58,6 +60,16 @@
 	loadingView.text = @"Requesting token..."; 
 	[self.view addSubview:loadingView];
 	
+	// Make sure we have a consumer
+	if (consumer == nil) {
+		if ([delegate respondsToSelector:@selector(twitterOAuthViewController:didFailWithError:)]) {
+			NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:@"TWTwitterOAuthViewController requires a valid OAConsumer to authorize.", NSLocalizedDescriptionKey, nil];
+			NSError *error = [NSError errorWithDomain:@"com.tasetfulworks.twtwitteroauthviewcontroller" code:-1 userInfo:userInfo];
+			[delegate twitterOAuthViewController:self didFailWithError:error];
+		}
+		return;
+	}
+	
 	[self _getRequestToken];
 }
 
@@ -65,6 +77,15 @@
 #pragma mark -
 #pragma mark OAuth
 #pragma mark -
+
+- (id)initWithDelegate:(id<TWTwitterOAuthViewControllerDelegate>)aDelegate consumer:(OAConsumer *)aConsumer {
+	if (self = [super initWithNibName:nil bundle:nil]) {
+		self.delegate = aDelegate;
+		self.consumer = aConsumer;
+	}
+	return self;
+}
+
 
 - (void)_getRequestToken {
 //	NSURL *url = [[NSURL alloc] initWithString:@"http://twitter.com/oauth/request_token"];

@@ -1,5 +1,5 @@
 //
-//  NSString+URLEncoding.h
+//  OASignatureProviding.h
 //
 //  Created by Jon Crosby on 10/19/07.
 //  Copyright 2007 Kaboomerang LLC. All rights reserved.
@@ -22,13 +22,9 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+@protocol OASignatureProviding <NSObject>
 
-#import <Foundation/Foundation.h>
-
-
-@interface NSString (OAURLEncodingAdditions)
-
-- (NSString *)URLEncodedString;
-- (NSString *)URLDecodedString;
+- (NSString *)name;
+- (NSString *)signClearText:(NSString *)text withSecret:(NSString *)secret;
 
 @end
