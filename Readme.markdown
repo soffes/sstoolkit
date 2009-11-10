@@ -60,7 +60,9 @@ To use TWToolkit, simply add the following line to your source file.
 
     #import <TWToolkit/TWToolkit.h>
 
-You can also import individual files instead of the whole framework (for faster compile times) by doing something like `#import <TWToolkit/TWLoadingView.h>`.
+You can also import individual files instead of the whole framework (for faster compile times) by doing something like:
+
+    #import <TWToolkit/TWLoadingView.h>
 
 ## Known Bugs
 
