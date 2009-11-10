@@ -6,22 +6,17 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "TWConnection.h"
+#import "TWURLConnection.h"
 
 @protocol TWRemoteImageViewDelegate;
 
-@interface TWRemoteImageView : UIView <TWConnectionDelegate> {
+@interface TWRemoteImageView : UIView <TWURLConnectionDelegate> {
 
 	id<TWRemoteImageViewDelegate> delegate;
 	NSURL *URL;
 	
 	UIImageView *remoteImageView;
 	UIImageView *placeholderImageView;
-	
-	@private
-	
-	TWConnection *connection;
 }
 
 @property (nonatomic, assign) id<TWRemoteImageViewDelegate> delegate;
@@ -36,9 +31,8 @@
 
 @optional
 
-- (void)imageView:(TWRemoteImageView *)anImageView startedLoadingRequest:(NSURLRequest *)aRequest;
-- (void)imageView:(TWRemoteImageView *)anImageView didReceiveBytes:(NSInteger)receivedBytes totalReceivedBytes:(NSInteger)totalReceivedBytes totalExpectedBytes:(NSInteger)totalExpectedBytes;
-- (void)imageView:(TWRemoteImageView *)anImageView didFinishLoadingRequest:(NSURLRequest *)aRequest;
-- (void)imageView:(TWRemoteImageView *)anImageView failedWithError:(NSError *)error;
+- (void)remoteImageViewDidStartLoading:(TWRemoteImageView*)aRemoteImageView;
+- (void)remoteImageView:(TWRemoteImageView*)aRemoteImageView didLoadImage:(UIImage*)image;
+- (void)remoteImageView:(TWRemoteImageView*)aRemoteImageView didFailWithError:(NSError*)error;
 
 @end

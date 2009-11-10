@@ -12,24 +12,12 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 
 @implementation NSString (encoding)
 
-- (NSString*)encodeAsURIComponent
-{
-	const char* p = [self UTF8String];
-	NSMutableString* result = [NSMutableString string];
-	
-	for (;*p ;p++) {
-		unsigned char c = *p;
-		if ('0' <= c && c <= '9' || 'a' <= c && c <= 'z' || 'A' <= c && c <= 'Z' || c == '-' || c == '_') {
-			[result appendFormat:@"%c", c];
-		} else {
-			[result appendFormat:@"%%%02X", c];
-		}
-	}
-	return result;
++ (NSString*)localizedString:(NSString*)key {
+	return [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:key];
 }
 
-+ (NSString*)base64encode:(NSString*)str 
-{
+
++ (NSString*)base64encode:(NSString*)str  {
     if ([str length] == 0)
         return @"";
 	
@@ -61,8 +49,24 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
     return [[[NSString alloc] initWithBytesNoCopy:characters length:length encoding:NSASCIIStringEncoding freeWhenDone:YES] autorelease];
 }
 
-- (NSString*)escapeHTML
-{
+
+- (NSString*)encodeAsURIComponent {
+	const char* p = [self UTF8String];
+	NSMutableString* result = [NSMutableString string];
+	
+	for (;*p ;p++) {
+		unsigned char c = *p;
+		if ('0' <= c && c <= '9' || 'a' <= c && c <= 'z' || 'A' <= c && c <= 'Z' || c == '-' || c == '_') {
+			[result appendFormat:@"%c", c];
+		} else {
+			[result appendFormat:@"%%%02X", c];
+		}
+	}
+	return result;
+}
+
+
+- (NSString*)escapeHTML {
 	NSMutableString* s = [NSMutableString string];
 	
 	int start = 0;
@@ -101,8 +105,8 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 	return s;
 }
 
-- (NSString*)unescapeHTML
-{
+
+- (NSString*)unescapeHTML {
 	NSMutableString* s = [NSMutableString string];
 	NSMutableString* target = [[self mutableCopy] autorelease];
 	NSCharacterSet* chs = [NSCharacterSet characterSetWithCharactersInString:@"&"];
@@ -140,9 +144,21 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 	return s;
 }
 
-+ (NSString*)localizedString:(NSString*)key
-{
-	return [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:key];
+
+- (NSString *)URLEncodedString {
+	return [(NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+																(CFStringRef)self,
+																NULL,
+																CFSTR("!*'();:@&=+$,/?%#[]"),
+																kCFStringEncodingUTF8) autorelease];
+}
+
+
+- (NSString*)URLDecodedString {
+	return [(NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
+																				(CFStringRef)self,
+																				CFSTR(""),
+																				kCFStringEncodingUTF8) autorelease];
 }
 
 @end

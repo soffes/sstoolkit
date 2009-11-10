@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	self.title = @"Picker View Controller";
+	self.title = @"Choose";
 }
 
 

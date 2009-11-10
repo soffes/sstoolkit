@@ -6,9 +6,7 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "TWToolkit/TWRemoteImageView.h"
-
-@class TWLoadingView;
+#import <TWToolkit/TWToolkit.h>
 
 @interface TCRemoteImageViewDemoViewController : UIViewController <TWRemoteImageViewDelegate> {
 

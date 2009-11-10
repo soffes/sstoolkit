@@ -6,9 +6,6 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-
 @interface NSArray (shuffle)
 
 - (NSArray *)shuffledArray;
