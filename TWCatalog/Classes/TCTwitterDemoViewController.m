@@ -29,9 +29,20 @@
 	self.title = @"Twitter OAuth";
 	self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 	
+	UILabel *instructions = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 20.0, 280.0, 140.0)];
+	instructions.numberOfLines = 0;
+	instructions.shadowColor = [UIColor whiteColor];
+	instructions.shadowOffset = CGSizeMake(0.0, 1.0);
+	instructions.backgroundColor = [UIColor clearColor];
+	instructions.font = [UIFont systemFontOfSize:16.0];
+	instructions.textColor = [UIColor colorWithRed:0.298 green:0.337 blue:0.424 alpha:1.0];
+	instructions.text = @"Authorize with OAuth and get the user's object without getting their credentials.\n\n(Be sure to define the OAuth consumer variables in the demo view controller.)";
+	[self.view addSubview:instructions];
+	[instructions release];
+	
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	[button setTitle:@"Authorize" forState:UIControlStateNormal];
-	[button setFrame:CGRectMake(20.0, 20.0, 280.0, 37.0)];
+	[button setFrame:CGRectMake(20.0, 180.0, 280.0, 37.0)];
 	[button addTarget:self action:@selector(authorize:) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:button];
 }
