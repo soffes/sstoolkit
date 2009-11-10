@@ -17,7 +17,7 @@
     
 	// GET and DELETE
     if ([[self HTTPMethod] isEqualToString:@"GET"] || [[self HTTPMethod] isEqualToString:@"DELETE"]) {
-        encodedParameters = [[NSString alloc] initWithString:[[self URL] query]];
+        encodedParameters = [[[self URL] query] retain];
 	}
 	
 	// POST and PUT

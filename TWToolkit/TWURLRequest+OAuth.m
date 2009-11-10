@@ -9,18 +9,17 @@
 #import "TWURLRequest+OAuth.h"
 #import "OAToken.h"
 #import "OAConsumer.h"
-//#import "OAMutableURLRequest.h"
-//#import "NSString+URLEncoding.h"
 #import "TWURLRequest+Parameters.h"
 #import "TWURLRequestParameter.h"
 #import "NSURL+Base.h"
-//#import "OASignatureProviding.h"
 #import "OAHMAC_SHA1SignatureProvider.h"
-//#import "OAPlaintextSignatureProvider.h"
-//#import "OARequestParameter.h"
 #import "NSString+encoding.h"
 
 @implementation TWURLRequest (OAuth)
+
+#pragma mark -
+#pragma mark Setters
+#pragma mark -
 
 - (void)setOAuthConsumer:(OAConsumer *)consumer {
 	[self setOAuthConsumer:consumer token:nil realm:nil signatureProvider:nil nonce:nil timestamp:nil];
@@ -109,9 +108,6 @@
 	
 	// Add the header
     [self setValue:oauthHeader forHTTPHeaderField:@"Authorization"];
-	
-	NSLog(@"OAuth header: %@", oauthHeader);
-	NSLog(@"Parameters: %@", [self parameters]);
 	
 	// Clean up
 	[token release];
