@@ -65,6 +65,14 @@
 #pragma mark -
 
 - (void)dealloc {
+	[self removeObserver:self forKeyPath:@"topColor"];
+	[self removeObserver:self forKeyPath:@"bottomColor"];
+	[self removeObserver:self forKeyPath:@"topBorderColor"];
+	[self removeObserver:self forKeyPath:@"bottomBorderColor"];
+	[self removeObserver:self forKeyPath:@"topInsetAlpha"];
+	[self removeObserver:self forKeyPath:@"bottomInsetAlpha"];
+	[self removeObserver:self forKeyPath:@"hasTopBorder"];
+	[self removeObserver:self forKeyPath:@"hasBottomBorder"];
 	CGGradientRelease(gradient);
 	[topColor release];
 	[bottomColor release];
