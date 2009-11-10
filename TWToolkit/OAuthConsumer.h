@@ -8,11 +8,6 @@
 
 #import <TWToolkit/OAToken.h>
 #import <TWToolkit/OAConsumer.h>
-#import <TWToolkit/OAMutableURLRequest.h>
-#import <TWToolkit/NSString+URLEncoding.h>
-#import <TWToolkit/NSMutableURLRequest+Parameters.h>
-#import <TWToolkit/NSURL+Base.h>
 #import <TWToolkit/OASignatureProviding.h>
 #import <TWToolkit/OAHMAC_SHA1SignatureProvider.h>
 #import <TWToolkit/OAPlaintextSignatureProvider.h>
-#import <TWToolkit/OARequestParameter.h>

@@ -55,6 +55,11 @@
 #pragma mark TWTwitterOAuthViewControllerDelegate
 #pragma mark -
 
+- (void)twitterOAuthViewControllerDidCancel:(TWTwitterOAuthViewController *)viewController {
+	[self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
+
 - (void)twitterOAuthViewController:(TWTwitterOAuthViewController *)viewController didFailWithError:(NSError *)error {
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed" message:[error localizedDescription] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
 	[alert show];

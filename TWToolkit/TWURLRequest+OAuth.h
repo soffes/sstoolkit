@@ -14,6 +14,7 @@
 
 @interface TWURLRequest (OAuth)
 
+- (void)setOAuthConsumer:(OAConsumer *)consumer;
 - (void)setOAuthConsumer:(OAConsumer *)consumer token:(OAToken *)token;
 - (void)setOAuthConsumer:(OAConsumer *)consumer token:(OAToken *)token realm:(NSString *)realm signatureProvider:(id<OASignatureProviding>)signatureProvider nonce:(NSString *)nonce timestamp:(NSString *)timestamp;
 

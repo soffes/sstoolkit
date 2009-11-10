@@ -9,17 +9,23 @@
 #import "TWURLRequest+OAuth.h"
 #import "OAToken.h"
 #import "OAConsumer.h"
-#import "OAMutableURLRequest.h"
-#import "NSString+URLEncoding.h"
-#import "NSMutableURLRequest+Parameters.h"
+//#import "OAMutableURLRequest.h"
+//#import "NSString+URLEncoding.h"
+#import "TWURLRequest+Parameters.h"
+#import "TWURLRequestParameter.h"
 #import "NSURL+Base.h"
-#import "OASignatureProviding.h"
+//#import "OASignatureProviding.h"
 #import "OAHMAC_SHA1SignatureProvider.h"
-#import "OAPlaintextSignatureProvider.h"
-#import "OARequestParameter.h"
+//#import "OAPlaintextSignatureProvider.h"
+//#import "OARequestParameter.h"
 #import "NSString+encoding.h"
 
 @implementation TWURLRequest (OAuth)
+
+- (void)setOAuthConsumer:(OAConsumer *)consumer {
+	[self setOAuthConsumer:consumer token:nil realm:nil signatureProvider:nil nonce:nil timestamp:nil];
+}
+
 
 - (void)setOAuthConsumer:(OAConsumer *)consumer token:(OAToken *)token {
 	[self setOAuthConsumer:consumer token:token realm:nil signatureProvider:nil nonce:nil timestamp:nil];
@@ -53,19 +59,19 @@
 	
 	// OAuth Spec, Section 9.1.1 "Normalize Request Parameters"
     // build a sorted array of both request parameters and OAuth header parameters
-    NSMutableArray *parameterPairs = [NSMutableArray  arrayWithCapacity:(6 + [[self parameters] count])]; // 6 being the number of OAuth params in the Signature Base String
+    NSMutableArray *parameterPairs = [NSMutableArray  arrayWithCapacity:(6 + [[self parameters] count])]; // 6 is the number of OAuth params in the Signature Base String
     
-	[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_consumer_key" value:consumer.key] URLEncodedNameValuePair]];
-	[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_signature_method" value:[signatureProvider name]] URLEncodedNameValuePair]];
-	[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_timestamp" value:timestamp] URLEncodedNameValuePair]];
-	[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_nonce" value:nonce] URLEncodedNameValuePair]];
-	[parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_version" value:@"1.0"] URLEncodedNameValuePair]];
+	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithName:@"oauth_consumer_key" value:consumer.key] URLEncodedNameValuePair]];
+	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithName:@"oauth_signature_method" value:[signatureProvider name]] URLEncodedNameValuePair]];
+	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithName:@"oauth_timestamp" value:timestamp] URLEncodedNameValuePair]];
+	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithName:@"oauth_nonce" value:nonce] URLEncodedNameValuePair]];
+	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithName:@"oauth_version" value:@"1.0"] URLEncodedNameValuePair]];
     
     if (![token.key isEqualToString:@""]) {
-        [parameterPairs addObject:[[OARequestParameter requestParameterWithName:@"oauth_token" value:token.key] URLEncodedNameValuePair]];
+        [parameterPairs addObject:[[TWURLRequestParameter requestParameterWithName:@"oauth_token" value:token.key] URLEncodedNameValuePair]];
     }
     
-    for (OARequestParameter *param in [self parameters]) {
+    for (TWURLRequestParameter *param in [self parameters]) {
         [parameterPairs addObject:[param URLEncodedNameValuePair]];
     }
     
@@ -86,10 +92,11 @@
     
     // Set OAuth headers
     NSString *oauthToken;
-    if ([token.key isEqualToString:@""])
+    if ([token.key isEqualToString:@""]) {
         oauthToken = @""; // not used on Request Token transactions
-    else
+	} else {
         oauthToken = [NSString stringWithFormat:@"oauth_token=\"%@\", ", [token.key URLEncodedString]];
+	}
     
     NSString *oauthHeader = [NSString stringWithFormat:@"OAuth realm=\"%@\", oauth_consumer_key=\"%@\", %@oauth_signature_method=\"%@\", oauth_signature=\"%@\", oauth_timestamp=\"%@\", oauth_nonce=\"%@\", oauth_version=\"1.0\"",
                              [realm URLEncodedString],
@@ -102,6 +109,9 @@
 	
 	// Add the header
     [self setValue:oauthHeader forHTTPHeaderField:@"Authorization"];
+	
+	NSLog(@"OAuth header: %@", oauthHeader);
+	NSLog(@"Parameters: %@", [self parameters]);
 	
 	// Clean up
 	[token release];

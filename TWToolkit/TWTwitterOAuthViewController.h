@@ -8,35 +8,27 @@
 
 #import "TWURLConnection.h"
 
-@class TWLoadingView;
 @class OAConsumer;
 @class OAToken;
 @protocol TWTwitterOAuthViewControllerDelegate;
 
-@interface TWTwitterOAuthViewController : UIViewController <UIWebViewDelegate, TWURLConnectionDelegate> {
+@interface TWTwitterOAuthViewController : UINavigationController {
 	
 	id<TWTwitterOAuthViewControllerDelegate> delegate;
-	
-	UIWebView *authorizationView;
-	TWLoadingView *loadingView;
-	
-	TWURLConnection *connection;
-	OAToken *requestToken;
-	OAToken *accessToken;
-	OAConsumer *consumer;
 }
 
 @property (nonatomic, assign) id<TWTwitterOAuthViewControllerDelegate> delegate;
 @property (nonatomic, retain) OAConsumer *consumer;
 
 - (id)initWithDelegate:(id<TWTwitterOAuthViewControllerDelegate>)aDelegate consumer:(OAConsumer *)aConsumer;
+- (void)cancel:(id)sender;
 
 @end
 
 
-
 @protocol TWTwitterOAuthViewControllerDelegate <NSObject>
 
+- (void)twitterOAuthViewControllerDidCancel:(TWTwitterOAuthViewController *)viewController;
 - (void)twitterOAuthViewController:(TWTwitterOAuthViewController *)viewController didFailWithError:(NSError *)error;
 - (void)twitterOAuthViewController:(TWTwitterOAuthViewController *)viewController didAuthorizeWithAccessToken:(OAToken *)accessToken userDictionary:(NSDictionary *)userDictionary;
 

@@ -20,6 +20,27 @@ static CGFloat indicatorRightMargin = 8.0;
 @synthesize textColor;
 @synthesize shadowColor;
 
+#pragma mark -
+#pragma mark NSObject
+#pragma mark -
+
+- (void)dealloc {
+	[self removeObserver:self forKeyPath:@"text"];
+	[self removeObserver:self forKeyPath:@"font"];
+	[self removeObserver:self forKeyPath:@"textColor"];
+	[self removeObserver:self forKeyPath:@"shadowColor"];
+	[font release];
+	[textColor release];
+	[shadowColor release];
+	[indicator release];
+	[super dealloc];
+}
+
+
+#pragma mark -
+#pragma mark UIView
+#pragma mark -
+
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         
@@ -41,9 +62,16 @@ static CGFloat indicatorRightMargin = 8.0;
 		self.textColor = aColor;
 		[aColor release];
 		self.shadowColor = [UIColor whiteColor];
+		
+		// Add observers
+		[self addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"font" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"shadowColor" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
+
 
 - (void)drawRect:(CGRect)rect {
 	
@@ -71,12 +99,21 @@ static CGFloat indicatorRightMargin = 8.0;
 	[text drawInRect:textRect withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];
 }
 
-- (void)dealloc {
-	[font release];
-	[textColor release];
-	[shadowColor release];
-	[indicator release];
-	[super dealloc];
+
+#pragma mark -
+#pragma mark Observer
+#pragma mark -
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {	
+	
+	// Redraw if colors or borders changed
+	if ([keyPath isEqualToString:@"text"] || [keyPath isEqualToString:@"font"] || 
+		[keyPath isEqualToString:@"textColor"] || [keyPath isEqualToString:@"shadowColor"]) {
+		[self setNeedsDisplay];
+		return;
+	}
+	
+	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end
