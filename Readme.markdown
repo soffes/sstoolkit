@@ -14,7 +14,6 @@ TWToolkit makes life easy as an iPhone developer.
 
 * [TWPickerViewController][] - easily create picker view controllers like the Settings app
 * [TWTwitterOAuthViewController][] - OAuth with Twitter never looked so good
-* [TWImagePickerController][] - a nice wrapper for UIImagePickerController that handles all of the UI for you
 
 ### Views
 
@@ -74,7 +73,6 @@ You can also import individual files instead of the whole framework (for faster 
 [TWURLConnectionQueue]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWURLConnectionQueue.h
 [TWPickerViewController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWPickerViewController.h
 [TWTwitterOAuthViewController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWTwitterOAuthViewController.h
-[TWImagePickerController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWImagePickerController.h
 [TWHUDView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWHUDView.h
 [TWLoadingView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLoadingView.h
 [TWGradientView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWGradientView.h

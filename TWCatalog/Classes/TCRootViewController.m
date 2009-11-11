@@ -79,10 +79,6 @@
 			   @"Twitter OAuth", kTitleKey,
 			   @"TCTwitterDemoViewController", kClassNameKey,
 			   nil],
-			  [NSDictionary dictionaryWithObjectsAndKeys:
-			   @"Image Picker", kTitleKey,
-			   @"TCImagePickerDemoViewController", kClassNameKey,
-			   nil],
 			  nil],
 			 kObjectsKey,
 			 @"View Controllers",

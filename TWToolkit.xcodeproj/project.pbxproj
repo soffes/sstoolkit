@@ -27,8 +27,6 @@
 		B2503B9610A90DA6009B0E7B /* TWGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2503B9410A90DA6009B0E7B /* TWGradientView.m */; };
 		B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */ = {isa = PBXBuildFile; fileRef = B253C1F810728DC500E0CE10 /* TWHUDView.h */; };
 		B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = B253C1F910728DC500E0CE10 /* TWHUDView.m */; };
-		B2566AD610AB685F00EA2426 /* TWImagePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2566AD410AB685F00EA2426 /* TWImagePickerController.h */; };
-		B2566AD710AB685F00EA2426 /* TWImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2566AD510AB685F00EA2426 /* TWImagePickerController.m */; };
 		B2807EE010642A3400E4F6C6 /* TWRoundedView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */; };
 		B2807EE110642A3400E4F6C6 /* TWRoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */; };
 		B28517DA1063E43E008D42E7 /* TWPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517D81063E43E008D42E7 /* TWPickerViewController.h */; };
@@ -128,8 +126,6 @@
 		B2503B9410A90DA6009B0E7B /* TWGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWGradientView.m; sourceTree = "<group>"; };
 		B253C1F810728DC500E0CE10 /* TWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWHUDView.h; sourceTree = "<group>"; };
 		B253C1F910728DC500E0CE10 /* TWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWHUDView.m; sourceTree = "<group>"; };
-		B2566AD410AB685F00EA2426 /* TWImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWImagePickerController.h; sourceTree = "<group>"; };
-		B2566AD510AB685F00EA2426 /* TWImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWImagePickerController.m; sourceTree = "<group>"; };
 		B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRoundedView.h; sourceTree = "<group>"; };
 		B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRoundedView.m; sourceTree = "<group>"; };
 		B28517D81063E43E008D42E7 /* TWPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPickerViewController.h; sourceTree = "<group>"; };
@@ -286,8 +282,6 @@
 				B2A67B1B10A8833400E266F5 /* TWTwitterOAuthViewController.m */,
 				B219D15F10A8EA9D008AEC61 /* TWTwitterOAuthInternalViewController.h */,
 				B219D16010A8EA9D008AEC61 /* TWTwitterOAuthInternalViewController.m */,
-				B2566AD410AB685F00EA2426 /* TWImagePickerController.h */,
-				B2566AD510AB685F00EA2426 /* TWImagePickerController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -501,7 +495,6 @@
 				B219D16110A8EA9D008AEC61 /* TWTwitterOAuthInternalViewController.h in Headers */,
 				B2503B9510A90DA6009B0E7B /* TWGradientView.h in Headers */,
 				B227A7F210AB2267001906B9 /* TWURLRequest+Attachments.h in Headers */,
-				B2566AD610AB685F00EA2426 /* TWImagePickerController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,7 +586,6 @@
 				B219D16210A8EA9D008AEC61 /* TWTwitterOAuthInternalViewController.m in Sources */,
 				B2503B9610A90DA6009B0E7B /* TWGradientView.m in Sources */,
 				B227A7F310AB2267001906B9 /* TWURLRequest+Attachments.m in Sources */,
-				B2566AD710AB685F00EA2426 /* TWImagePickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

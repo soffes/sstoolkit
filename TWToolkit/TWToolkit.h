@@ -18,7 +18,6 @@
 // View Controllers
 #import <TWToolkit/TWPickerViewController.h>
 #import <TWToolkit/TWTwitterOAuthViewController.h>
-#import <TWToolkit/TWImagePickerController.h>
 
 // Views
 #import <TWToolkit/TWHUDView.h>

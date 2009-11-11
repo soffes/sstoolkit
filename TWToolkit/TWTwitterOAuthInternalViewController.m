@@ -13,7 +13,6 @@
 #import "OAToken.h"
 #import "TWURLRequest+OAuth.h"
 #import "UIView+fading.h"
-#import "UIWebView+scrolling.h"
 
 @interface TWTwitterOAuthInternalViewController (Private)
 
@@ -77,6 +76,13 @@
 	loadingView.opaque = NO;
 	[self.view addSubview:loadingView];
 	
+	// Web view
+	authorizationView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)];
+	authorizationView.dataDetectorTypes = UIDataDetectorTypeNone;
+	authorizationView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	authorizationView.delegate = self;
+	authorizationView.alpha = 0.0;
+	
 	[self _requestRequestToken];
 }
 
@@ -115,19 +121,20 @@
 	NSString *urlString = [[NSString alloc] initWithFormat:@"http://twitter.com/oauth/authorize?oauth_token=%@&oauth_callback=oob", requestToken.key];
 	NSURL *url = [[NSURL alloc] initWithString:urlString];
 	NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-	[url release];
-	[urlString release];
 	
 	// Setup webView
-	authorizationView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)];
+	CGRect frame = self.view.frame;
+	authorizationView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, frame.size.width, frame.size.height)];
 	authorizationView.dataDetectorTypes = UIDataDetectorTypeNone;
 	authorizationView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	authorizationView.delegate = self;
 	authorizationView.alpha = 0.0;
+	[authorizationView loadRequest:request];
 	[self.view addSubview:authorizationView];
 	
-	[authorizationView loadRequest:request];
 	[request release];
+	[url release];
+	[urlString release];
 }
 
 
@@ -136,42 +143,21 @@
 	loadingView.text = @"Verifying...";
 	
 	[authorizationView fadeOut];
-	[authorizationView removeFromSuperview];
 	[authorizationView release];
 	authorizationView = nil;	
 	
-	NSString *urlString = [[NSString alloc] initWithFormat:@"http://twitter.com/oauth/access_token?oauth_token=%@&oauth_verifier=%@", requestToken.key, pin];
-	NSURL *url = [[NSURL alloc] initWithString:urlString];
-
-	[connection cancel];
-	[connection release];
-	
-	TWURLRequest *request = [[TWURLRequest alloc] initWithURL:url];
-	[request setHTTPMethod:@"POST"];
-	[request setOAuthConsumer:consumer token:requestToken];
-	request.dataType = TWURLRequestDataTypeString;
-	[url release];
-	[urlString release];
-	
-	connection = [[TWURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+//	NSString *urlString = [[NSString alloc] initWithFormat:@"http://twitter.com/oauth/access_token?oauth_token=%@&oauth_verifier=%@", requestToken.key, pin];
+//	NSURL *url = [[NSURL alloc] initWithString:urlString];
+//	[connection cancel];
+//	[connection requestURL:url HTTPMethod:TWURLConnectionHTTPMethodPOST additionalHeaders:nil token:nil];
+//	[url release];
+//	[urlString release];
 }
 
 
 // Step 4
 - (void)_requestUser {
-	NSLog(@"Requesting user");
-	[connection cancel];
-	[connection release];
-	
-	// Build Request
-	NSURL *url = [[NSURL alloc] initWithString:@"http://twitter.com/account/verify_credentials.json"];
-	TWURLRequest *request = [[TWURLRequest alloc] initWithURL:url];
-	request.dataType = TWURLRequestDataTypeJSONDictionary;
-	[request setOAuthConsumer:consumer token:accessToken];
-	[url release];
-	
-	// Request
-	connection = [[TWURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+//	loadingView.text = @"Loading user...";
 }
 
 
@@ -190,7 +176,7 @@
 	
 	NSString *path = [[aConnection.request URL] path];
 	
-	// *** Step 1 - Request token
+	// Step 1 - Request token
 	if ([path isEqualToString:@"/oauth/request_token"]) {
 		
 		NSString *httpBody = (NSString *)result;
@@ -220,37 +206,34 @@
 		
 		// Start authorizing
 		[self _requestAccessToken];
-		return;
 	}
 	
-	// *** Step 2 - Authorize (web view handles this)
-	
-	// *** Step 3 - Verify token
+	// Step 2 - Access token
 	else if ([path isEqualToString:@"/oauth/access_token"]) {
 		
-		// Store token
+		// ---- Store token ----
 		accessToken = [[OAToken alloc] initWithHTTPResponseBody:(NSString *)result];
 		
-		// Check for token error
-		if (!accessToken.key || !accessToken.secret) {
-			if ([[[self _parent] delegate] respondsToSelector:@selector(twitterOAuthViewController:didFailWithError:)]) {
-				NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:@"The access token could not be generated", NSLocalizedDescriptionKey, nil];
-				NSError *error = [NSError errorWithDomain:@"com.tasetfulworks.twtwitteroauthviewcontroller" code:-1 userInfo:userInfo];
-				[[[self _parent] delegate] twitterOAuthViewController:[self _parent] didFailWithError:error];
-			}
-			return;
-		}
+		// ---- Lookup user ----
+		[connection cancel];
+		[connection release];
 		
-		// Lookup user
-		[self _requestUser];
-		return;
+		// Build Request
+		NSURL *url = [[NSURL alloc] initWithString:@"http://twitter.com/account/verify_credentials.json"];
+		TWURLRequest *request = [[TWURLRequest alloc] initWithURL:url];
+		request.dataType = TWURLRequestDataTypeJSONDictionary;
+		[request setOAuthConsumer:consumer token:accessToken];
+		[url release];
+		
+		// Request
+		connection = [[TWURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
 	}
 	
-	// *** Step 4 - User lookup
-	else if ([path isEqualToString:@"/account/verify_credentials.json"]) {
+	// Step 4 - User lookup
+	if ([path isEqualToString:@"/account/verify_credentials.json"]) {
 		
 		// Notify delegate
-		if ([[[self _parent] delegate] respondsToSelector:@selector(twitterOAuthViewController:didAuthorizeWithAccessToken:userDictionary:)]) {
+		if ([[[self _parent] delegate] respondsToSelector:@selector(twitterViewController:didAuthorizeWithAccessToken:userDictionary:)]) {
 			[[[self _parent] delegate] twitterOAuthViewController:[self _parent] didAuthorizeWithAccessToken:accessToken userDictionary:(NSDictionary *)result];
 		}
 	}
@@ -268,27 +251,16 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
 	NSURL *url = [request URL];
 	// TODO: allow signup too
-	BOOL allow = ([[url host] isEqual:@"twitter.com"] && [[url path] isEqual:@"/oauth/authorize"]);
-	if (allow) {
-		[authorizationView fadeOut];
-	}
-	return allow;
+	return ([[url host] isEqual:@"twitter.com"] && [[url path] isEqual:@"/oauth/authorize"]);
 }
 
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	
-	// Check for pin
-	NSString *pin = [authorizationView stringByEvaluatingJavaScriptFromString:@"document.getElementById('oauth_pin').innerText"];
-	if ([pin length] == 7) {
-		[self _verifyAccessTokenWithPin:(NSString *)pin];
-		return;
-	}
-	
-	// Pretty up form and get height
-	[authorizationView stringByEvaluatingJavaScriptFromString:@"\
-	 $('html, body').css({'width': '320px', 'overflow-x': 'hidden'});\
+	// Pretty up form
+	[authorizationView stringByEvaluatingJavaScriptFromString:@"$(function() {\
+	 $('html, body').css({'width': '320px'});\
 	 $('#header').css('width', '320px');\
 	 $('#twitainer').css({'width': '300px', 'padding': '10px 0', 'overflow': 'hidden'});\
 	 $('#content').css('width', '300px');\
@@ -309,17 +281,17 @@
 	 $('#allow').css({'margin-right': '35px', 'margin-left': '10px', 'float': 'right'});\
 	 buttons.append('<div style=\"clear:both\"></div>');\
 	 \
-	 $(document.body).outerWidth(320);"];
+	 $(document.body).outerWidth(320);\
+	 });"];
 	
-	NSString *height = [authorizationView stringByEvaluatingJavaScriptFromString:@"\
-						$('#twitainer').height() + $('#twitainer').get(0).offsetTop"];
-	
-	// Resize webview scroller
-	CGFloat sizeHeight = [height floatValue] + 40.0;
-	[[authorizationView scroller] setContentSize:CGSizeMake(320.0, sizeHeight)];
-	
-	// Fade in
-	[authorizationView fadeIn];
+	// Check for pin
+	NSString *pin = [authorizationView stringByEvaluatingJavaScriptFromString:@"document.getElementById('oauth_pin').innerText"];
+	if ([pin length] == 7) {
+		[self _verifyAccessTokenWithPin:(NSString *)pin];
+	} else {
+		// TODO: Handle invalid pin
+		NSLog(@"Invalid pin");
+	}
 }
 
 
