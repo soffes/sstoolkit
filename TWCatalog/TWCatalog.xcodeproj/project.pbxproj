@@ -16,6 +16,7 @@
 		B21B85BE1067D4F300E5C076 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B21B85BC1067D4F300E5C076 /* main.m */; };
 		B21B86441067D7EA00E5C076 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B21B86431067D7EA00E5C076 /* libsqlite3.dylib */; };
 		B2503BCC10A90E34009B0E7B /* TCGradientViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2503BCB10A90E34009B0E7B /* TCGradientViewDemoViewController.m */; };
+		B2566ADB10AB693B00EA2426 /* TCImagePickerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2566ADA10AB693B00EA2426 /* TCImagePickerDemoViewController.m */; };
 		B27C60EC107FFD1D00F7FBD7 /* TCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27C60EB107FFD1D00F7FBD7 /* TCRootViewController.m */; };
 		B27C61271080003700F7FBD7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B27C61261080003700F7FBD7 /* Default.png */; };
 		B27C6137108000DE00F7FBD7 /* TCConnectionDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27C6136108000DE00F7FBD7 /* TCConnectionDemoViewController.m */; };
@@ -61,6 +62,8 @@
 		B21B86431067D7EA00E5C076 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B2503BCA10A90E34009B0E7B /* TCGradientViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCGradientViewDemoViewController.h; sourceTree = "<group>"; };
 		B2503BCB10A90E34009B0E7B /* TCGradientViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCGradientViewDemoViewController.m; sourceTree = "<group>"; };
+		B2566AD910AB693B00EA2426 /* TCImagePickerDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCImagePickerDemoViewController.h; sourceTree = "<group>"; };
+		B2566ADA10AB693B00EA2426 /* TCImagePickerDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCImagePickerDemoViewController.m; sourceTree = "<group>"; };
 		B27C60EA107FFD1D00F7FBD7 /* TCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCRootViewController.h; sourceTree = "<group>"; };
 		B27C60EB107FFD1D00F7FBD7 /* TCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCRootViewController.m; sourceTree = "<group>"; };
 		B27C61261080003700F7FBD7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 				B2503BC910A90E28009B0E7B /* Gradient View */,
 				B2A67B3010A8838100E266F5 /* Picker View Controller */,
 				B2A67B3110A8839400E266F5 /* Twitter OAuth */,
+				B2566AD810AB693000EA2426 /* Image Picker Controller */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -183,6 +187,15 @@
 				B2503BCB10A90E34009B0E7B /* TCGradientViewDemoViewController.m */,
 			);
 			name = "Gradient View";
+			sourceTree = "<group>";
+		};
+		B2566AD810AB693000EA2426 /* Image Picker Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B2566AD910AB693B00EA2426 /* TCImagePickerDemoViewController.h */,
+				B2566ADA10AB693B00EA2426 /* TCImagePickerDemoViewController.m */,
+			);
+			name = "Image Picker Controller";
 			sourceTree = "<group>";
 		};
 		B2A67B2E10A8836B00E266F5 /* Connection */ = {
@@ -309,6 +322,7 @@
 				B27C61841080037D00F7FBD7 /* TCPickerDetailViewController.m in Sources */,
 				B2A67B2C10A8836400E266F5 /* TCTwitterDemoViewController.m in Sources */,
 				B2503BCC10A90E34009B0E7B /* TCGradientViewDemoViewController.m in Sources */,
+				B2566ADB10AB693B00EA2426 /* TCImagePickerDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -54,7 +54,7 @@
 
 - (void)authorize:(id)sender {
 	// *** Add your Twitter OAuth consumer key and secret here ***
-	OAConsumer *consumer = nil; //[[OAConsumer alloc] initWithKey:@"YOUR CONSUMER KEY" secret:@"YOUR CONSUMER SECRET"];
+	OAConsumer *consumer = nil;// [[OAConsumer alloc] initWithKey:@"your consumer key" secret:@"your consumer secret"];
 	TWTwitterOAuthViewController *viewController = [[TWTwitterOAuthViewController alloc] initWithDelegate:self consumer:consumer];
 	[consumer release];
 	[self.navigationController presentModalViewController:viewController animated:YES];
