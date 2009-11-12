@@ -113,6 +113,7 @@
 	loadingView.text = @"Authorizing...";
 	
 	NSString *urlString = [[NSString alloc] initWithFormat:@"http://twitter.com/oauth/authorize?oauth_token=%@&oauth_callback=oob", requestToken.key];
+	NSLog(@"url: %@", urlString);
 	NSURL *url = [[NSURL alloc] initWithString:urlString];
 	NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
 	[url release];
@@ -293,9 +294,15 @@
 	 $('#twitainer').css({'width': '300px', 'padding': '10px 0', 'overflow': 'hidden'});\
 	 $('#content').css('width', '300px');\
 	 $('.signin-content').css({'width': '280px', 'padding': '10px', '-webkit-border-radius': '5px'});\
-	 $('h2').css({'font-size': '1.3em', 'font-family': '\\'Lucida Grande\\',sans-serif', 'margin-bottom': '12px'});\
-	 $('h4').css({'font-size': '0.65em', 'font-family': '\\'Lucida Grande\\',sans-serif'});\
-	 $('input[type=text], input[type=password]').css('width', '140px');\
+	 $('h2').css({'font-size': '1.3em', 'font-family': '\\'Lucida Grande\\',sans-serif', 'margin': '0 0 8px'});\
+	 $('.signin-content h2').css('min-height', '73px');\
+	 $('.app-icon').css('margin', '0 8px 8px 0');\
+	 $('h4').css({'font-size': '0.65em', 'font-family': '\\'Lucida Grande\\',sans-serif', 'margin': 0});\
+	 \
+	 $('#signin_form th').css('display', 'none');\
+	 $('input[type=text], input[type=password]').css({'width': '260px', 'font-size': '16px', 'padding': '4px'});\
+	 $('input[type=text]').attr({'placeholder': 'Username or Email', 'autocorrect': 'off'});\
+	 $('input[type=password]').attr('placeholder', 'Password');\
 	 \
 	 var tos = $('.tos')[0].innerHTML;\
 	 $('.tos').remove();\
@@ -315,7 +322,7 @@
 						$('#twitainer').height() + $('#twitainer').get(0).offsetTop"];
 	
 	// Resize webview scroller
-	CGFloat sizeHeight = [height floatValue] + 40.0;
+	CGFloat sizeHeight = [height floatValue] + 20.0;
 	[[authorizationView scroller] setContentSize:CGSizeMake(320.0, sizeHeight)];
 	
 	// Fade in
