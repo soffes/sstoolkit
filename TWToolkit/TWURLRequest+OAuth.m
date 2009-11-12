@@ -110,9 +110,6 @@
 	// Add the header
     [self setValue:oauthHeader forHTTPHeaderField:@"Authorization"];
 	
-	NSLog(@"OAuth header: %@", oauthHeader);
-	NSLog(@"Parameters: %@", [self parameters]);
-	
 	// Clean up
 	[token release];
 }
