@@ -9,6 +9,9 @@
 // Connection
 #import <TWToolkit/TWURLConnection.h>
 #import <TWToolkit/TWURLRequest.h>
+#import <TWToolkit/TWURLRequest+Parameters.h>
+#import <TWToolkit/TWURLRequest+OAuth.h>
+#import <TWToolkit/TWURLRequest+Attachments.h>
 #import <TWToolkit/TWURLConnectionQueue.h>
 #import <TWToolkit/TWURLConnectionQueueRequest.h>
 

@@ -47,7 +47,6 @@
 			 [NSArray arrayWithObjects:
 			  [NSDictionary dictionaryWithObjectsAndKeys:
 			   @"Connection Queue", kTitleKey,
-			   @"Simple class for loading remote data", kDescriptionKey,
 			   @"TCConnectionDemoViewController", kClassNameKey,
 			   nil],
 			  nil],
@@ -59,12 +58,10 @@
 			 [NSArray arrayWithObjects:
 			  [NSDictionary dictionaryWithObjectsAndKeys:
 			   @"Remote Image View", kTitleKey,
-			   @"Easily load and cache remote images", kDescriptionKey,
 			   @"TCRemoteImageViewDemoViewController", kClassNameKey,
 			   nil],
 			  [NSDictionary dictionaryWithObjectsAndKeys:
 			   @"Gradient View", kTitleKey,
-			   @"Gradients made easy", kDescriptionKey,
 			   @"TCGradientViewDemoViewController", kClassNameKey,
 			   nil],
 			  nil],
@@ -76,12 +73,10 @@
 			 [NSArray arrayWithObjects:
 			  [NSDictionary dictionaryWithObjectsAndKeys:
 			   @"Settings Picker", kTitleKey,
-			   @"Easily create pickers like the Settings app", kDescriptionKey,
 			   @"TCPickerDemoViewController", kClassNameKey,
 			   nil],
 			  [NSDictionary dictionaryWithObjectsAndKeys:
 			   @"Twitter OAuth", kTitleKey,
-			   @"Easy Twitter authorization using OAuth", kDescriptionKey,
 			   @"TCTwitterDemoViewController", kClassNameKey,
 			   nil],
 			  nil],

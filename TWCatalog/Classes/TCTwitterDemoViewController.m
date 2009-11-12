@@ -36,12 +36,12 @@
 	instructions.backgroundColor = [UIColor clearColor];
 	instructions.font = [UIFont systemFontOfSize:16.0];
 	instructions.textColor = [UIColor colorWithRed:0.298 green:0.337 blue:0.424 alpha:1.0];
-	instructions.text = @"Authorize Twitter with OAuth and get the user's object and access token without using their credentials directly.\n\n(Be sure to define the OAuth consumer variables in the demo view controller.)";
+	instructions.text = @"Authorize with OAuth and get the user's object without getting their credentials.\n\n(Be sure to define the OAuth consumer variables in the demo view controller.)";
 	[self.view addSubview:instructions];
 	[instructions release];
 	
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[button setTitle:@"Authorize with OAuth" forState:UIControlStateNormal];
+	[button setTitle:@"Authorize" forState:UIControlStateNormal];
 	[button setFrame:CGRectMake(20.0, 180.0, 280.0, 37.0)];
 	[button addTarget:self action:@selector(authorize:) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:button];
@@ -54,7 +54,8 @@
 
 - (void)authorize:(id)sender {
 	// *** Add your Twitter OAuth consumer key and secret here ***
-	OAConsumer *consumer = nil; //[[OAConsumer alloc] initWithKey:@"YOUR CONSUMER KEY" secret:@"YOUR CONSUMER SECRET"];
+	OAConsumer *consumer = nil; //[[OAConsumer alloc] initWithKey:@"your consumer key" secret:@"your consumer secret"];
+
 	TWTwitterOAuthViewController *viewController = [[TWTwitterOAuthViewController alloc] initWithDelegate:self consumer:consumer];
 	[consumer release];
 	[self.navigationController presentModalViewController:viewController animated:YES];
@@ -79,7 +80,7 @@
 
 
 - (void)twitterOAuthViewController:(TWTwitterOAuthViewController *)viewController didAuthorizeWithAccessToken:(OAToken *)accessToken userDictionary:(NSDictionary *)userDictionary {
-	NSString *message = [NSString stringWithFormat:@"Successfuly received access token for %@!", [userDictionary objectForKey:@"screen_name"]];
+	NSString *message = [NSString stringWithFormat:@"Successfuly received access token for %@", [[userDictionary objectForKey:@"user"] objectForKey:@"screen_name"]];
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success!" message:message delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
 	[alert show];
 	[alert release];

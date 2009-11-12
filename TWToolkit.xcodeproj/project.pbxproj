@@ -13,6 +13,8 @@
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
 		B219D16110A8EA9D008AEC61 /* TWTwitterOAuthInternalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B219D15F10A8EA9D008AEC61 /* TWTwitterOAuthInternalViewController.h */; };
 		B219D16210A8EA9D008AEC61 /* TWTwitterOAuthInternalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B219D16010A8EA9D008AEC61 /* TWTwitterOAuthInternalViewController.m */; };
+		B227A7F210AB2267001906B9 /* TWURLRequest+Attachments.h in Headers */ = {isa = PBXBuildFile; fileRef = B227A7F010AB2267001906B9 /* TWURLRequest+Attachments.h */; };
+		B227A7F310AB2267001906B9 /* TWURLRequest+Attachments.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A7F110AB2267001906B9 /* TWURLRequest+Attachments.m */; };
 		B22BAB7110A135E60011B963 /* TWURLRequest+OAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B22BAB6F10A135E60011B963 /* TWURLRequest+OAuth.h */; };
 		B22BAB7210A135E60011B963 /* TWURLRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = B22BAB7010A135E60011B963 /* TWURLRequest+OAuth.m */; };
 		B233E33210A1EBCD00EA4DC3 /* TWURLConnectionQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = B233E33010A1EBCD00EA4DC3 /* TWURLConnectionQueue.h */; };
@@ -110,6 +112,8 @@
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B219D15F10A8EA9D008AEC61 /* TWTwitterOAuthInternalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTwitterOAuthInternalViewController.h; sourceTree = "<group>"; };
 		B219D16010A8EA9D008AEC61 /* TWTwitterOAuthInternalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTwitterOAuthInternalViewController.m; sourceTree = "<group>"; };
+		B227A7F010AB2267001906B9 /* TWURLRequest+Attachments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TWURLRequest+Attachments.h"; sourceTree = "<group>"; };
+		B227A7F110AB2267001906B9 /* TWURLRequest+Attachments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TWURLRequest+Attachments.m"; sourceTree = "<group>"; };
 		B22BAB6F10A135E60011B963 /* TWURLRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TWURLRequest+OAuth.h"; sourceTree = "<group>"; };
 		B22BAB7010A135E60011B963 /* TWURLRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TWURLRequest+OAuth.m"; sourceTree = "<group>"; };
 		B233E33010A1EBCD00EA4DC3 /* TWURLConnectionQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLConnectionQueue.h; sourceTree = "<group>"; };
@@ -261,6 +265,8 @@
 				B22BAB7010A135E60011B963 /* TWURLRequest+OAuth.m */,
 				B2A67D1110A89B7900E266F5 /* TWURLRequest+Parameters.h */,
 				B2A67D1210A89B7900E266F5 /* TWURLRequest+Parameters.m */,
+				B227A7F010AB2267001906B9 /* TWURLRequest+Attachments.h */,
+				B227A7F110AB2267001906B9 /* TWURLRequest+Attachments.m */,
 				B2A0753D1080F27D002FD0CA /* TWURLConnection+CacheController.h */,
 				B2A0753E1080F27D002FD0CA /* TWURLConnection+CacheController.m */,
 			);
@@ -488,6 +494,7 @@
 				B2A67D5310A89B7900E266F5 /* SBJsonWriter.h in Headers */,
 				B219D16110A8EA9D008AEC61 /* TWTwitterOAuthInternalViewController.h in Headers */,
 				B2503B9510A90DA6009B0E7B /* TWGradientView.h in Headers */,
+				B227A7F210AB2267001906B9 /* TWURLRequest+Attachments.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +585,7 @@
 				B2A67D5410A89B7900E266F5 /* SBJsonWriter.m in Sources */,
 				B219D16210A8EA9D008AEC61 /* TWTwitterOAuthInternalViewController.m in Sources */,
 				B2503B9610A90DA6009B0E7B /* TWGradientView.m in Sources */,
+				B227A7F310AB2267001906B9 /* TWURLRequest+Attachments.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

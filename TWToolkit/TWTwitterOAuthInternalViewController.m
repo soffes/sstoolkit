@@ -77,6 +77,13 @@
 	loadingView.opaque = NO;
 	[self.view addSubview:loadingView];
 	
+	// Web view
+	authorizationView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)];
+	authorizationView.dataDetectorTypes = UIDataDetectorTypeNone;
+	authorizationView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	authorizationView.delegate = self;
+	authorizationView.alpha = 0.0;
+	
 	[self _requestRequestToken];
 }
 
@@ -113,21 +120,21 @@
 	loadingView.text = @"Authorizing...";
 	
 	NSString *urlString = [[NSString alloc] initWithFormat:@"http://twitter.com/oauth/authorize?oauth_token=%@&oauth_callback=oob", requestToken.key];
-	NSLog(@"url: %@", urlString);
 	NSURL *url = [[NSURL alloc] initWithString:urlString];
 	NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
 	[url release];
 	[urlString release];
 	
 	// Setup webView
-	authorizationView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)];
+	CGRect frame = self.view.frame;
+	authorizationView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, frame.size.width, frame.size.height)];
 	authorizationView.dataDetectorTypes = UIDataDetectorTypeNone;
 	authorizationView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	authorizationView.delegate = self;
 	authorizationView.alpha = 0.0;
+	[authorizationView loadRequest:request];
 	[self.view addSubview:authorizationView];
 	
-	[authorizationView loadRequest:request];
 	[request release];
 }
 
@@ -137,7 +144,6 @@
 	loadingView.text = @"Verifying...";
 	
 	[authorizationView fadeOut];
-	[authorizationView removeFromSuperview];
 	[authorizationView release];
 	authorizationView = nil;	
 	
