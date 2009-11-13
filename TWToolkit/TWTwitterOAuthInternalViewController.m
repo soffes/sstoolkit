@@ -310,17 +310,19 @@
 	// Pretty up form and get height
 	[authorizationView stringByEvaluatingJavaScriptFromString:@"\
 	 $('html, body').css({'width': '320px', 'overflow-x': 'hidden'});\
+	 $('body *').css('-webkit-user-select', 'none');\
 	 $('#header').css('width', '320px');\
 	 $('#twitainer').css({'width': '300px', 'padding': '10px 0', 'overflow': 'hidden'});\
 	 $('#content').css('width', '300px');\
 	 $('.signin-content').css({'width': '280px', 'padding': '10px', '-webkit-border-radius': '5px'});\
-	 $('h2').css({'font-size': '1.3em', 'font-family': '\\'Lucida Grande\\',sans-serif', 'margin': '0 0 8px'});\
+	 $('h2').css({'font-size': '17px', 'font-family': '\\'Lucida Grande\\',sans-serif', 'margin': '0 0 12px'});\
 	 $('.signin-content h2').css('min-height', '73px');\
-	 $('.app-icon').css('margin', '0 8px 8px 0');\
+	 $('.app-icon').css('margin', '0 12px 12px 0');\
 	 $('h4').css({'font-size': '0.65em', 'font-family': '\\'Lucida Grande\\',sans-serif', 'margin': 0});\
 	 \
+	 $('#signin_form').css('margin-top', '6px');\
 	 $('#signin_form th').css('display', 'none');\
-	 $('input[type=text], input[type=password]').css({'width': '260px', 'font-size': '16px', 'padding': '4px'});\
+	 $('input[type=text], input[type=password]').css({'width': '260px', 'font-size': '15px', 'padding': '4px', '-webkit-user-select': 'text'});\
 	 $('input[type=text]').attr({'placeholder': 'Username or Email', 'autocorrect': 'off'});\
 	 $('input[type=password]').attr('placeholder', 'Password');\
 	 \
