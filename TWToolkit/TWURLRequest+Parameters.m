@@ -27,6 +27,7 @@
     
 	// Check for empty parameters
     if (encodedParameters == nil || [encodedParameters isEqualToString:@""]) {
+		[encodedParameters release];
         return nil;
 	}
     

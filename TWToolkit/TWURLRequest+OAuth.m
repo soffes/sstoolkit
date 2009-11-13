@@ -36,7 +36,7 @@
 	// Defaults
 	// Empty token for Unauthorized Request Token transaction
 	if (token == nil) {
-		token = [[OAToken alloc] init];
+		token = [[[OAToken alloc] init] autorelease];
 	}
 	
 	if (realm == nil) {
@@ -50,6 +50,7 @@
 	if (nonce == nil) {
 		CFUUIDRef theUUID = CFUUIDCreate(NULL);
 		CFStringRef string = CFUUIDCreateString(NULL, theUUID);
+		CFRelease(theUUID);
 		nonce = [(NSString *)string autorelease];
 	}
 	
@@ -107,11 +108,11 @@
                              timestamp,
                              nonce];
 	
+	// Clean up
+	[signatureProvider release];
+	
 	// Add the header
     [self setValue:oauthHeader forHTTPHeaderField:@"Authorization"];
-	
-	// Clean up
-	[token release];
 }
 
 @end

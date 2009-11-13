@@ -41,6 +41,9 @@
 	[connection release];
 	[loadingView release];
 	[authorizationView release];
+	self.consumer = nil;
+	self.requestToken = nil;
+	self.accessToken = nil;
 	[super dealloc];
 }
 
@@ -108,7 +111,7 @@
 	TWURLRequest *request = [[TWURLRequest alloc] initWithURL:url];
 	[request setDataType:TWURLRequestDataTypeString];
 	[request setHTTPMethod:@"POST"];
-	[request setOAuthConsumer:[[self _parent] consumer]];
+	[request setOAuthConsumer:consumer];
 	[url release];
 	connection = [[TWURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
 	[request release];
@@ -161,12 +164,12 @@
 	[urlString release];
 	
 	connection = [[TWURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+	[request release];
 }
 
 
 // Step 4
 - (void)_requestUser {
-	NSLog(@"Requesting user");
 	[connection cancel];
 	[connection release];
 	
@@ -179,6 +182,7 @@
 	
 	// Request
 	connection = [[TWURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+	[request release];
 }
 
 
@@ -212,11 +216,12 @@
 			return;
 		}
 		
-		// Store token
-		requestToken = [[OAToken alloc] initWithHTTPResponseBody:httpBody];
+		// Get token
+		OAToken *aToken = [[OAToken alloc] initWithHTTPResponseBody:httpBody];
 		
 		// Check for token error
-		if (!requestToken.key || !requestToken.secret) {
+		if (!aToken.key || !aToken.secret) {
+			[aToken release];
 			if ([[[self _parent] delegate] respondsToSelector:@selector(twitterOAuthViewController:didFailWithError:)]) {
 				NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:@"The request token could not be generated", NSLocalizedDescriptionKey, nil];
 				NSError *error = [NSError errorWithDomain:@"com.tasetfulworks.twtwitteroauthviewcontroller" code:-1 userInfo:userInfo];
@@ -224,6 +229,10 @@
 			}
 			return;
 		}
+		
+		// Store token
+		self.requestToken = aToken;
+		[aToken release];
 		
 		// Start authorizing
 		[self _requestAccessToken];
@@ -235,11 +244,12 @@
 	// *** Step 3 - Verify token
 	else if ([path isEqualToString:@"/oauth/access_token"]) {
 		
-		// Store token
-		accessToken = [[OAToken alloc] initWithHTTPResponseBody:(NSString *)result];
+		// Get token
+		OAToken *aToken = [[OAToken alloc] initWithHTTPResponseBody:(NSString *)result];
 		
 		// Check for token error
-		if (!accessToken.key || !accessToken.secret) {
+		if (!aToken.key || !aToken.secret) {
+			[aToken release];
 			if ([[[self _parent] delegate] respondsToSelector:@selector(twitterOAuthViewController:didFailWithError:)]) {
 				NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:@"The access token could not be generated", NSLocalizedDescriptionKey, nil];
 				NSError *error = [NSError errorWithDomain:@"com.tasetfulworks.twtwitteroauthviewcontroller" code:-1 userInfo:userInfo];
@@ -247,6 +257,10 @@
 			}
 			return;
 		}
+		
+		// Store token
+		self.accessToken = aToken;
+		[aToken release];
 		
 		// Lookup user
 		[self _requestUser];

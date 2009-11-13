@@ -24,10 +24,6 @@ typedef enum {
 	TWURLRequestDataType dataType;
 	NSString *hash;
 	NSTimeInterval cacheLifetime;
-	
-	@private
-	
-	BOOL _hasRequested;
 }
 
 @property (nonatomic, assign) TWURLRequestDataType dataType;
