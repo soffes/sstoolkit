@@ -108,7 +108,7 @@
 	}
 	
 	// Check for post data
-	if (![[self HTTPMethod] isEqualToString:getMethod]) {
+	if ([[self HTTPMethod] isEqualToString:getMethod] == NO && [[url query] length] > 0) {
 		static NSString *contentLengthField = @"Content-Length";
 		NSString *parametersString = [url query];
 		
