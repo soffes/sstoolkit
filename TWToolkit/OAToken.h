@@ -24,10 +24,13 @@
 //  THE SOFTWARE.
 
 @interface OAToken : NSObject <NSCoding, NSCopying> {
-@protected
+
+	@protected
+	
 	NSString *key;
 	NSString *secret;
 }
+
 @property(nonatomic, retain) NSString *key;
 @property(nonatomic, retain) NSString *secret;
 

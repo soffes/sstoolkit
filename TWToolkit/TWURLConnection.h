@@ -52,6 +52,6 @@
 - (void)connection:(TWURLConnection *)aConnection failedToParseChunkWithError:(NSError *)error;
 - (void)connection:(TWURLConnection *)aConnection didFinishLoadingWithResult:(id)result;
 - (void)connection:(TWURLConnection *)aConnection failedToParseResultWithError:(NSError *)error;
-- (void)connection:(TWURLConnection *)aConnection failedWithError:(NSError *)error;
+- (void)connection:(TWURLConnection *)aConnection didFailLoadWithError:(NSError *)error;
 
 @end

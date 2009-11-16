@@ -106,7 +106,7 @@
 }
 
 
-- (void)connection:(TWURLConnection *)aConnection failedWithError:(NSError *)error {
+- (void)connection:(TWURLConnection *)aConnection didFailLoadWithError:(NSError *)error {
 	if ([delegate respondsToSelector:@selector(remoteImageView:didFailWithError:)]) {
 		[delegate remoteImageView:self didFailWithError:error];
 	}

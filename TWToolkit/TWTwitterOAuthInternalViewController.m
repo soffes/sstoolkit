@@ -190,7 +190,7 @@
 #pragma mark TWURLConnectionDelegate
 #pragma mark -
 
-- (void)connection:(TWURLConnection *)aConnection failedWithError:(NSError *)error {
+- (void)connection:(TWURLConnection *)aConnection didFailLoadWithError:(NSError *)error {
 	if ([[[self _parent] delegate] respondsToSelector:@selector(twitterOAuthViewController:didFailWithError:)]) {
 		[[[self _parent] delegate] twitterOAuthViewController:[self _parent] didFailWithError:error];
 	}

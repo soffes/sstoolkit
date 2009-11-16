@@ -124,8 +124,8 @@
 	// Check network
 	// TODO: Experienced issues with this, so commenting out for now
 //	if ([TWConnection isConnectedToNetwork] == NO) {
-//		if ([delegate respondsToSelector:@selector(connection:didFailWithError:)]) {
-//			[delegate connection:self failedWithError:nil];
+//		if ([delegate respondsToSelector:@selector(connection:didFailLoadWithError:)]) {
+//			[delegate connection:self didFailLoadWithError:nil];
 //		}
 //		return;
 //	}
@@ -223,8 +223,10 @@
 		[credential release];
 	} else {
 		// Send error to delegate
-		if ([delegate respondsToSelector:@selector(connection:didFailWithError:)]) {
-			[delegate connection:self failedWithError:nil];
+		if ([delegate respondsToSelector:@selector(connection:didFailLoadWithError:)]) {
+			NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:@"Failed to authenticate.", NSLocalizedDescriptionKey, nil];
+			NSError *error = [NSError errorWithDomain:@"com.tasetfulworks.twurlconnection" code:-1 userInfo:userInfo];
+			[delegate connection:self didFailLoadWithError:error];
 		}
 		
 		[self cancel];
@@ -267,10 +269,10 @@
 }
 
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection *)connection didFailLoadWithError:(NSError *)error {
 	// Send error to delegate
-	if ([delegate respondsToSelector:@selector(connection:failedWithError:)]) {
-		[delegate connection:self failedWithError:error];
+	if ([delegate respondsToSelector:@selector(connection:didFailLoadWithError:)]) {
+		[delegate connection:self didFailLoadWithError:error];
 	}
 	
 	[self cancel];
