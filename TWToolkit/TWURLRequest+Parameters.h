@@ -13,5 +13,6 @@
 - (NSArray *)parameters;
 - (void)setParameters:(NSArray *)parameters;
 - (void)appendParameters:(NSArray *)additionalParameters;
+- (void)appendParameter:(TWURLRequestParameter *)parameter;
 
 @end

@@ -81,4 +81,11 @@
 	[self setParameters:parameters];
 }
 
+
+- (void)appendParameter:(TWURLRequestParameter *)parameter {
+	NSMutableArray *parameters = [NSMutableArray arrayWithArray:[self parameters]];
+	[parameters addObject:parameter];
+	[self setParameters:parameters];
+}
+
 @end
