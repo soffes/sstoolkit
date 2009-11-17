@@ -12,8 +12,29 @@
 
 @implementation TWURLRequest (Parameters)
 
-- (NSArray *)parameters  {
-    NSString *encodedParameters;
++ (NSArray *)parametersFromString:(NSString *)encodedParameters {
+            
+	// Check for empty parameters
+    if (encodedParameters == nil || [encodedParameters isEqualToString:@""]) {
+        return nil;
+	}
+	
+    NSArray *encodedParameterPairs = [encodedParameters componentsSeparatedByString:@"&"];
+    NSMutableArray *requestParameters = [[NSMutableArray alloc] initWithCapacity:16];
+    
+    for (NSString *encodedPair in encodedParameterPairs) {
+        NSArray *encodedPairElements = [encodedPair componentsSeparatedByString:@"="];
+        TWURLRequestParameter *parameter = [TWURLRequestParameter requestParameterWithKey:[[encodedPairElements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+																			   value:[[encodedPairElements objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        [requestParameters addObject:parameter];
+    }
+	
+    return [requestParameters autorelease];
+}
+
+
+- (NSArray *)parameters {
+	NSString *encodedParameters = nil;
     
 	// GET and DELETE
     if ([[self HTTPMethod] isEqualToString:@"GET"] || [[self HTTPMethod] isEqualToString:@"DELETE"]) {
@@ -24,27 +45,10 @@
 	else {
         encodedParameters = [[NSString alloc] initWithData:[self HTTPBody] encoding:NSASCIIStringEncoding];
     }
-    
-	// Check for empty parameters
-    if (encodedParameters == nil || [encodedParameters isEqualToString:@""]) {
-		[encodedParameters release];
-        return nil;
-	}
-    
-    NSArray *encodedParameterPairs = [encodedParameters componentsSeparatedByString:@"&"];
-    NSMutableArray *requestParameters = [[NSMutableArray alloc] initWithCapacity:16];
-    
-    for (NSString *encodedPair in encodedParameterPairs) {
-        NSArray *encodedPairElements = [encodedPair componentsSeparatedByString:@"="];
-        TWURLRequestParameter *parameter = [TWURLRequestParameter requestParameterWithKey:[[encodedPairElements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
-																			   value:[[encodedPairElements objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-        [requestParameters addObject:parameter];
-    }
-    
-	// Cleanup
-	[encodedParameters release];
 	
-    return [requestParameters autorelease];
+	NSArray *parameters = [[self class] parametersFromString:encodedParameters];
+	[encodedParameters release];
+	return parameters;
 }
 
 
@@ -54,9 +58,9 @@
     NSInteger position = 1;
     for (TWURLRequestParameter *requestParameter in parameters) {
         [encodedParameterPairs appendString:[requestParameter URLEncodedKeyValuePair]];
-        if (position < [parameters count])
+        if (position < [parameters count]) {
             [encodedParameterPairs appendString:@"&"];
-		
+		}
         position++;
     }
     
@@ -86,6 +90,11 @@
 	NSMutableArray *parameters = [NSMutableArray arrayWithArray:[self parameters]];
 	[parameters addObject:parameter];
 	[self setParameters:parameters];
+}
+
+
+- (void)appendParametersFromString:(NSString *)parametersString {
+	[self appendParameters:[[self class] parametersFromString:parametersString]];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "TWURLRequest.h"
+#import "TWURLRequest+Parameters.h"
 #import "NSString+encoding.h"
 #import "NSString+SBJSON.h"
 
@@ -117,23 +118,7 @@
 	
 	// Check for post data
 	if ([[self HTTPMethod] isEqualToString:getMethod] == NO && [[url query] length] > 0) {
-		static NSString *contentLengthField = @"Content-Length";
-		static NSString *contentTypeField = @"Content-Type";
-		static NSString *formEncodedType = @"application/x-www-form-urlencoded";
-		
-		NSString *parametersString = [url query];
-		
-		// Set content length
-		NSInteger contentLength = [parametersString lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
-		[self setValue:[NSString stringWithFormat:@"%d", contentLength] forHTTPHeaderField:contentLengthField];
-		
-		// Set content type
-		[self setValue:formEncodedType forHTTPHeaderField:contentTypeField];
-		
-		// Set body
-		NSData *body = [[NSData alloc] initWithBytes:[parametersString UTF8String] length:contentLength];
-		[self setHTTPBody:body];
-		[body release];
+		[self appendParametersFromString:[url query]];
 	}
 }
 

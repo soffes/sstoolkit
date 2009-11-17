@@ -8,11 +8,16 @@
 
 #import "TWURLRequest.h"
 
+@class TWURLRequestParameter;
+
 @interface TWURLRequest (Parameters)
+
++ (NSArray *)parametersFromString:(NSString *)encodedParameters;
 
 - (NSArray *)parameters;
 - (void)setParameters:(NSArray *)parameters;
 - (void)appendParameters:(NSArray *)additionalParameters;
 - (void)appendParameter:(TWURLRequestParameter *)parameter;
+- (void)appendParametersFromString:(NSString *)parametersString;
 
 @end
