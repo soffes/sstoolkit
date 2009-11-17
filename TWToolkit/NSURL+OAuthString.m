@@ -10,6 +10,8 @@
 
 @implementation NSURL (OAuthString)
 
+// OAuth Spec 9.1.2 "Construct Request URL"
+// @see http://oauth.net/core/1.0#rfc.section.9.1.2
 - (NSString *)OAuthString {
 	NSString *lowercaseScheme = [[self scheme] lowercaseString];
 
