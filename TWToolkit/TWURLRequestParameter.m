@@ -7,6 +7,7 @@
 //
 
 #import "TWURLRequestParameter.h"
+#import "NSString+encoding.h"
 
 @implementation TWURLRequestParameter
 

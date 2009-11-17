@@ -55,29 +55,31 @@
 	
 	// OAuth Spec, Section 9.1.1 "Normalize Request Parameters"
     // build a sorted array of both request parameters and OAuth header parameters
-    NSMutableArray *parameterPairs = [NSMutableArray  arrayWithCapacity:(6 + [[self parameters] count])]; // 6 is the number of OAuth params in the Signature Base String
-    
-	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithKey:@"oauth_consumer_key" value:consumer.key] URLEncodedKeyValuePair]];
-	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithKey:@"oauth_signature_method" value:[signatureProvider name]] URLEncodedKeyValuePair]];
-	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithKey:@"oauth_timestamp" value:timestamp] URLEncodedKeyValuePair]];
-	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithKey:@"oauth_nonce" value:nonce] URLEncodedKeyValuePair]];
-	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithKey:@"oauth_version" value:@"1.0"] URLEncodedKeyValuePair]];
+    NSMutableArray *parameterPairs = [[NSMutableArray alloc] initWithObjects:
+									  [[TWURLRequestParameter requestParameterWithKey:@"oauth_consumer_key" value:consumer.key] URLEncodedKeyValuePair],
+									  [[TWURLRequestParameter requestParameterWithKey:@"oauth_signature_method" value:[signatureProvider name]] URLEncodedKeyValuePair],
+									  [[TWURLRequestParameter requestParameterWithKey:@"oauth_timestamp" value:timestamp] URLEncodedKeyValuePair],
+									  [[TWURLRequestParameter requestParameterWithKey:@"oauth_nonce" value:nonce] URLEncodedKeyValuePair],
+									  [[TWURLRequestParameter requestParameterWithKey:@"oauth_version" value:@"1.0"] URLEncodedKeyValuePair],
+									  nil];
     
     if (![token.key isEqualToString:@""]) {
         [parameterPairs addObject:[[TWURLRequestParameter requestParameterWithKey:@"oauth_token" value:token.key] URLEncodedKeyValuePair]];
     }
     
-    for (TWURLRequestParameter *param in [self parameters]) {
-        [parameterPairs addObject:[param URLEncodedKeyValuePair]];
-    }
+    // Add existing parameters
+	[parameterPairs addObjectsFromArray:[self parameters]];
     
-    NSArray *sortedPairs = [parameterPairs sortedArrayUsingSelector:@selector(compare:)];
-    NSString *normalizedRequestParameters = [sortedPairs componentsJoinedByString:@"&"];
+	// Sort and concatenate
+    NSString *normalizedRequestParameters = [[parameterPairs sortedArrayUsingSelector:@selector(compare:)] componentsJoinedByString:@"&"];
+	[parameterPairs release];
     
     // OAuth Spec, Section 9.1.2 "Concatenate Request Elements"
     NSString *signatureBaseString = [NSString stringWithFormat:@"%@&%@&%@", [self HTTPMethod], 
 									 [[[self URL] URLStringWithoutQuery] URLEncodedString], 
 									 [normalizedRequestParameters URLEncodedString]];
+	
+	NSLog(@"base signature string: %@", signatureBaseString);
 	
 	// Sign
 	// Secrets must be urlencoded before concatenated with '&'
@@ -87,10 +89,8 @@
 							[token.secret URLEncodedString]]];
     
     // Set OAuth headers
-    NSString *oauthToken;
-    if ([token.key isEqualToString:@""]) {
-        oauthToken = @""; // not used on Request Token transactions
-	} else {
+    NSString *oauthToken = @"";
+    if (![token.key isEqualToString:@""]) {
         oauthToken = [NSString stringWithFormat:@"oauth_token=\"%@\", ", [token.key URLEncodedString]];
 	}
     

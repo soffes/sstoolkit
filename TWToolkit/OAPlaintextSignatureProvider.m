@@ -25,7 +25,7 @@
 
 
 #import "OAPlaintextSignatureProvider.h"
-#import "NSString+URLEncoding.h"
+#import "NSString+encoding.h"
 
 @implementation OAPlaintextSignatureProvider
 
