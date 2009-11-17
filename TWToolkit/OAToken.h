@@ -24,8 +24,6 @@
 //  THE SOFTWARE.
 
 @interface OAToken : NSObject <NSCoding, NSCopying> {
-
-	@protected
 	
 	NSString *key;
 	NSString *secret;
