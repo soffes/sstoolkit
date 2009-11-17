@@ -93,12 +93,6 @@
 }
 
 
-- (void)setValue:(NSString *)value forHTTPHeaderField:(NSString *)field {
-	[super setValue:value forHTTPHeaderField:field];
-	NSLog(@"Set Header: %@ = %@", field, value);
-}
-
-
 #pragma mark -
 #pragma mark TWURLRequest
 #pragma mark -
