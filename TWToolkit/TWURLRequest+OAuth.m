@@ -68,7 +68,9 @@
     }
     
     // Add existing parameters
-	[parameterPairs addObjectsFromArray:[self parameters]];
+	for (TWURLRequestParameter *parameter in [self parameters]) {
+		[parameterPairs addObject:[parameter URLEncodedKeyValuePair]];
+	}
     
 	// Sort and concatenate
     NSString *normalizedRequestParameters = [[parameterPairs sortedArrayUsingSelector:@selector(compare:)] componentsJoinedByString:@"&"];

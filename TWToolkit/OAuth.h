@@ -7,4 +7,5 @@
 //
 
 #import <TWToolkit/TWURLRequest+OAuth.h>
-#import <TWToolkit/OAuthConsumer.h>
+#import <TWToolkit/OAConsumer.h>
+#import <TWToolkit/OAToken.h>

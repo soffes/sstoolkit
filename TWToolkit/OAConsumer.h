@@ -24,10 +24,11 @@
 //  THE SOFTWARE.
 
 @interface OAConsumer : NSObject {
-@protected
+	
 	NSString *key;
 	NSString *secret;
 }
+
 @property(nonatomic, retain) NSString *key;
 @property(nonatomic, retain) NSString *secret;
 
