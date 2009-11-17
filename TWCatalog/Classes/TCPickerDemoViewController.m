@@ -17,6 +17,11 @@
 #pragma mark Class Methods
 #pragma mark -
 
++ (NSString *)title {
+	return @"Settings Picker";
+}
+
+
 + (TCPickerDemoViewController *)setup {
 	return [[TCPickerDemoViewController alloc] initWithStyle:UITableViewStyleGrouped];
 }

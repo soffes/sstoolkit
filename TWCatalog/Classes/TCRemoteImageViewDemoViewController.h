@@ -14,6 +14,7 @@
 	TWLoadingView *loadingView;
 }
 
++ (NSString *)title;
 + (TCRemoteImageViewDemoViewController *)setup;
 
 @end

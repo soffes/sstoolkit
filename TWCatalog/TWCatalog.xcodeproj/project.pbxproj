@@ -26,7 +26,6 @@
 		B27C624510800F3500F7FBD7 /* TWToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B27C624410800F3500F7FBD7 /* TWToolkit.bundle */; };
 		B27FDDBF10A49B660076DC56 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B27FDDBE10A49B660076DC56 /* Icon.png */; };
 		B27FDDC910A49C350076DC56 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B27FDDC810A49C350076DC56 /* iTunesArtwork */; };
-		B2A67B2C10A8836400E266F5 /* TCTwitterDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A67B2B10A8836400E266F5 /* TCTwitterDemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +75,6 @@
 		B27C624410800F3500F7FBD7 /* TWToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TWToolkit.bundle; path = ../Resources/TWToolkit.bundle; sourceTree = SOURCE_ROOT; };
 		B27FDDBE10A49B660076DC56 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		B27FDDC810A49C350076DC56 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
-		B2A67B2A10A8836400E266F5 /* TCTwitterDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTwitterDemoViewController.h; sourceTree = "<group>"; };
-		B2A67B2B10A8836400E266F5 /* TCTwitterDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTwitterDemoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +105,6 @@
 				B2A67B2F10A8837600E266F5 /* Remote Image View */,
 				B2503BC910A90E28009B0E7B /* Gradient View */,
 				B2A67B3010A8838100E266F5 /* Picker View Controller */,
-				B2A67B3110A8839400E266F5 /* Twitter OAuth */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -214,15 +210,6 @@
 			name = "Picker View Controller";
 			sourceTree = "<group>";
 		};
-		B2A67B3110A8839400E266F5 /* Twitter OAuth */ = {
-			isa = PBXGroup;
-			children = (
-				B2A67B2A10A8836400E266F5 /* TCTwitterDemoViewController.h */,
-				B2A67B2B10A8836400E266F5 /* TCTwitterDemoViewController.m */,
-			);
-			name = "Twitter OAuth";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -307,7 +294,6 @@
 				B27C613A108000EF00F7FBD7 /* TCRemoteImageViewDemoViewController.m in Sources */,
 				B27C613D108000FC00F7FBD7 /* TCPickerDemoViewController.m in Sources */,
 				B27C61841080037D00F7FBD7 /* TCPickerDetailViewController.m in Sources */,
-				B2A67B2C10A8836400E266F5 /* TCTwitterDemoViewController.m in Sources */,
 				B2503BCC10A90E34009B0E7B /* TCGradientViewDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

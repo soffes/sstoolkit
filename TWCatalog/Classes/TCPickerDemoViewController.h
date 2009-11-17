@@ -13,6 +13,7 @@
 
 @property (nonatomic, retain) NSString *selectedAbbreviation;
 
++ (NSString *)title;
 + (TCPickerDemoViewController *)setup;
 
 @end

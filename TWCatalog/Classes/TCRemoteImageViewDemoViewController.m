@@ -15,6 +15,11 @@
 #pragma mark Class Methods
 #pragma mark -
 
++ (NSString *)title {
+	return @"Remote Image View";
+}
+
+
 + (TCRemoteImageViewDemoViewController *)setup {
 	return [[TCRemoteImageViewDemoViewController alloc] initWithNibName:nil bundle:nil];
 }

@@ -14,6 +14,11 @@
 #pragma mark Class Methods
 #pragma mark -
 
++ (NSString *)title {
+	return @"Connection Queue";
+}
+
+
 + (TCConnectionDemoViewController *)setup {
 	return [[TCConnectionDemoViewController alloc] initWithNibName:nil bundle:nil];
 }

@@ -13,6 +13,7 @@
 	TWGradientView *gradientView;
 }
 
++ (NSString *)title;
 + (TCGradientViewDemoViewController *)setup;
 
 - (void)changeColor:(id)sender;

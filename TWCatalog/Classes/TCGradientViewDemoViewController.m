@@ -15,6 +15,11 @@
 #pragma mark Class Methods
 #pragma mark -
 
++ (NSString *)title {
+	return @"Gradient View";
+}
+
+
 + (TCGradientViewDemoViewController *)setup {
 	return [[TCGradientViewDemoViewController alloc] initWithNibName:nil bundle:nil];
 }

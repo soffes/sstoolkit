@@ -13,6 +13,7 @@
 	UITextView *outputView;
 }
 
++ (NSString *)title;
 + (TCConnectionDemoViewController *)setup;
 
 - (IBAction)refresh:(id)sender;

@@ -13,9 +13,7 @@
 #import "TCGradientViewDemoViewController.h"
 
 #define kTitleKey @"title"
-#define kDescriptionKey @"description"
-#define kClassNameKey @"className"
-#define kObjectsKey @"objects"
+#define kClassesKey @"classes"
 
 @interface UIViewController (TCRootViewControllerAdditions)
 + (id)setup;
@@ -45,42 +43,26 @@
     data = [[NSArray alloc] initWithObjects:
 			[NSDictionary dictionaryWithObjectsAndKeys:
 			 [NSArray arrayWithObjects:
-			  [NSDictionary dictionaryWithObjectsAndKeys:
-			   @"Connection Queue", kTitleKey,
-			   @"TCConnectionDemoViewController", kClassNameKey,
-			   nil],
+			  @"TCConnectionDemoViewController",
 			  nil],
-			 kObjectsKey,
+			 kClassesKey,
 			 @"Connection",
 			 kTitleKey,
 			 nil],
 			[NSDictionary dictionaryWithObjectsAndKeys:
 			 [NSArray arrayWithObjects:
-			  [NSDictionary dictionaryWithObjectsAndKeys:
-			   @"Remote Image View", kTitleKey,
-			   @"TCRemoteImageViewDemoViewController", kClassNameKey,
-			   nil],
-			  [NSDictionary dictionaryWithObjectsAndKeys:
-			   @"Gradient View", kTitleKey,
-			   @"TCGradientViewDemoViewController", kClassNameKey,
-			   nil],
+			  @"TCRemoteImageViewDemoViewController",
+			  @"TCGradientViewDemoViewController",
 			  nil],
-			 kObjectsKey,
+			 kClassesKey,
 			 @"Views",
 			 kTitleKey,
 			 nil],
 			[NSDictionary dictionaryWithObjectsAndKeys:
 			 [NSArray arrayWithObjects:
-			  [NSDictionary dictionaryWithObjectsAndKeys:
-			   @"Settings Picker", kTitleKey,
-			   @"TCPickerDemoViewController", kClassNameKey,
-			   nil],
-			  [NSDictionary dictionaryWithObjectsAndKeys:
-			   @"Twitter OAuth", kTitleKey,
-			   @"TCTwitterDemoViewController", kClassNameKey,
-			   nil],
+			  @"TCPickerDemoViewController",
 			  nil],
-			 kObjectsKey,
+			 kClassesKey,
 			 @"View Controllers",
 			 kTitleKey,
 			 nil],
@@ -98,7 +80,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[data objectAtIndex:section] objectForKey:kObjectsKey] count];
+    return [[[data objectAtIndex:section] objectForKey:kClassesKey] count];
 }
 
 
@@ -111,9 +93,9 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
     }
 	
-	NSDictionary *row = [[[data objectAtIndex:indexPath.section] objectForKey:kObjectsKey] objectAtIndex:indexPath.row];
-	
-	cell.textLabel.text = [row objectForKey:kTitleKey];
+	Class klass = [[NSBundle mainBundle] classNamed:[[[data objectAtIndex:indexPath.section] objectForKey:kClassesKey] objectAtIndex:indexPath.row]];
+		
+	cell.textLabel.text = [klass title];
 //	cell.detailTextLabel.text = [row objectForKey:kDescriptionKey];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
@@ -133,8 +115,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
-	Class aClass = [[NSBundle mainBundle] classNamed:[[[[data objectAtIndex:indexPath.section] objectForKey:kObjectsKey] objectAtIndex:indexPath.row] objectForKey:kClassNameKey]];
-	UIViewController *viewController = [aClass setup];
+	Class klass = [[NSBundle mainBundle] classNamed:[[[data objectAtIndex:indexPath.section] objectForKey:kClassesKey] objectAtIndex:indexPath.row]];
+	UIViewController *viewController = [klass setup];
 	[self.navigationController pushViewController:viewController animated:YES];
 	[viewController release];
 }
