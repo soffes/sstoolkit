@@ -70,7 +70,10 @@
 
 
 - (id)initWithURLString:(NSString *)urlString {
-	return [self initWithURL:[NSURL URLWithString:urlString]];
+	NSURL *url = [[NSURL alloc] initWithString:urlString];
+	self = [self initWithURL:url];
+	[url release];
+	return self;
 }
 
 
