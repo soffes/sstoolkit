@@ -6,9 +6,6 @@
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-// TWToolkit
-#import <TWToolkit/TWURLRequest+OAuth.h>
-
 // Foundation
 #import <TWToolkit/NSArray+shuffle.h>
 #import <TWToolkit/NSData+MD5Sum.h>
