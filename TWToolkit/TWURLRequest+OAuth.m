@@ -83,7 +83,6 @@
 	
 	// Sign
 	// Secrets must be urlencoded before concatenated with '&'
-	// TODO: if later RSA-SHA1 support is added then a little code redesign is needed
     NSString *signature = [signatureProvider signClearText:signatureBaseString withSecret:
 						   [NSString stringWithFormat:@"%@&%@", [consumer.secret URLEncodedString], 
 							[token.secret URLEncodedString]]];
