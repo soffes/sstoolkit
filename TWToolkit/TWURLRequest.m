@@ -109,7 +109,7 @@
 	NSString *password = [url password];
 	if ((username || password) && ![self valueForHTTPHeaderField:authorizationField]) {
 		NSString* auth = [[NSString alloc] initWithFormat:@"%@:%@", username, password];
-		NSString* basicauth = [[NSString alloc] initWithFormat:@"Basic %@", [NSString base64encode:auth]];
+		NSString* basicauth = [[NSString alloc] initWithFormat:@"Basic %@", [auth base64EncodedString]];
 		[self setValue:basicauth forHTTPHeaderField:authorizationField];
 		[auth release];
 		[basicauth release];
