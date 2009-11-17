@@ -8,13 +8,18 @@
 
 @interface NSString (encoding)
 
-+ (NSString*)localizedString:(NSString*)key;
-+ (NSString*)base64encode:(NSString*)str;
+// Localization
++ (NSString *)localizedString:(NSString*)key;
 
-- (NSString*)encodeAsURIComponent;
-- (NSString*)escapeHTML;
-- (NSString*)unescapeHTML;
+// HTML
+- (NSString *)escapeHTML;
+- (NSString *)unescapeHTML;
+
+// URL
 - (NSString *)URLEncodedString;
-- (NSString*)URLDecodedString;
+- (NSString *)URLDecodedString;
+
+// Base64
+- (NSString *)base64EncodedString;
 
 @end
