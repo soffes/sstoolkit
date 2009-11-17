@@ -11,9 +11,9 @@
 #import "OAConsumer.h"
 #import "TWURLRequest+Parameters.h"
 #import "TWURLRequestParameter.h"
-#import "NSURL+Base.h"
 #import "OAHMAC_SHA1SignatureProvider.h"
 #import "NSString+encoding.h"
+#import "NSURL+OAuthString.h"
 
 @implementation TWURLRequest (OAuth)
 
@@ -75,10 +75,10 @@
 	// Sort and concatenate
     NSString *normalizedRequestParameters = [[parameterPairs sortedArrayUsingSelector:@selector(compare:)] componentsJoinedByString:@"&"];
 	[parameterPairs release];
-    
+    	
     // OAuth Spec, Section 9.1.2 "Concatenate Request Elements"
-    NSString *signatureBaseString = [NSString stringWithFormat:@"%@&%@&%@", [self HTTPMethod], 
-									 [[[self URL] URLStringWithoutQuery] URLEncodedString], 
+    NSString *signatureBaseString = [NSString stringWithFormat:@"%@&%@&%@", [self HTTPMethod],
+									 [[[self URL] OAuthString] URLEncodedString],
 									 [normalizedRequestParameters URLEncodedString]];
 	
 	NSLog(@"base signature string: %@", signatureBaseString);

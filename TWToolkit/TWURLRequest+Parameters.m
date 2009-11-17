@@ -8,7 +8,7 @@
 
 #import "TWURLRequest+Parameters.h"
 #import "TWURLRequestParameter.h"
-#import "NSURL+Base.h"
+#import "NSURL+OAuthString.h"
 
 @implementation TWURLRequest (Parameters)
 
@@ -66,7 +66,7 @@
     
 	// GET and DELETE
     if ([[self HTTPMethod] isEqualToString:@"GET"] || [[self HTTPMethod] isEqualToString:@"DELETE"]) {
-        [self setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [[self URL] URLStringWithoutQuery], encodedParameterPairs]]];
+        [self setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [[self URL] OAuthString], encodedParameterPairs]]];
 	}
 	
 	// PUT and POST
