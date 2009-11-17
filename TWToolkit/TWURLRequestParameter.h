@@ -9,20 +9,19 @@
 #import "NSString+URLEncoding.h"
 
 @interface TWURLRequestParameter : NSObject {
-
-@protected
-    NSString *name;
+	
+    NSString *key;
     NSString *value;
 }
 
-@property(nonatomic, retain) NSString *name;
+@property(nonatomic, retain) NSString *key;
 @property(nonatomic, retain) NSString *value;
 
-+ (id)requestParameterWithName:(NSString *)aName value:(NSString *)aValue;
++ (id)requestParameterWithKey:(NSString *)aKey value:(NSString *)aValue;
 
-- (id)initWithName:(NSString *)aName value:(NSString *)aValue;
-- (NSString *)URLEncodedName;
+- (id)initWithKey:(NSString *)aKey value:(NSString *)aValue;
+- (NSString *)URLEncodedKey;
 - (NSString *)URLEncodedValue;
-- (NSString *)URLEncodedNameValuePair;
+- (NSString *)URLEncodedKeyValuePair;
 
 @end

@@ -11,6 +11,8 @@
 @interface TWURLRequest (Attachments)
 
 - (void)attachData:(NSData *)data;
-- (void)attachImage:(UIImage *)image;
+- (void)attachPNGImage:(UIImage *)image;
+- (void)attachJPEGImage:(UIImage *)image;
+- (void)attachJPEGImage:(UIImage *)image compression:(CGFloat)compression;
 
 @end

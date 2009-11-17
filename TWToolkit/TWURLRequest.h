@@ -32,4 +32,6 @@ typedef enum {
 
 + (id)parseData:(NSData *)data dataType:(TWURLRequestDataType)dataType error:(NSError **)outError;
 
+- (id)initWithURLString:(NSString *)urlString;
+
 @end

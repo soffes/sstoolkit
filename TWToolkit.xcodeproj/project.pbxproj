@@ -102,6 +102,7 @@
 		B2C207841062973000AE1B56 /* TWCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C207831062973000AE1B56 /* TWCategories.h */; };
 		B2CC756510A23727002916AC /* TWURLConnectionQueueRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B2CC756310A23727002916AC /* TWURLConnectionQueueRequest.h */; };
 		B2CC756610A23727002916AC /* TWURLConnectionQueueRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CC756410A23727002916AC /* TWURLConnectionQueueRequest.m */; };
+		B2D1C07510B309B600C11BBC /* OAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B2D1C07410B309B600C11BBC /* OAuth.h */; };
 		B2FA61AD1059616200499856 /* TWToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA616C1059616200499856 /* TWToolkit.h */; };
 /* End PBXBuildFile section */
 
@@ -202,6 +203,7 @@
 		B2C207831062973000AE1B56 /* TWCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCategories.h; sourceTree = "<group>"; };
 		B2CC756310A23727002916AC /* TWURLConnectionQueueRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLConnectionQueueRequest.h; sourceTree = "<group>"; };
 		B2CC756410A23727002916AC /* TWURLConnectionQueueRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLConnectionQueueRequest.m; sourceTree = "<group>"; };
+		B2D1C07410B309B600C11BBC /* OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuth.h; sourceTree = "<group>"; };
 		B2FA616C1059616200499856 /* TWToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit.h; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTWToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTWToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -398,7 +400,6 @@
 		B2C20765106296F200AE1B56 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				B2C207831062973000AE1B56 /* TWCategories.h */,
 				B22BAB6E10A135C10011B963 /* TWToolkit */,
 				B2B9EC0A10826D670025F5AC /* Foundation */,
 				B2B9EC0B10826D710025F5AC /* UIKit */,
@@ -427,6 +428,8 @@
 			isa = PBXGroup;
 			children = (
 				B2FA616C1059616200499856 /* TWToolkit.h */,
+				B2C207831062973000AE1B56 /* TWCategories.h */,
+				B2D1C07410B309B600C11BBC /* OAuth.h */,
 				B2C2077A106296FE00AE1B56 /* Connection */,
 				B28517D51063E42A008D42E7 /* View Controllers */,
 				B28517D71063E433008D42E7 /* Views */,
@@ -495,6 +498,7 @@
 				B219D16110A8EA9D008AEC61 /* TWTwitterOAuthInternalViewController.h in Headers */,
 				B2503B9510A90DA6009B0E7B /* TWGradientView.h in Headers */,
 				B227A7F210AB2267001906B9 /* TWURLRequest+Attachments.h in Headers */,
+				B2D1C07510B309B600C11BBC /* OAuth.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

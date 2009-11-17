@@ -36,7 +36,7 @@
     
     for (NSString *encodedPair in encodedParameterPairs) {
         NSArray *encodedPairElements = [encodedPair componentsSeparatedByString:@"="];
-        TWURLRequestParameter *parameter = [TWURLRequestParameter requestParameterWithName:[[encodedPairElements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+        TWURLRequestParameter *parameter = [TWURLRequestParameter requestParameterWithKey:[[encodedPairElements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
 																			   value:[[encodedPairElements objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         [requestParameters addObject:parameter];
     }
@@ -53,7 +53,7 @@
     
     NSInteger position = 1;
     for (TWURLRequestParameter *requestParameter in parameters) {
-        [encodedParameterPairs appendString:[requestParameter URLEncodedNameValuePair]];
+        [encodedParameterPairs appendString:[requestParameter URLEncodedKeyValuePair]];
         if (position < [parameters count])
             [encodedParameterPairs appendString:@"&"];
 		
@@ -72,6 +72,13 @@
         [self setValue:[NSString stringWithFormat:@"%d", [postData length]] forHTTPHeaderField:@"Content-Length"];
         [self setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     }
+}
+
+
+- (void)appendParameters:(NSArray *)additionalParameters {
+	NSMutableArray *parameters = [NSMutableArray arrayWithArray:[self parameters]];
+	[parameters addObjectsFromArray:additionalParameters];
+	[self setParameters:parameters];
 }
 
 @end

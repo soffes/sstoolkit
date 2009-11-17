@@ -10,14 +10,14 @@
 
 @implementation TWURLRequestParameter
 
-@synthesize name, value;
+@synthesize key, value;
 
 #pragma mark -
 #pragma mark Class Methods
 #pragma mark -
 
-+ (id)requestParameterWithName:(NSString *)aName value:(NSString *)aValue  {
-	return [[[TWURLRequestParameter alloc] initWithName:aName value:aValue] autorelease];
++ (id)requestParameterWithKey:(NSString *)aKey value:(NSString *)aValue  {
+	return [[[TWURLRequestParameter alloc] initWithKey:aKey value:aValue] autorelease];
 }
 
 #pragma mark -
@@ -25,7 +25,7 @@
 #pragma mark -
 
 - (void)dealloc {
-	[name release];
+	[key release];
 	[value release];
 	[super dealloc];
 }
@@ -35,17 +35,17 @@
 #pragma mark TWURLRequestParameter
 #pragma mark -
 
-- (id)initWithName:(NSString *)aName value:(NSString *)aValue {
+- (id)initWithKey:(NSString *)aKey value:(NSString *)aValue {
     if (self = [super init]) {
-		self.name = aName;
+		self.key = aKey;
 		self.value = aValue;
 	}
     return self;
 }
 
 
-- (NSString *)URLEncodedName  {
-	return [self.name URLEncodedString];
+- (NSString *)URLEncodedKey  {
+	return [self.key URLEncodedString];
 }
 
 
@@ -54,8 +54,8 @@
 }
 
 
-- (NSString *)URLEncodedNameValuePair  {
-    return [NSString stringWithFormat:@"%@=%@", [self URLEncodedName], [self URLEncodedValue]];
+- (NSString *)URLEncodedKeyValuePair  {
+    return [NSString stringWithFormat:@"%@=%@", [self URLEncodedKey], [self URLEncodedValue]];
 }
 
 @end

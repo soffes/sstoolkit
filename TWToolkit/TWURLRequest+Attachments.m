@@ -8,7 +8,7 @@
 
 #import "TWURLRequest+Attachments.h"
 
-#define kTWURLRequestAttachementFormBoundary @"0194784892923"
+#define kTWURLRequestAttachementFormBoundary @"0104784892923"
 
 @implementation TWURLRequest (Attachments)
 
@@ -30,8 +30,19 @@
 	[self setHTTPBody:data];
 }
 
-- (void)attachImage:(UIImage *)image {
+
+- (void)attachPNGImage:(UIImage *)image {
 	[self attachData:UIImagePNGRepresentation(image)];
+}
+
+
+- (void)attachJPEGImage:(UIImage *)image {
+	[self attachJPEGImage:image compression:0.8];
+}
+
+
+- (void)attachJPEGImage:(UIImage *)image compression:(CGFloat)compression {
+	[self attachData:UIImageJPEGRepresentation(image, compression)];
 }
 
 @end

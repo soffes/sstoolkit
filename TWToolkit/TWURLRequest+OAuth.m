@@ -57,18 +57,18 @@
     // build a sorted array of both request parameters and OAuth header parameters
     NSMutableArray *parameterPairs = [NSMutableArray  arrayWithCapacity:(6 + [[self parameters] count])]; // 6 is the number of OAuth params in the Signature Base String
     
-	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithName:@"oauth_consumer_key" value:consumer.key] URLEncodedNameValuePair]];
-	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithName:@"oauth_signature_method" value:[signatureProvider name]] URLEncodedNameValuePair]];
-	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithName:@"oauth_timestamp" value:timestamp] URLEncodedNameValuePair]];
-	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithName:@"oauth_nonce" value:nonce] URLEncodedNameValuePair]];
-	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithName:@"oauth_version" value:@"1.0"] URLEncodedNameValuePair]];
+	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithKey:@"oauth_consumer_key" value:consumer.key] URLEncodedKeyValuePair]];
+	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithKey:@"oauth_signature_method" value:[signatureProvider name]] URLEncodedKeyValuePair]];
+	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithKey:@"oauth_timestamp" value:timestamp] URLEncodedKeyValuePair]];
+	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithKey:@"oauth_nonce" value:nonce] URLEncodedKeyValuePair]];
+	[parameterPairs addObject:[[TWURLRequestParameter requestParameterWithKey:@"oauth_version" value:@"1.0"] URLEncodedKeyValuePair]];
     
     if (![token.key isEqualToString:@""]) {
-        [parameterPairs addObject:[[TWURLRequestParameter requestParameterWithName:@"oauth_token" value:token.key] URLEncodedNameValuePair]];
+        [parameterPairs addObject:[[TWURLRequestParameter requestParameterWithKey:@"oauth_token" value:token.key] URLEncodedKeyValuePair]];
     }
     
     for (TWURLRequestParameter *param in [self parameters]) {
-        [parameterPairs addObject:[param URLEncodedNameValuePair]];
+        [parameterPairs addObject:[param URLEncodedKeyValuePair]];
     }
     
     NSArray *sortedPairs = [parameterPairs sortedArrayUsingSelector:@selector(compare:)];

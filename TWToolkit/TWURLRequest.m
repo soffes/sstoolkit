@@ -57,8 +57,8 @@
 #pragma mark NSObject
 #pragma mark -
 
-- (id)initWithURL:(NSURL *)theURL {
-	if (self = [super initWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:kTWURLRequestTimeout]) {
+- (id)initWithURL:(NSURL *)aURL {
+	if (self = [super initWithURL:aURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:kTWURLRequestTimeout]) {
 		[self _updateHeaders];
 		
 		dataType = TWURLRequestDataTypeData;
@@ -66,6 +66,11 @@
 		cacheLifetime = -1.0;
 	}
 	return self;
+}
+
+
+- (id)initWithURLString:(NSString *)urlString {
+	return [self initWithURL:[NSURL URLWithString:urlString]];
 }
 
 
@@ -82,6 +87,12 @@
 - (void)setHTTPMethod:(NSString *)method {
 	[super setHTTPMethod:method];
 	[self _updateHeaders];
+}
+
+
+- (void)setValue:(NSString *)value forHTTPHeaderField:(NSString *)field {
+	[super setValue:value forHTTPHeaderField:field];
+	NSLog(@"Set Header: %@ = %@", field, value);
 }
 
 
@@ -110,11 +121,17 @@
 	// Check for post data
 	if ([[self HTTPMethod] isEqualToString:getMethod] == NO && [[url query] length] > 0) {
 		static NSString *contentLengthField = @"Content-Length";
+		static NSString *contentTypeField = @"Content-Type";
+		static NSString *formEncodedType = @"application/x-www-form-urlencoded";
+		
 		NSString *parametersString = [url query];
 		
 		// Set content length
 		NSInteger contentLength = [parametersString lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
 		[self setValue:[NSString stringWithFormat:@"%d", contentLength] forHTTPHeaderField:contentLengthField];
+		
+		// Set content type
+		[self setValue:formEncodedType forHTTPHeaderField:contentTypeField];
 		
 		// Set body
 		NSData *body = [[NSData alloc] initWithBytes:[parametersString UTF8String] length:contentLength];
