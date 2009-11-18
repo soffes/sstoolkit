@@ -12,8 +12,8 @@
     NSString *value;
 }
 
-@property(nonatomic, retain) NSString *key;
-@property(nonatomic, retain) NSString *value;
+@property (nonatomic, retain) NSString *key;
+@property (nonatomic, retain) NSString *value;
 
 + (id)requestParameterWithKey:(NSString *)aKey value:(NSString *)aValue;
 

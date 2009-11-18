@@ -26,10 +26,10 @@
 #pragma mark Class Methods
 #pragma mark -
 
-+ (id)parseData:(NSData *)data dataType:(TWURLRequestDataType)dataType error:(NSError **)outError {
++ (id)parseData:(NSData *)data dataType:(TWURLRequestDataType)aDataType error:(NSError **)outError {
 	id parsedObject = nil;
 	
-	switch (dataType) {
+	switch (aDataType) {
 		default:
 		case TWURLRequestDataTypeData: {
 			parsedObject = [NSData dataWithData:data];

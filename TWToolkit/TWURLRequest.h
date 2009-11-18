@@ -34,7 +34,7 @@ typedef enum {
 @property (nonatomic, copy) NSString *hash;
 @property (nonatomic, assign) NSTimeInterval cacheLifetime;
 
-+ (id)parseData:(NSData *)data dataType:(TWURLRequestDataType)dataType error:(NSError **)outError;
++ (id)parseData:(NSData *)data dataType:(TWURLRequestDataType)aDataType error:(NSError **)outError;
 
 - (id)initWithURLString:(NSString *)urlString;
 
