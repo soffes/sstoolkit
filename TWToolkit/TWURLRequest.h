@@ -18,7 +18,7 @@ typedef enum {
 	TWURLRequestDataTypeImage = 2,
 	TWURLRequestDataTypeJSON = 3,
 	TWURLRequestDataTypeJSONArray = TWURLRequestDataTypeJSON, // Deprecated
-	TWURLRequestDataTypeJSONDictionary = TWURLRequestDataTypeJSON, // Deprecated
+	TWURLRequestDataTypeJSONDictionary = TWURLRequestDataTypeJSON // Deprecated
 	
 } TWURLRequestDataType;
 
