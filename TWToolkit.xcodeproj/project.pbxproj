@@ -19,6 +19,8 @@
 		B233E3F810A21D4700EA4DC3 /* TWURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B233E3F610A21D4700EA4DC3 /* TWURLConnection.m */; };
 		B23E8979108040010065E392 /* TWURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B23E8977108040010065E392 /* TWURLRequest.h */; };
 		B23E897A108040010065E392 /* TWURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E8978108040010065E392 /* TWURLRequest.m */; };
+		B24B551810B36F6B0014994C /* UIImage+BundleImage.h in Headers */ = {isa = PBXBuildFile; fileRef = B24B551610B36F6B0014994C /* UIImage+BundleImage.h */; };
+		B24B551910B36F6B0014994C /* UIImage+BundleImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B24B551710B36F6B0014994C /* UIImage+BundleImage.m */; };
 		B2503B9510A90DA6009B0E7B /* TWGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2503B9310A90DA6009B0E7B /* TWGradientView.h */; };
 		B2503B9610A90DA6009B0E7B /* TWGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2503B9410A90DA6009B0E7B /* TWGradientView.m */; };
 		B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */ = {isa = PBXBuildFile; fileRef = B253C1F810728DC500E0CE10 /* TWHUDView.h */; };
@@ -96,6 +98,8 @@
 		B233E3F610A21D4700EA4DC3 /* TWURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLConnection.m; sourceTree = "<group>"; };
 		B23E8977108040010065E392 /* TWURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLRequest.h; sourceTree = "<group>"; };
 		B23E8978108040010065E392 /* TWURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLRequest.m; sourceTree = "<group>"; };
+		B24B551610B36F6B0014994C /* UIImage+BundleImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BundleImage.h"; sourceTree = "<group>"; };
+		B24B551710B36F6B0014994C /* UIImage+BundleImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BundleImage.m"; sourceTree = "<group>"; };
 		B2503B9310A90DA6009B0E7B /* TWGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWGradientView.h; sourceTree = "<group>"; };
 		B2503B9410A90DA6009B0E7B /* TWGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWGradientView.m; sourceTree = "<group>"; };
 		B253C1F810728DC500E0CE10 /* TWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWHUDView.h; sourceTree = "<group>"; };
@@ -214,6 +218,19 @@
 			path = "Other Sources";
 			sourceTree = "<group>";
 		};
+		B22BAB6E10A135C10011B963 /* TWToolkit */ = {
+			isa = PBXGroup;
+			children = (
+				B2A67D1110A89B7900E266F5 /* TWURLRequest+Parameters.h */,
+				B2A67D1210A89B7900E266F5 /* TWURLRequest+Parameters.m */,
+				B227A7F010AB2267001906B9 /* TWURLRequest+Attachments.h */,
+				B227A7F110AB2267001906B9 /* TWURLRequest+Attachments.m */,
+				B2A0753D1080F27D002FD0CA /* TWURLConnection+CacheController.h */,
+				B2A0753E1080F27D002FD0CA /* TWURLConnection+CacheController.m */,
+			);
+			name = TWToolkit;
+			sourceTree = "<group>";
+		};
 		B28517D51063E42A008D42E7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +306,8 @@
 				B2974D5C106299CB00C9F4A6 /* UIApplication+undocumented.h */,
 				B2974D61106299CB00C9F4A6 /* UIDevice+isSimulator.h */,
 				B2974D62106299CB00C9F4A6 /* UIDevice+isSimulator.m */,
+				B24B551610B36F6B0014994C /* UIImage+BundleImage.h */,
+				B24B551710B36F6B0014994C /* UIImage+BundleImage.m */,
 				B2974D63106299CB00C9F4A6 /* UIImage+crop.h */,
 				B2974D64106299CB00C9F4A6 /* UIImage+crop.m */,
 				B2974D65106299CB00C9F4A6 /* UIScrollView+scroller.h */,
@@ -334,6 +353,7 @@
 		B2C20765106296F200AE1B56 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				B22BAB6E10A135C10011B963 /* TWToolkit */,
 				B2B9EC0A10826D670025F5AC /* Foundation */,
 				B2B9EC0B10826D710025F5AC /* UIKit */,
 			);
@@ -345,16 +365,10 @@
 			children = (
 				B23E8977108040010065E392 /* TWURLRequest.h */,
 				B23E8978108040010065E392 /* TWURLRequest.m */,
-				B2A67D1110A89B7900E266F5 /* TWURLRequest+Parameters.h */,
-				B2A67D1210A89B7900E266F5 /* TWURLRequest+Parameters.m */,
-				B227A7F010AB2267001906B9 /* TWURLRequest+Attachments.h */,
-				B227A7F110AB2267001906B9 /* TWURLRequest+Attachments.m */,
 				B2A67D2310A89B7900E266F5 /* TWURLRequestParameter.h */,
 				B2A67D2410A89B7900E266F5 /* TWURLRequestParameter.m */,
 				B233E3F510A21D4700EA4DC3 /* TWURLConnection.h */,
 				B233E3F610A21D4700EA4DC3 /* TWURLConnection.m */,
-				B2A0753D1080F27D002FD0CA /* TWURLConnection+CacheController.h */,
-				B2A0753E1080F27D002FD0CA /* TWURLConnection+CacheController.m */,
 				B233E33010A1EBCD00EA4DC3 /* TWURLConnectionQueue.h */,
 				B233E33110A1EBCD00EA4DC3 /* TWURLConnectionQueue.m */,
 				B2CC756310A23727002916AC /* TWURLConnectionQueueRequest.h */,
@@ -425,6 +439,7 @@
 				B2A67D5310A89B7900E266F5 /* SBJsonWriter.h in Headers */,
 				B2503B9510A90DA6009B0E7B /* TWGradientView.h in Headers */,
 				B227A7F210AB2267001906B9 /* TWURLRequest+Attachments.h in Headers */,
+				B24B551810B36F6B0014994C /* UIImage+BundleImage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +521,7 @@
 				B2A67D5410A89B7900E266F5 /* SBJsonWriter.m in Sources */,
 				B2503B9610A90DA6009B0E7B /* TWGradientView.m in Sources */,
 				B227A7F310AB2267001906B9 /* TWURLRequest+Attachments.m in Sources */,
+				B24B551910B36F6B0014994C /* UIImage+BundleImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

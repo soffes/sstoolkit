@@ -16,6 +16,7 @@
 // UIKit
 #import <TWToolkit/UIApplication+undocumented.h>
 #import <TWToolkit/UIDevice+isSimulator.h>
+#import <TWToolkit/UIImage+BundleImage.h>
 #import <TWToolkit/UIImage+crop.h>
 #import <TWToolkit/UIScrollView+scroller.h>
 #import <TWToolkit/UITextView+HTML.h>

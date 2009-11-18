@@ -7,6 +7,7 @@
 //
 
 #import "TWHUDView.h"
+#import "UIImage+BundleImage.h"
 
 @implementation TWHUDView
 
@@ -36,12 +37,8 @@
 		// Background color
         self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.25];
 		
-		// TODO: Abstract this out to make things easier
-		NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-		NSString *imagePath = [resourcePath stringByAppendingPathComponent:@"TWToolkit.bundle/images/HUD.png"];
-		
 		// Background image
-		self.backgroundImage = [UIImage imageWithContentsOfFile:imagePath];
+		self.backgroundImage = [UIImage imageNamed:@"images/HUD.png" bundle:@"TWToolkit.bundle"];
 		
 		// Indicator
 		activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];

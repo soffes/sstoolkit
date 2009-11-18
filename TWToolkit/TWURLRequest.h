@@ -7,10 +7,6 @@
 //
 
 #define kTWURLRequestTimeout 60
-#define kTWURLRequestHTTPMethodGET @"GET"
-#define kTWURLRequestHTTPMethodPOST @"POST"
-#define kTWURLRequestHTTPMethodPUT @"PUT"
-#define kTWURLRequestHTTPMethodDELETE @"DELETE"
 
 typedef enum {
 	TWURLRequestDataTypeData = 0,

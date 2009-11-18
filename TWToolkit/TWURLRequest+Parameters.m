@@ -34,10 +34,9 @@
 
 - (NSArray *)parameters {
 	NSString *encodedParameters = nil;
-    NSString *method = [self HTTPMethod];
-	
+    
 	// GET and DELETE
-    if ([method isEqualToString:kTWURLRequestHTTPMethodGET] || [method isEqualToString:kTWURLRequestHTTPMethodDELETE]) {
+    if ([[self HTTPMethod] isEqualToString:@"GET"] || [[self HTTPMethod] isEqualToString:@"DELETE"]) {
         encodedParameters = [[[self URL] query] retain];
 	}
 	
@@ -65,20 +64,16 @@
     }
     
 	// GET and DELETE
-    if ([[self HTTPMethod] isEqualToString:kTWURLRequestHTTPMethodGET] || [[self HTTPMethod] isEqualToString:kTWURLRequestHTTPMethodDELETE]) {
+    if ([[self HTTPMethod] isEqualToString:@"GET"] || [[self HTTPMethod] isEqualToString:@"DELETE"]) {
         [self setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [[[[self URL] absoluteString] componentsSeparatedByString:@"?"] objectAtIndex:0], encodedParameterPairs]]];
 	}
 	
 	// PUT and POST
 	else {
-		static NSString *contentLengthField = @"Content-Length";
-		static NSString *contentTypeField = @"Content-Type";
-		static NSString *formURLEncodedType = @"application/x-www-form-urlencoded";
-		
         NSData *postData = [encodedParameterPairs dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
         [self setHTTPBody:postData];
-        [self setValue:[NSString stringWithFormat:@"%d", [postData length]] forHTTPHeaderField:contentLengthField];
-        [self setValue:formURLEncodedType forHTTPHeaderField:contentTypeField];
+        [self setValue:[NSString stringWithFormat:@"%d", [postData length]] forHTTPHeaderField:@"Content-Length"];
+        [self setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     }
 }
 
