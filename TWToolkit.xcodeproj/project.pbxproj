@@ -148,7 +148,6 @@
 		B2A67D2F10A89B7900E266F5 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		B2A67D3010A89B7900E266F5 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		B2A67D3110A89B7900E266F5 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		B2A67F5110A8E04E00E266F5 /* TWToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TWToolkit.bundle; sourceTree = "<group>"; };
 		B2C20766106296FB00AE1B56 /* NSArray+shuffle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+shuffle.h"; sourceTree = "<group>"; };
 		B2C20767106296FB00AE1B56 /* NSArray+shuffle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+shuffle.m"; sourceTree = "<group>"; };
 		B2C20768106296FB00AE1B56 /* NSData+MD5Sum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MD5Sum.h"; sourceTree = "<group>"; };
@@ -193,7 +192,6 @@
 			children = (
 				B2FA61431059616200499856 /* TWToolkit */,
 				B215045D10583A7300409ED4 /* Other Sources */,
-				B2A41EDD10728C09006EF521 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -251,14 +249,6 @@
 				B2A41E99107287BA006EF521 /* TWSwitchTableViewCell.m */,
 			);
 			name = Cells;
-			sourceTree = "<group>";
-		};
-		B2A41EDD10728C09006EF521 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				B2A67F5110A8E04E00E266F5 /* TWToolkit.bundle */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		B2A67BBC10A8930B00E266F5 /* Vendor */ = {

@@ -53,6 +53,7 @@
 			 [NSArray arrayWithObjects:
 			  @"TCRemoteImageViewDemoViewController",
 			  @"TCGradientViewDemoViewController",
+			  @"TCHUDViewDemoViewController",
 			  nil],
 			 kClassesKey,
 			 @"Views",

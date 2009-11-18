@@ -9,9 +9,10 @@
 #import "TWHUDView.h"
 #import "UIImage+BundleImage.h"
 
+#define kHUDSize 180.0
+
 @implementation TWHUDView
 
-@synthesize backgroundImage;
 @synthesize textLabel;
 @synthesize activityIndicator;
 
@@ -19,10 +20,14 @@
 #pragma mark NSObject
 #pragma mark -
 
+- (id)init {
+	return [self initWithFrame:CGRectZero];
+}
+
+
 - (void)dealloc {
 	[activityIndicator release];
 	[textLabel release];
-	[backgroundImage release];
     [super dealloc];
 }
 
@@ -33,13 +38,7 @@
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-		
-		// Background color
-        self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.25];
-		
-		// Background image
-		self.backgroundImage = [UIImage imageNamed:@"images/HUD.png" bundle:@"TWToolkit.bundle"];
-		
+
 		// Indicator
 		activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 		[activityIndicator startAnimating];
@@ -56,23 +55,65 @@
 		textLabel.lineBreakMode = UILineBreakModeTailTruncation;
 		textLabel.text = @"Loading";
 		[self addSubview:textLabel];
-    }
+	}
     return self;
 }
 
 
 - (void)drawRect:(CGRect)rect {
-	CGRect backgroundImageRect = CGRectMake(round((self.frame.size.width - backgroundImage.size.width) / 2.0), round((self.frame.size.height - backgroundImage.size.height) / 2.0), backgroundImage.size.width, backgroundImage.size.height);
-	[backgroundImage drawInRect:backgroundImageRect];
+
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	
+	CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.5);
+	
+	CGRect rrect = CGRectMake(0.0, 0.0, kHUDSize, kHUDSize);
+	CGFloat radius = 14.0;
+	CGFloat minx = CGRectGetMinX(rrect);
+	CGFloat midx = CGRectGetMidX(rrect);
+	CGFloat maxx = CGRectGetMaxX(rrect);
+	CGFloat miny = CGRectGetMinY(rrect);
+	CGFloat midy = CGRectGetMidY(rrect);
+	CGFloat maxy = CGRectGetMaxY(rrect);
+	
+	CGContextMoveToPoint(context, minx, midy);
+	CGContextAddArcToPoint(context, minx, miny, midx, miny, radius);
+	CGContextAddArcToPoint(context, maxx, miny, maxx, midy, radius);
+	CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
+	CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
+	CGContextClosePath(context);
+	CGContextFillPath(context);
 }
 
+
 - (void)layoutSubviews {
-	[super layoutSubviews];
-	
 	static CGFloat indicatorSize = 40.0;
-	
-	activityIndicator.frame = CGRectMake(round((self.frame.size.width - indicatorSize) / 2.0), round((self.frame.size.height - indicatorSize) / 2.0), indicatorSize, indicatorSize);
-	textLabel.frame = CGRectMake(round((self.frame.size.width - backgroundImage.size.width) / 2.0), (round((self.frame.size.height - backgroundImage.size.height) / 2.0)) + (backgroundImage.size.height - 30.0), backgroundImage.size.width, 20);
+	activityIndicator.frame = CGRectMake(round((kHUDSize - indicatorSize) / 2.0), round((kHUDSize - indicatorSize) / 2.0), indicatorSize, indicatorSize);
+	textLabel.frame = CGRectMake(0.0, (kHUDSize - 30.0), kHUDSize, 20);
+}
+
+
+#pragma mark -
+#pragma mark UIAlertView
+#pragma mark -
+
+- (void)show {
+	[super show];
+	CGFloat biggerSize = kHUDSize + 20.0;
+	self.frame = CGRectMake(round((320.0 - biggerSize) / 2.0), round((480.0 - biggerSize) / 2.0) + 10.0, biggerSize, biggerSize);
+}
+
+
+#pragma mark -
+#pragma mark HUD
+#pragma mark -
+
+- (void)dismiss {
+	[self dismissAnimated:YES];
+}
+
+
+- (void)dismissAnimated:(BOOL)animated {
+	[super dismissWithClickedButtonIndex:0 animated:animated]
 }
 
 @end
