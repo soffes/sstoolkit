@@ -7,6 +7,7 @@
 //
 
 @interface TWHUDView : UIAlertView {
+	
 	UILabel *textLabel;
 	UIActivityIndicatorView *activityIndicator;
 }
@@ -14,6 +15,7 @@
 @property (nonatomic, retain) UILabel *textLabel;
 @property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
 
+- (id)initWithTitle:(NSString *)aTitle loading:(BOOL)loading;
 - (void)dismiss;
 - (void)dismissAnimated:(BOOL)animated;
 

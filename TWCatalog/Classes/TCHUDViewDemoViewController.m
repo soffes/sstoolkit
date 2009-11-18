@@ -45,7 +45,7 @@
 	self.view.backgroundColor = [UIColor whiteColor];
 	
 	// Show hud
-	hud = [[TWHUDView alloc] init];
+	hud = [[TWHUDView alloc] initWithTitle:@"Custom Message" loading:NO];
 	[hud show];
 	
 	// After 3 seconds, pop
