@@ -63,9 +63,10 @@ You can also import individual files instead of the whole framework (for faster 
 
     #import <TWToolkit/TWLoadingView.h>
 
-## Known Bugs
+## Links
 
-* [TWGradientView][]'s `startColor` and `endColor` must be in the same colorspace. The colorspace of the first color is used to draw the gradient. If you did a gradient from white to blue, it would look like a gradient from white to black because the first color, white, is in the gray color space, not the RGB color space. If you did it from blue to white, it would look like blue to black because white in the gray colorspace isn't a valid color in the RGB colorspace (because there are only 2 components in the gray colorspace and 4 in the RGB colorspace). Automatic colorspace conversions are planned for the future.
+* [Known bugs](https://github.com/tastefulworks/twtoolkit/issues/labels/Bug)
+* [Future features](https://github.com/tastefulworks/twtoolkit/issues/labels/Enhancement)
 
 [TWURLRequest]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWURLRequest.h
 [TWURLConnection]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWURLConnection.h
