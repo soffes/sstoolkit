@@ -117,7 +117,7 @@
 	
 	// Check for post data
 	if ([[self HTTPMethod] isEqualToString:kTWURLRequestHTTPMethodGET] == NO && [[url query] length] > 0) {
-		[self appendParametersFromString:[url query]];
+		[self setParametersFromString:[url query]];
 	}
 }
 

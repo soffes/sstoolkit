@@ -82,6 +82,11 @@
 }
 
 
+- (void)setParametersFromString:(NSString *)parametersString {
+	[self setParameters:[[self class] parametersFromString:parametersString]];
+}
+
+
 - (void)appendParameters:(NSArray *)additionalParameters {
 	NSMutableArray *parameters = [NSMutableArray arrayWithArray:[self parameters]];
 	[parameters addObjectsFromArray:additionalParameters];
