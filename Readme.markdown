@@ -2,6 +2,8 @@
 
 TWToolkit makes life easy as an iPhone developer.
 
+*Note:* OAuth features have been abstracted out and moved into [TWOAuthKit][].
+
 ## Classes
 
 ### Connection
@@ -68,6 +70,7 @@ You can also import individual files instead of the whole framework (for faster 
 * [Known bugs](https://github.com/tastefulworks/twtoolkit/issues/labels/Bug)
 * [Future features](https://github.com/tastefulworks/twtoolkit/issues/labels/Enhancement)
 
+[TWOAuthKit]: https://github.com/tastefulworks/twoauthkit
 [TWURLRequest]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWURLRequest.h
 [TWURLConnection]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWURLConnection.h
 [TWURLConnectionQueue]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWURLConnectionQueue.h
