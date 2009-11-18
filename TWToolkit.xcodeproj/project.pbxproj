@@ -218,19 +218,6 @@
 			path = "Other Sources";
 			sourceTree = "<group>";
 		};
-		B22BAB6E10A135C10011B963 /* TWToolkit */ = {
-			isa = PBXGroup;
-			children = (
-				B2A67D1110A89B7900E266F5 /* TWURLRequest+Parameters.h */,
-				B2A67D1210A89B7900E266F5 /* TWURLRequest+Parameters.m */,
-				B227A7F010AB2267001906B9 /* TWURLRequest+Attachments.h */,
-				B227A7F110AB2267001906B9 /* TWURLRequest+Attachments.m */,
-				B2A0753D1080F27D002FD0CA /* TWURLConnection+CacheController.h */,
-				B2A0753E1080F27D002FD0CA /* TWURLConnection+CacheController.m */,
-			);
-			name = TWToolkit;
-			sourceTree = "<group>";
-		};
 		B28517D51063E42A008D42E7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,7 +340,6 @@
 		B2C20765106296F200AE1B56 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				B22BAB6E10A135C10011B963 /* TWToolkit */,
 				B2B9EC0A10826D670025F5AC /* Foundation */,
 				B2B9EC0B10826D710025F5AC /* UIKit */,
 			);
@@ -365,10 +351,16 @@
 			children = (
 				B23E8977108040010065E392 /* TWURLRequest.h */,
 				B23E8978108040010065E392 /* TWURLRequest.m */,
+				B2A67D1110A89B7900E266F5 /* TWURLRequest+Parameters.h */,
+				B2A67D1210A89B7900E266F5 /* TWURLRequest+Parameters.m */,
+				B227A7F010AB2267001906B9 /* TWURLRequest+Attachments.h */,
+				B227A7F110AB2267001906B9 /* TWURLRequest+Attachments.m */,
 				B2A67D2310A89B7900E266F5 /* TWURLRequestParameter.h */,
 				B2A67D2410A89B7900E266F5 /* TWURLRequestParameter.m */,
 				B233E3F510A21D4700EA4DC3 /* TWURLConnection.h */,
 				B233E3F610A21D4700EA4DC3 /* TWURLConnection.m */,
+				B2A0753D1080F27D002FD0CA /* TWURLConnection+CacheController.h */,
+				B2A0753E1080F27D002FD0CA /* TWURLConnection+CacheController.m */,
 				B233E33010A1EBCD00EA4DC3 /* TWURLConnectionQueue.h */,
 				B233E33110A1EBCD00EA4DC3 /* TWURLConnectionQueue.m */,
 				B2CC756310A23727002916AC /* TWURLConnectionQueueRequest.h */,

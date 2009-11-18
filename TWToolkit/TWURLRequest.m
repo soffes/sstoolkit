@@ -101,7 +101,6 @@
 - (void)_updateHeaders {
 	
 	static NSString *authorizationField = @"Authorization";
-	static NSString *getMethod = @"GET";
 	
 	NSURL *url = [self URL];
 	
@@ -117,7 +116,7 @@
 	}
 	
 	// Check for post data
-	if ([[self HTTPMethod] isEqualToString:getMethod] == NO && [[url query] length] > 0) {
+	if ([[self HTTPMethod] isEqualToString:kTWURLRequestHTTPMethodGET] == NO && [[url query] length] > 0) {
 		[self appendParametersFromString:[url query]];
 	}
 }
