@@ -15,6 +15,7 @@
 
 @synthesize textLabel;
 @synthesize activityIndicator;
+@synthesize loading;
 
 #pragma mark -
 #pragma mark NSObject
@@ -62,6 +63,12 @@
 	CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
 	CGContextClosePath(context);
 	CGContextFillPath(context);
+	
+	// Checkmark
+	if (loading == NO) {
+		UIImage *checkmark = [UIImage imageNamed:@"images/hud-checkmark.png" bundle:@"TWToolkit.bundle"];
+		[checkmark drawInRect:CGRectMake(round((kHUDSize - 36.0) / 2.0), round((kHUDSize - 40.0) / 2.0), 36.0, 40.0)];
+	}
 }
 
 
@@ -87,14 +94,25 @@
 }
 
 
+// Deprecated. Overridding UIAlertView's setTitle.
+- (void)setTitle:(NSString *)aTitle {
+	textLabel.text = aTitle;
+}
+
 #pragma mark -
 #pragma mark HUD
 #pragma mark -
 
-- (id)initWithTitle:(NSString *)aTitle loading:(BOOL)loading {
+- (id)initWithTitle:(NSString *)aTitle {
+	return [self initWithTitle:aTitle loading:YES];
+}
+
+
+- (id)initWithTitle:(NSString *)aTitle loading:(BOOL)isLoading {
 	if (self = [super initWithFrame:CGRectZero]) {
 		// Indicator
 		activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+		activityIndicator.alpha = 0.0;
 		[activityIndicator startAnimating];
 		[self addSubview:activityIndicator];
 		
@@ -109,9 +127,19 @@
 		textLabel.lineBreakMode = UILineBreakModeTailTruncation;
 		textLabel.text = aTitle ? aTitle : @"Loading";
 		[self addSubview:textLabel];
+		
+		// Loading
+		self.loading = isLoading;
 	}
 	return self;
 }
+
+
+- (void)completeWithTitle:(NSString *)aTitle {
+	self.loading = NO;
+	textLabel.text = aTitle;
+}
+
 
 - (void)dismiss {
 	[self dismissAnimated:YES];
@@ -120,6 +148,18 @@
 
 - (void)dismissAnimated:(BOOL)animated {
 	[super dismissWithClickedButtonIndex:0 animated:animated];
+}
+
+
+#pragma mark -
+#pragma mark Setters
+#pragma mark -
+
+- (void)setLoading:(BOOL)isLoading {
+	loading = isLoading;
+	activityIndicator.alpha = loading ? 1.0 : 0.0;
+	[self setNeedsDisplay];
+	
 }
 
 @end

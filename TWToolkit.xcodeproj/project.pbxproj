@@ -92,6 +92,7 @@
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B227A7F010AB2267001906B9 /* TWURLRequest+Attachments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TWURLRequest+Attachments.h"; sourceTree = "<group>"; };
 		B227A7F110AB2267001906B9 /* TWURLRequest+Attachments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TWURLRequest+Attachments.m"; sourceTree = "<group>"; };
+		B22A2A8010B4908D00EA6CD9 /* TWToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TWToolkit.bundle; sourceTree = "<group>"; };
 		B233E33010A1EBCD00EA4DC3 /* TWURLConnectionQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLConnectionQueue.h; sourceTree = "<group>"; };
 		B233E33110A1EBCD00EA4DC3 /* TWURLConnectionQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLConnectionQueue.m; sourceTree = "<group>"; };
 		B233E3F510A21D4700EA4DC3 /* TWURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWURLConnection.h; sourceTree = "<group>"; };
@@ -192,6 +193,7 @@
 			children = (
 				B2FA61431059616200499856 /* TWToolkit */,
 				B215045D10583A7300409ED4 /* Other Sources */,
+				B22A2A7F10B4908D00EA6CD9 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -214,6 +216,14 @@
 				B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */,
 			);
 			path = "Other Sources";
+			sourceTree = "<group>";
+		};
+		B22A2A7F10B4908D00EA6CD9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B22A2A8010B4908D00EA6CD9 /* TWToolkit.bundle */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		B28517D51063E42A008D42E7 /* View Controllers */ = {

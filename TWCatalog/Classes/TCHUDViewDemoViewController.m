@@ -44,18 +44,24 @@
 	
 	self.view.backgroundColor = [UIColor whiteColor];
 	
-	// Show hud
-	hud = [[TWHUDView alloc] initWithTitle:@"Custom Message" loading:NO];
+	// Show HUD
+	hud = [[TWHUDView alloc] initWithTitle:@"Custom Message"];
 	[hud show];
 	
-	// After 3 seconds, pop
-	[self performSelector:@selector(pop:) withObject:nil afterDelay:3.0];
+	// After 3 seconds, complete action
+	[self performSelector:@selector(complete:) withObject:nil afterDelay:2.0];
 }
 
 
 #pragma mark -
 #pragma mark Actions
 #pragma mark -
+
+- (void)complete:(id)sender {
+	[hud completeWithTitle:@"Finished!"];
+	[self performSelector:@selector(pop:) withObject:nil afterDelay:0.7];
+}
+
 
 - (void)pop:(id)sender {
 	[hud dismiss];

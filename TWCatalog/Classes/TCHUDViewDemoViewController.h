@@ -16,6 +16,7 @@
 + (NSString *)title;
 + (TCHUDViewDemoViewController *)setup;
 
+- (void)complete:(id)sender;
 - (void)pop:(id)sender;
 
 @end
