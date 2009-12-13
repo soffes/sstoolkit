@@ -21,6 +21,8 @@
 		B23E897A108040010065E392 /* TWURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E8978108040010065E392 /* TWURLRequest.m */; };
 		B24B551810B36F6B0014994C /* UIImage+BundleImage.h in Headers */ = {isa = PBXBuildFile; fileRef = B24B551610B36F6B0014994C /* UIImage+BundleImage.h */; };
 		B24B551910B36F6B0014994C /* UIImage+BundleImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B24B551710B36F6B0014994C /* UIImage+BundleImage.m */; };
+		B24E080810D575F0003F9936 /* UIWebView+scrolling.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E080610D575F0003F9936 /* UIWebView+scrolling.h */; };
+		B24E080910D575F0003F9936 /* UIWebView+scrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E080710D575F0003F9936 /* UIWebView+scrolling.m */; };
 		B2503B9510A90DA6009B0E7B /* TWGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2503B9310A90DA6009B0E7B /* TWGradientView.h */; };
 		B2503B9610A90DA6009B0E7B /* TWGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2503B9410A90DA6009B0E7B /* TWGradientView.m */; };
 		B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */ = {isa = PBXBuildFile; fileRef = B253C1F810728DC500E0CE10 /* TWHUDView.h */; };
@@ -94,6 +96,8 @@
 		B23E8978108040010065E392 /* TWURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWURLRequest.m; sourceTree = "<group>"; };
 		B24B551610B36F6B0014994C /* UIImage+BundleImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BundleImage.h"; sourceTree = "<group>"; };
 		B24B551710B36F6B0014994C /* UIImage+BundleImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BundleImage.m"; sourceTree = "<group>"; };
+		B24E080610D575F0003F9936 /* UIWebView+scrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+scrolling.h"; sourceTree = "<group>"; };
+		B24E080710D575F0003F9936 /* UIWebView+scrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+scrolling.m"; sourceTree = "<group>"; };
 		B2503B9310A90DA6009B0E7B /* TWGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWGradientView.h; sourceTree = "<group>"; };
 		B2503B9410A90DA6009B0E7B /* TWGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWGradientView.m; sourceTree = "<group>"; };
 		B253C1F810728DC500E0CE10 /* TWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWHUDView.h; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 				B2974D64106299CB00C9F4A6 /* UIImage+crop.m */,
 				B2974D67106299CB00C9F4A6 /* UIView+fading.h */,
 				B2974D68106299CB00C9F4A6 /* UIView+fading.m */,
+				B24E080610D575F0003F9936 /* UIWebView+scrolling.h */,
+				B24E080710D575F0003F9936 /* UIWebView+scrolling.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -406,6 +412,7 @@
 				B2503B9510A90DA6009B0E7B /* TWGradientView.h in Headers */,
 				B227A7F210AB2267001906B9 /* TWURLRequest+Attachments.h in Headers */,
 				B24B551810B36F6B0014994C /* UIImage+BundleImage.h in Headers */,
+				B24E080810D575F0003F9936 /* UIWebView+scrolling.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +493,7 @@
 				B2503B9610A90DA6009B0E7B /* TWGradientView.m in Sources */,
 				B227A7F310AB2267001906B9 /* TWURLRequest+Attachments.m in Sources */,
 				B24B551910B36F6B0014994C /* UIImage+BundleImage.m in Sources */,
+				B24E080910D575F0003F9936 /* UIWebView+scrolling.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
