@@ -49,6 +49,10 @@
 			[jsonString release];
 			break;
 		}
+		case TWURLRequestDataTypeXML: {
+			parsedObject = [[NSXMLParser alloc] initWithData:data];
+			break;
+		}
 	}
 	return parsedObject;
 }
