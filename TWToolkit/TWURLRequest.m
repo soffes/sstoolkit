@@ -10,6 +10,8 @@
 #import "TWURLRequest+Parameters.h"
 #import "NSString+encoding.h"
 #import "NSString+SBJSON.h"
+#import "CXMLDocument.h"
+#import "CXMLDocument_CreationExtensions.h"
 
 @interface TWURLRequest (PrivateMethods)
 - (void)_updateHeaders;
@@ -47,6 +49,11 @@
 			NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 			parsedObject = [jsonString JSONValue];
 			[jsonString release];
+			break;
+		}
+		case TWURLRequestDataTypeXML: {
+			// TODO: Handle parse error
+			parsedObject = [[[CXMLDocument alloc] initWithData:data options:0 error:nil] autorelease];
 			break;
 		}
 	}
