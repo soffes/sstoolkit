@@ -9,7 +9,7 @@
 #import "TWHUDView.h"
 #import "UIImage+BundleImage.h"
 
-#define kHUDSize 180.0
+#define kHUDSize 172.0
 
 @implementation TWHUDView
 
@@ -76,7 +76,7 @@
 	static CGFloat indicatorSize = 40.0;
 	
 	activityIndicator.frame = CGRectMake(round((kHUDSize - indicatorSize) / 2.0), round((kHUDSize - indicatorSize) / 2.0), indicatorSize, indicatorSize);
-	textLabel.frame = CGRectMake(0.0, (kHUDSize - 30.0), kHUDSize, 20);
+	textLabel.frame = CGRectMake(0.0, (kHUDSize - 30.0), kHUDSize, 20.0);
 }
 
 
@@ -138,6 +138,12 @@
 - (void)completeWithTitle:(NSString *)aTitle {
 	self.loading = NO;
 	textLabel.text = aTitle;
+}
+
+
+- (void)completeAndDismissWithTitle:(NSString *)aTitle {
+	[self completeWithTitle:aTitle];
+	[self performSelector:@selector(dismiss) withObject:nil afterDelay:1.0];
 }
 
 

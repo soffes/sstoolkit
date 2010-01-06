@@ -20,6 +20,7 @@
 - (id)initWithTitle:(NSString *)aTitle;
 - (id)initWithTitle:(NSString *)aTitle loading:(BOOL)isLoading;
 - (void)completeWithTitle:(NSString *)aTitle;
+- (void)completeAndDismissWithTitle:(NSString *)aTitle;
 - (void)dismiss;
 - (void)dismissAnimated:(BOOL)animated;
 
