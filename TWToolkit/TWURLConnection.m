@@ -217,7 +217,7 @@
 	NSString *user = [[request URL] user];
 	NSString *password = [[request URL] password];
 	
-	if (user|| password) {
+	if ((user || password) && [challenge previousFailureCount] < 1) {
 		NSURLCredential *credential = [[NSURLCredential alloc] initWithUser:user password:password persistence:NSURLCredentialPersistenceForSession];
 		[[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
 		[credential release];
