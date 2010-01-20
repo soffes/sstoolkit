@@ -31,7 +31,9 @@
 	CGFloat bottomInsetAlpha;	
 	BOOL hasTopBorder;
 	BOOL hasBottomBorder;
+	BOOL showsInsets;
 	
+	BOOL hasDrawn;	
 	CGGradientRef gradient;
 }
 
@@ -43,6 +45,7 @@
 @property (nonatomic, assign) CGFloat bottomInsetAlpha;	
 @property (nonatomic, assign) BOOL hasTopBorder;
 @property (nonatomic, assign) BOOL hasBottomBorder;
+@property (nonatomic, assign) BOOL showsInsets;
 
 + (UIColor *)defaultTopColor;
 + (UIColor *)defaultBottomColor;

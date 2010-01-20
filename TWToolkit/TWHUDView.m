@@ -8,6 +8,7 @@
 
 #import "TWHUDView.h"
 #import "UIImage+BundleImage.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define kHUDSize 172.0
 

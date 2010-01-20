@@ -25,6 +25,7 @@
 @synthesize bottomInsetAlpha;	
 @synthesize hasTopBorder;
 @synthesize hasBottomBorder;
+@synthesize showsInsets;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -65,19 +66,22 @@
 #pragma mark -
 
 - (void)dealloc {
-	[self removeObserver:self forKeyPath:@"topColor"];
-	[self removeObserver:self forKeyPath:@"bottomColor"];
-	[self removeObserver:self forKeyPath:@"topBorderColor"];
-	[self removeObserver:self forKeyPath:@"bottomBorderColor"];
-	[self removeObserver:self forKeyPath:@"topInsetAlpha"];
-	[self removeObserver:self forKeyPath:@"bottomInsetAlpha"];
-	[self removeObserver:self forKeyPath:@"hasTopBorder"];
-	[self removeObserver:self forKeyPath:@"hasBottomBorder"];
-	CGGradientRelease(gradient);
-	[topColor release];
-	[bottomColor release];
-	[topBorderColor release];
-	[bottomBorderColor release];
+	if (hasDrawn) {
+		[self removeObserver:self forKeyPath:@"topColor"];
+		[self removeObserver:self forKeyPath:@"bottomColor"];
+		[self removeObserver:self forKeyPath:@"topBorderColor"];
+		[self removeObserver:self forKeyPath:@"bottomBorderColor"];
+		[self removeObserver:self forKeyPath:@"topInsetAlpha"];
+		[self removeObserver:self forKeyPath:@"bottomInsetAlpha"];
+		[self removeObserver:self forKeyPath:@"hasTopBorder"];
+		[self removeObserver:self forKeyPath:@"hasBottomBorder"];
+		[self removeObserver:self forKeyPath:@"showsInsets"];
+		CGGradientRelease(gradient);
+	}
+	self.topColor = nil;
+	self.bottomColor = nil;
+	self.topBorderColor = nil;
+	self.bottomBorderColor = nil;
 	[super dealloc];
 }
 
@@ -89,6 +93,8 @@
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
 		self.opaque = YES;
+		
+		// Defaults
 		self.topColor = [TWGradientView defaultTopColor];
 		self.bottomColor = [TWGradientView defaultBottomColor];
 		self.topBorderColor = [TWGradientView defaultTopBorderColor];
@@ -97,7 +103,17 @@
 		self.bottomInsetAlpha = [TWGradientView defaultBottomInsetAlpha];
 		self.hasTopBorder = YES;
 		self.hasBottomBorder = YES;
+		self.showsInsets = YES;
 		
+		hasDrawn = NO;
+		gradient = nil;		
+	}
+	return self;
+}
+
+
+- (void)drawRect:(CGRect)rect {
+	if (!hasDrawn) {
 		// Add observers
 		[self addObserver:self forKeyPath:@"topColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"bottomColor" options:NSKeyValueObservingOptionNew context:nil];
@@ -107,17 +123,14 @@
 		[self addObserver:self forKeyPath:@"bottomInsetAlpha" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"hasTopBorder" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"hasBottomBorder" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"showsInsets" options:NSKeyValueObservingOptionNew context:nil];
 		
 		// Draw gradient
-		gradient = nil;
 		[self _refreshGradient];
 		
+		hasDrawn = YES;
 	}
-	return self;
-}
-
-
-- (void)drawRect:(CGRect)rect {
+	
     CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextSaveGState(context);
 	CGContextClipToRect(context, rect);
@@ -131,7 +144,7 @@
 	
 	if (hasTopBorder) {
 		// Top inset
-		if (topInsetAlpha > 0) {
+		if (showsInsets && topInsetAlpha > 0.0) {
 			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0 alpha:topInsetAlpha].CGColor);
 			CGContextMoveToPoint(context, 0.0, 1.0);
 			CGContextAddLineToPoint(context, rect.size.width, 1.0);
@@ -147,7 +160,7 @@
 	
 	if (hasBottomBorder) {
 		// Bottom inset
-		if (bottomInsetAlpha > 0) {
+		if (showsInsets && bottomInsetAlpha > 0.0) {
 			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0 alpha:bottomInsetAlpha].CGColor);
 			CGContextMoveToPoint(context, 0.0, rect.size.height - 1.0);
 			CGContextAddLineToPoint(context, rect.size.width, rect.size.height - 1.0);
@@ -191,7 +204,8 @@
 	// Redraw if colors or borders changed
 	if ([keyPath isEqualToString:@"topBorderColor"] || [keyPath isEqualToString:@"bottomBorderColor"] || 
 		[keyPath isEqualToString:@"topInsetAlpha"] || [keyPath isEqualToString:@"bottomInsetAlpha"] || 
-		[keyPath isEqualToString:@"hasTopBorder"] || [keyPath isEqualToString:@"hasBottomBorder"]) {
+		[keyPath isEqualToString:@"hasTopBorder"] || [keyPath isEqualToString:@"hasBottomBorder"] ||
+		[keyPath isEqualToString:@"showsInsets"]) {
 		[self setNeedsDisplay];
 		return;
 	}
