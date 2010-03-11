@@ -20,8 +20,8 @@
 }
 
 
-+ (TCGradientViewDemoViewController *)setup {
-	return [[TCGradientViewDemoViewController alloc] initWithNibName:nil bundle:nil];
++ (id)setup {
+	return [[self alloc] initWithNibName:nil bundle:nil];
 }
 
 

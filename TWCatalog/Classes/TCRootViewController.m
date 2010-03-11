@@ -51,6 +51,7 @@
 			[NSDictionary dictionaryWithObjectsAndKeys:
 			 [NSArray arrayWithObjects:
 			  @"TCPickerDemoViewController",
+			  @"TCMessagesDemoViewController",
 			  nil],
 			 kClassesKey,
 			 @"View Controllers",

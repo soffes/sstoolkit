@@ -25,6 +25,7 @@
 		B27C6196108006C900F7FBD7 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = B27C6195108006C900F7FBD7 /* placeholder.png */; };
 		B27FDDBF10A49B660076DC56 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B27FDDBE10A49B660076DC56 /* Icon.png */; };
 		B27FDDC910A49C350076DC56 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B27FDDC810A49C350076DC56 /* iTunesArtwork */; };
+		B2C682A61149552D006EDD71 /* TCMessagesDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C682A51149552D006EDD71 /* TCMessagesDemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		B27C6195108006C900F7FBD7 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		B27FDDBE10A49B660076DC56 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		B27FDDC810A49C350076DC56 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		B2C682A41149552D006EDD71 /* TCMessagesDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCMessagesDemoViewController.h; sourceTree = "<group>"; };
+		B2C682A51149552D006EDD71 /* TCMessagesDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCMessagesDemoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				B2C6828811495412006EDD71 /* Demo */,
+				B2C682A311495524006EDD71 /* Messages */,
 				B2503BC910A90E28009B0E7B /* Gradient View */,
 				B22A28E110B4761800EA6CD9 /* HUD View */,
 				B2A67B3010A8838100E266F5 /* Picker View Controller */,
@@ -205,6 +209,15 @@
 			name = Demo;
 			sourceTree = "<group>";
 		};
+		B2C682A311495524006EDD71 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				B2C682A41149552D006EDD71 /* TCMessagesDemoViewController.h */,
+				B2C682A51149552D006EDD71 /* TCMessagesDemoViewController.m */,
+			);
+			name = Messages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -289,6 +302,7 @@
 				B27C61841080037D00F7FBD7 /* TCPickerDetailViewController.m in Sources */,
 				B2503BCC10A90E34009B0E7B /* TCGradientViewDemoViewController.m in Sources */,
 				B22A28E410B4762200EA6CD9 /* TCHUDViewDemoViewController.m in Sources */,
+				B2C682A61149552D006EDD71 /* TCMessagesDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

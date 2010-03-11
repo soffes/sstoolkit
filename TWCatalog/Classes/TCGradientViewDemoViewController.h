@@ -14,7 +14,7 @@
 }
 
 + (NSString *)title;
-+ (TCGradientViewDemoViewController *)setup;
++ (id)setup;
 
 - (void)changeColor:(id)sender;
 

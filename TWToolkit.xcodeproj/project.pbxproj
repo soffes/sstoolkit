@@ -44,6 +44,12 @@
 		B2C20778106296FB00AE1B56 /* NSString+MD5Sum.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C2076E106296FB00AE1B56 /* NSString+MD5Sum.h */; };
 		B2C20779106296FB00AE1B56 /* NSString+MD5Sum.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C2076F106296FB00AE1B56 /* NSString+MD5Sum.m */; };
 		B2C207841062973000AE1B56 /* TWCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C207831062973000AE1B56 /* TWCategories.h */; };
+		B2C68299114954D3006EDD71 /* TWMessageTableViewCellBubbleView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C68297114954D3006EDD71 /* TWMessageTableViewCellBubbleView.h */; };
+		B2C6829A114954D3006EDD71 /* TWMessageTableViewCellBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C68298114954D3006EDD71 /* TWMessageTableViewCellBubbleView.m */; };
+		B2C6829D114954DB006EDD71 /* TWMessageTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C6829B114954DB006EDD71 /* TWMessageTableViewCell.h */; };
+		B2C6829E114954DB006EDD71 /* TWMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C6829C114954DB006EDD71 /* TWMessageTableViewCell.m */; };
+		B2C682A1114954DF006EDD71 /* TWMessagesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C6829F114954DF006EDD71 /* TWMessagesViewController.h */; };
+		B2C682A2114954DF006EDD71 /* TWMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C682A0114954DF006EDD71 /* TWMessagesViewController.m */; };
 		B2FA61AD1059616200499856 /* TWToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA616C1059616200499856 /* TWToolkit.h */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +92,12 @@
 		B2C2076E106296FB00AE1B56 /* NSString+MD5Sum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Sum.h"; sourceTree = "<group>"; };
 		B2C2076F106296FB00AE1B56 /* NSString+MD5Sum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Sum.m"; sourceTree = "<group>"; };
 		B2C207831062973000AE1B56 /* TWCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCategories.h; sourceTree = "<group>"; };
+		B2C68297114954D3006EDD71 /* TWMessageTableViewCellBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessageTableViewCellBubbleView.h; sourceTree = "<group>"; };
+		B2C68298114954D3006EDD71 /* TWMessageTableViewCellBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageTableViewCellBubbleView.m; sourceTree = "<group>"; };
+		B2C6829B114954DB006EDD71 /* TWMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessageTableViewCell.h; sourceTree = "<group>"; };
+		B2C6829C114954DB006EDD71 /* TWMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageTableViewCell.m; sourceTree = "<group>"; };
+		B2C6829F114954DF006EDD71 /* TWMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessagesViewController.h; sourceTree = "<group>"; };
+		B2C682A0114954DF006EDD71 /* TWMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessagesViewController.m; sourceTree = "<group>"; };
 		B2FA616C1059616200499856 /* TWToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit.h; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTWToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTWToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -153,6 +165,8 @@
 		B28517D51063E42A008D42E7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B2C6829F114954DF006EDD71 /* TWMessagesViewController.h */,
+				B2C682A0114954DF006EDD71 /* TWMessagesViewController.m */,
 				B28517D81063E43E008D42E7 /* TWPickerViewController.h */,
 				B28517D91063E43E008D42E7 /* TWPickerViewController.m */,
 			);
@@ -162,6 +176,8 @@
 		B28517D71063E433008D42E7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B2C68297114954D3006EDD71 /* TWMessageTableViewCellBubbleView.h */,
+				B2C68298114954D3006EDD71 /* TWMessageTableViewCellBubbleView.m */,
 				B2503B9310A90DA6009B0E7B /* TWGradientView.h */,
 				B2503B9410A90DA6009B0E7B /* TWGradientView.m */,
 				B253C1F810728DC500E0CE10 /* TWHUDView.h */,
@@ -177,6 +193,8 @@
 		B2A41E97107287A5006EF521 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B2C6829B114954DB006EDD71 /* TWMessageTableViewCell.h */,
+				B2C6829C114954DB006EDD71 /* TWMessageTableViewCell.m */,
 				B2A41E98107287BA006EF521 /* TWSwitchTableViewCell.h */,
 				B2A41E99107287BA006EF521 /* TWSwitchTableViewCell.m */,
 			);
@@ -265,6 +283,9 @@
 				B2503B9510A90DA6009B0E7B /* TWGradientView.h in Headers */,
 				B24B551810B36F6B0014994C /* UIImage+BundleImage.h in Headers */,
 				B24E080810D575F0003F9936 /* UIWebView+scrolling.h in Headers */,
+				B2C68299114954D3006EDD71 /* TWMessageTableViewCellBubbleView.h in Headers */,
+				B2C6829D114954DB006EDD71 /* TWMessageTableViewCell.h in Headers */,
+				B2C682A1114954DF006EDD71 /* TWMessagesViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +351,9 @@
 				B2503B9610A90DA6009B0E7B /* TWGradientView.m in Sources */,
 				B24B551910B36F6B0014994C /* UIImage+BundleImage.m in Sources */,
 				B24E080910D575F0003F9936 /* UIWebView+scrolling.m in Sources */,
+				B2C6829A114954D3006EDD71 /* TWMessageTableViewCellBubbleView.m in Sources */,
+				B2C6829E114954DB006EDD71 /* TWMessageTableViewCell.m in Sources */,
+				B2C682A2114954DF006EDD71 /* TWMessagesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 // View Controllers
 #import <TWToolkit/TWPickerViewController.h>
+#import <TWToolkit/TWMessagesViewController.h>
 
 // Views
 #import <TWToolkit/TWHUDView.h>

@@ -22,8 +22,8 @@
 }
 
 
-+ (TCPickerDemoViewController *)setup {
-	return [[TCPickerDemoViewController alloc] initWithStyle:UITableViewStyleGrouped];
++ (id)setup {
+	return [[self alloc] initWithStyle:UITableViewStyleGrouped];
 }
 
 
