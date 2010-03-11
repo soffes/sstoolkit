@@ -8,9 +8,12 @@
 
 #import "TWMessageTableViewCell.h"
 
-@interface TWMessagesViewController : UITableViewController {
+@interface TWMessagesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
 
+	UITableView *_tableView;
 }
+
+@property (nonatomic, retain) UITableView *tableView;
 
 - (TWMessageTableViewCellMessageStyle)messageStyleForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)textForRowAtIndexPath:(NSIndexPath *)indexPath;

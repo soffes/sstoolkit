@@ -77,7 +77,7 @@
 	static CGFloat indicatorSize = 40.0;
 	
 	activityIndicator.frame = CGRectMake(round((kHUDSize - indicatorSize) / 2.0), round((kHUDSize - indicatorSize) / 2.0), indicatorSize, indicatorSize);
-	textLabel.frame = CGRectMake(0.0, (kHUDSize - 30.0), kHUDSize, 20.0);
+	textLabel.frame = CGRectMake(0.0, round(kHUDSize - 30.0), kHUDSize, 20.0);
 }
 
 

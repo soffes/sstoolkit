@@ -13,6 +13,15 @@
 @synthesize selectedKey = _selectedKey, keys = _keys, currentIndexPath = _currentIndexPath;
 
 #pragma mark -
+#pragma mark NSObject
+#pragma mark -
+
+- (id)init {
+	return [self initWithNibName:nil bundle:nil];
+}
+
+
+#pragma mark -
 #pragma mark UIViewController Methods
 #pragma mark -
 
