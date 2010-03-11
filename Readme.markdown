@@ -6,12 +6,6 @@ TWToolkit makes life easy as an iPhone developer.
 
 ## Classes
 
-### Connection
-
-* [TWURLRequest][] - convenient request wrapper
-* [TWURLConnection][] - simple remote connections
-* [TWURLConnectionQueue][] - connection queueing
-
 ### View Controllers
 
 * [TWPickerViewController][] - easily create picker view controllers like the Settings app
@@ -71,9 +65,6 @@ You can also import individual files instead of the whole framework (for faster 
 * [Future features](https://github.com/tastefulworks/twtoolkit/issues/labels/Enhancement)
 
 [TWOAuthKit]: https://github.com/tastefulworks/twoauthkit
-[TWURLRequest]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWURLRequest.h
-[TWURLConnection]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWURLConnection.h
-[TWURLConnectionQueue]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWURLConnectionQueue.h
 [TWPickerViewController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWPickerViewController.h
 [TWHUDView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWHUDView.h
 [TWLoadingView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLoadingView.h
