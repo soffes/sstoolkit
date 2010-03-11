@@ -8,12 +8,16 @@
 
 #import "TWMessageTableViewCell.h"
 
-@interface TWMessagesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@class TWGradientView;
+
+@interface TWMessagesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate> {
 
 	UITableView *_tableView;
+	TWGradientView *_inputView;
+	UIButton *_sendButton;
 }
 
-@property (nonatomic, retain) UITableView *tableView;
+@property (nonatomic, retain, readonly) UITableView *tableView;
 
 - (TWMessageTableViewCellMessageStyle)messageStyleForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)textForRowAtIndexPath:(NSIndexPath *)indexPath;

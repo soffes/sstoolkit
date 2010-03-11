@@ -11,6 +11,8 @@
 		B215045F10583A7300409ED4 /* TWToolkit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */; };
 		B21504CA10583B4000409ED4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504C910583B4000409ED4 /* SystemConfiguration.framework */; };
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
+		B24244E611498A480061E255 /* TWTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = B24244E411498A480061E255 /* TWTextField.h */; };
+		B24244E711498A480061E255 /* TWTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B24244E511498A480061E255 /* TWTextField.m */; };
 		B24B551810B36F6B0014994C /* UIImage+BundleImage.h in Headers */ = {isa = PBXBuildFile; fileRef = B24B551610B36F6B0014994C /* UIImage+BundleImage.h */; };
 		B24B551910B36F6B0014994C /* UIImage+BundleImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B24B551710B36F6B0014994C /* UIImage+BundleImage.m */; };
 		B24E080810D575F0003F9936 /* UIWebView+scrolling.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E080610D575F0003F9936 /* UIWebView+scrolling.h */; };
@@ -59,6 +61,8 @@
 		B21504C910583B4000409ED4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B22A2A8010B4908D00EA6CD9 /* TWToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TWToolkit.bundle; sourceTree = "<group>"; };
+		B24244E411498A480061E255 /* TWTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTextField.h; sourceTree = "<group>"; };
+		B24244E511498A480061E255 /* TWTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTextField.m; sourceTree = "<group>"; };
 		B24B551610B36F6B0014994C /* UIImage+BundleImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BundleImage.h"; sourceTree = "<group>"; };
 		B24B551710B36F6B0014994C /* UIImage+BundleImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BundleImage.m"; sourceTree = "<group>"; };
 		B24E080610D575F0003F9936 /* UIWebView+scrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+scrolling.h"; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 				B28517DD1063E442008D42E7 /* TWLoadingView.m */,
 				B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */,
 				B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */,
+				B24244E411498A480061E255 /* TWTextField.h */,
+				B24244E511498A480061E255 /* TWTextField.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -286,6 +292,7 @@
 				B2C68299114954D3006EDD71 /* TWMessageTableViewCellBubbleView.h in Headers */,
 				B2C6829D114954DB006EDD71 /* TWMessageTableViewCell.h in Headers */,
 				B2C682A1114954DF006EDD71 /* TWMessagesViewController.h in Headers */,
+				B24244E611498A480061E255 /* TWTextField.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +361,7 @@
 				B2C6829A114954D3006EDD71 /* TWMessageTableViewCellBubbleView.m in Sources */,
 				B2C6829E114954DB006EDD71 /* TWMessageTableViewCell.m in Sources */,
 				B2C682A2114954DF006EDD71 /* TWMessagesViewController.m in Sources */,
+				B24244E711498A480061E255 /* TWTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@
 #import "TWMessageTableViewCell.h"
 #import "TWMessageTableViewCellBubbleView.h"
 #import "TWGradientView.h"
+#import "TWTextField.h"
 #import "UIImage+BundleImage.h"
 
 #define kInputHeight 40.0
@@ -28,7 +29,9 @@
 
 
 - (void)dealloc {
-	self.tableView = nil;
+	[_tableView release];
+	[_inputView release];
+	[_sendButton release];
 	[super dealloc];
 }
 
@@ -42,36 +45,44 @@
 		self.view.backgroundColor = [UIColor colorWithRed:0.859 green:0.886 blue:0.929 alpha:1.0];
 		
 		// Table view
-		UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height - kInputHeight) style:UITableViewStylePlain];
-		tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-		tableView.backgroundColor = self.view.backgroundColor;
-		tableView.dataSource = self;
-		tableView.delegate = self;
-		tableView.separatorColor = self.view.backgroundColor;
-		self.tableView = tableView;
-		[tableView release];
-		[self.view addSubview:self.tableView];
+		_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height - kInputHeight) style:UITableViewStylePlain];
+		_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+		_tableView.backgroundColor = self.view.backgroundColor;
+		_tableView.dataSource = self;
+		_tableView.delegate = self;
+		_tableView.separatorColor = self.view.backgroundColor;
+		[self.view addSubview:_tableView];
 		
-		// Input background
-		TWGradientView *inputBackground = [[TWGradientView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height - 44.0 - kInputHeight, self.view.frame.size.width, kInputHeight)];
-		inputBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		inputBackground.hasBottomBorder = NO;
-		inputBackground.topBorderColor = [UIColor colorWithRed:0.733 green:0.741 blue:0.745 alpha:1.0];
-		inputBackground.topColor = [UIColor colorWithRed:0.914 green:0.922 blue:0.929 alpha:1.0];
-		inputBackground.bottomColor = [UIColor colorWithRed:0.765 green:0.773 blue:0.788 alpha:1.0];
-		[self.view addSubview:inputBackground];
-		[inputBackground release];
+		// Input
+		_inputView = [[TWGradientView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height - 44.0 - kInputHeight, self.view.frame.size.width, kInputHeight)];
+		_inputView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+		_inputView.hasBottomBorder = NO;
+		_inputView.topBorderColor = [UIColor colorWithRed:0.733 green:0.741 blue:0.745 alpha:1.0];
+		_inputView.topColor = [UIColor colorWithRed:0.914 green:0.922 blue:0.929 alpha:1.0];
+		_inputView.bottomColor = [UIColor colorWithRed:0.765 green:0.773 blue:0.788 alpha:1.0];
+		[self.view addSubview:_inputView];
+		
+		// Text field
+		TWTextField *textField = [[TWTextField alloc] initWithFrame:CGRectMake(6.0, 8.0, self.view.frame.size.width - 75.0, 27.0)];
+		textField.background = [[UIImage imageNamed:@"images/message-input-box.png" bundle:@"TWToolkit.bundle"] stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+		textField.delegate = self;
+		textField.font = [UIFont systemFontOfSize:15.0];
+		textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+		textField.textInset = UIEdgeInsetsMake(0.0, 12.0, 0.0, 12.0);
+		[_inputView addSubview:textField];
+		[textField release];
 		
 		// Send button
-		UIButton *sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
-		sendButton.frame = CGRectMake(self.view.frame.size.width - 65.0, 8.0, 59.0, 27.0);
-		sendButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-		sendButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
-		sendButton.titleLabel.shadowOffset = CGSizeMake(0.0, -1.0);
-		[sendButton setBackgroundImage:[[UIImage imageNamed:@"images/messages-send-button.png" bundle:@"TWToolkit.bundle"] stretchableImageWithLeftCapWidth:12 topCapHeight:0] forState:UIControlStateNormal];
-		[sendButton setTitle:@"Send" forState:UIControlStateNormal];
-		[sendButton setTitleShadowColor:[UIColor colorWithRed:0.325 green:0.463 blue:0.675 alpha:1.0] forState:UIControlStateNormal];
-		[inputBackground addSubview:sendButton];
+		_sendButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+		_sendButton.frame = CGRectMake(self.view.frame.size.width - 65.0, 8.0, 59.0, 27.0);
+		_sendButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+		_sendButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
+		_sendButton.titleLabel.shadowOffset = CGSizeMake(0.0, -1.0);
+		[_sendButton setBackgroundImage:[[UIImage imageNamed:@"images/messages-send-button.png" bundle:@"TWToolkit.bundle"] stretchableImageWithLeftCapWidth:12 topCapHeight:0] forState:UIControlStateNormal];
+		[_sendButton setTitle:@"Send" forState:UIControlStateNormal];
+		[_sendButton setTitleColor:[UIColor colorWithWhite:1.0 alpha:0.4] forState:UIControlStateNormal];
+		[_sendButton setTitleShadowColor:[UIColor colorWithRed:0.325 green:0.463 blue:0.675 alpha:1.0] forState:UIControlStateNormal];
+		[_inputView addSubview:_sendButton];
     }
     return self;
 }
@@ -128,6 +139,34 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return [TWMessageTableViewCellBubbleView cellHeightForText:[self textForRowAtIndexPath:indexPath]];
+}
+
+
+#pragma mark -
+#pragma mark UITextFieldDelegate
+#pragma mark -
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+	[UIView beginAnimations:@"beginEditing" context:_inputView];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	[UIView setAnimationDuration:0.3];
+	_tableView.contentInset = UIEdgeInsetsMake(0.0, 0.0, 216.0, 0.0);
+	_tableView.scrollIndicatorInsets = _tableView.contentInset;
+	_inputView.frame = CGRectMake(0.0, 160.0, self.view.frame.size.width, kInputHeight);
+	[_sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	[UIView commitAnimations];
+}
+
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+	[UIView beginAnimations:@"endEditing" context:_inputView];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	[UIView setAnimationDuration:0.3];
+	_tableView.contentInset = UIEdgeInsetsZero;
+	_tableView.scrollIndicatorInsets = UIEdgeInsetsZero;
+	_inputView.frame = CGRectMake(0.0, _tableView.frame.size.height, self.view.frame.size.width, kInputHeight);
+	[_sendButton setTitleColor:[UIColor colorWithWhite:1.0 alpha:0.4] forState:UIControlStateNormal];
+	[UIView commitAnimations];
 }
 
 @end

@@ -67,8 +67,6 @@
 
 
 - (void)drawRect:(CGRect)frame {
-	[super drawRect:frame];
-	
 	UIImage *bubbleImage = [[self class] bubbleImageForMessageStyle:messageStyle];
 	CGSize bubbleSize = [[self class] bubbleSizeForText:messageText];
 	CGRect bubbleFrame = CGRectMake((messageStyle == TWMessageTableViewCellMessageStyleGreen ? self.frame.size.width - bubbleSize.width : 0.0), kMarginTop, bubbleSize.width, bubbleSize.height);
