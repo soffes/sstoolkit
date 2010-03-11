@@ -67,10 +67,10 @@
 		sendButton.frame = CGRectMake(self.view.frame.size.width - 65.0, 8.0, 59.0, 27.0);
 		sendButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 		sendButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
-		sendButton.titleLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:1.0];
 		sendButton.titleLabel.shadowOffset = CGSizeMake(0.0, -1.0);
-		[sendButton setBackgroundImage:[UIImage imageNamed:@"images/messages-button.png" bundle:@"TWToolkit.bundle"] forState:UIControlStateNormal];
+		[sendButton setBackgroundImage:[[UIImage imageNamed:@"images/messages-send-button.png" bundle:@"TWToolkit.bundle"] stretchableImageWithLeftCapWidth:12 topCapHeight:0] forState:UIControlStateNormal];
 		[sendButton setTitle:@"Send" forState:UIControlStateNormal];
+		[sendButton setTitleShadowColor:[UIColor colorWithRed:0.325 green:0.463 blue:0.675 alpha:1.0] forState:UIControlStateNormal];
 		[inputBackground addSubview:sendButton];
     }
     return self;
