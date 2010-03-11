@@ -20,8 +20,6 @@
 		B2503BCC10A90E34009B0E7B /* TCGradientViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2503BCB10A90E34009B0E7B /* TCGradientViewDemoViewController.m */; };
 		B27C60EC107FFD1D00F7FBD7 /* TCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27C60EB107FFD1D00F7FBD7 /* TCRootViewController.m */; };
 		B27C61271080003700F7FBD7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B27C61261080003700F7FBD7 /* Default.png */; };
-		B27C6137108000DE00F7FBD7 /* TCConnectionDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27C6136108000DE00F7FBD7 /* TCConnectionDemoViewController.m */; };
-		B27C613A108000EF00F7FBD7 /* TCRemoteImageViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27C6139108000EF00F7FBD7 /* TCRemoteImageViewDemoViewController.m */; };
 		B27C613D108000FC00F7FBD7 /* TCPickerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27C613C108000FC00F7FBD7 /* TCPickerDemoViewController.m */; };
 		B27C61841080037D00F7FBD7 /* TCPickerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27C61831080037D00F7FBD7 /* TCPickerDetailViewController.m */; };
 		B27C6196108006C900F7FBD7 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = B27C6195108006C900F7FBD7 /* placeholder.png */; };
@@ -67,10 +65,6 @@
 		B27C60EA107FFD1D00F7FBD7 /* TCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCRootViewController.h; sourceTree = "<group>"; };
 		B27C60EB107FFD1D00F7FBD7 /* TCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCRootViewController.m; sourceTree = "<group>"; };
 		B27C61261080003700F7FBD7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		B27C6135108000DE00F7FBD7 /* TCConnectionDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCConnectionDemoViewController.h; sourceTree = "<group>"; };
-		B27C6136108000DE00F7FBD7 /* TCConnectionDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCConnectionDemoViewController.m; sourceTree = "<group>"; };
-		B27C6138108000EF00F7FBD7 /* TCRemoteImageViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCRemoteImageViewDemoViewController.h; sourceTree = "<group>"; };
-		B27C6139108000EF00F7FBD7 /* TCRemoteImageViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCRemoteImageViewDemoViewController.m; sourceTree = "<group>"; };
 		B27C613B108000FC00F7FBD7 /* TCPickerDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPickerDemoViewController.h; sourceTree = "<group>"; };
 		B27C613C108000FC00F7FBD7 /* TCPickerDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPickerDemoViewController.m; sourceTree = "<group>"; };
 		B27C61821080037D00F7FBD7 /* TCPickerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPickerDetailViewController.h; sourceTree = "<group>"; };
@@ -100,12 +94,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1D3623240D0F684500981E51 /* TCAppDelegate.h */,
-				1D3623250D0F684500981E51 /* TCAppDelegate.m */,
-				B27C60EA107FFD1D00F7FBD7 /* TCRootViewController.h */,
-				B27C60EB107FFD1D00F7FBD7 /* TCRootViewController.m */,
-				B2A67B2E10A8836B00E266F5 /* Connection */,
-				B2A67B2F10A8837600E266F5 /* Remote Image View */,
+				B2C6828811495412006EDD71 /* Demo */,
 				B2503BC910A90E28009B0E7B /* Gradient View */,
 				B22A28E110B4761800EA6CD9 /* HUD View */,
 				B2A67B3010A8838100E266F5 /* Picker View Controller */,
@@ -194,24 +183,6 @@
 			name = "Gradient View";
 			sourceTree = "<group>";
 		};
-		B2A67B2E10A8836B00E266F5 /* Connection */ = {
-			isa = PBXGroup;
-			children = (
-				B27C6135108000DE00F7FBD7 /* TCConnectionDemoViewController.h */,
-				B27C6136108000DE00F7FBD7 /* TCConnectionDemoViewController.m */,
-			);
-			name = Connection;
-			sourceTree = "<group>";
-		};
-		B2A67B2F10A8837600E266F5 /* Remote Image View */ = {
-			isa = PBXGroup;
-			children = (
-				B27C6138108000EF00F7FBD7 /* TCRemoteImageViewDemoViewController.h */,
-				B27C6139108000EF00F7FBD7 /* TCRemoteImageViewDemoViewController.m */,
-			);
-			name = "Remote Image View";
-			sourceTree = "<group>";
-		};
 		B2A67B3010A8838100E266F5 /* Picker View Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +192,17 @@
 				B27C61831080037D00F7FBD7 /* TCPickerDetailViewController.m */,
 			);
 			name = "Picker View Controller";
+			sourceTree = "<group>";
+		};
+		B2C6828811495412006EDD71 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				1D3623240D0F684500981E51 /* TCAppDelegate.h */,
+				1D3623250D0F684500981E51 /* TCAppDelegate.m */,
+				B27C60EA107FFD1D00F7FBD7 /* TCRootViewController.h */,
+				B27C60EB107FFD1D00F7FBD7 /* TCRootViewController.m */,
+			);
+			name = Demo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,8 +285,6 @@
 				1D3623260D0F684500981E51 /* TCAppDelegate.m in Sources */,
 				B21B85BE1067D4F300E5C076 /* main.m in Sources */,
 				B27C60EC107FFD1D00F7FBD7 /* TCRootViewController.m in Sources */,
-				B27C6137108000DE00F7FBD7 /* TCConnectionDemoViewController.m in Sources */,
-				B27C613A108000EF00F7FBD7 /* TCRemoteImageViewDemoViewController.m in Sources */,
 				B27C613D108000FC00F7FBD7 /* TCPickerDemoViewController.m in Sources */,
 				B27C61841080037D00F7FBD7 /* TCPickerDetailViewController.m in Sources */,
 				B2503BCC10A90E34009B0E7B /* TCGradientViewDemoViewController.m in Sources */,

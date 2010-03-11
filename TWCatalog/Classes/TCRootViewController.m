@@ -7,8 +7,6 @@
 //
 
 #import "TCRootViewController.h"
-#import "TCConnectionDemoViewController.h"
-#import "TCRemoteImageViewDemoViewController.h"
 #import "TCPickerDemoViewController.h"
 #import "TCGradientViewDemoViewController.h"
 
@@ -43,15 +41,6 @@
     data = [[NSArray alloc] initWithObjects:
 			[NSDictionary dictionaryWithObjectsAndKeys:
 			 [NSArray arrayWithObjects:
-			  @"TCConnectionDemoViewController",
-			  nil],
-			 kClassesKey,
-			 @"Connection",
-			 kTitleKey,
-			 nil],
-			[NSDictionary dictionaryWithObjectsAndKeys:
-			 [NSArray arrayWithObjects:
-			  @"TCRemoteImageViewDemoViewController",
 			  @"TCGradientViewDemoViewController",
 			  @"TCHUDViewDemoViewController",
 			  nil],
