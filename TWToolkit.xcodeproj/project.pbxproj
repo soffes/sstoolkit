@@ -21,8 +21,6 @@
 		B2503B9610A90DA6009B0E7B /* TWGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2503B9410A90DA6009B0E7B /* TWGradientView.m */; };
 		B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */ = {isa = PBXBuildFile; fileRef = B253C1F810728DC500E0CE10 /* TWHUDView.h */; };
 		B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = B253C1F910728DC500E0CE10 /* TWHUDView.m */; };
-		B2807EE010642A3400E4F6C6 /* TWRoundedView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */; };
-		B2807EE110642A3400E4F6C6 /* TWRoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */; };
 		B28517DA1063E43E008D42E7 /* TWPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517D81063E43E008D42E7 /* TWPickerViewController.h */; };
 		B28517DB1063E43E008D42E7 /* TWPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517D91063E43E008D42E7 /* TWPickerViewController.m */; };
 		B28517E01063E442008D42E7 /* TWLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517DC1063E442008D42E7 /* TWLoadingView.h */; };
@@ -71,8 +69,6 @@
 		B2503B9410A90DA6009B0E7B /* TWGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWGradientView.m; sourceTree = "<group>"; };
 		B253C1F810728DC500E0CE10 /* TWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWHUDView.h; sourceTree = "<group>"; };
 		B253C1F910728DC500E0CE10 /* TWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWHUDView.m; sourceTree = "<group>"; };
-		B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRoundedView.h; sourceTree = "<group>"; };
-		B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRoundedView.m; sourceTree = "<group>"; };
 		B28517D81063E43E008D42E7 /* TWPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPickerViewController.h; sourceTree = "<group>"; };
 		B28517D91063E43E008D42E7 /* TWPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPickerViewController.m; sourceTree = "<group>"; };
 		B28517DC1063E442008D42E7 /* TWLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWLoadingView.h; sourceTree = "<group>"; };
@@ -169,10 +165,10 @@
 		B28517D51063E42A008D42E7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B2C6829F114954DF006EDD71 /* TWMessagesViewController.h */,
-				B2C682A0114954DF006EDD71 /* TWMessagesViewController.m */,
 				B28517D81063E43E008D42E7 /* TWPickerViewController.h */,
 				B28517D91063E43E008D42E7 /* TWPickerViewController.m */,
+				B2C6829F114954DF006EDD71 /* TWMessagesViewController.h */,
+				B2C682A0114954DF006EDD71 /* TWMessagesViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -180,18 +176,16 @@
 		B28517D71063E433008D42E7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B2C68297114954D3006EDD71 /* TWMessageTableViewCellBubbleView.h */,
-				B2C68298114954D3006EDD71 /* TWMessageTableViewCellBubbleView.m */,
 				B2503B9310A90DA6009B0E7B /* TWGradientView.h */,
 				B2503B9410A90DA6009B0E7B /* TWGradientView.m */,
 				B253C1F810728DC500E0CE10 /* TWHUDView.h */,
 				B253C1F910728DC500E0CE10 /* TWHUDView.m */,
 				B28517DC1063E442008D42E7 /* TWLoadingView.h */,
 				B28517DD1063E442008D42E7 /* TWLoadingView.m */,
-				B2807EDE10642A3400E4F6C6 /* TWRoundedView.h */,
-				B2807EDF10642A3400E4F6C6 /* TWRoundedView.m */,
 				B24244E411498A480061E255 /* TWTextField.h */,
 				B24244E511498A480061E255 /* TWTextField.m */,
+				B2C68297114954D3006EDD71 /* TWMessageTableViewCellBubbleView.h */,
+				B2C68298114954D3006EDD71 /* TWMessageTableViewCellBubbleView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -199,10 +193,10 @@
 		B2A41E97107287A5006EF521 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B2C6829B114954DB006EDD71 /* TWMessageTableViewCell.h */,
-				B2C6829C114954DB006EDD71 /* TWMessageTableViewCell.m */,
 				B2A41E98107287BA006EF521 /* TWSwitchTableViewCell.h */,
 				B2A41E99107287BA006EF521 /* TWSwitchTableViewCell.m */,
+				B2C6829B114954DB006EDD71 /* TWMessageTableViewCell.h */,
+				B2C6829C114954DB006EDD71 /* TWMessageTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -283,7 +277,6 @@
 				B2974D78106299CB00C9F4A6 /* UIView+fading.h in Headers */,
 				B28517DA1063E43E008D42E7 /* TWPickerViewController.h in Headers */,
 				B28517E01063E442008D42E7 /* TWLoadingView.h in Headers */,
-				B2807EE010642A3400E4F6C6 /* TWRoundedView.h in Headers */,
 				B2A41E9A107287BA006EF521 /* TWSwitchTableViewCell.h in Headers */,
 				B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */,
 				B2503B9510A90DA6009B0E7B /* TWGradientView.h in Headers */,
@@ -352,7 +345,6 @@
 				B2974D79106299CB00C9F4A6 /* UIView+fading.m in Sources */,
 				B28517DB1063E43E008D42E7 /* TWPickerViewController.m in Sources */,
 				B28517E11063E442008D42E7 /* TWLoadingView.m in Sources */,
-				B2807EE110642A3400E4F6C6 /* TWRoundedView.m in Sources */,
 				B2A41E9B107287BA006EF521 /* TWSwitchTableViewCell.m in Sources */,
 				B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */,
 				B2503B9610A90DA6009B0E7B /* TWGradientView.m in Sources */,
