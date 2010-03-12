@@ -17,8 +17,8 @@
 
 @property (nonatomic, retain, readonly) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, copy) NSString *text;
-@property (nonatomic, copy) UIFont *font;
-@property (nonatomic, copy) UIColor *textColor;
-@property (nonatomic, copy) UIColor *shadowColor;
+@property (nonatomic, retain) UIFont *font;
+@property (nonatomic, retain) UIColor *textColor;
+@property (nonatomic, retain) UIColor *shadowColor;
 
 @end
