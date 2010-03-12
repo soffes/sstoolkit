@@ -31,8 +31,6 @@
 		B2974D75106299CB00C9F4A6 /* UIImage+crop.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D64106299CB00C9F4A6 /* UIImage+crop.m */; };
 		B2974D78106299CB00C9F4A6 /* UIView+fading.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D67106299CB00C9F4A6 /* UIView+fading.h */; };
 		B2974D79106299CB00C9F4A6 /* UIView+fading.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D68106299CB00C9F4A6 /* UIView+fading.m */; };
-		B2A41E9A107287BA006EF521 /* TWSwitchTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2A41E98107287BA006EF521 /* TWSwitchTableViewCell.h */; };
-		B2A41E9B107287BA006EF521 /* TWSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A41E99107287BA006EF521 /* TWSwitchTableViewCell.m */; };
 		B2C20770106296FB00AE1B56 /* NSArray+shuffle.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C20766106296FB00AE1B56 /* NSArray+shuffle.h */; };
 		B2C20771106296FB00AE1B56 /* NSArray+shuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C20767106296FB00AE1B56 /* NSArray+shuffle.m */; };
 		B2C20772106296FB00AE1B56 /* NSData+MD5Sum.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C20768106296FB00AE1B56 /* NSData+MD5Sum.h */; };
@@ -79,8 +77,6 @@
 		B2974D64106299CB00C9F4A6 /* UIImage+crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+crop.m"; sourceTree = "<group>"; };
 		B2974D67106299CB00C9F4A6 /* UIView+fading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+fading.h"; sourceTree = "<group>"; };
 		B2974D68106299CB00C9F4A6 /* UIView+fading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+fading.m"; sourceTree = "<group>"; };
-		B2A41E98107287BA006EF521 /* TWSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWSwitchTableViewCell.h; sourceTree = "<group>"; };
-		B2A41E99107287BA006EF521 /* TWSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSwitchTableViewCell.m; sourceTree = "<group>"; };
 		B2C20766106296FB00AE1B56 /* NSArray+shuffle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+shuffle.h"; sourceTree = "<group>"; };
 		B2C20767106296FB00AE1B56 /* NSArray+shuffle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+shuffle.m"; sourceTree = "<group>"; };
 		B2C20768106296FB00AE1B56 /* NSData+MD5Sum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MD5Sum.h"; sourceTree = "<group>"; };
@@ -193,8 +189,6 @@
 		B2A41E97107287A5006EF521 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B2A41E98107287BA006EF521 /* TWSwitchTableViewCell.h */,
-				B2A41E99107287BA006EF521 /* TWSwitchTableViewCell.m */,
 				B2C6829B114954DB006EDD71 /* TWMessageTableViewCell.h */,
 				B2C6829C114954DB006EDD71 /* TWMessageTableViewCell.m */,
 			);
@@ -277,7 +271,6 @@
 				B2974D78106299CB00C9F4A6 /* UIView+fading.h in Headers */,
 				B28517DA1063E43E008D42E7 /* TWPickerViewController.h in Headers */,
 				B28517E01063E442008D42E7 /* TWLoadingView.h in Headers */,
-				B2A41E9A107287BA006EF521 /* TWSwitchTableViewCell.h in Headers */,
 				B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */,
 				B2503B9510A90DA6009B0E7B /* TWGradientView.h in Headers */,
 				B24B551810B36F6B0014994C /* UIImage+BundleImage.h in Headers */,
@@ -345,7 +338,6 @@
 				B2974D79106299CB00C9F4A6 /* UIView+fading.m in Sources */,
 				B28517DB1063E43E008D42E7 /* TWPickerViewController.m in Sources */,
 				B28517E11063E442008D42E7 /* TWLoadingView.m in Sources */,
-				B2A41E9B107287BA006EF521 /* TWSwitchTableViewCell.m in Sources */,
 				B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */,
 				B2503B9610A90DA6009B0E7B /* TWGradientView.m in Sources */,
 				B24B551910B36F6B0014994C /* UIImage+BundleImage.m in Sources */,

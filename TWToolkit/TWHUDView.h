@@ -8,13 +8,13 @@
 
 @interface TWHUDView : UIAlertView {
 	
-	UILabel *textLabel;
-	UIActivityIndicatorView *activityIndicator;
-	BOOL loading;
+	UILabel *_textLabel;
+	UIActivityIndicatorView *_activityIndicator;
+	BOOL _loading;
 }
 
-@property (nonatomic, retain) UILabel *textLabel;
-@property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, retain, readonly) UILabel *textLabel;
+@property (nonatomic, retain, readonly) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, assign, getter=isLoading) BOOL loading;
 
 - (id)initWithTitle:(NSString *)aTitle;

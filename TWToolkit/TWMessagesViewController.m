@@ -13,7 +13,7 @@
 #import "TWTextField.h"
 #import "UIImage+BundleImage.h"
 
-#define kInputHeight 40.0
+CGFloat kInputHeight = 40.0;
 
 @implementation TWMessagesViewController
 

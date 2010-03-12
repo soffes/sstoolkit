@@ -17,15 +17,15 @@
 
 @implementation TWGradientView
 
-@synthesize topColor;
-@synthesize bottomColor;
-@synthesize topBorderColor;
-@synthesize bottomBorderColor;
-@synthesize topInsetAlpha;
-@synthesize bottomInsetAlpha;	
-@synthesize hasTopBorder;
-@synthesize hasBottomBorder;
-@synthesize showsInsets;
+@synthesize topColor = _topColor;
+@synthesize bottomColor = _bottomColor;
+@synthesize topBorderColor = _topBorderColor;
+@synthesize bottomBorderColor = _bottomBorderColor;
+@synthesize topInsetAlpha = _topInsetAlpha;
+@synthesize bottomInsetAlpha = _bottomInsetAlpha;	
+@synthesize hasTopBorder = _hasTopBorder;
+@synthesize hasBottomBorder = _hasBottomBorder;
+@synthesize showsInsets = _showsInsets;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -66,7 +66,7 @@
 #pragma mark -
 
 - (void)dealloc {
-	if (hasDrawn) {
+	if (_hasDrawn) {
 		[self removeObserver:self forKeyPath:@"topColor"];
 		[self removeObserver:self forKeyPath:@"bottomColor"];
 		[self removeObserver:self forKeyPath:@"topBorderColor"];
@@ -76,7 +76,7 @@
 		[self removeObserver:self forKeyPath:@"hasTopBorder"];
 		[self removeObserver:self forKeyPath:@"hasBottomBorder"];
 		[self removeObserver:self forKeyPath:@"showsInsets"];
-		CGGradientRelease(gradient);
+		CGGradientRelease(_gradient);
 	}
 	self.topColor = nil;
 	self.bottomColor = nil;
@@ -105,15 +105,15 @@
 		self.hasBottomBorder = YES;
 		self.showsInsets = YES;
 		
-		hasDrawn = NO;
-		gradient = nil;		
+		_hasDrawn = NO;
+		_gradient = nil;		
 	}
 	return self;
 }
 
 
 - (void)drawRect:(CGRect)rect {
-	if (!hasDrawn) {
+	if (!_hasDrawn) {
 		// Add observers
 		[self addObserver:self forKeyPath:@"topColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"bottomColor" options:NSKeyValueObservingOptionNew context:nil];
@@ -128,7 +128,7 @@
 		// Draw gradient
 		[self _refreshGradient];
 		
-		hasDrawn = YES;
+		_hasDrawn = YES;
 	}
 	
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -138,37 +138,37 @@
 	// Gradient
 	CGPoint start = CGPointMake(0.0, 0.0);
 	CGPoint end = CGPointMake(0.0, rect.size.height);
-	CGContextDrawLinearGradient(context, gradient, start, end, 0);
+	CGContextDrawLinearGradient(context, _gradient, start, end, 0);
 	
 	CGContextSetLineWidth(context, 2.0);
 	
-	if (hasTopBorder) {
+	if (_hasTopBorder) {
 		// Top inset
-		if (showsInsets && topInsetAlpha > 0.0) {
-			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0 alpha:topInsetAlpha].CGColor);
+		if (_showsInsets && _topInsetAlpha > 0.0) {
+			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0 alpha:_topInsetAlpha].CGColor);
 			CGContextMoveToPoint(context, 0.0, 1.0);
 			CGContextAddLineToPoint(context, rect.size.width, 1.0);
 			CGContextStrokePath(context);
 		}
 		
 		// Top border
-		CGContextSetStrokeColorWithColor(context, topBorderColor.CGColor);
+		CGContextSetStrokeColorWithColor(context, _topBorderColor.CGColor);
 		CGContextMoveToPoint(context, 0.0, 0.0);
 		CGContextAddLineToPoint(context, rect.size.width, 0.0);
 		CGContextStrokePath(context);
 	}
 	
-	if (hasBottomBorder) {
+	if (_hasBottomBorder) {
 		// Bottom inset
-		if (showsInsets && bottomInsetAlpha > 0.0) {
-			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0 alpha:bottomInsetAlpha].CGColor);
+		if (_showsInsets && _bottomInsetAlpha > 0.0) {
+			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0 alpha:_bottomInsetAlpha].CGColor);
 			CGContextMoveToPoint(context, 0.0, rect.size.height - 1.0);
 			CGContextAddLineToPoint(context, rect.size.width, rect.size.height - 1.0);
 			CGContextStrokePath(context);
 		}
 		
 		// Bottom border
-		CGContextSetStrokeColorWithColor(context, bottomBorderColor.CGColor);
+		CGContextSetStrokeColorWithColor(context, _bottomBorderColor.CGColor);
 		CGContextMoveToPoint(context, 0.0, rect.size.height);
 		CGContextAddLineToPoint(context, rect.size.width, rect.size.height);
 		CGContextStrokePath(context);
@@ -182,10 +182,10 @@
 
 - (void)_refreshGradient {
 	// TODO: Automatically convert colors into the same colorspace
-	CGColorSpaceRef colorSpace = CGColorGetColorSpace(topColor.CGColor);
-	NSArray *colors = [NSArray arrayWithObjects:(id)topColor.CGColor, (id)bottomColor.CGColor, nil];
-	CGGradientRelease(gradient);
-	gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)colors, NULL);
+	CGColorSpaceRef colorSpace = CGColorGetColorSpace(_topColor.CGColor);
+	NSArray *colors = [NSArray arrayWithObjects:(id)_topColor.CGColor, (id)_bottomColor.CGColor, nil];
+	CGGradientRelease(_gradient);
+	_gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)colors, NULL);
 	[self setNeedsDisplay];	
 }
 

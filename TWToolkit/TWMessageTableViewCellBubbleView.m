@@ -9,13 +9,13 @@
 #import "TWMessageTableViewCellBubbleView.h"
 #import "UIImage+BundleImage.h"
 
-#define kMaxWidth 223.0
 #define kFont [UIFont systemFontOfSize:15.0]
-#define kLineBreakMode UILineBreakModeWordWrap
-#define kPaddingTop 6.0
-#define kPaddingBottom 8.0
-#define kMarginTop 2.0
-#define kMarginBottom 2.0
+static UILineBreakMode kLineBreakMode = UILineBreakModeWordWrap;
+static CGFloat kMaxWidth = 223.0;
+static CGFloat kPaddingTop = 6.0;
+static CGFloat kPaddingBottom = 8.0;
+static CGFloat kMarginTop = 2.0;
+static CGFloat kMarginBottom = 2.0;
 
 @implementation TWMessageTableViewCellBubbleView
 

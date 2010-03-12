@@ -10,7 +10,7 @@
 
 @implementation TWTextField
 
-@synthesize textInset;
+@synthesize textInset = _textInset;
 
 #pragma mark -
 #pragma mark UIView
@@ -29,7 +29,7 @@
 #pragma mark -
 
 - (CGRect)textRectForBounds:(CGRect)bounds {
-	return UIEdgeInsetsInsetRect(bounds, textInset);
+	return UIEdgeInsetsInsetRect(bounds, self.textInset);
 }
 
 - (CGRect)editingRectForBounds:(CGRect)bounds {

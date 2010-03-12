@@ -7,6 +7,9 @@
 //	override the messageStyleForRowAtIndexPath: and
 //	textForRowAtIndexPath: to customize this class.
 //
+//	This is still a work in progress and likely to change
+//	at any time.
+//
 //  Created by Sam Soffes on 3/10/10.
 //  Copyright 2010 Tasteful Works. All rights reserved.
 //

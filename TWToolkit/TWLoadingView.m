@@ -14,11 +14,11 @@ static CGFloat indicatorRightMargin = 8.0;
 
 @implementation TWLoadingView
 
-@synthesize indicator;
-@synthesize text;
-@synthesize font;
-@synthesize textColor;
-@synthesize shadowColor;
+@synthesize activityIndicator = _activityIndicator;
+@synthesize text = _text;
+@synthesize font = _font;
+@synthesize textColor = _textColor;
+@synthesize shadowColor = _shadowColor;
 
 #pragma mark -
 #pragma mark NSObject
@@ -29,10 +29,11 @@ static CGFloat indicatorRightMargin = 8.0;
 	[self removeObserver:self forKeyPath:@"font"];
 	[self removeObserver:self forKeyPath:@"textColor"];
 	[self removeObserver:self forKeyPath:@"shadowColor"];
-	[font release];
-	[textColor release];
-	[shadowColor release];
-	[indicator release];
+	self.font = nil;
+	self.text = nil;
+	self.textColor = nil;
+	self.shadowColor = nil;
+	[_activityIndicator release];
 	[super dealloc];
 }
 
@@ -50,10 +51,10 @@ static CGFloat indicatorRightMargin = 8.0;
 		self.opaque = YES;
 		
 		// Setup the indicator
-		indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-		indicator.hidesWhenStopped = NO;
-		[indicator startAnimating];
-		[self addSubview:indicator];
+		_activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		_activityIndicator.hidesWhenStopped = NO;
+		[_activityIndicator startAnimating];
+		[self addSubview:_activityIndicator];
 		
 		// Defaults
 		self.text = @"Loading...";
@@ -75,28 +76,30 @@ static CGFloat indicatorRightMargin = 8.0;
 
 - (void)drawRect:(CGRect)rect {
 	
+	CGRect frame = self.frame;
+	
 	// Calculate sizes
-	CGSize maxSize = CGSizeMake(self.frame.size.width - (interiorPadding * 2.0) - indicatorSize - indicatorRightMargin, indicatorSize);
-	CGSize textSize = [text sizeWithFont:font constrainedToSize:maxSize lineBreakMode:UILineBreakModeWordWrap];
+	CGSize maxSize = CGSizeMake(frame.size.width - (interiorPadding * 2.0) - indicatorSize - indicatorRightMargin, indicatorSize);
+	CGSize textSize = [_text sizeWithFont:_font constrainedToSize:maxSize lineBreakMode:UILineBreakModeWordWrap];
 	
 	// Calculate position
 	CGFloat totalWidth = textSize.width + indicatorSize + indicatorRightMargin;
-	NSInteger y = (NSInteger)((self.frame.size.height / 2.0) - (indicatorSize / 2.0));
+	NSInteger y = (NSInteger)((frame.size.height / 2.0) - (indicatorSize / 2.0));
 	
 	// Position the indicator
-	indicator.frame = CGRectMake((NSInteger)((self.frame.size.width - totalWidth) / 2.0), y, indicatorSize, indicatorSize);
+	_activityIndicator.frame = CGRectMake((NSInteger)((frame.size.width - totalWidth) / 2.0), y, indicatorSize, indicatorSize);
 	
 	// Calculate text position
-	CGRect textRect = CGRectMake(indicator.frame.origin.x + indicatorSize + indicatorRightMargin, y, textSize.width, textSize.height);
+	CGRect textRect = CGRectMake(_activityIndicator.frame.origin.x + indicatorSize + indicatorRightMargin, y, textSize.width, textSize.height);
 	
 	// Draw shadow. The offset is (0, 1)
-	[shadowColor set];
+	[_shadowColor set];
 	CGRect shadowRect = CGRectMake(textRect.origin.x, textRect.origin.y + 1.0, textRect.size.width, textRect.size.height);
-	[text drawInRect:shadowRect withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];	
+	[_text drawInRect:shadowRect withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];	
 	
 	// Draw text
-	[textColor set];
-	[text drawInRect:textRect withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];
+	[_textColor set];
+	[_text drawInRect:textRect withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];
 }
 
 

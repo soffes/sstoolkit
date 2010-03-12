@@ -10,13 +10,14 @@
 #import "UIImage+BundleImage.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define kHUDSize 172.0
+static CGFloat kHUDSize = 172.0;
+static CGFloat kIndicatorSize = 40.0;
 
 @implementation TWHUDView
 
-@synthesize textLabel;
-@synthesize activityIndicator;
-@synthesize loading;
+@synthesize textLabel = _textLabel;
+@synthesize activityIndicator = _activityIndicator;
+@synthesize loading = _loading;
 
 #pragma mark -
 #pragma mark NSObject
@@ -28,8 +29,8 @@
 
 
 - (void)dealloc {
-	[activityIndicator release];
-	[textLabel release];
+	[_activityIndicator release];
+	[_textLabel release];
     [super dealloc];
 }
 
@@ -66,7 +67,7 @@
 	CGContextFillPath(context);
 	
 	// Checkmark
-	if (loading == NO) {
+	if (_loading == NO) {
 		UIImage *checkmark = [UIImage imageNamed:@"images/hud-checkmark.png" bundle:@"TWToolkit.bundle"];
 		[checkmark drawInRect:CGRectMake(round((kHUDSize - 36.0) / 2.0), round((kHUDSize - 40.0) / 2.0), 36.0, 40.0)];
 	}
@@ -74,10 +75,8 @@
 
 
 - (void)layoutSubviews {
-	static CGFloat indicatorSize = 40.0;
-	
-	activityIndicator.frame = CGRectMake(round((kHUDSize - indicatorSize) / 2.0), round((kHUDSize - indicatorSize) / 2.0), indicatorSize, indicatorSize);
-	textLabel.frame = CGRectMake(0.0, round(kHUDSize - 30.0), kHUDSize, 20.0);
+	_activityIndicator.frame = CGRectMake(round((kHUDSize - kIndicatorSize) / 2.0), round((kHUDSize - kIndicatorSize) / 2.0), kIndicatorSize, kIndicatorSize);
+	_textLabel.frame = CGRectMake(0.0, round(kHUDSize - 30.0), kHUDSize, 20.0);
 }
 
 
@@ -97,7 +96,7 @@
 
 // Deprecated. Overridding UIAlertView's setTitle.
 - (void)setTitle:(NSString *)aTitle {
-	textLabel.text = aTitle;
+	_textLabel.text = aTitle;
 }
 
 #pragma mark -
@@ -112,22 +111,22 @@
 - (id)initWithTitle:(NSString *)aTitle loading:(BOOL)isLoading {
 	if (self = [super initWithFrame:CGRectZero]) {
 		// Indicator
-		activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-		activityIndicator.alpha = 0.0;
-		[activityIndicator startAnimating];
-		[self addSubview:activityIndicator];
+		_activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+		_activityIndicator.alpha = 0.0;
+		[_activityIndicator startAnimating];
+		[self addSubview:_activityIndicator];
 		
 		// Text Label
-		textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-		textLabel.font = [UIFont boldSystemFontOfSize:14];
-		textLabel.backgroundColor = [UIColor clearColor];
-		textLabel.textColor = [UIColor whiteColor];
-		textLabel.shadowColor = [UIColor blackColor];
-		textLabel.shadowOffset = CGSizeMake(0.0, 1.0);
-		textLabel.textAlignment = UITextAlignmentCenter;
-		textLabel.lineBreakMode = UILineBreakModeTailTruncation;
-		textLabel.text = aTitle ? aTitle : @"Loading";
-		[self addSubview:textLabel];
+		_textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+		_textLabel.font = [UIFont boldSystemFontOfSize:14];
+		_textLabel.backgroundColor = [UIColor clearColor];
+		_textLabel.textColor = [UIColor whiteColor];
+		_textLabel.shadowColor = [UIColor blackColor];
+		_textLabel.shadowOffset = CGSizeMake(0.0, 1.0);
+		_textLabel.textAlignment = UITextAlignmentCenter;
+		_textLabel.lineBreakMode = UILineBreakModeTailTruncation;
+		_textLabel.text = aTitle ? aTitle : @"Loading";
+		[self addSubview:_textLabel];
 		
 		// Loading
 		self.loading = isLoading;
@@ -138,7 +137,7 @@
 
 - (void)completeWithTitle:(NSString *)aTitle {
 	self.loading = NO;
-	textLabel.text = aTitle;
+	_textLabel.text = aTitle;
 }
 
 
@@ -163,8 +162,8 @@
 #pragma mark -
 
 - (void)setLoading:(BOOL)isLoading {
-	loading = isLoading;
-	activityIndicator.alpha = loading ? 1.0 : 0.0;
+	_loading = isLoading;
+	_activityIndicator.alpha = _loading ? 1.0 : 0.0;
 	[self setNeedsDisplay];
 	
 }

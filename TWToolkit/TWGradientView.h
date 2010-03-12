@@ -19,22 +19,20 @@
 //	  conversions are planned for the future.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface TWGradientView : UIView {
 	
-	UIColor *topColor;
-	UIColor *bottomColor;
-	UIColor *topBorderColor;
-	UIColor *bottomBorderColor;
-	CGFloat topInsetAlpha;
-	CGFloat bottomInsetAlpha;	
-	BOOL hasTopBorder;
-	BOOL hasBottomBorder;
-	BOOL showsInsets;
+	UIColor *_topColor;
+	UIColor *_bottomColor;
+	UIColor *_topBorderColor;
+	UIColor *_bottomBorderColor;
+	CGFloat _topInsetAlpha;
+	CGFloat _bottomInsetAlpha;	
+	BOOL _hasTopBorder;
+	BOOL _hasBottomBorder;
+	BOOL _showsInsets;
 	
-	BOOL hasDrawn;	
-	CGGradientRef gradient;
+	BOOL _hasDrawn;	
+	CGGradientRef _gradient;
 }
 
 @property (nonatomic, retain) UIColor *topColor;

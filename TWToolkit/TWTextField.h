@@ -8,7 +8,7 @@
 
 @interface TWTextField : UITextField {
 
-	UIEdgeInsets textInset;
+	UIEdgeInsets _textInset;
 }
 
 @property (nonatomic, assign) UIEdgeInsets textInset;

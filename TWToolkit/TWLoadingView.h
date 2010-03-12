@@ -8,17 +8,17 @@
 
 @interface TWLoadingView : UIView {
 
-	UIActivityIndicatorView *indicator;
-	NSString *text;
-	UIFont *font;
-	UIColor *textColor;
-	UIColor *shadowColor;
+	UIActivityIndicatorView *_activityIndicator;
+	NSString *_text;
+	UIFont *_font;
+	UIColor *_textColor;
+	UIColor *_shadowColor;
 }
 
-@property (nonatomic, retain) UIActivityIndicatorView *indicator;
-@property (nonatomic, retain) NSString *text;
-@property (nonatomic, retain) UIFont *font;
-@property (nonatomic, retain) UIColor *textColor;
-@property (nonatomic, retain) UIColor *shadowColor;
+@property (nonatomic, retain, readonly) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, copy) NSString *text;
+@property (nonatomic, copy) UIFont *font;
+@property (nonatomic, copy) UIColor *textColor;
+@property (nonatomic, copy) UIColor *shadowColor;
 
 @end
