@@ -1,35 +1,29 @@
 # TWToolkit
 
-TWToolkit makes life easy as an iPhone developer.
-
-*Note:* OAuth features have been abstracted out and moved into [TWOAuthKit][].
+TWToolkit makes life easier. It is made up of various view controllers, views, and categories that we use at [Tasteful Works][] for our apps. Feel free to fork the repo and help us make it better.
 
 ## Classes
 
 ### View Controllers
 
 * [TWPickerViewController][] - easily create picker view controllers like the Settings app
+* [TWMessagesViewController][] - simple message UI like the built-in SMS app
 
 ### Views
 
 * [TWHUDView][] - simple heads-up display
 * [TWLoadingView][] - flexible loading view
 * [TWGradientView][] - easily create gradients
-* [TWRemoteImageView][] - remote images made easy
-
-### Table View Cells
-
-* [TWSwitchTableViewCell][] - cell with a switch
 
 ### Categories
 
-Several categories are included in TWToolkit used throughout TWToolkit.
+[Several categories](http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWCategories.h) are included and used throughout TWToolkit.
 
 ## Adding TWToolkit to your project
 
 1. Run the following command to add the submodule. Be sure you have been added to the project on GitHub.
 
-        git submodule add git@github.com:tastefulworks/twtoolkit.git Frameworks/TWToolkit
+        git submodule add git://github.com/tastefulworks/twtoolkit.git Frameworks/TWToolkit
 
 2. In Finder, navigate to the `Frameworks/TWToolkit` folder and drag the `xcodeproj` file into the `Frameworks` folder in your Xcode project.
 
@@ -45,7 +39,7 @@ Several categories are included in TWToolkit used throughout TWToolkit.
 
 8. Choose the build tab from the top of the window. Make sure the configuration dropdown at the top is set to *All Configurations*.
 
-9. Add `Frameworks/TWToolkit` to *Header Search Path* (do not click the *Recursive* checkbox). It may help to use search for it in the *Search in Build Settings* field.
+9. Add `Frameworks/TWToolkit` to *Header Search Path* (do not click the *Recursive* checkbox).
 
 10. Add `-all_load -ObjC` to *Other Linker Flags*.
 
@@ -59,15 +53,19 @@ You can also import individual files instead of the whole framework (for faster 
 
     #import <TWToolkit/TWLoadingView.h>
 
+## Demo
+
+[TWCatalog][] is include with TWToolkit. This is a sample iPhone application to demonstrate the various features of TWToolkit.
+
 ## Links
 
-* [Known bugs](https://github.com/tastefulworks/twtoolkit/issues/labels/Bug)
-* [Future features](https://github.com/tastefulworks/twtoolkit/issues/labels/Enhancement)
+* [Known bugs](http://github.com/tastefulworks/twtoolkit/issues/labels/Bug)
+* [Future features](http://github.com/tastefulworks/twtoolkit/issues/labels/Enhancement)
 
-[TWOAuthKit]: https://github.com/tastefulworks/twoauthkit
+[Tasteful Works]: http://tastefulworks.com/
 [TWPickerViewController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWPickerViewController.h
+[TWMessagesViewController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWMessagesViewController.h
 [TWHUDView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWHUDView.h
 [TWLoadingView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLoadingView.h
 [TWGradientView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWGradientView.h
-[TWRemoteImageView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWRemoteImageView.h
-[TWSwitchTableViewCell]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWSwitchTableViewCell.h
+[TWCatalog]: https://github.com/tastefulworks/twtoolkit/tree/master/TWCatalog/

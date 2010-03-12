@@ -14,6 +14,3 @@
 #import <TWToolkit/TWHUDView.h>
 #import <TWToolkit/TWLoadingView.h>
 #import <TWToolkit/TWRoundedView.h>
-
-// Cells
-#import <TWToolkit/TWSwitchTableViewCell.h>
