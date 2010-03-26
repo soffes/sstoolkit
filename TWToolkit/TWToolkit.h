@@ -13,4 +13,3 @@
 // Views
 #import <TWToolkit/TWHUDView.h>
 #import <TWToolkit/TWLoadingView.h>
-#import <TWToolkit/TWRoundedView.h>
