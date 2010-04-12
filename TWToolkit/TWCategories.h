@@ -14,12 +14,9 @@
 #import <TWToolkit/NSString+MD5Sum.h>
 
 // UIKit
-#import <TWToolkit/UIApplication+undocumented.h>
 #import <TWToolkit/UIDevice+isSimulator.h>
 #import <TWToolkit/UIImage+BundleImage.h>
 #import <TWToolkit/UIImage+crop.h>
-#import <TWToolkit/UIScrollView+scroller.h>
-#import <TWToolkit/UITextView+HTML.h>
+#import <TWToolkit/UIScrollview+scrollToTop.h>
 #import <TWToolkit/UIView+fading.h>
 #import <TWToolkit/UIWebView+scrolling.h>
-#import <TWToolkit/UIWebView+setFontSize.h>
