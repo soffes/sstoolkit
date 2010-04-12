@@ -13,6 +13,8 @@
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
 		B215ACCC117363D9002562A4 /* UIScrollView+scrollToTop.h in Headers */ = {isa = PBXBuildFile; fileRef = B215ACCA117363D9002562A4 /* UIScrollView+scrollToTop.h */; };
 		B215ACCD117363D9002562A4 /* UIScrollView+scrollToTop.m in Sources */ = {isa = PBXBuildFile; fileRef = B215ACCB117363D9002562A4 /* UIScrollView+scrollToTop.m */; };
+		B215ADAE1173770F002562A4 /* TWLineView.h in Headers */ = {isa = PBXBuildFile; fileRef = B215ADAC1173770F002562A4 /* TWLineView.h */; };
+		B215ADAF1173770F002562A4 /* TWLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = B215ADAD1173770F002562A4 /* TWLineView.m */; };
 		B24244E611498A480061E255 /* TWTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = B24244E411498A480061E255 /* TWTextField.h */; };
 		B24244E711498A480061E255 /* TWTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B24244E511498A480061E255 /* TWTextField.m */; };
 		B24B551810B36F6B0014994C /* UIImage+BundleImage.h in Headers */ = {isa = PBXBuildFile; fileRef = B24B551610B36F6B0014994C /* UIImage+BundleImage.h */; };
@@ -60,6 +62,8 @@
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B215ACCA117363D9002562A4 /* UIScrollView+scrollToTop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+scrollToTop.h"; sourceTree = "<group>"; };
 		B215ACCB117363D9002562A4 /* UIScrollView+scrollToTop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+scrollToTop.m"; sourceTree = "<group>"; };
+		B215ADAC1173770F002562A4 /* TWLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWLineView.h; sourceTree = "<group>"; };
+		B215ADAD1173770F002562A4 /* TWLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWLineView.m; sourceTree = "<group>"; };
 		B22A2A8010B4908D00EA6CD9 /* TWToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TWToolkit.bundle; sourceTree = "<group>"; };
 		B24244E411498A480061E255 /* TWTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTextField.h; sourceTree = "<group>"; };
 		B24244E511498A480061E255 /* TWTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTextField.m; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 				B24244E511498A480061E255 /* TWTextField.m */,
 				B2C68297114954D3006EDD71 /* TWMessageTableViewCellBubbleView.h */,
 				B2C68298114954D3006EDD71 /* TWMessageTableViewCellBubbleView.m */,
+				B215ADAC1173770F002562A4 /* TWLineView.h */,
+				B215ADAD1173770F002562A4 /* TWLineView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -286,6 +292,7 @@
 				B2C682A1114954DF006EDD71 /* TWMessagesViewController.h in Headers */,
 				B24244E611498A480061E255 /* TWTextField.h in Headers */,
 				B215ACCC117363D9002562A4 /* UIScrollView+scrollToTop.h in Headers */,
+				B215ADAE1173770F002562A4 /* TWLineView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +361,7 @@
 				B2C682A2114954DF006EDD71 /* TWMessagesViewController.m in Sources */,
 				B24244E711498A480061E255 /* TWTextField.m in Sources */,
 				B215ACCD117363D9002562A4 /* UIScrollView+scrollToTop.m in Sources */,
+				B215ADAF1173770F002562A4 /* TWLineView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
