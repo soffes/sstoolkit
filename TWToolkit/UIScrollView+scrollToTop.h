@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIScrollView (scrollToTop) {
-
-}
+@interface UIScrollView (scrollToTop)
 
 - (void)scrollToTop;
 - (void)scrollToTopAnimated:(BOOL)animated;
