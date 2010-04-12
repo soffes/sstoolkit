@@ -95,14 +95,14 @@
 		B2C2076D106296FB00AE1B56 /* NSString+encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+encoding.m"; sourceTree = "<group>"; };
 		B2C2076E106296FB00AE1B56 /* NSString+MD5Sum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Sum.h"; sourceTree = "<group>"; };
 		B2C2076F106296FB00AE1B56 /* NSString+MD5Sum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Sum.m"; sourceTree = "<group>"; };
-		B2C207831062973000AE1B56 /* TWCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCategories.h; sourceTree = "<group>"; };
+		B2C207831062973000AE1B56 /* TWCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWCategories.h; path = ../TWToolkit/TWCategories.h; sourceTree = "<group>"; };
 		B2C68297114954D3006EDD71 /* TWMessageTableViewCellBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessageTableViewCellBubbleView.h; sourceTree = "<group>"; };
 		B2C68298114954D3006EDD71 /* TWMessageTableViewCellBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageTableViewCellBubbleView.m; sourceTree = "<group>"; };
 		B2C6829B114954DB006EDD71 /* TWMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessageTableViewCell.h; sourceTree = "<group>"; };
 		B2C6829C114954DB006EDD71 /* TWMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageTableViewCell.m; sourceTree = "<group>"; };
 		B2C6829F114954DF006EDD71 /* TWMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessagesViewController.h; sourceTree = "<group>"; };
 		B2C682A0114954DF006EDD71 /* TWMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessagesViewController.m; sourceTree = "<group>"; };
-		B2FA616C1059616200499856 /* TWToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit.h; sourceTree = "<group>"; };
+		B2FA616C1059616200499856 /* TWToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWToolkit.h; path = ../TWToolkit/TWToolkit.h; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTWToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTWToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -153,6 +153,8 @@
 		B215045D10583A7300409ED4 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B2FA616C1059616200499856 /* TWToolkit.h */,
+				B2C207831062973000AE1B56 /* TWCategories.h */,
 				B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */,
 			);
 			path = "Other Sources";
@@ -253,8 +255,6 @@
 		B2FA61431059616200499856 /* TWToolkit */ = {
 			isa = PBXGroup;
 			children = (
-				B2FA616C1059616200499856 /* TWToolkit.h */,
-				B2C207831062973000AE1B56 /* TWCategories.h */,
 				B28517D51063E42A008D42E7 /* View Controllers */,
 				B28517D71063E433008D42E7 /* Views */,
 				B2A41E97107287A5006EF521 /* Cells */,
