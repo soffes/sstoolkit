@@ -29,6 +29,8 @@
 		B28517DB1063E43E008D42E7 /* TWPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517D91063E43E008D42E7 /* TWPickerViewController.m */; };
 		B28517E01063E442008D42E7 /* TWLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517DC1063E442008D42E7 /* TWLoadingView.h */; };
 		B28517E11063E442008D42E7 /* TWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517DD1063E442008D42E7 /* TWLoadingView.m */; };
+		B28D8E3F1173D6DA00B37266 /* UIView+imageRepresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = B28D8E3B1173D6DA00B37266 /* UIView+imageRepresentation.h */; };
+		B28D8E401173D6DA00B37266 /* UIView+imageRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = B28D8E3C1173D6DA00B37266 /* UIView+imageRepresentation.m */; };
 		B2974D72106299CB00C9F4A6 /* UIDevice+isSimulator.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D61106299CB00C9F4A6 /* UIDevice+isSimulator.h */; };
 		B2974D73106299CB00C9F4A6 /* UIDevice+isSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D62106299CB00C9F4A6 /* UIDevice+isSimulator.m */; };
 		B2974D74106299CB00C9F4A6 /* UIImage+crop.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D63106299CB00C9F4A6 /* UIImage+crop.h */; };
@@ -79,6 +81,8 @@
 		B28517D91063E43E008D42E7 /* TWPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPickerViewController.m; sourceTree = "<group>"; };
 		B28517DC1063E442008D42E7 /* TWLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWLoadingView.h; sourceTree = "<group>"; };
 		B28517DD1063E442008D42E7 /* TWLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWLoadingView.m; sourceTree = "<group>"; };
+		B28D8E3B1173D6DA00B37266 /* UIView+imageRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+imageRepresentation.h"; sourceTree = "<group>"; };
+		B28D8E3C1173D6DA00B37266 /* UIView+imageRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+imageRepresentation.m"; sourceTree = "<group>"; };
 		B2974D61106299CB00C9F4A6 /* UIDevice+isSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+isSimulator.h"; sourceTree = "<group>"; };
 		B2974D62106299CB00C9F4A6 /* UIDevice+isSimulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+isSimulator.m"; sourceTree = "<group>"; };
 		B2974D63106299CB00C9F4A6 /* UIImage+crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+crop.h"; sourceTree = "<group>"; };
@@ -227,6 +231,8 @@
 		B2B9EC0B10826D710025F5AC /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B28D8E3B1173D6DA00B37266 /* UIView+imageRepresentation.h */,
+				B28D8E3C1173D6DA00B37266 /* UIView+imageRepresentation.m */,
 				B2974D61106299CB00C9F4A6 /* UIDevice+isSimulator.h */,
 				B2974D62106299CB00C9F4A6 /* UIDevice+isSimulator.m */,
 				B24B551610B36F6B0014994C /* UIImage+BundleImage.h */,
@@ -293,6 +299,7 @@
 				B24244E611498A480061E255 /* TWTextField.h in Headers */,
 				B215ACCC117363D9002562A4 /* UIScrollView+scrollToTop.h in Headers */,
 				B215ADAE1173770F002562A4 /* TWLineView.h in Headers */,
+				B28D8E3F1173D6DA00B37266 /* UIView+imageRepresentation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +369,7 @@
 				B24244E711498A480061E255 /* TWTextField.m in Sources */,
 				B215ACCD117363D9002562A4 /* UIScrollView+scrollToTop.m in Sources */,
 				B215ADAF1173770F002562A4 /* TWLineView.m in Sources */,
+				B28D8E401173D6DA00B37266 /* UIView+imageRepresentation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

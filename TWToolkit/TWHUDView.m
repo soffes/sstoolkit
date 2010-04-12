@@ -31,7 +31,7 @@ static CGFloat kIndicatorSize = 40.0;
 - (void)dealloc {
 	[_activityIndicator release];
 	[_textLabel release];
-    [super dealloc];
+	[super dealloc];
 }
 
 
@@ -40,7 +40,7 @@ static CGFloat kIndicatorSize = 40.0;
 #pragma mark -
 
 - (id)initWithFrame:(CGRect)frame {
-    return [self initWithTitle:nil loading:YES];
+	return [self initWithTitle:nil loading:YES];
 }
 
 
@@ -90,7 +90,8 @@ static CGFloat kIndicatorSize = 40.0;
 	// Set the frame to 20px larger than it should be because UIAlertView
 	// will automatically resize it down after the animation
 	CGFloat biggerSize = kHUDSize + 20.0;
-	self.frame = CGRectMake(round((320.0 - biggerSize) / 2.0), round((480.0 - biggerSize) / 2.0) + 10.0, biggerSize, biggerSize);
+	CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+	self.frame = CGRectMake(round((screenSize.width - biggerSize) / 2.0), round((screenSize.height - biggerSize) / 2.0) + 10.0, biggerSize, biggerSize);
 }
 
 

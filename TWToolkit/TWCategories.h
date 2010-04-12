@@ -19,4 +19,5 @@
 #import <TWToolkit/UIImage+crop.h>
 #import <TWToolkit/UIScrollview+scrollToTop.h>
 #import <TWToolkit/UIView+fading.h>
+#import <TWToolkit/UIView+imageRepresentation.h>
 #import <TWToolkit/UIWebView+scrolling.h>
