@@ -13,6 +13,5 @@
 }
 
 + (NSString *)title;
-+ (id)setup;
 
 @end

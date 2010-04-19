@@ -30,11 +30,6 @@ NSString *lorem[] = {
 }
 
 
-+ (TCMessagesDemoViewController *)setup {
-	return [[self alloc] init];
-}
-
-
 #pragma mark -
 #pragma mark UIViewController
 #pragma mark -

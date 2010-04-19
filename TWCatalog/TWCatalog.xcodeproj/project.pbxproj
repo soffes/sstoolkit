@@ -17,6 +17,7 @@
 		B21B86441067D7EA00E5C076 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B21B86431067D7EA00E5C076 /* libsqlite3.dylib */; };
 		B22A28E410B4762200EA6CD9 /* TCHUDViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22A28E310B4762200EA6CD9 /* TCHUDViewDemoViewController.m */; };
 		B22A2A8C10B4916500EA6CD9 /* TWToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B22A2A8B10B4916500EA6CD9 /* TWToolkit.bundle */; };
+		B23A3461117C92F20085E48A /* TCLineViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23A3460117C92F20085E48A /* TCLineViewDemoViewController.m */; };
 		B2503BCC10A90E34009B0E7B /* TCGradientViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2503BCB10A90E34009B0E7B /* TCGradientViewDemoViewController.m */; };
 		B27C60EC107FFD1D00F7FBD7 /* TCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27C60EB107FFD1D00F7FBD7 /* TCRootViewController.m */; };
 		B27C61271080003700F7FBD7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B27C61261080003700F7FBD7 /* Default.png */; };
@@ -61,6 +62,8 @@
 		B22A28E210B4762200EA6CD9 /* TCHUDViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHUDViewDemoViewController.h; sourceTree = "<group>"; };
 		B22A28E310B4762200EA6CD9 /* TCHUDViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHUDViewDemoViewController.m; sourceTree = "<group>"; };
 		B22A2A8B10B4916500EA6CD9 /* TWToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TWToolkit.bundle; path = ../Resources/TWToolkit.bundle; sourceTree = SOURCE_ROOT; };
+		B23A345F117C92F20085E48A /* TCLineViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLineViewDemoViewController.h; sourceTree = "<group>"; };
+		B23A3460117C92F20085E48A /* TCLineViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLineViewDemoViewController.m; sourceTree = "<group>"; };
 		B2503BCA10A90E34009B0E7B /* TCGradientViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCGradientViewDemoViewController.h; sourceTree = "<group>"; };
 		B2503BCB10A90E34009B0E7B /* TCGradientViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCGradientViewDemoViewController.m; sourceTree = "<group>"; };
 		B27C60EA107FFD1D00F7FBD7 /* TCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCRootViewController.h; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				B2C6828811495412006EDD71 /* Demo */,
+				B23A345E117C92E90085E48A /* Line View */,
 				B2C682A311495524006EDD71 /* Messages */,
 				B2503BC910A90E28009B0E7B /* Gradient View */,
 				B22A28E110B4761800EA6CD9 /* HUD View */,
@@ -176,6 +180,15 @@
 				B22A28E310B4762200EA6CD9 /* TCHUDViewDemoViewController.m */,
 			);
 			name = "HUD View";
+			sourceTree = "<group>";
+		};
+		B23A345E117C92E90085E48A /* Line View */ = {
+			isa = PBXGroup;
+			children = (
+				B23A345F117C92F20085E48A /* TCLineViewDemoViewController.h */,
+				B23A3460117C92F20085E48A /* TCLineViewDemoViewController.m */,
+			);
+			name = "Line View";
 			sourceTree = "<group>";
 		};
 		B2503BC910A90E28009B0E7B /* Gradient View */ = {
@@ -303,6 +316,7 @@
 				B2503BCC10A90E34009B0E7B /* TCGradientViewDemoViewController.m in Sources */,
 				B22A28E410B4762200EA6CD9 /* TCHUDViewDemoViewController.m in Sources */,
 				B2C682A61149552D006EDD71 /* TCMessagesDemoViewController.m in Sources */,
+				B23A3461117C92F20085E48A /* TCLineViewDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

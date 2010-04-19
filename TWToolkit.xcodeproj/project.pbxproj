@@ -168,6 +168,33 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		B23A34B3117C954B0085E48A /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				B23A34B4117C95540085E48A /* Views */,
+				B23A34B5117C95580085E48A /* Cells */,
+			);
+			name = Private;
+			sourceTree = "<group>";
+		};
+		B23A34B4117C95540085E48A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B2C68297114954D3006EDD71 /* TWMessageTableViewCellBubbleView.h */,
+				B2C68298114954D3006EDD71 /* TWMessageTableViewCellBubbleView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B23A34B5117C95580085E48A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B2C6829B114954DB006EDD71 /* TWMessageTableViewCell.h */,
+				B2C6829C114954DB006EDD71 /* TWMessageTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		B28517D51063E42A008D42E7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,21 +217,10 @@
 				B28517DD1063E442008D42E7 /* TWLoadingView.m */,
 				B24244E411498A480061E255 /* TWTextField.h */,
 				B24244E511498A480061E255 /* TWTextField.m */,
-				B2C68297114954D3006EDD71 /* TWMessageTableViewCellBubbleView.h */,
-				B2C68298114954D3006EDD71 /* TWMessageTableViewCellBubbleView.m */,
 				B215ADAC1173770F002562A4 /* TWLineView.h */,
 				B215ADAD1173770F002562A4 /* TWLineView.m */,
 			);
 			name = Views;
-			sourceTree = "<group>";
-		};
-		B2A41E97107287A5006EF521 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				B2C6829B114954DB006EDD71 /* TWMessageTableViewCell.h */,
-				B2C6829C114954DB006EDD71 /* TWMessageTableViewCell.m */,
-			);
-			name = Cells;
 			sourceTree = "<group>";
 		};
 		B2B9EC0A10826D670025F5AC /* Foundation */ = {
@@ -257,8 +273,8 @@
 			children = (
 				B28517D51063E42A008D42E7 /* View Controllers */,
 				B28517D71063E433008D42E7 /* Views */,
-				B2A41E97107287A5006EF521 /* Cells */,
 				B2C20765106296F200AE1B56 /* Categories */,
+				B23A34B3117C954B0085E48A /* Private */,
 			);
 			path = TWToolkit;
 			sourceTree = "<group>";

@@ -14,7 +14,6 @@
 }
 
 + (NSString *)title;
-+ (id)setup;
 
 - (void)changeColor:(id)sender;
 

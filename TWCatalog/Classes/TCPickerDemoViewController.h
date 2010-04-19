@@ -14,6 +14,5 @@
 @property (nonatomic, retain) NSString *selectedAbbreviation;
 
 + (NSString *)title;
-+ (id)setup;
 
 @end

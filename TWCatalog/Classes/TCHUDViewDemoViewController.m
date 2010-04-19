@@ -20,11 +20,6 @@
 }
 
 
-+ (id)setup {
-	return [[self alloc] initWithNibName:nil bundle:nil];
-}
-
-
 #pragma mark -
 #pragma mark NSObject
 #pragma mark -

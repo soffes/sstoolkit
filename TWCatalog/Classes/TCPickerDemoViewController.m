@@ -22,14 +22,14 @@
 }
 
 
-+ (id)setup {
-	return [[self alloc] initWithStyle:UITableViewStyleGrouped];
-}
-
-
 #pragma mark -
 #pragma mark NSObject
 #pragma mark -
+
+- (id)init {
+	return self = [super initWithStyle:UITableViewStyleGrouped];
+}
+
 
 - (void)dealloc {
 	[selectedAbbreviation release];

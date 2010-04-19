@@ -17,7 +17,7 @@
 #pragma mark -
 
 - (id)init {
-	return [self initWithNibName:nil bundle:nil];
+	return self = [super initWithStyle:UITableViewStyleGrouped];
 }
 
 

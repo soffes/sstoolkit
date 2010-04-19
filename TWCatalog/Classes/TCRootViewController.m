@@ -43,6 +43,7 @@
 			 [NSArray arrayWithObjects:
 			  @"TCGradientViewDemoViewController",
 			  @"TCHUDViewDemoViewController",
+			  @"TCLineViewDemoViewController",
 			  nil],
 			 kClassesKey,
 			 @"Views",
@@ -107,7 +108,7 @@
 	[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
 	Class klass = [[NSBundle mainBundle] classNamed:[[[data objectAtIndex:indexPath.section] objectForKey:kClassesKey] objectAtIndex:indexPath.row]];
-	UIViewController *viewController = [klass setup];
+	UIViewController *viewController = [[klass alloc] init];
 	[self.navigationController pushViewController:viewController animated:YES];
 	[viewController release];
 }

@@ -33,8 +33,8 @@
 		self.opaque = NO;
 		self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		
-		self.lineColor = [UIColor blackColor];
-		self.insetAlpha = 0.3;
+		self.lineColor = [UIColor grayColor];
+		self.insetAlpha = 0.5;
 		
 		_hasDrawn = NO;
 	}
@@ -52,6 +52,7 @@
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextSaveGState(context);
 	CGContextClipToRect(context, rect);
+	CGContextSetLineWidth(context, 2.0);
 
 	// Top inset
 	if (_insetAlpha > 0.0) {
