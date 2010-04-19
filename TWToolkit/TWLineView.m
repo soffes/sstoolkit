@@ -11,7 +11,7 @@
 @implementation TWLineView
 
 @synthesize lineColor = _lineColor;
-@synthesize insetAlpha = _insetAlpha;
+@synthesize insetColor = _insetColor;
 
 #pragma mark -
 #pragma mark NSObject
@@ -34,7 +34,7 @@
 		self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		
 		self.lineColor = [UIColor grayColor];
-		self.insetAlpha = 0.5;
+		self.insetColor = [UIColor colorWithWhite:1.0 alpha:0.5];
 		
 		_hasDrawn = NO;
 	}
@@ -54,9 +54,9 @@
 	CGContextClipToRect(context, rect);
 	CGContextSetLineWidth(context, 2.0);
 
-	// Top inset
-	if (_insetAlpha > 0.0) {
-		CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0 alpha:_insetAlpha].CGColor);
+	// Inset
+	if (self.insetColor && self.insetAlpha > 0.0) {
+		CGContextSetStrokeColorWithColor(context, _insetColor.CGColor);
 		CGContextMoveToPoint(context, 0.0, 1.0);
 		CGContextAddLineToPoint(context, rect.size.width, 1.0);
 		CGContextStrokePath(context);
@@ -67,6 +67,27 @@
 	CGContextMoveToPoint(context, 0.0, 0.0);
 	CGContextAddLineToPoint(context, rect.size.width, 0.0);
 	CGContextStrokePath(context);
+}
+
+
+#pragma mark -
+#pragma mark Getters
+#pragma mark -
+
+- (CGFloat)insetAlpha {
+	return CGColorGetAlpha(_insetColor.CGColor);
+}
+
+
+#pragma mark -
+#pragma mark Setters
+#pragma mark -
+
+- (void)setInsetAlpha:(CGFloat)alpha {
+	CGColorRef cgColor = CGColorCreateCopyWithAlpha(_insetColor.CGColor, alpha);
+	self.insetColor = [UIColor colorWithCGColor:cgColor];
+	CGColorRelease(cgColor);
+	[self setNeedsDisplay];
 }
 
 

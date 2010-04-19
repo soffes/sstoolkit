@@ -9,7 +9,7 @@
 @interface TWLineView : UIView {
 
 	UIColor *_lineColor;
-	CGFloat _insetAlpha;
+	UIColor *_insetColor;
 	
 	@private
 	
@@ -17,6 +17,7 @@
 }
 
 @property (nonatomic, retain) UIColor *lineColor;
+@property (nonatomic, retain) UIColor *insetColor;
 @property (nonatomic, assign) CGFloat insetAlpha;
 
 @end
