@@ -11,7 +11,7 @@
 @implementation UIView (fading)
 
 - (void)fadeOut {
-	[self fadeAlphaTo:0.0 andPerformSelector:nil withObject:nil];
+	[self fadeAlphaTo:0.0 andPerformSelector:NULL withObject:nil];
 }
 
 
@@ -26,7 +26,7 @@
 
 
 - (void)fadeIn {
-	[self fadeAlphaTo:1.0 andPerformSelector:nil withObject:nil];
+	[self fadeAlphaTo:1.0 andPerformSelector:NULL withObject:nil];
 }
 
 
@@ -41,7 +41,7 @@
 
 
 - (void)fadeAlphaTo:(CGFloat)targetAlpha {
-	[self fadeAlphaTo:targetAlpha andPerformSelector:nil withObject:nil];
+	[self fadeAlphaTo:targetAlpha andPerformSelector:NULL withObject:nil];
 }
 
 

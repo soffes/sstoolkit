@@ -22,3 +22,4 @@
 #import <TWToolkit/UIView+imageRepresentation.h>
 #import <TWToolkit/UIWebView+scrolling.h>
 #import <TWToolkit/UIColor+alpha.h>
+#import <TWToolkit/UIControl+removeAllTargets.h>

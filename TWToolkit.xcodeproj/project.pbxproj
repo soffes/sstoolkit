@@ -33,6 +33,8 @@
 		B28517E11063E442008D42E7 /* TWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517DD1063E442008D42E7 /* TWLoadingView.m */; };
 		B28D8E3F1173D6DA00B37266 /* UIView+imageRepresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = B28D8E3B1173D6DA00B37266 /* UIView+imageRepresentation.h */; };
 		B28D8E401173D6DA00B37266 /* UIView+imageRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = B28D8E3C1173D6DA00B37266 /* UIView+imageRepresentation.m */; };
+		B28E46F4117CBB5B0089E536 /* UIControl+removeAllTargets.h in Headers */ = {isa = PBXBuildFile; fileRef = B28E46F2117CBB5B0089E536 /* UIControl+removeAllTargets.h */; };
+		B28E46F5117CBB5B0089E536 /* UIControl+removeAllTargets.m in Sources */ = {isa = PBXBuildFile; fileRef = B28E46F3117CBB5B0089E536 /* UIControl+removeAllTargets.m */; };
 		B2974D72106299CB00C9F4A6 /* UIDevice+isSimulator.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D61106299CB00C9F4A6 /* UIDevice+isSimulator.h */; };
 		B2974D73106299CB00C9F4A6 /* UIDevice+isSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D62106299CB00C9F4A6 /* UIDevice+isSimulator.m */; };
 		B2974D74106299CB00C9F4A6 /* UIImage+crop.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D63106299CB00C9F4A6 /* UIImage+crop.h */; };
@@ -87,6 +89,8 @@
 		B28517DD1063E442008D42E7 /* TWLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWLoadingView.m; sourceTree = "<group>"; };
 		B28D8E3B1173D6DA00B37266 /* UIView+imageRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+imageRepresentation.h"; sourceTree = "<group>"; };
 		B28D8E3C1173D6DA00B37266 /* UIView+imageRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+imageRepresentation.m"; sourceTree = "<group>"; };
+		B28E46F2117CBB5B0089E536 /* UIControl+removeAllTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+removeAllTargets.h"; sourceTree = "<group>"; };
+		B28E46F3117CBB5B0089E536 /* UIControl+removeAllTargets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+removeAllTargets.m"; sourceTree = "<group>"; };
 		B2974D61106299CB00C9F4A6 /* UIDevice+isSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+isSimulator.h"; sourceTree = "<group>"; };
 		B2974D62106299CB00C9F4A6 /* UIDevice+isSimulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+isSimulator.m"; sourceTree = "<group>"; };
 		B2974D63106299CB00C9F4A6 /* UIImage+crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+crop.h"; sourceTree = "<group>"; };
@@ -267,6 +271,8 @@
 				B24E080710D575F0003F9936 /* UIWebView+scrolling.m */,
 				B270B5EC117C9EDC00944B8A /* UIColor+alpha.h */,
 				B270B5ED117C9EDC00944B8A /* UIColor+alpha.m */,
+				B28E46F2117CBB5B0089E536 /* UIControl+removeAllTargets.h */,
+				B28E46F3117CBB5B0089E536 /* UIControl+removeAllTargets.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -323,6 +329,7 @@
 				B215ADAE1173770F002562A4 /* TWLineView.h in Headers */,
 				B28D8E3F1173D6DA00B37266 /* UIView+imageRepresentation.h in Headers */,
 				B270B5EE117C9EDC00944B8A /* UIColor+alpha.h in Headers */,
+				B28E46F4117CBB5B0089E536 /* UIControl+removeAllTargets.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +401,7 @@
 				B215ADAF1173770F002562A4 /* TWLineView.m in Sources */,
 				B28D8E401173D6DA00B37266 /* UIView+imageRepresentation.m in Sources */,
 				B270B5EF117C9EDC00944B8A /* UIColor+alpha.m in Sources */,
+				B28E46F5117CBB5B0089E536 /* UIControl+removeAllTargets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
