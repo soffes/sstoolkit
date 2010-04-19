@@ -32,6 +32,11 @@
 	TWLineView *lineView1 = [[TWLineView alloc] initWithFrame:CGRectMake(20.0, 20.0, 280.0, 2.0)];
 	[self.view addSubview:lineView1];
 	[lineView1 release];
+	
+	TWLineView *lineView2 = [[TWLineView alloc] initWithFrame:CGRectMake(20.0, 42.0, 280.0, 2.0)];
+	lineView2.lineColor = [UIColor blueColor];
+	[self.view addSubview:lineView2];
+	[lineView2 release];
 }
 
 @end

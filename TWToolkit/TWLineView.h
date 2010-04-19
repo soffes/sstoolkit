@@ -10,6 +10,7 @@
 
 	UIColor *_lineColor;
 	UIColor *_insetColor;
+	BOOL _showInset;
 	
 	@private
 	
@@ -18,6 +19,6 @@
 
 @property (nonatomic, retain) UIColor *lineColor;
 @property (nonatomic, retain) UIColor *insetColor;
-@property (nonatomic, assign) CGFloat insetAlpha;
+@property (nonatomic, assign) BOOL showInset;
 
 @end

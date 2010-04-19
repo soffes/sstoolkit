@@ -25,6 +25,8 @@
 		B2503B9610A90DA6009B0E7B /* TWGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2503B9410A90DA6009B0E7B /* TWGradientView.m */; };
 		B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */ = {isa = PBXBuildFile; fileRef = B253C1F810728DC500E0CE10 /* TWHUDView.h */; };
 		B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = B253C1F910728DC500E0CE10 /* TWHUDView.m */; };
+		B270B5EE117C9EDC00944B8A /* UIColor+alpha.h in Headers */ = {isa = PBXBuildFile; fileRef = B270B5EC117C9EDC00944B8A /* UIColor+alpha.h */; };
+		B270B5EF117C9EDC00944B8A /* UIColor+alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = B270B5ED117C9EDC00944B8A /* UIColor+alpha.m */; };
 		B28517DA1063E43E008D42E7 /* TWPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517D81063E43E008D42E7 /* TWPickerViewController.h */; };
 		B28517DB1063E43E008D42E7 /* TWPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517D91063E43E008D42E7 /* TWPickerViewController.m */; };
 		B28517E01063E442008D42E7 /* TWLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517DC1063E442008D42E7 /* TWLoadingView.h */; };
@@ -77,6 +79,8 @@
 		B2503B9410A90DA6009B0E7B /* TWGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWGradientView.m; sourceTree = "<group>"; };
 		B253C1F810728DC500E0CE10 /* TWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWHUDView.h; sourceTree = "<group>"; };
 		B253C1F910728DC500E0CE10 /* TWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWHUDView.m; sourceTree = "<group>"; };
+		B270B5EC117C9EDC00944B8A /* UIColor+alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+alpha.h"; sourceTree = "<group>"; };
+		B270B5ED117C9EDC00944B8A /* UIColor+alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+alpha.m"; sourceTree = "<group>"; };
 		B28517D81063E43E008D42E7 /* TWPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPickerViewController.h; sourceTree = "<group>"; };
 		B28517D91063E43E008D42E7 /* TWPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPickerViewController.m; sourceTree = "<group>"; };
 		B28517DC1063E442008D42E7 /* TWLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWLoadingView.h; sourceTree = "<group>"; };
@@ -261,6 +265,8 @@
 				B215ACCB117363D9002562A4 /* UIScrollView+scrollToTop.m */,
 				B24E080610D575F0003F9936 /* UIWebView+scrolling.h */,
 				B24E080710D575F0003F9936 /* UIWebView+scrolling.m */,
+				B270B5EC117C9EDC00944B8A /* UIColor+alpha.h */,
+				B270B5ED117C9EDC00944B8A /* UIColor+alpha.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 				B215ACCC117363D9002562A4 /* UIScrollView+scrollToTop.h in Headers */,
 				B215ADAE1173770F002562A4 /* TWLineView.h in Headers */,
 				B28D8E3F1173D6DA00B37266 /* UIView+imageRepresentation.h in Headers */,
+				B270B5EE117C9EDC00944B8A /* UIColor+alpha.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +393,7 @@
 				B215ACCD117363D9002562A4 /* UIScrollView+scrollToTop.m in Sources */,
 				B215ADAF1173770F002562A4 /* TWLineView.m in Sources */,
 				B28D8E401173D6DA00B37266 /* UIView+imageRepresentation.m in Sources */,
+				B270B5EF117C9EDC00944B8A /* UIColor+alpha.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
