@@ -10,6 +10,9 @@
 
 @interface UIView (fading)
 
+- (void)hide;
+- (void)show;
+
 - (void)fadeOut;
 - (void)fadeOutAndPerformSelector:(SEL)selector;
 - (void)fadeOutAndPerformSelector:(SEL)selector withObject:(id)object;

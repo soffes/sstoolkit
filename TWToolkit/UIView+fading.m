@@ -10,6 +10,16 @@
 
 @implementation UIView (fading)
 
+- (void)hide {
+	self.alpha = 0.0;
+}
+
+
+- (void)show {
+	self.alpha = 1.0;
+}
+
+
 - (void)fadeOut {
 	[self fadeAlphaTo:0.0 andPerformSelector:NULL withObject:nil];
 }
