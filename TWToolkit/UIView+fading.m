@@ -11,21 +11,60 @@
 @implementation UIView (fading)
 
 - (void)fadeOut {
-	[UIView beginAnimations:@"fadeout" context:nil];
-	self.alpha = 0.0;
-	[UIView commitAnimations];
+	[self fadeAlphaTo:0.0 andPerformSelector:nil withObject:nil];
 }
+
+
+- (void)fadeOutAndPerformSelector:(SEL)selector {
+	[self fadeAlphaTo:0.0 andPerformSelector:selector withObject:nil];
+}
+
+
+- (void)fadeOutAndPerformSelector:(SEL)selector withObject:(id)object {
+	[self fadeAlphaTo:0.0 andPerformSelector:selector withObject:object];
+}
+
 
 - (void)fadeIn {
-	[UIView beginAnimations:@"fadein" context:nil];
-	self.alpha = 1.0;
-	[UIView commitAnimations];
+	[self fadeAlphaTo:1.0 andPerformSelector:nil withObject:nil];
 }
 
-- (void)fadeAlphaTo:(CGFloat)value {
+
+- (void)fadeInAndPerformSelector:(SEL)selector {
+	[self fadeAlphaTo:1.0 andPerformSelector:selector withObject:nil];
+}
+
+
+- (void)fadeInAndPerformSelector:(SEL)selector withObject:(id)object {
+	[self fadeAlphaTo:1.0 andPerformSelector:selector withObject:object];
+}
+
+
+- (void)fadeAlphaTo:(CGFloat)targetAlpha {
+	[self fadeAlphaTo:targetAlpha andPerformSelector:nil withObject:nil];
+}
+
+
+- (void)fadeAlphaTo:(CGFloat)targetAlpha andPerformSelector:(SEL)selector {
+	[self fadeAlphaTo:targetAlpha andPerformSelector:selector withObject:nil];
+}
+
+
+- (void)fadeAlphaTo:(CGFloat)targetAlpha andPerformSelector:(SEL)selector withObject:(id)object {
+	// Don't fade and perform selector if alpha is already target alpha
+	if (self.alpha == targetAlpha) {
+		return;
+	}
+	
+	// Perform fade
 	[UIView beginAnimations:@"fadealpha" context:nil];
-	self.alpha = value;
+	self.alpha = targetAlpha;
 	[UIView commitAnimations];
+	
+	// Perform selector after animation
+	if (selector) {
+		[self performSelector:selector withObject:object afterDelay:0.21];
+	}
 }
 
 @end

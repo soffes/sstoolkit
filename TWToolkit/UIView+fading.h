@@ -11,7 +11,15 @@
 @interface UIView (fading)
 
 - (void)fadeOut;
+- (void)fadeOutAndPerformSelector:(SEL)selector;
+- (void)fadeOutAndPerformSelector:(SEL)selector withObject:(id)object;
+
 - (void)fadeIn;
-- (void)fadeAlphaTo:(CGFloat)value;
+- (void)fadeInAndPerformSelector:(SEL)selector;
+- (void)fadeInAndPerformSelector:(SEL)selector withObject:(id)object;
+
+- (void)fadeAlphaTo:(CGFloat)targetAlpha;
+- (void)fadeAlphaTo:(CGFloat)targetAlpha andPerformSelector:(SEL)selector;
+- (void)fadeAlphaTo:(CGFloat)targetAlpha andPerformSelector:(SEL)selector withObject:(id)object;
 
 @end
