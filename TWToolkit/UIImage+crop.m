@@ -17,11 +17,18 @@
 	return cropped; // retained
 }
 
-- (UIImage *)cropToRect:(CGRect)rect {
+
+- (UIImage *)imageCroppedToRect:(CGRect)rect {
 	CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], rect);
 	UIImage *cropped = [UIImage imageWithCGImage:imageRef];
 	CGImageRelease(imageRef);
 	return cropped; // autoreleased
+}
+
+
+- (UIImage *)squareImage {
+	CGFloat shortestSide = self.size.width <= self.size.height ? self.size.width : self.size.height;	
+	return [self imageCroppedToRect:CGRectMake(0.0, 0.0, shortestSide, shortestSide)];
 }
 
 @end

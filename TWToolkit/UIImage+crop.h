@@ -11,6 +11,8 @@
 @interface UIImage (cropToRect)
 
 - (UIImage *)initWithImage:(UIImage *)image croppedToRect:(CGRect)rect;
-- (UIImage *)cropToRect:(CGRect)rect;
+- (UIImage *)imageCroppedToRect:(CGRect)rect;
+
+- (UIImage *)squareImage;
 
 @end
