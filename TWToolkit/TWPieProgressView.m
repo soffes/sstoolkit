@@ -71,12 +71,12 @@
 		CGPoint center = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 		CGFloat radius = center.y;
 		CGFloat angle = DEGREES_TO_RADIANS((360.0 * _progress) + kAngleOffset);
-		CGPoint p[3] = {
+		CGPoint points[3] = {
 			CGPointMake(center.x, 0.0),
 			center,
 			CGPointMake(center.x + radius * cos(angle), center.y + radius * sin(angle))
 		};
-		CGContextAddLines(context, p, sizeof(p)/sizeof(p[0]));
+		CGContextAddLines(context, points, sizeof(points) / sizeof(points[0]));
 		CGContextAddArc(context, center.x, center.y, radius, DEGREES_TO_RADIANS(kAngleOffset), angle, false);
 		CGContextDrawPath(context, kCGPathEOFill);
 	}

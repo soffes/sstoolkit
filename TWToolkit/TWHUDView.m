@@ -77,6 +77,8 @@ static CGFloat kIndicatorSize = 40.0;
 - (void)layoutSubviews {
 	_activityIndicator.frame = CGRectMake(round((kHUDSize - kIndicatorSize) / 2.0), round((kHUDSize - kIndicatorSize) / 2.0), kIndicatorSize, kIndicatorSize);
 	_textLabel.frame = CGRectMake(0.0, round(kHUDSize - 30.0), kHUDSize, 20.0);
+	
+	NSLog(@"layoutSubviews - frame: %@", NSStringFromCGRect(self.frame));
 }
 
 
@@ -86,12 +88,15 @@ static CGFloat kIndicatorSize = 40.0;
 
 - (void)show {
 	[super show];
-	
+
 	// Set the frame to 20px larger than it should be because UIAlertView
 	// will automatically resize it down after the animation
 	CGFloat biggerSize = kHUDSize + 20.0;
 	CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-	self.frame = CGRectMake(round((screenSize.width - biggerSize) / 2.0), round((screenSize.height - biggerSize) / 2.0) + 10.0, biggerSize, biggerSize);
+	self.frame = CGRectMake(round((screenSize.width - biggerSize) / 2.0), 
+							round((screenSize.height - biggerSize) / 2.0) + 10.0, 
+							biggerSize, biggerSize);
+	NSLog(@"Show - frame: %@", NSStringFromCGRect(self.frame));
 }
 
 
@@ -111,6 +116,7 @@ static CGFloat kIndicatorSize = 40.0;
 
 - (id)initWithTitle:(NSString *)aTitle loading:(BOOL)isLoading {
 	if (self = [super initWithFrame:CGRectZero]) {
+
 		// Indicator
 		_activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 		_activityIndicator.alpha = 0.0;
