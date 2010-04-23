@@ -40,7 +40,7 @@
 		self.backgroundColor = [UIColor clearColor];
 		
 		self.progress = 0.0;
-		self.pieBorderWidth = 2.0;
+		self.pieBorderWidth = 4.0;
 		self.pieBorderColor = [UIColor colorWithRed:0.612 green:0.710 blue:0.839 alpha:1.0];
 		self.pieFillColor = [UIColor colorWithRed:0.612 green:0.710 blue:0.839 alpha:1.0];
 		self.pieBackgroundColor = [UIColor whiteColor];
@@ -51,13 +51,15 @@
 
 - (void)drawRect:(CGRect)rect {
 	if (!_hasDrawn) {
-		// TODO: Add observers
+		[self addObserver:self forKeyPath:@"pieBorderWidth" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"pieBorderColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"pieFillColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"pieBackgroundColor" options:NSKeyValueObservingOptionNew context:nil];
 		_hasDrawn = YES;
 	}
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
-//	CGContextClipToRect(context, rect);
-	CGPoint center = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+	CGContextClipToRect(context, rect);
 	
 	// Background
 	[_pieBackgroundColor set];
@@ -66,6 +68,7 @@
 	// Fill
 	[_pieFillColor set];
 	CGContextSetLineWidth(context, 1.0);
+	CGPoint center = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 	CGFloat radius = center.y;
 	CGFloat angle = DEGREES_TO_RADIANS((360.0 * _progress) + kAngleOffset);
 	CGPoint p[3] = {
@@ -90,22 +93,23 @@
 #pragma mark -
 
 - (void)setProgress:(CGFloat)newProgress {
-	[self setProgress:newProgress animated:YES];
+	_progress = fmax(0.0, fmin(1.0, newProgress));
+	[self setNeedsDisplay];
 }
 
 
-- (void)setProgress:(CGFloat)newProgress animated:(BOOL)animated {
-	_progress = fmax(0.0, fmin(1.0, newProgress));
-	
-	if (animated) {
-		[UIView beginAnimations:@"animateProgress" context:self];
+#pragma mark -
+#pragma mark Observer
+#pragma mark -
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	// Redraw if attributes changed
+	if ([keyPath isEqualToString:@"pieBorderWidth"] || [keyPath isEqualToString:@"pieBorderColor"] || [keyPath isEqualToString:@"pieFillColor"] || [keyPath isEqualToString:@"pieBackgroundColor"]) {
+		[self setNeedsDisplay];
+		return;
 	}
 	
-	[self setNeedsDisplay];
-	
-	if (animated) {
-		[UIView commitAnimations];
-	}
+	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end

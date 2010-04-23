@@ -47,8 +47,8 @@
 	if (!_hasDrawn) {
 		// Add observers
 		[self addObserver:self forKeyPath:@"lineColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"insetColor" options:NSKeyValueObservingOptionNew context:nil];		
-		[self addObserver:self forKeyPath:@"showInset" options:NSKeyValueObservingOptionNew context:nil];		
+		[self addObserver:self forKeyPath:@"insetColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"showInset" options:NSKeyValueObservingOptionNew context:nil];
 		_hasDrawn = YES;
 	}
 	

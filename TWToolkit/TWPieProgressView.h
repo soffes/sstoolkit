@@ -9,7 +9,6 @@
 @interface TWPieProgressView : UIView {
 
 	CGFloat _progress;
-
 	CGFloat _pieBorderWidth;
 	UIColor *_pieBorderColor;
 	UIColor *_pieFillColor;
@@ -25,7 +24,5 @@
 @property (nonatomic, retain) UIColor *pieBorderColor;
 @property (nonatomic, retain) UIColor *pieFillColor;
 @property (nonatomic, retain) UIColor *pieBackgroundColor;
-
-- (void)setProgress:(CGFloat)newProgress animated:(BOOL)animated;
 
 @end

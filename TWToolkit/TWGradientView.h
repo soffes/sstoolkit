@@ -31,7 +31,7 @@
 	BOOL _hasBottomBorder;
 	BOOL _showsInsets;
 	
-	@private
+@private
 	
 	BOOL _hasDrawn;	
 	CGGradientRef _gradient;
