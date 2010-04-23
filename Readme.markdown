@@ -13,7 +13,9 @@ TWToolkit makes life easier. It is made up of various view controllers, views, a
 
 * [TWHUDView][] - simple heads-up display
 * [TWLoadingView][] - flexible loading view
-* [TWGradientView][] - easily create gradients
+* [TWGradientView][] - easily create gradients with optional borders and insets
+* [TWLineView][] - easily create lines with an inset
+* [TWPieProgressView][] - pie chart style progress bar similar to the one in Xcode's status bar
 
 ### Categories
 
@@ -68,4 +70,6 @@ You can also import individual files instead of the whole framework (for faster 
 [TWHUDView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWHUDView.h
 [TWLoadingView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLoadingView.h
 [TWGradientView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWGradientView.h
+[TWLineView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLineView.h
+[TWPieProgressView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWPieProgressView.h
 [TWCatalog]: https://github.com/tastefulworks/twtoolkit/tree/master/TWCatalog/
