@@ -44,6 +44,7 @@
 			  @"TCGradientViewDemoViewController",
 			  @"TCHUDViewDemoViewController",
 			  @"TCLineViewDemoViewController",
+			  @"TCPieProgressViewDemoViewController",
 			  nil],
 			 kClassesKey,
 			 @"Views",

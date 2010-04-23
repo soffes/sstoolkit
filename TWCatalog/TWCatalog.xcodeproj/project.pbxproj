@@ -27,6 +27,7 @@
 		B27FDDBF10A49B660076DC56 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B27FDDBE10A49B660076DC56 /* Icon.png */; };
 		B27FDDC910A49C350076DC56 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B27FDDC810A49C350076DC56 /* iTunesArtwork */; };
 		B2C682A61149552D006EDD71 /* TCMessagesDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C682A51149552D006EDD71 /* TCMessagesDemoViewController.m */; };
+		B2ED13551181434200FAAA13 /* TCPieProgressViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ED13541181434200FAAA13 /* TCPieProgressViewDemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		B27FDDC810A49C350076DC56 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		B2C682A41149552D006EDD71 /* TCMessagesDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCMessagesDemoViewController.h; sourceTree = "<group>"; };
 		B2C682A51149552D006EDD71 /* TCMessagesDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCMessagesDemoViewController.m; sourceTree = "<group>"; };
+		B2ED13531181434200FAAA13 /* TCPieProgressViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPieProgressViewDemoViewController.h; sourceTree = "<group>"; };
+		B2ED13541181434200FAAA13 /* TCPieProgressViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPieProgressViewDemoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				B2C6828811495412006EDD71 /* Demo */,
-				B23A345E117C92E90085E48A /* Line View */,
-				B2C682A311495524006EDD71 /* Messages */,
-				B2503BC910A90E28009B0E7B /* Gradient View */,
-				B22A28E110B4761800EA6CD9 /* HUD View */,
-				B2A67B3010A8838100E266F5 /* Picker View Controller */,
+				B2ED1351118142ED00FAAA13 /* Views */,
+				B2ED1352118142F100FAAA13 /* View Controllers */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -200,7 +200,7 @@
 			name = "Gradient View";
 			sourceTree = "<group>";
 		};
-		B2A67B3010A8838100E266F5 /* Picker View Controller */ = {
+		B2A67B3010A8838100E266F5 /* Settings Picker */ = {
 			isa = PBXGroup;
 			children = (
 				B27C613B108000FC00F7FBD7 /* TCPickerDemoViewController.h */,
@@ -208,7 +208,7 @@
 				B27C61821080037D00F7FBD7 /* TCPickerDetailViewController.h */,
 				B27C61831080037D00F7FBD7 /* TCPickerDetailViewController.m */,
 			);
-			name = "Picker View Controller";
+			name = "Settings Picker";
 			sourceTree = "<group>";
 		};
 		B2C6828811495412006EDD71 /* Demo */ = {
@@ -229,6 +229,35 @@
 				B2C682A51149552D006EDD71 /* TCMessagesDemoViewController.m */,
 			);
 			name = Messages;
+			sourceTree = "<group>";
+		};
+		B2ED133D118142A100FAAA13 /* Pie Progress View */ = {
+			isa = PBXGroup;
+			children = (
+				B2ED13531181434200FAAA13 /* TCPieProgressViewDemoViewController.h */,
+				B2ED13541181434200FAAA13 /* TCPieProgressViewDemoViewController.m */,
+			);
+			name = "Pie Progress View";
+			sourceTree = "<group>";
+		};
+		B2ED1351118142ED00FAAA13 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B2503BC910A90E28009B0E7B /* Gradient View */,
+				B22A28E110B4761800EA6CD9 /* HUD View */,
+				B23A345E117C92E90085E48A /* Line View */,
+				B2ED133D118142A100FAAA13 /* Pie Progress View */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B2ED1352118142F100FAAA13 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B2A67B3010A8838100E266F5 /* Settings Picker */,
+				B2C682A311495524006EDD71 /* Messages */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +346,7 @@
 				B22A28E410B4762200EA6CD9 /* TCHUDViewDemoViewController.m in Sources */,
 				B2C682A61149552D006EDD71 /* TCMessagesDemoViewController.m in Sources */,
 				B23A3461117C92F20085E48A /* TCLineViewDemoViewController.m in Sources */,
+				B2ED13551181434200FAAA13 /* TCPieProgressViewDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,8 +36,7 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
-	self.title = @"Gradient View";
+	self.title = [[self class] title];
 	self.view.backgroundColor = [UIColor whiteColor];
 	
 	// Gradient view

@@ -12,7 +12,7 @@
 	UIColor *_insetColor;
 	BOOL _showInset;
 	
-	@private
+@private
 	
 	BOOL _hasDrawn;
 }

@@ -25,8 +25,8 @@
 #pragma mark -
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-	self.title = @"Line View";
+	[super viewDidLoad];
+	self.title = [[self class] title];
 	self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 	
 	TWLineView *lineView1 = [[TWLineView alloc] initWithFrame:CGRectMake(20.0, 20.0, 280.0, 2.0)];

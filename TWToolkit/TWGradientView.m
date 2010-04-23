@@ -131,8 +131,7 @@
 		_hasDrawn = YES;
 	}
 	
-    CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextSaveGState(context);
+	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextClipToRect(context, rect);
 	
 	// Gradient

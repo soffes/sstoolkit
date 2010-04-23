@@ -36,7 +36,7 @@ NSString *lorem[] = {
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	self.title = @"Messages";
+	self.title = [[self class] title];
 }
 
 

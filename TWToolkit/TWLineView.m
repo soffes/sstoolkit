@@ -53,7 +53,6 @@
 	}
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
-//	CGContextSaveGState(context);
 	CGContextClipToRect(context, rect);
 	CGContextSetLineWidth(context, 2.0);
 
