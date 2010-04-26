@@ -21,6 +21,7 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 @implementation TWWebView
 
 @synthesize delegate = _delegate;
+@synthesize scrollingEnabled = _scrollingEnabled;
 
 #pragma mark -
 #pragma mark NSObject
@@ -43,6 +44,8 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 		_webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		_webView.delegate = self;
 		[self addSubview:_webView];
+		
+		_scrollingEnabled = YES;
 	}
 	return self;
 }
@@ -168,6 +171,19 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)aRequest navigationType:(UIWebViewNavigationType)navigationType {
 	BOOL should = YES;
 	
+	// Check for DOM load message
+	if ([[[aRequest URL] absoluteString] isEqualToString:@"x-twwebview://dom-loaded"]) {
+		if (_scrollingEnabled == NO) {
+			static NSString *disableScrolling = @"document.ontouchmove=function(e){e.preventDefault();}";
+			[_webView stringByEvaluatingJavaScriptFromString:disableScrolling];
+		}
+		
+		if ([_delegate respondsToSelector:@selector(webViewDidLoadDOM:)]) {
+			[_delegate webViewDidLoadDOM:self];
+		}
+		return NO;
+	}
+	
 	// Forward delegate message
 	if ([_delegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)]) {
 		should = [_delegate webView:self shouldStartLoadWithRequest:aRequest navigationType:navigationType];
@@ -175,7 +191,7 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 	
 	// Only load http or http requests
 	if (should) {
-		NSString *scheme = [[aRequest URL] scheme];
+		 NSString *scheme = [[aRequest URL] scheme];
 		should = [scheme isEqualToString:@"http"] || [scheme isEqualToString:@"https"];
 	}
 	
@@ -188,7 +204,7 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 	if ([[aRequest mainDocumentURL] isEqual:[_lastRequest mainDocumentURL]] == NO) {
 		[_lastRequest release];
 		_lastRequest = [aRequest retain];
-		_domLoaded = NO;
+		_testedDOM = NO;
 		
 		if ([_delegate respondsToSelector:@selector(webViewDidStartLoading:)]) {
 			[_delegate webViewDidStartLoading:self];
@@ -211,13 +227,12 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 	[self performSelector:@selector(_loadingStatusChanged) withObject:nil afterDelay:kTWWebViewLoadDelay];
 	
 	// Check DOM
-	// !!!: This might not be that reliable
-	if (_domLoaded == NO && [_webView stringByEvaluatingJavaScriptFromString:@"document.domain"]) {
-		_domLoaded = YES;
+	if (_testedDOM == NO) {
+		_testedDOM = YES;
 		
-		if ([_delegate respondsToSelector:@selector(webViewDidLoadDOM:)]) {
-			[_delegate webViewDidLoadDOM:self];
-		}
+		// Hat tip Nathan Smith
+		static NSString *testDOM = @"window.addEventListener('load',function(){location.href='x-twwebview://dom-loaded'},false);";
+		[_webView stringByEvaluatingJavaScriptFromString:testDOM];
 	}
 	
 	// Forward delegate message

@@ -11,16 +11,17 @@
 @interface TWWebView : UIView <UIWebViewDelegate> {
 
 	id<TWWebViewDelegate> _delegate;
-	
-@private
-	
+	 
 	UIWebView *_webView;
 	NSURLRequest *_lastRequest;
-	BOOL _domLoaded;
+	BOOL _testedDOM;
+	BOOL _DOMloaded;
+	BOOL _scrollingEnabled;
 }
 
 @property (nonatomic, assign) id<TWWebViewDelegate> delegate;
 @property (nonatomic, readonly, getter=isLoading) BOOL loading;
+@property (nonatomic, assign) BOOL scrollingEnabled;
 
 @property (nonatomic, readonly, getter=canGoBack) BOOL canGoBack;
 @property (nonatomic, readonly, getter=canGoForward) BOOL canGoForward;
