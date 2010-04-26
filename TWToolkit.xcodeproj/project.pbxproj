@@ -15,6 +15,8 @@
 		B215ACCD117363D9002562A4 /* UIScrollView+scrollToTop.m in Sources */ = {isa = PBXBuildFile; fileRef = B215ACCB117363D9002562A4 /* UIScrollView+scrollToTop.m */; };
 		B215ADAE1173770F002562A4 /* TWLineView.h in Headers */ = {isa = PBXBuildFile; fileRef = B215ADAC1173770F002562A4 /* TWLineView.h */; };
 		B215ADAF1173770F002562A4 /* TWLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = B215ADAD1173770F002562A4 /* TWLineView.m */; };
+		B21D2EF61185ED25009F7206 /* TWWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = B21D2EF41185ED25009F7206 /* TWWebView.h */; };
+		B21D2EF71185ED25009F7206 /* TWWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = B21D2EF51185ED25009F7206 /* TWWebView.m */; };
 		B24244E611498A480061E255 /* TWTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = B24244E411498A480061E255 /* TWTextField.h */; };
 		B24244E711498A480061E255 /* TWTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B24244E511498A480061E255 /* TWTextField.m */; };
 		B24B551810B36F6B0014994C /* UIImage+BundleImage.h in Headers */ = {isa = PBXBuildFile; fileRef = B24B551610B36F6B0014994C /* UIImage+BundleImage.h */; };
@@ -73,6 +75,8 @@
 		B215ACCB117363D9002562A4 /* UIScrollView+scrollToTop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+scrollToTop.m"; sourceTree = "<group>"; };
 		B215ADAC1173770F002562A4 /* TWLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWLineView.h; sourceTree = "<group>"; };
 		B215ADAD1173770F002562A4 /* TWLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWLineView.m; sourceTree = "<group>"; };
+		B21D2EF41185ED25009F7206 /* TWWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWWebView.h; sourceTree = "<group>"; };
+		B21D2EF51185ED25009F7206 /* TWWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWWebView.m; sourceTree = "<group>"; };
 		B22A2A8010B4908D00EA6CD9 /* TWToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TWToolkit.bundle; sourceTree = "<group>"; };
 		B24244E411498A480061E255 /* TWTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTextField.h; sourceTree = "<group>"; };
 		B24244E511498A480061E255 /* TWTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTextField.m; sourceTree = "<group>"; };
@@ -237,6 +241,8 @@
 				B215ADAD1173770F002562A4 /* TWLineView.m */,
 				B2ED132611813E6600FAAA13 /* TWPieProgressView.h */,
 				B2ED132711813E6600FAAA13 /* TWPieProgressView.m */,
+				B21D2EF41185ED25009F7206 /* TWWebView.h */,
+				B21D2EF51185ED25009F7206 /* TWWebView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -341,6 +347,7 @@
 				B27E357D11815C7F006A3499 /* TWCategories.h in Headers */,
 				B27E357E11815C7F006A3499 /* TWDrawingMacros.h in Headers */,
 				B27E357F11815C7F006A3499 /* TWToolkit.h in Headers */,
+				B21D2EF61185ED25009F7206 /* TWWebView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +421,7 @@
 				B270B5EF117C9EDC00944B8A /* UIColor+alpha.m in Sources */,
 				B28E46F5117CBB5B0089E536 /* UIControl+removeAllTargets.m in Sources */,
 				B2ED132911813E6600FAAA13 /* TWPieProgressView.m in Sources */,
+				B21D2EF71185ED25009F7206 /* TWWebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
