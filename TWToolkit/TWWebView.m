@@ -8,7 +8,7 @@
 
 #import "TWWebView.h"
 
-static NSTimeInterval kTWWebViewLoadDelay = 0.1;
+static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 
 @interface TWWebView (PrivateMethods)
 
@@ -20,14 +20,14 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.1;
 
 @implementation TWWebView
 
-@synthesize delegate;
-@synthesize loading;
+@synthesize delegate = _delegate;
 
 #pragma mark -
 #pragma mark NSObject
 #pragma mark -
 
 - (void)dealloc {
+	[_lastRequest release];
 	[_webView release];
 	[super dealloc];
 }
@@ -60,8 +60,8 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.1;
 
 
 - (void)_finishedLoading {
-	if ([_delegate respondsToSelector:@selector(webViewDidLoadDOM:)]) {
-		[_delegate webViewDidLoadDOM:self];
+	if ([_delegate respondsToSelector:@selector(webViewDidFinishLoading:)]) {
+		[_delegate webViewDidFinishLoading:self];
 	}
 }
 
@@ -154,7 +154,11 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.1;
 #pragma mark -
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+	// Reset load timer
+	[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(_loadingStatusChanged) object:nil];
 	[self performSelector:@selector(_loadingStatusChanged) withObject:nil afterDelay:kTWWebViewLoadDelay];
+	
+	// Forward delegate message
 	if ([_delegate respondsToSelector:@selector(webView:didFailLoadWithError:)]) {
 		[_delegate webView:self didFailLoadWithError:error];
 	}
@@ -162,15 +166,61 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.1;
 
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)aRequest navigationType:(UIWebViewNavigationType)navigationType {
+	BOOL should = YES;
+	
+	// Forward delegate message
 	if ([_delegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)]) {
-		return [_delegate webView:self shouldStartLoadWithRequest:aRequest navigationType:navigationType];
+		should = [_delegate webView:self shouldStartLoadWithRequest:aRequest navigationType:navigationType];
 	}
-	return YES;
+	
+	// Only load http or http requests
+	if (should) {
+		NSString *scheme = [[aRequest URL] scheme];
+		should = [scheme isEqualToString:@"http"] || [scheme isEqualToString:@"https"];
+	}
+	
+	// Stop if we shouldn't load it
+	if (!should) {
+		return should;
+	}
+	
+	// Starting a new request
+	if ([[aRequest mainDocumentURL] isEqual:[_lastRequest mainDocumentURL]] == NO) {
+		[_lastRequest release];
+		_lastRequest = [aRequest retain];
+		_domLoaded = NO;
+		
+		if ([_delegate respondsToSelector:@selector(webViewDidStartLoading:)]) {
+			[_delegate webViewDidStartLoading:self];
+		}
+	}
+	
+	// Child request for same page
+	else {
+		// Reset load timer
+		[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(_loadingStatusChanged) object:nil];
+	}
+	
+	return should;
 }
 
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
+	// Reset load timer
+	[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(_loadingStatusChanged) object:nil];
 	[self performSelector:@selector(_loadingStatusChanged) withObject:nil afterDelay:kTWWebViewLoadDelay];
+	
+	// Check DOM
+	// !!!: This might not be that reliable
+	if (_domLoaded == NO && [_webView stringByEvaluatingJavaScriptFromString:@"document.domain"]) {
+		_domLoaded = YES;
+		
+		if ([_delegate respondsToSelector:@selector(webViewDidLoadDOM:)]) {
+			[_delegate webViewDidLoadDOM:self];
+		}
+	}
+	
+	// Forward delegate message
 	if ([_delegate respondsToSelector:@selector(webViewDidFinishLoad:)]) {
 		[_delegate webViewDidFinishLoad:self];
 	}
@@ -178,7 +228,7 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.1;
 
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-	[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(_loadingStatusChanged) object:nil];
+	// Forward delegate message
 	if ([_delegate respondsToSelector:@selector(webViewDidStartLoad:)]) {
 		[_delegate webViewDidStartLoad:self];
 	}

@@ -15,6 +15,8 @@
 @private
 	
 	UIWebView *_webView;
+	NSURLRequest *_lastRequest;
+	BOOL _domLoaded;
 }
 
 @property (nonatomic, assign) id<TWWebViewDelegate> delegate;
@@ -43,10 +45,13 @@
 
 @optional
 
-- (void)webView:(TWWebView *)webView didFailLoadWithError:(NSError *)error;
-- (BOOL)webView:(TWWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)aRequest navigationType:(UIWebViewNavigationType)navigationType;
-- (void)webViewDidFinishLoad:(TWWebView *)webView;
-- (void)webViewDidStartLoad:(TWWebView *)webView;
+- (void)webViewDidStartLoading:(TWWebView *)aWebView;
 - (void)webViewDidLoadDOM:(TWWebView *)aWebView;
+- (void)webViewDidFinishLoading:(TWWebView *)aWebView;
+
+- (void)webView:(TWWebView *)aWebView didFailLoadWithError:(NSError *)error;
+- (BOOL)webView:(TWWebView *)aWebView shouldStartLoadWithRequest:(NSURLRequest *)aRequest navigationType:(UIWebViewNavigationType)navigationType;
+- (void)webViewDidFinishLoad:(TWWebView *)aWebView;
+- (void)webViewDidStartLoad:(TWWebView *)aWebView;
 
 @end
