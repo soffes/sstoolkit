@@ -14,6 +14,8 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 
 - (void)_loadingStatusChanged;
 - (void)_finishedLoading;
+- (void)_DOMLoaded;
+- (void)_injectCSS:(NSString *)css;
 
 @end
 
@@ -28,6 +30,7 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 #pragma mark -
 
 - (void)dealloc {
+	[_persistedCSS release];
 	[_lastRequest release];
 	[_webView release];
 	[super dealloc];
@@ -52,6 +55,39 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 
 
 #pragma mark -
+#pragma mark TWWebView Methods
+#pragma mark -
+
+- (void)injectCSS:(NSString *)css {
+	[self injectCSS:css persist:NO];
+}
+
+
+- (void)injectCSS:(NSString *)css persist:(BOOL)persist {
+	[self _injectCSS:css];
+	
+	if (persist) {
+		[_persistedCSS release];
+		_persistedCSS = [css retain];
+	}
+}
+
+
+#pragma mark -
+#pragma mark Convenience Methods
+#pragma mark -
+
+- (void)loadHTMLString:(NSString *)string {
+	[self loadHTMLString:string baseURL:[NSURL URLWithString:@"http://localhost"]];
+}
+
+
+- (void)loadURL:(NSURL *)aURL {
+	[self loadRequest:[NSURLRequest requestWithURL:aURL]];
+}
+
+
+#pragma mark -
 #pragma mark Private Methods
 #pragma mark -
 
@@ -65,6 +101,63 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 - (void)_finishedLoading {
 	if ([_delegate respondsToSelector:@selector(webViewDidFinishLoading:)]) {
 		[_delegate webViewDidFinishLoading:self];
+	}
+}
+
+
+- (void)_DOMLoaded {
+	if (_scrollingEnabled == NO) {
+		static NSString *disableScrolling = @"document.ontouchmove=function(e){e.preventDefault();}";
+		[_webView stringByEvaluatingJavaScriptFromString:disableScrolling];
+	}
+	
+	// Reinject persisted CSS
+	if (_persistedCSS) {
+		[self _injectCSS:_persistedCSS];
+	}
+	
+	if ([_delegate respondsToSelector:@selector(webViewDidLoadDOM:)]) {
+		[_delegate webViewDidLoadDOM:self];
+	}
+}
+
+
+- (void)_injectCSS:(NSString *)css {
+	static NSString *injectCSSFormat = @"var styleTag=document.createElement('style');styleTag.setAttribute('type','text/css');styleTag.innerHTML='%@';document.getElementsByTagName('head')[0].appendChild(styleTag);";
+	[self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:injectCSSFormat, css]];
+}
+
+
+#pragma mark -
+#pragma mark Getters
+#pragma mark -
+
+- (BOOL)shadowsHidden {
+	return [[[[[_webView subviews] objectAtIndex:0] subviews] objectAtIndex:0] isHidden];
+}
+
+
+#pragma mark -
+#pragma mark Setters
+#pragma mark -
+
+- (void)setOpaque:(BOOL)o {
+	[super setOpaque:o];
+	_webView.opaque = o;
+}
+
+
+- (void)setBackgroundColor:(UIColor *)color {
+	[super setBackgroundColor:color];
+	_webView.backgroundColor = color;
+}
+
+
+- (void)setShadowsHidden:(BOOL)hide {
+	NSArray *subviews = [[[_webView subviews] objectAtIndex:0] subviews];
+	for (NSInteger i = 0; i < [subviews count] - 1; i++) {
+		UIView *view = [subviews objectAtIndex:i];
+		view.hidden = hide;
 	}
 }
 
@@ -173,14 +266,7 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 	
 	// Check for DOM load message
 	if ([[[aRequest URL] absoluteString] isEqualToString:@"x-twwebview://dom-loaded"]) {
-		if (_scrollingEnabled == NO) {
-			static NSString *disableScrolling = @"document.ontouchmove=function(e){e.preventDefault();}";
-			[_webView stringByEvaluatingJavaScriptFromString:disableScrolling];
-		}
-		
-		if ([_delegate respondsToSelector:@selector(webViewDidLoadDOM:)]) {
-			[_delegate webViewDidLoadDOM:self];
-		}
+		[self _DOMLoaded];
 		return NO;
 	}
 	
@@ -189,9 +275,9 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 		should = [_delegate webView:self shouldStartLoadWithRequest:aRequest navigationType:navigationType];
 	}
 	
-	// Only load http or http requests
-	if (should) {
-		 NSString *scheme = [[aRequest URL] scheme];
+	// Only load http or http requests if delegate doesn't care
+	else {
+		NSString *scheme = [[aRequest URL] scheme];
 		should = [scheme isEqualToString:@"http"] || [scheme isEqualToString:@"https"];
 	}
 	
@@ -232,7 +318,7 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 		
 		// Hat tip Nathan Smith
 		static NSString *testDOM = @"window.addEventListener('load',function(){location.href='x-twwebview://dom-loaded'},false);";
-		[_webView stringByEvaluatingJavaScriptFromString:testDOM];
+		[self stringByEvaluatingJavaScriptFromString:testDOM];
 	}
 	
 	// Forward delegate message

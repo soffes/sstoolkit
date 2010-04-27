@@ -64,6 +64,8 @@
 		B2C682A2114954DF006EDD71 /* TWMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C682A0114954DF006EDD71 /* TWMessagesViewController.m */; };
 		B2ED132811813E6600FAAA13 /* TWPieProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2ED132611813E6600FAAA13 /* TWPieProgressView.h */; };
 		B2ED132911813E6600FAAA13 /* TWPieProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ED132711813E6600FAAA13 /* TWPieProgressView.m */; };
+		B2FD73E51187828F007281D3 /* NSURL+queryDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FD73E31187828F007281D3 /* NSURL+queryDictionary.h */; };
+		B2FD73E61187828F007281D3 /* NSURL+queryDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FD73E41187828F007281D3 /* NSURL+queryDictionary.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +127,8 @@
 		B2C682A0114954DF006EDD71 /* TWMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessagesViewController.m; sourceTree = "<group>"; };
 		B2ED132611813E6600FAAA13 /* TWPieProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPieProgressView.h; sourceTree = "<group>"; };
 		B2ED132711813E6600FAAA13 /* TWPieProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPieProgressView.m; sourceTree = "<group>"; };
+		B2FD73E31187828F007281D3 /* NSURL+queryDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+queryDictionary.h"; sourceTree = "<group>"; };
+		B2FD73E41187828F007281D3 /* NSURL+queryDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+queryDictionary.m"; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTWToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTWToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -260,6 +264,8 @@
 				B2C2076D106296FB00AE1B56 /* NSString+encoding.m */,
 				B2C2076E106296FB00AE1B56 /* NSString+MD5Sum.h */,
 				B2C2076F106296FB00AE1B56 /* NSString+MD5Sum.m */,
+				B2FD73E31187828F007281D3 /* NSURL+queryDictionary.h */,
+				B2FD73E41187828F007281D3 /* NSURL+queryDictionary.m */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -348,6 +354,7 @@
 				B27E357E11815C7F006A3499 /* TWDrawingMacros.h in Headers */,
 				B27E357F11815C7F006A3499 /* TWToolkit.h in Headers */,
 				B21D2EF61185ED25009F7206 /* TWWebView.h in Headers */,
+				B2FD73E51187828F007281D3 /* NSURL+queryDictionary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +429,7 @@
 				B28E46F5117CBB5B0089E536 /* UIControl+removeAllTargets.m in Sources */,
 				B2ED132911813E6600FAAA13 /* TWPieProgressView.m in Sources */,
 				B21D2EF71185ED25009F7206 /* TWWebView.m in Sources */,
+				B2FD73E61187828F007281D3 /* NSURL+queryDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
