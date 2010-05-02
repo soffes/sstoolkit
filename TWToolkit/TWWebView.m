@@ -155,9 +155,12 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 
 - (void)setShadowsHidden:(BOOL)hide {
 	NSArray *subviews = [[[_webView subviews] objectAtIndex:0] subviews];
-	for (NSInteger i = 0; i < [subviews count] - 1; i++) {
-		UIView *view = [subviews objectAtIndex:i];
-		view.hidden = hide;
+	for (UIView *subview in subviews) {
+		// TODO: Only hide shadows
+		// Currently hides shadows and scroll indicators
+		if ([subview class] == [UIImageView class]) {
+			subview.hidden = hide;
+		}
 	}
 }
 
