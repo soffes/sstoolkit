@@ -24,15 +24,19 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 
 @synthesize delegate = _delegate;
 @synthesize scrollingEnabled = _scrollingEnabled;
+@synthesize lastRequest = _lastRequest;
 
 #pragma mark -
 #pragma mark NSObject
 #pragma mark -
 
 - (void)dealloc {
+	_delegate = nil;
+	_webView.delegate = nil;
+	[_webView stopLoading];
+	[_webView release];
 	[_persistedCSS release];
 	[_lastRequest release];
-	[_webView release];
 	[super dealloc];
 }
 
@@ -43,7 +47,7 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
-		_webView = [[UIWebView alloc] initWithFrame:frame];
+		_webView = [[UIWebView alloc] initWithFrame:CGRectZero];
 		_webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		_webView.delegate = self;
 		[self addSubview:_webView];
@@ -51,6 +55,11 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 		_scrollingEnabled = YES;
 	}
 	return self;
+}
+
+
+- (void)layoutSubviews {
+	_webView.frame = CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height);
 }
 
 

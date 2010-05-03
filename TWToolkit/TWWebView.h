@@ -34,6 +34,7 @@
 @property (nonatomic, readonly, getter=isLoading) BOOL loading;
 @property (nonatomic, assign) BOOL scrollingEnabled; // Still buggy
 @property (nonatomic, assign) BOOL shadowsHidden;
+@property (nonatomic, retain, readonly) NSURLRequest *lastRequest;
 
 // UIWebView Properties
 @property (nonatomic, readonly) BOOL canGoBack;
