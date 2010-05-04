@@ -96,6 +96,14 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 }
 
 
+- (void)loadURLString:(NSString *)string {
+	if ([string hasPrefix:@"http://"] == NO && [string hasPrefix:@"https://"] == NO) {
+		string = [NSString stringWithFormat:@"http://%@", string];
+	}
+	[self loadURL:[NSURL URLWithString:string]];
+}
+
+
 #pragma mark -
 #pragma mark Private Methods
 #pragma mark -

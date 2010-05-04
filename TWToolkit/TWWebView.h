@@ -51,6 +51,7 @@
 // Convenience Methods
 - (void)loadHTMLString:(NSString *)string;
 - (void)loadURL:(NSURL *)aURL;
+- (void)loadURLString:(NSString *)string;
 
 // UIWebView Methods
 - (void)goBack;
