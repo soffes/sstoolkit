@@ -251,6 +251,8 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 
 
 - (void)reload {
+	[_lastRequest release];
+	_lastRequest = nil;
 	[_webView reload];
 }
 
