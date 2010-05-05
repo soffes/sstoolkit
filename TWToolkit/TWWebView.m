@@ -31,6 +31,9 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 #pragma mark -
 
 - (void)dealloc {
+	// TODO: If you dealloc when the page is almost loaded, 
+	// _loadingStatusChanged still gets called sometimes causing a crash
+	[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(_loadingStatusChanged) object:nil];
 	_delegate = nil;
 	_webView.delegate = nil;
 	[_webView stopLoading];
