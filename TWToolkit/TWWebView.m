@@ -8,7 +8,7 @@
 
 #import "TWWebView.h"
 
-static NSTimeInterval kTWWebViewLoadDelay = 1.1;
+static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 
 @interface TWWebView (PrivateMethods)
 
