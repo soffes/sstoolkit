@@ -53,6 +53,9 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 			case '"':
 				[s appendString:@"&quot;"];
 				break;
+			case '…':
+				[s appendString:@"&hellip;"];
+				break;
 			case '&':
 				[s appendString:@"&amp;"];
 				break;
@@ -97,6 +100,9 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 		} else if ([target hasPrefix:@"&amp;"]) {
 			[s appendString:@"&"];
 			[target deleteCharactersInRange:NSMakeRange(0, 5)];
+		} else if ([target hasPrefix:@"&hellip;"]) {
+			[s appendString:@"…"];
+			[target deleteCharactersInRange:NSMakeRange(0, 8)];
 		} else {
 			[s appendString:@"&"];
 			[target deleteCharactersInRange:NSMakeRange(0, 1)];
