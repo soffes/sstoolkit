@@ -53,9 +53,9 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 			case '"':
 				[s appendString:@"&quot;"];
 				break;
-			case '…':
-				[s appendString:@"&hellip;"];
-				break;
+//			case '…':
+//				[s appendString:@"&hellip;"];
+//				break;
 			case '&':
 				[s appendString:@"&amp;"];
 				break;
