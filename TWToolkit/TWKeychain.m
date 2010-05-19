@@ -38,6 +38,11 @@ static TWKeychain *kDefaultKeychain = nil;
 }
 
 
++ (NSString *)passwordForService:(NSString *)service account:(NSString *)account {
+	[self passwordForService:service account:account error:nil];
+}
+
+
 + (NSString *)passwordForService:(NSString *)service account:(NSString *)account error:(NSError **)error {
 	OSStatus status = TWKeychainErrorBadArguments;
 	NSString *result = nil;
@@ -68,7 +73,12 @@ static TWKeychain *kDefaultKeychain = nil;
 }
 
 
-+ (BOOL)removePasswordForService:(NSString *)service account:(NSString *)account error:(NSError **)error {
++ (BOOL)deletePasswordForService:(NSString *)service account:(NSString *)account {
+	[self deletePasswordForService:service account:account error:nil];
+}
+
+
++ (BOOL)deletePasswordForService:(NSString *)service account:(NSString *)account error:(NSError **)error {
 	OSStatus status = TWKeychainErrorBadArguments;
 	if (0 < [service length] && 0 < [account length]) {
 		NSMutableDictionary *keychainQuery = [self keychainQueryForService:service account:account];
@@ -80,6 +90,11 @@ static TWKeychain *kDefaultKeychain = nil;
 	}
 	
 	return status == noErr;
+}
+
+
++ (BOOL)setPassword:(NSString *)password forService:(NSString *)service account:(NSString *)account {
+	[self setPassword:password forService:service account:account error:nil];
 }
 
 

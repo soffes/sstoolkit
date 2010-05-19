@@ -15,10 +15,15 @@ extern NSString *TWKeychainErrorDomain;
 
 @interface TWKeychain : NSObject
 
-// Class Methods
 + (TWKeychain *)defaultKeychain;
+
++ (NSString *)passwordForService:(NSString *)service account:(NSString *)account;
 + (NSString *)passwordForService:(NSString *)service account:(NSString *)account error:(NSError **)error;
-+ (BOOL)removePasswordForService:(NSString *)service account:(NSString *)account error:(NSError **)error;
+
++ (BOOL)deletePasswordForService:(NSString *)service account:(NSString *)account;
++ (BOOL)deletePasswordForService:(NSString *)service account:(NSString *)account error:(NSError **)error;
+
++ (BOOL)setPassword:(NSString *)password forService:(NSString *)service account:(NSString *)account;
 + (BOOL)setPassword:(NSString *)password forService:(NSString *)service account:(NSString *)account error:(NSError **)error;
 
 @end
