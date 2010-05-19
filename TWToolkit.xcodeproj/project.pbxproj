@@ -62,6 +62,8 @@
 		B2C6829E114954DB006EDD71 /* TWMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C6829C114954DB006EDD71 /* TWMessageTableViewCell.m */; };
 		B2C682A1114954DF006EDD71 /* TWMessagesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C6829F114954DF006EDD71 /* TWMessagesViewController.h */; };
 		B2C682A2114954DF006EDD71 /* TWMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C682A0114954DF006EDD71 /* TWMessagesViewController.m */; };
+		B2D3527111A46A4900B1886F /* TWKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = B2D3526F11A46A4900B1886F /* TWKeychain.h */; };
+		B2D3527211A46A4900B1886F /* TWKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D3527011A46A4900B1886F /* TWKeychain.m */; };
 		B2ED132811813E6600FAAA13 /* TWPieProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2ED132611813E6600FAAA13 /* TWPieProgressView.h */; };
 		B2ED132911813E6600FAAA13 /* TWPieProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ED132711813E6600FAAA13 /* TWPieProgressView.m */; };
 		B2FD73E51187828F007281D3 /* NSURL+queryDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FD73E31187828F007281D3 /* NSURL+queryDictionary.h */; };
@@ -125,6 +127,8 @@
 		B2C6829C114954DB006EDD71 /* TWMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageTableViewCell.m; sourceTree = "<group>"; };
 		B2C6829F114954DF006EDD71 /* TWMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessagesViewController.h; sourceTree = "<group>"; };
 		B2C682A0114954DF006EDD71 /* TWMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessagesViewController.m; sourceTree = "<group>"; };
+		B2D3526F11A46A4900B1886F /* TWKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWKeychain.h; sourceTree = "<group>"; };
+		B2D3527011A46A4900B1886F /* TWKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWKeychain.m; sourceTree = "<group>"; };
 		B2ED132611813E6600FAAA13 /* TWPieProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPieProgressView.h; sourceTree = "<group>"; };
 		B2ED132711813E6600FAAA13 /* TWPieProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPieProgressView.m; sourceTree = "<group>"; };
 		B2FD73E31187828F007281D3 /* NSURL+queryDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+queryDictionary.h"; sourceTree = "<group>"; };
@@ -304,6 +308,15 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		B2D3526E11A46A4000B1886F /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				B2D3526F11A46A4900B1886F /* TWKeychain.h */,
+				B2D3527011A46A4900B1886F /* TWKeychain.m */,
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
 		B2FA61431059616200499856 /* TWToolkit */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +325,7 @@
 				B27E357B11815C7F006A3499 /* TWDrawingMacros.h */,
 				B28517D51063E42A008D42E7 /* View Controllers */,
 				B28517D71063E433008D42E7 /* Views */,
+				B2D3526E11A46A4000B1886F /* Misc */,
 				B2C20765106296F200AE1B56 /* Categories */,
 				B23A34B3117C954B0085E48A /* Private */,
 			);
@@ -355,6 +369,7 @@
 				B27E357F11815C7F006A3499 /* TWToolkit.h in Headers */,
 				B21D2EF61185ED25009F7206 /* TWWebView.h in Headers */,
 				B2FD73E51187828F007281D3 /* NSURL+queryDictionary.h in Headers */,
+				B2D3527111A46A4900B1886F /* TWKeychain.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +445,7 @@
 				B2ED132911813E6600FAAA13 /* TWPieProgressView.m in Sources */,
 				B21D2EF71185ED25009F7206 /* TWWebView.m in Sources */,
 				B2FD73E61187828F007281D3 /* NSURL+queryDictionary.m in Sources */,
+				B2D3527211A46A4900B1886F /* TWKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
