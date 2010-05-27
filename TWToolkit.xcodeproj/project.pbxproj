@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		B213D07C11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.h in Headers */ = {isa = PBXBuildFile; fileRef = B213D07A11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.h */; };
+		B213D07D11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.m in Sources */ = {isa = PBXBuildFile; fileRef = B213D07B11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.m */; };
+		B213D08311AE1DEE00BACA8D /* NSDate+timeAgoInWords.h in Headers */ = {isa = PBXBuildFile; fileRef = B213D08111AE1DEE00BACA8D /* NSDate+timeAgoInWords.h */; };
+		B213D08411AE1DEE00BACA8D /* NSDate+timeAgoInWords.m in Sources */ = {isa = PBXBuildFile; fileRef = B213D08211AE1DEE00BACA8D /* NSDate+timeAgoInWords.m */; };
 		B215045F10583A7300409ED4 /* TWToolkit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */; };
 		B21504CA10583B4000409ED4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504C910583B4000409ED4 /* SystemConfiguration.framework */; };
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
@@ -72,6 +76,10 @@
 
 /* Begin PBXFileReference section */
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B213D07A11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+dateFromISO8601String.h"; sourceTree = "<group>"; };
+		B213D07B11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+dateFromISO8601String.m"; sourceTree = "<group>"; };
+		B213D08111AE1DEE00BACA8D /* NSDate+timeAgoInWords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+timeAgoInWords.h"; sourceTree = "<group>"; };
+		B213D08211AE1DEE00BACA8D /* NSDate+timeAgoInWords.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+timeAgoInWords.m"; sourceTree = "<group>"; };
 		B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit_Prefix.pch; sourceTree = "<group>"; };
 		B21504C910583B4000409ED4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -270,6 +278,10 @@
 				B2C2076F106296FB00AE1B56 /* NSString+MD5Sum.m */,
 				B2FD73E31187828F007281D3 /* NSURL+queryDictionary.h */,
 				B2FD73E41187828F007281D3 /* NSURL+queryDictionary.m */,
+				B213D07A11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.h */,
+				B213D07B11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.m */,
+				B213D08111AE1DEE00BACA8D /* NSDate+timeAgoInWords.h */,
+				B213D08211AE1DEE00BACA8D /* NSDate+timeAgoInWords.m */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -370,6 +382,8 @@
 				B21D2EF61185ED25009F7206 /* TWWebView.h in Headers */,
 				B2FD73E51187828F007281D3 /* NSURL+queryDictionary.h in Headers */,
 				B2D3527111A46A4900B1886F /* TWKeychain.h in Headers */,
+				B213D07C11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.h in Headers */,
+				B213D08311AE1DEE00BACA8D /* NSDate+timeAgoInWords.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +460,8 @@
 				B21D2EF71185ED25009F7206 /* TWWebView.m in Sources */,
 				B2FD73E61187828F007281D3 /* NSURL+queryDictionary.m in Sources */,
 				B2D3527211A46A4900B1886F /* TWKeychain.m in Sources */,
+				B213D07D11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.m in Sources */,
+				B213D08411AE1DEE00BACA8D /* NSDate+timeAgoInWords.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
