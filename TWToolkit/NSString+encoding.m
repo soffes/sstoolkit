@@ -126,11 +126,35 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 }
 
 
+- (NSString *)URLEncodedParameterString {
+    NSString *result = (NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                           (CFStringRef)self,
+                                                                           NULL,
+                                                                           CFSTR(":/=,!$&'()*+;[]@#?"),
+                                                                           kCFStringEncodingUTF8);
+	return [result autorelease];
+}
+
+
 - (NSString*)URLDecodedString {
 	return [(NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
 																				(CFStringRef)self,
 																				CFSTR(""),
 																				kCFStringEncodingUTF8) autorelease];
+}
+
+
+- (NSString *)removeQuotes {
+	NSUInteger length = [self length];
+	NSString *ret = self;
+	if ([self characterAtIndex:0] == '"') {
+		ret = [ret substringFromIndex:1];
+	}
+	if ([self characterAtIndex:length - 1] == '"') {
+		ret = [ret substringToIndex:length - 2];
+	}
+	
+	return ret;
 }
 
 
