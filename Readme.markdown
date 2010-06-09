@@ -1,5 +1,7 @@
 # TWToolkit
 
+**NOTE: This is a development branch.** Most stuff should be pretty stable, but you should use the [stable branch](http://github.com/tastefulworks/twtoolkit/tree/stable) if this bothers you.
+
 TWToolkit makes life easier. It is made up of various view controllers, views, and categories that we use at [Tasteful Works][] for our apps. Feel free to fork the repo and help us make it better.
 
 ## Classes
@@ -15,7 +17,14 @@ TWToolkit makes life easier. It is made up of various view controllers, views, a
 * [TWLoadingView][] - flexible loading view
 * [TWGradientView][] - easily create gradients with optional borders and insets
 * [TWLineView][] - easily create lines with an inset
+* [TWLoadingView][] - simple view to show while loading content
 * [TWPieProgressView][] - pie chart style progress bar similar to the one in Xcode's status bar
+* [TWTextField][] - simple subclasses adding edge insets for convenient drawing
+* [TWWebView][] - powerful wrapper around UIWebView to make it awesome
+
+### Misc
+
+* [TWKeychain][] - simple keychain wrapper
 
 ### Categories
 
@@ -45,6 +54,12 @@ TWToolkit makes life easier. It is made up of various view controllers, views, a
 
 10. Add `-all_load -ObjC` to *Other Linker Flags*.
 
+11. You will need to add the following frameworks to your project:
+
+    * CoreGraphics
+    * QuartzCore
+    * Security
+
 ## Usage
 
 To use TWToolkit, simply add the following line to your source file.
@@ -71,5 +86,9 @@ You can also import individual files instead of the whole framework (for faster 
 [TWLoadingView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLoadingView.h
 [TWGradientView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWGradientView.h
 [TWLineView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLineView.h
+[TWLineView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLoadingView.h
 [TWPieProgressView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWPieProgressView.h
+[TWTextField]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWTextField.h
+[TWWebView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWWebView.h
+[TWKeychain]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWKeychain.h
 [TWCatalog]: https://github.com/tastefulworks/twtoolkit/tree/master/TWCatalog/
