@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		B213D07C11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.h in Headers */ = {isa = PBXBuildFile; fileRef = B213D07A11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.h */; };
+		B213D07D11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.m in Sources */ = {isa = PBXBuildFile; fileRef = B213D07B11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.m */; };
+		B213D08311AE1DEE00BACA8D /* NSDate+timeAgoInWords.h in Headers */ = {isa = PBXBuildFile; fileRef = B213D08111AE1DEE00BACA8D /* NSDate+timeAgoInWords.h */; };
+		B213D08411AE1DEE00BACA8D /* NSDate+timeAgoInWords.m in Sources */ = {isa = PBXBuildFile; fileRef = B213D08211AE1DEE00BACA8D /* NSDate+timeAgoInWords.m */; };
 		B215045F10583A7300409ED4 /* TWToolkit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */; };
 		B21504CA10583B4000409ED4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504C910583B4000409ED4 /* SystemConfiguration.framework */; };
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
@@ -62,6 +66,8 @@
 		B2C6829E114954DB006EDD71 /* TWMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C6829C114954DB006EDD71 /* TWMessageTableViewCell.m */; };
 		B2C682A1114954DF006EDD71 /* TWMessagesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C6829F114954DF006EDD71 /* TWMessagesViewController.h */; };
 		B2C682A2114954DF006EDD71 /* TWMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C682A0114954DF006EDD71 /* TWMessagesViewController.m */; };
+		B2D3527111A46A4900B1886F /* TWKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = B2D3526F11A46A4900B1886F /* TWKeychain.h */; };
+		B2D3527211A46A4900B1886F /* TWKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D3527011A46A4900B1886F /* TWKeychain.m */; };
 		B2ED132811813E6600FAAA13 /* TWPieProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2ED132611813E6600FAAA13 /* TWPieProgressView.h */; };
 		B2ED132911813E6600FAAA13 /* TWPieProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ED132711813E6600FAAA13 /* TWPieProgressView.m */; };
 		B2FD73E51187828F007281D3 /* NSURL+queryDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FD73E31187828F007281D3 /* NSURL+queryDictionary.h */; };
@@ -70,6 +76,10 @@
 
 /* Begin PBXFileReference section */
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B213D07A11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+dateFromISO8601String.h"; sourceTree = "<group>"; };
+		B213D07B11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+dateFromISO8601String.m"; sourceTree = "<group>"; };
+		B213D08111AE1DEE00BACA8D /* NSDate+timeAgoInWords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+timeAgoInWords.h"; sourceTree = "<group>"; };
+		B213D08211AE1DEE00BACA8D /* NSDate+timeAgoInWords.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+timeAgoInWords.m"; sourceTree = "<group>"; };
 		B215045E10583A7300409ED4 /* TWToolkit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit_Prefix.pch; sourceTree = "<group>"; };
 		B21504C910583B4000409ED4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -125,6 +135,8 @@
 		B2C6829C114954DB006EDD71 /* TWMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageTableViewCell.m; sourceTree = "<group>"; };
 		B2C6829F114954DF006EDD71 /* TWMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessagesViewController.h; sourceTree = "<group>"; };
 		B2C682A0114954DF006EDD71 /* TWMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessagesViewController.m; sourceTree = "<group>"; };
+		B2D3526F11A46A4900B1886F /* TWKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWKeychain.h; sourceTree = "<group>"; };
+		B2D3527011A46A4900B1886F /* TWKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWKeychain.m; sourceTree = "<group>"; };
 		B2ED132611813E6600FAAA13 /* TWPieProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPieProgressView.h; sourceTree = "<group>"; };
 		B2ED132711813E6600FAAA13 /* TWPieProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPieProgressView.m; sourceTree = "<group>"; };
 		B2FD73E31187828F007281D3 /* NSURL+queryDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+queryDictionary.h"; sourceTree = "<group>"; };
@@ -266,6 +278,10 @@
 				B2C2076F106296FB00AE1B56 /* NSString+MD5Sum.m */,
 				B2FD73E31187828F007281D3 /* NSURL+queryDictionary.h */,
 				B2FD73E41187828F007281D3 /* NSURL+queryDictionary.m */,
+				B213D07A11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.h */,
+				B213D07B11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.m */,
+				B213D08111AE1DEE00BACA8D /* NSDate+timeAgoInWords.h */,
+				B213D08211AE1DEE00BACA8D /* NSDate+timeAgoInWords.m */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -304,6 +320,15 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		B2D3526E11A46A4000B1886F /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				B2D3526F11A46A4900B1886F /* TWKeychain.h */,
+				B2D3527011A46A4900B1886F /* TWKeychain.m */,
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
 		B2FA61431059616200499856 /* TWToolkit */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +337,7 @@
 				B27E357B11815C7F006A3499 /* TWDrawingMacros.h */,
 				B28517D51063E42A008D42E7 /* View Controllers */,
 				B28517D71063E433008D42E7 /* Views */,
+				B2D3526E11A46A4000B1886F /* Misc */,
 				B2C20765106296F200AE1B56 /* Categories */,
 				B23A34B3117C954B0085E48A /* Private */,
 			);
@@ -355,6 +381,9 @@
 				B27E357F11815C7F006A3499 /* TWToolkit.h in Headers */,
 				B21D2EF61185ED25009F7206 /* TWWebView.h in Headers */,
 				B2FD73E51187828F007281D3 /* NSURL+queryDictionary.h in Headers */,
+				B2D3527111A46A4900B1886F /* TWKeychain.h in Headers */,
+				B213D07C11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.h in Headers */,
+				B213D08311AE1DEE00BACA8D /* NSDate+timeAgoInWords.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +459,9 @@
 				B2ED132911813E6600FAAA13 /* TWPieProgressView.m in Sources */,
 				B21D2EF71185ED25009F7206 /* TWWebView.m in Sources */,
 				B2FD73E61187828F007281D3 /* NSURL+queryDictionary.m in Sources */,
+				B2D3527211A46A4900B1886F /* TWKeychain.m in Sources */,
+				B213D07D11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.m in Sources */,
+				B213D08411AE1DEE00BACA8D /* NSDate+timeAgoInWords.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,27 +507,25 @@
 		1DEB922308733DC00010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos3.2;
 			};
 			name = Debug;
 		};
 		1DEB922408733DC00010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos3.2;
 			};
 			name = Release;
 		};

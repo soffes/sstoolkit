@@ -53,6 +53,9 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 			case '"':
 				[s appendString:@"&quot;"];
 				break;
+//			case '…':
+//				[s appendString:@"&hellip;"];
+//				break;
 			case '&':
 				[s appendString:@"&amp;"];
 				break;
@@ -91,9 +94,15 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 		} else if ([target hasPrefix:@"&quot;"]) {
 			[s appendString:@"\""];
 			[target deleteCharactersInRange:NSMakeRange(0, 6)];
+		} else if ([target hasPrefix:@"&#39;"]) {
+			[s appendString:@"'"];
+			[target deleteCharactersInRange:NSMakeRange(0, 5)];
 		} else if ([target hasPrefix:@"&amp;"]) {
 			[s appendString:@"&"];
 			[target deleteCharactersInRange:NSMakeRange(0, 5)];
+		} else if ([target hasPrefix:@"&hellip;"]) {
+			[s appendString:@"…"];
+			[target deleteCharactersInRange:NSMakeRange(0, 8)];
 		} else {
 			[s appendString:@"&"];
 			[target deleteCharactersInRange:NSMakeRange(0, 1)];
@@ -117,11 +126,35 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 }
 
 
+- (NSString *)URLEncodedParameterString {
+    NSString *result = (NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                           (CFStringRef)self,
+                                                                           NULL,
+                                                                           CFSTR(":/=,!$&'()*+;[]@#?"),
+                                                                           kCFStringEncodingUTF8);
+	return [result autorelease];
+}
+
+
 - (NSString*)URLDecodedString {
 	return [(NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
 																				(CFStringRef)self,
 																				CFSTR(""),
 																				kCFStringEncodingUTF8) autorelease];
+}
+
+
+- (NSString *)removeQuotes {
+	NSUInteger length = [self length];
+	NSString *ret = self;
+	if ([self characterAtIndex:0] == '"') {
+		ret = [ret substringFromIndex:1];
+	}
+	if ([self characterAtIndex:length - 1] == '"') {
+		ret = [ret substringToIndex:length - 2];
+	}
+	
+	return ret;
 }
 
 

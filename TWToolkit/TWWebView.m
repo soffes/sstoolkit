@@ -8,7 +8,7 @@
 
 #import "TWWebView.h"
 
-static NSTimeInterval kTWWebViewLoadDelay = 1.1;
+static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 
 @interface TWWebView (PrivateMethods)
 
@@ -24,15 +24,22 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 
 @synthesize delegate = _delegate;
 @synthesize scrollingEnabled = _scrollingEnabled;
+@synthesize lastRequest = _lastRequest;
 
 #pragma mark -
 #pragma mark NSObject
 #pragma mark -
 
 - (void)dealloc {
+	// TODO: If you dealloc when the page is almost loaded, 
+	// _loadingStatusChanged still gets called sometimes causing a crash
+	[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(_loadingStatusChanged) object:nil];
+	_delegate = nil;
+	_webView.delegate = nil;
+	[_webView stopLoading];
+	[_webView release];
 	[_persistedCSS release];
 	[_lastRequest release];
-	[_webView release];
 	[super dealloc];
 }
 
@@ -43,7 +50,7 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
-		_webView = [[UIWebView alloc] initWithFrame:frame];
+		_webView = [[UIWebView alloc] initWithFrame:CGRectZero];
 		_webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		_webView.delegate = self;
 		[self addSubview:_webView];
@@ -51,6 +58,11 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 		_scrollingEnabled = YES;
 	}
 	return self;
+}
+
+
+- (void)layoutSubviews {
+	_webView.frame = CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height);
 }
 
 
@@ -84,6 +96,14 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 
 - (void)loadURL:(NSURL *)aURL {
 	[self loadRequest:[NSURLRequest requestWithURL:aURL]];
+}
+
+
+- (void)loadURLString:(NSString *)string {
+	if ([string hasPrefix:@"http://"] == NO && [string hasPrefix:@"https://"] == NO) {
+		string = [NSString stringWithFormat:@"http://%@", string];
+	}
+	[self loadURL:[NSURL URLWithString:string]];
 }
 
 
@@ -155,9 +175,12 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 
 - (void)setShadowsHidden:(BOOL)hide {
 	NSArray *subviews = [[[_webView subviews] objectAtIndex:0] subviews];
-	for (NSInteger i = 0; i < [subviews count] - 1; i++) {
-		UIView *view = [subviews objectAtIndex:i];
-		view.hidden = hide;
+	for (UIView *subview in subviews) {
+		// TODO: Only hide shadows
+		// Currently hides shadows and scroll indicators
+		if ([subview class] == [UIImageView class]) {
+			subview.hidden = hide;
+		}
 	}
 }
 
@@ -231,6 +254,8 @@ static NSTimeInterval kTWWebViewLoadDelay = 1.1;
 
 
 - (void)reload {
+	[_lastRequest release];
+	_lastRequest = nil;
 	[_webView reload];
 }
 
