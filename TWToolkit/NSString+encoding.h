@@ -17,7 +17,9 @@
 
 // URL
 - (NSString *)URLEncodedString;
+- (NSString *)URLEncodedParameterString;
 - (NSString *)URLDecodedString;
+- (NSString *)removeQuotes;
 
 // Base64
 - (NSString *)base64EncodedString;

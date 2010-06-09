@@ -9,9 +9,12 @@
 // Foundation
 #import <TWToolkit/NSArray+shuffle.h>
 #import <TWToolkit/NSData+MD5Sum.h>
+#import <TWToolkit/NSDate+dateFromISO8601String.h>
+#import <TWToolkit/NSDate+timeAgoInWords.h>
 #import <TWToolkit/NSString+containsString.h>
 #import <TWToolkit/NSString+encoding.h>
 #import <TWToolkit/NSString+MD5Sum.h>
+#import <TWToolkit/NSURL+queryDictionary.h>
 
 // UIKit
 #import <TWToolkit/UIDevice+isSimulator.h>
