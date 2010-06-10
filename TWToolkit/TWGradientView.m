@@ -27,9 +27,7 @@
 @synthesize hasBottomBorder = _hasBottomBorder;
 @synthesize showsInsets = _showsInsets;
 
-#pragma mark -
 #pragma mark Class Methods
-#pragma mark -
 
 + (UIColor *)defaultTopColor {
 	return [UIColor colorWithRed:0.676 green:0.722 blue:0.765 alpha:1.0];
@@ -60,10 +58,7 @@
 	return 0.0;
 }
 
-
-#pragma mark -
 #pragma mark NSObject
-#pragma mark -
 
 - (void)dealloc {
 	if (_hasDrawn) {
@@ -85,10 +80,7 @@
 	[super dealloc];
 }
 
-
-#pragma mark -
 #pragma mark UIView
-#pragma mark -
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
@@ -174,10 +166,7 @@
 	}
 }
 
-
-#pragma mark -
 #pragma mark Gradient Methods
-#pragma mark -
 
 - (void)_refreshGradient {
 	// TODO: Automatically convert colors into the same colorspace
@@ -188,10 +177,7 @@
 	[self setNeedsDisplay];	
 }
 
-
-#pragma mark -
 #pragma mark Observer
-#pragma mark -
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	// Update the gradient and redraw if gradient colors changed

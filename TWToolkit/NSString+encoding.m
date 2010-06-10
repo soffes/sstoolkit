@@ -12,18 +12,13 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 
 @implementation NSString (encoding)
 
-#pragma mark -
 #pragma mark Localization Methods
-#pragma mark -
 
 + (NSString *)localizedString:(NSString *)key {
 	return [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:key];
 }
 
-
-#pragma mark -
 #pragma mark HTML Methods
-#pragma mark -
 
 - (NSString *)escapeHTML {
 	NSMutableString *s = [NSMutableString string];
@@ -112,10 +107,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 	return s;
 }
 
-
-#pragma mark -
 #pragma mark URL Methods
-#pragma mark -
 
 - (NSString *)URLEncodedString {
 	return [(NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
@@ -157,10 +149,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 	return ret;
 }
 
-
-#pragma mark -
 #pragma mark Base64 Methods
-#pragma mark -
 
 - (NSString *)base64EncodedString  {
     if ([self length] == 0) {
