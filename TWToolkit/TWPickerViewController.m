@@ -17,7 +17,8 @@
 #pragma mark -
 
 - (id)init {
-	return self = [super initWithStyle:UITableViewStyleGrouped];
+	self = [super initWithStyle:UITableViewStyleGrouped];
+	return self;
 }
 
 
