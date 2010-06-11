@@ -28,13 +28,19 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 
 #pragma mark NSObject
 
-- (void)dealloc {
+- (void)dealloc {	
 	// TODO: If you dealloc when the page is almost loaded, 
 	// _loadingStatusChanged still gets called sometimes causing a crash
 	[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(_loadingStatusChanged) object:nil];
+	
 	_delegate = nil;
 	_webView.delegate = nil;
 	[_webView stopLoading];
+	
+	// Hack to stop YouTube audio
+	[self loadURL:[NSURL URLWithString:@"about:blank"]];
+	[_webView stopLoading];
+	
 	[_webView release];
 	[_persistedCSS release];
 	[_lastRequest release];
