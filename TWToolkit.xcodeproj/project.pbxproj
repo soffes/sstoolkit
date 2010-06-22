@@ -31,6 +31,8 @@
 		B2503B9610A90DA6009B0E7B /* TWGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2503B9410A90DA6009B0E7B /* TWGradientView.m */; };
 		B253C1FA10728DC500E0CE10 /* TWHUDView.h in Headers */ = {isa = PBXBuildFile; fileRef = B253C1F810728DC500E0CE10 /* TWHUDView.h */; };
 		B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = B253C1F910728DC500E0CE10 /* TWHUDView.m */; };
+		B25E614011CFBA34001DA5CD /* UIViewController+displayError.h in Headers */ = {isa = PBXBuildFile; fileRef = B25E613E11CFBA34001DA5CD /* UIViewController+displayError.h */; };
+		B25E614111CFBA34001DA5CD /* UIViewController+displayError.m in Sources */ = {isa = PBXBuildFile; fileRef = B25E613F11CFBA34001DA5CD /* UIViewController+displayError.m */; };
 		B270B5EE117C9EDC00944B8A /* UIColor+alpha.h in Headers */ = {isa = PBXBuildFile; fileRef = B270B5EC117C9EDC00944B8A /* UIColor+alpha.h */; };
 		B270B5EF117C9EDC00944B8A /* UIColor+alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = B270B5ED117C9EDC00944B8A /* UIColor+alpha.m */; };
 		B27E357D11815C7F006A3499 /* TWCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = B27E357A11815C7F006A3499 /* TWCategories.h */; };
@@ -100,6 +102,8 @@
 		B2503B9410A90DA6009B0E7B /* TWGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWGradientView.m; sourceTree = "<group>"; };
 		B253C1F810728DC500E0CE10 /* TWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWHUDView.h; sourceTree = "<group>"; };
 		B253C1F910728DC500E0CE10 /* TWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWHUDView.m; sourceTree = "<group>"; };
+		B25E613E11CFBA34001DA5CD /* UIViewController+displayError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+displayError.h"; sourceTree = "<group>"; };
+		B25E613F11CFBA34001DA5CD /* UIViewController+displayError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+displayError.m"; sourceTree = "<group>"; };
 		B270B5EC117C9EDC00944B8A /* UIColor+alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+alpha.h"; sourceTree = "<group>"; };
 		B270B5ED117C9EDC00944B8A /* UIColor+alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+alpha.m"; sourceTree = "<group>"; };
 		B27E357A11815C7F006A3499 /* TWCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCategories.h; sourceTree = "<group>"; };
@@ -307,6 +311,8 @@
 				B270B5ED117C9EDC00944B8A /* UIColor+alpha.m */,
 				B28E46F2117CBB5B0089E536 /* UIControl+removeAllTargets.h */,
 				B28E46F3117CBB5B0089E536 /* UIControl+removeAllTargets.m */,
+				B25E613E11CFBA34001DA5CD /* UIViewController+displayError.h */,
+				B25E613F11CFBA34001DA5CD /* UIViewController+displayError.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -384,6 +390,7 @@
 				B2D3527111A46A4900B1886F /* TWKeychain.h in Headers */,
 				B213D07C11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.h in Headers */,
 				B213D08311AE1DEE00BACA8D /* NSDate+timeAgoInWords.h in Headers */,
+				B25E614011CFBA34001DA5CD /* UIViewController+displayError.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +469,7 @@
 				B2D3527211A46A4900B1886F /* TWKeychain.m in Sources */,
 				B213D07D11AE1D1D00BACA8D /* NSDate+dateFromISO8601String.m in Sources */,
 				B213D08411AE1DEE00BACA8D /* NSDate+timeAgoInWords.m in Sources */,
+				B25E614111CFBA34001DA5CD /* UIViewController+displayError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,25 +515,27 @@
 		1DEB922308733DC00010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;
 		};
 		1DEB922408733DC00010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Release;
 		};

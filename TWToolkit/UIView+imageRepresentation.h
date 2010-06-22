@@ -6,6 +6,8 @@
 //  Copyright 2010 Tasteful Works. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 @interface UIView (imageRepresentation)
 
 - (UIImage *)imageRepresentation;

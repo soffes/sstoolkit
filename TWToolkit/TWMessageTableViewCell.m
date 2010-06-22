@@ -11,14 +11,19 @@
 
 @implementation TWMessageTableViewCell
 
+#pragma mark -
 #pragma mark NSObject
+#pragma mark -
 
 - (void)dealloc {
 	[bubbleView release];
 	[super dealloc];
 }
 
+
+#pragma mark -
 #pragma mark UITableViewCell
+#pragma mark -
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if ((self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])) {
@@ -33,7 +38,10 @@
     return self;
 }
 
+
+#pragma mark -
 #pragma mark Getters
+#pragma mark -
 
 - (TWMessageTableViewCellMessageStyle)messageStyle {
 	return bubbleView.messageStyle;
@@ -44,7 +52,10 @@
 	return bubbleView.messageText;
 }
 
+
+#pragma mark -
 #pragma mark Setters
+#pragma mark -
 
 
 - (void)setMessageStyle:(TWMessageTableViewCellMessageStyle)aMessageStyle {

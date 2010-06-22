@@ -19,7 +19,9 @@
 @synthesize pieFillColor = _pieFillColor;
 @synthesize pieBackgroundColor = _pieBackgroundColor;
 
+#pragma mark -
 #pragma mark NSObject
+#pragma mark -
 
 - (void)dealloc {
 	self.pieBorderColor = nil;
@@ -28,7 +30,10 @@
 	[super dealloc];
 }
 
+
+#pragma mark -
 #pragma mark UIView
+#pragma mark -
 
 - (id)initWithFrame:(CGRect)aFrame {
     if ((self = [super initWithFrame:aFrame])) {
@@ -83,14 +88,20 @@
 	CGContextStrokeEllipseInRect(context, pieInnerRect);	
 }
 
+
+#pragma mark -
 #pragma mark Setters
+#pragma mark -
 
 - (void)setProgress:(CGFloat)newProgress {
 	_progress = fmax(0.0, fmin(1.0, newProgress));
 	[self setNeedsDisplay];
 }
 
+
+#pragma mark -
 #pragma mark Observer
+#pragma mark -
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	// Redraw if attributes changed

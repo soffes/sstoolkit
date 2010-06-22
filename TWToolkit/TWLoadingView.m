@@ -20,7 +20,9 @@ static CGFloat indicatorRightMargin = 8.0;
 @synthesize textColor = _textColor;
 @synthesize shadowColor = _shadowColor;
 
+#pragma mark -
 #pragma mark NSObject
+#pragma mark -
 
 - (void)dealloc {
 	[self removeObserver:self forKeyPath:@"text"];
@@ -35,7 +37,10 @@ static CGFloat indicatorRightMargin = 8.0;
 	[super dealloc];
 }
 
+
+#pragma mark -
 #pragma mark UIView
+#pragma mark -
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -97,7 +102,10 @@ static CGFloat indicatorRightMargin = 8.0;
 	[_text drawInRect:textRect withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];
 }
 
+
+#pragma mark -
 #pragma mark Observer
+#pragma mark -
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {	
 	

@@ -12,14 +12,18 @@
 
 @synthesize selectedKey = _selectedKey, keys = _keys, currentIndexPath = _currentIndexPath;
 
+#pragma mark -
 #pragma mark NSObject
+#pragma mark -
 
 - (id)init {
-	self = [super initWithStyle:UITableViewStyleGrouped];
-	return self;
+	return self = [super initWithStyle:UITableViewStyleGrouped];
 }
 
+
+#pragma mark -
 #pragma mark UIViewController Methods
+#pragma mark -
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -38,7 +42,9 @@
     [super dealloc];
 }
 
+#pragma mark -
 #pragma mark PickerViewController Methods
+#pragma mark -
 
 // This method should be overridden by a subclass
 - (void)loadKeys {
@@ -51,7 +57,9 @@
 	return key;
 }
 
+#pragma mark -
 #pragma mark UITableViewDelegate
+#pragma mark -
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
@@ -59,7 +67,9 @@
 	self.currentIndexPath = indexPath;
 }
 
+#pragma mark -
 #pragma mark UITableViewDataSource
+#pragma mark -
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;

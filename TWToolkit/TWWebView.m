@@ -26,28 +26,27 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 @synthesize scrollingEnabled = _scrollingEnabled;
 @synthesize lastRequest = _lastRequest;
 
+#pragma mark -
 #pragma mark NSObject
+#pragma mark -
 
-- (void)dealloc {	
+- (void)dealloc {
 	// TODO: If you dealloc when the page is almost loaded, 
 	// _loadingStatusChanged still gets called sometimes causing a crash
 	[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(_loadingStatusChanged) object:nil];
-	
 	_delegate = nil;
 	_webView.delegate = nil;
 	[_webView stopLoading];
-	
-	// Hack to stop YouTube audio
-	[self loadURL:[NSURL URLWithString:@"about:blank"]];
-	[_webView stopLoading];
-	
 	[_webView release];
 	[_persistedCSS release];
 	[_lastRequest release];
 	[super dealloc];
 }
 
+
+#pragma mark -
 #pragma mark UIView
+#pragma mark -
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
@@ -66,7 +65,10 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 	_webView.frame = CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height);
 }
 
+
+#pragma mark -
 #pragma mark TWWebView Methods
+#pragma mark -
 
 - (void)injectCSS:(NSString *)css {
 	[self injectCSS:css persist:NO];
@@ -82,7 +84,10 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 	}
 }
 
+
+#pragma mark -
 #pragma mark Convenience Methods
+#pragma mark -
 
 - (void)loadHTMLString:(NSString *)string {
 	[self loadHTMLString:string baseURL:[NSURL URLWithString:@"http://localhost"]];
@@ -101,7 +106,10 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 	[self loadURL:[NSURL URLWithString:string]];
 }
 
+
+#pragma mark -
 #pragma mark Private Methods
+#pragma mark -
 
 - (void)_loadingStatusChanged {
 	if (self.loadingRequest == NO) {
@@ -139,13 +147,19 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 	[self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:injectCSSFormat, css]];
 }
 
+
+#pragma mark -
 #pragma mark Getters
+#pragma mark -
 
 - (BOOL)shadowsHidden {
 	return [[[[[_webView subviews] objectAtIndex:0] subviews] objectAtIndex:0] isHidden];
 }
 
+
+#pragma mark -
 #pragma mark Setters
+#pragma mark -
 
 - (void)setOpaque:(BOOL)o {
 	[super setOpaque:o];
@@ -170,7 +184,10 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 	}
 }
 
+
+#pragma mark -
 #pragma mark UIWebView Methods
+#pragma mark -
 
 - (BOOL)canGoBack {
 	return [_webView canGoBack];
@@ -252,7 +269,10 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 	return [_webView stringByEvaluatingJavaScriptFromString:script];
 }
 
+
+#pragma mark -
 #pragma mark UIWebViewDelegate
+#pragma mark -
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
 	// Reset load timer

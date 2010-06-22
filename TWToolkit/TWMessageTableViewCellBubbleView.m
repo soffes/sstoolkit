@@ -22,7 +22,9 @@ static CGFloat kMarginBottom = 2.0;
 @synthesize messageText;
 @synthesize messageStyle;
 
+#pragma mark -
 #pragma mark Class Methods
+#pragma mark -
 
 + (UIImage *)bubbleImageForMessageStyle:(TWMessageTableViewCellMessageStyle)aMessageStyle {
 	UIImage *image;
@@ -51,7 +53,10 @@ static CGFloat kMarginBottom = 2.0;
 	return [self bubbleSizeForText:text].height + kMarginTop + kMarginBottom;
 }
 
+
+#pragma mark -
 #pragma mark UIView
+#pragma mark -
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
