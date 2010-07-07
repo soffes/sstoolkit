@@ -18,9 +18,7 @@ static TWKeychain *kDefaultKeychain = nil;
 
 @implementation TWKeychain
 
-#pragma mark -
 #pragma mark Class Methods
-#pragma mark -
 
 + (TWKeychain *)defaultKeychain {
 	if (kDefaultKeychain == nil) {

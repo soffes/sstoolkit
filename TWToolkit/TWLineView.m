@@ -14,19 +14,14 @@
 @synthesize insetColor = _insetColor;
 @synthesize showInset = _showInset;
 
-#pragma mark -
 #pragma mark NSObject
-#pragma mark -
 
 - (void)dealloc {
 	self.lineColor = nil;
 	[super dealloc];
 }
 
-
-#pragma mark -
 #pragma mark UIView
-#pragma mark -
 
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
@@ -42,6 +37,7 @@
 	}
 	return self;
 }
+
 
 - (void)drawRect:(CGRect)rect {
 	if (!_hasDrawn) {
@@ -71,10 +67,7 @@
 	CGContextStrokePath(context);
 }
 
-
-#pragma mark -
 #pragma mark Observer
-#pragma mark -
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	// Redraw if colors changed

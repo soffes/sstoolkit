@@ -493,6 +493,7 @@
 				INSTALL_PATH = /usr/local/lib;
 				LD_OPENMP_FLAGS = "-fopenmp -lxml2";
 				PRODUCT_NAME = TWToolkit;
+				SDKROOT = iphoneos3.2;
 			};
 			name = Debug;
 		};
@@ -509,6 +510,7 @@
 				INSTALL_PATH = /usr/local/lib;
 				LD_OPENMP_FLAGS = "-fopenmp -lxml2";
 				PRODUCT_NAME = TWToolkit;
+				SDKROOT = iphoneos3.2;
 			};
 			name = Release;
 		};

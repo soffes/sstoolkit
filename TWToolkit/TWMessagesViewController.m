@@ -19,9 +19,7 @@ CGFloat kInputHeight = 40.0;
 
 @synthesize tableView = _tableView;
 
-#pragma mark -
 #pragma mark NSObject
-#pragma mark -
 
 - (id)init {
 	return [self initWithNibName:nil bundle:nil];
@@ -35,10 +33,7 @@ CGFloat kInputHeight = 40.0;
 	[super dealloc];
 }
 
-
-#pragma mark -
 #pragma mark UITableViewController
-#pragma mark -
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nil bundle:nil]) {
@@ -87,25 +82,20 @@ CGFloat kInputHeight = 40.0;
     return self;
 }
 
-
-#pragma mark -
 #pragma mark TWMessagesViewController
-#pragma mark -
 
 // This method is intended to be overridden by subclasses
 - (TWMessageTableViewCellMessageStyle)messageStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return TWMessageTableViewCellMessageStyleGray;
 }
 
+
 // This method is intended to be overridden by subclasses
 - (NSString *)textForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return nil;
 }
 
-
-#pragma mark -
 #pragma mark UITableViewDataSource
-#pragma mark -
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -132,19 +122,13 @@ CGFloat kInputHeight = 40.0;
     return cell;
 }
 
-
-#pragma mark -
 #pragma mark UITableViewDelegate
-#pragma mark -
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return [TWMessageTableViewCellBubbleView cellHeightForText:[self textForRowAtIndexPath:indexPath]];
 }
 
-
-#pragma mark -
 #pragma mark UITextFieldDelegate
-#pragma mark -
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
 	[UIView beginAnimations:@"beginEditing" context:_inputView];

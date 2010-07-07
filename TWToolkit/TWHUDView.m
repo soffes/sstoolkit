@@ -19,9 +19,7 @@ static CGFloat kIndicatorSize = 40.0;
 @synthesize activityIndicator = _activityIndicator;
 @synthesize loading = _loading;
 
-#pragma mark -
 #pragma mark NSObject
-#pragma mark -
 
 - (id)init {
 	return [self initWithTitle:nil loading:YES];
@@ -34,10 +32,7 @@ static CGFloat kIndicatorSize = 40.0;
 	[super dealloc];
 }
 
-
-#pragma mark -
 #pragma mark UIView
-#pragma mark -
 
 - (id)initWithFrame:(CGRect)frame {
 	return [self initWithTitle:nil loading:YES];
@@ -81,10 +76,7 @@ static CGFloat kIndicatorSize = 40.0;
 	NSLog(@"layoutSubviews - frame: %@", NSStringFromCGRect(self.frame));
 }
 
-
-#pragma mark -
 #pragma mark UIAlertView
-#pragma mark -
 
 - (void)show {
 	[super show];
@@ -105,9 +97,7 @@ static CGFloat kIndicatorSize = 40.0;
 	_textLabel.text = aTitle;
 }
 
-#pragma mark -
 #pragma mark HUD
-#pragma mark -
 
 - (id)initWithTitle:(NSString *)aTitle {
 	return [self initWithTitle:aTitle loading:YES];
@@ -163,10 +153,7 @@ static CGFloat kIndicatorSize = 40.0;
 	[super dismissWithClickedButtonIndex:0 animated:animated];
 }
 
-
-#pragma mark -
 #pragma mark Setters
-#pragma mark -
 
 - (void)setLoading:(BOOL)isLoading {
 	_loading = isLoading;
