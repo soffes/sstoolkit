@@ -136,7 +136,16 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 #pragma mark Getters
 
 - (BOOL)shadowsHidden {
-	return [[[[[_webView subviews] objectAtIndex:0] subviews] objectAtIndex:0] isHidden];
+	for (UIView *view in [_webView subviews]) {
+		if ([view isKindOfClass:[UIScrollView class]]) {
+			for (UIView *innerView in [view subviews]) {
+				if ([innerView isKindOfClass:[UIImageView class]]) {
+					return [innerView isHidden];
+				}
+			}
+		}
+	}
+	return NO;
 }
 
 #pragma mark Setters
@@ -153,13 +162,15 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 }
 
 
+// Thanks @flyosity http://twitter.com/flyosity/status/17951035384
 - (void)setShadowsHidden:(BOOL)hide {
-	NSArray *subviews = [[[_webView subviews] objectAtIndex:0] subviews];
-	for (UIView *subview in subviews) {
-		// TODO: Only hide shadows
-		// Currently hides shadows and scroll indicators
-		if ([subview class] == [UIImageView class]) {
-			subview.hidden = hide;
+	for (UIView *view in [_webView subviews]) {
+		if ([view isKindOfClass:[UIScrollView class]]) {
+			for (UIView *innerView in [view subviews]) {
+				if ([innerView isKindOfClass:[UIImageView class]]) {
+					innerView.hidden = hide;
+				}
+			}
 		}
 	}
 }
