@@ -19,6 +19,7 @@ static CGFloat kIndicatorSize = 40.0;
 @synthesize activityIndicator = _activityIndicator;
 @synthesize loading = _loading;
 @synthesize successful = _successful;
+
 #pragma mark NSObject
 
 - (id)init {
@@ -40,7 +41,6 @@ static CGFloat kIndicatorSize = 40.0;
 
 
 - (void)drawRect:(CGRect)rect {
-
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	// Draw rounded rectangle
@@ -61,15 +61,16 @@ static CGFloat kIndicatorSize = 40.0;
 	CGContextClosePath(context);
 	CGContextFillPath(context);
 	
-	// Checkmark
-	if (_loading == NO && _successful == YES) {
-		UIImage *checkmark = [UIImage imageNamed:@"images/hud-checkmark.png" bundle:@"TWToolkit.bundle"];
-		[checkmark drawInRect:CGRectMake(round((kHUDSize - 36.0) / 2.0), round((kHUDSize - 40.0) / 2.0), 36.0, 40.0)];
-	} else if (_loading == NO && _successful == NO) {
-		UIImage *error = [UIImage imageNamed:@"images/hud-error.png" bundle:@"TWToolkit.bundle"];
-		[error drawInRect:CGRectMake(round((kHUDSize - 36.0) / 2.0), round((kHUDSize - 40.0) / 2.0), 36.0, 40.0)];
+	// Image
+	if (_loading == NO) {
+		UIImage *image = nil;
+		if (_successful == YES) {
+			image = [UIImage imageNamed:@"images/hud-checkmark.png" bundle:@"TWToolkit.bundle"];
+		} else {
+			image = [UIImage imageNamed:@"images/hud-error.png" bundle:@"TWToolkit.bundle"];
+		}
+		[image drawInRect:CGRectMake(round((kHUDSize - 36.0) / 2.0), round((kHUDSize - 40.0) / 2.0), 36.0, 40.0)];
 	}
-	
 }
 
 
@@ -177,7 +178,6 @@ static CGFloat kIndicatorSize = 40.0;
 	_loading = isLoading;
 	_activityIndicator.alpha = _loading ? 1.0 : 0.0;
 	[self setNeedsDisplay];
-	
 }
 
 @end
