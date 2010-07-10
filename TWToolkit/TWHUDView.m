@@ -149,15 +149,15 @@ static CGFloat kIndicatorSize = 40.0;
 }
 
 
-- (void)completeWithErrorAndTitle:(NSString *)aTitle {
+- (void)failWithTitle:(NSString *)aTitle {
 	self.successful = NO;
 	self.loading = NO;
 	_textLabel.text = aTitle;
 }
 
 
-- (void)completeWithErrorAndDismissWithTitle:(NSString *)aTitle {
-	[self completeWithErrorAndTitle:aTitle];
+- (void)failAndDismissWithTitle:(NSString *)aTitle {
+	[self failWithTitle:aTitle];
 	[self performSelector:@selector(dismiss) withObject:nil afterDelay:1.0];
 }
 

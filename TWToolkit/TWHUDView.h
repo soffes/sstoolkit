@@ -23,8 +23,8 @@
 - (id)initWithTitle:(NSString *)aTitle loading:(BOOL)isLoading;
 - (void)completeWithTitle:(NSString *)aTitle;
 - (void)completeAndDismissWithTitle:(NSString *)aTitle;
-- (void)completeWithErrorAndTitle:(NSString *)aTitle;
-- (void)completeWithErrorAndDismissWithTitle:(NSString *)aTitle;
+- (void)failWithTitle:(NSString *)aTitle;
+- (void)failAndDismissWithTitle:(NSString *)aTitle;
 - (void)dismiss;
 - (void)dismissAnimated:(BOOL)animated;
 
