@@ -13,6 +13,7 @@
 // Views
 #import <TWToolkit/TWGradientView.h>
 #import <TWToolkit/TWHUDView.h>
+#import <TWToolkit/TWLabel.h>
 #import <TWToolkit/TWLoadingView.h>
 #import <TWToolkit/TWTextField.h>
 #import <TWToolkit/TWLineView.h>

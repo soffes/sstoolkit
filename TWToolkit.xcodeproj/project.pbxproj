@@ -40,6 +40,8 @@
 		B28517DB1063E43E008D42E7 /* TWPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517D91063E43E008D42E7 /* TWPickerViewController.m */; };
 		B28517E01063E442008D42E7 /* TWLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = B28517DC1063E442008D42E7 /* TWLoadingView.h */; };
 		B28517E11063E442008D42E7 /* TWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B28517DD1063E442008D42E7 /* TWLoadingView.m */; };
+		B2869DEA11EBB935006910B9 /* TWLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = B2869DE811EBB935006910B9 /* TWLabel.h */; };
+		B2869DEB11EBB935006910B9 /* TWLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2869DE911EBB935006910B9 /* TWLabel.m */; };
 		B28D8E3F1173D6DA00B37266 /* UIView+imageRepresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = B28D8E3B1173D6DA00B37266 /* UIView+imageRepresentation.h */; };
 		B28D8E401173D6DA00B37266 /* UIView+imageRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = B28D8E3C1173D6DA00B37266 /* UIView+imageRepresentation.m */; };
 		B28E46F4117CBB5B0089E536 /* UIControl+removeAllTargets.h in Headers */ = {isa = PBXBuildFile; fileRef = B28E46F2117CBB5B0089E536 /* UIControl+removeAllTargets.h */; };
@@ -111,6 +113,8 @@
 		B28517D91063E43E008D42E7 /* TWPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPickerViewController.m; sourceTree = "<group>"; };
 		B28517DC1063E442008D42E7 /* TWLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWLoadingView.h; sourceTree = "<group>"; };
 		B28517DD1063E442008D42E7 /* TWLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWLoadingView.m; sourceTree = "<group>"; };
+		B2869DE811EBB935006910B9 /* TWLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWLabel.h; sourceTree = "<group>"; };
+		B2869DE911EBB935006910B9 /* TWLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWLabel.m; sourceTree = "<group>"; };
 		B28D8E3B1173D6DA00B37266 /* UIView+imageRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+imageRepresentation.h"; sourceTree = "<group>"; };
 		B28D8E3C1173D6DA00B37266 /* UIView+imageRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+imageRepresentation.m"; sourceTree = "<group>"; };
 		B28E46F2117CBB5B0089E536 /* UIControl+removeAllTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+removeAllTargets.h"; sourceTree = "<group>"; };
@@ -253,6 +257,8 @@
 				B2503B9410A90DA6009B0E7B /* TWGradientView.m */,
 				B253C1F810728DC500E0CE10 /* TWHUDView.h */,
 				B253C1F910728DC500E0CE10 /* TWHUDView.m */,
+				B2869DE811EBB935006910B9 /* TWLabel.h */,
+				B2869DE911EBB935006910B9 /* TWLabel.m */,
 				B28517DC1063E442008D42E7 /* TWLoadingView.h */,
 				B28517DD1063E442008D42E7 /* TWLoadingView.m */,
 				B24244E411498A480061E255 /* TWTextField.h */,
@@ -391,6 +397,7 @@
 				B213D08311AE1DEE00BACA8D /* NSDate+timeAgoInWords.h in Headers */,
 				B25E614011CFBA34001DA5CD /* UIViewController+displayError.h in Headers */,
 				B2D393CB11E4CCE4002B0948 /* NSDate+ISO8601String.h in Headers */,
+				B2869DEA11EBB935006910B9 /* TWLabel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +477,7 @@
 				B213D08411AE1DEE00BACA8D /* NSDate+timeAgoInWords.m in Sources */,
 				B25E614111CFBA34001DA5CD /* UIViewController+displayError.m in Sources */,
 				B2D393CC11E4CCE4002B0948 /* NSDate+ISO8601String.m in Sources */,
+				B2869DEB11EBB935006910B9 /* TWLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

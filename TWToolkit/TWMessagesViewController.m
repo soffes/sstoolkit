@@ -63,7 +63,7 @@ CGFloat kInputHeight = 40.0;
 		textField.delegate = self;
 		textField.font = [UIFont systemFontOfSize:15.0];
 		textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-		textField.textInset = UIEdgeInsetsMake(0.0, 12.0, 0.0, 12.0);
+		textField.textInsets = UIEdgeInsetsMake(0.0, 12.0, 0.0, 12.0);
 		[_inputView addSubview:textField];
 		[textField release];
 		

@@ -8,9 +8,9 @@
 
 @interface TWTextField : UITextField {
 
-	UIEdgeInsets _textInset;
+	UIEdgeInsets _textInsets;
 }
 
-@property (nonatomic, assign) UIEdgeInsets textInset;
+@property (nonatomic, assign) UIEdgeInsets textInsets;
 
 @end
