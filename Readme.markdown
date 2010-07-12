@@ -11,11 +11,11 @@ TWToolkit makes life easier. It is made up of various view controllers, views, a
 
 ### Views
 
-* [TWHUDView][] - simple heads-up display
-* [TWLoadingView][] - flexible loading view
 * [TWGradientView][] - easily create gradients with optional borders and insets
+* [TWHUDView][] - simple heads-up display
 * [TWLabel][] - ever wanted to align your text to the top or the bottom
 * [TWLineView][] - easily create lines with an inset
+* [TWLoadingView][] - flexible loading view
 * [TWPieProgressView][] - pie chart style progress bar similar to the one in Xcode's status bar
 * [TWTextField][] - simply add edge insets
 * [TWWebView][] - handy delegate additions and control over shadows and scroll (still betay)
@@ -71,10 +71,10 @@ You can also import individual files instead of the whole framework (for faster 
 [TWPickerViewController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWPickerViewController.h
 [TWMessagesViewController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWMessagesViewController.h
 [TWHUDView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWHUDView.h
-[TWLoadingView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLoadingView.h
 [TWGradientView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWGradientView.h
 [TWLabel]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLabel.h
 [TWLineView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLineView.h
+[TWLoadingView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLoadingView.h
 [TWPieProgressView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWPieProgressView.h
 [TWTextField]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWTextField.h
 [TWWebView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWWebView.h
