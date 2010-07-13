@@ -45,6 +45,7 @@
 @property (nonatomic) BOOL scalesPageToFit;
 
 // TWWebViewMethods
+- (void)dismissKeyboard;
 - (void)injectCSS:(NSString *)string;
 - (void)injectCSS:(NSString *)string persist:(BOOL)persist;
 

@@ -62,6 +62,11 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 
 #pragma mark TWWebView Methods
 
+- (void)dismissKeyboard {
+	[_webView stringByEvaluatingJavaScriptFromString:@"document.activeElement.blur()"];
+}
+
+
 - (void)injectCSS:(NSString *)css {
 	[self injectCSS:css persist:NO];
 }
