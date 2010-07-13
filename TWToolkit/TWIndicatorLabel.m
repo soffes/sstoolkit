@@ -8,8 +8,6 @@
 
 #import "TWIndicatorLabel.h"
 
-static CGFloat kTWIndicatorLabelAnimationDuration = 0.3;
-
 @implementation TWIndicatorLabel
 
 @synthesize label = _label;
@@ -49,6 +47,7 @@ static CGFloat kTWIndicatorLabelAnimationDuration = 0.3;
 		[self addSubview:_indicator];
 		
 		_loading = NO;
+		[self layoutSubviews];
 	}
 	return self;
 }
@@ -95,7 +94,7 @@ static CGFloat kTWIndicatorLabelAnimationDuration = 0.3;
 
 - (void)completeWithText:(NSString *)text {
 	self.loading = NO;
-	[_label performSelector:@selector(setText:) withObject:text afterDelay:kTWIndicatorLabelAnimationDuration];
+	_label.text = text;
 }
 
 #pragma mark Custom Setters
@@ -106,7 +105,6 @@ static CGFloat kTWIndicatorLabelAnimationDuration = 0.3;
 	}
 	
 	[UIView beginAnimations:@"loading" context:nil];
-	[UIView setAnimationDelay:kTWIndicatorLabelAnimationDuration];
 	_loading = l;
 	[self layoutSubviews];
 	[UIView commitAnimations];
