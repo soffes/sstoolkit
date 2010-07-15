@@ -11,6 +11,11 @@
 #import "UIView+fading.h"
 #import <QuartzCore/QuartzCore.h>
 
+@interface TWViewController (PrivateMethods)
+- (void)_cleanUpModal;
+@end
+
+
 @implementation TWViewController
 
 @synthesize modalParentViewController = _modalParentViewController;
@@ -130,22 +135,31 @@
 	_modalContainerBackgroundView.frame = CGRectMake(roundf(size.width - 554.0) / 2.0, (roundf(size.height - 634.0) / 2.0) + size.height, 554.0, 634.0);
 	[UIView commitAnimations];
 	
-	[_modalContainerBackgroundView performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:0.5];
-	
 	[UIView beginAnimations:@"removeVignette" context:nil];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	[UIView setAnimationDelay:0.2];
 	_vignetteView.alpha = 0.0;
 	[UIView commitAnimations];
-	[_vignetteView performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:0.6];
 	
+	[self performSelector:@selector(_cleanUpModal) withObject:nil afterDelay:0.6];
+}
+
+#pragma mark Private Methods
+
+- (void)_cleanUpModal {
+	[_modalContainerBackgroundView removeFromSuperview];
+	[_modalContainerBackgroundView release];
+	_modalContainerBackgroundView = nil;
+	
+	[_vignetteView removeFromSuperview];
+	[_vignetteView release];
+	_vignetteView = nil;
+	
+	[_customModalViewController release];
 	_customModalViewController = nil;
 	
 	[_modalContainerView release];
 	_modalContainerView = nil;
-	
-	[_modalContainerBackgroundView release];
-	_modalContainerBackgroundView = nil;
 }
 
 @end
