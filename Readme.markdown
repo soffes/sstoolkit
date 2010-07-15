@@ -6,6 +6,7 @@ TWToolkit makes life easier. It is made up of various view controllers, views, a
 
 ### View Controllers
 
+* [TWViewController][] - custom modal craziness
 * [TWPickerViewController][] - easily create picker view controllers like the Settings app
 * [TWMessagesViewController][] - simple message UI like the built-in SMS app
 
@@ -68,6 +69,7 @@ You can also import individual files instead of the whole framework (for faster 
 * [Future features](http://github.com/tastefulworks/twtoolkit/issues/labels/Enhancement)
 
 [Tasteful Works]: http://tastefulworks.com/
+[TWViewController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWViewController.h
 [TWPickerViewController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWPickerViewController.h
 [TWMessagesViewController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWMessagesViewController.h
 [TWHUDView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWHUDView.h

@@ -31,6 +31,9 @@
 		B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = B253C1F910728DC500E0CE10 /* TWHUDView.m */; };
 		B25E614011CFBA34001DA5CD /* UIViewController+displayError.h in Headers */ = {isa = PBXBuildFile; fileRef = B25E613E11CFBA34001DA5CD /* UIViewController+displayError.h */; };
 		B25E614111CFBA34001DA5CD /* UIViewController+displayError.m in Sources */ = {isa = PBXBuildFile; fileRef = B25E613F11CFBA34001DA5CD /* UIViewController+displayError.m */; };
+		B26AAC2411EE90F2006BB929 /* TWModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B26AAC2111EE90F2006BB929 /* TWModalViewController.h */; };
+		B26AAC2511EE90F2006BB929 /* TWViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B26AAC2211EE90F2006BB929 /* TWViewController.h */; };
+		B26AAC2611EE90F2006BB929 /* TWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B26AAC2311EE90F2006BB929 /* TWViewController.m */; };
 		B270B5EE117C9EDC00944B8A /* UIColor+alpha.h in Headers */ = {isa = PBXBuildFile; fileRef = B270B5EC117C9EDC00944B8A /* UIColor+alpha.h */; };
 		B270B5EF117C9EDC00944B8A /* UIColor+alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = B270B5ED117C9EDC00944B8A /* UIColor+alpha.m */; };
 		B27E357D11815C7F006A3499 /* TWCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = B27E357A11815C7F006A3499 /* TWCategories.h */; };
@@ -106,6 +109,9 @@
 		B253C1F910728DC500E0CE10 /* TWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWHUDView.m; sourceTree = "<group>"; };
 		B25E613E11CFBA34001DA5CD /* UIViewController+displayError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+displayError.h"; sourceTree = "<group>"; };
 		B25E613F11CFBA34001DA5CD /* UIViewController+displayError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+displayError.m"; sourceTree = "<group>"; };
+		B26AAC2111EE90F2006BB929 /* TWModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWModalViewController.h; sourceTree = "<group>"; };
+		B26AAC2211EE90F2006BB929 /* TWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWViewController.h; sourceTree = "<group>"; };
+		B26AAC2311EE90F2006BB929 /* TWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWViewController.m; sourceTree = "<group>"; };
 		B270B5EC117C9EDC00944B8A /* UIColor+alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+alpha.h"; sourceTree = "<group>"; };
 		B270B5ED117C9EDC00944B8A /* UIColor+alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+alpha.m"; sourceTree = "<group>"; };
 		B27E357A11815C7F006A3499 /* TWCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCategories.h; sourceTree = "<group>"; };
@@ -246,6 +252,9 @@
 		B28517D51063E42A008D42E7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B26AAC2111EE90F2006BB929 /* TWModalViewController.h */,
+				B26AAC2211EE90F2006BB929 /* TWViewController.h */,
+				B26AAC2311EE90F2006BB929 /* TWViewController.m */,
 				B28517D81063E43E008D42E7 /* TWPickerViewController.h */,
 				B28517D91063E43E008D42E7 /* TWPickerViewController.m */,
 				B2C6829F114954DF006EDD71 /* TWMessagesViewController.h */,
@@ -405,6 +414,8 @@
 				B2D393CB11E4CCE4002B0948 /* NSDate+ISO8601String.h in Headers */,
 				B2869DEA11EBB935006910B9 /* TWLabel.h in Headers */,
 				B2E3050011EC300100E7A6FB /* TWIndicatorLabel.h in Headers */,
+				B26AAC2411EE90F2006BB929 /* TWModalViewController.h in Headers */,
+				B26AAC2511EE90F2006BB929 /* TWViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +497,7 @@
 				B2D393CC11E4CCE4002B0948 /* NSDate+ISO8601String.m in Sources */,
 				B2869DEB11EBB935006910B9 /* TWLabel.m in Sources */,
 				B2E3050111EC300100E7A6FB /* TWIndicatorLabel.m in Sources */,
+				B26AAC2611EE90F2006BB929 /* TWViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

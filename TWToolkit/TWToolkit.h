@@ -9,6 +9,8 @@
 // View Controllers
 #import <TWToolkit/TWPickerViewController.h>
 #import <TWToolkit/TWMessagesViewController.h>
+#import <TWToolkit/TWViewController.h>
+#import <TWToolkit/TWModalViewController.h>
 
 // Views
 #import <TWToolkit/TWGradientView.h>
