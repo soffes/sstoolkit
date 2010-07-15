@@ -74,6 +74,7 @@
 	if (_vignetteView == nil) {
 		_vignetteView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images/vignette-ipad.png" bundle:@"TWToolkit.bundle"]];
 		_vignetteView.alpha = 0.0;
+		_vignetteView.userInteractionEnabled = YES;
 	}
 	
 	[self.view addSubview:_vignetteView];
