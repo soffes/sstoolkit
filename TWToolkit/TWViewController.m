@@ -11,6 +11,14 @@
 #import "UIView+fading.h"
 #import <QuartzCore/QuartzCore.h>
 
+@interface TWViewController (PrivateMethods)
+- (void)_cleanUpModal;
+- (void)_presentModalAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
+- (void)_dismissModalAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
+- (void)_dismissVignetteAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
+@end
+
+
 @implementation TWViewController
 
 @synthesize modalParentViewController = _modalParentViewController;
@@ -19,10 +27,7 @@
 #pragma mark NSObject
 
 - (void)dealloc {
-	[_customModalViewController release];
-	[_modalContainerView release];
-	[_modalContainerBackgroundView release];
-	[_vignetteView release];
+	[self _cleanUpModal];
 	[super dealloc];
 }
 
@@ -108,9 +113,14 @@
 	
 	_modalContainerBackgroundView.frame = CGRectMake(roundf(size.width - 554.0) / 2.0, (roundf(size.height - 634.0) / 2.0) + size.height, 554.0, 634.0);
 	
-	[UIView beginAnimations:@"presentModal" context:nil];
+	if ([_customModalViewController respondsToSelector:@selector(viewWillAppear:)]) {
+		[_customModalViewController viewWillAppear:YES];
+	}
+	[UIView beginAnimations:@"com.tastefulworks.twviewcontroller.present-modal" context:self];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	[UIView setAnimationDuration:0.5];
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(_presentModalAnimationDidStop:finished:context:)];
 	[self layoutViewsWithOrientation:self.interfaceOrientation];
 	[UIView commitAnimations];
 }
@@ -124,28 +134,58 @@
 		size = CGSizeMake(768.0, 1024.0);
 	}
 	
-	[UIView beginAnimations:@"dismissModal" context:nil];
+	[UIView beginAnimations:@"com.tastefulworks.twviewcontroller.dismiss-modal" context:self];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	[UIView setAnimationDuration:0.4];
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(_dismissModalAnimationDidStop:finished:context:)];
 	_modalContainerBackgroundView.frame = CGRectMake(roundf(size.width - 554.0) / 2.0, (roundf(size.height - 634.0) / 2.0) + size.height, 554.0, 634.0);
 	[UIView commitAnimations];
 	
-	[_modalContainerBackgroundView performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:0.5];
-	
-	[UIView beginAnimations:@"removeVignette" context:nil];
+	[UIView beginAnimations:@"com.tastefulworks.twviewcontroller.remove-vignette" context:self];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	[UIView setAnimationDelay:0.2];
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(_dismissVignetteAnimationDidStop:finished:context:)];
 	_vignetteView.alpha = 0.0;
-	[UIView commitAnimations];
-	[_vignetteView performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:0.6];
+	[UIView commitAnimations];	
+}
+
+#pragma mark Private Methods
+
+- (void)_cleanUpModal {
+	[_modalContainerBackgroundView removeFromSuperview];
+	[_modalContainerBackgroundView release];
+	_modalContainerBackgroundView = nil;
 	
+	[_vignetteView removeFromSuperview];
+	[_vignetteView release];
+	_vignetteView = nil;
+	
+	[_customModalViewController release];
 	_customModalViewController = nil;
 	
 	[_modalContainerView release];
 	_modalContainerView = nil;
-	
-	[_modalContainerBackgroundView release];
-	_modalContainerBackgroundView = nil;
+}
+
+
+- (void)_presentModalAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+	if ([_customModalViewController respondsToSelector:@selector(viewDidAppear:)]) {
+		[_customModalViewController viewDidAppear:YES];
+	}
+}
+
+
+- (void)_dismissModalAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+	if ([_customModalViewController respondsToSelector:@selector(viewDidDisappear:)]) {
+		[_customModalViewController viewDidDisappear:YES];
+	}
+}
+
+
+- (void)_dismissVignetteAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+	[self _cleanUpModal];
 }
 
 @end
