@@ -10,7 +10,9 @@
 
 @implementation TWPickerViewController
 
-@synthesize selectedKey = _selectedKey, keys = _keys, currentIndexPath = _currentIndexPath;
+@synthesize selectedKey = _selectedKey;
+@synthesize keys = _keys;
+@synthesize currentIndexPath = _currentIndexPath;
 
 #pragma mark NSObject
 
@@ -19,23 +21,26 @@
 	return self;
 }
 
-#pragma mark UIViewController Methods
-
-- (void)viewDidLoad {
-	[super viewDidLoad];
-	[self loadKeys];
-	if(self.selectedKey != nil) {
-		self.currentIndexPath = [[NSIndexPath indexPathForRow:[self.keys indexOfObject:self.selectedKey] inSection:0] retain];
-		[self.tableView reloadData];
-		[self.tableView scrollToRowAtIndexPath:self.currentIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
-	}
-}
 
 - (void)dealloc {
 	[_keys release];
 	[_selectedKey release];
 	[_currentIndexPath release];
     [super dealloc];
+}
+
+#pragma mark UIViewController Methods
+
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	
+	[self loadKeys];
+	
+	if(self.selectedKey != nil) {
+		self.currentIndexPath = [[NSIndexPath indexPathForRow:[self.keys indexOfObject:self.selectedKey] inSection:0] retain];
+		[self.tableView reloadData];
+		[self.tableView scrollToRowAtIndexPath:self.currentIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+	}
 }
 
 #pragma mark TWPickerViewController
