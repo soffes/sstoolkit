@@ -40,6 +40,11 @@
 	[UIView commitAnimations];
 }
 
+
+- (void)viewWillAppear:(BOOL)animated {
+	[self layoutViews];
+}
+
 #pragma mark Layout
 
 - (void)layoutViews {
