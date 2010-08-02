@@ -32,7 +32,7 @@
 // TWWebView Properties
 @property (nonatomic, assign) id<TWWebViewDelegate> delegate;
 @property (nonatomic, readonly, getter=isLoading) BOOL loading;
-@property (nonatomic, assign) BOOL scrollingEnabled; // Still buggy
+@property (nonatomic, assign) BOOL scrollingEnabled;
 @property (nonatomic, assign) BOOL shadowsHidden;
 @property (nonatomic, retain, readonly) NSURLRequest *lastRequest;
 

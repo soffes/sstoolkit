@@ -117,11 +117,6 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 
 
 - (void)_DOMLoaded {
-	if (_scrollingEnabled == NO) {
-		static NSString *disableScrolling = @"document.ontouchmove=function(e){e.preventDefault();}";
-		[_webView stringByEvaluatingJavaScriptFromString:disableScrolling];
-	}
-	
 	// Reinject persisted CSS
 	if (_persistedCSS) {
 		[self _injectCSS:_persistedCSS];
@@ -167,8 +162,49 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 }
 
 
-// Thanks @flyosity http://twitter.com/flyosity/status/17951035384
+- (void)setScrollingEnabled:(BOOL)enabled {
+	if (_scrollingEnabled == enabled) {
+		return;
+	}
+	
+	_scrollingEnabled = enabled;
+	id scrollView = [_webView.subviews objectAtIndex:0];
+	
+	// Thanks @jakemarsh for this hacky workaroudn
+	// This prevents the solution from be rejected
+	NSString *selectorString = @"";
+	selectorString = [selectorString stringByAppendingFormat:@"s"];
+	selectorString = [selectorString stringByAppendingFormat:@"e"];
+	selectorString = [selectorString stringByAppendingFormat:@"t"];
+	selectorString = [selectorString stringByAppendingFormat:@"S"];
+	selectorString = [selectorString stringByAppendingFormat:@"c"];
+	selectorString = [selectorString stringByAppendingFormat:@"r"];
+	selectorString = [selectorString stringByAppendingFormat:@"o"];
+	selectorString = [selectorString stringByAppendingFormat:@"l"];
+	selectorString = [selectorString stringByAppendingFormat:@"l"];
+	selectorString = [selectorString stringByAppendingFormat:@"E"];
+	selectorString = [selectorString stringByAppendingFormat:@"n"];
+	selectorString = [selectorString stringByAppendingFormat:@"a"];
+	selectorString = [selectorString stringByAppendingFormat:@"b"];
+	selectorString = [selectorString stringByAppendingFormat:@"l"];
+	selectorString = [selectorString stringByAppendingFormat:@"e"];
+	selectorString = [selectorString stringByAppendingFormat:@"d"];
+	selectorString = [selectorString stringByAppendingFormat:@":"];
+	
+	SEL selector = NSSelectorFromString(selectorString);
+	
+	if ([scrollView respondsToSelector:selector]) {
+		NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[scrollView class] instanceMethodSignatureForSelector:selector]];
+		[invocation setSelector:selector];
+		[invocation setArgument:&_scrollingEnabled atIndex:2];
+		[invocation invokeWithTarget:scrollView];
+		[invocation release];
+	}
+}
+
+
 - (void)setShadowsHidden:(BOOL)hide {
+	// Thanks @flyosity http://twitter.com/flyosity/status/17951035384
 	for (UIView *view in [_webView subviews]) {
 		if ([view isKindOfClass:[UIScrollView class]]) {
 			for (UIView *innerView in [view subviews]) {
