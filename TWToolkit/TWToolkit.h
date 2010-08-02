@@ -9,14 +9,18 @@
 // View Controllers
 #import <TWToolkit/TWPickerViewController.h>
 #import <TWToolkit/TWMessagesViewController.h>
+#import <TWToolkit/TWViewController.h>
+#import <TWToolkit/TWModalViewController.h>
 
 // Views
 #import <TWToolkit/TWGradientView.h>
 #import <TWToolkit/TWHUDView.h>
-#import <TWToolkit/TWLoadingView.h>
-#import <TWToolkit/TWTextField.h>
+#import <TWToolkit/TWIndicatorLabel.h>
+#import <TWToolkit/TWLabel.h>
 #import <TWToolkit/TWLineView.h>
+#import <TWToolkit/TWLoadingView.h>
 #import <TWToolkit/TWPieProgressView.h>
+#import <TWToolkit/TWTextField.h>
 #import <TWToolkit/TWWebView.h>
 
 // Drawing

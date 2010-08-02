@@ -10,13 +10,13 @@
 
 @implementation TWTextField
 
-@synthesize textInset = _textInset;
+@synthesize textInsets = _textInsets;
 
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
-        self.textInset = UIEdgeInsetsZero;
+        self.textInsets = UIEdgeInsetsZero;
     }
     return self;
 }
@@ -24,7 +24,7 @@
 #pragma mark UITextField
 
 - (CGRect)textRectForBounds:(CGRect)bounds {
-	return UIEdgeInsetsInsetRect(bounds, self.textInset);
+	return UIEdgeInsetsInsetRect(bounds, self.textInsets);
 }
 
 
