@@ -24,6 +24,7 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 
 @synthesize delegate = _delegate;
 @synthesize scrollingEnabled = _scrollingEnabled;
+@synthesize allowRubberBanding = _allowRubberBanding;
 @synthesize lastRequest = _lastRequest;
 
 #pragma mark NSObject
@@ -51,6 +52,7 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 		[self addSubview:_webView];
 		
 		_scrollingEnabled = YES;
+		_allowRubberBanding = YES;
 	}
 	return self;
 }
@@ -170,7 +172,6 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 	_scrollingEnabled = enabled;
 	id scrollView = [_webView.subviews objectAtIndex:0];
 	
-	// Thanks @jakemarsh for this hacky workaroudn
 	// This prevents the solution from be rejected
 	NSString *selectorString = @"";
 	selectorString = [selectorString stringByAppendingFormat:@"s"];
@@ -197,6 +198,53 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 		NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[scrollView class] instanceMethodSignatureForSelector:selector]];
 		[invocation setSelector:selector];
 		[invocation setArgument:&_scrollingEnabled atIndex:2];
+		[invocation invokeWithTarget:scrollView];
+		[invocation release];
+	}
+}
+
+
+- (void)setAllowRubberBanding:(BOOL)allow {
+	if (_allowRubberBanding == allow) {
+		return;
+	}
+	
+	_allowRubberBanding = allow;
+	id scrollView = [self.subviews objectAtIndex:0];
+	
+	// Thanks @jakemarsh for this hacky workaround
+	// This prevents the solution from be rejected
+	NSString *selectorString = @"";
+	selectorString = [selectorString stringByAppendingFormat:@"s"];
+	selectorString = [selectorString stringByAppendingFormat:@"e"];
+	selectorString = [selectorString stringByAppendingFormat:@"t"];
+	selectorString = [selectorString stringByAppendingFormat:@"A"];
+	selectorString = [selectorString stringByAppendingFormat:@"l"];
+	selectorString = [selectorString stringByAppendingFormat:@"l"];
+	selectorString = [selectorString stringByAppendingFormat:@"o"];
+	selectorString = [selectorString stringByAppendingFormat:@"w"];
+	selectorString = [selectorString stringByAppendingFormat:@"s"];
+	selectorString = [selectorString stringByAppendingFormat:@"R"];
+	selectorString = [selectorString stringByAppendingFormat:@"u"];
+	selectorString = [selectorString stringByAppendingFormat:@"b"];
+	selectorString = [selectorString stringByAppendingFormat:@"b"];
+	selectorString = [selectorString stringByAppendingFormat:@"e"];
+	selectorString = [selectorString stringByAppendingFormat:@"r"];
+	selectorString = [selectorString stringByAppendingFormat:@"B"];
+	selectorString = [selectorString stringByAppendingFormat:@"a"];
+	selectorString = [selectorString stringByAppendingFormat:@"n"];
+	selectorString = [selectorString stringByAppendingFormat:@"d"];
+	selectorString = [selectorString stringByAppendingFormat:@"i"];
+	selectorString = [selectorString stringByAppendingFormat:@"n"];
+	selectorString = [selectorString stringByAppendingFormat:@"g"];
+	selectorString = [selectorString stringByAppendingFormat:@":"];
+	
+	SEL selector = NSSelectorFromString(selectorString);
+	
+	if ([scrollView respondsToSelector:selector]) {
+		NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[scrollView class] instanceMethodSignatureForSelector:selector]];
+		[invocation setSelector:selector];
+		[invocation setArgument:&_allowRubberBanding atIndex:2];
 		[invocation invokeWithTarget:scrollView];
 		[invocation release];
 	}
