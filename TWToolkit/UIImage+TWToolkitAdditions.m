@@ -1,14 +1,22 @@
 //
-//  UIImage+crop.m
+//  UIImage+TWToolkitAdditions.m
 //  TWToolkit
 //
-//  Created by Sam Soffes on 8/19/09.
+//  Created by Sam Soffes on 11/17/09.
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "UIImage+crop.h"
+#import "UIImage+TWToolkitAdditions.h"
 
-@implementation UIImage (cropToRect)
+@implementation UIImage (TWToolkitAdditions)
+
++ (UIImage *)imageNamed:(NSString *)imageName bundle:(NSString *)bundleName {
+	NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+	NSString *bundlePath = [resourcePath stringByAppendingPathComponent:bundleName];
+	NSString *imagePath = [bundlePath stringByAppendingPathComponent:imageName];
+	return [UIImage imageWithContentsOfFile:imagePath];
+}
+
 
 - (UIImage *)initWithImage:(UIImage *)image croppedToRect:(CGRect)rect {
 	CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], rect);

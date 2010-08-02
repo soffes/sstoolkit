@@ -7,7 +7,7 @@
 //
 
 #import "TWHUDView.h"
-#import "UIImage+BundleImage.h"
+#import "UIImage+TWToolkitAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 
 static CGFloat kHUDSize = 172.0;

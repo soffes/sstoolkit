@@ -1,12 +1,16 @@
 //
-//  NSString+encoding.h
+//  NSString+TWToolkitAdditions.h
 //  TWToolkit
 //
-//  Created by Sam Soffes on 7/02/09.
+//  Created by Sam Soffes on 6/22/09.
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-@interface NSString (encoding)
+@interface NSString (TWToolkitAdditions)
+
+- (BOOL)containsString:(NSString *)string;
+- (NSString *)MD5Sum;
+- (NSComparisonResult)compareToVersionString:(NSString *)version;
 
 // Localization
 + (NSString *)localizedString:(NSString*)key;

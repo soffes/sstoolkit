@@ -1,14 +1,14 @@
 //
-//  NSArray+shuffle.m
+//  NSArray+TWToolkitAdditions.m
 //  TWToolkit
 //
 //  Created by Sam Soffes on 8/19/09.
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "NSArray+shuffle.h"
+#import "NSArray+TWToolkitAdditions.h"
 
-@implementation NSArray (shuffle)
+@implementation NSArray (TWToolkitAdditions)
 
 - (NSArray *)shuffledArray {
 	

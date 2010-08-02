@@ -1,14 +1,14 @@
 //
-//  UIDevice+isSimulator.m
+//  UIDevice+TWToolkitAdditions.m
 //  TWToolkit
 //
 //  Created by Sam Soffes on 7/13/09.
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "UIDevice+isSimulator.h"
+#import "UIDevice+TWToolkitAdditions.h"
 
-@implementation UIDevice (isSimulator)
+@implementation UIDevice (TWToolkitAdditions)
 
 - (BOOL)isSimulator {
 	

@@ -1,14 +1,14 @@
-    //
-//  UIViewController+displayError.m
+//
+//  UIViewController+TWToolkitAdditions.m
 //  TWToolkit
 //
 //  Created by Sam Soffes on 6/21/10.
 //  Copyright 2010 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "UIViewController+displayError.h"
+#import "UIViewController+TWToolkitAdditions.h"
 
-@implementation UIViewController (displayError)
+@implementation UIViewController (TWToolkitAdditions)
 
 - (void)displayError:(NSError *)error {
 	if (!error) {

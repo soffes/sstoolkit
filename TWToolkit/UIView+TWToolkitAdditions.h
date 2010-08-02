@@ -1,14 +1,14 @@
 //
-//  UIView+fading.h
+//  UIView+imageRepresentation.h
 //  TWToolkit
 //
-//  Created by Sam Soffes on 6/22/09.
-//  Copyright 2009 Tasteful Works, Inc. All rights reserved.
+//  Created by Sam Soffes on 2/15/10.
+//  Copyright 2010 Tasteful Works. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@interface UIView (imageRepresentation)
 
-@interface UIView (fading)
+- (UIImage *)imageRepresentation;
 
 - (void)hide;
 - (void)show;
