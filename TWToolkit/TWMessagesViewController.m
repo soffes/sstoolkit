@@ -11,7 +11,7 @@
 #import "TWMessageTableViewCellBubbleView.h"
 #import "TWGradientView.h"
 #import "TWTextField.h"
-#import "UIImage+BundleImage.h"
+#import "UIImage+TWToolkitAdditions.h"
 
 CGFloat kInputHeight = 40.0;
 

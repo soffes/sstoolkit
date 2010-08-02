@@ -1,29 +1,75 @@
 //
-//  NSString+encoding.m
+//  NSString+TWToolkitAdditions.m
 //  TWToolkit
 //
-//  Created by Sam Soffes on 7/02/09.
+//  Created by Sam Soffes on 6/22/09.
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "NSString+encoding.h"
+#import "NSString+TWToolkitAdditions.h"
+#include <CommonCrypto/CommonDigest.h>
 
 static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"; 
 
-@implementation NSString (encoding)
+@implementation NSString (TWToolkitAdditions)
 
-#pragma mark -
+- (BOOL)containsString:(NSString *)string {
+	return !NSEqualRanges([self rangeOfString:string], NSMakeRange(NSNotFound, 0));
+}
+
+- (NSString *)MD5Sum {
+	unsigned char digest[CC_MD5_DIGEST_LENGTH], i;
+	CC_MD5([self UTF8String], [self lengthOfBytesUsingEncoding:NSUTF8StringEncoding], digest);
+	NSMutableString *ms = [NSMutableString string];
+	for (i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+		[ms appendFormat: @"%02x", (int)(digest[i])];
+	}
+	return [[ms copy] autorelease];
+}
+
+
+// Adapted from http://snipplr.com/view/2771/compare-two-version-strings
+- (NSComparisonResult)compareToVersionString:(NSString *)version {
+	NSInteger i;
+	
+	// Break version into fields (separated by '.')
+	NSMutableArray *leftFields  = [[NSMutableArray alloc] initWithArray:[self  componentsSeparatedByString:@"."]];
+	NSMutableArray *rightFields = [[NSMutableArray alloc] initWithArray:[version componentsSeparatedByString:@"."]];
+	
+	// Implict ".0" in case version doesn't have the same number of '.'
+	if ([leftFields count] < [rightFields count]) {
+		while ([leftFields count] != [rightFields count]) {
+			[leftFields addObject:@"0"];
+		}
+	} else if ([leftFields count] > [rightFields count]) {
+		while ([leftFields count] != [rightFields count]) {
+			[rightFields addObject:@"0"];
+		}
+	}
+	
+	// Do a numeric comparison on each field
+	for (i = 0; i < [leftFields count]; i++) {
+		NSComparisonResult result = [[leftFields objectAtIndex:i] compare:[rightFields objectAtIndex:i] options:NSNumericSearch];
+		if (result != NSOrderedSame) {
+			[leftFields release];
+			[rightFields release];
+			return result;
+		}
+	}
+	
+	[leftFields release];
+	[rightFields release];	
+	return NSOrderedSame;
+}
+
 #pragma mark Localization Methods
-#pragma mark -
 
 + (NSString *)localizedString:(NSString *)key {
 	return [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:key];
 }
 
 
-#pragma mark -
 #pragma mark HTML Methods
-#pragma mark -
 
 - (NSString *)escapeHTML {
 	NSMutableString *s = [NSMutableString string];
@@ -53,9 +99,9 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 			case '"':
 				[s appendString:@"&quot;"];
 				break;
-//			case '…':
-//				[s appendString:@"&hellip;"];
-//				break;
+				//			case '…':
+				//				[s appendString:@"&hellip;"];
+				//				break;
 			case '&':
 				[s appendString:@"&amp;"];
 				break;
@@ -113,9 +159,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 }
 
 
-#pragma mark -
 #pragma mark URL Methods
-#pragma mark -
 
 - (NSString *)URLEncodedString {
 	return [(NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
@@ -158,9 +202,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 }
 
 
-#pragma mark -
 #pragma mark Base64 Methods
-#pragma mark -
 
 - (NSString *)base64EncodedString  {
     if ([self length] == 0) {

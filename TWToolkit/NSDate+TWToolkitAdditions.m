@@ -1,14 +1,21 @@
 //
-//  NSDate+timeAgoInWords.m
+//  NSDate+TWToolkitAdditions.m
 //  TWToolkit
 //
 //  Created by Sam Soffes on 5/26/10.
 //  Copyright 2010 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "NSDate+timeAgoInWords.h"
+#import "NSDate+TWToolkitAdditions.h"
 
-@implementation NSDate (timeAgoInWords)
+@implementation NSDate (TWToolkitAdditions)
+
++ (NSDate *)dateFromISO8601String:(NSString *)string {
+	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+    return [dateFormatter dateFromString:string];
+}
+
 
 - (NSString *)timeAgoInWords {
 	return [self timeAgoInWordsIncludingSeconds:YES];

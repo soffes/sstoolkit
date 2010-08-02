@@ -7,23 +7,17 @@
 //
 
 // Foundation
-#import <TWToolkit/NSArray+shuffle.h>
-#import <TWToolkit/NSData+MD5Sum.h>
-#import <TWToolkit/NSDate+ISO8601String.h>
-#import <TWToolkit/NSDate+timeAgoInWords.h>
-#import <TWToolkit/NSString+containsString.h>
-#import <TWToolkit/NSString+encoding.h>
-#import <TWToolkit/NSString+MD5Sum.h>
-#import <TWToolkit/NSURL+queryDictionary.h>
+#import <TWToolkit/NSArray+TWToolkitAdditions.h>
+#import <TWToolkit/NSData+TWToolkitAdditions.h>
+#import <TWToolkit/NSDate+TWToolkitAdditions.h>
+#import <TWToolkit/NSString+TWToolkitAdditions.h>
+#import <TWToolkit/NSURL+TWToolkitAdditions.h>
 
 // UIKit
-#import <TWToolkit/UIDevice+isSimulator.h>
-#import <TWToolkit/UIImage+BundleImage.h>
-#import <TWToolkit/UIImage+crop.h>
-#import <TWToolkit/UIScrollview+scrollToTop.h>
-#import <TWToolkit/UIView+fading.h>
-#import <TWToolkit/UIView+imageRepresentation.h>
-#import <TWToolkit/UIWebView+scrolling.h>
-#import <TWToolkit/UIColor+alpha.h>
-#import <TWToolkit/UIControl+removeAllTargets.h>
-#import <TWToolkit/UIViewController+displayError.h>
+#import <TWToolkit/UIColor+TWToolkitAdditions.h>
+#import <TWToolkit/UIControl+TWToolkitAdditions.h>
+#import <TWToolkit/UIDevice+TWToolkitAdditions.h>
+#import <TWToolkit/UIImage+TWToolkitAdditions.h>
+#import <TWToolkit/UIScrollview+TWToolkitAdditions.h>
+#import <TWToolkit/UIView+TWToolkitAdditions.h>
+#import <TWToolkit/UIViewController+TWToolkitAdditions.h>

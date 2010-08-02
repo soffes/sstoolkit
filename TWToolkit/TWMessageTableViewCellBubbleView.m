@@ -7,7 +7,7 @@
 //
 
 #import "TWMessageTableViewCellBubbleView.h"
-#import "UIImage+BundleImage.h"
+#import "UIImage+TWToolkitAdditions.h"
 
 #define kFont [UIFont systemFontOfSize:15.0]
 static UILineBreakMode kLineBreakMode = UILineBreakModeWordWrap;

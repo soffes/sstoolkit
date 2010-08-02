@@ -1,14 +1,14 @@
 //
-//  UIImage+crop.h
+//  UIImage+TWToolkitAdditions.h
 //  TWToolkit
 //
-//  Created by Sam Soffes on 8/19/09.
+//  Created by Sam Soffes on 11/17/09.
 //  Copyright 2009 Tasteful Works, Inc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@interface UIImage (TWToolkitAdditions)
 
-@interface UIImage (cropToRect)
++ (UIImage *)imageNamed:(NSString *)imageName bundle:(NSString *)bundleName;
 
 - (UIImage *)initWithImage:(UIImage *)image croppedToRect:(CGRect)rect;
 - (UIImage *)imageCroppedToRect:(CGRect)rect;

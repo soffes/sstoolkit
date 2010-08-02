@@ -1,14 +1,14 @@
 //
-//  NSURL+queryDictionary.m
+//  NSURL+TWToolkitAdditions.m
 //  TWToolkit
 //
 //  Created by Sam Soffes on 4/27/10.
 //  Copyright 2010 Tasteful Works, Inc. All rights reserved.
 //
 
-#import "NSURL+queryDictionary.h"
+#import "NSURL+TWToolkitAdditions.h"
 
-@implementation NSURL (queryDictionary)
+@implementation NSURL (TWToolkitAdditions)
 
 // Not a perfect implementation, but will work for most cases
 - (NSDictionary *)queryDictionary {

@@ -1,14 +1,24 @@
 //
-//  UIView+fading.m
+//  UIView+TWToolkitAdditions.m
 //  TWToolkit
 //
-//  Created by Sam Soffes on 6/22/09.
-//  Copyright 2009 Tasteful Works, Inc. All rights reserved.
+//  Created by Sam Soffes on 2/15/10.
+//  Copyright 2010 Tasteful Works. All rights reserved.
 //
 
-#import "UIView+fading.h"
+#import "UIView+TWToolkitAdditions.h"
+#import <QuartzCore/QuartzCore.h>
 
-@implementation UIView (fading)
+@implementation UIView (TWToolkitAdditions)
+
+- (UIImage *)imageRepresentation {
+	UIGraphicsBeginImageContext(self.bounds.size);
+	[self.layer renderInContext:UIGraphicsGetCurrentContext()];
+	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	return image;
+}
+
 
 - (void)hide {
 	self.alpha = 0.0;
@@ -76,5 +86,6 @@
 		[self performSelector:selector withObject:object afterDelay:0.21];
 	}
 }
+
 
 @end
