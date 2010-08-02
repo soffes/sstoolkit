@@ -29,6 +29,7 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 @synthesize delegate = _delegate;
 @synthesize scrollEnabled = _scrollEnabled;
 @synthesize bounces = _bounces;
+@synthesize shadowsHidden = _shadowsHidden;
 @synthesize lastRequest = _lastRequest;
 
 #pragma mark NSObject
@@ -57,6 +58,7 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 		
 		_scrollEnabled = YES;
 		_bounces = YES;
+		_shadowsHidden = NO;
 	}
 	return self;
 }
@@ -288,12 +290,18 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 
 
 - (void)setShadowsHidden:(BOOL)hide {
+	if (_shadowsHidden == hide) {
+		return;
+	}
+	
+	_shadowsHidden = hide;
+	
 	// Thanks @flyosity http://twitter.com/flyosity/status/17951035384
 	for (UIView *view in [_webView subviews]) {
 		if ([view isKindOfClass:[UIScrollView class]]) {
 			for (UIView *innerView in [view subviews]) {
 				if ([innerView isKindOfClass:[UIImageView class]]) {
-					innerView.hidden = hide;
+					innerView.hidden = _shadowsHidden;
 				}
 			}
 		}

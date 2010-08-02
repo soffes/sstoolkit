@@ -27,7 +27,7 @@
 	BOOL _DOMloaded;
 	BOOL _scrollEnabled;
 	BOOL _bounces;
-	BOOL _scrollerBacked;
+	BOOL _shadowsHidden;
 	NSString *_persistedCSS;
 }
 
