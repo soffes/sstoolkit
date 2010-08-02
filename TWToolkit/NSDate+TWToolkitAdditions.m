@@ -17,6 +17,13 @@
 }
 
 
+- (NSString *)ISO8601String {
+	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+	return [dateFormatter stringFromDate:self];
+}
+
+
 - (NSString *)timeAgoInWords {
 	return [self timeAgoInWordsIncludingSeconds:YES];
 }

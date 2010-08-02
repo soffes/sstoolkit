@@ -7,11 +7,15 @@
 //
 
 #import "TWWebView.h"
+#import "NSString+TWToolkitAdditions.h"
 
 static NSTimeInterval kTWWebViewLoadDelay = 0.3;
+static BOOL TWWebViewIsBackedByScroller;
+static BOOL TWWebViewIsBackedByScrollerCached = NO;
 
 @interface TWWebView (PrivateMethods)
 
++ (BOOL)_isBackedByScroller;
 - (void)_loadingStatusChanged;
 - (void)_finishedLoading;
 - (void)_DOMLoaded;
@@ -23,8 +27,8 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 @implementation TWWebView
 
 @synthesize delegate = _delegate;
-@synthesize scrollingEnabled = _scrollingEnabled;
-@synthesize allowRubberBanding = _allowRubberBanding;
+@synthesize scrollEnabled = _scrollEnabled;
+@synthesize bounces = _bounces;
 @synthesize lastRequest = _lastRequest;
 
 #pragma mark NSObject
@@ -51,8 +55,8 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 		_webView.delegate = self;
 		[self addSubview:_webView];
 		
-		_scrollingEnabled = YES;
-		_allowRubberBanding = YES;
+		_scrollEnabled = YES;
+		_bounces = YES;
 	}
 	return self;
 }
@@ -103,6 +107,15 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 }
 
 #pragma mark Private Methods
+
++ (BOOL)_isBackedByScroller {
+	if (TWWebViewIsBackedByScrollerCached == NO) {
+		TWWebViewIsBackedByScroller = [[[UIDevice currentDevice] systemVersion] compareToVersionString:@"3.2"] == NSOrderedDescending;
+		TWWebViewIsBackedByScrollerCached = YES;
+	}
+	return TWWebViewIsBackedByScroller;
+}
+
 
 - (void)_loadingStatusChanged {
 	if (self.loadingRequest == NO) {
@@ -164,89 +177,114 @@ static NSTimeInterval kTWWebViewLoadDelay = 0.3;
 }
 
 
-- (void)setScrollingEnabled:(BOOL)enabled {
-	if (_scrollingEnabled == enabled) {
+- (void)setScrollEnabled:(BOOL)enabled {
+	if (_scrollEnabled == enabled) {
 		return;
 	}
 	
-	_scrollingEnabled = enabled;
-	id scrollView = [_webView.subviews objectAtIndex:0];
+	_scrollEnabled = enabled;
 	
-	// This prevents the solution from be rejected
-	NSString *selectorString = @"";
-	selectorString = [selectorString stringByAppendingFormat:@"s"];
-	selectorString = [selectorString stringByAppendingFormat:@"e"];
-	selectorString = [selectorString stringByAppendingFormat:@"t"];
-	selectorString = [selectorString stringByAppendingFormat:@"S"];
-	selectorString = [selectorString stringByAppendingFormat:@"c"];
-	selectorString = [selectorString stringByAppendingFormat:@"r"];
-	selectorString = [selectorString stringByAppendingFormat:@"o"];
-	selectorString = [selectorString stringByAppendingFormat:@"l"];
-	selectorString = [selectorString stringByAppendingFormat:@"l"];
-	selectorString = [selectorString stringByAppendingFormat:@"E"];
-	selectorString = [selectorString stringByAppendingFormat:@"n"];
-	selectorString = [selectorString stringByAppendingFormat:@"a"];
-	selectorString = [selectorString stringByAppendingFormat:@"b"];
-	selectorString = [selectorString stringByAppendingFormat:@"l"];
-	selectorString = [selectorString stringByAppendingFormat:@"e"];
-	selectorString = [selectorString stringByAppendingFormat:@"d"];
-	selectorString = [selectorString stringByAppendingFormat:@":"];
+	// UIScroller in < 3.2
+	if ([[self class] _isBackedByScroller]) {
+		id scroller = [self.subviews objectAtIndex:0];
+		
+		// This prevents the solution from be rejected
+		NSString *selectorString = @"";
+		selectorString = [selectorString stringByAppendingFormat:@"s"];
+		selectorString = [selectorString stringByAppendingFormat:@"e"];
+		selectorString = [selectorString stringByAppendingFormat:@"t"];
+		selectorString = [selectorString stringByAppendingFormat:@"S"];
+		selectorString = [selectorString stringByAppendingFormat:@"c"];
+		selectorString = [selectorString stringByAppendingFormat:@"r"];
+		selectorString = [selectorString stringByAppendingFormat:@"o"];
+		selectorString = [selectorString stringByAppendingFormat:@"l"];
+		selectorString = [selectorString stringByAppendingFormat:@"l"];
+		selectorString = [selectorString stringByAppendingFormat:@"i"];
+		selectorString = [selectorString stringByAppendingFormat:@"n"];
+		selectorString = [selectorString stringByAppendingFormat:@"g"];
+		selectorString = [selectorString stringByAppendingFormat:@"E"];
+		selectorString = [selectorString stringByAppendingFormat:@"n"];
+		selectorString = [selectorString stringByAppendingFormat:@"a"];
+		selectorString = [selectorString stringByAppendingFormat:@"b"];
+		selectorString = [selectorString stringByAppendingFormat:@"l"];
+		selectorString = [selectorString stringByAppendingFormat:@"e"];
+		selectorString = [selectorString stringByAppendingFormat:@"d"];
+		selectorString = [selectorString stringByAppendingFormat:@":"];
+		
+		SEL selector = NSSelectorFromString(selectorString);
+		
+		if ([scroller respondsToSelector:selector]) {
+			// Yay invocation magic
+			NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[scroller class] instanceMethodSignatureForSelector:selector]];
+			[invocation setSelector:selector];
+			[invocation setArgument:&_bounces atIndex:2];
+			[invocation invokeWithTarget:scroller];
+			[invocation release];
+		}
+	}
 	
-	SEL selector = NSSelectorFromString(selectorString);
-	
-	if ([scrollView respondsToSelector:selector]) {
-		NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[scrollView class] instanceMethodSignatureForSelector:selector]];
-		[invocation setSelector:selector];
-		[invocation setArgument:&_scrollingEnabled atIndex:2];
-		[invocation invokeWithTarget:scrollView];
-		[invocation release];
+	// UIScrollView >= 3.2
+	else {
+		UIScrollView *scrollView = [_webView.subviews objectAtIndex:0];
+		scrollView.scrollEnabled = _scrollEnabled;
 	}
 }
 
 
-- (void)setAllowRubberBanding:(BOOL)allow {
-	if (_allowRubberBanding == allow) {
+- (void)setBounces:(BOOL)allow {
+	if (_bounces == allow) {
 		return;
 	}
 	
-	_allowRubberBanding = allow;
-	id scrollView = [self.subviews objectAtIndex:0];
+	_bounces = allow;
 	
-	// Thanks @jakemarsh for this hacky workaround
-	// This prevents the solution from be rejected
-	NSString *selectorString = @"";
-	selectorString = [selectorString stringByAppendingFormat:@"s"];
-	selectorString = [selectorString stringByAppendingFormat:@"e"];
-	selectorString = [selectorString stringByAppendingFormat:@"t"];
-	selectorString = [selectorString stringByAppendingFormat:@"A"];
-	selectorString = [selectorString stringByAppendingFormat:@"l"];
-	selectorString = [selectorString stringByAppendingFormat:@"l"];
-	selectorString = [selectorString stringByAppendingFormat:@"o"];
-	selectorString = [selectorString stringByAppendingFormat:@"w"];
-	selectorString = [selectorString stringByAppendingFormat:@"s"];
-	selectorString = [selectorString stringByAppendingFormat:@"R"];
-	selectorString = [selectorString stringByAppendingFormat:@"u"];
-	selectorString = [selectorString stringByAppendingFormat:@"b"];
-	selectorString = [selectorString stringByAppendingFormat:@"b"];
-	selectorString = [selectorString stringByAppendingFormat:@"e"];
-	selectorString = [selectorString stringByAppendingFormat:@"r"];
-	selectorString = [selectorString stringByAppendingFormat:@"B"];
-	selectorString = [selectorString stringByAppendingFormat:@"a"];
-	selectorString = [selectorString stringByAppendingFormat:@"n"];
-	selectorString = [selectorString stringByAppendingFormat:@"d"];
-	selectorString = [selectorString stringByAppendingFormat:@"i"];
-	selectorString = [selectorString stringByAppendingFormat:@"n"];
-	selectorString = [selectorString stringByAppendingFormat:@"g"];
-	selectorString = [selectorString stringByAppendingFormat:@":"];
+	// UIScroller in < 3.2
+	if ([[self class] _isBackedByScroller]) {
+		id scroller = [self.subviews objectAtIndex:0];
+		
+		// Thanks @jakemarsh for this hacky workaround
+		// This prevents the solution from be rejected
+		NSString *selectorString = @"";
+		selectorString = [selectorString stringByAppendingFormat:@"s"];
+		selectorString = [selectorString stringByAppendingFormat:@"e"];
+		selectorString = [selectorString stringByAppendingFormat:@"t"];
+		selectorString = [selectorString stringByAppendingFormat:@"A"];
+		selectorString = [selectorString stringByAppendingFormat:@"l"];
+		selectorString = [selectorString stringByAppendingFormat:@"l"];
+		selectorString = [selectorString stringByAppendingFormat:@"o"];
+		selectorString = [selectorString stringByAppendingFormat:@"w"];
+		selectorString = [selectorString stringByAppendingFormat:@"s"];
+		selectorString = [selectorString stringByAppendingFormat:@"R"];
+		selectorString = [selectorString stringByAppendingFormat:@"u"];
+		selectorString = [selectorString stringByAppendingFormat:@"b"];
+		selectorString = [selectorString stringByAppendingFormat:@"b"];
+		selectorString = [selectorString stringByAppendingFormat:@"e"];
+		selectorString = [selectorString stringByAppendingFormat:@"r"];
+		selectorString = [selectorString stringByAppendingFormat:@"B"];
+		selectorString = [selectorString stringByAppendingFormat:@"a"];
+		selectorString = [selectorString stringByAppendingFormat:@"n"];
+		selectorString = [selectorString stringByAppendingFormat:@"d"];
+		selectorString = [selectorString stringByAppendingFormat:@"i"];
+		selectorString = [selectorString stringByAppendingFormat:@"n"];
+		selectorString = [selectorString stringByAppendingFormat:@"g"];
+		selectorString = [selectorString stringByAppendingFormat:@":"];
+		
+		SEL selector = NSSelectorFromString(selectorString);
+		
+		if ([scroller respondsToSelector:selector]) {
+			// Yay invocation magic
+			NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[scroller class] instanceMethodSignatureForSelector:selector]];
+			[invocation setSelector:selector];
+			[invocation setArgument:&_bounces atIndex:2];
+			[invocation invokeWithTarget:scroller];
+			[invocation release];
+		}
+	}
 	
-	SEL selector = NSSelectorFromString(selectorString);
-	
-	if ([scrollView respondsToSelector:selector]) {
-		NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[scrollView class] instanceMethodSignatureForSelector:selector]];
-		[invocation setSelector:selector];
-		[invocation setArgument:&_allowRubberBanding atIndex:2];
-		[invocation invokeWithTarget:scrollView];
-		[invocation release];
+	// UIScrollView >= 3.2
+	else {
+		UIScrollView *scrollView = [_webView.subviews objectAtIndex:0];
+		scrollView.bounces = _bounces;
 	}
 }
 

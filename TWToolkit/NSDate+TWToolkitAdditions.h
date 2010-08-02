@@ -9,6 +9,7 @@
 @interface NSDate (TWToolkitAdditions)
 
 + (NSDate *)dateFromISO8601String:(NSString *)string;
+- (NSString *)ISO8601String;
 
 //	Adapted from http://github.com/gabriel/gh-kit/blob/master/Classes/GHNSString+TimeInterval.m
 - (NSString *)timeAgoInWords;

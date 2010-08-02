@@ -25,16 +25,17 @@
 	NSURLRequest *_lastRequest;
 	BOOL _testedDOM;
 	BOOL _DOMloaded;
-	BOOL _scrollingEnabled;
-	BOOL _allowRubberBanding;
+	BOOL _scrollEnabled;
+	BOOL _bounces;
+	BOOL _scrollerBacked;
 	NSString *_persistedCSS;
 }
 
 // TWWebView Properties
 @property (nonatomic, assign) id<TWWebViewDelegate> delegate;
 @property (nonatomic, readonly, getter=isLoading) BOOL loading;
-@property (nonatomic, assign) BOOL scrollingEnabled;
-@property (nonatomic, assign) BOOL allowRubberBanding;
+@property (nonatomic, assign) BOOL scrollEnabled;
+@property (nonatomic, assign) BOOL bounces;
 @property (nonatomic, assign) BOOL shadowsHidden;
 @property (nonatomic, retain, readonly) NSURLRequest *lastRequest;
 

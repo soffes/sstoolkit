@@ -44,6 +44,13 @@
 		B28E46F5117CBB5B0089E536 /* UIControl+TWToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B28E46F3117CBB5B0089E536 /* UIControl+TWToolkitAdditions.m */; };
 		B2974D72106299CB00C9F4A6 /* UIDevice+TWToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2974D61106299CB00C9F4A6 /* UIDevice+TWToolkitAdditions.h */; };
 		B2974D73106299CB00C9F4A6 /* UIDevice+TWToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2974D62106299CB00C9F4A6 /* UIDevice+TWToolkitAdditions.m */; };
+		B2A1127F12073D1D0049990A /* TWModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2A1127C12073D1D0049990A /* TWModalViewController.h */; };
+		B2A1128012073D1D0049990A /* TWViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2A1127D12073D1D0049990A /* TWViewController.h */; };
+		B2A1128112073D1D0049990A /* TWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A1127E12073D1D0049990A /* TWViewController.m */; };
+		B2A1128612073D240049990A /* TWIndicatorLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = B2A1128212073D240049990A /* TWIndicatorLabel.h */; };
+		B2A1128712073D240049990A /* TWIndicatorLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A1128312073D240049990A /* TWIndicatorLabel.m */; };
+		B2A1128812073D240049990A /* TWLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = B2A1128412073D240049990A /* TWLabel.h */; };
+		B2A1128912073D240049990A /* TWLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A1128512073D240049990A /* TWLabel.m */; };
 		B2C20770106296FB00AE1B56 /* NSArray+TWToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C20766106296FB00AE1B56 /* NSArray+TWToolkitAdditions.h */; };
 		B2C20771106296FB00AE1B56 /* NSArray+TWToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C20767106296FB00AE1B56 /* NSArray+TWToolkitAdditions.m */; };
 		B2C20772106296FB00AE1B56 /* NSData+TWToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C20768106296FB00AE1B56 /* NSData+TWToolkitAdditions.h */; };
@@ -103,6 +110,13 @@
 		B28E46F3117CBB5B0089E536 /* UIControl+TWToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+TWToolkitAdditions.m"; sourceTree = "<group>"; };
 		B2974D61106299CB00C9F4A6 /* UIDevice+TWToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+TWToolkitAdditions.h"; sourceTree = "<group>"; };
 		B2974D62106299CB00C9F4A6 /* UIDevice+TWToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+TWToolkitAdditions.m"; sourceTree = "<group>"; };
+		B2A1127C12073D1D0049990A /* TWModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWModalViewController.h; sourceTree = "<group>"; };
+		B2A1127D12073D1D0049990A /* TWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWViewController.h; sourceTree = "<group>"; };
+		B2A1127E12073D1D0049990A /* TWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWViewController.m; sourceTree = "<group>"; };
+		B2A1128212073D240049990A /* TWIndicatorLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWIndicatorLabel.h; sourceTree = "<group>"; };
+		B2A1128312073D240049990A /* TWIndicatorLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWIndicatorLabel.m; sourceTree = "<group>"; };
+		B2A1128412073D240049990A /* TWLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWLabel.h; sourceTree = "<group>"; };
+		B2A1128512073D240049990A /* TWLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWLabel.m; sourceTree = "<group>"; };
 		B2C20766106296FB00AE1B56 /* NSArray+TWToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+TWToolkitAdditions.h"; sourceTree = "<group>"; };
 		B2C20767106296FB00AE1B56 /* NSArray+TWToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TWToolkitAdditions.m"; sourceTree = "<group>"; };
 		B2C20768106296FB00AE1B56 /* NSData+TWToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+TWToolkitAdditions.h"; sourceTree = "<group>"; };
@@ -214,6 +228,9 @@
 		B28517D51063E42A008D42E7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B2A1127C12073D1D0049990A /* TWModalViewController.h */,
+				B2A1127D12073D1D0049990A /* TWViewController.h */,
+				B2A1127E12073D1D0049990A /* TWViewController.m */,
 				B28517D81063E43E008D42E7 /* TWPickerViewController.h */,
 				B28517D91063E43E008D42E7 /* TWPickerViewController.m */,
 				B2C6829F114954DF006EDD71 /* TWMessagesViewController.h */,
@@ -225,6 +242,10 @@
 		B28517D71063E433008D42E7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B2A1128212073D240049990A /* TWIndicatorLabel.h */,
+				B2A1128312073D240049990A /* TWIndicatorLabel.m */,
+				B2A1128412073D240049990A /* TWLabel.h */,
+				B2A1128512073D240049990A /* TWLabel.m */,
 				B2503B9310A90DA6009B0E7B /* TWGradientView.h */,
 				B2503B9410A90DA6009B0E7B /* TWGradientView.m */,
 				B253C1F810728DC500E0CE10 /* TWHUDView.h */,
@@ -349,6 +370,10 @@
 				B2D3527111A46A4900B1886F /* TWKeychain.h in Headers */,
 				B213D07C11AE1D1D00BACA8D /* NSDate+TWToolkitAdditions.h in Headers */,
 				B25E614011CFBA34001DA5CD /* UIViewController+TWToolkitAdditions.h in Headers */,
+				B2A1127F12073D1D0049990A /* TWModalViewController.h in Headers */,
+				B2A1128012073D1D0049990A /* TWViewController.h in Headers */,
+				B2A1128612073D240049990A /* TWIndicatorLabel.h in Headers */,
+				B2A1128812073D240049990A /* TWLabel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +447,9 @@
 				B2D3527211A46A4900B1886F /* TWKeychain.m in Sources */,
 				B213D07D11AE1D1D00BACA8D /* NSDate+TWToolkitAdditions.m in Sources */,
 				B25E614111CFBA34001DA5CD /* UIViewController+TWToolkitAdditions.m in Sources */,
+				B2A1128112073D1D0049990A /* TWViewController.m in Sources */,
+				B2A1128712073D240049990A /* TWIndicatorLabel.m in Sources */,
+				B2A1128912073D240049990A /* TWLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

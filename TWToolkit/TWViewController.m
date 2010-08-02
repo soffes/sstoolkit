@@ -7,8 +7,8 @@
 //
 
 #import "TWViewController.h"
-#import "UIImage+BundleImage.h"
-#import "UIView+fading.h"
+#import "UIImage+TWToolkitAdditions.h"
+#import "UIView+TWToolkitAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface TWViewController (PrivateMethods)
