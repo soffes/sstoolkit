@@ -219,7 +219,6 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 			[invocation setSelector:selector];
 			[invocation setArgument:&_bounces atIndex:2];
 			[invocation invokeWithTarget:scroller];
-			[invocation release];
 		}
 	}
 	
@@ -277,7 +276,6 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 			[invocation setSelector:selector];
 			[invocation setArgument:&_bounces atIndex:2];
 			[invocation invokeWithTarget:scroller];
-			[invocation release];
 		}
 	}
 	
