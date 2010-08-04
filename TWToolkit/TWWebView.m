@@ -406,9 +406,10 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)aRequest navigationType:(UIWebViewNavigationType)navigationType {
 	BOOL should = YES;
-	
+	NSURL *url = [aRequest URL];
+    
 	// Check for DOM load message
-	if ([[[aRequest URL] absoluteString] isEqualToString:@"x-twwebview://dom-loaded"]) {
+	if ([[url absoluteString] isEqualToString:@"x-twwebview://dom-loaded"]) {
 		[self _DOMLoaded];
 		return NO;
 	}
@@ -420,13 +421,13 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 	
 	// Only load http or http requests if delegate doesn't care
 	else {
-		NSString *scheme = [[aRequest URL] scheme];
+		NSString *scheme = [url scheme];
 		should = [scheme isEqualToString:@"http"] || [scheme isEqualToString:@"https"];
 	}
 	
 	// Stop if we shouldn't load it
-	if (!should) {
-		return should;
+	if (should == NO) {
+		return NO;
 	}
 	
 	// Starting a new request
@@ -459,8 +460,9 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 	if (_testedDOM == NO) {
 		_testedDOM = YES;
 		
-		// Hat tip Nathan Smith
-		static NSString *testDOM = @"window.addEventListener('load',function(){location.href='x-twwebview://dom-loaded'},false);";
+        // The internal delegate will intercept this load and forward the event to the real delegate
+        // Crazy javascript from http://dean.edwards.name/weblog/2006/06/again
+		static NSString *testDOM = @"var _TWWebViewDOMLoadTimer=setInterval(function(){if(/loaded|complete/.test(document.readyState)){clearInterval(_TWWebViewDOMLoadTimer);location.href='x-twwebview://dom-loaded'}},10);";
 		[self stringByEvaluatingJavaScriptFromString:testDOM];
 	}
 	

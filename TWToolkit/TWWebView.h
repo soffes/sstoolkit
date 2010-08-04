@@ -76,7 +76,7 @@
 
 // TWWebViewDelegate
 - (void)webViewDidStartLoading:(TWWebView *)aWebView;
-- (void)webViewDidLoadDOM:(TWWebView *)aWebView; // Doesn't always fire
+- (void)webViewDidLoadDOM:(TWWebView *)aWebView;
 - (void)webViewDidFinishLoading:(TWWebView *)aWebView;
 
 // UIWebViewDelegate
