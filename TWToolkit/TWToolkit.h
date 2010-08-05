@@ -27,4 +27,5 @@
 #import <TWToolkit/TWDrawingMacros.h>
 
 // Misc
+#import <TWToolkit/TWConcurrentOperation.h>
 #import <TWToolkit/TWKeychain.h>

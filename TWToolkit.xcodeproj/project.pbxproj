@@ -31,6 +31,8 @@
 		B25E614111CFBA34001DA5CD /* UIViewController+TWToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B25E613F11CFBA34001DA5CD /* UIViewController+TWToolkitAdditions.m */; };
 		B270B5EE117C9EDC00944B8A /* UIColor+TWToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B270B5EC117C9EDC00944B8A /* UIColor+TWToolkitAdditions.h */; };
 		B270B5EF117C9EDC00944B8A /* UIColor+TWToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B270B5ED117C9EDC00944B8A /* UIColor+TWToolkitAdditions.m */; };
+		B2752E02120B4A1E003B0087 /* TWConcurrentOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B2752E00120B4A1E003B0087 /* TWConcurrentOperation.h */; };
+		B2752E03120B4A1E003B0087 /* TWConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B2752E01120B4A1E003B0087 /* TWConcurrentOperation.m */; };
 		B27E357D11815C7F006A3499 /* TWCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = B27E357A11815C7F006A3499 /* TWCategories.h */; };
 		B27E357E11815C7F006A3499 /* TWDrawingMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = B27E357B11815C7F006A3499 /* TWDrawingMacros.h */; };
 		B27E357F11815C7F006A3499 /* TWToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = B27E357C11815C7F006A3499 /* TWToolkit.h */; };
@@ -97,6 +99,8 @@
 		B25E613F11CFBA34001DA5CD /* UIViewController+TWToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TWToolkitAdditions.m"; sourceTree = "<group>"; };
 		B270B5EC117C9EDC00944B8A /* UIColor+TWToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TWToolkitAdditions.h"; sourceTree = "<group>"; };
 		B270B5ED117C9EDC00944B8A /* UIColor+TWToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TWToolkitAdditions.m"; sourceTree = "<group>"; };
+		B2752E00120B4A1E003B0087 /* TWConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWConcurrentOperation.h; sourceTree = "<group>"; };
+		B2752E01120B4A1E003B0087 /* TWConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWConcurrentOperation.m; sourceTree = "<group>"; };
 		B27E357A11815C7F006A3499 /* TWCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWCategories.h; sourceTree = "<group>"; };
 		B27E357B11815C7F006A3499 /* TWDrawingMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWDrawingMacros.h; sourceTree = "<group>"; };
 		B27E357C11815C7F006A3499 /* TWToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWToolkit.h; sourceTree = "<group>"; };
@@ -314,6 +318,8 @@
 		B2D3526E11A46A4000B1886F /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				B2752E00120B4A1E003B0087 /* TWConcurrentOperation.h */,
+				B2752E01120B4A1E003B0087 /* TWConcurrentOperation.m */,
 				B2D3526F11A46A4900B1886F /* TWKeychain.h */,
 				B2D3527011A46A4900B1886F /* TWKeychain.m */,
 			);
@@ -374,6 +380,7 @@
 				B2A1128012073D1D0049990A /* TWViewController.h in Headers */,
 				B2A1128612073D240049990A /* TWIndicatorLabel.h in Headers */,
 				B2A1128812073D240049990A /* TWLabel.h in Headers */,
+				B2752E02120B4A1E003B0087 /* TWConcurrentOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +457,7 @@
 				B2A1128112073D1D0049990A /* TWViewController.m in Sources */,
 				B2A1128712073D240049990A /* TWIndicatorLabel.m in Sources */,
 				B2A1128912073D240049990A /* TWLabel.m in Sources */,
+				B2752E03120B4A1E003B0087 /* TWConcurrentOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
