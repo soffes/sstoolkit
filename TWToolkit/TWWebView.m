@@ -422,7 +422,7 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 	// Only load http or http requests if delegate doesn't care
 	else {
 		NSString *scheme = [url scheme];
-		should = [scheme isEqualToString:@"http"] || [scheme isEqualToString:@"https"];
+		should = [scheme isEqualToString:@"http"] || [scheme isEqualToString:@"https"] || [scheme isEqualToString:@"file"];
 	}
 	
 	// Stop if we shouldn't load it
