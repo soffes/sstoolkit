@@ -28,6 +28,7 @@
 	BOOL _scrollEnabled;
 	BOOL _bounces;
 	BOOL _shadowsHidden;
+	BOOL _consoleEnabled;
 	NSString *_persistedCSS;
 }
 
@@ -37,6 +38,7 @@
 @property (nonatomic, assign) BOOL scrollEnabled;
 @property (nonatomic, assign) BOOL bounces;
 @property (nonatomic, assign) BOOL shadowsHidden;
+@property (nonatomic, assign) BOOL consoleEnabled;
 @property (nonatomic, retain, readonly) NSURLRequest *lastRequest;
 
 // UIWebView Properties

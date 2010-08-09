@@ -30,6 +30,7 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 @synthesize scrollEnabled = _scrollEnabled;
 @synthesize bounces = _bounces;
 @synthesize shadowsHidden = _shadowsHidden;
+@synthesize consoleEnabled = _consoleEnabled;
 @synthesize lastRequest = _lastRequest;
 
 #pragma mark NSObject
@@ -59,6 +60,7 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 		_scrollEnabled = YES;
 		_bounces = YES;
 		_shadowsHidden = NO;
+		_consoleEnabled = NO;
 	}
 	return self;
 }
@@ -407,10 +409,16 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)aRequest navigationType:(UIWebViewNavigationType)navigationType {
 	BOOL should = YES;
 	NSURL *url = [aRequest URL];
+	NSString *scheme = [url scheme];
     
 	// Check for DOM load message
-	if ([[url absoluteString] isEqualToString:@"x-twwebview://dom-loaded"]) {
-		[self _DOMLoaded];
+	if ([scheme isEqual:@"x-twwebview"]) {
+		NSString *host = [url host];
+		if ([host isEqual:@"dom-loaded"]) {
+			[self _DOMLoaded];
+		} else if ([host isEqual:@"log"] && _consoleEnabled) {
+			NSLog(@"[TWWebView Console] %@", [[url query] URLDecodedString]);
+		}
 		return NO;
 	}
 	
@@ -421,7 +429,6 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 	
 	// Only load http or http requests if delegate doesn't care
 	else {
-		NSString *scheme = [url scheme];
 		should = [scheme isEqualToString:@"http"] || [scheme isEqualToString:@"https"] || [scheme isEqualToString:@"file"];
 	}
 	
@@ -464,6 +471,11 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
         // Crazy javascript from http://dean.edwards.name/weblog/2006/06/again
 		static NSString *testDOM = @"var _TWWebViewDOMLoadTimer=setInterval(function(){if(/loaded|complete/.test(document.readyState)){clearInterval(_TWWebViewDOMLoadTimer);location.href='x-twwebview://dom-loaded'}},10);";
 		[self stringByEvaluatingJavaScriptFromString:testDOM];
+		
+		// Override console to pass messages to NSLog
+		if (_consoleEnabled) {
+			[self stringByEvaluatingJavaScriptFromString:@"console.log=function(msg){location.href='x-twwebview://log/?'+escape(msg)}"];
+		}
 	}
 	
 	// Forward delegate message
