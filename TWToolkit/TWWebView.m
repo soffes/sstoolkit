@@ -94,7 +94,7 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 #pragma mark Convenience Methods
 
 - (void)loadHTMLString:(NSString *)string {
-	[self loadHTMLString:string baseURL:[NSURL URLWithString:@"http://localhost"]];
+	[self loadHTMLString:string baseURL:nil];
 }
 
 
@@ -367,6 +367,9 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 
 
 - (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL {
+	if (!baseURL) {
+		baseURL = [NSURL URLWithString:@"http://localhost"];
+	}
 	[_webView loadHTMLString:string baseURL:baseURL];
 }
 
@@ -474,7 +477,7 @@ static BOOL TWWebViewIsBackedByScrollerCached = NO;
 		
 		// Override console to pass messages to NSLog
 		if (_consoleEnabled) {
-			[self stringByEvaluatingJavaScriptFromString:@"console.log=function(msg){location.href='x-twwebview://log/?'+escape(msg)}"];
+			[self stringByEvaluatingJavaScriptFromString:@"console.log=function(msg){location.href='x-twwebview://log/?'+escape(msg.toString())}"];
 		}
 	}
 	
