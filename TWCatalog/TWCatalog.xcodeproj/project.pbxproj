@@ -18,6 +18,7 @@
 		B22A28E410B4762200EA6CD9 /* TCHUDViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22A28E310B4762200EA6CD9 /* TCHUDViewDemoViewController.m */; };
 		B22A2A8C10B4916500EA6CD9 /* TWToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B22A2A8B10B4916500EA6CD9 /* TWToolkit.bundle */; };
 		B23A3461117C92F20085E48A /* TCLineViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23A3460117C92F20085E48A /* TCLineViewDemoViewController.m */; };
+		B24521CD1211AF2800E80F78 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24521CC1211AF2800E80F78 /* Security.framework */; };
 		B2503BCC10A90E34009B0E7B /* TCGradientViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2503BCB10A90E34009B0E7B /* TCGradientViewDemoViewController.m */; };
 		B27C60EC107FFD1D00F7FBD7 /* TCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27C60EB107FFD1D00F7FBD7 /* TCRootViewController.m */; };
 		B27C61271080003700F7FBD7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B27C61261080003700F7FBD7 /* Default.png */; };
@@ -65,6 +66,7 @@
 		B22A2A8B10B4916500EA6CD9 /* TWToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TWToolkit.bundle; path = ../Resources/TWToolkit.bundle; sourceTree = SOURCE_ROOT; };
 		B23A345F117C92F20085E48A /* TCLineViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLineViewDemoViewController.h; sourceTree = "<group>"; };
 		B23A3460117C92F20085E48A /* TCLineViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLineViewDemoViewController.m; sourceTree = "<group>"; };
+		B24521CC1211AF2800E80F78 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = iphoneos3.0/System/Library/Frameworks/Security.framework; sourceTree = "<group>"; };
 		B2503BCA10A90E34009B0E7B /* TCGradientViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCGradientViewDemoViewController.h; sourceTree = "<group>"; };
 		B2503BCB10A90E34009B0E7B /* TCGradientViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCGradientViewDemoViewController.m; sourceTree = "<group>"; };
 		B27C60EA107FFD1D00F7FBD7 /* TCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCRootViewController.h; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				B21B85B41067D4A600E5C076 /* libTWToolkit.a in Frameworks */,
 				B21B85B81067D4B500E5C076 /* SystemConfiguration.framework in Frameworks */,
 				B21B86441067D7EA00E5C076 /* libsqlite3.dylib in Frameworks */,
+				B24521CD1211AF2800E80F78 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +142,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				B24521CC1211AF2800E80F78 /* Security.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -377,6 +381,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = TWCatalog;
+				SDKROOT = iphoneos4.0;
 			};
 			name = Debug;
 		};
