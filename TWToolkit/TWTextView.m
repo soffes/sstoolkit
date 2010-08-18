@@ -24,9 +24,9 @@
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:self];
 	
-	self.placeholder = nil;
-	self.placeholderColor = nil;
-    [super dealloc];
+	[_placeholder release];
+	[_placeholderColor release];
+	[super dealloc];
 }
 
 
