@@ -29,6 +29,8 @@
 		B253C1FB10728DC500E0CE10 /* TWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = B253C1F910728DC500E0CE10 /* TWHUDView.m */; };
 		B25E614011CFBA34001DA5CD /* UIViewController+TWToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B25E613E11CFBA34001DA5CD /* UIViewController+TWToolkitAdditions.h */; };
 		B25E614111CFBA34001DA5CD /* UIViewController+TWToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B25E613F11CFBA34001DA5CD /* UIViewController+TWToolkitAdditions.m */; };
+		B26184C7121C6C51009AB3B4 /* TWTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = B26184C5121C6C51009AB3B4 /* TWTextView.h */; };
+		B26184C8121C6C51009AB3B4 /* TWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B26184C6121C6C51009AB3B4 /* TWTextView.m */; };
 		B270B5EE117C9EDC00944B8A /* UIColor+TWToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B270B5EC117C9EDC00944B8A /* UIColor+TWToolkitAdditions.h */; };
 		B270B5EF117C9EDC00944B8A /* UIColor+TWToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B270B5ED117C9EDC00944B8A /* UIColor+TWToolkitAdditions.m */; };
 		B2752E02120B4A1E003B0087 /* TWConcurrentOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B2752E00120B4A1E003B0087 /* TWConcurrentOperation.h */; };
@@ -97,6 +99,8 @@
 		B253C1F910728DC500E0CE10 /* TWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWHUDView.m; sourceTree = "<group>"; };
 		B25E613E11CFBA34001DA5CD /* UIViewController+TWToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TWToolkitAdditions.h"; sourceTree = "<group>"; };
 		B25E613F11CFBA34001DA5CD /* UIViewController+TWToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TWToolkitAdditions.m"; sourceTree = "<group>"; };
+		B26184C5121C6C51009AB3B4 /* TWTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTextView.h; sourceTree = "<group>"; };
+		B26184C6121C6C51009AB3B4 /* TWTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTextView.m; sourceTree = "<group>"; };
 		B270B5EC117C9EDC00944B8A /* UIColor+TWToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TWToolkitAdditions.h"; sourceTree = "<group>"; };
 		B270B5ED117C9EDC00944B8A /* UIColor+TWToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TWToolkitAdditions.m"; sourceTree = "<group>"; };
 		B2752E00120B4A1E003B0087 /* TWConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWConcurrentOperation.h; sourceTree = "<group>"; };
@@ -246,22 +250,24 @@
 		B28517D71063E433008D42E7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B2A1128212073D240049990A /* TWIndicatorLabel.h */,
-				B2A1128312073D240049990A /* TWIndicatorLabel.m */,
-				B2A1128412073D240049990A /* TWLabel.h */,
-				B2A1128512073D240049990A /* TWLabel.m */,
 				B2503B9310A90DA6009B0E7B /* TWGradientView.h */,
 				B2503B9410A90DA6009B0E7B /* TWGradientView.m */,
 				B253C1F810728DC500E0CE10 /* TWHUDView.h */,
 				B253C1F910728DC500E0CE10 /* TWHUDView.m */,
-				B28517DC1063E442008D42E7 /* TWLoadingView.h */,
-				B28517DD1063E442008D42E7 /* TWLoadingView.m */,
-				B24244E411498A480061E255 /* TWTextField.h */,
-				B24244E511498A480061E255 /* TWTextField.m */,
+				B2A1128212073D240049990A /* TWIndicatorLabel.h */,
+				B2A1128312073D240049990A /* TWIndicatorLabel.m */,
+				B2A1128412073D240049990A /* TWLabel.h */,
+				B2A1128512073D240049990A /* TWLabel.m */,
 				B215ADAC1173770F002562A4 /* TWLineView.h */,
 				B215ADAD1173770F002562A4 /* TWLineView.m */,
+				B28517DC1063E442008D42E7 /* TWLoadingView.h */,
+				B28517DD1063E442008D42E7 /* TWLoadingView.m */,
 				B2ED132611813E6600FAAA13 /* TWPieProgressView.h */,
 				B2ED132711813E6600FAAA13 /* TWPieProgressView.m */,
+				B24244E411498A480061E255 /* TWTextField.h */,
+				B24244E511498A480061E255 /* TWTextField.m */,
+				B26184C5121C6C51009AB3B4 /* TWTextView.h */,
+				B26184C6121C6C51009AB3B4 /* TWTextView.m */,
 				B21D2EF41185ED25009F7206 /* TWWebView.h */,
 				B21D2EF51185ED25009F7206 /* TWWebView.m */,
 			);
@@ -381,6 +387,7 @@
 				B2A1128612073D240049990A /* TWIndicatorLabel.h in Headers */,
 				B2A1128812073D240049990A /* TWLabel.h in Headers */,
 				B2752E02120B4A1E003B0087 /* TWConcurrentOperation.h in Headers */,
+				B26184C7121C6C51009AB3B4 /* TWTextView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +465,7 @@
 				B2A1128712073D240049990A /* TWIndicatorLabel.m in Sources */,
 				B2A1128912073D240049990A /* TWLabel.m in Sources */,
 				B2752E03120B4A1E003B0087 /* TWConcurrentOperation.m in Sources */,
+				B26184C8121C6C51009AB3B4 /* TWTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

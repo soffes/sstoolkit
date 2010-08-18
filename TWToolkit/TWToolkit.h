@@ -15,6 +15,7 @@
 #import <TWToolkit/TWLoadingView.h>
 #import <TWToolkit/TWPieProgressView.h>
 #import <TWToolkit/TWTextField.h>
+#import <TWToolkit/TWTextView.h>
 #import <TWToolkit/TWWebView.h>
 
 // View Controllers
