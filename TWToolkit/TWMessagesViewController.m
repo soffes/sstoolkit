@@ -59,7 +59,7 @@ CGFloat kInputHeight = 40.0;
 		
 		// Text field
 		TWTextField *textField = [[TWTextField alloc] initWithFrame:CGRectMake(6.0, 8.0, self.view.frame.size.width - 75.0, 27.0)];
-		textField.background = [[UIImage imageNamed:@"images/message-input-box.png" bundle:@"TWToolkit.bundle"] stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+		textField.background = [[UIImage imageNamed:@"images/TWMessagesViewControllerTextFieldBackground.png" bundle:@"TWToolkit.bundle"] stretchableImageWithLeftCapWidth:12 topCapHeight:0];
 		textField.delegate = self;
 		textField.font = [UIFont systemFontOfSize:15.0];
 		textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -73,7 +73,7 @@ CGFloat kInputHeight = 40.0;
 		_sendButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 		_sendButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
 		_sendButton.titleLabel.shadowOffset = CGSizeMake(0.0, -1.0);
-		[_sendButton setBackgroundImage:[[UIImage imageNamed:@"images/messages-send-button.png" bundle:@"TWToolkit.bundle"] stretchableImageWithLeftCapWidth:12 topCapHeight:0] forState:UIControlStateNormal];
+		[_sendButton setBackgroundImage:[[UIImage imageNamed:@"images/TWMessagesViewControllerSendButtonBackground.png" bundle:@"TWToolkit.bundle"] stretchableImageWithLeftCapWidth:12 topCapHeight:0] forState:UIControlStateNormal];
 		[_sendButton setTitle:@"Send" forState:UIControlStateNormal];
 		[_sendButton setTitleColor:[UIColor colorWithWhite:1.0 alpha:0.4] forState:UIControlStateNormal];
 		[_sendButton setTitleShadowColor:[UIColor colorWithRed:0.325 green:0.463 blue:0.675 alpha:1.0] forState:UIControlStateNormal];

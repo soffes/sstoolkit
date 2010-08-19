@@ -82,7 +82,7 @@
 	_customModalViewController.modalParentViewController = self;
 	
 	if (_vignetteView == nil) {
-		_vignetteView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images/vignette-ipad.png" bundle:@"TWToolkit.bundle"]];
+		_vignetteView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images/TWViewControllerModalVignetteiPad.png" bundle:@"TWToolkit.bundle"]];
 		_vignetteView.alpha = 0.0;
 		_vignetteView.userInteractionEnabled = YES;
 	}
@@ -91,7 +91,8 @@
 	[_vignetteView fadeIn];
 	
 	if (_modalContainerBackgroundView == nil) {
-		_modalContainerBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"form-background.png"]];
+		UIImage *modalBackgroundImage = [[UIImage imageNamed:@"images/TWViewControllerFormBackground.png" bundle:@"TWToolkit.bundle"] stretchableImageWithLeftCapWidth:43.0 topCapHeight:45.0];
+		_modalContainerBackgroundView = [[UIImageView alloc] initWithImage:modalBackgroundImage];
 		_modalContainerBackgroundView.autoresizesSubviews = NO;
 		_modalContainerBackgroundView.userInteractionEnabled = YES;
 	}

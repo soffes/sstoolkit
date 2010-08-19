@@ -27,9 +27,9 @@ static CGFloat kMarginBottom = 2.0;
 + (UIImage *)bubbleImageForMessageStyle:(TWMessageTableViewCellMessageStyle)aMessageStyle {
 	UIImage *image;
 	if (aMessageStyle == TWMessageTableViewCellMessageStyleGreen) {
-		image = [[UIImage imageNamed:@"images/messages-bubble-green.png" bundle:@"TWToolkit.bundle"] stretchableImageWithLeftCapWidth:17 topCapHeight:14];
+		image = [[UIImage imageNamed:@"images/TWMessageTableViewCellBackgroundGreen.png" bundle:@"TWToolkit.bundle"] stretchableImageWithLeftCapWidth:17 topCapHeight:14];
 	} else {
-		image = [[UIImage imageNamed:@"images/messages-bubble-gray.png" bundle:@"TWToolkit.bundle"] stretchableImageWithLeftCapWidth:24 topCapHeight:14];
+		image = [[UIImage imageNamed:@"images/TWMessageTableViewCellBackgroundGray.png" bundle:@"TWToolkit.bundle"] stretchableImageWithLeftCapWidth:24 topCapHeight:14];
 	}
 	return image;
 }

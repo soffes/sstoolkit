@@ -33,6 +33,7 @@ static CGFloat kIndicatorSize = 40.0;
 	[super dealloc];
 }
 
+
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
@@ -63,13 +64,11 @@ static CGFloat kIndicatorSize = 40.0;
 	
 	// Image
 	if (_loading == NO) {
-		UIImage *image = nil;
-		if (_successful == YES) {
-			image = [UIImage imageNamed:@"images/hud-checkmark.png" bundle:@"TWToolkit.bundle"];
-		} else {
-			image = [UIImage imageNamed:@"images/hud-error.png" bundle:@"TWToolkit.bundle"];
-		}
-		[image drawInRect:CGRectMake(round((kHUDSize - 36.0) / 2.0), round((kHUDSize - 40.0) / 2.0), 36.0, 40.0)];
+		[[UIColor whiteColor] set];
+		NSString *dingbat = _successful ? @"✔" : @"✘";
+		CGFloat margin = roundf((kHUDSize - 40.0) / 2.0);
+		CGRect dingbatRect = CGRectMake(margin, margin - 20.0, 40.0, 40.0);
+		[dingbat drawInRect:dingbatRect withFont:[UIFont systemFontOfSize:60.0] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
 	}
 }
 
@@ -77,9 +76,8 @@ static CGFloat kIndicatorSize = 40.0;
 - (void)layoutSubviews {
 	_activityIndicator.frame = CGRectMake(round((kHUDSize - kIndicatorSize) / 2.0), round((kHUDSize - kIndicatorSize) / 2.0), kIndicatorSize, kIndicatorSize);
 	_textLabel.frame = CGRectMake(0.0, round(kHUDSize - 30.0), kHUDSize, 20.0);
-	
-	NSLog(@"layoutSubviews - frame: %@", NSStringFromCGRect(self.frame));
 }
+
 
 #pragma mark UIAlertView
 
@@ -93,7 +91,6 @@ static CGFloat kIndicatorSize = 40.0;
 	self.frame = CGRectMake(round((screenSize.width - biggerSize) / 2.0), 
 							round((screenSize.height - biggerSize) / 2.0) + 10.0, 
 							biggerSize, biggerSize);
-	NSLog(@"Show - frame: %@", NSStringFromCGRect(self.frame));
 }
 
 
@@ -101,6 +98,7 @@ static CGFloat kIndicatorSize = 40.0;
 - (void)setTitle:(NSString *)aTitle {
 	_textLabel.text = aTitle;
 }
+
 
 #pragma mark HUD
 
@@ -171,6 +169,7 @@ static CGFloat kIndicatorSize = 40.0;
 - (void)dismissAnimated:(BOOL)animated {
 	[super dismissWithClickedButtonIndex:0 animated:animated];
 }
+
 
 #pragma mark Setters
 
