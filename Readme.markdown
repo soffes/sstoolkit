@@ -1,83 +1,82 @@
-# TWToolkit
+# SSToolkit
 
-TWToolkit makes life easier. It is made up of various view controllers, views, and categories that we use at [Tasteful Works][] for our apps. Feel free to fork the repo and help us make it better.
+SSToolkit makes life easier. It is made up of various view controllers, views, and categories that I use in all of my apps. Feel free to fork the repo and make it better.
 
 ## Classes
 
 ### View Controllers
 
-* [TWViewController][] - custom modal craziness
-* [TWPickerViewController][] - easily create picker view controllers like the Settings app
-* [TWMessagesViewController][] - simple message UI like the built-in SMS app
+* [SSViewController][] - custom modal craziness
+* [SSPickerViewController][] - easily create picker view controllers like the Settings app
+* [SSMessagesViewController][] - simple message UI like the built-in SMS app
 
 ### Views
 
-* [TWGradientView][] - easily create gradients with optional borders and insets
-* [TWHUDView][] - simple heads-up display
-* [TWLabel][] - ever wanted to align your text to the top or the bottom
-* [TWLineView][] - easily create lines with an inset
-* [TWLoadingView][] - flexible loading view
-* [TWPieProgressView][] - pie chart style progress bar similar to the one in Xcode's status bar
-* [TWTextField][] - simply add edge insets
-* [TWWebView][] - handy delegate additions and control over shadows and scroll (still betay)
+* [SSGradientView][] - easily create gradients with optional borders and insets
+* [SSHUDView][] - simple heads-up display
+* [SSLabel][] - ever wanted to align your text to the top or the bottom
+* [SSLineView][] - easily create lines with an inset
+* [SSLoadingView][] - flexible loading view
+* [SSPieProgressView][] - pie chart style progress bar similar to the one in Xcode's status bar
+* [SSTextField][] - simply add edge insets
+* [SSWebView][] - handy delegate additions and control over shadows and scroll (still betay)
 
 ### Categories
 
-[Several categories](http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWCategories.h) are included and used throughout TWToolkit.
+[Several categories](http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSCategories.h) are included and used throughout SSToolkit.
 
-## Adding TWToolkit to your project
+## Adding SSToolkit to your project
 
 1. Run the following command to add the submodule. Be sure you have been added to the project on GitHub.
 
-        git submodule add git://github.com/tastefulworks/twtoolkit.git Frameworks/TWToolkit
+        git submodule add git://github.com/samsoffes/sstoolkit.git Frameworks/SSToolkit
 
-2. In Finder, navigate to the `Frameworks/TWToolkit` folder and drag the `xcodeproj` file into the `Frameworks` folder in your Xcode project.
+2. In Finder, navigate to the `Frameworks/SSToolkit` folder and drag the `xcodeproj` file into the `Frameworks` folder in your Xcode project.
 
-3. In Finder, drag `TWToolkit.bundle` located in `Frameworks/TWToolkit/Resources` into the `Resources` folder in your Xcode project.
+3. In Finder, drag `SSToolkit.bundle` located in `Frameworks/SSToolkit/Resources` into the `Resources` folder in your Xcode project.
 
-4. Select the TWToolkit Xcode project from the sidebar in Xcode. In the file browser on the right in Xcode, click the checkbox next to `libTWToolkit.a`. (If you don't see the file browser, hit Command-Shift-E to toggle it on.)
+4. Select the SSToolkit Xcode project from the sidebar in Xcode. In the file browser on the right in Xcode, click the checkbox next to `libSSToolkit.a`. (If you don't see the file browser, hit Command-Shift-E to toggle it on.)
 
 5. Select your target from the sidebar and open Get Info (Command-I).
 
 6. Choose the *General* tab from the top.
 
-7. Under the *Direct Dependencies* area, click the plus button, select *TWToolkit* from the menu, and choose *Add Target*.
+7. Under the *Direct Dependencies* area, click the plus button, select *SSToolkit* from the menu, and choose *Add Target*.
 
 8. Choose the build tab from the top of the window. Make sure the configuration dropdown at the top is set to *All Configurations*.
 
-9. Add `Frameworks/TWToolkit` to *Header Search Path* (do not click the *Recursive* checkbox).
+9. Add `Frameworks/SSToolkit` to *Header Search Path* (do not click the *Recursive* checkbox).
 
 10. Add `-all_load -ObjC` to *Other Linker Flags*.
 
 ## Usage
 
-To use TWToolkit, simply add the following line to your source file.
+To use SSToolkit, simply add the following line to your source file.
 
-    #import <TWToolkit/TWToolkit.h>
+    #import <SSToolkit/SSToolkit.h>
 
 You can also import individual files instead of the whole framework (for faster compile times) by doing something like:
 
-    #import <TWToolkit/TWLoadingView.h>
+    #import <SSToolkit/SSLoadingView.h>
 
 ## Demo
 
-[TWCatalog][] is include with TWToolkit. This is a sample iPhone application to demonstrate the various features of TWToolkit.
+[SSCatalog][] is include with SSToolkit. This is a sample iPhone application to demonstrate the various features of SSToolkit.
 
 ## Links
 
-* [Known bugs](http://github.com/tastefulworks/twtoolkit/issues/labels/Bug)
-* [Future features](http://github.com/tastefulworks/twtoolkit/issues/labels/Enhancement)
+* [Known bugs](http://github.com/samsoffes/sstoolkit/issues/labels/Bug)
+* [Future features](http://github.com/samsoffes/sstoolkit/issues/labels/Enhancement)
 
-[Tasteful Works]: http://tastefulworks.com/
-[TWViewController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWViewController.h
-[TWPickerViewController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWPickerViewController.h
-[TWMessagesViewController]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWMessagesViewController.h
-[TWHUDView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWHUDView.h
-[TWGradientView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWGradientView.h
-[TWLabel]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLabel.h
-[TWLineView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLineView.h
-[TWLoadingView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWLoadingView.h
-[TWPieProgressView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWPieProgressView.h
-[TWTextField]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWTextField.h
-[TWWebView]: http://github.com/tastefulworks/twtoolkit/blob/master/TWToolkit/TWWebView.h
-[TWCatalog]: https://github.com/tastefulworks/twtoolkit/tree/master/TWCatalog/
+[SSViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSViewController.h
+[SSPickerViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSPickerViewController.h
+[SSMessagesViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSMessagesViewController.h
+[SSHUDView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSHUDView.h
+[SSGradientView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSGradientView.h
+[SSLabel]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSLabel.h
+[SSLineView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSLineView.h
+[SSLoadingView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSLoadingView.h
+[SSPieProgressView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSPieProgressView.h
+[SSTextField]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTextField.h
+[SSWebView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSWebView.h
+[SSCatalog]: https://github.com/samsoffes/sstoolkit/tree/master/SSCatalog/

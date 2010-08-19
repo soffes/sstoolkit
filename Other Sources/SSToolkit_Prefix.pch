@@ -1,0 +1,13 @@
+//
+//  SSToolkit_Prefix.pch
+//  SSToolkit
+//
+//  Created by Sam Soffes on 9/9/09.
+//  Copyright 2009 Sam Soffes, Inc. All rights reserved.
+//
+//	Prefix header for all source files of the 'SSToolkit' target in the 'SSToolkit' project.
+//
+
+#ifdef __OBJC__
+	#import <UIKit/UIKit.h>
+#endif

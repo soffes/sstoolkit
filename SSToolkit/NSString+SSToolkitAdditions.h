@@ -1,0 +1,31 @@
+//
+//  NSString+SSToolkitAdditions.h
+//  SSToolkit
+//
+//  Created by Sam Soffes on 6/22/09.
+//  Copyright 2009 Sam Soffes, Inc. All rights reserved.
+//
+
+@interface NSString (SSToolkitAdditions)
+
+- (BOOL)containsString:(NSString *)string;
+- (NSString *)MD5Sum;
+- (NSComparisonResult)compareToVersionString:(NSString *)version;
+
+// Localization
++ (NSString *)localizedString:(NSString*)key;
+
+// HTML
+- (NSString *)escapeHTML;
+- (NSString *)unescapeHTML;
+
+// URL
+- (NSString *)URLEncodedString;
+- (NSString *)URLEncodedParameterString;
+- (NSString *)URLDecodedString;
+- (NSString *)removeQuotes;
+
+// Base64
+- (NSString *)base64EncodedString;
+
+@end
