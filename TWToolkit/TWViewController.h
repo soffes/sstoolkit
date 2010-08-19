@@ -13,15 +13,19 @@
 @interface TWViewController : UIViewController <TWModalViewController> {
 
 	TWViewController *_modalParentViewController;
-	
 	id<TWModalViewController> _customModalViewController;
+	BOOL _dismissCustomModalOnVignetteTap;
+	CGSize _contentSizeForViewInCustomModal;
+	
 	UIView *_modalContainerView;
 	UIImageView *_modalContainerBackgroundView;
-	UIImageView *_vignetteView;
+	UIButton *_vignetteButton;
 }
 
 @property (nonatomic, assign) TWViewController *modalParentViewController;
 @property (nonatomic, retain, readonly) UIViewController *customModalViewController;
+@property (nonatomic, assign) BOOL dismissCustomModalOnVignetteTap;
+@property (nonatomic, assign) CGSize contentSizeForViewInCustomModal;
 
 - (void)layoutViews;
 - (void)layoutViewsWithOrientation:(UIInterfaceOrientation)orientation;

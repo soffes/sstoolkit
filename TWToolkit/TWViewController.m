@@ -11,6 +11,9 @@
 #import "UIView+TWToolkitAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 
+static CGFloat kTWViewControllerModalPadding = 22.0;
+#define kTWViewControllerDefaultContentSizeForViewInCustomModal CGSizeMake(540.0, 620.0)
+
 @interface TWViewController (PrivateMethods)
 - (void)_cleanUpModal;
 - (void)_presentModalAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
@@ -23,8 +26,19 @@
 
 @synthesize modalParentViewController = _modalParentViewController;
 @synthesize customModalViewController = _customModalViewController;
+@synthesize dismissCustomModalOnVignetteTap = _dismissCustomModalOnVignetteTap;
+@synthesize contentSizeForViewInCustomModal = _contentSizeForViewInCustomModal;
 
 #pragma mark NSObject
+
+- (id)init {
+	if ((self = [super init])) {
+		_dismissCustomModalOnVignetteTap = NO;
+		_contentSizeForViewInCustomModal = kTWViewControllerDefaultContentSizeForViewInCustomModal;
+	}
+	return self;
+}
+
 
 - (void)dealloc {
 	[self _cleanUpModal];
@@ -53,21 +67,27 @@
 
 
 - (void)layoutViewsWithOrientation:(UIInterfaceOrientation)orientation {
-	CGSize size;
+	CGSize screenSize;
+	
+	// TODO: Make this not iPad specific
 	
 	// Landscape
 	if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
-		size = CGSizeMake(1024.0, 768.0);
-		_vignetteView.frame = CGRectMake(0.0, -128.0, 1024.0, 1024.0);
+		screenSize = CGSizeMake(1024.0, 768.0);
+		_vignetteButton.frame = CGRectMake(0.0, -128.0, 1024.0, 1024.0);
 	}
 	
 	// Portrait
 	else {
-		size = CGSizeMake(768.0, 1024.0);
-		_vignetteView.frame = CGRectMake(-128.0, 0.0, 1024.0, 1024.0);
+		screenSize = CGSizeMake(768.0, 1024.0);
+		_vignetteButton.frame = CGRectMake(-128.0, 0.0, 1024.0, 1024.0);
 	}
 	
-	_modalContainerBackgroundView.frame = CGRectMake(roundf(size.width - 554.0) / 2.0, (roundf(size.height - 634.0) / 2.0), 554.0, 634.0);
+	CGSize modalSize = kTWViewControllerDefaultContentSizeForViewInCustomModal;
+	if ([_customModalViewController respondsToSelector:@selector(contentSizeForViewInCustomModal)]) {
+		modalSize = [_customModalViewController contentSizeForViewInCustomModal];
+	}
+	_modalContainerBackgroundView.frame = CGRectMake(roundf(screenSize.width - modalSize.width - kTWViewControllerModalPadding - kTWViewControllerModalPadding) / 2.0, (roundf(screenSize.height - modalSize.height - kTWViewControllerModalPadding - kTWViewControllerModalPadding) / 2.0), modalSize.width + kTWViewControllerModalPadding + kTWViewControllerModalPadding, modalSize.height + kTWViewControllerModalPadding + kTWViewControllerModalPadding);
 }
 
 #pragma mark Modal
@@ -81,14 +101,24 @@
 	
 	_customModalViewController.modalParentViewController = self;
 	
-	if (_vignetteView == nil) {
-		_vignetteView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images/TWViewControllerModalVignetteiPad.png" bundle:@"TWToolkit.bundle"]];
-		_vignetteView.alpha = 0.0;
-		_vignetteView.userInteractionEnabled = YES;
+	CGSize modalSize = kTWViewControllerDefaultContentSizeForViewInCustomModal;
+	if ([_customModalViewController respondsToSelector:@selector(contentSizeForViewInCustomModal)]) {
+		modalSize = [_customModalViewController contentSizeForViewInCustomModal];
 	}
 	
-	[self.view addSubview:_vignetteView];
-	[_vignetteView fadeIn];
+	if (_vignetteButton == nil) {
+		_vignetteButton = [[UIButton alloc] initWithFrame:CGRectZero];
+		[_vignetteButton setImage:[UIImage imageNamed:@"images/TWViewControllerModalVignetteiPad.png" bundle:@"TWToolkit.bundle"] forState:UIControlStateNormal];
+		_vignetteButton.adjustsImageWhenHighlighted = NO;
+		_vignetteButton.alpha = 0.0;
+		
+		if ([_customModalViewController dismissCustomModalOnVignetteTap] == YES) {
+			[_vignetteButton addTarget:self action:@selector(dismissCustomModalViewController) forControlEvents:UIControlEventTouchUpInside];
+		}
+	}
+	
+	[self.view addSubview:_vignetteButton];
+	[_vignetteButton fadeIn];
 	
 	if (_modalContainerBackgroundView == nil) {
 		UIImage *modalBackgroundImage = [[UIImage imageNamed:@"images/TWViewControllerFormBackground.png" bundle:@"TWToolkit.bundle"] stretchableImageWithLeftCapWidth:43.0 topCapHeight:45.0];
@@ -100,7 +130,7 @@
 	[self.view addSubview:_modalContainerBackgroundView];
 	
 	if (_modalContainerView == nil) {
-		_modalContainerView = [[UIView alloc] initWithFrame:CGRectMake(7.0, 7.0, 540.0, 620.0)];
+		_modalContainerView = [[UIView alloc] initWithFrame:CGRectMake(kTWViewControllerModalPadding, kTWViewControllerModalPadding, modalSize.width, modalSize.height)];
 		_modalContainerView.layer.cornerRadius = 5.0;
 		_modalContainerView.clipsToBounds = YES;
 		[_modalContainerBackgroundView addSubview:_modalContainerView];
@@ -108,16 +138,17 @@
 	
 	UIView *modalView = _customModalViewController.view;
 	[_modalContainerView addSubview:modalView];
-	modalView.frame = CGRectMake(0.0, 0.0, 540.0, 620.0);
+	modalView.frame = CGRectMake(0.0, 0.0, modalSize.width, modalSize.height);
 	
-	CGSize size;
+	CGSize screenSize;
 	if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft || self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-		size = CGSizeMake(1024.0, 768.0);
+		screenSize = CGSizeMake(1024.0, 768.0);
 	} else {
-		size = CGSizeMake(768.0, 1024.0);
+		screenSize = CGSizeMake(768.0, 1024.0);
 	}
 	
-	_modalContainerBackgroundView.frame = CGRectMake(roundf(size.width - 554.0) / 2.0, (roundf(size.height - 634.0) / 2.0) + size.height, 554.0, 634.0);
+	_modalContainerBackgroundView.frame = CGRectMake(roundf(screenSize.width - modalSize.width - kTWViewControllerModalPadding - kTWViewControllerModalPadding) / 2.0, (roundf(screenSize.height - modalSize.height - kTWViewControllerModalPadding - kTWViewControllerModalPadding) / 2.0) + screenSize.height, modalSize.width + kTWViewControllerModalPadding + kTWViewControllerModalPadding, modalSize.height + kTWViewControllerModalPadding + kTWViewControllerModalPadding);
+	
 	
 	if ([_customModalViewController respondsToSelector:@selector(viewWillAppear:)]) {
 		[_customModalViewController viewWillAppear:YES];
@@ -133,19 +164,25 @@
 
 
 - (void)dismissCustomModalViewController {
-	CGSize size;
+	CGSize screenSize;
 	if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft || self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-		size = CGSizeMake(1024.0, 768.0);
+		screenSize = CGSizeMake(1024.0, 768.0);
 	} else {
-		size = CGSizeMake(768.0, 1024.0);
+		screenSize = CGSizeMake(768.0, 1024.0);
 	}
+	
+	CGSize modalSize = kTWViewControllerDefaultContentSizeForViewInCustomModal;
+	if ([_customModalViewController respondsToSelector:@selector(contentSizeForViewInCustomModal)]) {
+		modalSize = [_customModalViewController contentSizeForViewInCustomModal];
+	}
+	
 	
 	[UIView beginAnimations:@"com.tastefulworks.twviewcontroller.dismiss-modal" context:self];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	[UIView setAnimationDuration:0.4];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(_dismissModalAnimationDidStop:finished:context:)];
-	_modalContainerBackgroundView.frame = CGRectMake(roundf(size.width - 554.0) / 2.0, (roundf(size.height - 634.0) / 2.0) + size.height, 554.0, 634.0);
+	_modalContainerBackgroundView.frame = CGRectMake(roundf(screenSize.width - modalSize.width - kTWViewControllerModalPadding - kTWViewControllerModalPadding) / 2.0, (roundf(screenSize.height - modalSize.height - kTWViewControllerModalPadding - kTWViewControllerModalPadding) / 2.0) + screenSize.height, modalSize.width + kTWViewControllerModalPadding + kTWViewControllerModalPadding, modalSize.height + kTWViewControllerModalPadding + kTWViewControllerModalPadding);
 	[UIView commitAnimations];
 	
 	[UIView beginAnimations:@"com.tastefulworks.twviewcontroller.remove-vignette" context:self];
@@ -153,7 +190,7 @@
 	[UIView setAnimationDelay:0.2];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(_dismissVignetteAnimationDidStop:finished:context:)];
-	_vignetteView.alpha = 0.0;
+	_vignetteButton.alpha = 0.0;
 	[UIView commitAnimations];	
 }
 
@@ -164,9 +201,9 @@
 	[_modalContainerBackgroundView release];
 	_modalContainerBackgroundView = nil;
 	
-	[_vignetteView removeFromSuperview];
-	[_vignetteView release];
-	_vignetteView = nil;
+	[_vignetteButton removeFromSuperview];
+	[_vignetteButton release];
+	_vignetteButton = nil;
 	
 	[_customModalViewController release];
 	_customModalViewController = nil;

@@ -18,6 +18,9 @@
 
 @optional
 
+- (BOOL)dismissCustomModalOnVignetteTap;
+- (CGSize)contentSizeForViewInCustomModal;
+
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewDidAppear:(BOOL)animated;
 - (void)viewWillDisappear:(BOOL)animated;
