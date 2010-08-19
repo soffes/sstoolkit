@@ -24,6 +24,9 @@
 #import <SSToolkit/SSViewController.h>
 #import <SSToolkit/SSModalViewController.h>
 
+// Cells
+#import <SSToolkit/SSTableViewCell.h>
+
 // Drawing
 #import <SSToolkit/SSDrawingMacros.h>
 
