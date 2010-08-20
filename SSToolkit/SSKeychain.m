@@ -3,7 +3,7 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 5/19/10.
-//  Copyright 2009 Sam Soffes, Inc. All rights reserved.
+//  Copyright 2009 Sam Soffes. All rights reserved.
 //
 
 #import "SSKeychain.h"

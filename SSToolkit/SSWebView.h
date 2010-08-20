@@ -3,7 +3,7 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 4/26/10.
-//  Copyright 2010 Sam Soffes, Inc. All rights reserved.
+//  Copyright 2010 Sam Soffes. All rights reserved.
 //
 //  This class is a wrapper for UIWebView that makes many common
 //  and usually difficult tasks very simple. Note that this class

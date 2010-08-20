@@ -437,7 +437,7 @@
 				DSTROOT = /tmp/TWToolkit.dst;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Other Sources/TWToolkit_Prefix.pch";
+				GCC_PREFIX_HEADER = "Other Sources/SSToolkit_Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INSTALL_PATH = /usr/local/lib;
 				LD_OPENMP_FLAGS = "-fopenmp -lxml2";

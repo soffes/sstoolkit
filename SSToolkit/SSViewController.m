@@ -111,10 +111,6 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 		[_vignetteButton setImage:[UIImage imageNamed:@"images/SSViewControllerModalVignetteiPad.png" bundle:@"SSToolkit.bundle"] forState:UIControlStateNormal];
 		_vignetteButton.adjustsImageWhenHighlighted = NO;
 		_vignetteButton.alpha = 0.0;
-		
-		if ([_customModalViewController dismissCustomModalOnVignetteTap] == YES) {
-			[_vignetteButton addTarget:self action:@selector(dismissCustomModalViewController) forControlEvents:UIControlEventTouchUpInside];
-		}
 	}
 	
 	[self.view addSubview:_vignetteButton];
@@ -216,6 +212,10 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 - (void)_presentModalAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
 	if ([_customModalViewController respondsToSelector:@selector(viewDidAppear:)]) {
 		[_customModalViewController viewDidAppear:YES];
+	}
+	
+	if ([_customModalViewController respondsToSelector:@selector(dismissCustomModalOnVignetteTap)] && [_customModalViewController dismissCustomModalOnVignetteTap] == YES) {
+		[_vignetteButton addTarget:self action:@selector(dismissCustomModalViewController) forControlEvents:UIControlEventTouchUpInside];
 	}
 }
 

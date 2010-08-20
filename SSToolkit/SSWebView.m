@@ -3,7 +3,7 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 4/26/10.
-//  Copyright 2010 Sam Soffes, Inc. All rights reserved.
+//  Copyright 2010 Sam Soffes. All rights reserved.
 //
 
 #import "SSWebView.h"

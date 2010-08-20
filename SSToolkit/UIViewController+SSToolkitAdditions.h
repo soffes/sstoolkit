@@ -3,7 +3,7 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 6/21/10.
-//  Copyright 2010 Sam Soffes, Inc. All rights reserved.
+//  Copyright 2010 Sam Soffes. All rights reserved.
 //
 
 @interface UIViewController (SSToolkitAdditions)
