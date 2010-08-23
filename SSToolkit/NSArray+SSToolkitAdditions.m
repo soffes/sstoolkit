@@ -10,6 +10,16 @@
 
 @implementation NSArray (SSToolkitAdditions)
 
+- (id)firstObject {
+	return [self objectAtIndex:0];
+}
+
+
+- (id)randomObject {
+	return [self objectAtIndex:arc4random() % [self count]];
+}
+
+
 - (NSArray *)shuffledArray {
 	
 	NSMutableArray *array = [NSMutableArray arrayWithCapacity:[self count]];
