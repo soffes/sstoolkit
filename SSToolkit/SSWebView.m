@@ -415,7 +415,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	NSString *scheme = [url scheme];
     
 	// Check for DOM load message
-	if ([scheme isEqual:@"x-twwebview"]) {
+	if ([scheme isEqual:@"x-sswebview"]) {
 		NSString *host = [url host];
 		if ([host isEqual:@"dom-loaded"]) {
 			[self _DOMLoaded];
@@ -472,12 +472,12 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 		
         // The internal delegate will intercept this load and forward the event to the real delegate
         // Crazy javascript from http://dean.edwards.name/weblog/2006/06/again
-		static NSString *testDOM = @"var _SSWebViewDOMLoadTimer=setInterval(function(){if(/loaded|complete/.test(document.readyState)){clearInterval(_SSWebViewDOMLoadTimer);location.href='x-twwebview://dom-loaded'}},10);";
+		static NSString *testDOM = @"var _SSWebViewDOMLoadTimer=setInterval(function(){if(/loaded|complete/.test(document.readyState)){clearInterval(_SSWebViewDOMLoadTimer);location.href='x-sswebview://dom-loaded'}},10);";
 		[self stringByEvaluatingJavaScriptFromString:testDOM];
 		
 		// Override console to pass messages to NSLog
 		if (_consoleEnabled) {
-			[self stringByEvaluatingJavaScriptFromString:@"console.log=function(msg){location.href='x-twwebview://log/?'+escape(msg.toString())}"];
+			[self stringByEvaluatingJavaScriptFromString:@"console.log=function(msg){location.href='x-sswebview://log/?'+escape(msg.toString())}"];
 		}
 	}
 	

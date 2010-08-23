@@ -9,7 +9,7 @@
 #import "SSKeychain.h"
 #import <Security/Security.h>
 
-NSString *SSKeychainErrorDomain = @"com.tastefulworks.twkeychain";
+NSString *SSKeychainErrorDomain = @"com.samsoffes.sskeychain";
 static SSKeychain *kDefaultKeychain = nil;
 
 @interface SSKeychain (PrivateMethods)

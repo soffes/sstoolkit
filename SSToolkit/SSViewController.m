@@ -93,6 +93,11 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 #pragma mark Modal
 
 - (void)presentCustomModalViewController:(id<SSModalViewController>)viewController {
+	[self presentCustomModalViewController:viewController animated:YES];
+}
+
+
+- (void)presentCustomModalViewController:(id<SSModalViewController>)viewController animated:(BOOL)animated {
 	_customModalViewController = [viewController retain];
 	
 	if (_customModalViewController == nil) {
@@ -147,19 +152,35 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 	
 	
 	if ([_customModalViewController respondsToSelector:@selector(viewWillAppear:)]) {
-		[_customModalViewController viewWillAppear:YES];
+		[_customModalViewController viewWillAppear:animated];
 	}
-	[UIView beginAnimations:@"com.tastefulworks.twviewcontroller.present-modal" context:self];
-	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-	[UIView setAnimationDuration:0.5];
-	[UIView setAnimationDelegate:self];
-	[UIView setAnimationDidStopSelector:@selector(_presentModalAnimationDidStop:finished:context:)];
+	
+	[self customModalDidAppear:animated];
+	
+	if (animated) {
+		[UIView beginAnimations:@"com.samsoffes.ssviewcontroller.present-modal" context:self];
+		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+		[UIView setAnimationDuration:0.5];
+		[UIView setAnimationDelegate:self];
+		[UIView setAnimationDidStopSelector:@selector(_presentModalAnimationDidStop:finished:context:)];
+	}
+	
 	[self layoutViewsWithOrientation:self.interfaceOrientation];
-	[UIView commitAnimations];
+	
+	if (animated) {
+		[UIView commitAnimations];
+	} else {
+		[self _presentModalAnimationDidStop:nil finished:nil context:nil];
+	}
 }
 
 
 - (void)dismissCustomModalViewController {
+	[self dismissCustomModalViewController:YES];
+}
+
+
+- (void)dismissCustomModalViewController:(BOOL)animated {
 	CGSize screenSize;
 	if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft || self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
 		screenSize = CGSizeMake(1024.0, 768.0);
@@ -172,23 +193,63 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 		modalSize = [_customModalViewController contentSizeForViewInCustomModal];
 	}
 	
+	if ([_customModalViewController respondsToSelector:@selector(viewWillDisappear:)]) {
+		[_customModalViewController viewWillDisappear:animated];
+	}
 	
-	[UIView beginAnimations:@"com.tastefulworks.twviewcontroller.dismiss-modal" context:self];
-	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-	[UIView setAnimationDuration:0.4];
-	[UIView setAnimationDelegate:self];
-	[UIView setAnimationDidStopSelector:@selector(_dismissModalAnimationDidStop:finished:context:)];
+	[self customModalWillDisappear:animated];	
+	
+	if (animated) {
+		[UIView beginAnimations:@"com.samsoffes.ssviewcontroller.dismiss-modal" context:self];
+		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+		[UIView setAnimationDuration:0.4];
+		[UIView setAnimationDelegate:self];
+		[UIView setAnimationDidStopSelector:@selector(_dismissModalAnimationDidStop:finished:context:)];
+	} else {
+		[self _dismissModalAnimationDidStop:nil finished:nil context:nil];
+	}
+	
 	_modalContainerBackgroundView.frame = CGRectMake(roundf(screenSize.width - modalSize.width - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0, (roundf(screenSize.height - modalSize.height - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0) + screenSize.height, modalSize.width + kSSViewControllerModalPadding + kSSViewControllerModalPadding, modalSize.height + kSSViewControllerModalPadding + kSSViewControllerModalPadding);
-	[UIView commitAnimations];
 	
-	[UIView beginAnimations:@"com.tastefulworks.twviewcontroller.remove-vignette" context:self];
-	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-	[UIView setAnimationDelay:0.2];
-	[UIView setAnimationDelegate:self];
-	[UIView setAnimationDidStopSelector:@selector(_dismissVignetteAnimationDidStop:finished:context:)];
+	if (animated) {
+		[UIView commitAnimations];
+	
+		[UIView beginAnimations:@"com.samsoffes.ssviewcontroller.remove-vignette" context:self];
+		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+		[UIView setAnimationDelay:0.2];
+		[UIView setAnimationDelegate:self];
+		[UIView setAnimationDidStopSelector:@selector(_dismissVignetteAnimationDidStop:finished:context:)];
+	}
+	
 	_vignetteButton.alpha = 0.0;
-	[UIView commitAnimations];	
+	
+	if (animated) {
+		[UIView commitAnimations];
+	} else {
+		[self _dismissVignetteAnimationDidStop:nil finished:nil context:nil];
+	}
 }
+
+
+- (void)customModalWillAppear:(BOOL)animated{
+	// Can be overridden by a subclass
+}
+
+
+- (void)customModalDidAppear:(BOOL)animated{
+	// Can be overridden by a subclass
+}
+
+
+- (void)customModalWillDisappear:(BOOL)animated {
+	// Can be overridden by a subclass
+}
+
+
+- (void)customModalDidDisappear:(BOOL)animated {
+	// Can be overridden by a subclass
+}
+
 
 #pragma mark Private Methods
 
@@ -210,9 +271,13 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 
 
 - (void)_presentModalAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+	BOOL animated = (animationID != nil);
+	
 	if ([_customModalViewController respondsToSelector:@selector(viewDidAppear:)]) {
-		[_customModalViewController viewDidAppear:YES];
+		[_customModalViewController viewDidAppear:animated];
 	}
+	
+	[self customModalDidAppear:animated];
 	
 	if ([_customModalViewController respondsToSelector:@selector(dismissCustomModalOnVignetteTap)] && [_customModalViewController dismissCustomModalOnVignetteTap] == YES) {
 		[_vignetteButton addTarget:self action:@selector(dismissCustomModalViewController) forControlEvents:UIControlEventTouchUpInside];
@@ -221,9 +286,13 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 
 
 - (void)_dismissModalAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+	BOOL animated = (animationID != nil);
+	
 	if ([_customModalViewController respondsToSelector:@selector(viewDidDisappear:)]) {
-		[_customModalViewController viewDidDisappear:YES];
+		[_customModalViewController viewDidDisappear:animated];
 	}
+	
+	[self customModalDidDisappear:animated];
 }
 
 

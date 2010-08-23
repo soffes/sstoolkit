@@ -215,8 +215,31 @@
 		B24E9E04121DC29A0085F81E /* SSToolkit */ = {
 			isa = PBXGroup;
 			children = (
-				B2E0376E121DCCB500D02434 /* SSTableViewCell.h */,
-				B2E0376F121DCCB500D02434 /* SSTableViewCell.m */,
+				B24E9E30121DC29A0085F81E /* SSToolkit.h */,
+				B24E9E0F121DC29A0085F81E /* SSCategories.h */,
+				B2601A76122307B1005506D5 /* Views */,
+				B2601A78122307CD005506D5 /* View Controllers */,
+				B2601A791223086D005506D5 /* Controls */,
+				B2601A88122308C0005506D5 /* Cells */,
+				B2601A8A122308E2005506D5 /* Misc */,
+				B2601A6F12230794005506D5 /* Categories */,
+				B2601A8B12230906005506D5 /* Private */,
+			);
+			path = SSToolkit;
+			sourceTree = "<group>";
+		};
+		B2601A6F12230794005506D5 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				B2601A711223079A005506D5 /* Foundation */,
+				B2601A72122307A2005506D5 /* UIKit */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		B2601A711223079A005506D5 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
 				B24E9E05121DC29A0085F81E /* NSArray+SSToolkitAdditions.h */,
 				B24E9E06121DC29A0085F81E /* NSArray+SSToolkitAdditions.m */,
 				B24E9E07121DC29A0085F81E /* NSData+SSToolkitAdditions.h */,
@@ -227,45 +250,13 @@
 				B24E9E0C121DC29A0085F81E /* NSString+SSToolkitAdditions.m */,
 				B24E9E0D121DC29A0085F81E /* NSURL+SSToolkitAdditions.h */,
 				B24E9E0E121DC29A0085F81E /* NSURL+SSToolkitAdditions.m */,
-				B24E9E0F121DC29A0085F81E /* SSCategories.h */,
-				B24E9E10121DC29A0085F81E /* SSConcurrentOperation.h */,
-				B24E9E11121DC29A0085F81E /* SSConcurrentOperation.m */,
-				B24E9E12121DC29A0085F81E /* SSDrawingMacros.h */,
-				B21D2DFF121F2FE500161E66 /* SSDrawingMacros.m */,
-				B24E9E13121DC29A0085F81E /* SSGradientView.h */,
-				B24E9E14121DC29A0085F81E /* SSGradientView.m */,
-				B24E9E15121DC29A0085F81E /* SSHUDView.h */,
-				B24E9E16121DC29A0085F81E /* SSHUDView.m */,
-				B24E9E17121DC29A0085F81E /* SSIndicatorLabel.h */,
-				B24E9E18121DC29A0085F81E /* SSIndicatorLabel.m */,
-				B24E9E19121DC29A0085F81E /* SSKeychain.h */,
-				B24E9E1A121DC29A0085F81E /* SSKeychain.m */,
-				B24E9E1B121DC29A0085F81E /* SSLabel.h */,
-				B24E9E1C121DC29A0085F81E /* SSLabel.m */,
-				B24E9E1D121DC29A0085F81E /* SSLineView.h */,
-				B24E9E1E121DC29A0085F81E /* SSLineView.m */,
-				B24E9E1F121DC29A0085F81E /* SSLoadingView.h */,
-				B24E9E20121DC29A0085F81E /* SSLoadingView.m */,
-				B24E9E21121DC29A0085F81E /* SSMessagesViewController.h */,
-				B24E9E22121DC29A0085F81E /* SSMessagesViewController.m */,
-				B24E9E23121DC29A0085F81E /* SSMessageTableViewCell.h */,
-				B24E9E24121DC29A0085F81E /* SSMessageTableViewCell.m */,
-				B24E9E25121DC29A0085F81E /* SSMessageTableViewCellBubbleView.h */,
-				B24E9E26121DC29A0085F81E /* SSMessageTableViewCellBubbleView.m */,
-				B24E9E27121DC29A0085F81E /* SSModalViewController.h */,
-				B24E9E28121DC29A0085F81E /* SSPickerViewController.h */,
-				B24E9E29121DC29A0085F81E /* SSPickerViewController.m */,
-				B24E9E2A121DC29A0085F81E /* SSPieProgressView.h */,
-				B24E9E2B121DC29A0085F81E /* SSPieProgressView.m */,
-				B24E9E2C121DC29A0085F81E /* SSTextField.h */,
-				B24E9E2D121DC29A0085F81E /* SSTextField.m */,
-				B24E9E2E121DC29A0085F81E /* SSTextView.h */,
-				B24E9E2F121DC29A0085F81E /* SSTextView.m */,
-				B24E9E30121DC29A0085F81E /* SSToolkit.h */,
-				B24E9E31121DC29A0085F81E /* SSViewController.h */,
-				B24E9E32121DC29A0085F81E /* SSViewController.m */,
-				B24E9E33121DC29A0085F81E /* SSWebView.h */,
-				B24E9E34121DC29A0085F81E /* SSWebView.m */,
+			);
+			name = Foundation;
+			sourceTree = "<group>";
+		};
+		B2601A72122307A2005506D5 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
 				B24E9E35121DC29A0085F81E /* UIColor+SSToolkitAdditions.h */,
 				B24E9E36121DC29A0085F81E /* UIColor+SSToolkitAdditions.m */,
 				B24E9E37121DC29A0085F81E /* UIControl+SSToolkitAdditions.h */,
@@ -281,7 +272,88 @@
 				B24E9E41121DC29A0085F81E /* UIViewController+SSToolkitAdditions.h */,
 				B24E9E42121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m */,
 			);
-			path = SSToolkit;
+			name = UIKit;
+			sourceTree = "<group>";
+		};
+		B2601A76122307B1005506D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B24E9E13121DC29A0085F81E /* SSGradientView.h */,
+				B24E9E14121DC29A0085F81E /* SSGradientView.m */,
+				B24E9E15121DC29A0085F81E /* SSHUDView.h */,
+				B24E9E16121DC29A0085F81E /* SSHUDView.m */,
+				B24E9E17121DC29A0085F81E /* SSIndicatorLabel.h */,
+				B24E9E18121DC29A0085F81E /* SSIndicatorLabel.m */,
+				B24E9E1B121DC29A0085F81E /* SSLabel.h */,
+				B24E9E1C121DC29A0085F81E /* SSLabel.m */,
+				B24E9E1D121DC29A0085F81E /* SSLineView.h */,
+				B24E9E1E121DC29A0085F81E /* SSLineView.m */,
+				B24E9E1F121DC29A0085F81E /* SSLoadingView.h */,
+				B24E9E20121DC29A0085F81E /* SSLoadingView.m */,
+				B24E9E2A121DC29A0085F81E /* SSPieProgressView.h */,
+				B24E9E2B121DC29A0085F81E /* SSPieProgressView.m */,
+				B24E9E33121DC29A0085F81E /* SSWebView.h */,
+				B24E9E34121DC29A0085F81E /* SSWebView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B2601A78122307CD005506D5 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B24E9E21121DC29A0085F81E /* SSMessagesViewController.h */,
+				B24E9E22121DC29A0085F81E /* SSMessagesViewController.m */,
+				B24E9E27121DC29A0085F81E /* SSModalViewController.h */,
+				B24E9E28121DC29A0085F81E /* SSPickerViewController.h */,
+				B24E9E29121DC29A0085F81E /* SSPickerViewController.m */,
+				B24E9E31121DC29A0085F81E /* SSViewController.h */,
+				B24E9E32121DC29A0085F81E /* SSViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B2601A791223086D005506D5 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				B24E9E2C121DC29A0085F81E /* SSTextField.h */,
+				B24E9E2D121DC29A0085F81E /* SSTextField.m */,
+				B24E9E2E121DC29A0085F81E /* SSTextView.h */,
+				B24E9E2F121DC29A0085F81E /* SSTextView.m */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
+		B2601A88122308C0005506D5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B2E0376E121DCCB500D02434 /* SSTableViewCell.h */,
+				B2E0376F121DCCB500D02434 /* SSTableViewCell.m */,
+				B24E9E23121DC29A0085F81E /* SSMessageTableViewCell.h */,
+				B24E9E24121DC29A0085F81E /* SSMessageTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		B2601A8A122308E2005506D5 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				B24E9E10121DC29A0085F81E /* SSConcurrentOperation.h */,
+				B24E9E11121DC29A0085F81E /* SSConcurrentOperation.m */,
+				B24E9E12121DC29A0085F81E /* SSDrawingMacros.h */,
+				B21D2DFF121F2FE500161E66 /* SSDrawingMacros.m */,
+				B24E9E19121DC29A0085F81E /* SSKeychain.h */,
+				B24E9E1A121DC29A0085F81E /* SSKeychain.m */,
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
+		B2601A8B12230906005506D5 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				B24E9E25121DC29A0085F81E /* SSMessageTableViewCellBubbleView.h */,
+				B24E9E26121DC29A0085F81E /* SSMessageTableViewCellBubbleView.m */,
+			);
+			name = Private;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

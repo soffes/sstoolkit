@@ -31,6 +31,13 @@
 - (void)layoutViewsWithOrientation:(UIInterfaceOrientation)orientation;
 
 - (void)presentCustomModalViewController:(id<SSModalViewController>)viewController;
+- (void)presentCustomModalViewController:(id<SSModalViewController>)viewController animated:(BOOL)animated;
 - (void)dismissCustomModalViewController;
+- (void)dismissCustomModalViewController:(BOOL)animated;
+
+- (void)customModalWillAppear:(BOOL)animated;
+- (void)customModalDidAppear:(BOOL)animated;
+- (void)customModalWillDisappear:(BOOL)animated;
+- (void)customModalDidDisappear:(BOOL)animated;
 
 @end
