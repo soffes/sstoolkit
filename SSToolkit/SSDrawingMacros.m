@@ -6,6 +6,11 @@
 //  Copyright 2010 Sam Soffes. All rights reserved.
 //
 
+CGFloat SSFLimit(CGFloat f, CGFloat min, CGFloat max) {
+	return fmin(fmax(f, min), max);
+}
+
+
 CGRect CGRectSetX(CGRect rect, CGFloat x) {
 	return CGRectMake(x, rect.origin.y, rect.size.width, rect.size.height);
 }

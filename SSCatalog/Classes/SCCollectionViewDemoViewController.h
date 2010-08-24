@@ -6,7 +6,7 @@
 //  Copyright 2010 Sam Soffes. All rights reserved.
 //
 
-#import <SSToolkit/SSCollectionView.h>
+#import <SSToolkit/SSToolkit.h>
 
 @interface SCCollectionViewDemoViewController : UIViewController <SSCollectionViewDataSource, SSCollectionViewDelegate> {
 

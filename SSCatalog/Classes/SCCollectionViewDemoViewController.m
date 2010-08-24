@@ -34,7 +34,7 @@
 	self.title = [[self class] title];
 	self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 	
-	_collectionView = [[SSCollectionView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)];
+	_collectionView = [[SSCollectionView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height - 44.0)];
 	_collectionView.dataSource = self;
 	_collectionView.delegate = self;
 	[self.view addSubview:_collectionView];
@@ -44,12 +44,23 @@
 #pragma mark SSCollectionViewDataSource
 
 - (NSInteger)numberOfItemsInCollectionView:(SSCollectionView *)aCollectionView {
-	return 0;
+	return 70;
 }
 
 
-- (SSCollectionViewItem *)aCollectionView:(SSCollectionView *)aCollectionView itemForIndex:(NSUInteger)index {
-	return nil;
+- (SSCollectionViewItem *)collectionView:(SSCollectionView *)aCollectionView itemForIndex:(NSUInteger)index {
+	static NSString *const itemIdentifier = @"itemIdentifier";
+	
+	SSCollectionViewItem *item = [aCollectionView dequeueReusableItemWithIdentifier:itemIdentifier];
+	if (item == nil) {
+		item = [[SSCollectionViewItem alloc] initWithStyle:SSCollectionViewItemStyleDefault reuseIdentifier:itemIdentifier];
+	}
+	
+	item.backgroundColor = [UIColor redColor];
+	item.textLabel.text = @"Hello";
+	item.detailTextLabel.text = @"World";
+	
+	return item;
 }
 
 

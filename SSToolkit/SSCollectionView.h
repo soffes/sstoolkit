@@ -5,6 +5,14 @@
 //  Created by Sam Soffes on 6/11/10.
 //  Copyright 2010 Sam Soffes. All rights reserved.
 //
+//  This is very alphay. My goals are to be similar to UITableView
+//  and NSCollectionView when possible. Currently it's pretty inefficient
+//  and doesn't reuse items. Also resizing items isn't easy. Only scrolling
+//  vertically is currently supported.
+//
+//  Editing will and performance will be my next focus. Then animating
+//  changes when data changes and an option to disable that.
+//
 
 #import "SSCollectionViewItem.h"
 
@@ -31,17 +39,18 @@
 @interface SSCollectionView : UIScrollView {
 	
 	id <SSCollectionViewDataSource> _dataSource;
+	NSMutableArray *_items;
 	
 	CGFloat _rowHeight;
 	CGFloat _rowSpacing;
+	CGFloat _columnWidth;
+	CGFloat _columnSpacing;
 	
 	UIView *_backgroundView;
 	UIView *_collectionHeaderView;
 	UIView *_collectionFooterView;
 	
-	NSUInteger _minNumberOfRows;
 	NSUInteger _minNumberOfColumns;
-	NSUInteger _maxNumberOfRows;
 	NSUInteger _maxNumberOfColumns;
 	
 	CGSize _minItemSize;
@@ -62,14 +71,14 @@
 
 @property (nonatomic, assign) CGFloat rowHeight;
 @property (nonatomic, assign) CGFloat rowSpacing;
+@property (nonatomic, assign) CGFloat columnWidth;
+@property (nonatomic, assign) CGFloat columnSpacing;
 
 @property (nonatomic, retain) UIView *backgroundView;
 @property (nonatomic, retain) UIView *collectionHeaderView;
 @property (nonatomic, retain) UIView *collectionFooterView;
 
-@property (nonatomic, assign) NSUInteger minNumberOfRows;
 @property (nonatomic, assign) NSUInteger minNumberOfColumns;
-@property (nonatomic, assign) NSUInteger maxNumberOfRows;
 @property (nonatomic, assign) NSUInteger maxNumberOfColumns;
 
 @property (nonatomic, assign) CGSize minItemSize;
@@ -80,6 +89,8 @@
 //@property (nonatomic, assign) BOOL allowsSelectionDuringEditing;
 
 - (void)reloadData;
+
+- (SSCollectionViewItem *)dequeueReusableItemWithIdentifier:(NSString *)identifier;
 
 //- (NSInteger)numberOfSections;
 //- (NSInteger)numberOfItemsInSection:(NSInteger)section;
@@ -123,7 +134,7 @@
 @required
 
 - (NSInteger)numberOfItemsInCollectionView:(SSCollectionView *)aCollectionView;
-- (SSCollectionViewItem *)aCollectionView:(SSCollectionView *)aCollectionView itemForIndex:(NSUInteger)index;
+- (SSCollectionViewItem *)collectionView:(SSCollectionView *)aCollectionView itemForIndex:(NSUInteger)index;
 
 @optional
 

@@ -107,26 +107,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				B24E9E98121DC35B0085F81E /* SCAppDelegate.h */,
-				B24E9E99121DC35B0085F81E /* SCAppDelegate.m */,
-				B24E9E9A121DC35B0085F81E /* SCGradientViewDemoViewController.h */,
-				B24E9E9B121DC35B0085F81E /* SCGradientViewDemoViewController.m */,
-				B24E9E9C121DC35B0085F81E /* SCHUDViewDemoViewController.h */,
-				B24E9E9D121DC35B0085F81E /* SCHUDViewDemoViewController.m */,
-				B24E9E9E121DC35B0085F81E /* SCLineViewDemoViewController.h */,
-				B24E9E9F121DC35B0085F81E /* SCLineViewDemoViewController.m */,
-				B24E9EA0121DC35B0085F81E /* SCMessagesDemoViewController.h */,
-				B24E9EA1121DC35B0085F81E /* SCMessagesDemoViewController.m */,
-				B24E9EA2121DC35B0085F81E /* SCPickerDemoViewController.h */,
-				B24E9EA3121DC35B0085F81E /* SCPickerDemoViewController.m */,
-				B24E9EA4121DC35B0085F81E /* SCPickerDetailViewController.h */,
-				B24E9EA5121DC35B0085F81E /* SCPickerDetailViewController.m */,
-				B24E9EA6121DC35B0085F81E /* SCPieProgressViewDemoViewController.h */,
-				B24E9EA7121DC35B0085F81E /* SCPieProgressViewDemoViewController.m */,
-				B24E9EA8121DC35B0085F81E /* SCRootViewController.h */,
-				B24E9EA9121DC35B0085F81E /* SCRootViewController.m */,
-				B27B1A561224228000111EA2 /* SCCollectionViewDemoViewController.h */,
-				B27B1A571224228000111EA2 /* SCCollectionViewDemoViewController.m */,
+				B27B1B0112246B4400111EA2 /* Demo */,
+				B27B1B0312246B4E00111EA2 /* Views */,
+				B27B1B0412246B6100111EA2 /* View Controllers */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -192,6 +175,47 @@
 				B24E9ECA121DC3CF0085F81E /* libTWToolkit.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B27B1B0112246B4400111EA2 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				B24E9E98121DC35B0085F81E /* SCAppDelegate.h */,
+				B24E9E99121DC35B0085F81E /* SCAppDelegate.m */,
+				B24E9EA8121DC35B0085F81E /* SCRootViewController.h */,
+				B24E9EA9121DC35B0085F81E /* SCRootViewController.m */,
+			);
+			name = Demo;
+			sourceTree = "<group>";
+		};
+		B27B1B0312246B4E00111EA2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B27B1A561224228000111EA2 /* SCCollectionViewDemoViewController.h */,
+				B27B1A571224228000111EA2 /* SCCollectionViewDemoViewController.m */,
+				B24E9E9A121DC35B0085F81E /* SCGradientViewDemoViewController.h */,
+				B24E9E9B121DC35B0085F81E /* SCGradientViewDemoViewController.m */,
+				B24E9E9C121DC35B0085F81E /* SCHUDViewDemoViewController.h */,
+				B24E9E9D121DC35B0085F81E /* SCHUDViewDemoViewController.m */,
+				B24E9E9E121DC35B0085F81E /* SCLineViewDemoViewController.h */,
+				B24E9E9F121DC35B0085F81E /* SCLineViewDemoViewController.m */,
+				B24E9EA6121DC35B0085F81E /* SCPieProgressViewDemoViewController.h */,
+				B24E9EA7121DC35B0085F81E /* SCPieProgressViewDemoViewController.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B27B1B0412246B6100111EA2 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B24E9EA2121DC35B0085F81E /* SCPickerDemoViewController.h */,
+				B24E9EA3121DC35B0085F81E /* SCPickerDemoViewController.m */,
+				B24E9EA4121DC35B0085F81E /* SCPickerDetailViewController.h */,
+				B24E9EA5121DC35B0085F81E /* SCPickerDetailViewController.m */,
+				B24E9EA0121DC35B0085F81E /* SCMessagesDemoViewController.h */,
+				B24E9EA1121DC35B0085F81E /* SCMessagesDemoViewController.m */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -14,6 +14,8 @@
 
 #endif
 
+extern CGFloat SSFLimit(CGFloat f, CGFloat min, CGFloat max);
+
 extern CGRect CGRectSetX(CGRect rect, CGFloat x);
 
 extern CGRect CGRectSetY(CGRect rect, CGFloat y);

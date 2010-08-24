@@ -12,6 +12,12 @@ typedef enum {
     SSCollectionViewItemStyleBlank
 } SSCollectionViewItemStyle;
 
+typedef enum {
+	SSCollectionViewItemVerticalAlignmentCenter = UIControlContentVerticalAlignmentCenter,
+	SSCollectionViewItemVerticalAlignmentTop = UIControlContentVerticalAlignmentTop,
+	SSCollectionViewItemVerticalAlignmentBottom = UIControlContentVerticalAlignmentBottom
+} SSCollectionViewItemVerticalAlignment;
+
 //typedef enum {
 //    SSCollectionViewItemSelectionStyleNone = UITableViewCellSelectionStyleNone,
 //    SSCollectionViewItemSelectionStyleBlue = UITableViewCellSelectionStyleBlue,
@@ -28,6 +34,8 @@ typedef enum {
 @interface SSCollectionViewItem : UIView {
 	
 	SSCollectionViewItemStyle _style;
+	SSCollectionViewItemVerticalAlignment _verticalAlignment;
+	CGSize _preferredContentSize;
 	
 	NSString *_reuseIdentifier;
     UIView *_contentView;
@@ -41,6 +49,9 @@ typedef enum {
 }
 
 - (id)initWithStyle:(SSCollectionViewItemStyle)style reuseIdentifier:(NSString *)aReuseIdentifier;
+
+@property (nonatomic, assign) SSCollectionViewItemVerticalAlignment verticalAlignment;
+@property (nonatomic, assign) CGSize preferredContentSize;
 
 @property (nonatomic, readonly, retain) UILabel *textLabel;
 @property (nonatomic, readonly, retain) UILabel *detailTextLabel;

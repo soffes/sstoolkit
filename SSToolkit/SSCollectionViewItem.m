@@ -10,6 +10,8 @@
 
 @implementation SSCollectionViewItem
 
+@synthesize verticalAlignment = _verticalAlignment;
+@synthesize preferredContentSize = _preferredContentSize;
 @synthesize textLabel = _textLabel;
 @synthesize detailTextLabel = _detailTextLabel;
 @synthesize backgroundView = _backgroundView;
@@ -42,6 +44,8 @@
 - (id)initWithStyle:(SSCollectionViewItemStyle)style reuseIdentifier:(NSString *)aReuseIdentifier {
 	if ((self = [super initWithFrame:CGRectZero])) {
 		_style = style;
+		_verticalAlignment = SSCollectionViewItemVerticalAlignmentBottom;
+		_preferredContentSize = CGSizeZero;
 		_reuseIdentifier = [aReuseIdentifier copy];
     }
     return self;
@@ -54,11 +58,12 @@
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-	
+	_selected = selected;
 }
 
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+	_highlighted = highlighted;
 	
 }
 
