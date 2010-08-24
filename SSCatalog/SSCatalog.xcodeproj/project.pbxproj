@@ -24,6 +24,7 @@
 		B24E9EB1121DC35B0085F81E /* SCPieProgressViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA7121DC35B0085F81E /* SCPieProgressViewDemoViewController.m */; };
 		B24E9EB2121DC35B0085F81E /* SCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA9121DC35B0085F81E /* SCRootViewController.m */; };
 		B24E9EB7121DC3760085F81E /* SSToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B24E9EB6121DC3760085F81E /* SSToolkit.bundle */; };
+		B27B1A581224228000111EA2 /* SCCollectionViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B1A571224228000111EA2 /* SCCollectionViewDemoViewController.m */; };
 		B27C61271080003700F7FBD7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B27C61261080003700F7FBD7 /* Default.png */; };
 		B27FDDBF10A49B660076DC56 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B27FDDBE10A49B660076DC56 /* Icon.png */; };
 		B27FDDC910A49C350076DC56 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B27FDDC810A49C350076DC56 /* iTunesArtwork */; };
@@ -49,7 +50,7 @@
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* TWCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TWCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* SSCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B21B85B71067D4B500E5C076 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -78,6 +79,8 @@
 		B24E9EB4121DC36D0085F81E /* SSCatalog-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SSCatalog-Info.plist"; sourceTree = "<group>"; };
 		B24E9EB6121DC3760085F81E /* SSToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SSToolkit.bundle; path = ../Resources/SSToolkit.bundle; sourceTree = SOURCE_ROOT; };
 		B24E9EC5121DC3CF0085F81E /* SSToolkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSToolkit.xcodeproj; path = ../SSToolkit.xcodeproj; sourceTree = SOURCE_ROOT; };
+		B27B1A561224228000111EA2 /* SCCollectionViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCollectionViewDemoViewController.h; sourceTree = "<group>"; };
+		B27B1A571224228000111EA2 /* SCCollectionViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCollectionViewDemoViewController.m; sourceTree = "<group>"; };
 		B27C61261080003700F7FBD7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		B27FDDBE10A49B660076DC56 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		B27FDDC810A49C350076DC56 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				B24E9EA7121DC35B0085F81E /* SCPieProgressViewDemoViewController.m */,
 				B24E9EA8121DC35B0085F81E /* SCRootViewController.h */,
 				B24E9EA9121DC35B0085F81E /* SCRootViewController.m */,
+				B27B1A561224228000111EA2 /* SCCollectionViewDemoViewController.h */,
+				B27B1A571224228000111EA2 /* SCCollectionViewDemoViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -129,7 +134,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* TWCatalog.app */,
+				1D6058910D05DD3D006BFB54 /* SSCatalog.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -207,7 +212,7 @@
 			);
 			name = SSCatalog;
 			productName = TWCatalog;
-			productReference = 1D6058910D05DD3D006BFB54 /* TWCatalog.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* SSCatalog.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -275,6 +280,7 @@
 				B24E9EB0121DC35B0085F81E /* SCPickerDetailViewController.m in Sources */,
 				B24E9EB1121DC35B0085F81E /* SCPieProgressViewDemoViewController.m in Sources */,
 				B24E9EB2121DC35B0085F81E /* SCRootViewController.m in Sources */,
+				B27B1A581224228000111EA2 /* SCCollectionViewDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +310,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = TWCatalog;
+				PRODUCT_NAME = SSCatalog;
 				SDKROOT = iphoneos4.0;
 			};
 			name = Debug;
@@ -318,7 +324,7 @@
 				GCC_PREFIX_HEADER = "Other Sources/TWCatalog_Prefix.pch";
 				HEADER_SEARCH_PATHS = ../;
 				INFOPLIST_FILE = "TWCatalog-Info.plist";
-				PRODUCT_NAME = TWCatalog;
+				PRODUCT_NAME = SSCatalog;
 			};
 			name = Release;
 		};

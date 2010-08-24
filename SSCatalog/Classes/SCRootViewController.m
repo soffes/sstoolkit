@@ -19,9 +19,7 @@
 
 @implementation SCRootViewController
 
-#pragma mark -
 #pragma mark NSObject
-#pragma mark -
 
 - (void)dealloc {
 	[data release];
@@ -29,9 +27,7 @@
 }
 
 
-#pragma mark -
 #pragma mark UIViewController
-#pragma mark -
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,6 +37,7 @@
     data = [[NSArray alloc] initWithObjects:
 			[NSDictionary dictionaryWithObjectsAndKeys:
 			 [NSArray arrayWithObjects:
+			  @"SCCollectionViewDemoViewController",
 			  @"SCGradientViewDemoViewController",
 			  @"SCHUDViewDemoViewController",
 			  @"SCLineViewDemoViewController",
@@ -63,9 +60,7 @@
 }
 
 
-#pragma mark -
 #pragma mark UITableViewDataSource
-#pragma mark -
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [data count];
@@ -101,9 +96,7 @@
 }
 
 
-#pragma mark -
 #pragma mark UITableViewDelegate
-#pragma mark -
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[self.tableView deselectRowAtIndexPath:indexPath animated:YES];

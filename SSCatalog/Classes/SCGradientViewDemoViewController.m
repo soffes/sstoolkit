@@ -11,18 +11,14 @@
 
 @implementation SCGradientViewDemoViewController
 
-#pragma mark -
 #pragma mark Class Methods
-#pragma mark -
 
 + (NSString *)title {
 	return @"Gradient View";
 }
 
 
-#pragma mark -
 #pragma mark NSObject
-#pragma mark -
 
 - (void)dealloc {
 	[gradientView release];
@@ -30,9 +26,7 @@
 }
 
 
-#pragma mark -
 #pragma mark UIViewController
-#pragma mark -
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -52,9 +46,7 @@
 }
 
 
-#pragma mark -
 #pragma mark Actions
-#pragma mark -
 
 - (void)changeColor:(id)sender {
 	if ([gradientView.topColor isEqual:[SSGradientView defaultTopColor]]) {
