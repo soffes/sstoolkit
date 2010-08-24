@@ -8,7 +8,7 @@
 
 @interface SCPickerDemoViewController : UITableViewController {
 	
-	NSString *selectedAbbreviation;
+	NSString *_selectedAbbreviation;
 }
 
 @property (nonatomic, retain) NSString *selectedAbbreviation;

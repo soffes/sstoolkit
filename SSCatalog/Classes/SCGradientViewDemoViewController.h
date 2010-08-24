@@ -10,7 +10,7 @@
 
 @interface SCGradientViewDemoViewController : UIViewController {
 
-	SSGradientView *gradientView;
+	SSGradientView *_gradientView;
 }
 
 + (NSString *)title;

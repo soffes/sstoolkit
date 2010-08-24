@@ -10,7 +10,7 @@
 
 @interface SCHUDViewDemoViewController : UIViewController {
 
-	SSHUDView *hud;
+	SSHUDView *_hud;
 }
 
 + (NSString *)title;

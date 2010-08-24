@@ -55,26 +55,26 @@
 	[self.view addSubview:progressView6];
 	[progressView6 release];
 	
-	progressView7 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(95.0, 245.0, 130.0, 130.0)];
-	[self.view addSubview:progressView7];
-	[progressView7 release];
+	_progressView7 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(95.0, 245.0, 130.0, 130.0)];
+	[self.view addSubview:_progressView7];
+	[_progressView7 release];
 	
-	timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(incrementProgress:) userInfo:nil repeats:YES];
+	_timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(incrementProgress:) userInfo:nil repeats:YES];
 }
 
 
 - (void)viewDidUnload {
 	[super viewDidUnload];
-	[timer invalidate];
+	[_timer invalidate];
 }
 
 
 #pragma mark Timer
 
 - (void)incrementProgress:(NSTimer *)timer {
-	progressView7.progress = progressView7.progress + 0.01;
-	if (progressView7.progress == 1.0) {
-		progressView7.progress = 0.0;
+	_progressView7.progress = _progressView7.progress + 0.01;
+	if (_progressView7.progress == 1.0) {
+		_progressView7.progress = 0.0;
 	}
 }
 

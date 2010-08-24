@@ -21,7 +21,7 @@
 #pragma mark NSObject
 
 - (void)dealloc {
-	[hud release];
+	[_hud release];
 	[super dealloc];
 }
 
@@ -31,12 +31,11 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.title = [[self class] title];
-	
 	self.view.backgroundColor = [UIColor whiteColor];
 	
 	// Show HUD
-	hud = [[SSHUDView alloc] initWithTitle:@"Custom Message"];
-	[hud show];
+	_hud = [[SSHUDView alloc] initWithTitle:@"Custom Message"];
+	[_hud show];
 	
 	// After 2 seconds, complete action
 	[self performSelector:@selector(complete:) withObject:nil afterDelay:2.0];
@@ -46,13 +45,13 @@
 #pragma mark Actions
 
 - (void)complete:(id)sender {
-	[hud completeWithTitle:@"Finished!"];
+	[_hud completeWithTitle:@"Finished!"];
 	[self performSelector:@selector(pop:) withObject:nil afterDelay:0.7];
 }
 
 
 - (void)pop:(id)sender {
-	[hud dismiss];
+	[_hud dismiss];
 	[self.navigationController popViewControllerAnimated:YES];
 }
 

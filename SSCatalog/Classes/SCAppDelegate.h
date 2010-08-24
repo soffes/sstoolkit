@@ -8,8 +8,8 @@
 
 @interface SCAppDelegate : NSObject <UIApplicationDelegate> {
     
-	UIWindow *window;
-	UINavigationController *navigationController;
+	UIWindow *_window;
+	UINavigationController *_navigationController;
 }
 
 @property (nonatomic, retain) UIWindow *window;

@@ -10,8 +10,8 @@
 
 @interface SCPieProgressViewDemoViewController : UIViewController {
 
-	SSPieProgressView *progressView7;
-	NSTimer *timer;
+	SSPieProgressView *_progressView7;
+	NSTimer *_timer;
 }
 
 + (NSString *)title;

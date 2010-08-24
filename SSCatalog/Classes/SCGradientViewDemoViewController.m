@@ -21,7 +21,7 @@
 #pragma mark NSObject
 
 - (void)dealloc {
-	[gradientView release];
+	[_gradientView release];
 	[super dealloc];
 }
 
@@ -34,8 +34,8 @@
 	self.view.backgroundColor = [UIColor whiteColor];
 	
 	// Gradient view
-	gradientView = [[SSGradientView alloc] initWithFrame:CGRectMake(20.0, 20.0, 280.0, 280.0)];
-	[self.view addSubview:gradientView];
+	_gradientView = [[SSGradientView alloc] initWithFrame:CGRectMake(20.0, 20.0, 280.0, 280.0)];
+	[self.view addSubview:_gradientView];
 	
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	button.frame = CGRectMake(20.0, 320.0, 280.0, 37.0);
@@ -49,12 +49,12 @@
 #pragma mark Actions
 
 - (void)changeColor:(id)sender {
-	if ([gradientView.topColor isEqual:[SSGradientView defaultTopColor]]) {
-		gradientView.topColor = [UIColor whiteColor];
-		gradientView.bottomColor = [UIColor grayColor];
+	if ([_gradientView.topColor isEqual:[SSGradientView defaultTopColor]]) {
+		_gradientView.topColor = [UIColor whiteColor];
+		_gradientView.bottomColor = [UIColor grayColor];
 	} else {
-		gradientView.topColor = [SSGradientView defaultTopColor];
-		gradientView.bottomColor = [SSGradientView defaultBottomColor];
+		_gradientView.topColor = [SSGradientView defaultTopColor];
+		_gradientView.bottomColor = [SSGradientView defaultBottomColor];
 	}	
 }
 

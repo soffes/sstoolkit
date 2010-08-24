@@ -11,14 +11,14 @@
 
 @implementation SCAppDelegate
 
-@synthesize window;
-@synthesize navigationController;
+@synthesize window = _window;
+@synthesize navigationController = _navigationController;
 
 #pragma mark NSObject
 
 - (void)dealloc {
-	[navigationController release];
-    [window release];
+	[_navigationController release];
+    [_window release];
     [super dealloc];
 }
 
@@ -27,7 +27,7 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
 
-    window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
 	SCRootViewController *viewController = [[SCRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	UINavigationController *aNavigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
@@ -37,8 +37,8 @@
 	[viewController release];
 	[aNavigationController release];
 	
-	[window addSubview:navigationController.view];
-    [window makeKeyAndVisible];
+	[_window addSubview:_navigationController.view];
+    [_window makeKeyAndVisible];
 }
 
 @end

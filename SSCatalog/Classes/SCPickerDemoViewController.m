@@ -11,7 +11,7 @@
 
 @implementation SCPickerDemoViewController
 
-@synthesize selectedAbbreviation;
+@synthesize selectedAbbreviation = _selectedAbbreviation;
 
 #pragma mark Class Methods
 
@@ -28,7 +28,7 @@
 
 
 - (void)dealloc {
-	[selectedAbbreviation release];
+	[_selectedAbbreviation release];
 	[super dealloc];
 }
 

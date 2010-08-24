@@ -8,7 +8,7 @@
 
 @interface SCRootViewController : UITableViewController {
 
-	NSArray *data;
+	NSArray *_viewControllers;
 }
 
 @end
