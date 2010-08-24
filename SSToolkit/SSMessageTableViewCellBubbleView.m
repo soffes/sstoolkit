@@ -11,7 +11,7 @@
 
 #define kFont [UIFont systemFontOfSize:15.0]
 static UILineBreakMode kLineBreakMode = UILineBreakModeWordWrap;
-static CGFloat kMaxWidth = 223.0;
+static CGFloat kMaxWidth = 223.0; // TODO: Make dynamic
 static CGFloat kPaddingTop = 6.0;
 static CGFloat kPaddingBottom = 8.0;
 static CGFloat kMarginTop = 2.0;

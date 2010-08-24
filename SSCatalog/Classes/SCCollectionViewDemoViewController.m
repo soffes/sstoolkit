@@ -32,7 +32,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.title = [[self class] title];
-	self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+	self.view.backgroundColor = [UIColor whiteColor];
 	
 	_collectionView = [[SSCollectionView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height - 44.0)];
 	_collectionView.dataSource = self;
@@ -41,10 +41,18 @@
 }
 
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+		return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+	}
+	return YES;
+}
+
+
 #pragma mark SSCollectionViewDataSource
 
 - (NSInteger)numberOfItemsInCollectionView:(SSCollectionView *)aCollectionView {
-	return 70;
+	return 55;
 }
 
 

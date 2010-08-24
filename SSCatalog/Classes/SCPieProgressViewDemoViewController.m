@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.title = [[self class] title];
-	self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+	self.view.backgroundColor = [UIColor colorWithRed:0.851 green:0.859 blue:0.882 alpha:1.0];
 	
 	SSPieProgressView *progressView1 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(20.0, 20.0, 55.0, 55.0)];
 	progressView1.progress = 0.25;
@@ -66,6 +66,14 @@
 - (void)viewDidUnload {
 	[super viewDidUnload];
 	[_timer invalidate];
+}
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+		return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+	}
+	return YES;
 }
 
 

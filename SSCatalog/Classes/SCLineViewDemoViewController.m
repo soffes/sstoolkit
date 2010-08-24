@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.title = [[self class] title];
-	self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+	self.view.backgroundColor = [UIColor colorWithRed:0.851 green:0.859 blue:0.882 alpha:1.0];
 	
 	SSLineView *lineView1 = [[SSLineView alloc] initWithFrame:CGRectMake(20.0, 20.0, 280.0, 2.0)];
 	[self.view addSubview:lineView1];
@@ -33,6 +33,14 @@
 	lineView2.lineColor = [UIColor blueColor];
 	[self.view addSubview:lineView2];
 	[lineView2 release];
+}
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+		return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+	}
+	return YES;
 }
 
 @end

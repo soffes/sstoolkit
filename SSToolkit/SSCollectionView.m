@@ -43,7 +43,7 @@
 		self.contentInset = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0);
 		
 		_minNumberOfColumns = 1;
-		_maxNumberOfColumns = 3; // TODO: Make dynamic
+		_maxNumberOfColumns = 0;
 		
 		_minItemSize = CGSizeMake(40.0, 40.0);
 		_maxItemSize = CGSizeMake(300.0, 300.0);
@@ -61,12 +61,19 @@
 
 
 - (void)layoutSubviews {
+	NSUInteger maxColumns;
+	if (_maxNumberOfColumns > 0) {
+		maxColumns = _maxNumberOfColumns;
+	} else {
+		maxColumns = floor(self.frame.size.width / (_columnWidth + _columnSpacing));
+	}
+	
 	NSUInteger index = 0;
 	NSUInteger row = 0;
 	NSUInteger column = -1;
 	for (SSCollectionViewItem *item in _items) {
 		column++;
-		if (column >= _maxNumberOfColumns) {
+		if (column >= maxColumns) {
 			column = 0;
 			row++;
 		}

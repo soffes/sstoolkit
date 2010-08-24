@@ -7,9 +7,9 @@
 //
 
 typedef enum {
-    SSCollectionViewItemStyleDefault = UITableViewCellStyleDefault,
-    SSCollectionViewItemStyleSubtitle = UITableViewCellStyleSubtitle,
-    SSCollectionViewItemStyleBlank
+	SSCollectionViewItemStyleDefault = UITableViewCellStyleDefault,
+	SSCollectionViewItemStyleSubtitle = UITableViewCellStyleSubtitle,
+	SSCollectionViewItemStyleBlank
 } SSCollectionViewItemStyle;
 
 typedef enum {
@@ -19,15 +19,15 @@ typedef enum {
 } SSCollectionViewItemVerticalAlignment;
 
 //typedef enum {
-//    SSCollectionViewItemSelectionStyleNone = UITableViewCellSelectionStyleNone,
-//    SSCollectionViewItemSelectionStyleBlue = UITableViewCellSelectionStyleBlue,
-//    SSCollectionViewItemSelectionStyleGray = UITableViewCellSelectionStyleGray
+//	SSCollectionViewItemSelectionStyleNone = UITableViewCellSelectionStyleNone,
+//	SCollectionViewItemSelectionStyleBlue = UITableViewCellSelectionStyleBlue,
+//	SSCollectionViewItemSelectionStyleGray = UITableViewCellSelectionStyleGray
 //} SSCollectionViewItemSelectionStyle;
 
 //typedef enum {
-//    SSCollectionViewItemEditingStyleNone = UITableViewCellEditingStyleNone,
-//    SSCollectionViewItemEditingStyleDelete = UITableViewCellEditingStyleDelete,
-//    SSCollectionViewItemEditingStyleInsert = UITableViewCellEditingStyleInsert
+//	SSCollectionViewItemEditingStyleNone = UITableViewCellEditingStyleNone,
+//	SSCollectionViewItemEditingStyleDelete = UITableViewCellEditingStyleDelete,
+//	SSCollectionViewItemEditingStyleInsert = UITableViewCellEditingStyleInsert
 //} SSCollectionViewItemEditingStyle;
 
 

@@ -49,8 +49,8 @@ CGFloat kInputHeight = 40.0;
 		[self.view addSubview:_tableView];
 		
 		// Input
-		_inputView = [[SSGradientView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height - 44.0 - kInputHeight, self.view.frame.size.width, kInputHeight)];
-		_inputView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+		_inputView = [[SSGradientView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height - kInputHeight, self.view.frame.size.width, kInputHeight)];
+		_inputView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
 		_inputView.hasBottomBorder = NO;
 		_inputView.topBorderColor = [UIColor colorWithRed:0.733 green:0.741 blue:0.745 alpha:1.0];
 		_inputView.topColor = [UIColor colorWithRed:0.914 green:0.922 blue:0.929 alpha:1.0];
@@ -59,6 +59,7 @@ CGFloat kInputHeight = 40.0;
 		
 		// Text field
 		SSTextField *textField = [[SSTextField alloc] initWithFrame:CGRectMake(6.0, 8.0, self.view.frame.size.width - 75.0, 27.0)];
+		textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		textField.background = [[UIImage imageNamed:@"images/SSMessagesViewControllerTextFieldBackground.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:12 topCapHeight:0];
 		textField.delegate = self;
 		textField.font = [UIFont systemFontOfSize:15.0];
