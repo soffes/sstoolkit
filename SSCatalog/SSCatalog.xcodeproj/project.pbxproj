@@ -25,8 +25,10 @@
 		B24E9EB2121DC35B0085F81E /* SCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA9121DC35B0085F81E /* SCRootViewController.m */; };
 		B24E9EB7121DC3760085F81E /* SSToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B24E9EB6121DC3760085F81E /* SSToolkit.bundle */; };
 		B27B1A581224228000111EA2 /* SCCollectionViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B1A571224228000111EA2 /* SCCollectionViewDemoViewController.m */; };
+		B27B1BDB122482AF00111EA2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1BD9122482AF00111EA2 /* Default@2x.png */; };
+		B27B1BDC122482AF00111EA2 /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1BDA122482AF00111EA2 /* Icon-114.png */; };
 		B27C61271080003700F7FBD7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B27C61261080003700F7FBD7 /* Default.png */; };
-		B27FDDBF10A49B660076DC56 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B27FDDBE10A49B660076DC56 /* Icon.png */; };
+		B27FDDBF10A49B660076DC56 /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = B27FDDBE10A49B660076DC56 /* Icon-57.png */; };
 		B27FDDC910A49C350076DC56 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B27FDDC810A49C350076DC56 /* iTunesArtwork */; };
 		B2E0323F121DC49700D02434 /* libTWToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B24E9ECA121DC3CF0085F81E /* libTWToolkit.a */; };
 /* End PBXBuildFile section */
@@ -81,8 +83,10 @@
 		B24E9EC5121DC3CF0085F81E /* SSToolkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSToolkit.xcodeproj; path = ../SSToolkit.xcodeproj; sourceTree = SOURCE_ROOT; };
 		B27B1A561224228000111EA2 /* SCCollectionViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCollectionViewDemoViewController.h; sourceTree = "<group>"; };
 		B27B1A571224228000111EA2 /* SCCollectionViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCollectionViewDemoViewController.m; sourceTree = "<group>"; };
+		B27B1BD9122482AF00111EA2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		B27B1BDA122482AF00111EA2 /* Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-114.png"; sourceTree = "<group>"; };
 		B27C61261080003700F7FBD7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		B27FDDBE10A49B660076DC56 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		B27FDDBE10A49B660076DC56 /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
 		B27FDDC810A49C350076DC56 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,8 +166,10 @@
 			children = (
 				B24E9EB4121DC36D0085F81E /* SSCatalog-Info.plist */,
 				B27FDDC810A49C350076DC56 /* iTunesArtwork */,
-				B27FDDBE10A49B660076DC56 /* Icon.png */,
+				B27FDDBE10A49B660076DC56 /* Icon-57.png */,
+				B27B1BDA122482AF00111EA2 /* Icon-114.png */,
 				B27C61261080003700F7FBD7 /* Default.png */,
+				B27B1BD9122482AF00111EA2 /* Default@2x.png */,
 				B24E9EB6121DC3760085F81E /* SSToolkit.bundle */,
 			);
 			path = Resources;
@@ -281,9 +287,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B27C61271080003700F7FBD7 /* Default.png in Resources */,
-				B27FDDBF10A49B660076DC56 /* Icon.png in Resources */,
+				B27FDDBF10A49B660076DC56 /* Icon-57.png in Resources */,
 				B27FDDC910A49C350076DC56 /* iTunesArtwork in Resources */,
 				B24E9EB7121DC3760085F81E /* SSToolkit.bundle in Resources */,
+				B27B1BDB122482AF00111EA2 /* Default@2x.png in Resources */,
+				B27B1BDC122482AF00111EA2 /* Icon-114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
