@@ -7,6 +7,8 @@
 //
 
 // Views
+#import <SSToolkit/SSCollectionView.h>
+#import <SSToolkit/SSCollectionViewItem.h>
 #import <SSToolkit/SSGradientView.h>
 #import <SSToolkit/SSHUDView.h>
 #import <SSToolkit/SSIndicatorLabel.h>
