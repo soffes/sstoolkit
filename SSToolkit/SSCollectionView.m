@@ -59,8 +59,8 @@
 
 
 - (void)layoutSubviews {
+	// Calculate columns
 	CGFloat totalWidth = self.frame.size.width;
-	
 	NSUInteger maxColumns;
 	if (_maxNumberOfColumns > 0) {
 		maxColumns = _maxNumberOfColumns;
@@ -68,8 +68,10 @@
 		maxColumns = floor((totalWidth + _columnSpacing)  / (_columnWidth + _columnSpacing));
 	}
 	
+	// Calculate padding
 	CGFloat padding = roundf((totalWidth - (_columnWidth * maxColumns) - (_columnSpacing * (maxColumns - 1))) / 2.0);
 	
+	// Layout items
 	NSUInteger index = 0;
 	NSUInteger row = 0;
 	NSUInteger column = -1;
@@ -83,8 +85,12 @@
 		index++;
 	}
 	
+	// Set content size
 	CGRect lastFrame = [[_items lastObject] frame];
-	self.contentSize = CGSizeMake(self.frame.size.width - self.contentInset.left - self.contentInset.right, lastFrame.origin.y + lastFrame.size.height + padding);
+	CGFloat contentWidth = totalWidth - self.contentInset.left - self.contentInset.right;
+	CGFloat contentHeight = lastFrame.origin.y + lastFrame.size.height + padding;
+	CGFloat minContentHeight = (self.frame.size.height - self.contentInset.top - self.contentInset.bottom) + 1.0;
+	self.contentSize = CGSizeMake(contentWidth, fmax(contentHeight, minContentHeight));
 }
 
 
@@ -98,6 +104,7 @@
 	
 	NSUInteger total = [_dataSource numberOfItemsInCollectionView:self];
 	for (NSUInteger i = 0; i < total; i++) {
+		// TODO: Store item so it can be dequeued later
 		SSCollectionViewItem *item = [_dataSource collectionView:self itemForIndex:i];
 		[_items addObject:item];
 		[self addSubview:item];
@@ -108,6 +115,7 @@
 
 
 - (SSCollectionViewItem *)dequeueReusableItemWithIdentifier:(NSString *)identifier {
+	// TODO: Store items and reuse
 	return nil;
 }
 

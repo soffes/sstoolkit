@@ -57,7 +57,7 @@
 #pragma mark SSCollectionViewDataSource
 
 - (NSInteger)numberOfItemsInCollectionView:(SSCollectionView *)aCollectionView {
-	return 125;
+	return 8;
 }
 
 
