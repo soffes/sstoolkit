@@ -40,8 +40,6 @@
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
 		
-		self.contentInset = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0);
-		
 		_minNumberOfColumns = 1;
 		_maxNumberOfColumns = 0;
 		
@@ -61,12 +59,16 @@
 
 
 - (void)layoutSubviews {
+	CGFloat totalWidth = self.frame.size.width;
+	
 	NSUInteger maxColumns;
 	if (_maxNumberOfColumns > 0) {
 		maxColumns = _maxNumberOfColumns;
 	} else {
-		maxColumns = floor(self.frame.size.width / (_columnWidth + _columnSpacing));
+		maxColumns = floor((totalWidth + _columnSpacing)  / (_columnWidth + _columnSpacing));
 	}
+	
+	CGFloat padding = roundf((totalWidth - (_columnWidth * maxColumns) - (_columnSpacing * (maxColumns - 1))) / 2.0);
 	
 	NSUInteger index = 0;
 	NSUInteger row = 0;
@@ -77,12 +79,12 @@
 			column = 0;
 			row++;
 		}
-		item.frame = CGRectMake((column * _columnWidth) + (column * _columnSpacing), (row * _rowHeight) + (row * _rowSpacing), _columnWidth, _rowHeight);
+		item.frame = CGRectMake((column * _columnWidth) + (column * _columnSpacing) + padding, (row * _rowHeight) + (row * _rowSpacing) + padding, _columnWidth, _rowHeight);
 		index++;
 	}
 	
 	CGRect lastFrame = [[_items lastObject] frame];
-	self.contentSize = CGSizeMake(self.frame.size.width - self.contentInset.left - self.contentInset.right, lastFrame.origin.y + lastFrame.size.height);
+	self.contentSize = CGSizeMake(self.frame.size.width - self.contentInset.left - self.contentInset.right, lastFrame.origin.y + lastFrame.size.height + padding);
 }
 
 
@@ -115,6 +117,15 @@
 - (void)setDataSource:(id<SSCollectionViewDataSource>)dataSource {
 	_dataSource = dataSource;
 	[self reloadData];
+}
+
+
+- (void)setFrame:(CGRect)rect {
+	[super setFrame:rect];
+	
+	[UIView beginAnimations:@"SSCollectionViewAnimationUpdateLayout" context:self];
+	[self setNeedsLayout];
+	[UIView commitAnimations];
 }
 
 @end

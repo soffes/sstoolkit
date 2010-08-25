@@ -34,9 +34,14 @@
 	self.title = [[self class] title];
 	self.view.backgroundColor = [UIColor whiteColor];
 	
-	_collectionView = [[SSCollectionView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height - 44.0)];
+	_collectionView = [[SSCollectionView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)];
+	_collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_collectionView.dataSource = self;
 	_collectionView.delegate = self;
+	_collectionView.rowHeight = 200.0;
+	_collectionView.rowSpacing = 22.0;
+	_collectionView.columnWidth = 102.0;
+	_collectionView.columnSpacing = 42.0;
 	[self.view addSubview:_collectionView];
 }
 
@@ -52,7 +57,7 @@
 #pragma mark SSCollectionViewDataSource
 
 - (NSInteger)numberOfItemsInCollectionView:(SSCollectionView *)aCollectionView {
-	return 55;
+	return 125;
 }
 
 
