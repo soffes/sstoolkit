@@ -38,10 +38,10 @@
 	_collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_collectionView.dataSource = self;
 	_collectionView.delegate = self;
-	_collectionView.rowHeight = 200.0;
-	_collectionView.rowSpacing = 22.0;
-	_collectionView.columnWidth = 102.0;
-	_collectionView.columnSpacing = 42.0;
+//	_collectionView.rowHeight = 200.0;
+//	_collectionView.rowSpacing = 22.0;
+//	_collectionView.columnWidth = 102.0;
+//	_collectionView.columnSpacing = 42.0;
 	[self.view addSubview:_collectionView];
 }
 
@@ -57,7 +57,7 @@
 #pragma mark SSCollectionViewDataSource
 
 - (NSInteger)numberOfItemsInCollectionView:(SSCollectionView *)aCollectionView {
-	return 8;
+	return 32;
 }
 
 
@@ -67,11 +67,13 @@
 	SSCollectionViewItem *item = [aCollectionView dequeueReusableItemWithIdentifier:itemIdentifier];
 	if (item == nil) {
 		item = [[SSCollectionViewItem alloc] initWithStyle:SSCollectionViewItemStyleDefault reuseIdentifier:itemIdentifier];
+		
+		// Customize item for demo
+		item.textLabel.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+		item.textLabel.frame = CGRectMake(0.0, 0.0, 80.0, 80.0);
 	}
 	
-	item.backgroundColor = [UIColor redColor];
-	item.textLabel.text = @"Hello";
-	item.detailTextLabel.text = @"World";
+	item.textLabel.text = [NSString stringWithFormat:@"%i", index];
 	
 	return item;
 }

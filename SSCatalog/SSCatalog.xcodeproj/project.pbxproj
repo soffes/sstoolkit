@@ -169,9 +169,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				B27B1B0112246B4400111EA2 /* Demo */,
-				B27B1B0312246B4E00111EA2 /* Views */,
-				B27B1B0412246B6100111EA2 /* View Controllers */,
+				B27B1B0112246B4400111EA2 /* Demo App */,
+				B27B1B0312246B4E00111EA2 /* View Demos */,
+				B27B1B0412246B6100111EA2 /* View Controller Demos */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -246,7 +246,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B27B1B0112246B4400111EA2 /* Demo */ = {
+		B27B1B0112246B4400111EA2 /* Demo App */ = {
 			isa = PBXGroup;
 			children = (
 				B24E9E98121DC35B0085F81E /* SCAppDelegate.h */,
@@ -254,10 +254,10 @@
 				B24E9EA8121DC35B0085F81E /* SCRootViewController.h */,
 				B24E9EA9121DC35B0085F81E /* SCRootViewController.m */,
 			);
-			name = Demo;
+			name = "Demo App";
 			sourceTree = "<group>";
 		};
-		B27B1B0312246B4E00111EA2 /* Views */ = {
+		B27B1B0312246B4E00111EA2 /* View Demos */ = {
 			isa = PBXGroup;
 			children = (
 				B27B1A561224228000111EA2 /* SCCollectionViewDemoViewController.h */,
@@ -271,10 +271,10 @@
 				B24E9EA6121DC35B0085F81E /* SCPieProgressViewDemoViewController.h */,
 				B24E9EA7121DC35B0085F81E /* SCPieProgressViewDemoViewController.m */,
 			);
-			name = Views;
+			name = "View Demos";
 			sourceTree = "<group>";
 		};
-		B27B1B0412246B6100111EA2 /* View Controllers */ = {
+		B27B1B0412246B6100111EA2 /* View Controller Demos */ = {
 			isa = PBXGroup;
 			children = (
 				B24E9EA2121DC35B0085F81E /* SCPickerDemoViewController.h */,
@@ -284,7 +284,7 @@
 				B24E9EA0121DC35B0085F81E /* SCMessagesDemoViewController.h */,
 				B24E9EA1121DC35B0085F81E /* SCMessagesDemoViewController.m */,
 			);
-			name = "View Controllers";
+			name = "View Controller Demos";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

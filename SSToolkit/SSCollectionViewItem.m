@@ -47,6 +47,10 @@
 		_verticalAlignment = SSCollectionViewItemVerticalAlignmentBottom;
 		_preferredContentSize = CGSizeZero;
 		_reuseIdentifier = [aReuseIdentifier copy];
+		
+		_textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+		_textLabel.textAlignment = UITextAlignmentCenter;
+		[self addSubview:_textLabel];
     }
     return self;
 }
