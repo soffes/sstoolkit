@@ -12,7 +12,7 @@ SSToolkit makes life easier. It is made up of various view controllers, views, a
 
 ### Views
 
-* [SSGCollectionView][] - simple collection view modeled after UITableView and NSCollectionView
+* [SSCollectionView][] - simple collection view modeled after UITableView and NSCollectionView
 * [SSGradientView][] - easily create gradients with optional borders and insets
 * [SSHUDView][] - simple heads-up display
 * [SSLabel][] - ever wanted to align your text to the top or the bottom
