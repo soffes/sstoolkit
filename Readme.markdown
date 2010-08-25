@@ -12,6 +12,7 @@ SSToolkit makes life easier. It is made up of various view controllers, views, a
 
 ### Views
 
+* [SSGCollectionView][] - simple collection view modeled after UITableView and NSCollectionView
 * [SSGradientView][] - easily create gradients with optional borders and insets
 * [SSHUDView][] - simple heads-up display
 * [SSLabel][] - ever wanted to align your text to the top or the bottom
@@ -61,7 +62,7 @@ You can also import individual files instead of the whole framework (for faster 
 
 ## Demo
 
-[SSCatalog][] is include with SSToolkit. This is a sample iPhone application to demonstrate the various features of SSToolkit.
+[SSCatalog][] is included with SSToolkit. There is an iPhone application target and an universal iPad/iPhone application target to demonstrate the various features of SSToolkit.
 
 ## Links
 
@@ -72,6 +73,7 @@ You can also import individual files instead of the whole framework (for faster 
 [SSPickerViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSPickerViewController.h
 [SSMessagesViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSMessagesViewController.h
 [SSHUDView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSHUDView.h
+[SSCollectionView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSCollectionView.h
 [SSGradientView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSGradientView.h
 [SSLabel]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSLabel.h
 [SSLineView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSLineView.h
