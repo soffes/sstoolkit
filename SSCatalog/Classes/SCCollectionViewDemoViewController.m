@@ -38,10 +38,6 @@
 	_collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_collectionView.dataSource = self;
 	_collectionView.delegate = self;
-//	_collectionView.rowHeight = 200.0;
-//	_collectionView.rowSpacing = 22.0;
-//	_collectionView.columnWidth = 102.0;
-//	_collectionView.columnSpacing = 42.0;
 	[self.view addSubview:_collectionView];
 }
 
@@ -82,7 +78,7 @@
 #pragma mark SSCollectionViewDelegate
 
 - (void)collectionView:(SSCollectionView *)aCollectionView didSelectItemAtIndex:(NSUInteger)index {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"You selected item at index %i!", index] message:nil delegate:nil cancelButtonTitle:@"Oh, awesome!" otherButtonTitles:nil];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"\nYou selected item #%i!\n\n", index] message:nil delegate:nil cancelButtonTitle:@"Oh, awesome!" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
 }

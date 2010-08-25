@@ -94,6 +94,53 @@
 }
 
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	[super touchesBegan:touches withEvent:event];
+	
+	CGPoint point = [[touches anyObject] locationInView:self];
+	SSCollectionViewItem *item = (SSCollectionViewItem *)[self hitTest:point withEvent:event];
+	if ((UIView *)item == self) {
+		return;
+	}
+	
+	// Highlight item
+	item.highlighted = YES;
+}
+
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+	[super touchesCancelled:touches withEvent:event];
+
+	CGPoint point = [[touches anyObject] locationInView:self];
+	SSCollectionViewItem *item = (SSCollectionViewItem *)[self hitTest:point withEvent:event];
+	if ((UIView *)item == self) {
+		return;
+	}
+	
+	// Remove highlight
+	item.highlighted = NO;
+}
+
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	[super touchesEnded:touches withEvent:event];
+	
+	CGPoint point = [[touches anyObject] locationInView:self];
+	SSCollectionViewItem *item = (SSCollectionViewItem *)[self hitTest:point withEvent:event];
+	if ((UIView *)item == self) {
+		return;
+	}
+	
+	item.highlighted = NO;
+	item.selected = YES;
+	
+	// Notify delegate of selection
+	if ([self.delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndex:)]) {
+		[self.delegate collectionView:self didSelectItemAtIndex:item.tag];
+	}
+}
+
+
 #pragma mark SSCollectionView
 
 - (void)reloadData {
@@ -106,6 +153,7 @@
 	for (NSUInteger i = 0; i < total; i++) {
 		// TODO: Store item so it can be dequeued later
 		SSCollectionViewItem *item = [_dataSource collectionView:self itemForIndex:i];
+		item.tag = i;
 		[_items addObject:item];
 		[self addSubview:item];
 	}

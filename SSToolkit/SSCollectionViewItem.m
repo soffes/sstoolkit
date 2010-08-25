@@ -63,12 +63,35 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 	_selected = selected;
+	
+	for (UIView *view in [self subviews]) {
+		if ([view respondsToSelector:@selector(setSelected:)]) {
+			[(UIControl *)view setSelected:selected];
+		}
+	}
 }
 
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
 	_highlighted = highlighted;
 	
+	for (UIView *view in [self subviews]) {
+		if ([view respondsToSelector:@selector(setHighlighted:)]) {
+			[(UIControl *)view setHighlighted:highlighted];
+		}
+	}	
+}
+
+
+#pragma mark Setters
+
+- (void)setSelected:(BOOL)selected {
+	[self setSelected:selected animated:YES];
+}
+
+
+- (void)setHighlighted:(BOOL)selected {
+	[self setHighlighted:selected animated:YES];
 }
 
 @end

@@ -152,14 +152,10 @@
 
 @optional
 
-- (void)collectionView:(SSCollectionView *)aCollectionView willDisplayItem:(SSCollectionViewItem *)cell forIndex:(NSUInteger)index;
-
-- (NSUInteger)aCollectionView:(SSCollectionView *)aCollectionView willSelectItemAtIndex:(NSUInteger)index;
-- (NSUInteger)aCollectionView:(SSCollectionView *)aCollectionView willDeselectItemAtIndex:(NSUInteger)index;
-
 - (void)collectionView:(SSCollectionView *)aCollectionView didSelectItemAtIndex:(NSUInteger)index;
-- (void)collectionView:(SSCollectionView *)aCollectionView didDeselectItemAtIndex:(NSUInteger)index;
 
+//- (void)collectionView:(SSCollectionView *)aCollectionView willDisplayItem:(SSCollectionViewItem *)item forIndex:(NSUInteger)index;
+//
 //- (UITableViewItemEditingStyle)tableView:(UITableView *)tableView editingStyleForItemAtIndex:(NSUInteger)index;
 //- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForItemAtIndex:(NSUInteger)index;
 //- (void)tableView:(UITableView*)tableView willBeginEditingItemAtIndex:(NSUInteger)index;
