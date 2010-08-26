@@ -17,28 +17,11 @@
 }
 
 
-#pragma mark NSObject
-
-- (void)dealloc {
-	_collectionView.dataSource = nil;
-	_collectionView.delegate = nil;
-	[_collectionView release];
-	[super dealloc];
-}
-
-
 #pragma mark UIViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.title = [[self class] title];
-	self.view.backgroundColor = [UIColor whiteColor];
-	
-	_collectionView = [[SSCollectionView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)];
-	_collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	_collectionView.dataSource = self;
-	_collectionView.delegate = self;
-	[self.view addSubview:_collectionView];
 }
 
 

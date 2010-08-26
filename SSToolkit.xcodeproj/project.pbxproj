@@ -74,6 +74,8 @@
 		B24E9E7E121DC29A0085F81E /* UIView+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E40121DC29A0085F81E /* UIView+SSToolkitAdditions.m */; };
 		B24E9E7F121DC29A0085F81E /* UIViewController+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E41121DC29A0085F81E /* UIViewController+SSToolkitAdditions.h */; };
 		B24E9E80121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E42121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m */; };
+		B267D3451226CE0400B66519 /* SSCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B267D3431226CE0400B66519 /* SSCollectionViewController.h */; };
+		B267D3461226CE0400B66519 /* SSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B267D3441226CE0400B66519 /* SSCollectionViewController.m */; };
 		B27B1A1B12241D3400111EA2 /* SSCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = B27B1A1912241D3400111EA2 /* SSCollectionView.h */; };
 		B27B1A1C12241D3400111EA2 /* SSCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B1A1A12241D3400111EA2 /* SSCollectionView.m */; };
 		B27B1A2212241D6F00111EA2 /* SSCollectionViewItem.h in Headers */ = {isa = PBXBuildFile; fileRef = B27B1A2012241D6F00111EA2 /* SSCollectionViewItem.h */; };
@@ -151,6 +153,8 @@
 		B24E9E40121DC29A0085F81E /* UIView+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B24E9E41121DC29A0085F81E /* UIViewController+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B24E9E42121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SSToolkitAdditions.m"; sourceTree = "<group>"; };
+		B267D3431226CE0400B66519 /* SSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewController.h; sourceTree = "<group>"; };
+		B267D3441226CE0400B66519 /* SSCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionViewController.m; sourceTree = "<group>"; };
 		B27B1A1912241D3400111EA2 /* SSCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionView.h; sourceTree = "<group>"; };
 		B27B1A1A12241D3400111EA2 /* SSCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionView.m; sourceTree = "<group>"; };
 		B27B1A2012241D6F00111EA2 /* SSCollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewItem.h; sourceTree = "<group>"; };
@@ -320,6 +324,8 @@
 				B24E9E29121DC29A0085F81E /* SSPickerViewController.m */,
 				B24E9E31121DC29A0085F81E /* SSViewController.h */,
 				B24E9E32121DC29A0085F81E /* SSViewController.m */,
+				B267D3431226CE0400B66519 /* SSCollectionViewController.h */,
+				B267D3441226CE0400B66519 /* SSCollectionViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -412,6 +418,7 @@
 				B2E03770121DCCB500D02434 /* SSTableViewCell.h in Headers */,
 				B27B1A1B12241D3400111EA2 /* SSCollectionView.h in Headers */,
 				B27B1A2212241D6F00111EA2 /* SSCollectionViewItem.h in Headers */,
+				B267D3451226CE0400B66519 /* SSCollectionViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +501,7 @@
 				B21D2E00121F2FE500161E66 /* SSDrawingMacros.m in Sources */,
 				B27B1A1C12241D3400111EA2 /* SSCollectionView.m in Sources */,
 				B27B1A2312241D6F00111EA2 /* SSCollectionViewItem.m in Sources */,
+				B267D3461226CE0400B66519 /* SSCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

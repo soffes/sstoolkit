@@ -8,9 +8,8 @@
 
 #import <SSToolkit/SSToolkit.h>
 
-@interface SCCollectionViewDemoViewController : UIViewController <SSCollectionViewDataSource, SSCollectionViewDelegate> {
+@interface SCCollectionViewDemoViewController : SSCollectionViewController {
 
-	SSCollectionView *_collectionView;
 }
 
 + (NSString *)title;
