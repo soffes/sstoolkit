@@ -10,6 +10,8 @@
 //  and doesn't reuse items. Also resizing items isn't easy. Only scrolling
 //  vertically is currently supported.
 //
+//  Multiple sections are not supported.
+//
 //  Editing will and performance will be my next focus. Then animating
 //  changes when data changes and an option to disable that.
 //
@@ -89,8 +91,10 @@
 //@property (nonatomic, assign) BOOL allowsSelectionDuringEditing;
 
 - (void)reloadData;
-
 - (SSCollectionViewItem *)dequeueReusableItemWithIdentifier:(NSString *)identifier;
+- (SSCollectionViewItem *)itemPathForIndex:(NSIndexPath *)indexPath;
+- (NSIndexPath *)indexPathForItem:(SSCollectionViewItem *)item;
+- (void)deselectItemAtIndexPath:(NSIndexPath *)index animated:(BOOL)animated;
 
 //- (NSInteger)numberOfSections;
 //- (NSInteger)numberOfItemsInSection:(NSInteger)section;
@@ -100,11 +104,10 @@
 //- (CGRect)rectForFooterInSection:(NSInteger)section;
 //- (CGRect)rectForItemAtIndex:(NSUInteger)index;
 //
-//- (NSUInteger)indexForItemAtPoint:(CGPoint)point;
-//- (NSUInteger)indexForItem:(SSCollectionViewItem *)item;
-//- (NSArray *)indexsForItemsInRect:(CGRect)rect;
+//- (NSIndexPath *)indexPathForItemAtPoint:(CGPoint)point;
+//- (NSIndexPath *)indexPathForItem:(SSCollectionViewItem *)item;
+//- (NSArray *)indexPathsForItemsInRect:(CGRect)rect;
 //
-//- (SSCollectionViewItem *)itemAtIndex:(NSUInteger)index;
 //- (NSArray *)visibleItems;
 //- (NSArray *)indexsForVisibleItems;
 //
@@ -121,10 +124,9 @@
 //
 //- (void)setEditing:(BOOL)editing animated:(BOOL)animated;
 //
-//- (NSUInteger)indexForSelectedItem;
+//- (NSIndexPath *)indexPathForSelectedItem;
 //
-//- (void)selectItemAtIndexPath:(NSUInteger)index animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
-//- (void)deselectItemAtIndexPath:(NSUInteger)index animated:(BOOL)animated;
+//- (void)selectItemAtIndexPath:(NSIndexPath *)index animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
 
 @end
 
@@ -133,17 +135,17 @@
 
 @required
 
-- (NSInteger)numberOfItemsInCollectionView:(SSCollectionView *)aCollectionView;
-- (SSCollectionViewItem *)collectionView:(SSCollectionView *)aCollectionView itemForIndex:(NSUInteger)index;
+- (NSInteger)collectionView:(SSCollectionView *)aCollectionView numberOfRowsInSection:(NSInteger)section;
+- (SSCollectionViewItem *)collectionView:(SSCollectionView *)aCollectionView itemForIndexPath:(NSIndexPath *)indexPath;
 
 @optional
 
-//- (BOOL)collectionView:(SSCollectionView *)aCollectionView canEditItemAtIndex:(NSUInteger)index;
-//- (BOOL)collectionView:(SSCollectionView *)aCollectionView canMoveItemAtIndex:(NSUInteger)index;
+//- (BOOL)collectionView:(SSCollectionView *)aCollectionView canEditItemAtIndexPath:(NSIndexPath *)indexPath;
+//- (BOOL)collectionView:(SSCollectionView *)aCollectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath;
 //
-//- (void)collectionView:(SSCollectionView *)aCollectionView commitEditingStyle:(SSCollectionViewItemEditingStyle)editingStyle forItemAtIndex:(NSUInteger)index;
+//- (void)collectionView:(SSCollectionView *)aCollectionView commitEditingStyle:(SSCollectionViewItemEditingStyle)editingStyle forItemAtIndexPath:(NSIndexPath *)indexPath;
 //
-//- (void)collectionView:(SSCollectionView *)aCollectionView moveItemAtIndexPath:(NSUInteger)sourceIndexPath toIndexPath:(NSUInteger)destinationIndexPath;
+//- (void)collectionView:(SSCollectionView *)aCollectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath;
 
 @end
 
@@ -152,15 +154,15 @@
 
 @optional
 
-- (void)collectionView:(SSCollectionView *)aCollectionView didSelectItemAtIndex:(NSUInteger)index;
+- (void)collectionView:(SSCollectionView *)aCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 
-//- (void)collectionView:(SSCollectionView *)aCollectionView willDisplayItem:(SSCollectionViewItem *)item forIndex:(NSUInteger)index;
+//- (void)collectionView:(SSCollectionView *)aCollectionView willDisplayItem:(SSCollectionViewItem *)item forIndexPath:(NSIndexPath *)indexPath;
 //
-//- (UITableViewItemEditingStyle)tableView:(UITableView *)tableView editingStyleForItemAtIndex:(NSUInteger)index;
-//- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForItemAtIndex:(NSUInteger)index;
-//- (void)tableView:(UITableView*)tableView willBeginEditingItemAtIndex:(NSUInteger)index;
-//- (void)tableView:(UITableView*)tableView didEndEditingItemAtIndex:(NSUInteger)index;
+//- (UITableViewItemEditingStyle)tableView:(UITableView *)tableView editingStyleForItemAtIndexPath:(NSIndexPath *)indexPath;
+//- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForItemAtIndexPath:(NSIndexPath *)indexPath;
+//- (void)tableView:(UITableView*)tableView willBeginEditingItemAtIndexPath:(NSIndexPath *)indexPath;
+//- (void)tableView:(UITableView*)tableView didEndEditingItemAtIndexPath:(NSIndexPath *)indexPath;
 //
-//- (NSUInteger)aCollectionView:(SSCollectionView *)aCollectionView targetIndexPathForMoveFromItemAtIndexPath:(NSUInteger)sourceIndexPath toProposedIndexPath:(NSUInteger)proposedDestinationIndexPath;               
+//- (NSUInteger)aCollectionView:(SSCollectionView *)aCollectionView targetIndexPathForMoveFromItemAtIndexPath:(NSIndexPath *)indexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath;               
 
 @end

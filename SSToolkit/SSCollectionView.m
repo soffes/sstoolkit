@@ -137,8 +137,8 @@
 	item.selected = YES;
 	
 	// Notify delegate of selection
-	if ([self.delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndex:)]) {
-		[self.delegate collectionView:self didSelectItemAtIndex:item.tag];
+	if ([self.delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
+		[self.delegate collectionView:self didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:item.tag inSection:0]];
 	}
 }
 
@@ -151,10 +151,10 @@
 	
 	[_items removeAllObjects];
 	
-	NSUInteger total = [_dataSource numberOfItemsInCollectionView:self];
+	NSUInteger total = [_dataSource collectionView:self numberOfRowsInSection:0];
 	for (NSUInteger i = 0; i < total; i++) {
 		// TODO: Store item so it can be dequeued later
-		SSCollectionViewItem *item = [_dataSource collectionView:self itemForIndex:i];
+		SSCollectionViewItem *item = [_dataSource collectionView:self itemForIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
 		item.tag = i;
 		[_items addObject:item];
 		[self addSubview:item];
@@ -167,6 +167,24 @@
 - (SSCollectionViewItem *)dequeueReusableItemWithIdentifier:(NSString *)identifier {
 	// TODO: Store items and reuse
 	return nil;
+}
+
+
+- (SSCollectionViewItem *)itemPathForIndex:(NSIndexPath *)indexPath {
+	if (indexPath.row >= [_items count]) {
+		return nil;
+	}
+	return [_items objectAtIndex:indexPath.row];
+}
+
+
+- (NSIndexPath *)indexPathForItem:(SSCollectionViewItem *)item {
+	return [NSIndexPath indexPathForRow:[_items indexOfObject:item] inSection:0];
+}
+
+
+- (void)deselectItemAtIndexPath:(NSIndexPath *)index animated:(BOOL)animated {
+	// TODO: Implement
 }
 
 

@@ -317,6 +317,8 @@
 		B2601A78122307CD005506D5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B267D3431226CE0400B66519 /* SSCollectionViewController.h */,
+				B267D3441226CE0400B66519 /* SSCollectionViewController.m */,
 				B24E9E21121DC29A0085F81E /* SSMessagesViewController.h */,
 				B24E9E22121DC29A0085F81E /* SSMessagesViewController.m */,
 				B24E9E27121DC29A0085F81E /* SSModalViewController.h */,
@@ -324,8 +326,6 @@
 				B24E9E29121DC29A0085F81E /* SSPickerViewController.m */,
 				B24E9E31121DC29A0085F81E /* SSViewController.h */,
 				B24E9E32121DC29A0085F81E /* SSViewController.m */,
-				B267D3431226CE0400B66519 /* SSCollectionViewController.h */,
-				B267D3441226CE0400B66519 /* SSCollectionViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";

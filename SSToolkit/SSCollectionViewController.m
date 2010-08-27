@@ -36,12 +36,12 @@
 
 #pragma mark SSCollectionViewDataSource
 
-- (NSInteger)numberOfItemsInCollectionView:(SSCollectionView *)aCollectionView {
+- (NSInteger)collectionView:(SSCollectionView *)aCollectionView numberOfRowsInSection:(NSInteger)section {
 	return 0;
 }
 
 
-- (SSCollectionViewItem *)collectionView:(SSCollectionView *)aCollectionView itemForIndex:(NSUInteger)index {
+- (SSCollectionViewItem *)collectionView:(SSCollectionView *)aCollectionView itemForIndexPath:(NSIndexPath *)indexPath {
 	return nil;
 }
 
