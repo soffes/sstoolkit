@@ -100,6 +100,9 @@
 	CGFloat contentHeight = lastFrame.origin.y + lastFrame.size.height + padding;
 	CGFloat minContentHeight = (self.frame.size.height - self.contentInset.top - self.contentInset.bottom) + 1.0;
 	self.contentSize = CGSizeMake(contentWidth, fmax(contentHeight, minContentHeight));
+	
+	// Update background view
+	_backgroundView.frame = CGRectMake(0.0, 0.0, self.frame.size.width, self.contentSize.height + self.contentInset.top + self.contentInset.bottom);
 }
 
 
@@ -218,7 +221,7 @@
 	
 	_backgroundView = [background retain];
 	_backgroundView.tag = -1;
-	_backgroundView.frame = CGRectSetZeroOrigin(self.frame);
+	_backgroundView.frame = CGRectMake(0.0, 0.0, self.frame.size.width, self.contentSize.height + self.contentInset.top + self.contentInset.bottom);
 	_backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[self insertSubview:_backgroundView atIndex:0];
 }
