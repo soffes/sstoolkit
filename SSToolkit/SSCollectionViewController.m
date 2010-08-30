@@ -34,6 +34,12 @@
 }
 
 
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	[_collectionView flashScrollIndicators];
+}
+
+
 #pragma mark SSCollectionViewDataSource
 
 - (NSInteger)collectionView:(SSCollectionView *)aCollectionView numberOfRowsInSection:(NSInteger)section {
