@@ -136,6 +136,10 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 
 - (void)loadURLString:(NSString *)string {
+	if ([string length] < 5) {
+		return;
+	}
+	
 	if ([string hasPrefix:@"http://"] == NO && [string hasPrefix:@"https://"] == NO) {
 		string = [NSString stringWithFormat:@"http://%@", string];
 	}
