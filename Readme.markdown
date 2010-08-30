@@ -2,13 +2,9 @@
 
 SSToolkit makes life easier. It is made up of various view controllers, views, and categories that I use in all of my apps. Feel free to fork the repo and make it better.
 
+If you're using this in your project, I'd love to hear about it! [Send me an email](mailto:sam@samsoff.es) and let me know which pieces you're using and such.
+
 ## Classes
-
-### View Controllers
-
-* [SSViewController][] - custom modal craziness
-* [SSPickerViewController][] - easily create picker view controllers like the Settings app
-* [SSMessagesViewController][] - simple message UI like the built-in SMS app
 
 ### Views
 
@@ -20,7 +16,30 @@ SSToolkit makes life easier. It is made up of various view controllers, views, a
 * [SSLoadingView][] - flexible loading view
 * [SSPieProgressView][] - pie chart style progress bar similar to the one in Xcode's status bar
 * [SSTextField][] - simply add edge insets
-* [SSWebView][] - handy delegate additions and control over shadows and scroll (still betay)
+* [SSWebView][] - handy delegate additions and control over shadows and scroll
+
+### Controls
+
+* [SSTextField][] - inset your text
+* [SSTextView][] - placeholder!
+
+### View Controllers
+
+* [SSCollectionViewController][] - manage a collection view
+* [SSMessagesViewController][] - simple message UI like Messsages.app
+* [SSPickerViewController][] - easily create picker view controllers like the Settings app
+* [SSViewController][] - custom modal craziness
+
+### Cells
+
+* [SSTableViewCell][] - a fast cell
+* [SSMessageTableViewCell][] - message bubble cell
+
+### Misc
+
+* [SSDrawingMacros][] - random macros for drawing and such
+* [SSConcurrentOperation][] - a simple wrapper for concurrent NSOperations
+* [SSKeychain][] - makes dealing with the keychain less sucky
 
 ### Categories
 
@@ -81,4 +100,12 @@ You can also import individual files instead of the whole framework (for faster 
 [SSPieProgressView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSPieProgressView.h
 [SSTextField]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTextField.h
 [SSWebView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSWebView.h
+[SSCollectionViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSCollectionViewController.h
+[SSTextField]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTextField.h
+[SSTextView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTextView.h
+[SSTableViewCell]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTableViewCell.h
+[SSMessageTableViewCell]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSMessageTableViewCell.h
+[SSDrawingMacros]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSDrawingMacros.h
+[SSConcurrentOperation]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSConcurrentOperation.h
+[SSKeychain]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSKeychain.h
 [SSCatalog]: https://github.com/samsoffes/sstoolkit/tree/master/SSCatalog/

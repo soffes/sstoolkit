@@ -31,13 +31,13 @@ CGRect CGRectSetHeight(CGRect rect, CGFloat height) {
 }
 
 
-CGRect CGRectSetOrigin(CGRect rect, CGSize size) {
-	return CGRectMake(rect.origin.x, rect.origin.y, size.width, size.height);
+CGRect CGRectSetOrigin(CGRect rect, CGPoint origin) {
+	return CGRectMake(origin.x, origin.y, rect.size.width, rect.size.height);
 }
 
 
-CGRect CGRectSetSize(CGRect rect, CGPoint origin) {
-	return CGRectMake(origin.x, origin.y, rect.size.width, rect.size.height);
+CGRect CGRectSetSize(CGRect rect, CGSize size) {
+	return CGRectMake(rect.origin.x, rect.origin.y, size.width, size.height);
 }
 
 

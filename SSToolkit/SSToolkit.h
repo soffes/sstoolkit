@@ -23,10 +23,11 @@
 #import <SSToolkit/SSTextView.h>
 
 // View Controllers
-#import <SSToolkit/SSPickerViewController.h>
+#import <SSToolkit/SSCollectionViewController.h>
 #import <SSToolkit/SSMessagesViewController.h>
-#import <SSToolkit/SSViewController.h>
 #import <SSToolkit/SSModalViewController.h>
+#import <SSToolkit/SSPickerViewController.h>
+#import <SSToolkit/SSViewController.h>
 
 // Cells
 #import <SSToolkit/SSTableViewCell.h>

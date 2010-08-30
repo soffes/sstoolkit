@@ -17,6 +17,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 + (BOOL)_isBackedByScroller;
 - (void)_loadingStatusChanged;
+- (void)_startLoading;
 - (void)_finishedLoading;
 - (void)_DOMLoaded;
 - (void)_injectCSS:(NSString *)css;
@@ -36,9 +37,10 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 #pragma mark NSObject
 
 - (void)dealloc {
-	// TODO: If you dealloc when the page is almost loaded, 
-	// _loadingStatusChanged still gets called sometimes causing a crash
+	// TODO: If you dealloc when the page is almost loaded, _loadingStatusChanged still
+	// gets called sometimes causing a crash, even with this cancel. Ugh.
 	[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(_loadingStatusChanged) object:nil];
+	
 	_delegate = nil;
 	_webView.delegate = nil;
 	[_webView stopLoading];
@@ -52,11 +54,9 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
-		_webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-		_webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-		_webView.delegate = self;
-		[self addSubview:_webView];
+		[self reset];
 		
+		_loading = NO;
 		_scrollEnabled = YES;
 		_bounces = YES;
 		_shadowsHidden = NO;
@@ -69,6 +69,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 - (void)layoutSubviews {
 	_webView.frame = CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height);
 }
+
 
 #pragma mark SSWebView Methods
 
@@ -91,6 +92,37 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	}
 }
 
+
+- (void)reset {
+	BOOL loadPreviousSettings = NO;
+	UIDataDetectorTypes tempDataDetectorTypes;
+	BOOL tempScalesPageToFit;
+	
+	if (_webView) {
+		_webView.delegate = nil;
+		[_webView stopLoading];
+		
+		loadPreviousSettings = YES;
+		tempDataDetectorTypes = _webView.dataDetectorTypes;
+		tempScalesPageToFit = _webView.scalesPageToFit;
+		
+		[_webView removeFromSuperview];
+		[_webView release];
+	}
+		
+	_webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+	_webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+	if (loadPreviousSettings) {
+		_webView.dataDetectorTypes = tempDataDetectorTypes;
+		_webView.scalesPageToFit = tempScalesPageToFit;
+	}
+	
+	_webView.delegate = self;
+	[self addSubview:_webView];
+}
+
+
 #pragma mark Convenience Methods
 
 - (void)loadHTMLString:(NSString *)string {
@@ -104,11 +136,16 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 
 - (void)loadURLString:(NSString *)string {
+	if ([string length] < 5) {
+		return;
+	}
+	
 	if ([string hasPrefix:@"http://"] == NO && [string hasPrefix:@"https://"] == NO) {
 		string = [NSString stringWithFormat:@"http://%@", string];
 	}
 	[self loadURL:[NSURL URLWithString:string]];
 }
+
 
 #pragma mark Private Methods
 
@@ -128,7 +165,16 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 }
 
 
+- (void)_startLoading {
+	_loading = YES;
+	if ([_delegate respondsToSelector:@selector(webViewDidStartLoading:)]) {
+		[_delegate webViewDidStartLoading:self];
+	}
+}
+
+
 - (void)_finishedLoading {
+	_loading = NO;
 	if ([_delegate respondsToSelector:@selector(webViewDidFinishLoading:)]) {
 		[_delegate webViewDidFinishLoading:self];
 	}
@@ -152,6 +198,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	[self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:injectCSSFormat, css]];
 }
 
+
 #pragma mark Getters
 
 - (BOOL)shadowsHidden {
@@ -166,6 +213,12 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	}
 	return NO;
 }
+
+
+- (BOOL)isLoading {
+	return _loading;
+}
+
 
 #pragma mark Setters
 
@@ -310,6 +363,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	}
 }
 
+
 #pragma mark UIWebView Methods
 
 - (BOOL)canGoBack {
@@ -395,6 +449,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	return [_webView stringByEvaluatingJavaScriptFromString:script];
 }
 
+
 #pragma mark UIWebViewDelegate
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
@@ -446,9 +501,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 		_lastRequest = [aRequest retain];
 		_testedDOM = NO;
 		
-		if ([_delegate respondsToSelector:@selector(webViewDidStartLoading:)]) {
-			[_delegate webViewDidStartLoading:self];
-		}
+		[self _startLoading];
 	}
 	
 	// Child request for same page

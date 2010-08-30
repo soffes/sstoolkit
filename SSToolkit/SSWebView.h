@@ -25,6 +25,7 @@
 	NSURLRequest *_lastRequest;
 	BOOL _testedDOM;
 	BOOL _DOMloaded;
+	BOOL _loading;
 	BOOL _scrollEnabled;
 	BOOL _bounces;
 	BOOL _shadowsHidden;
@@ -53,6 +54,7 @@
 - (void)dismissKeyboard;
 - (void)injectCSS:(NSString *)string;
 - (void)injectCSS:(NSString *)string persist:(BOOL)persist;
+- (void)reset;
 
 // Convenience Methods
 - (void)loadHTMLString:(NSString *)string;

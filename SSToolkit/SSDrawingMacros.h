@@ -24,9 +24,9 @@ extern CGRect CGRectSetWidth(CGRect rect, CGFloat width);
 
 extern CGRect CGRectSetHeight(CGRect rect, CGFloat height);
 
-extern CGRect CGRectSetOrigin(CGRect rect, CGSize size);
+extern CGRect CGRectSetOrigin(CGRect rect, CGPoint origin);
 
-extern CGRect CGRectSetSize(CGRect rect, CGPoint origin);
+extern CGRect CGRectSetSize(CGRect rect, CGSize size);
 
 extern CGRect CGRectSetZeroOrigin(CGRect rect);
 
