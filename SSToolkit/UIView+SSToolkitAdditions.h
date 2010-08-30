@@ -1,12 +1,12 @@
 //
-//  UIView+imageRepresentation.h
+//  UIView+SSToolkitAdditions.h
 //  SSToolkit
 //
 //  Created by Sam Soffes on 2/15/10.
 //  Copyright 2010 Sam Soffes. All rights reserved.
 //
 
-@interface UIView (imageRepresentation)
+@interface UIView (SSToolkitAdditions)
 
 - (UIImage *)imageRepresentation;
 
@@ -24,5 +24,8 @@
 - (void)fadeAlphaTo:(CGFloat)targetAlpha;
 - (void)fadeAlphaTo:(CGFloat)targetAlpha andPerformSelector:(SEL)selector;
 - (void)fadeAlphaTo:(CGFloat)targetAlpha andPerformSelector:(SEL)selector withObject:(id)object;
+
+- (NSArray *)superviews;
+- (id)firstSuperviewOfClass:(Class)superviewClass;
 
 @end

@@ -88,4 +88,32 @@
 }
 
 
+- (NSArray *)superviews {
+	NSMutableArray *superviews = [[NSMutableArray alloc] init];
+	
+	UIView *view = self;
+	UIView *superview = nil;
+	while (view) {
+		superview = [view superview];
+		[superviews addObject:superview];
+		view = superview;
+	}
+	
+	return [superviews autorelease];
+}
+
+
+- (id)firstSuperviewOfClass:(Class)superviewClass {
+	UIView *view = self;
+	UIView *superview = nil;
+	while (view) {
+		superview = [view superview];
+		if ([superview isKindOfClass:superviewClass]) {
+			return superview;
+		}		
+		view = superview;
+	}
+	return nil;
+}
+
 @end

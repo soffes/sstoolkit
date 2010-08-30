@@ -7,6 +7,13 @@
 //
 
 #import "SSCollectionView.h"
+#import "SSDrawingMacros.h"
+#import "UIView+SSToolkitAdditions.h"
+
+@interface SSCollectionView (PrivateMethods)
+- (SSCollectionViewItem *)_itemForTouches:(NSSet *)touches event:(UIEvent *)event;
+@end
+
 
 @implementation SSCollectionView
 
@@ -17,8 +24,8 @@
 @synthesize columnWidth = _columnWidth;
 @synthesize columnSpacing = _columnSpacing;
 @synthesize backgroundView = _backgroundView;
-@synthesize collectionHeaderView = _collectionHeaderView;
-@synthesize collectionFooterView = _collectionFooterView;
+//@synthesize collectionHeaderView = _collectionHeaderView;
+//@synthesize collectionFooterView = _collectionFooterView;
 @synthesize minNumberOfColumns = _minNumberOfColumns;
 @synthesize maxNumberOfColumns = _maxNumberOfColumns;
 @synthesize minItemSize = _minItemSize;
@@ -29,9 +36,9 @@
 
 - (void)dealloc {
 	[_items release];
-	[_backgroundView release];
-	[_collectionHeaderView release];
-	[_collectionFooterView release];
+	self.backgroundView = nil;
+//	[_collectionHeaderView release];
+//	[_collectionFooterView release];
 	[super dealloc];
 }
 
@@ -99,13 +106,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	[super touchesBegan:touches withEvent:event];
 	
-	CGPoint point = [[touches anyObject] locationInView:self];
-	SSCollectionViewItem *item = (SSCollectionViewItem *)[self hitTest:point withEvent:event];
-	if ((UIView *)item == self) {
-		return;
-	}
-	
-	// Highlight item
+	SSCollectionViewItem *item = [self _itemForTouches:touches event:event];
 	item.highlighted = YES;
 }
 
@@ -113,13 +114,7 @@
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
 	[super touchesCancelled:touches withEvent:event];
 
-	CGPoint point = [[touches anyObject] locationInView:self];
-	SSCollectionViewItem *item = (SSCollectionViewItem *)[self hitTest:point withEvent:event];
-	if ((UIView *)item == self) {
-		return;
-	}
-	
-	// Remove highlight
+	SSCollectionViewItem *item = [self _itemForTouches:touches event:event];
 	item.highlighted = NO;
 }
 
@@ -127,9 +122,8 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	[super touchesEnded:touches withEvent:event];
 	
-	CGPoint point = [[touches anyObject] locationInView:self];
-	SSCollectionViewItem *item = (SSCollectionViewItem *)[self hitTest:point withEvent:event];
-	if ((UIView *)item == self) {
+	SSCollectionViewItem *item = [self _itemForTouches:touches event:event];
+	if (!item) {
 		return;
 	}
 	
@@ -188,6 +182,19 @@
 }
 
 
+#pragma mark Private Methods
+
+- (SSCollectionViewItem *)_itemForTouches:(NSSet *)touches event:(UIEvent *)event {
+	CGPoint point = [[touches anyObject] locationInView:self];
+	UIView *view = (SSCollectionViewItem *)[self hitTest:point withEvent:event];
+	if (view == self || view == _backgroundView) {
+		return nil;
+	}
+	
+	return [view firstSuperviewOfClass:[SSCollectionViewItem class]];
+}
+
+
 #pragma mark Setters
 
 - (void)setDataSource:(id<SSCollectionViewDataSource>)dataSource {
@@ -203,5 +210,18 @@
 	[self setNeedsLayout];
 	[UIView commitAnimations];
 }
+
+
+- (void)setBackgroundView:(UIView *)background {
+	[_backgroundView removeFromSuperview];
+	[_backgroundView release];
+	
+	_backgroundView = [background retain];
+	_backgroundView.tag = -1;
+	_backgroundView.frame = CGRectSetZeroOrigin(self.frame);
+	_backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	[self insertSubview:_backgroundView atIndex:0];
+}
+
 
 @end

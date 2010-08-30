@@ -49,8 +49,8 @@
 	CGFloat _columnSpacing;
 	
 	UIView *_backgroundView;
-	UIView *_collectionHeaderView;
-	UIView *_collectionFooterView;
+//	UIView *_collectionHeaderView;
+//	UIView *_collectionFooterView;
 	
 	NSUInteger _minNumberOfColumns;
 	NSUInteger _maxNumberOfColumns;
@@ -77,8 +77,8 @@
 @property (nonatomic, assign) CGFloat columnSpacing;
 
 @property (nonatomic, retain) UIView *backgroundView;
-@property (nonatomic, retain) UIView *collectionHeaderView;
-@property (nonatomic, retain) UIView *collectionFooterView;
+//@property (nonatomic, retain) UIView *collectionHeaderView;
+//@property (nonatomic, retain) UIView *collectionFooterView;
 
 @property (nonatomic, assign) NSUInteger minNumberOfColumns;
 @property (nonatomic, assign) NSUInteger maxNumberOfColumns;
