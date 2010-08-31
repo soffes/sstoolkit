@@ -24,6 +24,8 @@
 @synthesize columnWidth = _columnWidth;
 @synthesize columnSpacing = _columnSpacing;
 @synthesize backgroundView = _backgroundView;
+@synthesize backgroundHeaderView = _backgroundHeaderView;
+@synthesize backgroundFooterView = _backgroundFooterView;
 //@synthesize collectionHeaderView = _collectionHeaderView;
 //@synthesize collectionFooterView = _collectionFooterView;
 @synthesize minNumberOfColumns = _minNumberOfColumns;
@@ -35,10 +37,17 @@
 #pragma mark NSObject
 
 - (void)dealloc {
+	self.dataSource = nil;
+	self.delegate = nil;
+	
 	[_items release];
+	
 	self.backgroundView = nil;
-//	[_collectionHeaderView release];
-//	[_collectionFooterView release];
+	self.backgroundHeaderView = nil;
+	self.backgroundFooterView = nil;
+//	self.collectionHeaderView = nil;
+//	self.collectionFooterView = nil;
+	
 	[super dealloc];
 }
 
@@ -78,7 +87,7 @@
 	}
 	
 	// Calculate padding
-	CGFloat padding = roundf((totalWidth - (_columnWidth * maxColumns) - (_columnSpacing * (maxColumns - 1))) / 2.0);
+	CGFloat horizontalPadding = roundf((totalWidth - (_columnWidth * maxColumns) - (_columnSpacing * (maxColumns - 1))) / 2.0);
 	
 	// Layout items
 	NSUInteger index = 0;
@@ -90,19 +99,21 @@
 			column = 0;
 			row++;
 		}
-		item.frame = CGRectMake((column * _columnWidth) + (column * _columnSpacing) + padding, (row * _rowHeight) + (row * _rowSpacing) + padding, _columnWidth, _rowHeight);
+		item.frame = CGRectMake((column * _columnWidth) + (column * _columnSpacing) + horizontalPadding, (row * _rowHeight) + (row * _rowSpacing), _columnWidth, _rowHeight);
 		index++;
 	}
 	
 	// Set content size
 	CGRect lastFrame = [[_items lastObject] frame];
 	CGFloat contentWidth = totalWidth - self.contentInset.left - self.contentInset.right;
-	CGFloat contentHeight = lastFrame.origin.y + lastFrame.size.height + padding;
+	CGFloat contentHeight = lastFrame.origin.y + lastFrame.size.height + _rowSpacing;
 	CGFloat minContentHeight = (self.frame.size.height - self.contentInset.top - self.contentInset.bottom) + 1.0;
 	self.contentSize = CGSizeMake(contentWidth, fmax(contentHeight, minContentHeight));
 	
-	// Update background view
+	// Update background views
 	_backgroundView.frame = CGRectMake(0.0, 0.0, self.frame.size.width, self.contentSize.height + self.contentInset.top + self.contentInset.bottom);
+	_backgroundHeaderView.frame = CGRectMake(0.0, -_backgroundHeaderView.frame.size.height, self.frame.size.width, _backgroundHeaderView.frame.size.height);
+	_backgroundFooterView.frame = CGRectMake(0.0, _backgroundView.frame.size.height, self.frame.size.width, _backgroundFooterView.frame.size.height);
 }
 
 
@@ -221,9 +232,46 @@
 	
 	_backgroundView = [background retain];
 	_backgroundView.tag = -1;
-	_backgroundView.frame = CGRectMake(0.0, 0.0, self.frame.size.width, self.contentSize.height + self.contentInset.top + self.contentInset.bottom);
 	_backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[self insertSubview:_backgroundView atIndex:0];
+	
+	[self setNeedsLayout];
+}
+
+
+- (void)setBackgroundHeaderView:(UIView *)backgroundHeader {
+	[_backgroundHeaderView removeFromSuperview];
+	[_backgroundHeaderView release];
+	
+	_backgroundHeaderView = [backgroundHeader retain];
+	_backgroundHeaderView.tag = -2;
+	_backgroundHeaderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	
+	if (_backgroundView) {
+		[self insertSubview:_backgroundHeaderView aboveSubview:_backgroundView];
+	} else {
+		[self insertSubview:_backgroundHeaderView atIndex:0];
+	}
+	
+	[self setNeedsLayout];
+}
+
+
+- (void)setBackgroundFooterView:(UIView *)backgroundFooter {
+	[_backgroundFooterView removeFromSuperview];
+	[_backgroundFooterView release];
+	
+	_backgroundFooterView = [backgroundFooter retain];
+	_backgroundFooterView.tag = -3;
+	_backgroundFooterView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	
+	if (_backgroundView) {
+		[self insertSubview:_backgroundFooterView aboveSubview:_backgroundView];
+	} else {
+		[self insertSubview:_backgroundFooterView atIndex:0];
+	}
+	
+	[self setNeedsLayout];
 }
 
 

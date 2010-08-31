@@ -49,6 +49,8 @@
 	CGFloat _columnSpacing;
 	
 	UIView *_backgroundView;
+	UIView *_backgroundHeaderView;
+	UIView *_backgroundFooterView;
 //	UIView *_collectionHeaderView;
 //	UIView *_collectionFooterView;
 	
@@ -77,6 +79,8 @@
 @property (nonatomic, assign) CGFloat columnSpacing;
 
 @property (nonatomic, retain) UIView *backgroundView;
+@property (nonatomic, retain) UIView *backgroundHeaderView;
+@property (nonatomic, retain) UIView *backgroundFooterView;
 //@property (nonatomic, retain) UIView *collectionHeaderView;
 //@property (nonatomic, retain) UIView *collectionFooterView;
 
