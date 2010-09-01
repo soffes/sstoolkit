@@ -9,14 +9,15 @@
 typedef enum {
 	SSCollectionViewItemStyleDefault = UITableViewCellStyleDefault,
 	SSCollectionViewItemStyleSubtitle = UITableViewCellStyleSubtitle,
-	SSCollectionViewItemStyleBlank
+	SSCollectionViewItemStyleBlank,
+	SSCollectionViewItemStyleImage
 } SSCollectionViewItemStyle;
 
-typedef enum {
-	SSCollectionViewItemVerticalAlignmentCenter = UIControlContentVerticalAlignmentCenter,
-	SSCollectionViewItemVerticalAlignmentTop = UIControlContentVerticalAlignmentTop,
-	SSCollectionViewItemVerticalAlignmentBottom = UIControlContentVerticalAlignmentBottom
-} SSCollectionViewItemVerticalAlignment;
+//typedef enum {
+//	SSCollectionViewItemVerticalAlignmentCenter = UIControlContentVerticalAlignmentCenter,
+//	SSCollectionViewItemVerticalAlignmentTop = UIControlContentVerticalAlignmentTop,
+//	SSCollectionViewItemVerticalAlignmentBottom = UIControlContentVerticalAlignmentBottom
+//} SSCollectionViewItemVerticalAlignment;
 
 //typedef enum {
 //	SSCollectionViewItemSelectionStyleNone = UITableViewCellSelectionStyleNone,
@@ -34,27 +35,30 @@ typedef enum {
 @interface SSCollectionViewItem : UIView {
 	
 	SSCollectionViewItemStyle _style;
-	SSCollectionViewItemVerticalAlignment _verticalAlignment;
-	CGSize _preferredContentSize;
+//	SSCollectionViewItemVerticalAlignment _verticalAlignment;
+//	CGSize _preferredContentSize;
 	
 	NSString *_reuseIdentifier;
-    UIView *_contentView;
+//	UIView *_contentView;
+	UIImageView *_imageView;
 	UILabel *_textLabel;
 	UILabel *_detailTextLabel;
-    UIView *_backgroundView;
-    UIView *_selectedBackgroundView;
-	
+	UIView *_backgroundView;
+	UIView *_selectedBackgroundView;
+
 	BOOL _selected;
 	BOOL _highlighted;
 }
 
 - (id)initWithStyle:(SSCollectionViewItemStyle)style reuseIdentifier:(NSString *)aReuseIdentifier;
 
-@property (nonatomic, assign) SSCollectionViewItemVerticalAlignment verticalAlignment;
-@property (nonatomic, assign) CGSize preferredContentSize;
+//@property (nonatomic, assign) SSCollectionViewItemVerticalAlignment verticalAlignment;
+//@property (nonatomic, assign) CGSize preferredContentSize;
+//@property (nonatomic, retain, readonly) UIView *contentView;
 
-@property (nonatomic, readonly, retain) UILabel *textLabel;
-@property (nonatomic, readonly, retain) UILabel *detailTextLabel;
+@property (nonatomic, retain, readonly) UIImageView *imageView;
+@property (nonatomic, retain, readonly) UILabel *textLabel;
+@property (nonatomic, retain, readonly) UILabel *detailTextLabel;
 
 @property (nonatomic, retain) UIView *backgroundView;
 @property (nonatomic, retain) UIView *selectedBackgroundView;

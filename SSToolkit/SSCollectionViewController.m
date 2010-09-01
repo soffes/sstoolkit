@@ -7,6 +7,7 @@
 //
 
 #import "SSCollectionViewController.h"
+#import "SSDrawingMacros.h"
 
 @implementation SSCollectionViewController
 
@@ -25,12 +26,14 @@
 #pragma mark UIViewController
 
 - (void)loadView {
-	_collectionView = [[SSCollectionView alloc] initWithFrame:CGRectZero];
+	[super loadView];
+	
+	_collectionView = [[SSCollectionView alloc] initWithFrame:CGRectSetZeroOrigin(self.view.frame)];
 	_collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_collectionView.dataSource = self;
 	_collectionView.delegate = self;
 
-	self.view = _collectionView;
+	[self.view addSubview:_collectionView];
 }
 
 

@@ -7,11 +7,14 @@
 //
 
 #import "SSCollectionViewItem.h"
+#import "SSDrawingMacros.h"
 
 @implementation SSCollectionViewItem
 
-@synthesize verticalAlignment = _verticalAlignment;
-@synthesize preferredContentSize = _preferredContentSize;
+//@synthesize verticalAlignment = _verticalAlignment;
+//@synthesize preferredContentSize = _preferredContentSize;
+//@synthesize contentView = _contentView;
+@synthesize imageView = _imageView;
 @synthesize textLabel = _textLabel;
 @synthesize detailTextLabel = _detailTextLabel;
 @synthesize backgroundView = _backgroundView;
@@ -39,25 +42,42 @@
 }
 
 
+- (void)layoutSubviews {
+	if (_style == SSCollectionViewItemStyleImage) {
+		_imageView.frame = CGRectSetZeroOrigin(self.frame);
+	}
+}
+
+
 #pragma mark SSCollectionViewItem
 
 - (id)initWithStyle:(SSCollectionViewItemStyle)style reuseIdentifier:(NSString *)aReuseIdentifier {
 	if ((self = [super initWithFrame:CGRectZero])) {
 		_style = style;
-		_verticalAlignment = SSCollectionViewItemVerticalAlignmentBottom;
-		_preferredContentSize = CGSizeZero;
+//		_verticalAlignment = SSCollectionViewItemVerticalAlignmentBottom;
+//		_preferredContentSize = CGSizeZero;
 		_reuseIdentifier = [aReuseIdentifier copy];
 		
-		_textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-		_textLabel.textAlignment = UITextAlignmentCenter;
-		[self addSubview:_textLabel];
+		if (_style != SSCollectionViewItemStyleBlank) {
+			_imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+			[self addSubview:_imageView];
+			
+			_textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+			_textLabel.textAlignment = UITextAlignmentCenter;
+			[self addSubview:_textLabel];
+
+			_detailTextLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+			_detailTextLabel.textAlignment = UITextAlignmentCenter;
+			[self addSubview:_detailTextLabel];
+		}
+		
     }
     return self;
 }
 
 
 - (void)prepareForReuse {
-	
+	// !!!: Reuse is currently not implemented
 }
 
 
