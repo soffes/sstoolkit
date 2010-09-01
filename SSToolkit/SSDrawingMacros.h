@@ -31,3 +31,5 @@ extern CGRect CGRectSetSize(CGRect rect, CGSize size);
 extern CGRect CGRectSetZeroOrigin(CGRect rect);
 
 extern CGRect CGRectSetZeroSize(CGRect rect);
+
+extern CGSize CGSizeAspectScaleToSize(CGSize size, CGSize toSize);

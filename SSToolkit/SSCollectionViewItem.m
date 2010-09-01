@@ -7,6 +7,7 @@
 //
 
 #import "SSCollectionViewItem.h"
+#import "SSLabel.h"
 #import "SSDrawingMacros.h"
 
 @implementation SSCollectionViewItem
@@ -62,11 +63,11 @@
 			_imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
 			[self addSubview:_imageView];
 			
-			_textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+			_textLabel = [[SSLabel alloc] initWithFrame:CGRectZero];
 			_textLabel.textAlignment = UITextAlignmentCenter;
 			[self addSubview:_textLabel];
 
-			_detailTextLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+			_detailTextLabel = [[SSLabel alloc] initWithFrame:CGRectZero];
 			_detailTextLabel.textAlignment = UITextAlignmentCenter;
 			[self addSubview:_detailTextLabel];
 		}

@@ -31,6 +31,7 @@ typedef enum {
 //	SSCollectionViewItemEditingStyleInsert = UITableViewCellEditingStyleInsert
 //} SSCollectionViewItemEditingStyle;
 
+@class SSLabel;
 
 @interface SSCollectionViewItem : UIView {
 	
@@ -41,8 +42,8 @@ typedef enum {
 	NSString *_reuseIdentifier;
 //	UIView *_contentView;
 	UIImageView *_imageView;
-	UILabel *_textLabel;
-	UILabel *_detailTextLabel;
+	SSLabel *_textLabel;
+	SSLabel *_detailTextLabel;
 	UIView *_backgroundView;
 	UIView *_selectedBackgroundView;
 
@@ -57,8 +58,8 @@ typedef enum {
 //@property (nonatomic, retain, readonly) UIView *contentView;
 
 @property (nonatomic, retain, readonly) UIImageView *imageView;
-@property (nonatomic, retain, readonly) UILabel *textLabel;
-@property (nonatomic, retain, readonly) UILabel *detailTextLabel;
+@property (nonatomic, retain, readonly) SSLabel *textLabel;
+@property (nonatomic, retain, readonly) SSLabel *detailTextLabel;
 
 @property (nonatomic, retain) UIView *backgroundView;
 @property (nonatomic, retain) UIView *selectedBackgroundView;

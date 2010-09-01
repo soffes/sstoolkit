@@ -49,3 +49,18 @@ CGRect CGRectSetZeroOrigin(CGRect rect) {
 CGRect CGRectSetZeroSize(CGRect rect) {
 	return CGRectMake(rect.origin.x, rect.origin.y, 0.0, 0.0);
 }
+
+CGSize CGSizeAspectScaleToSize(CGSize size, CGSize toSize) {
+	// Probably a more efficient way to do this...
+	CGFloat aspect = 1.0;
+	
+	if (size.width > toSize.width) {
+		aspect = toSize.width / size.width;
+	}
+	
+	if (size.height > toSize.height) {
+		aspect = fmin(toSize.height / size.height, aspect);
+	}
+	
+	return CGSizeMake(size.width * aspect, size.height * aspect);
+}
