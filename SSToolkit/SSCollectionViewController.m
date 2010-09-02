@@ -37,6 +37,12 @@
 }
 
 
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	[_collectionView reloadData];
+}
+
+
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	[_collectionView flashScrollIndicators];

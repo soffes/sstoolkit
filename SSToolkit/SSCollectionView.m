@@ -89,6 +89,18 @@
 	// Calculate padding
 	CGFloat horizontalPadding = roundf((totalWidth - (_columnWidth * maxColumns) - (_columnSpacing * (maxColumns - 1))) / 2.0);
 	
+	// Calculate verticalOffset
+	CGFloat verticalOffset = 0.0;
+	if ([self.delegate respondsToSelector:@selector(collectionView:heightForHeaderInSection:)]) {
+		verticalOffset = [self.delegate collectionView:self heightForHeaderInSection:0];
+	}
+	
+	// Calculate bottomPadding
+	CGFloat bottomPadding = 0.0;
+	if ([self.delegate respondsToSelector:@selector(collectionView:heightForFooterInSection:)]) {
+		bottomPadding = [self.delegate collectionView:self heightForFooterInSection:0];
+	}
+	
 	// Layout items
 	NSUInteger index = 0;
 	NSUInteger row = 0;
@@ -99,14 +111,14 @@
 			column = 0;
 			row++;
 		}
-		item.frame = CGRectMake((column * _columnWidth) + (column * _columnSpacing) + horizontalPadding, (row * _rowHeight) + (row * _rowSpacing), _columnWidth, _rowHeight);
+		item.frame = CGRectMake((column * _columnWidth) + (column * _columnSpacing) + horizontalPadding, (row * _rowHeight) + (row * _rowSpacing) + verticalOffset, _columnWidth, _rowHeight);
 		index++;
 	}
 	
 	// Set content size
 	CGRect lastFrame = [[_items lastObject] frame];
 	CGFloat contentWidth = totalWidth - self.contentInset.left - self.contentInset.right;
-	CGFloat contentHeight = lastFrame.origin.y + lastFrame.size.height + _rowSpacing;
+	CGFloat contentHeight = lastFrame.origin.y + lastFrame.size.height + bottomPadding;
 	CGFloat minContentHeight = (self.frame.size.height - self.contentInset.top - self.contentInset.bottom) + 1.0;
 	self.contentSize = CGSizeMake(contentWidth, fmax(contentHeight, minContentHeight));
 	
@@ -157,6 +169,7 @@
 	// TODO: This is wildly inefficient. Only grab items
 	// that will be on the screen
 	
+	[_items makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	[_items removeAllObjects];
 	
 	NSUInteger total = [_dataSource collectionView:self numberOfRowsInSection:0];

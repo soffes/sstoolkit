@@ -15,6 +15,9 @@
 //  Editing will and performance will be my next focus. Then animating
 //  changes when data changes and an option to disable that.
 //
+//  Don't mind all of the comments in the header. They are mainly for future
+//  features. You could be awesome and implement a few :)
+//
 
 #import "SSCollectionViewItem.h"
 
@@ -158,15 +161,21 @@
 
 @optional
 
+// Headers and Footers
+- (CGFloat)collectionView:(SSCollectionView *)aCollectionView heightForHeaderInSection:(NSInteger)section;
+- (CGFloat)collectionView:(SSCollectionView *)aCollectionView heightForFooterInSection:(NSInteger)section;
+//- (UIView *)collectionView:(SSCollectionView *)aCollectionView viewForHeaderInSection:(NSInteger)section;
+//- (UIView *)collectionView:(SSCollectionView *)aCollectionView viewForFooterInSection:(NSInteger)section;
+//- (BOOL)collectionView:(SSCollectionView *)aCollectionView headerForSectionIsSticky:(NSInteger)section;
+//- (BOOL)collectionView:(SSCollectionView *)aCollectionView footerForSectionIsSticky:(NSInteger)section;
+
 - (void)collectionView:(SSCollectionView *)aCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 
 //- (void)collectionView:(SSCollectionView *)aCollectionView willDisplayItem:(SSCollectionViewItem *)item forIndexPath:(NSIndexPath *)indexPath;
-//
 //- (UITableViewItemEditingStyle)tableView:(UITableView *)tableView editingStyleForItemAtIndexPath:(NSIndexPath *)indexPath;
 //- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForItemAtIndexPath:(NSIndexPath *)indexPath;
 //- (void)tableView:(UITableView*)tableView willBeginEditingItemAtIndexPath:(NSIndexPath *)indexPath;
 //- (void)tableView:(UITableView*)tableView didEndEditingItemAtIndexPath:(NSIndexPath *)indexPath;
-//
 //- (NSUInteger)aCollectionView:(SSCollectionView *)aCollectionView targetIndexPathForMoveFromItemAtIndexPath:(NSIndexPath *)indexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath;               
 
 @end
