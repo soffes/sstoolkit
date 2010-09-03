@@ -64,3 +64,7 @@ CGSize CGSizeAspectScaleToSize(CGSize size, CGSize toSize) {
 	
 	return CGSizeMake(size.width * aspect, size.height * aspect);
 }
+
+CGRect CGRectAddPoint(CGRect rect, CGPoint point) {
+	return CGRectMake(rect.origin.x + point.x, rect.origin.y + point.y, rect.size.width, rect.size.height);
+}

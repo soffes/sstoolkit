@@ -33,3 +33,5 @@ extern CGRect CGRectSetZeroOrigin(CGRect rect);
 extern CGRect CGRectSetZeroSize(CGRect rect);
 
 extern CGSize CGSizeAspectScaleToSize(CGSize size, CGSize toSize);
+
+extern CGRect CGRectAddPoint(CGRect rect, CGPoint point);
