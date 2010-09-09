@@ -55,6 +55,12 @@
 
 #pragma mark Setters
 
+- (void)setText:(NSString *)string {
+	[super setText:string];
+	[self _updateShouldDrawPlaceholder];
+}
+
+
 - (void)setPlaceholder:(NSString *)string {
 	if ([string isEqual:_placeholder]) {
 		return;
