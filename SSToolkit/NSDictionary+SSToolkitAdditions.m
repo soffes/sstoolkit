@@ -7,6 +7,7 @@
 //
 
 #import "NSDictionary+SSToolkitAdditions.h"
+#import "NSString+SSToolkitAdditions.h"
 
 @implementation NSDictionary (SSToolkitAdditions)
 
