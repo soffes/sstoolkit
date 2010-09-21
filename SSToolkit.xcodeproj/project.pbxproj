@@ -12,6 +12,8 @@
 		B21504CA10583B4000409ED4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21504C910583B4000409ED4 /* SystemConfiguration.framework */; };
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
 		B21D2E00121F2FE500161E66 /* SSDrawingMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = B21D2DFF121F2FE500161E66 /* SSDrawingMacros.m */; };
+		B227D2EA124931590078A059 /* NSDictionary+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B227D2E8124931590078A059 /* NSDictionary+SSToolkitAdditions.h */; };
+		B227D2EB124931590078A059 /* NSDictionary+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227D2E9124931590078A059 /* NSDictionary+SSToolkitAdditions.m */; };
 		B24E9E43121DC29A0085F81E /* NSArray+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E05121DC29A0085F81E /* NSArray+SSToolkitAdditions.h */; };
 		B24E9E44121DC29A0085F81E /* NSArray+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E06121DC29A0085F81E /* NSArray+SSToolkitAdditions.m */; };
 		B24E9E45121DC29A0085F81E /* NSData+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E07121DC29A0085F81E /* NSData+SSToolkitAdditions.h */; };
@@ -90,6 +92,8 @@
 		B21504C910583B4000409ED4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B21D2DFF121F2FE500161E66 /* SSDrawingMacros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDrawingMacros.m; sourceTree = "<group>"; };
+		B227D2E8124931590078A059 /* NSDictionary+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SSToolkitAdditions.h"; sourceTree = "<group>"; };
+		B227D2E9124931590078A059 /* NSDictionary+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B24E9E01121DC2910085F81E /* SSToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SSToolkit.bundle; sourceTree = "<group>"; };
 		B24E9E05121DC29A0085F81E /* NSArray+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B24E9E06121DC29A0085F81E /* NSArray+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SSToolkitAdditions.m"; sourceTree = "<group>"; };
@@ -258,6 +262,8 @@
 				B24E9E08121DC29A0085F81E /* NSData+SSToolkitAdditions.m */,
 				B24E9E09121DC29A0085F81E /* NSDate+SSToolkitAdditions.h */,
 				B24E9E0A121DC29A0085F81E /* NSDate+SSToolkitAdditions.m */,
+				B227D2E8124931590078A059 /* NSDictionary+SSToolkitAdditions.h */,
+				B227D2E9124931590078A059 /* NSDictionary+SSToolkitAdditions.m */,
 				B24E9E0B121DC29A0085F81E /* NSString+SSToolkitAdditions.h */,
 				B24E9E0C121DC29A0085F81E /* NSString+SSToolkitAdditions.m */,
 				B24E9E0D121DC29A0085F81E /* NSURL+SSToolkitAdditions.h */,
@@ -419,6 +425,7 @@
 				B27B1A1B12241D3400111EA2 /* SSCollectionView.h in Headers */,
 				B27B1A2212241D6F00111EA2 /* SSCollectionViewItem.h in Headers */,
 				B267D3451226CE0400B66519 /* SSCollectionViewController.h in Headers */,
+				B227D2EA124931590078A059 /* NSDictionary+SSToolkitAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +516,7 @@
 				B27B1A1C12241D3400111EA2 /* SSCollectionView.m in Sources */,
 				B27B1A2312241D6F00111EA2 /* SSCollectionViewItem.m in Sources */,
 				B267D3461226CE0400B66519 /* SSCollectionViewController.m in Sources */,
+				B227D2EB124931590078A059 /* NSDictionary+SSToolkitAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

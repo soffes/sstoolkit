@@ -24,6 +24,8 @@
 - (NSString *)URLEncodedParameterString;
 - (NSString *)URLDecodedString;
 - (NSString *)removeQuotes;
+- (NSString *)stringByEscapingForURLQuery;
+- (NSString *)stringByUnescapingFromURLQuery;
 
 // Base64
 - (NSString *)base64EncodedString;

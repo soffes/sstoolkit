@@ -10,6 +10,7 @@
 #import <SSToolkit/NSArray+SSToolkitAdditions.h>
 #import <SSToolkit/NSData+SSToolkitAdditions.h>
 #import <SSToolkit/NSDate+SSToolkitAdditions.h>
+#import <SSToolkit/NSDictionary+SSToolkitAdditions.h>
 #import <SSToolkit/NSString+SSToolkitAdditions.h>
 #import <SSToolkit/NSURL+SSToolkitAdditions.h>
 
