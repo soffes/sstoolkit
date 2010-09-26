@@ -213,7 +213,7 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 	
 	if (animated) {
 		[UIView commitAnimations];
-	
+		
 		[UIView beginAnimations:@"com.samsoffes.ssviewcontroller.remove-vignette" context:self];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 		[UIView setAnimationDelay:0.2];
@@ -231,12 +231,12 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 }
 
 
-- (void)customModalWillAppear:(BOOL)animated{
+- (void)customModalWillAppear:(BOOL)animated {
 	// Can be overridden by a subclass
 }
 
 
-- (void)customModalDidAppear:(BOOL)animated{
+- (void)customModalDidAppear:(BOOL)animated {
 	// Can be overridden by a subclass
 }
 
@@ -273,6 +273,8 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 - (void)_presentModalAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
 	BOOL animated = (animationID != nil);
 	
+	[self customModalWillAppear:animated];
+	
 	if ([_customModalViewController respondsToSelector:@selector(viewDidAppear:)]) {
 		[_customModalViewController viewDidAppear:animated];
 	}
@@ -287,6 +289,8 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 
 - (void)_dismissModalAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
 	BOOL animated = (animationID != nil);
+	
+	[self customModalWillDisappear:animated];
 	
 	if ([_customModalViewController respondsToSelector:@selector(viewDidDisappear:)]) {
 		[_customModalViewController viewDidDisappear:animated];
