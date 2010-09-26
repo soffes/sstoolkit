@@ -8,22 +8,16 @@
 
 @class SSViewController;
 
-@protocol SSModalViewController <NSObject, NSCoding>
+@protocol SSModalViewController <NSObject>
 
 @required
 
 @property (nonatomic, assign) SSViewController *modalParentViewController;
 
-- (UIView *)view;
-
 @optional
 
 - (BOOL)dismissCustomModalOnVignetteTap;
 - (CGSize)contentSizeForViewInCustomModal;
-
-- (void)viewWillAppear:(BOOL)animated;
-- (void)viewDidAppear:(BOOL)animated;
-- (void)viewWillDisappear:(BOOL)animated;
-- (void)viewDidDisappear:(BOOL)animated;
+- (CGPoint)originOffsetForViewInCustomModal;
 
 @end

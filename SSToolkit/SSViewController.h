@@ -13,9 +13,10 @@
 @interface SSViewController : UIViewController <SSModalViewController> {
 
 	SSViewController *_modalParentViewController;
-	id<SSModalViewController> _customModalViewController;
+	UIViewController<SSModalViewController> *_customModalViewController;
 	BOOL _dismissCustomModalOnVignetteTap;
 	CGSize _contentSizeForViewInCustomModal;
+	CGPoint _originForViewInCustomModal;
 	
 	UIView *_modalContainerView;
 	UIImageView *_modalContainerBackgroundView;
@@ -26,12 +27,13 @@
 @property (nonatomic, retain, readonly) UIViewController *customModalViewController;
 @property (nonatomic, assign) BOOL dismissCustomModalOnVignetteTap;
 @property (nonatomic, assign) CGSize contentSizeForViewInCustomModal;
+@property (nonatomic, assign) CGPoint originOffsetForViewInCustomModal;
 
 - (void)layoutViews;
 - (void)layoutViewsWithOrientation:(UIInterfaceOrientation)orientation;
 
-- (void)presentCustomModalViewController:(id<SSModalViewController>)viewController;
-- (void)presentCustomModalViewController:(id<SSModalViewController>)viewController animated:(BOOL)animated;
+- (void)presentCustomModalViewController:(UIViewController<SSModalViewController> *)viewController;
+- (void)presentCustomModalViewController:(UIViewController<SSModalViewController> *)viewController animated:(BOOL)animated;
 - (void)dismissCustomModalViewController;
 - (void)dismissCustomModalViewController:(BOOL)animated;
 

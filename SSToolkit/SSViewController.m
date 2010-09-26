@@ -28,6 +28,7 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 @synthesize customModalViewController = _customModalViewController;
 @synthesize dismissCustomModalOnVignetteTap = _dismissCustomModalOnVignetteTap;
 @synthesize contentSizeForViewInCustomModal = _contentSizeForViewInCustomModal;
+@synthesize originOffsetForViewInCustomModal = _originOffsetForViewInCustomModal;
 
 #pragma mark NSObject
 
@@ -35,6 +36,7 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 	if ((self = [super init])) {
 		_dismissCustomModalOnVignetteTap = NO;
 		_contentSizeForViewInCustomModal = kSSViewControllerDefaultContentSizeForViewInCustomModal;
+		_originOffsetForViewInCustomModal = CGPointZero;
 	}
 	return self;
 }
@@ -67,6 +69,10 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 
 
 - (void)layoutViewsWithOrientation:(UIInterfaceOrientation)orientation {
+	if (!_customModalViewController) {
+		return;
+	}
+	
 	CGSize screenSize;
 	
 	// TODO: Make this not iPad specific
@@ -87,17 +93,22 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 	if ([_customModalViewController respondsToSelector:@selector(contentSizeForViewInCustomModal)]) {
 		modalSize = [_customModalViewController contentSizeForViewInCustomModal];
 	}
-	_modalContainerBackgroundView.frame = CGRectMake(roundf(screenSize.width - modalSize.width - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0, (roundf(screenSize.height - modalSize.height - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0), modalSize.width + kSSViewControllerModalPadding + kSSViewControllerModalPadding, modalSize.height + kSSViewControllerModalPadding + kSSViewControllerModalPadding);
+	
+	CGPoint originOffset = CGPointZero;
+	if ([_customModalViewController respondsToSelector:@selector(originOffsetForViewInCustomModal)]) {
+		originOffset = [_customModalViewController originOffsetForViewInCustomModal];
+	}
+	_modalContainerBackgroundView.frame = CGRectMake((roundf(screenSize.width - modalSize.width - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0) + originOffset.x, (roundf(screenSize.height - modalSize.height - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0) + originOffset.y, modalSize.width + kSSViewControllerModalPadding + kSSViewControllerModalPadding, modalSize.height + kSSViewControllerModalPadding + kSSViewControllerModalPadding);
 }
 
 #pragma mark Modal
 
-- (void)presentCustomModalViewController:(id<SSModalViewController>)viewController {
+- (void)presentCustomModalViewController:(UIViewController<SSModalViewController> *)viewController {
 	[self presentCustomModalViewController:viewController animated:YES];
 }
 
 
-- (void)presentCustomModalViewController:(id<SSModalViewController>)viewController animated:(BOOL)animated {
+- (void)presentCustomModalViewController:(UIViewController<SSModalViewController> *)viewController animated:(BOOL)animated {
 	_customModalViewController = [viewController retain];
 	
 	if (_customModalViewController == nil) {
@@ -148,24 +159,29 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 		screenSize = CGSizeMake(768.0, 1024.0);
 	}
 	
-	_modalContainerBackgroundView.frame = CGRectMake(roundf(screenSize.width - modalSize.width - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0, (roundf(screenSize.height - modalSize.height - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0) + screenSize.height, modalSize.width + kSSViewControllerModalPadding + kSSViewControllerModalPadding, modalSize.height + kSSViewControllerModalPadding + kSSViewControllerModalPadding);
+	CGPoint originOffset = CGPointZero;
+	if ([_customModalViewController respondsToSelector:@selector(originOffsetForViewInCustomModal)]) {
+		originOffset = [_customModalViewController originOffsetForViewInCustomModal];
+	}
+	
+	_modalContainerBackgroundView.frame = CGRectMake((roundf(screenSize.width - modalSize.width - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0) + originOffset.x, (roundf(screenSize.height - modalSize.height - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0) + originOffset.y + screenSize.height, modalSize.width + kSSViewControllerModalPadding + kSSViewControllerModalPadding, modalSize.height + kSSViewControllerModalPadding + kSSViewControllerModalPadding);
 	
 	
 	if ([_customModalViewController respondsToSelector:@selector(viewWillAppear:)]) {
 		[_customModalViewController viewWillAppear:animated];
 	}
 	
-	[self customModalDidAppear:animated];
+	[self customModalWillAppear:animated];
 	
 	if (animated) {
-		[UIView beginAnimations:@"com.samsoffes.ssviewcontroller.present-modal" context:self];
+		[UIView beginAnimations:@"com.samsoffes.sstoolkit.ssviewcontroller.present-modal" context:self];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 		[UIView setAnimationDuration:0.5];
 		[UIView setAnimationDelegate:self];
 		[UIView setAnimationDidStopSelector:@selector(_presentModalAnimationDidStop:finished:context:)];
 	}
 	
-	[self layoutViewsWithOrientation:self.interfaceOrientation];
+	[self layoutViews];
 	
 	if (animated) {
 		[UIView commitAnimations];
@@ -200,7 +216,7 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 	[self customModalWillDisappear:animated];	
 	
 	if (animated) {
-		[UIView beginAnimations:@"com.samsoffes.ssviewcontroller.dismiss-modal" context:self];
+		[UIView beginAnimations:@"com.samsoffes.sstoolkit.ssviewcontroller.dismiss-modal" context:self];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 		[UIView setAnimationDuration:0.4];
 		[UIView setAnimationDelegate:self];
@@ -214,7 +230,7 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 	if (animated) {
 		[UIView commitAnimations];
 		
-		[UIView beginAnimations:@"com.samsoffes.ssviewcontroller.remove-vignette" context:self];
+		[UIView beginAnimations:@"com.samsoffes.sstoolkit.ssviewcontroller.remove-vignette" context:self];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 		[UIView setAnimationDelay:0.2];
 		[UIView setAnimationDelegate:self];
@@ -272,8 +288,6 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 
 - (void)_presentModalAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
 	BOOL animated = (animationID != nil);
-	
-	[self customModalWillAppear:animated];
 	
 	if ([_customModalViewController respondsToSelector:@selector(viewDidAppear:)]) {
 		[_customModalViewController viewDidAppear:animated];
