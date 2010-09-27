@@ -16,14 +16,14 @@
 	}
 	
 	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
     return [dateFormatter dateFromString:string];
 }
 
 
 - (NSString *)ISO8601String {
 	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
 	return [dateFormatter stringFromDate:self];
 }
 
