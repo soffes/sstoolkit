@@ -151,7 +151,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 + (BOOL)_isBackedByScroller {
 	if (SSWebViewIsBackedByScrollerCached == NO) {
-		SSWebViewIsBackedByScroller = [[[UIDevice currentDevice] systemVersion] compareToVersionString:@"3.2"] == NSOrderedDescending;
+		SSWebViewIsBackedByScroller = [[[UIDevice currentDevice] systemVersion] compareToVersionString:@"3.2"] == NSOrderedAscending;
 		SSWebViewIsBackedByScrollerCached = YES;
 	}
 	return SSWebViewIsBackedByScroller;
