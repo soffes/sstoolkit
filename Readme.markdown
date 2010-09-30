@@ -47,9 +47,9 @@ If you're using this in your project, I'd love to hear about it! [Send me an ema
 
 ## Adding SSToolkit to your project
 
-1. Run the following command to add the submodule. Be sure you have been added to the project on GitHub.
+1. Run the following command to add the submodule. Be sure you have are you in the root of your git repository.
 
-        git submodule add git://github.com/samsoffes/sstoolkit.git Frameworks/SSToolkit
+        $ git submodule add git://github.com/samsoffes/sstoolkit.git Frameworks/SSToolkit
 
 2. In Finder, navigate to the `Frameworks/SSToolkit` folder and drag the `xcodeproj` file into the `Frameworks` folder in your Xcode project.
 
@@ -75,9 +75,13 @@ To use SSToolkit, simply add the following line to your source file.
 
     #import <SSToolkit/SSToolkit.h>
 
-You can also import individual files instead of the whole framework (for faster compile times) by doing something like:
+You can add this to your prefix to make things easy if you want. You can also import individual files instead of the whole framework (for faster compile times) by doing something like:
 
     #import <SSToolkit/SSLoadingView.h>
+
+If you are going to use SSToolkit's categories, you will need to import then separately (since some people might not want to use them). You import then like this:
+
+    #import <SSToolkit/SSCategories.h>
 
 ## Demo
 
