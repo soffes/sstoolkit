@@ -213,12 +213,16 @@
 
 - (SSCollectionViewItem *)_itemForTouches:(NSSet *)touches event:(UIEvent *)event {
 	CGPoint point = [[touches anyObject] locationInView:self];
-	UIView *view = (SSCollectionViewItem *)[self hitTest:point withEvent:event];
+	UIView *view = [self hitTest:point withEvent:event];
 	if (view == self || view == _backgroundView) {
 		return nil;
 	}
 	
-	return [view firstSuperviewOfClass:[SSCollectionViewItem class]];
+	if([view isKindOfClass:[SSCollectionViewItem class]]) {
+		return (SSCollectionViewItem*)view;
+	} else {
+		return [view firstSuperviewOfClass:[SSCollectionViewItem class]];
+	}
 }
 
 
