@@ -27,6 +27,7 @@
 #import <SSToolkit/SSMessagesViewController.h>
 #import <SSToolkit/SSModalViewController.h>
 #import <SSToolkit/SSPickerViewController.h>
+#import <SSToolkit/SSTableViewController.h>
 #import <SSToolkit/SSViewController.h>
 
 // Cells
