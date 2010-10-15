@@ -86,6 +86,8 @@
 		B27B1A2312241D6F00111EA2 /* SSCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B1A2112241D6F00111EA2 /* SSCollectionViewItem.m */; };
 		B2E03770121DCCB500D02434 /* SSTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2E0376E121DCCB500D02434 /* SSTableViewCell.h */; };
 		B2E03771121DCCB500D02434 /* SSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E0376F121DCCB500D02434 /* SSTableViewCell.m */; };
+		B2F9F4901268DA3A000E6140 /* SSNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2F9F48E1268DA3A000E6140 /* SSNavigationController.h */; };
+		B2F9F4911268DA3A000E6140 /* SSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F9F48F1268DA3A000E6140 /* SSNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -169,6 +171,8 @@
 		B27B1A2112241D6F00111EA2 /* SSCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionViewItem.m; sourceTree = "<group>"; };
 		B2E0376E121DCCB500D02434 /* SSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTableViewCell.h; sourceTree = "<group>"; };
 		B2E0376F121DCCB500D02434 /* SSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTableViewCell.m; sourceTree = "<group>"; };
+		B2F9F48E1268DA3A000E6140 /* SSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSNavigationController.h; sourceTree = "<group>"; };
+		B2F9F48F1268DA3A000E6140 /* SSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSNavigationController.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTWToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTWToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -332,6 +336,8 @@
 				B24E9E21121DC29A0085F81E /* SSMessagesViewController.h */,
 				B24E9E22121DC29A0085F81E /* SSMessagesViewController.m */,
 				B24E9E27121DC29A0085F81E /* SSModalViewController.h */,
+				B2F9F48E1268DA3A000E6140 /* SSNavigationController.h */,
+				B2F9F48F1268DA3A000E6140 /* SSNavigationController.m */,
 				B24E9E28121DC29A0085F81E /* SSPickerViewController.h */,
 				B24E9E29121DC29A0085F81E /* SSPickerViewController.m */,
 				B20AC0671267988600687143 /* SSTableViewController.h */,
@@ -433,6 +439,7 @@
 				B267D3451226CE0400B66519 /* SSCollectionViewController.h in Headers */,
 				B227D2EA124931590078A059 /* NSDictionary+SSToolkitAdditions.h in Headers */,
 				B20AC0691267988600687143 /* SSTableViewController.h in Headers */,
+				B2F9F4901268DA3A000E6140 /* SSNavigationController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +531,7 @@
 				B267D3461226CE0400B66519 /* SSCollectionViewController.m in Sources */,
 				B227D2EB124931590078A059 /* NSDictionary+SSToolkitAdditions.m in Sources */,
 				B20AC06A1267988600687143 /* SSTableViewController.m in Sources */,
+				B2F9F4911268DA3A000E6140 /* SSNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
