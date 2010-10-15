@@ -8,7 +8,7 @@
 
 #import "SSViewController.h"
 
-@interface SSTableViewController : SSViewController <UITableViewDataSource, UITableViewDataSource> {
+@interface SSTableViewController : SSViewController <UITableViewDataSource, UITableViewDelegate> {
 
 	UITableView *_tableView;
 	BOOL _clearsSelectionOnViewWillAppear;
