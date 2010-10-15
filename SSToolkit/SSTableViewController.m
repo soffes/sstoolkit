@@ -22,6 +22,14 @@
 }
 
 
+- (void)dealloc {
+	_tableView.dataSource = nil;
+	_tableView.delegate = nil;
+	[_tableView release];
+	[super dealloc];
+}
+
+
 #pragma mark UIViewController
 
 - (void)loadView {
@@ -70,6 +78,8 @@
 - (id)initWithStyle:(UITableViewStyle)style {
 	if (self = [super init]) {
 		_tableView = [[UITableView alloc] initWithFrame:CGRectZero style:style];
+		_tableView.dataSource = self;
+		_tableView.delegate = self;
 		_clearsSelectionOnViewWillAppear = YES;
 	}
 	return self;
