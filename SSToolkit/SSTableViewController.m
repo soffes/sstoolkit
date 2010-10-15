@@ -69,6 +69,7 @@
 #pragma mark SSViewController
 
 - (void)layoutViewsWithOrientation:(UIInterfaceOrientation)orientation {
+	[super layoutViewsWithOrientation:orientation];
 	self.tableView.frame = CGRectSetZeroOrigin(self.view.frame);
 }
 
