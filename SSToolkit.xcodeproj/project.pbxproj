@@ -84,6 +84,8 @@
 		B27B1A1C12241D3400111EA2 /* SSCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B1A1A12241D3400111EA2 /* SSCollectionView.m */; };
 		B27B1A2212241D6F00111EA2 /* SSCollectionViewItem.h in Headers */ = {isa = PBXBuildFile; fileRef = B27B1A2012241D6F00111EA2 /* SSCollectionViewItem.h */; };
 		B27B1A2312241D6F00111EA2 /* SSCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B1A2112241D6F00111EA2 /* SSCollectionViewItem.m */; };
+		B2AE1134126F963300534CF2 /* UIApplication+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */; };
+		B2AE1135126F963300534CF2 /* UIApplication+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */; };
 		B2E03770121DCCB500D02434 /* SSTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2E0376E121DCCB500D02434 /* SSTableViewCell.h */; };
 		B2E03771121DCCB500D02434 /* SSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E0376F121DCCB500D02434 /* SSTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -167,6 +169,8 @@
 		B27B1A1A12241D3400111EA2 /* SSCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionView.m; sourceTree = "<group>"; };
 		B27B1A2012241D6F00111EA2 /* SSCollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewItem.h; sourceTree = "<group>"; };
 		B27B1A2112241D6F00111EA2 /* SSCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionViewItem.m; sourceTree = "<group>"; };
+		B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+SSToolkitAdditions.h"; sourceTree = "<group>"; };
+		B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B2E0376E121DCCB500D02434 /* SSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTableViewCell.h; sourceTree = "<group>"; };
 		B2E0376F121DCCB500D02434 /* SSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTableViewCell.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTWToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTWToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -279,6 +283,8 @@
 		B2601A72122307A2005506D5 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */,
+				B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */,
 				B24E9E35121DC29A0085F81E /* UIColor+SSToolkitAdditions.h */,
 				B24E9E36121DC29A0085F81E /* UIColor+SSToolkitAdditions.m */,
 				B24E9E37121DC29A0085F81E /* UIControl+SSToolkitAdditions.h */,
@@ -433,6 +439,7 @@
 				B267D3451226CE0400B66519 /* SSCollectionViewController.h in Headers */,
 				B227D2EA124931590078A059 /* NSDictionary+SSToolkitAdditions.h in Headers */,
 				B20AC0691267988600687143 /* SSTableViewController.h in Headers */,
+				B2AE1134126F963300534CF2 /* UIApplication+SSToolkitAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +531,7 @@
 				B267D3461226CE0400B66519 /* SSCollectionViewController.m in Sources */,
 				B227D2EB124931590078A059 /* NSDictionary+SSToolkitAdditions.m in Sources */,
 				B20AC06A1267988600687143 /* SSTableViewController.m in Sources */,
+				B2AE1135126F963300534CF2 /* UIApplication+SSToolkitAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
