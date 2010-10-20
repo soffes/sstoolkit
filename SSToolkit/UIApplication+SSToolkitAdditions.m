@@ -11,6 +11,7 @@
 @implementation UIApplication (SSToolkitAdditions)
 
 - (BOOL)isPirated {
+	// Thanks @marcoarment http://twitter.com/#!/marcoarment/status/27965461020
 	return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"SignerIdentity"] != nil;
 }
 
