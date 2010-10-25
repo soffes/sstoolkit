@@ -8,12 +8,14 @@
 
 #import "SSModalViewController.h"
 
+@class SSViewController;
+
 @interface SSNavigationController : UINavigationController <SSModalViewController> {
 
 	SSViewController *_modalParentViewController;
 	BOOL _dismissCustomModalOnVignetteTap;
 	CGSize _contentSizeForViewInCustomModal;
-	CGPoint _originForViewInCustomModal;
+	CGPoint _originOffsetForViewInCustomModal;
 }
 
 @property (nonatomic, assign) SSViewController *modalParentViewController;

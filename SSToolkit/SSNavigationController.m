@@ -7,6 +7,7 @@
 //
 
 #import "SSNavigationController.h"
+#import "SSViewController.h"
 
 @implementation SSNavigationController
 
