@@ -144,7 +144,8 @@ static CGFloat kIndicatorSize = 40.0;
 
 - (void)completeAndDismissWithTitle:(NSString *)aTitle {
 	[self completeWithTitle:aTitle];
-	[self performSelector:@selector(dismiss) withObject:nil afterDelay:1.0];
+	[self retain];
+	[self performSelector:@selector(releaseAndDismiss) withObject:nil afterDelay:1.0];
 }
 
 
@@ -157,7 +158,14 @@ static CGFloat kIndicatorSize = 40.0;
 
 - (void)failAndDismissWithTitle:(NSString *)aTitle {
 	[self failWithTitle:aTitle];
-	[self performSelector:@selector(dismiss) withObject:nil afterDelay:1.0];
+	[self retain];
+	[self performSelector:@selector(releaseAndDismiss) withObject:nil afterDelay:1.0];
+}
+
+
+- (void)releaseAndDismiss {
+	[self autorelease];
+	[self dismissAnimated:YES];
 }
 
 
