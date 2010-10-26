@@ -303,9 +303,7 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 
 - (void)_dismissModalAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
 	BOOL animated = (animationID != nil);
-	
-	[self customModalWillDisappear:animated];
-	
+		
 	if ([_customModalViewController respondsToSelector:@selector(viewDidDisappear:)]) {
 		[_customModalViewController viewDidDisappear:animated];
 	}
