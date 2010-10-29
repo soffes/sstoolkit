@@ -16,4 +16,12 @@
 @synthesize contentSizeForViewInCustomModal = _contentSizeForViewInCustomModal;
 @synthesize originOffsetForViewInCustomModal = _originOffsetForViewInCustomModal;
 
+- (void) viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	// Move nav bar up. This would make @withfoam cry 
+	UIView *navBar = [[self.view subviews] objectAtIndex:1];
+	navBar.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, 45.0);
+}
+
 @end
