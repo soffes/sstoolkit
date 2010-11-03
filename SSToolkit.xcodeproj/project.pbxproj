@@ -84,10 +84,12 @@
 		B27B1A1C12241D3400111EA2 /* SSCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B1A1A12241D3400111EA2 /* SSCollectionView.m */; };
 		B27B1A2212241D6F00111EA2 /* SSCollectionViewItem.h in Headers */ = {isa = PBXBuildFile; fileRef = B27B1A2012241D6F00111EA2 /* SSCollectionViewItem.h */; };
 		B27B1A2312241D6F00111EA2 /* SSCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B1A2112241D6F00111EA2 /* SSCollectionViewItem.m */; };
+		B2AAE65C1281B73E0068EE7F /* SSNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */; };
+		B2AAE65D1281B73E0068EE7F /* SSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */; };
+		B2AE1134126F963300534CF2 /* UIApplication+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */; };
+		B2AE1135126F963300534CF2 /* UIApplication+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */; };
 		B2E03770121DCCB500D02434 /* SSTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2E0376E121DCCB500D02434 /* SSTableViewCell.h */; };
 		B2E03771121DCCB500D02434 /* SSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E0376F121DCCB500D02434 /* SSTableViewCell.m */; };
-		B2F9F4901268DA3A000E6140 /* SSNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2F9F48E1268DA3A000E6140 /* SSNavigationController.h */; };
-		B2F9F4911268DA3A000E6140 /* SSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F9F48F1268DA3A000E6140 /* SSNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -169,10 +171,12 @@
 		B27B1A1A12241D3400111EA2 /* SSCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionView.m; sourceTree = "<group>"; };
 		B27B1A2012241D6F00111EA2 /* SSCollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewItem.h; sourceTree = "<group>"; };
 		B27B1A2112241D6F00111EA2 /* SSCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionViewItem.m; sourceTree = "<group>"; };
+		B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSNavigationController.h; path = SSNavigationController.h; sourceTree = "<group>"; };
+		B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSNavigationController.m; path = SSNavigationController.m; sourceTree = "<group>"; };
+		B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+SSToolkitAdditions.h"; sourceTree = "<group>"; };
+		B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B2E0376E121DCCB500D02434 /* SSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTableViewCell.h; sourceTree = "<group>"; };
 		B2E0376F121DCCB500D02434 /* SSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTableViewCell.m; sourceTree = "<group>"; };
-		B2F9F48E1268DA3A000E6140 /* SSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSNavigationController.h; sourceTree = "<group>"; };
-		B2F9F48F1268DA3A000E6140 /* SSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSNavigationController.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTWToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTWToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -283,6 +287,8 @@
 		B2601A72122307A2005506D5 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */,
+				B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */,
 				B24E9E35121DC29A0085F81E /* UIColor+SSToolkitAdditions.h */,
 				B24E9E36121DC29A0085F81E /* UIColor+SSToolkitAdditions.m */,
 				B24E9E37121DC29A0085F81E /* UIControl+SSToolkitAdditions.h */,
@@ -333,11 +339,11 @@
 			children = (
 				B267D3431226CE0400B66519 /* SSCollectionViewController.h */,
 				B267D3441226CE0400B66519 /* SSCollectionViewController.m */,
+				B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */,
+				B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */,
 				B24E9E21121DC29A0085F81E /* SSMessagesViewController.h */,
 				B24E9E22121DC29A0085F81E /* SSMessagesViewController.m */,
 				B24E9E27121DC29A0085F81E /* SSModalViewController.h */,
-				B2F9F48E1268DA3A000E6140 /* SSNavigationController.h */,
-				B2F9F48F1268DA3A000E6140 /* SSNavigationController.m */,
 				B24E9E28121DC29A0085F81E /* SSPickerViewController.h */,
 				B24E9E29121DC29A0085F81E /* SSPickerViewController.m */,
 				B20AC0671267988600687143 /* SSTableViewController.h */,
@@ -439,7 +445,8 @@
 				B267D3451226CE0400B66519 /* SSCollectionViewController.h in Headers */,
 				B227D2EA124931590078A059 /* NSDictionary+SSToolkitAdditions.h in Headers */,
 				B20AC0691267988600687143 /* SSTableViewController.h in Headers */,
-				B2F9F4901268DA3A000E6140 /* SSNavigationController.h in Headers */,
+				B2AE1134126F963300534CF2 /* UIApplication+SSToolkitAdditions.h in Headers */,
+				B2AAE65C1281B73E0068EE7F /* SSNavigationController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,7 +539,8 @@
 				B267D3461226CE0400B66519 /* SSCollectionViewController.m in Sources */,
 				B227D2EB124931590078A059 /* NSDictionary+SSToolkitAdditions.m in Sources */,
 				B20AC06A1267988600687143 /* SSTableViewController.m in Sources */,
-				B2F9F4911268DA3A000E6140 /* SSNavigationController.m in Sources */,
+				B2AE1135126F963300534CF2 /* UIApplication+SSToolkitAdditions.m in Sources */,
+				B2AAE65D1281B73E0068EE7F /* SSNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

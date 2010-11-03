@@ -15,6 +15,7 @@
 #import <SSToolkit/NSURL+SSToolkitAdditions.h>
 
 // UIKit
+#import <SSToolkit/UIApplication+SSToolkitAdditions.h>
 #import <SSToolkit/UIColor+SSToolkitAdditions.h>
 #import <SSToolkit/UIControl+SSToolkitAdditions.h>
 #import <SSToolkit/UIDevice+SSToolkitAdditions.h>
