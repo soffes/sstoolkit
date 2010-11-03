@@ -28,13 +28,13 @@
 }
 
 
-- (NSString *)timeAgoInWords {
-	return [self timeAgoInWordsIncludingSeconds:YES];
+- (NSDate *)adjustedDate {
+	return [[[NSDate alloc] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:self] autorelease];
 }
 
 
-- (NSString *)timeAgoInWordsIncludingSeconds:(BOOL)includeSeconds {
-	NSTimeInterval intervalInSeconds = fabs([self timeIntervalSinceNow]);
+//	Adapted from http://github.com/gabriel/gh-kit/blob/master/Classes/GHNSString+TimeInterval.m
++ (NSString *)timeAgoInWordsFromTimeInterval:(NSTimeInterval)intervalInSeconds includingSeconds:(BOOL)includeSeconds {
 	double intervalInMinutes = round(intervalInSeconds / 60.0);
 	
 	if (intervalInMinutes >= 0 && intervalInMinutes <= 1) {
@@ -74,6 +74,26 @@
 		return [NSString stringWithFormat:@"over %.0f years", round(intervalInMinutes/525600.0)];
 	}
 	return nil;
+}
+
+
+- (NSString *)timeAgoInWords {
+	return [self timeAgoInWordsIncludingSeconds:YES];
+}
+
+
+- (NSString *)timeAgoInWordsIncludingSeconds:(BOOL)includeSeconds {
+	return [[self class] timeAgoInWordsFromTimeInterval:fabs([self timeIntervalSinceNow]) includingSeconds:includeSeconds];		
+}
+
+
+- (NSString *)adjustedTimeAgoInWords {
+	return [self adjustedTimeAgoInWordsIncludingSeconds:YES];
+}
+
+
+- (NSString *)adjustedTimeAgoInWordsIncludingSeconds:(BOOL)includeSeconds {
+	return [[self class] timeAgoInWordsFromTimeInterval:fabs([self timeIntervalSinceNow] + [[NSTimeZone localTimeZone] secondsFromGMT]) includingSeconds:includeSeconds];		
 }
 
 @end
