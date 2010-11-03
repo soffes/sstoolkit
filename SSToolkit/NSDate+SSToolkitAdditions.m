@@ -15,9 +15,16 @@
 		return nil;
 	}
 	
+	NSDate* date = nil;
 	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+    date = [dateFormatter dateFromString:string];
+	if(date) {
+		return date;
+	}
 	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
-    return [dateFormatter dateFromString:string];
+    date = [dateFormatter dateFromString:string];
+	return date;
 }
 
 
