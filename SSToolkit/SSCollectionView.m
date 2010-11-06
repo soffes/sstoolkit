@@ -176,6 +176,13 @@
 	for (NSUInteger i = 0; i < total; i++) {
 		// TODO: Store item so it can be dequeued later
 		SSCollectionViewItem *item = [_dataSource collectionView:self itemForIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+		
+		if (item == nil) {
+			NSException *exception = [NSException exceptionWithName:NSInternalInconsistencyException reason:@"SSCollectionView dataSource must return an item from collectionView:itemForIndexPath:" userInfo:nil];
+			[exception raise];
+			return;
+		}
+		
 		item.tag = i;
 		[_items addObject:item];
 		[self addSubview:item];
