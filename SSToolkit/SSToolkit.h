@@ -24,7 +24,6 @@
 
 // View Controllers
 #import <SSToolkit/SSCollectionViewController.h>
-#import <SSToolkit/SSMessagesViewController.h>
 #import <SSToolkit/SSModalViewController.h>
 #import <SSToolkit/SSNavigationController.h>
 #import <SSToolkit/SSPickerViewController.h>
@@ -33,7 +32,6 @@
 
 // Cells
 #import <SSToolkit/SSTableViewCell.h>
-#import <SSToolkit/SSMessageTableViewCell.h>
 
 // Misc
 #import <SSToolkit/SSDrawingMacros.h>

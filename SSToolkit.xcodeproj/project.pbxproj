@@ -44,12 +44,6 @@
 		B24E9E5C121DC29A0085F81E /* SSLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E1E121DC29A0085F81E /* SSLineView.m */; };
 		B24E9E5D121DC29A0085F81E /* SSLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E1F121DC29A0085F81E /* SSLoadingView.h */; };
 		B24E9E5E121DC29A0085F81E /* SSLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E20121DC29A0085F81E /* SSLoadingView.m */; };
-		B24E9E5F121DC29A0085F81E /* SSMessagesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E21121DC29A0085F81E /* SSMessagesViewController.h */; };
-		B24E9E60121DC29A0085F81E /* SSMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E22121DC29A0085F81E /* SSMessagesViewController.m */; };
-		B24E9E61121DC29A0085F81E /* SSMessageTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E23121DC29A0085F81E /* SSMessageTableViewCell.h */; };
-		B24E9E62121DC29A0085F81E /* SSMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E24121DC29A0085F81E /* SSMessageTableViewCell.m */; };
-		B24E9E63121DC29A0085F81E /* SSMessageTableViewCellBubbleView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E25121DC29A0085F81E /* SSMessageTableViewCellBubbleView.h */; };
-		B24E9E64121DC29A0085F81E /* SSMessageTableViewCellBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E26121DC29A0085F81E /* SSMessageTableViewCellBubbleView.m */; };
 		B24E9E65121DC29A0085F81E /* SSModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E27121DC29A0085F81E /* SSModalViewController.h */; };
 		B24E9E66121DC29A0085F81E /* SSPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E28121DC29A0085F81E /* SSPickerViewController.h */; };
 		B24E9E67121DC29A0085F81E /* SSPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E29121DC29A0085F81E /* SSPickerViewController.m */; };
@@ -131,12 +125,6 @@
 		B24E9E1E121DC29A0085F81E /* SSLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSLineView.m; sourceTree = "<group>"; };
 		B24E9E1F121DC29A0085F81E /* SSLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLoadingView.h; sourceTree = "<group>"; };
 		B24E9E20121DC29A0085F81E /* SSLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSLoadingView.m; sourceTree = "<group>"; };
-		B24E9E21121DC29A0085F81E /* SSMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSMessagesViewController.h; sourceTree = "<group>"; };
-		B24E9E22121DC29A0085F81E /* SSMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSMessagesViewController.m; sourceTree = "<group>"; };
-		B24E9E23121DC29A0085F81E /* SSMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSMessageTableViewCell.h; sourceTree = "<group>"; };
-		B24E9E24121DC29A0085F81E /* SSMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSMessageTableViewCell.m; sourceTree = "<group>"; };
-		B24E9E25121DC29A0085F81E /* SSMessageTableViewCellBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSMessageTableViewCellBubbleView.h; sourceTree = "<group>"; };
-		B24E9E26121DC29A0085F81E /* SSMessageTableViewCellBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSMessageTableViewCellBubbleView.m; sourceTree = "<group>"; };
 		B24E9E27121DC29A0085F81E /* SSModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSModalViewController.h; sourceTree = "<group>"; };
 		B24E9E28121DC29A0085F81E /* SSPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPickerViewController.h; sourceTree = "<group>"; };
 		B24E9E29121DC29A0085F81E /* SSPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPickerViewController.m; sourceTree = "<group>"; };
@@ -251,7 +239,6 @@
 				B2601A88122308C0005506D5 /* Cells */,
 				B2601A8A122308E2005506D5 /* Misc */,
 				B2601A6F12230794005506D5 /* Categories */,
-				B2601A8B12230906005506D5 /* Private */,
 			);
 			path = SSToolkit;
 			sourceTree = "<group>";
@@ -341,8 +328,6 @@
 				B267D3441226CE0400B66519 /* SSCollectionViewController.m */,
 				B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */,
 				B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */,
-				B24E9E21121DC29A0085F81E /* SSMessagesViewController.h */,
-				B24E9E22121DC29A0085F81E /* SSMessagesViewController.m */,
 				B24E9E27121DC29A0085F81E /* SSModalViewController.h */,
 				B24E9E28121DC29A0085F81E /* SSPickerViewController.h */,
 				B24E9E29121DC29A0085F81E /* SSPickerViewController.m */,
@@ -370,8 +355,6 @@
 			children = (
 				B2E0376E121DCCB500D02434 /* SSTableViewCell.h */,
 				B2E0376F121DCCB500D02434 /* SSTableViewCell.m */,
-				B24E9E23121DC29A0085F81E /* SSMessageTableViewCell.h */,
-				B24E9E24121DC29A0085F81E /* SSMessageTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -387,15 +370,6 @@
 				B24E9E1A121DC29A0085F81E /* SSKeychain.m */,
 			);
 			name = Misc;
-			sourceTree = "<group>";
-		};
-		B2601A8B12230906005506D5 /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				B24E9E25121DC29A0085F81E /* SSMessageTableViewCellBubbleView.h */,
-				B24E9E26121DC29A0085F81E /* SSMessageTableViewCellBubbleView.m */,
-			);
-			name = Private;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,9 +395,6 @@
 				B24E9E59121DC29A0085F81E /* SSLabel.h in Headers */,
 				B24E9E5B121DC29A0085F81E /* SSLineView.h in Headers */,
 				B24E9E5D121DC29A0085F81E /* SSLoadingView.h in Headers */,
-				B24E9E5F121DC29A0085F81E /* SSMessagesViewController.h in Headers */,
-				B24E9E61121DC29A0085F81E /* SSMessageTableViewCell.h in Headers */,
-				B24E9E63121DC29A0085F81E /* SSMessageTableViewCellBubbleView.h in Headers */,
 				B24E9E65121DC29A0085F81E /* SSModalViewController.h in Headers */,
 				B24E9E66121DC29A0085F81E /* SSPickerViewController.h in Headers */,
 				B24E9E68121DC29A0085F81E /* SSPieProgressView.h in Headers */,
@@ -516,9 +487,6 @@
 				B24E9E5A121DC29A0085F81E /* SSLabel.m in Sources */,
 				B24E9E5C121DC29A0085F81E /* SSLineView.m in Sources */,
 				B24E9E5E121DC29A0085F81E /* SSLoadingView.m in Sources */,
-				B24E9E60121DC29A0085F81E /* SSMessagesViewController.m in Sources */,
-				B24E9E62121DC29A0085F81E /* SSMessageTableViewCell.m in Sources */,
-				B24E9E64121DC29A0085F81E /* SSMessageTableViewCellBubbleView.m in Sources */,
 				B24E9E67121DC29A0085F81E /* SSPickerViewController.m in Sources */,
 				B24E9E69121DC29A0085F81E /* SSPieProgressView.m in Sources */,
 				B24E9E6B121DC29A0085F81E /* SSTextField.m in Sources */,

@@ -18,7 +18,6 @@
 		B24E9EAB121DC35B0085F81E /* SCGradientViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E9B121DC35B0085F81E /* SCGradientViewDemoViewController.m */; };
 		B24E9EAC121DC35B0085F81E /* SCHUDViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E9D121DC35B0085F81E /* SCHUDViewDemoViewController.m */; };
 		B24E9EAD121DC35B0085F81E /* SCLineViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E9F121DC35B0085F81E /* SCLineViewDemoViewController.m */; };
-		B24E9EAE121DC35B0085F81E /* SCMessagesDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA1121DC35B0085F81E /* SCMessagesDemoViewController.m */; };
 		B24E9EAF121DC35B0085F81E /* SCPickerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA3121DC35B0085F81E /* SCPickerDemoViewController.m */; };
 		B24E9EB0121DC35B0085F81E /* SCPickerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA5121DC35B0085F81E /* SCPickerDetailViewController.m */; };
 		B24E9EB1121DC35B0085F81E /* SCPieProgressViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA7121DC35B0085F81E /* SCPieProgressViewDemoViewController.m */; };
@@ -31,7 +30,6 @@
 		B27B1C3212248A6F00111EA2 /* SCGradientViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E9B121DC35B0085F81E /* SCGradientViewDemoViewController.m */; };
 		B27B1C3312248A6F00111EA2 /* SCHUDViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E9D121DC35B0085F81E /* SCHUDViewDemoViewController.m */; };
 		B27B1C3412248A6F00111EA2 /* SCLineViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E9F121DC35B0085F81E /* SCLineViewDemoViewController.m */; };
-		B27B1C3512248A6F00111EA2 /* SCMessagesDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA1121DC35B0085F81E /* SCMessagesDemoViewController.m */; };
 		B27B1C3612248A6F00111EA2 /* SCPickerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA3121DC35B0085F81E /* SCPickerDemoViewController.m */; };
 		B27B1C3712248A6F00111EA2 /* SCPickerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA5121DC35B0085F81E /* SCPickerDetailViewController.m */; };
 		B27B1C3812248A6F00111EA2 /* SCPieProgressViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA7121DC35B0085F81E /* SCPieProgressViewDemoViewController.m */; };
@@ -106,8 +104,6 @@
 		B24E9E9D121DC35B0085F81E /* SCHUDViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCHUDViewDemoViewController.m; sourceTree = "<group>"; };
 		B24E9E9E121DC35B0085F81E /* SCLineViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLineViewDemoViewController.h; sourceTree = "<group>"; };
 		B24E9E9F121DC35B0085F81E /* SCLineViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLineViewDemoViewController.m; sourceTree = "<group>"; };
-		B24E9EA0121DC35B0085F81E /* SCMessagesDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCMessagesDemoViewController.h; sourceTree = "<group>"; };
-		B24E9EA1121DC35B0085F81E /* SCMessagesDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCMessagesDemoViewController.m; sourceTree = "<group>"; };
 		B24E9EA2121DC35B0085F81E /* SCPickerDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPickerDemoViewController.h; sourceTree = "<group>"; };
 		B24E9EA3121DC35B0085F81E /* SCPickerDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPickerDemoViewController.m; sourceTree = "<group>"; };
 		B24E9EA4121DC35B0085F81E /* SCPickerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPickerDetailViewController.h; sourceTree = "<group>"; };
@@ -281,8 +277,6 @@
 				B24E9EA3121DC35B0085F81E /* SCPickerDemoViewController.m */,
 				B24E9EA4121DC35B0085F81E /* SCPickerDetailViewController.h */,
 				B24E9EA5121DC35B0085F81E /* SCPickerDetailViewController.m */,
-				B24E9EA0121DC35B0085F81E /* SCMessagesDemoViewController.h */,
-				B24E9EA1121DC35B0085F81E /* SCMessagesDemoViewController.m */,
 			);
 			name = "View Controller Demos";
 			sourceTree = "<group>";
@@ -417,7 +411,6 @@
 				B24E9EAB121DC35B0085F81E /* SCGradientViewDemoViewController.m in Sources */,
 				B24E9EAC121DC35B0085F81E /* SCHUDViewDemoViewController.m in Sources */,
 				B24E9EAD121DC35B0085F81E /* SCLineViewDemoViewController.m in Sources */,
-				B24E9EAE121DC35B0085F81E /* SCMessagesDemoViewController.m in Sources */,
 				B24E9EAF121DC35B0085F81E /* SCPickerDemoViewController.m in Sources */,
 				B24E9EB0121DC35B0085F81E /* SCPickerDetailViewController.m in Sources */,
 				B24E9EB1121DC35B0085F81E /* SCPieProgressViewDemoViewController.m in Sources */,
@@ -435,7 +428,6 @@
 				B27B1C3212248A6F00111EA2 /* SCGradientViewDemoViewController.m in Sources */,
 				B27B1C3312248A6F00111EA2 /* SCHUDViewDemoViewController.m in Sources */,
 				B27B1C3412248A6F00111EA2 /* SCLineViewDemoViewController.m in Sources */,
-				B27B1C3512248A6F00111EA2 /* SCMessagesDemoViewController.m in Sources */,
 				B27B1C3612248A6F00111EA2 /* SCPickerDemoViewController.m in Sources */,
 				B27B1C3712248A6F00111EA2 /* SCPickerDetailViewController.m in Sources */,
 				B27B1C3812248A6F00111EA2 /* SCPieProgressViewDemoViewController.m in Sources */,
