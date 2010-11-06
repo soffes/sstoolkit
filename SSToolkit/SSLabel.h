@@ -7,7 +7,7 @@
 //
 
 typedef enum {
-	SSLabelVerticalTextAlignmentCenter = UIControlContentVerticalAlignmentCenter,
+	SSLabelVerticalTextAlignmentMiddle = UIControlContentVerticalAlignmentCenter,
 	SSLabelVerticalTextAlignmentTop = UIControlContentVerticalAlignmentTop,
 	SSLabelVerticalTextAlignmentBottom = UIControlContentVerticalAlignmentBottom
 } SSLabelVerticalTextAlignment;

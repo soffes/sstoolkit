@@ -17,7 +17,7 @@
 
 - (id)initWithFrame:(CGRect)aFrame {
 	if ((self = [super initWithFrame:aFrame])) {
-		self.verticalTextAlignment = SSLabelVerticalTextAlignmentTop;
+		self.verticalTextAlignment = SSLabelVerticalTextAlignmentMiddle;
 		self.textInsets = UIEdgeInsetsZero;
 	}
 	return self;
