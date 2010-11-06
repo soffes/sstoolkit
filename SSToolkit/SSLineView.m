@@ -17,6 +17,9 @@
 #pragma mark NSObject
 
 - (void)dealloc {
+	[self removeObserver:self forKeyPath:@"lineColor"];
+	[self removeObserver:self forKeyPath:@"insetColor"];
+	[self removeObserver:self forKeyPath:@"showInset"];
 	self.lineColor = nil;
 	[super dealloc];
 }

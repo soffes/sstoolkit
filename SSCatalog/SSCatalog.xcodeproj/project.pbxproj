@@ -476,6 +476,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = SSCatalog;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -507,13 +508,13 @@
 				GCC_PREFIX_HEADER = "Other Sources/SSCatalog_Prefix.pch";
 				HEADER_SEARCH_PATHS = ../;
 				INFOPLIST_FILE = "Resources/SSCatalog-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = SSCatalog;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
