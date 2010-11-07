@@ -3,7 +3,7 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 6/22/09.
-//  Copyright 2009 Sam Soffes. All rights reserved.
+//  Copyright 2009-2010 Sam Soffes. All rights reserved.
 //
 
 @interface NSString (SSToolkitAdditions)

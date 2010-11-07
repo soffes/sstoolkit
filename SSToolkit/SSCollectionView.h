@@ -3,48 +3,30 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 6/11/10.
-//  Copyright 2010 Sam Soffes. All rights reserved.
-//
-//  This is very alphay. My goals are to be similar to UITableView
-//  and NSCollectionView when possible. Currently it's pretty inefficient
-//  and doesn't reuse items. Also resizing items isn't easy. Only scrolling
-//  vertically is currently supported.
-//
-//  Multiple sections are not supported.
-//
-//  Editing will and performance will be my next focus. Then animating
-//  changes when data changes and an option to disable that.
-//
-//  Don't mind all of the comments in the header. They are mainly for future
-//  features. You could be awesome and implement a few :)
+//  Copyright 2009-2010 Sam Soffes. All rights reserved.
 //
 
 #import "SSCollectionViewItem.h"
 
-//typedef enum {
-//    SSCollectionViewScrollPositionNone = UITableViewScrollPositionNone,
-//    SSCollectionViewScrollPositionTop = UITableViewScrollPositionTop,
-//    SSCollectionViewScrollPositionTop = UITableViewScrollPositionTop,
-//    SSCollectionViewScrollPositionTop = UITableViewScrollPositionTop
-//} SSCollectionViewScrollPosition;
-//
-//typedef enum {
-//    SSCollectionViewItemAnimationFade = UITableViewRowAnimationFade,
-//    SSCollectionViewItemAnimationRight = UITableViewRowAnimationRight,
-//    SSCollectionViewItemAnimationLeft = UITableViewRowAnimationLeft,
-//    SSCollectionViewItemAnimationTop = UITableViewRowAnimationTop,
-//    SSCollectionViewItemnimationBottom = UITableViewRowAnimationBottom,
-//    SSCollectionViewItemAnimationNone = UITableViewRowAnimationNone,
-//    SSCollectionViewItemAnimationMiddle = UITableViewRowAnimationMiddle,
-//} SSCollectionViewItemAnimation;
-
 @protocol SSCollectionViewDelegate;
 @protocol SSCollectionViewDataSource;
+
+/**
+ @brief Simple collection view.
+ 
+ This is very alphay. My goals are to be similar to UITableView and NSCollectionView when 
+ possible. Currently it's pretty inefficient and doesn't reuse items and all items have to
+ be the same size. Only scrolling vertically is currently supported.
+ 
+ Multiple sections are not supported.
+ 
+ Editing and performance will be my next focus. Then animating changes when data changes 
+ and an option to disable that.
+ */
 
 @interface SSCollectionView : UIScrollView {
 	
 	id <SSCollectionViewDataSource> _dataSource;
-	NSMutableArray *_items;
 	
 	CGFloat _rowHeight;
 	CGFloat _rowSpacing;
@@ -54,8 +36,6 @@
 	UIView *_backgroundView;
 	UIView *_backgroundHeaderView;
 	UIView *_backgroundFooterView;
-//	UIView *_collectionHeaderView;
-//	UIView *_collectionFooterView;
 	
 	NSUInteger _minNumberOfColumns;
 	NSUInteger _maxNumberOfColumns;
@@ -64,76 +44,107 @@
 	CGSize _maxItemSize;
 	
 	BOOL _allowsSelection;
-//	BOOL _editing;
-//	BOOL _allowsSelectionDuringEditing;
 	
-//	NSUInteger _selectedSection;
-//	NSUInteger _selectedItem;
-//	NSUInteger _lastSelectedSection;
-//	NSUInteger _lastSelectedItem;
+@protected
+	
+	NSMutableArray *_items;
 }
 
+/**
+ @brief The object that acts as the data source of the receiving collection view.
+ */
 @property (nonatomic, assign) id<SSCollectionViewDataSource> dataSource;
+
+/**
+ @brief The object that acts as the delegate of the receiving collection view.
+ */
 @property (nonatomic, assign) id<SSCollectionViewDelegate> delegate;
 
+/**
+ @brief The height of each row in the receiver.
+ 
+ The row height is in points. The default is 80.
+ */
 @property (nonatomic, assign) CGFloat rowHeight;
+
+/**
+ @brief The spacing between each row in the receiver. This does not add space 
+ above the first row or below the last.
+ 
+ The row spacing is in points. The default is 20.
+ */
 @property (nonatomic, assign) CGFloat rowSpacing;
+
+/**
+ @brief The width of each column in the receiver.
+ 
+ The column width is in points. The default is 80.
+ */
 @property (nonatomic, assign) CGFloat columnWidth;
+
+/**
+ @brief The spacing between each column in the receiver. This does not add space 
+ to the left of the first column or the right of the last column.
+ 
+ The column spacing is in points. The default is 20.
+ */
 @property (nonatomic, assign) CGFloat columnSpacing;
 
+/**
+ @brief The background view of the collection view.
+ */
 @property (nonatomic, retain) UIView *backgroundView;
+
 @property (nonatomic, retain) UIView *backgroundHeaderView;
 @property (nonatomic, retain) UIView *backgroundFooterView;
-//@property (nonatomic, retain) UIView *collectionHeaderView;
-//@property (nonatomic, retain) UIView *collectionFooterView;
-
 @property (nonatomic, assign) NSUInteger minNumberOfColumns;
 @property (nonatomic, assign) NSUInteger maxNumberOfColumns;
-
 @property (nonatomic, assign) CGSize minItemSize;
 @property (nonatomic, assign) CGSize maxItemSize;
 
+/**
+ @brief A Boolean value that determines whether selecting items is enabled.
+ 
+ If the value of this property is YES, selecting is enabled, and if it is NO, 
+ selecting is disabled. The default is YES.
+ */
 @property (nonatomic, assign) BOOL allowsSelection;
-//@property (nonatomic, assign, getter=isEditing) BOOL editing;
-//@property (nonatomic, assign) BOOL allowsSelectionDuringEditing;
 
+/**
+ @brief Reloads the items and sections of the receiver.
+ */
 - (void)reloadData;
-- (SSCollectionViewItem *)dequeueReusableItemWithIdentifier:(NSString *)identifier;
-- (SSCollectionViewItem *)itemPathForIndex:(NSIndexPath *)indexPath;
-- (NSIndexPath *)indexPathForItem:(SSCollectionViewItem *)item;
-- (void)deselectItemAtIndexPath:(NSIndexPath *)index animated:(BOOL)animated;
 
-//- (NSInteger)numberOfSections;
-//- (NSInteger)numberOfItemsInSection:(NSInteger)section;
-//
-//- (CGRect)rectForSection:(NSInteger)section;
-//- (CGRect)rectForHeaderInSection:(NSInteger)section;
-//- (CGRect)rectForFooterInSection:(NSInteger)section;
-//- (CGRect)rectForItemAtIndex:(NSUInteger)index;
-//
-//- (NSIndexPath *)indexPathForItemAtPoint:(CGPoint)point;
-//- (NSIndexPath *)indexPathForItem:(SSCollectionViewItem *)item;
-//- (NSArray *)indexPathsForItemsInRect:(CGRect)rect;
-//
-//- (NSArray *)visibleItems;
-//- (NSArray *)indexsForVisibleItems;
-//
-//- (void)scrollToItemAtIndexPath:(NSUInteger)index atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
-//- (void)scrollToNearestSelectedItemAtScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
-//
-//- (void)insertSections:(NSIndexSet *)sections withItemAnimation:(UITableViewItemAnimation)animation;
-//- (void)deleteSections:(NSIndexSet *)sections withItemAnimation:(UITableViewItemAnimation)animation;
-//- (void)reloadSections:(NSIndexSet *)sections withItemAnimation:(UITableViewItemAnimation)animation;
-//
-//- (void)insertItemsAtIndexPaths:(NSArray *)indexs withItemAnimation:(UITableViewItemAnimation)animation;
-//- (void)deleteItemsAtIndexPaths:(NSArray *)indexs withItemAnimation:(UITableViewItemAnimation)animation;
-//- (void)reloadItemsAtIndexPaths:(NSArray *)indexs withItemAnimation:(UITableViewItemAnimation)animation
-//
-//- (void)setEditing:(BOOL)editing animated:(BOOL)animated;
-//
-//- (NSIndexPath *)indexPathForSelectedItem;
-//
-//- (void)selectItemAtIndexPath:(NSIndexPath *)index animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
+/**
+ @brief Returns a reusable collection view item object located by its identifier.
+ 
+ @param identifier A string identifying the cell object to be reused.
+ */
+- (SSCollectionViewItem *)dequeueReusableItemWithIdentifier:(NSString *)identifier;
+
+/**
+ @brief Returns the collection view item at the specified index path.
+ 
+ @param indexPath The index path locating the item in the receiver.
+ */
+- (SSCollectionViewItem *)itemPathForIndex:(NSIndexPath *)indexPath;
+
+/**
+ @brief Returns an index path representing the row (index) and section of a given collection view item.
+ 
+ @param item An item object of the collection view.
+ */
+- (NSIndexPath *)indexPathForItem:(SSCollectionViewItem *)item;
+
+/**
+ @brief Deselects a given item identified by index path, with an option to animate the deselection.
+ 
+ <strong>Currently not implemented.</strong>
+ 
+ @param indexPath An index path identifying an item in the receiver.
+ @param animated YES if you want to animate the deselection and NO if the change should be immediate.
+ */
+- (void)deselectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
 
 @end
 
@@ -145,15 +156,6 @@
 - (NSInteger)collectionView:(SSCollectionView *)aCollectionView numberOfRowsInSection:(NSInteger)section;
 - (SSCollectionViewItem *)collectionView:(SSCollectionView *)aCollectionView itemForIndexPath:(NSIndexPath *)indexPath;
 
-@optional
-
-//- (BOOL)collectionView:(SSCollectionView *)aCollectionView canEditItemAtIndexPath:(NSIndexPath *)indexPath;
-//- (BOOL)collectionView:(SSCollectionView *)aCollectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath;
-//
-//- (void)collectionView:(SSCollectionView *)aCollectionView commitEditingStyle:(SSCollectionViewItemEditingStyle)editingStyle forItemAtIndexPath:(NSIndexPath *)indexPath;
-//
-//- (void)collectionView:(SSCollectionView *)aCollectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath;
-
 @end
 
 
@@ -161,21 +163,8 @@
 
 @optional
 
-// Headers and Footers
 - (CGFloat)collectionView:(SSCollectionView *)aCollectionView heightForHeaderInSection:(NSInteger)section;
 - (CGFloat)collectionView:(SSCollectionView *)aCollectionView heightForFooterInSection:(NSInteger)section;
-//- (UIView *)collectionView:(SSCollectionView *)aCollectionView viewForHeaderInSection:(NSInteger)section;
-//- (UIView *)collectionView:(SSCollectionView *)aCollectionView viewForFooterInSection:(NSInteger)section;
-//- (BOOL)collectionView:(SSCollectionView *)aCollectionView headerForSectionIsSticky:(NSInteger)section;
-//- (BOOL)collectionView:(SSCollectionView *)aCollectionView footerForSectionIsSticky:(NSInteger)section;
-
 - (void)collectionView:(SSCollectionView *)aCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
-
-//- (void)collectionView:(SSCollectionView *)aCollectionView willDisplayItem:(SSCollectionViewItem *)item forIndexPath:(NSIndexPath *)indexPath;
-//- (UITableViewItemEditingStyle)tableView:(UITableView *)tableView editingStyleForItemAtIndexPath:(NSIndexPath *)indexPath;
-//- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForItemAtIndexPath:(NSIndexPath *)indexPath;
-//- (void)tableView:(UITableView*)tableView willBeginEditingItemAtIndexPath:(NSIndexPath *)indexPath;
-//- (void)tableView:(UITableView*)tableView didEndEditingItemAtIndexPath:(NSIndexPath *)indexPath;
-//- (NSUInteger)aCollectionView:(SSCollectionView *)aCollectionView targetIndexPathForMoveFromItemAtIndexPath:(NSIndexPath *)indexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath;               
 
 @end

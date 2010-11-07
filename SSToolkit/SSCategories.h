@@ -3,8 +3,17 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 9/17/09.
-//  Copyright 2009 Sam Soffes. All rights reserved.
+//  Copyright 2009-2010 Sam Soffes. All rights reserved.
 //
+
+/**
+ @brief Several categories are included and used throughout SSToolkit.
+ */
+
+// This setting of 1 is best if you copy the source into your project. 
+// The build transforms the 1 to a 0 when building the framework and static lib.
+
+#if 1
 
 // Foundation
 #import <SSToolkit/NSArray+SSToolkitAdditions.h>
@@ -23,3 +32,25 @@
 #import <SSToolkit/UIScrollview+SSToolkitAdditions.h>
 #import <SSToolkit/UIView+SSToolkitAdditions.h>
 #import <SSToolkit/UIViewController+SSToolkitAdditions.h>
+
+#else
+
+// Foundation
+#import "NSArray+SSToolkitAdditions.h"
+#import "NSData+SSToolkitAdditions.h"
+#import "NSDate+SSToolkitAdditions.h"
+#import "NSDictionary+SSToolkitAdditions.h"
+#import "NSString+SSToolkitAdditions.h"
+#import "NSURL+SSToolkitAdditions.h"
+
+// UIKit
+#import "UIApplication+SSToolkitAdditions.h"
+#import "UIColor+SSToolkitAdditions.h"
+#import "UIControl+SSToolkitAdditions.h"
+#import "UIDevice+SSToolkitAdditions.h"
+#import "UIImage+SSToolkitAdditions.h"
+#import "UIScrollview+SSToolkitAdditions.h"
+#import "UIView+SSToolkitAdditions.h"
+#import "UIViewController+SSToolkitAdditions.h"
+
+#endif

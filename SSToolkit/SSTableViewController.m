@@ -3,7 +3,7 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 10/14/10.
-//  Copyright 2010 Sam Soffes. All rights reserved.
+//  Copyright 2009-2010 Sam Soffes. All rights reserved.
 //
 
 #import "SSTableViewController.h"

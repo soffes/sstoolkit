@@ -3,7 +3,7 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 4/26/10.
-//  Copyright 2010 Sam Soffes. All rights reserved.
+//  Copyright 2009-2010 Sam Soffes. All rights reserved.
 //
 
 #import "SSWebView.h"
@@ -33,6 +33,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 @synthesize shadowsHidden = _shadowsHidden;
 @synthesize consoleEnabled = _consoleEnabled;
 @synthesize lastRequest = _lastRequest;
+@synthesize loadingPage = _loadingPage;
 
 #pragma mark NSObject
 
@@ -56,7 +57,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	if (self = [super initWithFrame:frame]) {
 		[self reset];
 		
-		_loading = NO;
+		_loadingPage = NO;
 		_scrollEnabled = YES;
 		_bounces = YES;
 		_shadowsHidden = NO;
@@ -159,24 +160,24 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 
 - (void)_loadingStatusChanged {
-	if (self.loadingRequest == NO) {
+	if (self.loading == NO) {
 		[self _finishedLoading];
 	}
 }
 
 
 - (void)_startLoading {
-	_loading = YES;
+	_loadingPage = YES;
 	if ([_delegate respondsToSelector:@selector(webViewDidStartLoading:)]) {
-		[_delegate webViewDidStartLoading:self];
+		[_delegate webViewDidStartLoadingPage:self];
 	}
 }
 
 
 - (void)_finishedLoading {
-	_loading = NO;
+	_loadingPage = NO;
 	if ([_delegate respondsToSelector:@selector(webViewDidFinishLoading:)]) {
-		[_delegate webViewDidFinishLoading:self];
+		[_delegate webViewDidFinishLoadingPage:self];
 	}
 }
 
@@ -212,11 +213,6 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 		}
 	}
 	return NO;
-}
-
-
-- (BOOL)isLoading {
-	return _loading;
 }
 
 
@@ -385,7 +381,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 }
 
 
-- (BOOL)isLoadingRequest {
+- (BOOL)isLoading {
 	return [_webView isLoading];
 }
 
@@ -448,6 +444,30 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 - (NSString *)stringByEvaluatingJavaScriptFromString:(NSString *)script {
 	return [_webView stringByEvaluatingJavaScriptFromString:script];
 }
+
+
+#ifdef __IPHONE_4_0
+
+- (BOOL)allowsInlineMediaPlayback {
+	return _webView.allowsInlineMediaPlayback;
+}
+
+
+- (void)setAllowsInlineMediaPlayback:(BOOL)allow {
+	_webView.allowsInlineMediaPlayback = allow;
+}
+
+
+- (BOOL)mediaPlaybackRequiresUserAction {
+	return _webView.mediaPlaybackRequiresUserAction;
+}
+
+
+- (void)setMediaPlaybackRequiresUserAction:(BOOL)requires {
+	_webView.mediaPlaybackRequiresUserAction = requires;
+}
+
+#endif
 
 
 #pragma mark UIWebViewDelegate

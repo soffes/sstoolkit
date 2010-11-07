@@ -3,7 +3,7 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 7/8/09.
-//  Copyright 2009 Sam Soffes. All rights reserved.
+//  Copyright 2009-2010 Sam Soffes. All rights reserved.
 //
 
 #import "SSLoadingView.h"
@@ -88,9 +88,11 @@ static CGFloat indicatorRightMargin = 8.0;
 	CGRect textRect = CGRectMake(_activityIndicator.frame.origin.x + indicatorSize + indicatorRightMargin, y, textSize.width, textSize.height);
 	
 	// Draw shadow. The offset is (0, 1)
-	[_shadowColor set];
-	CGRect shadowRect = CGRectMake(textRect.origin.x, textRect.origin.y + 1.0, textRect.size.width, textRect.size.height);
-	[_text drawInRect:shadowRect withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];	
+	if (_shadowColor) {
+		[_shadowColor set];
+		CGRect shadowRect = CGRectMake(textRect.origin.x, textRect.origin.y + 1.0, textRect.size.width, textRect.size.height);
+		[_text drawInRect:shadowRect withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];	
+	}
 	
 	// Draw text
 	[_textColor set];

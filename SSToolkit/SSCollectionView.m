@@ -3,7 +3,7 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 6/11/10.
-//  Copyright 2010 Sam Soffes. All rights reserved.
+//  Copyright 2009-2010 Sam Soffes. All rights reserved.
 //
 
 #import "SSCollectionView.h"
@@ -26,8 +26,6 @@
 @synthesize backgroundView = _backgroundView;
 @synthesize backgroundHeaderView = _backgroundHeaderView;
 @synthesize backgroundFooterView = _backgroundFooterView;
-//@synthesize collectionHeaderView = _collectionHeaderView;
-//@synthesize collectionFooterView = _collectionFooterView;
 @synthesize minNumberOfColumns = _minNumberOfColumns;
 @synthesize maxNumberOfColumns = _maxNumberOfColumns;
 @synthesize minItemSize = _minItemSize;
@@ -45,8 +43,6 @@
 	self.backgroundView = nil;
 	self.backgroundHeaderView = nil;
 	self.backgroundFooterView = nil;
-//	self.collectionHeaderView = nil;
-//	self.collectionFooterView = nil;
 	
 	[super dealloc];
 }
@@ -211,7 +207,7 @@
 }
 
 
-- (void)deselectItemAtIndexPath:(NSIndexPath *)index animated:(BOOL)animated {
+- (void)deselectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
 	// TODO: Implement
 }
 
