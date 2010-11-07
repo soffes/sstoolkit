@@ -90,6 +90,10 @@ If you are going to use SSToolkit's categories, you will need to import then sep
 * [Known bugs](http://github.com/samsoffes/sstoolkit/issues/labels/Bug)
 * [Future features](http://github.com/samsoffes/sstoolkit/issues/labels/Enhancement)
 
+## Thanks
+
+Huge thanks to all of the [contributors](https://github.com/samsoffes/sstoolkit/contributors). Thanks [Jake Marsh](http://github.com/jakemarsh) and [Mike Rundle](http://twitter.com/flyosity) for their snippets of hackery.
+
 [SSViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSViewController.h
 [SSPickerViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSPickerViewController.h
 [SSHUDView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSHUDView.h
