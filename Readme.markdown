@@ -26,14 +26,12 @@ If you're using this in your project, I'd love to hear about it! [Send me an ema
 ### View Controllers
 
 * [SSCollectionViewController][] - manage a collection view
-* [SSMessagesViewController][] - simple message UI like Messsages.app
 * [SSPickerViewController][] - easily create picker view controllers like the Settings app
 * [SSViewController][] - custom modal craziness
 
 ### Cells
 
 * [SSTableViewCell][] - a fast cell
-* [SSMessageTableViewCell][] - message bubble cell
 
 ### Misc
 
@@ -94,7 +92,6 @@ If you are going to use SSToolkit's categories, you will need to import then sep
 
 [SSViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSViewController.h
 [SSPickerViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSPickerViewController.h
-[SSMessagesViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSMessagesViewController.h
 [SSHUDView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSHUDView.h
 [SSCollectionView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSCollectionView.h
 [SSGradientView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSGradientView.h
@@ -108,7 +105,6 @@ If you are going to use SSToolkit's categories, you will need to import then sep
 [SSTextField]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTextField.h
 [SSTextView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTextView.h
 [SSTableViewCell]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTableViewCell.h
-[SSMessageTableViewCell]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSMessageTableViewCell.h
 [SSDrawingMacros]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSDrawingMacros.h
 [SSConcurrentOperation]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSConcurrentOperation.h
 [SSKeychain]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSKeychain.h
