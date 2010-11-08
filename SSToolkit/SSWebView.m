@@ -160,7 +160,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 - (void)_startLoading {
 	_loadingPage = YES;
-	if ([_delegate respondsToSelector:@selector(webViewDidStartLoading:)]) {
+	if ([_delegate respondsToSelector:@selector(webViewDidStartLoadingPage:)]) {
 		[_delegate webViewDidStartLoadingPage:self];
 	}
 }
@@ -168,7 +168,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 - (void)_finishedLoading {
 	_loadingPage = NO;
-	if ([_delegate respondsToSelector:@selector(webViewDidFinishLoading:)]) {
+	if ([_delegate respondsToSelector:@selector(webViewDidFinishLoadingPage:)]) {
 		[_delegate webViewDidFinishLoadingPage:self];
 	}
 }
