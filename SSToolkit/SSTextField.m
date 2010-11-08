@@ -10,21 +10,22 @@
 
 @implementation SSTextField
 
-@synthesize textInsets = _textInsets;
+@synthesize textEdgeInsets = _textEdgeInsets;
 
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
-        self.textInsets = UIEdgeInsetsZero;
+        _textEdgeInsets = UIEdgeInsetsZero;
     }
     return self;
 }
 
+
 #pragma mark UITextField
 
 - (CGRect)textRectForBounds:(CGRect)bounds {
-	return UIEdgeInsetsInsetRect(bounds, self.textInsets);
+	return UIEdgeInsetsInsetRect(bounds, _textEdgeInsets);
 }
 
 

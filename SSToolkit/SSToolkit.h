@@ -6,22 +6,6 @@
 //  Copyright 2009-2010 Sam Soffes. All rights reserved.
 //
 
-/**
- @mainpage SSToolkit makes life easier.
- 
- The goal of SSToolkit is to eliminate solving simple problems over and over again while
- staying very light weight. You can pick and choose the parts that you like and disregard
- the rest.
- 
- @section Links
- 
- @li <a href="http://github.com/samsoffes/sstoolkit">Source code</a>
- @li <a href="http://sstoolk.it/documentation">Documentation</a>
- @li <a herf="https://github.com/samsoffes/sstoolkit/issues/labels/Bug">Known bugs</a>
- @li <a href="https://github.com/samsoffes/sstoolkit/issues/labels/Enhancement">Future features</a>
-
- */
-
 // This setting of 1 is best if you copy the source into your project. 
 // The build transforms the 1 to a 0 when building the framework and static lib.
 
@@ -51,13 +35,9 @@
 #import <SSToolkit/SSTableViewController.h>
 #import <SSToolkit/SSViewController.h>
 
-// Cells
-#import <SSToolkit/SSTableViewCell.h>
-
 // Misc
 #import <SSToolkit/SSDrawingMacros.h>
 #import <SSToolkit/SSConcurrentOperation.h>
-#import <SSToolkit/SSKeychain.h>
 
 #else
 
@@ -85,12 +65,8 @@
 #import "SSTableViewController.h"
 #import "SSViewController.h"
 
-// Cells
-#import "SSTableViewCell.h"
-
 // Misc
 #import "SSDrawingMacros.h"
 #import "SSConcurrentOperation.h"
-#import "SSKeychain.h"
 
 #endif

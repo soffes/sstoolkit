@@ -10,7 +10,7 @@
 
 /** @brief Simple UIView wrapper for CGGradient.
  
- @section Known bugs
+ @section known_bugs Known bugs
  
  @li startColor and endColor must be in the same colorspace. The colorspace 
  of the first color is used to draw the gradient. If you did a gradient from 
@@ -39,21 +39,97 @@
 	CGGradientRef _gradient;
 }
 
+/**
+ @brief The top gradient color.
+ 
+ @see defaultTopColor
+ */
 @property (nonatomic, retain) UIColor *topColor;
+
+/**
+ @brief The bottom gradient color.
+ 
+ @see defaultBottomColor
+ */
 @property (nonatomic, retain) UIColor *bottomColor;
+
+/**
+ @brief The top border color.
+ 
+ @see defaultTopBorderColor
+ */
 @property (nonatomic, retain) UIColor *topBorderColor;
+
+/**
+ @brief The bottom border color.
+ 
+ @see defaultBottomColor
+ */
 @property (nonatomic, retain) UIColor *bottomBorderColor;
+
+/**
+ @brief The top border inset alpha.
+ 
+ If the value is less than or equal to 0.0, it will not be drawn. The
+ default 0.3.
+ 
+ @see defaultTopInsetAlpha
+ */
 @property (nonatomic, assign) CGFloat topInsetAlpha;
-@property (nonatomic, assign) CGFloat bottomInsetAlpha;	
+
+/**
+ @brief The bottom border inset alpha.
+ 
+ If the value is less than or equal to 0.0, it will not be drawn. The
+ default 0.0.
+ 
+ @see defaultBottomInsetAlpha
+ */
+@property (nonatomic, assign) CGFloat bottomInsetAlpha;
+
+/**
+ @brief A Boolean value that determines whether showing the top border is enabled.
+ */
 @property (nonatomic, assign) BOOL hasTopBorder;
+
+/**
+ @brief A Boolean value that determines whether showing the bottom border is enabled.
+ */
 @property (nonatomic, assign) BOOL hasBottomBorder;
+
+/**
+ @brief A Boolean value that determines whether the border insets are enabled.
+ */
 @property (nonatomic, assign) BOOL showsInsets;
 
+/**
+ @brief The default top gradient color.
+ */
 + (UIColor *)defaultTopColor;
+
+/**
+ @brief The default bottom gradient color.
+ */
 + (UIColor *)defaultBottomColor;
+
+/**
+ @brief The default top border color.
+ */
 + (UIColor *)defaultTopBorderColor;
+
+/**
+ @brief The default bottom border color.
+ */
 + (UIColor *)defaultBottomBorderColor;
+
+/**
+ @brief The default top inset alpha.
+ */
 + (CGFloat)defaultTopInsetAlpha;
+
+/**
+ @brief The default bottom inset alpha.
+ */
 + (CGFloat)defaultBottomInsetAlpha;
 
 @end

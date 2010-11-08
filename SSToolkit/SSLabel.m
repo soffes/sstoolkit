@@ -11,14 +11,14 @@
 @implementation SSLabel
 
 @synthesize verticalTextAlignment = _verticalTextAlignment;
-@synthesize textInsets = _textInsets;
+@synthesize textEdgeInsets = _textEdgeInsets;
 
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)aFrame {
 	if ((self = [super initWithFrame:aFrame])) {
 		self.verticalTextAlignment = SSLabelVerticalTextAlignmentMiddle;
-		self.textInsets = UIEdgeInsetsZero;
+		self.textEdgeInsets = UIEdgeInsetsZero;
 	}
 	return self;
 }
@@ -26,7 +26,7 @@
 #pragma mark UILabel
 
 - (void)drawTextInRect:(CGRect)rect {
-	rect = UIEdgeInsetsInsetRect(rect, self.textInsets);
+	rect = UIEdgeInsetsInsetRect(rect, _textEdgeInsets);
 	
 	if (self.verticalTextAlignment == SSLabelVerticalTextAlignmentTop) {
 		CGSize sizeThatFits = [self sizeThatFits:rect.size];

@@ -12,9 +12,6 @@
 
 @implementation SSCollectionViewItem
 
-//@synthesize verticalAlignment = _verticalAlignment;
-//@synthesize preferredContentSize = _preferredContentSize;
-//@synthesize contentView = _contentView;
 @synthesize imageView = _imageView;
 @synthesize textLabel = _textLabel;
 @synthesize detailTextLabel = _detailTextLabel;
@@ -55,8 +52,6 @@
 - (id)initWithStyle:(SSCollectionViewItemStyle)style reuseIdentifier:(NSString *)aReuseIdentifier {
 	if ((self = [super initWithFrame:CGRectZero])) {
 		_style = style;
-//		_verticalAlignment = SSCollectionViewItemVerticalAlignmentBottom;
-//		_preferredContentSize = CGSizeZero;
 		_reuseIdentifier = [aReuseIdentifier copy];
 		
 		if (_style != SSCollectionViewItemStyleBlank) {

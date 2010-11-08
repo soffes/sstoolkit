@@ -29,15 +29,10 @@ If you're using this in your project, I'd love to hear about it! [Send me an ema
 * [SSPickerViewController][] - easily create picker view controllers like the Settings app
 * [SSViewController][] - custom modal craziness
 
-### Cells
-
-* [SSTableViewCell][] - a fast cell
-
 ### Misc
 
 * [SSDrawingMacros][] - random macros for drawing and such
 * [SSConcurrentOperation][] - a simple wrapper for concurrent NSOperations
-* [SSKeychain][] - makes dealing with the keychain less sucky
 
 ### Categories
 
@@ -87,8 +82,19 @@ If you are going to use SSToolkit's categories, you will need to import then sep
 
 ## Links
 
+* [Homepage](http://sstoolk.it)
+* [Source code](http://github.com/samsoffes/sstoolkit)
 * [Known bugs](http://github.com/samsoffes/sstoolkit/issues/labels/Bug)
-* [Future features](http://github.com/samsoffes/sstoolkit/issues/labels/Enhancement)
+* [Future features](http://github.com/samsoffes/sstoolkit/issues/labels/Feature)
+
+### Other Libraries
+ 
+Here are some related libraries. Some of these used to be part of SSToolkit.
+
+* [SSZipArchive](http://github.com/samsoffes/ssziparchive) - Cocoa library for easily unzipping files.
+* [SSKeychain](http://github.com/samsoffes/sskeychain) - Cocoa library for making working with the keychain less sucky.
+* [SSOAuthKit](http://github.com/samsoffes/ssoauthkit) - iOS library for working with OAuth 1.0 provider with easy view controllers for getting a Twitter access token.
+* [SSTableViewCell](http://github.com/samsoffes/sstableviewcell) - iOS UITableViewCell based on ABTableViewCell.
 
 ## Thanks
 

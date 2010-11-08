@@ -10,10 +10,15 @@
 
 @class SSViewController;
 
-// This subclass of UINavigationController is intended to be used with
-// presentCustomModalViewController. It contains a hack to postion nav bar
-// that assumes we are a modal view controller and mosty likely that will
-// look wrong in any other scenario.
+/**
+ @brief UINavigationController subclass that comforms to the SSModalViewController protocol.
+ 
+ This class contains a dirty hack to position it's navigation bar correctly when in a
+ custom modal that is created with the SSViewController class.
+ 
+ @see SSViewController
+ @see SSModalViewController
+ */
 @interface SSNavigationController : UINavigationController <SSModalViewController> {
 
 	SSViewController *_modalParentViewController;

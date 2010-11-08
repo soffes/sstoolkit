@@ -19,10 +19,10 @@
 - (void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 
-	// Move nav bar up. This would make @withfoam cry 
-	if(self.modalParentViewController) {
+	// Move nav bar up. This makes me cry.
+	if (self.modalParentViewController) {
 		UIView *navBar = [[self.view subviews] objectAtIndex:1];
-		navBar.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, 45.0);
+		navBar.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, 44.0);
 	}
 }
 

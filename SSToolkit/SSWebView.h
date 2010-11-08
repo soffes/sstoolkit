@@ -37,14 +37,6 @@
 	BOOL _DOMloaded;
 }
 
-/**
- @brief The receiver's delegate.
- 
- @section Discussion
- 
- The delegate is sent messages when content is loading.
- */
-@property (nonatomic, assign) id<SSWebViewDelegate> delegate;
 @property (nonatomic, readonly, getter=isLoadingPage) BOOL loadingPage;
 @property (nonatomic, assign) BOOL scrollEnabled;
 @property (nonatomic, assign) BOOL bounces;
@@ -53,9 +45,14 @@
 @property (nonatomic, retain, readonly) NSURLRequest *lastRequest;
 
 /**
- @brief A Boolean value indicating whether the receiver is done loading content. (read-only)
+ @brief The receiver's delegate.
  
- @section Discussion
+ The delegate is sent messages when content is loading.
+ */
+@property (nonatomic, assign) id<SSWebViewDelegate> delegate;
+
+/**
+ @brief A Boolean value indicating whether the receiver is done loading content. (read-only)
  
  If YES, the receiver is still loading content; otherwise, NO.
  */
@@ -64,16 +61,12 @@
 /**
  @brief A Boolean value indicating whether the receiver can move backward. (read-only)
  
- @section Discussion
- 
  If YES, able to move backward; otherwise, NO.
  */
 @property (nonatomic, readonly) BOOL canGoBack;
 
 /**
  @brief A Boolean value indicating whether the receiver can move forward. (read-only)
- 
- @section Discussion
  
  If YES, able to move forward; otherwise, NO.
  */
@@ -88,8 +81,6 @@
  @brief A Boolean value determining whether the webpage scales to fit the view and the user
  can change the scale.
  
- @section Discussion
- 
  If YES, the webpage is scaled to fit and the user can zoom in and zoom out. If NO, user zooming
  is disabled. The default value is NO.
  */
@@ -97,8 +88,6 @@
 
 /**
  @brief The types of data converted to clickable URLs in the web view’s content.
- 
- @section Discussion
  
  You can use this property to specify the types of data (phone numbers, http links, email
  address, and so on) that should be automatically converted to clickable URLs in the web view.
@@ -113,8 +102,6 @@
  @brief A Boolean value that determines whether HTML5 videos play inline or use the native
  full-screen controller.
  
- @section Discussion
- 
  The default value on iPhone is NO.
  */
 @property (nonatomic, assign) BOOL allowsInlineMediaPlayback;
@@ -122,8 +109,6 @@
 /**
  @brief A Boolean value that determines whether HTML5 videos can play automatically or require
  the user to start playing them.
- 
- @section Discussion
  
  The default value on both iPad and iPhone is YES.
  */

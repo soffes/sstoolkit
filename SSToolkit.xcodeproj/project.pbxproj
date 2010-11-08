@@ -36,8 +36,6 @@
 		B24E9E54121DC29A0085F81E /* SSHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E16121DC29A0085F81E /* SSHUDView.m */; };
 		B24E9E55121DC29A0085F81E /* SSIndicatorLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E17121DC29A0085F81E /* SSIndicatorLabel.h */; };
 		B24E9E56121DC29A0085F81E /* SSIndicatorLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E18121DC29A0085F81E /* SSIndicatorLabel.m */; };
-		B24E9E57121DC29A0085F81E /* SSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E19121DC29A0085F81E /* SSKeychain.h */; };
-		B24E9E58121DC29A0085F81E /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E1A121DC29A0085F81E /* SSKeychain.m */; };
 		B24E9E59121DC29A0085F81E /* SSLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E1B121DC29A0085F81E /* SSLabel.h */; };
 		B24E9E5A121DC29A0085F81E /* SSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E1C121DC29A0085F81E /* SSLabel.m */; };
 		B24E9E5B121DC29A0085F81E /* SSLineView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E1D121DC29A0085F81E /* SSLineView.h */; };
@@ -82,8 +80,6 @@
 		B2AAE65D1281B73E0068EE7F /* SSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */; };
 		B2AE1134126F963300534CF2 /* UIApplication+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */; };
 		B2AE1135126F963300534CF2 /* UIApplication+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */; };
-		B2E03770121DCCB500D02434 /* SSTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2E0376E121DCCB500D02434 /* SSTableViewCell.h */; };
-		B2E03771121DCCB500D02434 /* SSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E0376F121DCCB500D02434 /* SSTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,8 +113,6 @@
 		B24E9E16121DC29A0085F81E /* SSHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSHUDView.m; sourceTree = "<group>"; };
 		B24E9E17121DC29A0085F81E /* SSIndicatorLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSIndicatorLabel.h; sourceTree = "<group>"; };
 		B24E9E18121DC29A0085F81E /* SSIndicatorLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSIndicatorLabel.m; sourceTree = "<group>"; };
-		B24E9E19121DC29A0085F81E /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
-		B24E9E1A121DC29A0085F81E /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		B24E9E1B121DC29A0085F81E /* SSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLabel.h; sourceTree = "<group>"; };
 		B24E9E1C121DC29A0085F81E /* SSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSLabel.m; sourceTree = "<group>"; };
 		B24E9E1D121DC29A0085F81E /* SSLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLineView.h; sourceTree = "<group>"; };
@@ -163,8 +157,6 @@
 		B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSNavigationController.m; sourceTree = "<group>"; };
 		B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+SSToolkitAdditions.m"; sourceTree = "<group>"; };
-		B2E0376E121DCCB500D02434 /* SSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTableViewCell.h; sourceTree = "<group>"; };
-		B2E0376F121DCCB500D02434 /* SSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTableViewCell.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTWToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTWToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -236,7 +228,6 @@
 				B2601A76122307B1005506D5 /* Views */,
 				B2601A78122307CD005506D5 /* View Controllers */,
 				B2601A791223086D005506D5 /* Controls */,
-				B2601A88122308C0005506D5 /* Cells */,
 				B2601A8A122308E2005506D5 /* Misc */,
 				B2601A6F12230794005506D5 /* Categories */,
 			);
@@ -350,15 +341,6 @@
 			name = Controls;
 			sourceTree = "<group>";
 		};
-		B2601A88122308C0005506D5 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				B2E0376E121DCCB500D02434 /* SSTableViewCell.h */,
-				B2E0376F121DCCB500D02434 /* SSTableViewCell.m */,
-			);
-			name = Cells;
-			sourceTree = "<group>";
-		};
 		B2601A8A122308E2005506D5 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,8 +348,6 @@
 				B24E9E11121DC29A0085F81E /* SSConcurrentOperation.m */,
 				B24E9E12121DC29A0085F81E /* SSDrawingMacros.h */,
 				B21D2DFF121F2FE500161E66 /* SSDrawingMacros.m */,
-				B24E9E19121DC29A0085F81E /* SSKeychain.h */,
-				B24E9E1A121DC29A0085F81E /* SSKeychain.m */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -391,7 +371,6 @@
 				B24E9E51121DC29A0085F81E /* SSGradientView.h in Headers */,
 				B24E9E53121DC29A0085F81E /* SSHUDView.h in Headers */,
 				B24E9E55121DC29A0085F81E /* SSIndicatorLabel.h in Headers */,
-				B24E9E57121DC29A0085F81E /* SSKeychain.h in Headers */,
 				B24E9E59121DC29A0085F81E /* SSLabel.h in Headers */,
 				B24E9E5B121DC29A0085F81E /* SSLineView.h in Headers */,
 				B24E9E5D121DC29A0085F81E /* SSLoadingView.h in Headers */,
@@ -410,7 +389,6 @@
 				B24E9E7B121DC29A0085F81E /* UIScrollView+SSToolkitAdditions.h in Headers */,
 				B24E9E7D121DC29A0085F81E /* UIView+SSToolkitAdditions.h in Headers */,
 				B24E9E7F121DC29A0085F81E /* UIViewController+SSToolkitAdditions.h in Headers */,
-				B2E03770121DCCB500D02434 /* SSTableViewCell.h in Headers */,
 				B27B1A1B12241D3400111EA2 /* SSCollectionView.h in Headers */,
 				B27B1A2212241D6F00111EA2 /* SSCollectionViewItem.h in Headers */,
 				B267D3451226CE0400B66519 /* SSCollectionViewController.h in Headers */,
@@ -483,7 +461,6 @@
 				B24E9E52121DC29A0085F81E /* SSGradientView.m in Sources */,
 				B24E9E54121DC29A0085F81E /* SSHUDView.m in Sources */,
 				B24E9E56121DC29A0085F81E /* SSIndicatorLabel.m in Sources */,
-				B24E9E58121DC29A0085F81E /* SSKeychain.m in Sources */,
 				B24E9E5A121DC29A0085F81E /* SSLabel.m in Sources */,
 				B24E9E5C121DC29A0085F81E /* SSLineView.m in Sources */,
 				B24E9E5E121DC29A0085F81E /* SSLoadingView.m in Sources */,
@@ -500,7 +477,6 @@
 				B24E9E7C121DC29A0085F81E /* UIScrollView+SSToolkitAdditions.m in Sources */,
 				B24E9E7E121DC29A0085F81E /* UIView+SSToolkitAdditions.m in Sources */,
 				B24E9E80121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m in Sources */,
-				B2E03771121DCCB500D02434 /* SSTableViewCell.m in Sources */,
 				B21D2E00121F2FE500161E66 /* SSDrawingMacros.m in Sources */,
 				B27B1A1C12241D3400111EA2 /* SSCollectionView.m in Sources */,
 				B27B1A2312241D6F00111EA2 /* SSCollectionViewItem.m in Sources */,

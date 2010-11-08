@@ -7,18 +7,33 @@
 //
 
 typedef enum {
-	SSLabelVerticalTextAlignmentMiddle = UIControlContentVerticalAlignmentCenter,
 	SSLabelVerticalTextAlignmentTop = UIControlContentVerticalAlignmentTop,
+	SSLabelVerticalTextAlignmentMiddle = UIControlContentVerticalAlignmentCenter,
 	SSLabelVerticalTextAlignmentBottom = UIControlContentVerticalAlignmentBottom
 } SSLabelVerticalTextAlignment;
 
+/**
+ @brief Simple label subclass that adds the ability to align your text
+ to the top or bottom.
+ */
 @interface SSLabel : UILabel {
 	
 	SSLabelVerticalTextAlignment _verticalTextAlignment;
-	UIEdgeInsets _textInsets;
+	UIEdgeInsets _textEdgeInsets;
 }
 
+/**
+ @brief The vertical text alignment of the receiver.
+ 
+ The default is SSLabelVerticalTextAlignmentMiddle to match UILabel.
+ */
 @property (nonatomic, assign) SSLabelVerticalTextAlignment verticalTextAlignment;
-@property (nonatomic, assign) UIEdgeInsets textInsets;
+
+/**
+ @brief The edge insets of the text.
+ 
+ The default is UIEdgeInsetsZero so it behaves like UILabel by default.
+ */
+@property (nonatomic, assign) UIEdgeInsets textEdgeInsets;
 
 @end
