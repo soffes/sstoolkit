@@ -100,7 +100,7 @@ Here are some related libraries. Some of these used to be part of SSToolkit.
 
 ## Thanks
 
-Huge thanks to all of the [contributors](https://github.com/samsoffes/sstoolkit/contributors). Thanks [Jake Marsh](http://github.com/jakemarsh) and [Mike Rundle](http://twitter.com/flyosity) for their snippets of hackery.
+Huge thanks to [our contributors](http://github.com/samsoffes/sstoolkit/contributors), [Jake Marsh](http://deallocatedobjects.com), and [Mike Rundle](http://flyosity.com).
 
 [SSViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSViewController.h
 [SSPickerViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSPickerViewController.h
