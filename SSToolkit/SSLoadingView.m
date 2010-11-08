@@ -19,6 +19,7 @@ static CGFloat indicatorRightMargin = 8.0;
 @synthesize font = _font;
 @synthesize textColor = _textColor;
 @synthesize shadowColor = _shadowColor;
+@synthesize shadowOffset = _shadowOffset;
 
 #pragma mark NSObject
 
@@ -27,6 +28,8 @@ static CGFloat indicatorRightMargin = 8.0;
 	[self removeObserver:self forKeyPath:@"font"];
 	[self removeObserver:self forKeyPath:@"textColor"];
 	[self removeObserver:self forKeyPath:@"shadowColor"];
+	[self removeObserver:self forKeyPath:@"shadowOffset"];
+	
 	self.font = nil;
 	self.text = nil;
 	self.textColor = nil;
@@ -58,12 +61,14 @@ static CGFloat indicatorRightMargin = 8.0;
 		self.textColor = aColor;
 		[aColor release];
 		self.shadowColor = [UIColor whiteColor];
+		_shadowOffset = CGSizeMake(0.0, 1.0);
 		
 		// Add observers
 		[self addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"font" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"shadowColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"shadowOffset" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -87,10 +92,10 @@ static CGFloat indicatorRightMargin = 8.0;
 	// Calculate text position
 	CGRect textRect = CGRectMake(_activityIndicator.frame.origin.x + indicatorSize + indicatorRightMargin, y, textSize.width, textSize.height);
 	
-	// Draw shadow. The offset is (0, 1)
+	// Draw shadow
 	if (_shadowColor) {
 		[_shadowColor set];
-		CGRect shadowRect = CGRectMake(textRect.origin.x, textRect.origin.y + 1.0, textRect.size.width, textRect.size.height);
+		CGRect shadowRect = CGRectMake(textRect.origin.x + _shadowOffset.width, textRect.origin.y + _shadowOffset.height, textRect.size.width, textRect.size.height);
 		[_text drawInRect:shadowRect withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];	
 	}
 	

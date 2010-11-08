@@ -20,6 +20,7 @@
 	UIFont *_font;
 	UIColor *_textColor;
 	UIColor *_shadowColor;
+	CGSize _shadowOffset;
 }
 
 /**
@@ -45,10 +46,19 @@
 @property (nonatomic, retain) UIColor *textColor;
 
 /**
- @brief the color of the text shadow.
+ @brief The color of the text shadow.
  
  Set to nil to disable drawing the shadow.
  */
 @property (nonatomic, retain) UIColor *shadowColor;
+
+/**
+ @brief The shadow offset (measured in points) for the text.
+ 
+ The shadowColor must be non-nil for this property to have any effect. The default offset
+ size is (0, 1), which indicates a shadow one point below the text. Text shadows are drawn
+ with the specified offset and color and no blurring.
+ */
+@property (nonatomic, assign) CGSize shadowOffset;
 
 @end
