@@ -104,31 +104,43 @@
 
 /**
  @brief The default top gradient color.
+ 
+ @return A color with its value set to the default top gradient color.
  */
 + (UIColor *)defaultTopColor;
 
 /**
  @brief The default bottom gradient color.
+ 
+ @return A color with its value set to the default bottom gradient color.
  */
 + (UIColor *)defaultBottomColor;
 
 /**
  @brief The default top border color.
+ 
+ @return A color with its value set to the default top border color.
  */
 + (UIColor *)defaultTopBorderColor;
 
 /**
  @brief The default bottom border color.
+ 
+ @return A color with its value set to the default bottom border color.
  */
 + (UIColor *)defaultBottomBorderColor;
 
 /**
  @brief The default top inset alpha.
+ 
+ @return The default top inset alpha.
  */
 + (CGFloat)defaultTopInsetAlpha;
 
 /**
  @brief The default bottom inset alpha.
+ 
+ @return The default bottom inset alpha.
  */
 + (CGFloat)defaultBottomInsetAlpha;
 

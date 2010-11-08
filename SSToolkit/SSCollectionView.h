@@ -105,8 +105,8 @@
 /**
  @brief A Boolean value that determines whether selecting items is enabled.
  
- If the value of this property is YES, selecting is enabled, and if it is NO, 
- selecting is disabled. The default is YES.
+ If the value of this property is <code>YES</code>, selecting is enabled, and if it is <code>NO</code>, 
+ selecting is disabled. The default is <code>YES</code>.
  */
 @property (nonatomic, assign) BOOL allowsSelection;
 
@@ -119,6 +119,9 @@
  @brief Returns a reusable collection view item object located by its identifier.
  
  @param identifier A string identifying the cell object to be reused.
+ 
+ @return A SSCollectionViewItem object with the associated identifier or nil if no such object
+ exists in the reusable-item queue.
  */
 - (SSCollectionViewItem *)dequeueReusableItemWithIdentifier:(NSString *)identifier;
 
@@ -126,6 +129,11 @@
  @brief Returns the collection view item at the specified index path.
  
  @param indexPath The index path locating the item in the receiver.
+ 
+ @return An object representing a cell of the table or nil if the cell is not visible or indexPath is
+ out of range.
+ 
+ @see indexPathForItem:
  */
 - (SSCollectionViewItem *)itemPathForIndex:(NSIndexPath *)indexPath;
 
@@ -133,6 +141,10 @@
  @brief Returns an index path representing the row (index) and section of a given collection view item.
  
  @param item An item object of the collection view.
+ 
+ @return An index path representing the row and section of the cell or nil if the index path is invalid.
+ 
+ @see itemPathForIndex:
  */
 - (NSIndexPath *)indexPathForItem:(SSCollectionViewItem *)item;
 
@@ -142,7 +154,8 @@
  <strong>Currently not implemented.</strong>
  
  @param indexPath An index path identifying an item in the receiver.
- @param animated YES if you want to animate the deselection and NO if the change should be immediate.
+ @param animated <code>YES</code> if you want to animate the deselection and <code>NO</code> if the
+ change should be immediate.
  */
 - (void)deselectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
 

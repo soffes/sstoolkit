@@ -90,7 +90,8 @@ typedef enum {
 /**
  @brief A Boolean value that indicates whether the cell is selected.
  
- The selection affects the appearance of labels, image, and background. The default value is is NO.
+ The selection affects the appearance of labels, image, and background. The default value is
+ <code>NO</code>.
  
  @see setSelected:animated:
 */
@@ -100,10 +101,10 @@ typedef enum {
  @brief A Boolean value that indicates whether the item is highlighted.
  
  The highlighting affects the appearance of labels, image, and background. When the the highlighted
- state of an item is set to YES, labels are drawn in their highlighted text color. The default value is
- NO. If you set the highlighted state to YES through this property, the transition to the new state
- appearance is not animated. For animated highlighted-state transitions, see the
- setHighlighted:animated: method.
+ state of an item is set to <code>YES</code>, labels are drawn in their highlighted text color. The
+ default value is <code>NO</code>. If you set the highlighted state to <code>YES</code> through this
+ property, the transition to the new state appearance is not animated. For animated highlighted-state
+ transitions, see the setHighlighted:animated: method.
  
  Note that for highlighting to work properly, you must fetch the items's labels using the textLabel
  and detailTextLabel properties and set each label's highlightedTextColor property; for images, get
@@ -114,6 +115,18 @@ typedef enum {
  */
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 
+/**
+ @brief Initializes a collection view item with a style and a reuse identifier and returns it to
+ the caller.
+ 
+ @param style A constant indicating a item style.
+ 
+ @param reuseIdentifier A string used to identify the item object if it is to be reused for drawing
+ multiple items of a collection view. Pass nil if the cell object is not to be reused. You should
+ use the same reuse identifier for all cells of the same form.
+ 
+ @return An initialized SSCollectionViewItem object or nil if the object could not be created.
+ */
 - (id)initWithStyle:(SSCollectionViewItemStyle)style reuseIdentifier:(NSString *)aReuseIdentifier;
 
 /**
@@ -124,25 +137,30 @@ typedef enum {
 /**
  @brief Sets the selected state of the item, optionally animating the transition between states.
  
- @param selected YES to set the item as selected, NO to set it as unselected. The default is NO.
+ @param selected <code>YES</code> to set the item as selected, <code>NO</code> to set it as unselected.
+ The default is <code>NO</code>.
  
- @param animated YES to animate the transition between selected states, NO to make the transition
- immediate.
+ @param animated <code>YES</code> to animate the transition between selected states, <code>NO</code> to
+ make the transition immediate.
  
  The selection affects the appearance of labels, image, and background. When the the selected state
- of a cell to YES, it draws the background for selected items with its title in its highlightedTextColor.
+ of a cell to <code>YES</code>, it draws the background for selected items with its title in its
+ highlightedTextColor.
  */
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated;
 
 /**
  @brief Sets the highlighted state of the item, optionally animating the transition between states.
  
- @param highlighted YES to set the item as highlighted, NO to set it as unhighlighted. The default is NO.
+ @param highlighted <code>YES</code> to set the item as highlighted, <code>NO</code> to set it as
+ unhighlighted. The default is <code>NO</code>.
  
- @param animated YES to animate the transition between highlighted states, NO to make the transition immediate.
+ @param animated <code>YES</code> to animate the transition between highlighted states, <code>NO</code>
+ to make the transition immediate.
 
  Highlights or unhighlights the item, animating the transition between regular and highlighted state if
- animated is YES. Highlighting affects the appearance of the items's labels, image, and background.
+ animated is <code>YES</code>. Highlighting affects the appearance of the items's labels, image, and
+ background.
  
  Note that for highlighting to work properly, you must fetch the item's label (or labels) using the
  textLabel (and detailTextLabel) properties and set the label's highlightedTextColor property; for

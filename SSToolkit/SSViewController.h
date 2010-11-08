@@ -5,11 +5,15 @@
 //  Created by Sam Soffes on 7/14/10.
 //  Copyright 2009-2010 Sam Soffes. All rights reserved.
 //
-//  TODO: Support iPhone and iPhone 4
-//
 
 #import "SSModalViewController.h"
 
+/**
+ @brief UIViewController subclass that displaying custom modals and
+ other nice enhancements.
+ 
+ Note: Currently only iPad is supported.
+ */
 @interface SSViewController : UIViewController <SSModalViewController> {
 
 	SSViewController *_modalParentViewController;
@@ -17,6 +21,8 @@
 	BOOL _dismissCustomModalOnVignetteTap;
 	CGSize _contentSizeForViewInCustomModal;
 	CGPoint _originForViewInCustomModal;
+	
+@protected
 	
 	UIView *_modalContainerView;
 	UIImageView *_modalContainerBackgroundView;

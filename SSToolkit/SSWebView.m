@@ -14,16 +14,12 @@ static BOOL SSWebViewIsBackedByScroller;
 static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 @interface SSWebView (PrivateMethods)
-
 + (BOOL)_isBackedByScroller;
 - (void)_loadingStatusChanged;
 - (void)_startLoading;
 - (void)_finishedLoading;
 - (void)_DOMLoaded;
-- (void)_injectCSS:(NSString *)css;
-
 @end
-
 
 @implementation SSWebView
 
@@ -46,7 +42,6 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	_webView.delegate = nil;
 	[_webView stopLoading];
 	[_webView release];
-	[_persistedCSS release];
 	[_lastRequest release];
 	[super dealloc];
 }
@@ -79,25 +74,14 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 }
 
 
-- (void)injectCSS:(NSString *)css {
-	[self injectCSS:css persist:NO];
-}
-
-
-- (void)injectCSS:(NSString *)css persist:(BOOL)persist {
-	[self _injectCSS:css];
-	
-	if (persist) {
-		[_persistedCSS release];
-		_persistedCSS = [css retain];
-	}
-}
-
-
 - (void)reset {
 	BOOL loadPreviousSettings = NO;
 	UIDataDetectorTypes tempDataDetectorTypes;
 	BOOL tempScalesPageToFit;
+#ifdef __IPHONE_4_0
+	BOOL tempAllowsInlineMediaPlayback;
+	BOOL tempMediaPlaybackRequiresUserAction;
+#endif
 	
 	if (_webView) {
 		_webView.delegate = nil;
@@ -106,6 +90,10 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 		loadPreviousSettings = YES;
 		tempDataDetectorTypes = _webView.dataDetectorTypes;
 		tempScalesPageToFit = _webView.scalesPageToFit;
+#ifdef __IPHONE_4_0
+		tempAllowsInlineMediaPlayback = _webView.allowsInlineMediaPlayback;
+		tempMediaPlaybackRequiresUserAction = _webView.mediaPlaybackRequiresUserAction;
+#endif
 		
 		[_webView removeFromSuperview];
 		[_webView release];
@@ -117,6 +105,10 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	if (loadPreviousSettings) {
 		_webView.dataDetectorTypes = tempDataDetectorTypes;
 		_webView.scalesPageToFit = tempScalesPageToFit;
+#ifdef __IPHONE_4_0
+		_webView.allowsInlineMediaPlayback = tempAllowsInlineMediaPlayback;
+		_webView.mediaPlaybackRequiresUserAction = tempMediaPlaybackRequiresUserAction;
+#endif
 	}
 	
 	_webView.delegate = self;
@@ -183,20 +175,9 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 
 - (void)_DOMLoaded {
-	// Reinject persisted CSS
-	if (_persistedCSS) {
-		[self _injectCSS:_persistedCSS];
-	}
-	
 	if ([_delegate respondsToSelector:@selector(webViewDidLoadDOM:)]) {
 		[_delegate webViewDidLoadDOM:self];
 	}
-}
-
-
-- (void)_injectCSS:(NSString *)css {
-	static NSString *injectCSSFormat = @"var styleTag=document.createElement('style');styleTag.setAttribute('type','text/css');styleTag.innerHTML='%@';document.getElementsByTagName('head')[0].appendChild(styleTag);";
-	[self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:injectCSSFormat, css]];
 }
 
 
