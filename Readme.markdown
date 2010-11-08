@@ -84,6 +84,7 @@ If you are going to use SSToolkit's categories, you will need to import then sep
 
 * [Homepage](http://sstoolk.it)
 * [Source code](http://github.com/samsoffes/sstoolkit)
+* [Documentation](http://sstoolk.it/documentation/)
 * [Known bugs](http://github.com/samsoffes/sstoolkit/issues/labels/Bug)
 * [Future features](http://github.com/samsoffes/sstoolkit/issues/labels/Feature)
 
@@ -95,6 +96,7 @@ Here are some related libraries. Some of these used to be part of SSToolkit.
 * [SSKeychain](http://github.com/samsoffes/sskeychain) - Cocoa library for making working with the keychain less sucky.
 * [SSOAuthKit](http://github.com/samsoffes/ssoauthkit) - iOS library for working with OAuth 1.0 provider with easy view controllers for getting a Twitter access token.
 * [SSTableViewCell](http://github.com/samsoffes/sstableviewcell) - iOS UITableViewCell based on ABTableViewCell.
+* [SSMessagesViewController](http://github.com/samsoffes/ssmessagesviewcontroller) - iOS Messages.app style table view controller.
 
 ## Thanks
 
