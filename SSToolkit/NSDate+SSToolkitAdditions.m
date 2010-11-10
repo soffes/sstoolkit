@@ -17,13 +17,13 @@
 	
 	NSDate* date = nil;
 	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
-    date = [dateFormatter dateFromString:string];
-	if(date) {
-		return date;
+	NSString* adjustedString = string;
+	if([string characterAtIndex:string.length - 1] == 'Z') {
+		adjustedString = [NSString stringWithFormat:@"%@ +0000", [string substringToIndex:(string.length - 1)]];
 	}
+	
 	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
-    date = [dateFormatter dateFromString:string];
+    date = [dateFormatter dateFromString:adjustedString];
 	return date;
 }
 
