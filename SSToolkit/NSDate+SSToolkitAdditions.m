@@ -15,21 +15,18 @@
 		return nil;
 	}
 	
-	NSDate* date = nil;
-	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-	NSString* adjustedString = string;
-	if([string characterAtIndex:string.length - 1] == 'Z') {
-		adjustedString = [NSString stringWithFormat:@"%@ +0000", [string substringToIndex:(string.length - 1)]];
+	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	if ([string characterAtIndex:string.length - 1] == 'Z') {
+		string = [NSString stringWithFormat:@"%@ +0000", [string substringToIndex:(string.length - 1)]];
 	}
 	
 	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
-    date = [dateFormatter dateFromString:adjustedString];
-	return date;
+    return [dateFormatter dateFromString:string];
 }
 
 
 - (NSString *)ISO8601String {
-	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
 	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
 	return [dateFormatter stringFromDate:self];
 }
