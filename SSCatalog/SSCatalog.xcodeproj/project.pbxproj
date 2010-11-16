@@ -23,6 +23,7 @@
 		B24E9EB1121DC35B0085F81E /* SCPieProgressViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA7121DC35B0085F81E /* SCPieProgressViewDemoViewController.m */; };
 		B24E9EB2121DC35B0085F81E /* SCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA9121DC35B0085F81E /* SCRootViewController.m */; };
 		B24E9EB7121DC3760085F81E /* SSToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B24E9EB6121DC3760085F81E /* SSToolkit.bundle */; };
+		B2572FEC12924C28001FC061 /* SCIndicatorLabelDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2572FEB12924C28001FC061 /* SCIndicatorLabelDemoViewController.m */; };
 		B27B1A581224228000111EA2 /* SCCollectionViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B1A571224228000111EA2 /* SCCollectionViewDemoViewController.m */; };
 		B27B1C2C12248A6F00111EA2 /* SSToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B24E9EB6121DC3760085F81E /* SSToolkit.bundle */; };
 		B27B1C3012248A6F00111EA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B21B85BC1067D4F300E5C076 /* main.m */; };
@@ -115,6 +116,8 @@
 		B24E9EB3121DC3610085F81E /* SSCatalog_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCatalog_Prefix.pch; sourceTree = "<group>"; };
 		B24E9EB6121DC3760085F81E /* SSToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SSToolkit.bundle; path = ../Resources/SSToolkit.bundle; sourceTree = SOURCE_ROOT; };
 		B24E9EC5121DC3CF0085F81E /* SSToolkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSToolkit.xcodeproj; path = ../SSToolkit.xcodeproj; sourceTree = SOURCE_ROOT; };
+		B2572FEA12924C28001FC061 /* SCIndicatorLabelDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIndicatorLabelDemoViewController.h; sourceTree = "<group>"; };
+		B2572FEB12924C28001FC061 /* SCIndicatorLabelDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIndicatorLabelDemoViewController.m; sourceTree = "<group>"; };
 		B27B1A561224228000111EA2 /* SCCollectionViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCollectionViewDemoViewController.h; sourceTree = "<group>"; };
 		B27B1A571224228000111EA2 /* SCCollectionViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCollectionViewDemoViewController.m; sourceTree = "<group>"; };
 		B27B1C4612248A6F00111EA2 /* SSCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,6 +269,8 @@
 				B24E9E9F121DC35B0085F81E /* SCLineViewDemoViewController.m */,
 				B24E9EA6121DC35B0085F81E /* SCPieProgressViewDemoViewController.h */,
 				B24E9EA7121DC35B0085F81E /* SCPieProgressViewDemoViewController.m */,
+				B2572FEA12924C28001FC061 /* SCIndicatorLabelDemoViewController.h */,
+				B2572FEB12924C28001FC061 /* SCIndicatorLabelDemoViewController.m */,
 			);
 			name = "View Demos";
 			sourceTree = "<group>";
@@ -416,6 +421,7 @@
 				B24E9EB1121DC35B0085F81E /* SCPieProgressViewDemoViewController.m in Sources */,
 				B24E9EB2121DC35B0085F81E /* SCRootViewController.m in Sources */,
 				B27B1A581224228000111EA2 /* SCCollectionViewDemoViewController.m in Sources */,
+				B2572FEC12924C28001FC061 /* SCIndicatorLabelDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
