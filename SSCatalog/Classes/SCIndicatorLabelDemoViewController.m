@@ -31,8 +31,8 @@
 	_indicatorLabel = [[SSIndicatorLabel alloc] initWithFrame:CGRectMake(20.0, 20.0, width - 40.0, 44.0)];
 	_indicatorLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
 	_indicatorLabel.backgroundColor = [UIColor clearColor];
-	_indicatorLabel.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-	_indicatorLabel.label.text = @"Click start";
+	_indicatorLabel.activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+	_indicatorLabel.textLabel.text = @"Click start";
 	[self.view addSubview:_indicatorLabel];
 	
 	CGFloat buttonWidth = (width / 2.0) - 30.0;

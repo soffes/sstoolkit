@@ -41,6 +41,7 @@ static NSString *const kClassesKey =  @"classes";
 						  @"SCGradientViewDemoViewController",
 						  @"SCHUDViewDemoViewController",
 						  @"SCLineViewDemoViewController",
+						  @"SCLoadingViewDemoViewController",
 						  @"SCPieProgressViewDemoViewController",
 						  @"SCIndicatorLabelDemoViewController",
 						  nil],

@@ -8,10 +8,15 @@
 
 #import "SSIndicatorLabel.h"
 
+@interface SSIndicatorLabel (PrivateMethods)
++ (CGSize)indicatorSize;
++ (CGFloat)padding;
+@end
+
 @implementation SSIndicatorLabel
 
-@synthesize label = _label;
-@synthesize indicator = _indicator;
+@synthesize textLabel = _textLabel;
+@synthesize activityIndicatorView = _activityIndicatorView;
 @synthesize loading = _loading;
 
 #pragma mark Class Methods
@@ -28,8 +33,8 @@
 #pragma mark NSObject
 
 - (void)dealloc {
-	[_label release];
-	[_indicator release]; 
+	[_textLabel release];
+	[_activityIndicatorView release]; 
 	[super dealloc];
 }
 
@@ -39,12 +44,12 @@
 	if ((self = [super initWithFrame:rect])) {
 		self.clipsToBounds = YES;
 		
-		_label = [[UILabel alloc] initWithFrame:CGRectZero];
-		[self addSubview:_label];
+		_textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+		[self addSubview:_textLabel];
 		
-		_indicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectZero];
-		[_indicator startAnimating];
-		[self addSubview:_indicator];
+		_activityIndicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectZero];
+		[_activityIndicatorView startAnimating];
+		[self addSubview:_activityIndicatorView];
 		
 		_loading = NO;
 		[self layoutSubviews];
@@ -60,41 +65,41 @@
 	
 	// Loading
 	if (_loading) {
-		_label.frame = CGRectMake(x, 0.0, rect.size.width - x, size.height);
-		_indicator.frame = CGRectMake(0.0, 0.0, size.width, size.height);
+		_textLabel.frame = CGRectMake(x, 0.0, rect.size.width - x, size.height);
+		_activityIndicatorView.frame = CGRectMake(0.0, 0.0, size.width, size.height);
 	}
 	
 	// Not loading
 	else {
-		_label.frame = CGRectMake(0.0, 0.0, rect.size.width, size.height);
-		_indicator.frame = CGRectMake(-x, 0.0, size.width, size.height);
+		_textLabel.frame = CGRectMake(0.0, 0.0, rect.size.width, size.height);
+		_activityIndicatorView.frame = CGRectMake(-x, 0.0, size.width, size.height);
 	}
 }
 
 
 - (void)setBackgroundColor:(UIColor *)color {
 	[super setBackgroundColor:color];
-	_label.backgroundColor = color;
-	_indicator.backgroundColor = color;
+	_textLabel.backgroundColor = color;
+	_activityIndicatorView.backgroundColor = color;
 }
 
 
 - (void)setOpaque:(BOOL)o {
 	[super setOpaque:o];
-	_label.opaque = o;
-	_indicator.opaque = o;
+	_textLabel.opaque = o;
+	_activityIndicatorView.opaque = o;
 }
 
 #pragma mark Status
 
 - (void)startWithText:(NSString *)text {
 	self.loading = YES;
-	_label.text = text;
+	_textLabel.text = text;
 }
 
 - (void)completeWithText:(NSString *)text {
 	self.loading = NO;
-	_label.text = text;
+	_textLabel.text = text;
 }
 
 #pragma mark Custom Setters
