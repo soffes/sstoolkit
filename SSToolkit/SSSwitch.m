@@ -19,23 +19,30 @@
 @implementation SSSwitch
 
 @synthesize on = _on;
-@synthesize handleView = _handleView;
-@synthesize onLabel = _onLabel;
-@synthesize offLabel = _offLabel;
-@synthesize onBackgroundImageView = _onBackgroundImageView;
-@synthesize offBackgroundImageView = _offBackgroundImageView;
-@synthesize handleWidth = _handleWidth;
-@synthesize trackEdgeInsets = _trackEdgeInsets;
 @synthesize style = _style;
+@synthesize handle = _handle;
+@synthesize handleWidth = _handleWidth;
+@synthesize handleLeftCapWidth = _handleLeftCapWidth;
+@synthesize handleShadowWidth = _handleShadowWidth;
+@synthesize onBackgroundImageView = _onBackgroundImageView;
+@synthesize onLabel = _onLabel;
+@synthesize onView = _onView;
+@synthesize offBackgroundImageView = _offBackgroundImageView;
+@synthesize offLabel = _offLabel;
+@synthesize offView = _offView;
+@synthesize trackEdgeInsets = _trackEdgeInsets;
+@synthesize switchLabelStyle = _switchLabelStyle;
 
 #pragma mark NSObject
 
 - (void)dealloc {
-	self.handleView = nil;
-	self.onLabel = nil;
-	self.offLabel = nil;
+	self.handle = nil;
 	self.onBackgroundImageView = nil;
-	self.offBackgroundImageView = nil;
+	self.onLabel = nil;
+	self.onView = nil;
+	self.onBackgroundImageView = nil;
+	self.offLabel = nil;	
+	self.offView = nil;
 	[_labelMaskView release];
 	[super dealloc];
 }
@@ -71,37 +78,29 @@
 		// On label
 		_onLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 		_onLabel.backgroundColor = [UIColor clearColor];
-		_onLabel.font = [UIFont boldSystemFontOfSize:16.0];
 		_onLabel.text = @"ON";
 		_onLabel.textAlignment = UITextAlignmentCenter;
-		_onLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-		_onLabel.shadowOffset = CGSizeMake(0.0, -1.0);
 		[_labelMaskView addSubview:_onLabel];
 		
 		// Off label
 		_offLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 		_offLabel.backgroundColor = [UIColor clearColor];
-		_offLabel.font = [UIFont boldSystemFontOfSize:16.0];
 		_offLabel.text = @"OFF";
 		_offLabel.textAlignment = UITextAlignmentCenter;
-		_offLabel.shadowColor = [UIColor whiteColor];
-		_offLabel.shadowOffset = CGSizeMake(0.0, 1.0);
 		[_labelMaskView addSubview:_offLabel];
 		
 		// Handle
-		_handleView = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-		[_handleView addTarget:self action:@selector(_handleReleased:) forControlEvents:UIControlEventTouchUpInside];
-		[_handleView addTarget:self action:@selector(_handleDragged:event:) forControlEvents:UIControlEventTouchDragInside];
-		[_handleView addTarget:self action:@selector(_handleDraggingEnded:) forControlEvents:UIControlEventTouchUpOutside];
-		[self addSubview:_handleView];
+		_handle = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+		[_handle addTarget:self action:@selector(_handleReleased:) forControlEvents:UIControlEventTouchUpInside];
+		[_handle addTarget:self action:@selector(_handleDragged:event:) forControlEvents:UIControlEventTouchDragInside];
+		[_handle addTarget:self action:@selector(_handleDraggingEnded:) forControlEvents:UIControlEventTouchUpOutside];
+		[self addSubview:_handle];
 		
 		// Defaults
 		_dragging = NO;
 		_hitCount = 0;
-		_handleWidth = 42.0;
-		_trackEdgeInsets = UIEdgeInsetsMake(2.0, 2.0, 2.0, 2.0);
+		_switchLabelStyle = SSSwitchLabelStyleDefault;
 		_on = NO;
-		[self _layoutSubviewsWithHandlePosition:0.0];
 		self.style = SSSwitchStyleDefault;
 	}
 	return self;
@@ -110,7 +109,7 @@
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
 	// Forward all touches to the handle
-	return [super hitTest:point withEvent:event] ? _handleView : nil;
+	return [super hitTest:point withEvent:event] ? _handle : nil;
 }
 
 
@@ -127,7 +126,8 @@
 	
 	if (animated) {
 		[UIView beginAnimations:[NSString stringWithFormat:@"SSSwitchAnimate%@", (_on ? @"On" : @"Off")] context:nil];
-		[UIView setAnimationDuration:0.15];
+		[UIView setAnimationDuration:0.2];
+		[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
 	}
 	
 	[self _layoutSubviewsWithHandlePosition:(_on ? self.frame.size.width - _handleWidth : 0.0)];
@@ -164,12 +164,13 @@
 	// Enforce limits
 	x = fmin(fmax(0.0, x), sideWidth);
 	
-	_handleView.frame = UIEdgeInsetsInsetRect(CGRectMake(x, 0.0, _handleWidth, height), _trackEdgeInsets);
+	_handle.frame = UIEdgeInsetsInsetRect(CGRectMake(x, 0.0, _handleWidth, height), _trackEdgeInsets);
 	_onBackgroundImageView.frame = CGRectMake(0.0, 0.0, width, height);
-	_offBackgroundImageView.frame = CGRectMake(x + _trackEdgeInsets.left + 3.0, 0.0, width - x - _trackEdgeInsets.left - 3.0, height); // TODO: Make 3 a property for round
+	_offBackgroundImageView.frame = CGRectMake(x + _trackEdgeInsets.left + (CGFloat)_handleLeftCapWidth, 0.0, width - x - _trackEdgeInsets.left - (CGFloat)_handleLeftCapWidth, height);
 	
-	_onLabel.frame = CGRectMake(x - labelWidth - _trackEdgeInsets.left, 0.0, labelWidth, labelHeight);
-	_offLabel.frame = CGRectMake(x + _handleWidth - _trackEdgeInsets.right, 0.0, labelWidth, labelHeight);
+	// TODO: These are still a bit hacky (with the +2 and -1)
+	_onLabel.frame = CGRectMake(x - labelWidth - _trackEdgeInsets.left + 2.0, 0.0, labelWidth, labelHeight);
+	_offLabel.frame = CGRectMake(x + _handleWidth - _trackEdgeInsets.right - 1.0, 0.0, labelWidth, labelHeight);
 }
 
 
@@ -184,18 +185,18 @@
 	// Drag release
 	_dragging = NO;
 	if (_on) {
-		[self setOn:(_handleView.frame.origin.x >= self.frame.size.width - _handleWidth + _trackEdgeInsets.right) animated:YES];
+		[self setOn:(_handle.frame.origin.x >= self.frame.size.width - _handleWidth + _trackEdgeInsets.right) animated:YES];
 	} else {
-		[self setOn:(_handleView.frame.origin.x > _trackEdgeInsets.right) animated:YES];
+		[self setOn:(_handle.frame.origin.x > _trackEdgeInsets.right) animated:YES];
 	}
 }
 
 
 - (void)_handleDragged:(id)sender event:(UIEvent *)event {
-	UITouch *touch = [[event touchesForView:_handleView] anyObject];
+	UITouch *touch = [[event touchesForView:_handle] anyObject];
 	
 	if (_dragging == NO) {
-		_dragOffset = [touch locationInView:_handleView].x;
+		_dragOffset = [touch locationInView:_handle].x;
 	}
 	
 	_dragging = YES;
@@ -214,31 +215,44 @@
 - (void)setStyle:(SSSwitchStyle)s {
 	_style = s;
 	
+	// TODO: Always apply default style before changing style for more consistent results
+	
 	switch (_style) {
 		case SSSwitchStyleDefault: {
-			_onBackgroundImageView.image = [[UIImage imageNamed:@"images/UISwitchTrackBlue.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
-			_onLabel.textColor = [UIColor whiteColor];
+			NSInteger leftCap = 8;
 			
-			_offBackgroundImageView.image = [[UIImage imageNamed:@"images/UISwitchTrackClear.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
-			_offLabel.textColor = [UIColor colorWithWhite:0.475 alpha:1.0];
+			[self.handle setBackgroundImage:[[UIImage imageNamed:@"images/UISwitchButtonFullShadowed.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:8 topCapHeight:0] forState:UIControlStateNormal];
+			[self.handle setBackgroundImage:[[UIImage imageNamed:@"images/UISwitchButtonFullShadowedDown.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:8 topCapHeight:0] forState:UIControlStateHighlighted];
 			
-			[_handleView setBackgroundImage:[[UIImage imageNamed:@"images/UISwitchButtonFullShadowed.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:3 topCapHeight:0] forState:UIControlStateNormal];
-			[_handleView setBackgroundImage:[[UIImage imageNamed:@"images/UISwitchButtonFullShadowedDown.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:3 topCapHeight:0] forState:UIControlStateHighlighted];
+			self.handleWidth = 43;
+			self.handleLeftCapWidth = leftCap;
+			self.handleShadowWidth = 3;
+			
+			self.onBackgroundImageView.image = [[UIImage imageNamed:@"images/UISwitchTrackBlue.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
+
+			self.onLabel.textColor = [UIColor whiteColor];
+			self.onLabel.font = [UIFont boldSystemFontOfSize:16.0];
+			self.onLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+			self.onLabel.shadowOffset = CGSizeMake(0.0, -1.0);
+			
+			self.offBackgroundImageView.image = [[UIImage imageNamed:@"images/UISwitchTrackClear.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
+			
+			self.offLabel.textColor = [UIColor colorWithWhite:0.475 alpha:1.0];
+			self.offLabel.font = [UIFont boldSystemFontOfSize:16.0];
+			self.offLabel.shadowColor = nil;			
+			
+			self.trackEdgeInsets = UIEdgeInsetsZero;
+
 			break;
 		}
 			
 		case SSSwitchStyleAirplane: {
-			_onBackgroundImageView.image = [[UIImage imageNamed:@"images/UISwitchTrackOrange.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
-			_onLabel.textColor = [UIColor whiteColor];
-			
-			_offBackgroundImageView.image = [[UIImage imageNamed:@"images/UISwitchTrackClear.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
-			_offLabel.textColor = [UIColor colorWithRed:0.482 green:0.376 blue:0.278 alpha:1.0];
-			
-			[_handleView setBackgroundImage:[[UIImage imageNamed:@"images/UISwitchButtonFullShadowed.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:3 topCapHeight:0] forState:UIControlStateNormal];
-			[_handleView setBackgroundImage:[[UIImage imageNamed:@"images/UISwitchButtonFullShadowedDown.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:3 topCapHeight:0] forState:UIControlStateHighlighted];
+			self.onBackgroundImageView.image = [[UIImage imageNamed:@"images/UISwitchTrackOrange.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
 			break;
 		}
 	}
+	
+	[self _layoutSubviewsWithHandlePosition:_on ? 1.0 : 0.0];
 }
 
 @end
