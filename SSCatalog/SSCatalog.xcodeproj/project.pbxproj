@@ -22,28 +22,9 @@
 		B24E9EB0121DC35B0085F81E /* SCPickerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA5121DC35B0085F81E /* SCPickerDetailViewController.m */; };
 		B24E9EB1121DC35B0085F81E /* SCPieProgressViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA7121DC35B0085F81E /* SCPieProgressViewDemoViewController.m */; };
 		B24E9EB2121DC35B0085F81E /* SCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA9121DC35B0085F81E /* SCRootViewController.m */; };
-		B24E9EB7121DC3760085F81E /* SSToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B24E9EB6121DC3760085F81E /* SSToolkit.bundle */; };
 		B2572FEC12924C28001FC061 /* SCIndicatorLabelDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2572FEB12924C28001FC061 /* SCIndicatorLabelDemoViewController.m */; };
 		B257303D1292524F001FC061 /* SCLoadingViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B257303C1292524F001FC061 /* SCLoadingViewDemoViewController.m */; };
 		B27B1A581224228000111EA2 /* SCCollectionViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B1A571224228000111EA2 /* SCCollectionViewDemoViewController.m */; };
-		B27B1C2C12248A6F00111EA2 /* SSToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B24E9EB6121DC3760085F81E /* SSToolkit.bundle */; };
-		B27B1C3012248A6F00111EA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B21B85BC1067D4F300E5C076 /* main.m */; };
-		B27B1C3112248A6F00111EA2 /* SCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E99121DC35B0085F81E /* SCAppDelegate.m */; };
-		B27B1C3212248A6F00111EA2 /* SCGradientViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E9B121DC35B0085F81E /* SCGradientViewDemoViewController.m */; };
-		B27B1C3312248A6F00111EA2 /* SCHUDViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E9D121DC35B0085F81E /* SCHUDViewDemoViewController.m */; };
-		B27B1C3412248A6F00111EA2 /* SCLineViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E9F121DC35B0085F81E /* SCLineViewDemoViewController.m */; };
-		B27B1C3612248A6F00111EA2 /* SCPickerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA3121DC35B0085F81E /* SCPickerDemoViewController.m */; };
-		B27B1C3712248A6F00111EA2 /* SCPickerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA5121DC35B0085F81E /* SCPickerDetailViewController.m */; };
-		B27B1C3812248A6F00111EA2 /* SCPieProgressViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA7121DC35B0085F81E /* SCPieProgressViewDemoViewController.m */; };
-		B27B1C3912248A6F00111EA2 /* SCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA9121DC35B0085F81E /* SCRootViewController.m */; };
-		B27B1C3A12248A6F00111EA2 /* SCCollectionViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B1A571224228000111EA2 /* SCCollectionViewDemoViewController.m */; };
-		B27B1C3C12248A6F00111EA2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		B27B1C3D12248A6F00111EA2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		B27B1C3E12248A6F00111EA2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		B27B1C3F12248A6F00111EA2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21B85B71067D4B500E5C076 /* SystemConfiguration.framework */; };
-		B27B1C4012248A6F00111EA2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B21B86431067D7EA00E5C076 /* libsqlite3.dylib */; };
-		B27B1C4112248A6F00111EA2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B24521CC1211AF2800E80F78 /* Security.framework */; };
-		B27B1C4212248A6F00111EA2 /* libTWToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B24E9ECA121DC3CF0085F81E /* libTWToolkit.a */; };
 		B27B1CD012248F9D00111EA2 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CC612248F9D00111EA2 /* Default-Landscape.png */; };
 		B27B1CD112248F9D00111EA2 /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CC712248F9D00111EA2 /* Default-Landscape@2x.png */; };
 		B27B1CD212248F9D00111EA2 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CC812248F9D00111EA2 /* Default-Landscape~ipad.png */; };
@@ -53,15 +34,8 @@
 		B27B1CD612248F9D00111EA2 /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CCC12248F9D00111EA2 /* Icon-57.png */; };
 		B27B1CD712248F9D00111EA2 /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CCD12248F9D00111EA2 /* Icon-114.png */; };
 		B27B1CD812248F9D00111EA2 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CCE12248F9D00111EA2 /* iTunesArtwork */; };
-		B27B1CDA12248F9D00111EA2 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CC612248F9D00111EA2 /* Default-Landscape.png */; };
-		B27B1CDB12248F9D00111EA2 /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CC712248F9D00111EA2 /* Default-Landscape@2x.png */; };
-		B27B1CDC12248F9D00111EA2 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CC812248F9D00111EA2 /* Default-Landscape~ipad.png */; };
-		B27B1CDD12248F9D00111EA2 /* Default-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CC912248F9D00111EA2 /* Default-Portrait@2x.png */; };
-		B27B1CDE12248F9D00111EA2 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CCA12248F9D00111EA2 /* Default-Portrait~ipad.png */; };
-		B27B1CDF12248F9D00111EA2 /* Default-Portrait~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CCB12248F9D00111EA2 /* Default-Portrait~iphone.png */; };
-		B27B1CE012248F9D00111EA2 /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CCC12248F9D00111EA2 /* Icon-57.png */; };
-		B27B1CE112248F9D00111EA2 /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CCD12248F9D00111EA2 /* Icon-114.png */; };
-		B27B1CE212248F9D00111EA2 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CCE12248F9D00111EA2 /* iTunesArtwork */; };
+		B2B3CEEF1296F78D001BAC94 /* SCSwitchDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */; };
+		B2B3CF561296FA76001BAC94 /* SSToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B2B3CF551296FA76001BAC94 /* SSToolkit.bundle */; };
 		B2E0323F121DC49700D02434 /* libTWToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B24E9ECA121DC3CF0085F81E /* libTWToolkit.a */; };
 /* End PBXBuildFile section */
 
@@ -74,13 +48,6 @@
 			remoteInfo = SSToolkit;
 		};
 		B24E9ECB121DC3D30085F81E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B24E9EC5121DC3CF0085F81E /* SSToolkit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = SSToolkit;
-		};
-		B27B1C2712248A6F00111EA2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B24E9EC5121DC3CF0085F81E /* SSToolkit.xcodeproj */;
 			proxyType = 1;
@@ -115,7 +82,6 @@
 		B24E9EA8121DC35B0085F81E /* SCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRootViewController.h; sourceTree = "<group>"; };
 		B24E9EA9121DC35B0085F81E /* SCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRootViewController.m; sourceTree = "<group>"; };
 		B24E9EB3121DC3610085F81E /* SSCatalog_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCatalog_Prefix.pch; sourceTree = "<group>"; };
-		B24E9EB6121DC3760085F81E /* SSToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SSToolkit.bundle; path = ../Resources/SSToolkit.bundle; sourceTree = SOURCE_ROOT; };
 		B24E9EC5121DC3CF0085F81E /* SSToolkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSToolkit.xcodeproj; path = ../SSToolkit.xcodeproj; sourceTree = SOURCE_ROOT; };
 		B2572FEA12924C28001FC061 /* SCIndicatorLabelDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIndicatorLabelDemoViewController.h; sourceTree = "<group>"; };
 		B2572FEB12924C28001FC061 /* SCIndicatorLabelDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIndicatorLabelDemoViewController.m; sourceTree = "<group>"; };
@@ -123,7 +89,6 @@
 		B257303C1292524F001FC061 /* SCLoadingViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLoadingViewDemoViewController.m; sourceTree = "<group>"; };
 		B27B1A561224228000111EA2 /* SCCollectionViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCollectionViewDemoViewController.h; sourceTree = "<group>"; };
 		B27B1A571224228000111EA2 /* SCCollectionViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCollectionViewDemoViewController.m; sourceTree = "<group>"; };
-		B27B1C4612248A6F00111EA2 /* SSCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27B1CC612248F9D00111EA2 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
 		B27B1CC712248F9D00111EA2 /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
 		B27B1CC812248F9D00111EA2 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -134,6 +99,9 @@
 		B27B1CCD12248F9D00111EA2 /* Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-114.png"; sourceTree = "<group>"; };
 		B27B1CCE12248F9D00111EA2 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		B27B1CCF12248F9D00111EA2 /* SSCatalog-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SSCatalog-Info.plist"; sourceTree = "<group>"; };
+		B2B3CEED1296F78D001BAC94 /* SCSwitchDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSwitchDemoViewController.h; sourceTree = "<group>"; };
+		B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSwitchDemoViewController.m; sourceTree = "<group>"; };
+		B2B3CF551296FA76001BAC94 /* SSToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SSToolkit.bundle; path = ../../../../Code/samsoffes/sstoolkit/Resources/SSToolkit.bundle; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,20 +119,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B27B1C3B12248A6F00111EA2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B27B1C3C12248A6F00111EA2 /* Foundation.framework in Frameworks */,
-				B27B1C3D12248A6F00111EA2 /* UIKit.framework in Frameworks */,
-				B27B1C3E12248A6F00111EA2 /* CoreGraphics.framework in Frameworks */,
-				B27B1C3F12248A6F00111EA2 /* SystemConfiguration.framework in Frameworks */,
-				B27B1C4012248A6F00111EA2 /* libsqlite3.dylib in Frameworks */,
-				B27B1C4112248A6F00111EA2 /* Security.framework in Frameworks */,
-				B27B1C4212248A6F00111EA2 /* libTWToolkit.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -173,6 +127,7 @@
 			children = (
 				B27B1B0112246B4400111EA2 /* Demo App */,
 				B27B1B0312246B4E00111EA2 /* View Demos */,
+				B2B3CEFF1296F88B001BAC94 /* Control Demos */,
 				B27B1B0412246B6100111EA2 /* View Controller Demos */,
 			);
 			path = Classes;
@@ -182,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* SSCatalog.app */,
-				B27B1C4612248A6F00111EA2 /* SSCatalog.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,6 +179,7 @@
 		B21B85BF1067D4FD00E5C076 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B2B3CF551296FA76001BAC94 /* SSToolkit.bundle */,
 				B27B1CC612248F9D00111EA2 /* Default-Landscape.png */,
 				B27B1CC712248F9D00111EA2 /* Default-Landscape@2x.png */,
 				B27B1CC812248F9D00111EA2 /* Default-Landscape~ipad.png */,
@@ -235,7 +190,6 @@
 				B27B1CCD12248F9D00111EA2 /* Icon-114.png */,
 				B27B1CCE12248F9D00111EA2 /* iTunesArtwork */,
 				B27B1CCF12248F9D00111EA2 /* SSCatalog-Info.plist */,
-				B24E9EB6121DC3760085F81E /* SSToolkit.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -291,6 +245,15 @@
 			name = "View Controller Demos";
 			sourceTree = "<group>";
 		};
+		B2B3CEFF1296F88B001BAC94 /* Control Demos */ = {
+			isa = PBXGroup;
+			children = (
+				B2B3CEED1296F78D001BAC94 /* SCSwitchDemoViewController.h */,
+				B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */,
+			);
+			name = "Control Demos";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -310,24 +273,6 @@
 			name = SSCatalog;
 			productName = TWCatalog;
 			productReference = 1D6058910D05DD3D006BFB54 /* SSCatalog.app */;
-			productType = "com.apple.product-type.application";
-		};
-		B27B1C2512248A6F00111EA2 /* SSCatalog Universal */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B27B1C4312248A6F00111EA2 /* Build configuration list for PBXNativeTarget "SSCatalog Universal" */;
-			buildPhases = (
-				B27B1C2812248A6F00111EA2 /* Resources */,
-				B27B1C2F12248A6F00111EA2 /* Sources */,
-				B27B1C3B12248A6F00111EA2 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B27B1C2612248A6F00111EA2 /* PBXTargetDependency */,
-			);
-			name = "SSCatalog Universal";
-			productName = TWCatalog;
-			productReference = B27B1C4612248A6F00111EA2 /* SSCatalog.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -359,7 +304,6 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* SSCatalog */,
-				B27B1C2512248A6F00111EA2 /* SSCatalog Universal */,
 			);
 		};
 /* End PBXProject section */
@@ -379,7 +323,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B24E9EB7121DC3760085F81E /* SSToolkit.bundle in Resources */,
 				B27B1CD012248F9D00111EA2 /* Default-Landscape.png in Resources */,
 				B27B1CD112248F9D00111EA2 /* Default-Landscape@2x.png in Resources */,
 				B27B1CD212248F9D00111EA2 /* Default-Landscape~ipad.png in Resources */,
@@ -389,23 +332,7 @@
 				B27B1CD612248F9D00111EA2 /* Icon-57.png in Resources */,
 				B27B1CD712248F9D00111EA2 /* Icon-114.png in Resources */,
 				B27B1CD812248F9D00111EA2 /* iTunesArtwork in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B27B1C2812248A6F00111EA2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B27B1C2C12248A6F00111EA2 /* SSToolkit.bundle in Resources */,
-				B27B1CDA12248F9D00111EA2 /* Default-Landscape.png in Resources */,
-				B27B1CDB12248F9D00111EA2 /* Default-Landscape@2x.png in Resources */,
-				B27B1CDC12248F9D00111EA2 /* Default-Landscape~ipad.png in Resources */,
-				B27B1CDD12248F9D00111EA2 /* Default-Portrait@2x.png in Resources */,
-				B27B1CDE12248F9D00111EA2 /* Default-Portrait~ipad.png in Resources */,
-				B27B1CDF12248F9D00111EA2 /* Default-Portrait~iphone.png in Resources */,
-				B27B1CE012248F9D00111EA2 /* Icon-57.png in Resources */,
-				B27B1CE112248F9D00111EA2 /* Icon-114.png in Resources */,
-				B27B1CE212248F9D00111EA2 /* iTunesArtwork in Resources */,
+				B2B3CF561296FA76001BAC94 /* SSToolkit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,23 +355,7 @@
 				B27B1A581224228000111EA2 /* SCCollectionViewDemoViewController.m in Sources */,
 				B2572FEC12924C28001FC061 /* SCIndicatorLabelDemoViewController.m in Sources */,
 				B257303D1292524F001FC061 /* SCLoadingViewDemoViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B27B1C2F12248A6F00111EA2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B27B1C3012248A6F00111EA2 /* main.m in Sources */,
-				B27B1C3112248A6F00111EA2 /* SCAppDelegate.m in Sources */,
-				B27B1C3212248A6F00111EA2 /* SCGradientViewDemoViewController.m in Sources */,
-				B27B1C3312248A6F00111EA2 /* SCHUDViewDemoViewController.m in Sources */,
-				B27B1C3412248A6F00111EA2 /* SCLineViewDemoViewController.m in Sources */,
-				B27B1C3612248A6F00111EA2 /* SCPickerDemoViewController.m in Sources */,
-				B27B1C3712248A6F00111EA2 /* SCPickerDetailViewController.m in Sources */,
-				B27B1C3812248A6F00111EA2 /* SCPieProgressViewDemoViewController.m in Sources */,
-				B27B1C3912248A6F00111EA2 /* SCRootViewController.m in Sources */,
-				B27B1C3A12248A6F00111EA2 /* SCCollectionViewDemoViewController.m in Sources */,
+				B2B3CEEF1296F78D001BAC94 /* SCSwitchDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,11 +366,6 @@
 			isa = PBXTargetDependency;
 			name = SSToolkit;
 			targetProxy = B24E9ECB121DC3D30085F81E /* PBXContainerItemProxy */;
-		};
-		B27B1C2612248A6F00111EA2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SSToolkit;
-			targetProxy = B27B1C2712248A6F00111EA2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -475,12 +381,14 @@
 				GCC_PREFIX_HEADER = "Other Sources/SSCatalog_Prefix.pch";
 				HEADER_SEARCH_PATHS = ../;
 				INFOPLIST_FILE = "Resources/SSCatalog-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = SSCatalog;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -493,52 +401,12 @@
 				GCC_PREFIX_HEADER = "Other Sources/TWCatalog_Prefix.pch";
 				HEADER_SEARCH_PATHS = ../;
 				INFOPLIST_FILE = "TWCatalog-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = SSCatalog;
-			};
-			name = Release;
-		};
-		B27B1C4412248A6F00111EA2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Other Sources/SSCatalog_Prefix.pch";
-				HEADER_SEARCH_PATHS = ../;
-				INFOPLIST_FILE = "Resources/SSCatalog-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
-				PRODUCT_NAME = SSCatalog;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		B27B1C4512248A6F00111EA2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Other Sources/TWCatalog_Prefix.pch";
-				HEADER_SEARCH_PATHS = ../;
-				INFOPLIST_FILE = "Resources/SSCatalog-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
-				PRODUCT_NAME = SSCatalog;
-				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -575,15 +443,6 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B27B1C4312248A6F00111EA2 /* Build configuration list for PBXNativeTarget "SSCatalog Universal" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B27B1C4412248A6F00111EA2 /* Debug */,
-				B27B1C4512248A6F00111EA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

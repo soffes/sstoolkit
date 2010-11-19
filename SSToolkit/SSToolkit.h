@@ -26,6 +26,7 @@
 // Controls
 #import <SSToolkit/SSTextField.h>
 #import <SSToolkit/SSTextView.h>
+#import <SSToolkit/SSSwitch.h>
 
 // View Controllers
 #import <SSToolkit/SSCollectionViewController.h>
@@ -56,6 +57,7 @@
 // Controls
 #import "SSTextField.h"
 #import "SSTextView.h"
+#import "SSSwitch.h"
 
 // View Controllers
 #import "SSCollectionViewController.h"

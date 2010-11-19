@@ -44,18 +44,20 @@ static NSString *const kClassesKey =  @"classes";
 						  @"SCLoadingViewDemoViewController",
 						  @"SCPieProgressViewDemoViewController",
 						  @"SCIndicatorLabelDemoViewController",
-						  nil],
-						 kClassesKey,
-						 @"Views",
-						 kTitleKey,
+						  nil], kClassesKey,
+						 @"Views", kTitleKey,
+						 nil],
+						[NSDictionary dictionaryWithObjectsAndKeys:
+						 [NSArray arrayWithObjects:
+						  @"SCSwitchDemoViewController",
+						  nil], kClassesKey,
+						 @"Controls", kTitleKey,
 						 nil],
 						[NSDictionary dictionaryWithObjectsAndKeys:
 						 [NSArray arrayWithObjects:
 						  @"SCPickerDemoViewController",
-						  nil],
-						 kClassesKey,
-						 @"View Controllers",
-						 kTitleKey,
+						  nil], kClassesKey,
+						 @"View Controllers", kTitleKey,
 						 nil],
 						nil];
 }
