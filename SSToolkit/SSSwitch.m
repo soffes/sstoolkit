@@ -21,6 +21,12 @@
 @synthesize on = _on;
 @synthesize style = _style;
 @synthesize handle = _handle;
+@synthesize leftHandleImage = _leftHandleImage;
+@synthesize leftHandleImageHighlighted = _leftHandleImageHighlighted;
+@synthesize centerHandleImage = _centerHandleImage;
+@synthesize centerHandleImageHighlighted = _centerHandleImageHighlighted;
+@synthesize rightHandleImage = _rightHandleImage;
+@synthesize rightHandleImageHighlighted = _rightHandleImageHighlighted;
 @synthesize handleWidth = _handleWidth;
 @synthesize handleLeftCapWidth = _handleLeftCapWidth;
 @synthesize handleShadowWidth = _handleShadowWidth;
@@ -37,6 +43,12 @@
 
 - (void)dealloc {
 	self.handle = nil;
+	self.leftHandleImage = nil;
+	self.leftHandleImageHighlighted = nil;
+	self.centerHandleImage = nil;
+	self.centerHandleImageHighlighted = nil;
+	self.rightHandleImage = nil;
+	self.rightHandleImageHighlighted = nil;
 	self.onBackgroundImageView = nil;
 	self.onLabel = nil;
 	self.onView = nil;
@@ -158,13 +170,33 @@
 	CGFloat sideWidth = width - _handleWidth;
 	CGFloat labelWidth = sideWidth - _trackEdgeInsets.left - _trackEdgeInsets.right;
 	CGFloat labelHeight = height - _trackEdgeInsets.top - _trackEdgeInsets.bottom;
+	NSUInteger position = 1;
 	
 	_labelMaskView.frame = UIEdgeInsetsInsetRect(CGRectMake(0.0, 0.0, width, height), _trackEdgeInsets);
 	
 	// Enforce limits
 	x = fmin(fmax(0.0, x), sideWidth);
 	
-	_handle.frame = UIEdgeInsetsInsetRect(CGRectMake(x, 0.0, _handleWidth, height), _trackEdgeInsets);
+	// Calculate shadow width
+	if (_handleShadowWidth > 0.0) {
+		position = x == 0 ? 0 : (x == sideWidth ? 2 : 1); // 0: left, 1: center, 2: right
+		
+		if (position == 0) {
+			[_handle setBackgroundImage:_leftHandleImage forState:UIControlStateNormal];
+			[_handle setBackgroundImage:_leftHandleImageHighlighted forState:UIControlStateHighlighted];
+		} else if (position == 1) {
+			[_handle setBackgroundImage:_centerHandleImage forState:UIControlStateNormal];
+			[_handle setBackgroundImage:_centerHandleImageHighlighted forState:UIControlStateHighlighted];
+		} else {
+			[_handle setBackgroundImage:_rightHandleImage forState:UIControlStateNormal];
+			[_handle setBackgroundImage:_rightHandleImageHighlighted forState:UIControlStateHighlighted];			
+		}
+	} else {
+		[_handle setBackgroundImage:_centerHandleImage forState:UIControlStateNormal];
+		[_handle setBackgroundImage:_centerHandleImageHighlighted forState:UIControlStateHighlighted];
+	}
+	
+	_handle.frame = UIEdgeInsetsInsetRect(CGRectMake(x - _handleShadowWidth, 0.0, _handleWidth + _handleShadowWidth + _handleShadowWidth, height), _trackEdgeInsets);
 	_onBackgroundImageView.frame = CGRectMake(0.0, 0.0, width, height);
 	_offBackgroundImageView.frame = CGRectMake(x + _trackEdgeInsets.left + (CGFloat)_handleLeftCapWidth, 0.0, width - x - _trackEdgeInsets.left - (CGFloat)_handleLeftCapWidth, height);
 	
@@ -221,12 +253,16 @@
 		case SSSwitchStyleDefault: {
 			NSInteger leftCap = 8;
 			
-			[self.handle setBackgroundImage:[[UIImage imageNamed:@"images/UISwitchButtonFullShadowed.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:8 topCapHeight:0] forState:UIControlStateNormal];
-			[self.handle setBackgroundImage:[[UIImage imageNamed:@"images/UISwitchButtonFullShadowedDown.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:8 topCapHeight:0] forState:UIControlStateHighlighted];
+			self.leftHandleImage = [[UIImage imageNamed:@"images/UISwitchButtonRightShadowed.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.leftHandleImageHighlighted = [[UIImage imageNamed:@"images/UISwitchButtonRightShadowedDown.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.centerHandleImage = [[UIImage imageNamed:@"images/UISwitchButtonFullShadowed.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.centerHandleImageHighlighted = [[UIImage imageNamed:@"images/UISwitchButtonFullShadowedDown.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.rightHandleImage = [[UIImage imageNamed:@"images/UISwitchButtonLeftShadowed.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.rightHandleImageHighlighted = [[UIImage imageNamed:@"images/UISwitchButtonLeftShadowedDown.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
 			
-			self.handleWidth = 43;
+			self.handleWidth = 42;
 			self.handleLeftCapWidth = leftCap;
-			self.handleShadowWidth = 3;
+			self.handleShadowWidth = 2;
 			
 			self.onBackgroundImageView.image = [[UIImage imageNamed:@"images/UISwitchTrackBlue.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
 

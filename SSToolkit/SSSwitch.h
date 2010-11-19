@@ -22,6 +22,12 @@ typedef enum {
 	BOOL _on;
 	SSSwitchStyle _style;
 	UIButton *_handle;
+	UIImage *_leftHandleImage;
+	UIImage *_leftHandleImageHighlighted;
+	UIImage *_centerHandleImage;
+	UIImage *_centerHandleImageHighlighted;
+	UIImage *_rightHandleImage;
+	UIImage *_rightHandleImageHighlighted;
 	CGFloat _handleWidth;
 	NSInteger _handleLeftCapWidth;
 	CGFloat _handleShadowWidth;
@@ -45,6 +51,12 @@ typedef enum {
 @property (nonatomic, assign, getter=isOn) BOOL on;
 @property (nonatomic, assign) SSSwitchStyle style;
 @property (nonatomic, retain) UIButton *handle;
+@property (nonatomic, retain) UIImage *leftHandleImage;
+@property (nonatomic, retain) UIImage *leftHandleImageHighlighted;
+@property (nonatomic, retain) UIImage *centerHandleImage;
+@property (nonatomic, retain) UIImage *centerHandleImageHighlighted;
+@property (nonatomic, retain) UIImage *rightHandleImage;
+@property (nonatomic, retain) UIImage *rightHandleImageHighlighted;
 @property (nonatomic, assign) CGFloat handleWidth;
 @property (nonatomic, assign) NSInteger handleLeftCapWidth;
 @property (nonatomic, assign) CGFloat handleShadowWidth;
