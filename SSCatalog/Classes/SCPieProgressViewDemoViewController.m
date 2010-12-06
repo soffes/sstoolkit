@@ -18,6 +18,16 @@
 }
 
 
+#pragma mark NSObject
+
+- (void)dealloc {
+	[_progressView7 release];
+	[_timer invalidate];
+	[_timer release];
+	[super dealloc];
+}
+
+
 #pragma mark UIViewController
 
 - (void)viewDidLoad {

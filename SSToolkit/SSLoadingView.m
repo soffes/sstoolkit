@@ -14,7 +14,7 @@ static CGFloat indicatorRightMargin = 8.0;
 
 @implementation SSLoadingView
 
-@synthesize activityIndicator = _activityIndicator;
+@synthesize activityIndicatorView = _activityIndicatorView;
 @synthesize text = _text;
 @synthesize font = _font;
 @synthesize textColor = _textColor;
@@ -34,7 +34,7 @@ static CGFloat indicatorRightMargin = 8.0;
 	self.text = nil;
 	self.textColor = nil;
 	self.shadowColor = nil;
-	[_activityIndicator release];
+	[_activityIndicatorView release];
 	[super dealloc];
 }
 
@@ -49,17 +49,15 @@ static CGFloat indicatorRightMargin = 8.0;
 		self.opaque = YES;
 		
 		// Setup the indicator
-		_activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-		_activityIndicator.hidesWhenStopped = NO;
-		[_activityIndicator startAnimating];
-		[self addSubview:_activityIndicator];
+		_activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		_activityIndicatorView.hidesWhenStopped = NO;
+		[_activityIndicatorView startAnimating];
+		[self addSubview:_activityIndicatorView];
 		
 		// Defaults
 		self.text = @"Loading...";
 		self.font = [UIFont systemFontOfSize:16.0];
-		UIColor *aColor = [[UIColor alloc] initWithHue:0.613 saturation:0.3 brightness:0.42 alpha:1.0];
-		self.textColor = aColor;
-		[aColor release];
+		self.textColor = [UIColor darkGrayColor];
 		self.shadowColor = [UIColor whiteColor];
 		_shadowOffset = CGSizeMake(0.0, 1.0);
 		
@@ -87,10 +85,10 @@ static CGFloat indicatorRightMargin = 8.0;
 	NSInteger y = (NSInteger)((frame.size.height / 2.0) - (indicatorSize / 2.0));
 	
 	// Position the indicator
-	_activityIndicator.frame = CGRectMake((NSInteger)((frame.size.width - totalWidth) / 2.0), y, indicatorSize, indicatorSize);
+	_activityIndicatorView.frame = CGRectMake((NSInteger)((frame.size.width - totalWidth) / 2.0), y, indicatorSize, indicatorSize);
 	
 	// Calculate text position
-	CGRect textRect = CGRectMake(_activityIndicator.frame.origin.x + indicatorSize + indicatorRightMargin, y, textSize.width, textSize.height);
+	CGRect textRect = CGRectMake(_activityIndicatorView.frame.origin.x + indicatorSize + indicatorRightMargin, y, textSize.width, textSize.height);
 	
 	// Draw shadow
 	if (_shadowColor) {

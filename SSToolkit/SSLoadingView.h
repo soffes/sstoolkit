@@ -15,7 +15,7 @@
  */
 @interface SSLoadingView : UIView {
 
-	UIActivityIndicatorView *_activityIndicator;
+	UIActivityIndicatorView *_activityIndicatorView;
 	NSString *_text;
 	UIFont *_font;
 	UIColor *_textColor;
@@ -26,7 +26,7 @@
 /**
  @brief A view that indicates loading activity to the user. (read-only)
  */
-@property (nonatomic, retain, readonly) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, retain, readonly) UIActivityIndicatorView *activityIndicatorView;
 
 /**
  @brief The text that is displayed to the user.
@@ -42,13 +42,16 @@
 
 /**
  @brief The color of the text.
+ 
+ The default value is <code>[UIColor darkGrayColor]</code>.
  */
 @property (nonatomic, retain) UIColor *textColor;
 
 /**
  @brief The color of the text shadow.
  
- Set to nil to disable drawing the shadow.
+ Set to nil to disable drawing the shadow. The default value is
+ <code>[UIColor whiteColor]</code>.
  */
 @property (nonatomic, retain) UIColor *shadowColor;
 
