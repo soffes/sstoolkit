@@ -58,7 +58,7 @@
 /**
  @brief The object that acts as the delegate of the receiving collection view.
  */
-@property (nonatomic, assign) id<SSCollectionViewDelegate> delegate;
+@property (nonatomic, assign) id<SSCollectionViewDelegate, UIScrollViewDelegate> delegate;
 
 /**
  @brief The height of each row in the receiver.
