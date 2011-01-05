@@ -177,6 +177,14 @@
 - (void)dismissKeyboard;
 
 /**
+ @brief Removes the text selection in the web view.
+ 
+ Using Javascript to this doesn't always work as expected. This method will correctly
+ remove the text selection.
+ */
+- (void)removeTextSelection;
+
+/**
  @brief Destroys the internal UIWebView and recreates.
  
  All of the properties are maintained across the reset.

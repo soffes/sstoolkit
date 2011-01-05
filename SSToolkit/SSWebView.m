@@ -74,6 +74,16 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 }
 
 
+- (void)removeTextSelection {
+	if (_webView.userInteractionEnabled == NO) {
+		return;
+	}
+	
+	_webView.userInteractionEnabled = NO;
+	_webView.userInteractionEnabled = YES;
+}
+
+
 - (void)reset {
 	BOOL loadPreviousSettings = NO;
 	UIDataDetectorTypes tempDataDetectorTypes;
