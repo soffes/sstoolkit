@@ -161,7 +161,7 @@
 		B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B2B3CED61296F637001BAC94 /* SSSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSwitch.h; sourceTree = "<group>"; };
 		B2B3CED71296F637001BAC94 /* SSSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSwitch.m; sourceTree = "<group>"; };
-		D2AAC07E0554694100DB518D /* libTWToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTWToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2AAC07E0554694100DB518D /* libSSToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSSToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,7 +181,7 @@
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D2AAC07E0554694100DB518D /* libTWToolkit.a */,
+				D2AAC07E0554694100DB518D /* libSSToolkit.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -423,7 +423,7 @@
 			);
 			name = SSToolkit;
 			productName = TWToolkit;
-			productReference = D2AAC07E0554694100DB518D /* libTWToolkit.a */;
+			productReference = D2AAC07E0554694100DB518D /* libSSToolkit.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -505,7 +505,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/TWToolkit.dst;
+				DSTROOT = /tmp/SSToolkit.dst;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -515,7 +515,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INSTALL_PATH = /usr/local/lib;
 				LD_OPENMP_FLAGS = "-fopenmp -lxml2";
-				PRODUCT_NAME = TWToolkit;
+				PRODUCT_NAME = SSToolkit;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -525,14 +525,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				DSTROOT = /tmp/TWToolkit.dst;
+				DSTROOT = /tmp/SSToolkit.dst;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Other Sources/SSToolkit_Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INSTALL_PATH = /usr/local/lib;
 				LD_OPENMP_FLAGS = "-fopenmp -lxml2";
-				PRODUCT_NAME = TWToolkit;
+				PRODUCT_NAME = SSToolkit;
 				SDKROOT = iphoneos3.2;
 			};
 			name = Release;
