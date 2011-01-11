@@ -79,6 +79,7 @@
 - (id)initWithStyle:(UITableViewStyle)style {
 	if (self = [super init]) {
 		_tableView = [[UITableView alloc] initWithFrame:CGRectZero style:style];
+		_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		_tableView.dataSource = self;
 		_tableView.delegate = self;
 		_clearsSelectionOnViewWillAppear = YES;

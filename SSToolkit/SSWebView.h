@@ -150,6 +150,13 @@
 #ifdef __IPHONE_4_0
 
 /**
+ @brief The last UIScrollView backing the UIWebView.
+ 
+ The caller <strong>must</strong> check for a nil return value and handle appropriately.
+ */
+@property (nonatomic, retain, readonly) UIScrollView *scrollView;
+
+/**
  @brief A Boolean value that determines whether HTML5 videos play inline or use the native
  full-screen controller.
  

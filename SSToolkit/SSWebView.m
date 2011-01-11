@@ -439,6 +439,17 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 #ifdef __IPHONE_4_0
 
+- (UIScrollView *)scrollView {
+	for (UIView *view in [_webView subviews]) {
+		if ([view isKindOfClass:[UIScrollView class]]) {
+			return (UIScrollView *)view;
+		}
+	}
+	
+//	NSLog(@"Failed to find UIScrollView for SSWebView");
+	return nil;
+}
+
 - (BOOL)allowsInlineMediaPlayback {
 	return _webView.allowsInlineMediaPlayback;
 }

@@ -36,7 +36,7 @@
 		B27B1CD812248F9D00111EA2 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CCE12248F9D00111EA2 /* iTunesArtwork */; };
 		B2B3CEEF1296F78D001BAC94 /* SCSwitchDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */; };
 		B2B3CF561296FA76001BAC94 /* SSToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B2B3CF551296FA76001BAC94 /* SSToolkit.bundle */; };
-		B2E0323F121DC49700D02434 /* libTWToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B24E9ECA121DC3CF0085F81E /* libTWToolkit.a */; };
+		B2E0323F121DC49700D02434 /* libSSToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B24E9ECA121DC3CF0085F81E /* libSSToolkit.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,7 +115,7 @@
 				B21B85B81067D4B500E5C076 /* SystemConfiguration.framework in Frameworks */,
 				B21B86441067D7EA00E5C076 /* libsqlite3.dylib in Frameworks */,
 				B24521CD1211AF2800E80F78 /* Security.framework in Frameworks */,
-				B2E0323F121DC49700D02434 /* libTWToolkit.a in Frameworks */,
+				B2E0323F121DC49700D02434 /* libSSToolkit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +197,7 @@
 		B24E9EC6121DC3CF0085F81E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B24E9ECA121DC3CF0085F81E /* libTWToolkit.a */,
+				B24E9ECA121DC3CF0085F81E /* libSSToolkit.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -309,10 +309,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		B24E9ECA121DC3CF0085F81E /* libTWToolkit.a */ = {
+		B24E9ECA121DC3CF0085F81E /* libSSToolkit.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libTWToolkit.a;
+			path = libSSToolkit.a;
 			remoteRef = B24E9EC9121DC3CF0085F81E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
