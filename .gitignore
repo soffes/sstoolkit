@@ -5,3 +5,6 @@ build
 *.perspectivev3
 *.xcworkspace
 xcuserdata
+.sass-cache
+Documentation/temp
+Documentation/Output

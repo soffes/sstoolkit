@@ -1,0 +1,12 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    compass (0.10.6)
+      haml (>= 3.0.4)
+    haml (3.0.23)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  compass (= 0.10.6)
