@@ -25,7 +25,6 @@
 	UIWebView *_webView;
 	NSURLRequest *_lastRequest;
 	BOOL _loadingPage;
-	BOOL _scrollEnabled;
 	BOOL _bounces;
 	BOOL _shadowsHidden;
 	BOOL _consoleEnabled;
