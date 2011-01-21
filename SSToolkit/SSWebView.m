@@ -108,10 +108,10 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 		[_webView removeFromSuperview];
 		[_webView release];
 	}
-		
+	
 	_webView = [[UIWebView alloc] initWithFrame:CGRectZero];
 	_webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
+	
 	if (loadPreviousSettings) {
 		_webView.dataDetectorTypes = tempDataDetectorTypes;
 		_webView.scalesPageToFit = tempScalesPageToFit;
@@ -193,55 +193,6 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 #pragma mark Getters
 
-- (BOOL)scrollEnabled {
-	// UIScroller in < 3.2
-	if ([[self class] _isBackedByScroller]) {
-		id scroller = [self.subviews objectAtIndex:0];
-		
-		// This prevents the solution from be rejected
-		NSString *selectorString = @"";
-		selectorString = [selectorString stringByAppendingFormat:@"s"];
-		selectorString = [selectorString stringByAppendingFormat:@"c"];
-		selectorString = [selectorString stringByAppendingFormat:@"r"];
-		selectorString = [selectorString stringByAppendingFormat:@"o"];
-		selectorString = [selectorString stringByAppendingFormat:@"l"];
-		selectorString = [selectorString stringByAppendingFormat:@"l"];
-		selectorString = [selectorString stringByAppendingFormat:@"i"];
-		selectorString = [selectorString stringByAppendingFormat:@"n"];
-		selectorString = [selectorString stringByAppendingFormat:@"g"];
-		selectorString = [selectorString stringByAppendingFormat:@"E"];
-		selectorString = [selectorString stringByAppendingFormat:@"n"];
-		selectorString = [selectorString stringByAppendingFormat:@"a"];
-		selectorString = [selectorString stringByAppendingFormat:@"b"];
-		selectorString = [selectorString stringByAppendingFormat:@"l"];
-		selectorString = [selectorString stringByAppendingFormat:@"e"];
-		selectorString = [selectorString stringByAppendingFormat:@"d"];
-		
-		SEL selector = NSSelectorFromString(selectorString);
-		
-		if ([scroller respondsToSelector:selector]) {
-			// Yay invocation magic
-			NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[scroller class] instanceMethodSignatureForSelector:selector]];
-			[invocation setSelector:selector];
-			[invocation setArgument:&_bounces atIndex:2];
-			[invocation invokeWithTarget:scroller];
-			
-			BOOL enabled = YES; // Default to YES
-			[invocation getReturnValue:&enabled];
-			return enabled;
-		}
-	}
-	
-	// UIScrollView >= 3.2
-	else {
-		return self.scrollView.scrollEnabled;
-	}
-	
-	// Default to YES
-	return YES;
-}
-
-
 - (BOOL)shadowsHidden {
 	for (UIView *view in [_webView subviews]) {
 		if ([view isKindOfClass:[UIScrollView class]]) {
@@ -271,6 +222,12 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 
 - (void)setScrollEnabled:(BOOL)enabled {
+	if (_scrollEnabled == enabled) {
+		return;
+	}
+	
+	_scrollEnabled = enabled;
+	
 	// UIScroller in < 3.2
 	if ([[self class] _isBackedByScroller]) {
 		id scroller = [self.subviews objectAtIndex:0];
