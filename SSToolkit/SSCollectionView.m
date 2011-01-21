@@ -212,6 +212,38 @@
 }
 
 
+- (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
+	SSCollectionViewItem *item = [self itemPathForIndex:indexPath];
+	
+	if (item) {
+		[self scrollRectToVisible:[item frame] animated:animated];
+	}
+}
+
+
+- (void)reloadItemAtIndexPaths:(NSIndexPath *)indexPaths {
+	if ([indexPaths row] < [_items count]) {
+		SSCollectionViewItem *oldItem = [_items objectAtIndex:[indexPaths row]];
+		SSCollectionViewItem *newItem = [_dataSource collectionView:self itemForIndexPath:indexPaths];
+		
+		if (newItem == nil) {
+			NSException *exception = [NSException exceptionWithName:NSInternalInconsistencyException
+															 reason:@"SSCollectionView dataSource must return an item from collectionView:itemForIndexPath:"
+														   userInfo:nil];
+			
+			[exception raise];
+			return;
+		}
+		
+		[newItem setFrame:[oldItem frame]];
+		[newItem setTag:[oldItem tag]];
+		[_items replaceObjectAtIndex:[indexPaths row] withObject:newItem];
+		[oldItem removeFromSuperview];
+		[self addSubview:newItem];
+	}
+}
+
+
 #pragma mark Private Methods
 
 - (SSCollectionViewItem *)_itemForTouches:(NSSet *)touches event:(UIEvent *)event {

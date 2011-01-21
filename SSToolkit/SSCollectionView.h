@@ -159,6 +159,22 @@
  */
 - (void)deselectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
 
+/**
+ @brief Scrolls the receiver until a row identified by index path is at a particular location on the screen.
+ 
+ @param indexPath An index path that identifies an item in the collection view by its row index and its section index.
+ @param animated <code>YES</code> if you want to animate the deselection and <code>NO</code> if the
+ change should be immediate.
+ */
+- (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
+
+/**
+ @brief Reloads the specified item.
+ 
+ @param indexPath An index path that identifies an item in the collection view by its row index and its section index.
+ */
+- (void)reloadItemAtIndexPaths:(NSIndexPath *)indexPaths;
+
 @end
 
 

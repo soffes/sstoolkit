@@ -22,6 +22,7 @@
 #import <SSToolkit/SSLoadingView.h>
 #import <SSToolkit/SSPieProgressView.h>
 #import <SSToolkit/SSWebView.h>
+#import <SSToolkit/SSWindow.h>
 
 // Controls
 #import <SSToolkit/SSTextField.h>
@@ -53,6 +54,7 @@
 #import "SSLoadingView.h"
 #import "SSPieProgressView.h"
 #import "SSWebView.h"
+#import "SSWindow.h"
 
 // Controls
 #import "SSTextField.h"
