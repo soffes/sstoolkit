@@ -19,6 +19,12 @@
 
 #pragma mark NSObject
 
+- (id)init {
+	self = [super initWithFrame:[[UIScreen mainScreen] bounds]];
+	return self;
+}
+
+
 - (void)dealloc {
 	[_storage release];
 	[super dealloc];

@@ -39,7 +39,7 @@ typedef enum {
  Returns the image view (UIImageView object) of the collection view item, which initially has no
  image set. SSCollectionViewItem creates the image view object when you create the item.
  */
-@property (nonatomic, retain, readonly) UIImageView *imageView;
+@property (nonatomic, retain) UIImageView *imageView;
 
 /**
  @brief Returns the label used for the main textual content of the table cell. (read-only)
@@ -47,7 +47,7 @@ typedef enum {
  Holds the main label of the item. SSCollectionViewItem adds an appropriate label when you create
  the cell in a given item style.
  */
-@property (nonatomic, retain, readonly) SSLabel *textLabel;
+@property (nonatomic, retain) SSLabel *textLabel;
 
 /**
  @brief Returns the secondary label of the collection view item. (read-only)
@@ -55,7 +55,7 @@ typedef enum {
  Holds the secondary label of the item. SSCollectionViewItem adds an appropriate label when you
  create the cell in a given item style.
  */
-@property (nonatomic, retain, readonly) SSLabel *detailTextLabel;
+@property (nonatomic, retain) SSLabel *detailTextLabel;
 
 /**
  @brief The view used as the background of the item.
