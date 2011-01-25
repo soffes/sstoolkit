@@ -12,38 +12,6 @@
 #if 1
 
 // Views
-#import <SSToolkit/SSCollectionView.h>
-#import <SSToolkit/SSCollectionViewItem.h>
-#import <SSToolkit/SSGradientView.h>
-#import <SSToolkit/SSHUDView.h>
-#import <SSToolkit/SSIndicatorLabel.h>
-#import <SSToolkit/SSLabel.h>
-#import <SSToolkit/SSLineView.h>
-#import <SSToolkit/SSLoadingView.h>
-#import <SSToolkit/SSPieProgressView.h>
-#import <SSToolkit/SSWebView.h>
-#import <SSToolkit/SSWindow.h>
-
-// Controls
-#import <SSToolkit/SSTextField.h>
-#import <SSToolkit/SSTextView.h>
-#import <SSToolkit/SSSwitch.h>
-
-// View Controllers
-#import <SSToolkit/SSCollectionViewController.h>
-#import <SSToolkit/SSModalViewController.h>
-#import <SSToolkit/SSNavigationController.h>
-#import <SSToolkit/SSPickerViewController.h>
-#import <SSToolkit/SSTableViewController.h>
-#import <SSToolkit/SSViewController.h>
-
-// Misc
-#import <SSToolkit/SSDrawingMacros.h>
-#import <SSToolkit/SSConcurrentOperation.h>
-
-#else
-
-// Views
 #import "SSCollectionView.h"
 #import "SSCollectionViewItem.h"
 #import "SSGradientView.h"
@@ -72,5 +40,37 @@
 // Misc
 #import "SSDrawingMacros.h"
 #import "SSConcurrentOperation.h"
+
+#else
+
+// Views
+#import <SSToolkit/SSCollectionView.h>
+#import <SSToolkit/SSCollectionViewItem.h>
+#import <SSToolkit/SSGradientView.h>
+#import <SSToolkit/SSHUDView.h>
+#import <SSToolkit/SSIndicatorLabel.h>
+#import <SSToolkit/SSLabel.h>
+#import <SSToolkit/SSLineView.h>
+#import <SSToolkit/SSLoadingView.h>
+#import <SSToolkit/SSPieProgressView.h>
+#import <SSToolkit/SSWebView.h>
+#import <SSToolkit/SSWindow.h>
+
+// Controls
+#import <SSToolkit/SSTextField.h>
+#import <SSToolkit/SSTextView.h>
+#import <SSToolkit/SSSwitch.h>
+
+// View Controllers
+#import <SSToolkit/SSCollectionViewController.h>
+#import <SSToolkit/SSModalViewController.h>
+#import <SSToolkit/SSNavigationController.h>
+#import <SSToolkit/SSPickerViewController.h>
+#import <SSToolkit/SSTableViewController.h>
+#import <SSToolkit/SSViewController.h>
+
+// Misc
+#import <SSToolkit/SSDrawingMacros.h>
+#import <SSToolkit/SSConcurrentOperation.h>
 
 #endif

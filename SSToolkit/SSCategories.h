@@ -12,26 +12,6 @@
 #if 1
 
 // Foundation
-#import <SSToolkit/NSArray+SSToolkitAdditions.h>
-#import <SSToolkit/NSData+SSToolkitAdditions.h>
-#import <SSToolkit/NSDate+SSToolkitAdditions.h>
-#import <SSToolkit/NSDictionary+SSToolkitAdditions.h>
-#import <SSToolkit/NSString+SSToolkitAdditions.h>
-#import <SSToolkit/NSURL+SSToolkitAdditions.h>
-
-// UIKit
-#import <SSToolkit/UIApplication+SSToolkitAdditions.h>
-#import <SSToolkit/UIColor+SSToolkitAdditions.h>
-#import <SSToolkit/UIControl+SSToolkitAdditions.h>
-#import <SSToolkit/UIDevice+SSToolkitAdditions.h>
-#import <SSToolkit/UIImage+SSToolkitAdditions.h>
-#import <SSToolkit/UIScrollview+SSToolkitAdditions.h>
-#import <SSToolkit/UIView+SSToolkitAdditions.h>
-#import <SSToolkit/UIViewController+SSToolkitAdditions.h>
-
-#else
-
-// Foundation
 #import "NSArray+SSToolkitAdditions.h"
 #import "NSData+SSToolkitAdditions.h"
 #import "NSDate+SSToolkitAdditions.h"
@@ -48,5 +28,25 @@
 #import "UIScrollview+SSToolkitAdditions.h"
 #import "UIView+SSToolkitAdditions.h"
 #import "UIViewController+SSToolkitAdditions.h"
+
+#else
+
+// Foundation
+#import <SSToolkit/NSArray+SSToolkitAdditions.h>
+#import <SSToolkit/NSData+SSToolkitAdditions.h>
+#import <SSToolkit/NSDate+SSToolkitAdditions.h>
+#import <SSToolkit/NSDictionary+SSToolkitAdditions.h>
+#import <SSToolkit/NSString+SSToolkitAdditions.h>
+#import <SSToolkit/NSURL+SSToolkitAdditions.h>
+
+// UIKit
+#import <SSToolkit/UIApplication+SSToolkitAdditions.h>
+#import <SSToolkit/UIColor+SSToolkitAdditions.h>
+#import <SSToolkit/UIControl+SSToolkitAdditions.h>
+#import <SSToolkit/UIDevice+SSToolkitAdditions.h>
+#import <SSToolkit/UIImage+SSToolkitAdditions.h>
+#import <SSToolkit/UIScrollview+SSToolkitAdditions.h>
+#import <SSToolkit/UIView+SSToolkitAdditions.h>
+#import <SSToolkit/UIViewController+SSToolkitAdditions.h>
 
 #endif
