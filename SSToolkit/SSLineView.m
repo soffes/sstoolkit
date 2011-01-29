@@ -24,6 +24,7 @@
 	[super dealloc];
 }
 
+
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
@@ -70,7 +71,8 @@
 	CGContextStrokePath(context);
 }
 
-#pragma mark Observer
+
+#pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	// Redraw if colors changed

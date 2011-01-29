@@ -30,6 +30,7 @@
 	return 6.0f;
 }
 
+
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -37,6 +38,7 @@
 	[_activityIndicatorView release]; 
 	[super dealloc];
 }
+
 
 #pragma mark UIView
 
@@ -90,6 +92,7 @@
 	_activityIndicatorView.opaque = o;
 }
 
+
 #pragma mark Status
 
 - (void)startWithText:(NSString *)text {
@@ -101,6 +104,7 @@
 	self.loading = NO;
 	_textLabel.text = text;
 }
+
 
 #pragma mark Custom Setters
 

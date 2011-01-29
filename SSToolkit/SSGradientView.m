@@ -58,6 +58,7 @@
 	return 0.0f;
 }
 
+
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -79,6 +80,7 @@
 	self.bottomBorderColor = nil;
 	[super dealloc];
 }
+
 
 #pragma mark UIView
 
@@ -166,6 +168,7 @@
 	}
 }
 
+
 #pragma mark Gradient Methods
 
 - (void)_refreshGradient {
@@ -177,7 +180,8 @@
 	[self setNeedsDisplay];	
 }
 
-#pragma mark Observer
+
+#pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	// Update the gradient and redraw if gradient colors changed

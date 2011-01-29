@@ -99,6 +99,10 @@
 		B2AE1135126F963300534CF2 /* UIApplication+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */; };
 		B2B3CED81296F637001BAC94 /* SSSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = B2B3CED61296F637001BAC94 /* SSSwitch.h */; };
 		B2B3CED91296F637001BAC94 /* SSSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B3CED71296F637001BAC94 /* SSSwitch.m */; };
+		B2EA9F5E12F4A5C900C929D6 /* SSBadgeTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2EA9F5C12F4A5C900C929D6 /* SSBadgeTableViewCell.h */; };
+		B2EA9F5F12F4A5C900C929D6 /* SSBadgeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EA9F5D12F4A5C900C929D6 /* SSBadgeTableViewCell.m */; };
+		B2EA9F6212F4A5E100C929D6 /* SSBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2EA9F6012F4A5E100C929D6 /* SSBadgeView.h */; };
+		B2EA9F6312F4A5E100C929D6 /* SSBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EA9F6112F4A5E100C929D6 /* SSBadgeView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +194,10 @@
 		B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B2B3CED61296F637001BAC94 /* SSSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSwitch.h; sourceTree = "<group>"; };
 		B2B3CED71296F637001BAC94 /* SSSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSwitch.m; sourceTree = "<group>"; };
+		B2EA9F5C12F4A5C900C929D6 /* SSBadgeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSBadgeTableViewCell.h; sourceTree = "<group>"; };
+		B2EA9F5D12F4A5C900C929D6 /* SSBadgeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSBadgeTableViewCell.m; sourceTree = "<group>"; };
+		B2EA9F6012F4A5E100C929D6 /* SSBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSBadgeView.h; sourceTree = "<group>"; };
+		B2EA9F6112F4A5E100C929D6 /* SSBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSBadgeView.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libSSToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSSToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -259,6 +267,7 @@
 				B24E9E30121DC29A0085F81E /* SSToolkit.h */,
 				B24E9E0F121DC29A0085F81E /* SSCategories.h */,
 				B2601A76122307B1005506D5 /* Views */,
+				B2EA9F5B12F4A5B900C929D6 /* Cells */,
 				B2601A78122307CD005506D5 /* View Controllers */,
 				B2601A791223086D005506D5 /* Controls */,
 				B2601A8A122308E2005506D5 /* Misc */,
@@ -343,6 +352,8 @@
 				B24E9E34121DC29A0085F81E /* SSWebView.m */,
 				B207C63512EA209100412418 /* SSWindow.h */,
 				B207C63612EA209100412418 /* SSWindow.m */,
+				B2EA9F6012F4A5E100C929D6 /* SSBadgeView.h */,
+				B2EA9F6112F4A5E100C929D6 /* SSBadgeView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -387,6 +398,15 @@
 				B21D2DFF121F2FE500161E66 /* SSDrawingMacros.m */,
 			);
 			name = Misc;
+			sourceTree = "<group>";
+		};
+		B2EA9F5B12F4A5B900C929D6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B2EA9F5C12F4A5C900C929D6 /* SSBadgeTableViewCell.h */,
+				B2EA9F5D12F4A5C900C929D6 /* SSBadgeTableViewCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,6 +455,8 @@
 				B2AAE65C1281B73E0068EE7F /* SSNavigationController.h in Headers */,
 				B2B3CED81296F637001BAC94 /* SSSwitch.h in Headers */,
 				B207C63712EA209100412418 /* SSWindow.h in Headers */,
+				B2EA9F5E12F4A5C900C929D6 /* SSBadgeTableViewCell.h in Headers */,
+				B2EA9F6212F4A5E100C929D6 /* SSBadgeView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +565,8 @@
 				B2AAE65D1281B73E0068EE7F /* SSNavigationController.m in Sources */,
 				B2B3CED91296F637001BAC94 /* SSSwitch.m in Sources */,
 				B207C63812EA209100412418 /* SSWindow.m in Sources */,
+				B2EA9F5F12F4A5C900C929D6 /* SSBadgeTableViewCell.m in Sources */,
+				B2EA9F6312F4A5E100C929D6 /* SSBadgeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

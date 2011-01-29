@@ -38,6 +38,7 @@ static CGFloat indicatorRightMargin = 8.0f;
 	[super dealloc];
 }
 
+
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
@@ -102,7 +103,8 @@ static CGFloat indicatorRightMargin = 8.0f;
 	[_text drawInRect:textRect withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];
 }
 
-#pragma mark Observer
+
+#pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {	
 	

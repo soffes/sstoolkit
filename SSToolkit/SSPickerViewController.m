@@ -29,6 +29,7 @@
     [super dealloc];
 }
 
+
 #pragma mark UIViewController Methods
 
 - (void)viewDidLoad {
@@ -42,6 +43,7 @@
 		[self.tableView scrollToRowAtIndexPath:self.currentIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
 	}
 }
+
 
 #pragma mark SSPickerViewController
 
@@ -57,6 +59,7 @@
 	return key;
 }
 
+
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -64,6 +67,7 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	self.currentIndexPath = indexPath;
 }
+
 
 #pragma mark UITableViewDataSource
 

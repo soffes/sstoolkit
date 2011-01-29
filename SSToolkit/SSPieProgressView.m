@@ -28,6 +28,7 @@ CGFloat const kAngleOffset = -90.0f;
 	[super dealloc];
 }
 
+
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)aFrame {
@@ -83,6 +84,7 @@ CGFloat const kAngleOffset = -90.0f;
 	CGContextStrokeEllipseInRect(context, pieInnerRect);	
 }
 
+
 #pragma mark Setters
 
 - (void)setProgress:(CGFloat)newProgress {
@@ -90,7 +92,8 @@ CGFloat const kAngleOffset = -90.0f;
 	[self setNeedsDisplay];
 }
 
-#pragma mark Observer
+
+#pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	// Redraw if attributes changed

@@ -47,6 +47,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 	[super dealloc];
 }
 
+
 #pragma mark UIViewController
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
@@ -60,6 +61,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 - (void)viewWillAppear:(BOOL)animated {
 	[self layoutViews];
 }
+
 
 #pragma mark Layout
 
@@ -100,6 +102,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 	}
 	_modalContainerBackgroundView.frame = CGRectMake((roundf(screenSize.width - modalSize.width - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0f) + originOffset.x, (roundf(screenSize.height - modalSize.height - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0f) + originOffset.y, modalSize.width + kSSViewControllerModalPadding + kSSViewControllerModalPadding, modalSize.height + kSSViewControllerModalPadding + kSSViewControllerModalPadding);
 }
+
 
 #pragma mark Modal
 

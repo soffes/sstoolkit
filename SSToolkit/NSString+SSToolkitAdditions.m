@@ -60,6 +60,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 	return NSOrderedSame;
 }
 
+
 #pragma mark Localization Methods
 
 + (NSString *)localizedString:(NSString *)key {
