@@ -8,9 +8,9 @@
 
 #import "SSLoadingView.h"
 
-static CGFloat interiorPadding = 20.0;
-static CGFloat indicatorSize = 20.0;
-static CGFloat indicatorRightMargin = 8.0;
+static CGFloat interiorPadding = 20.0f;
+static CGFloat indicatorSize = 20.0f;
+static CGFloat indicatorRightMargin = 8.0f;
 
 @implementation SSLoadingView
 
@@ -41,7 +41,7 @@ static CGFloat indicatorRightMargin = 8.0;
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
+    if ((self = [super initWithFrame:frame])) {
         
 		// View defaults
 		self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -56,10 +56,10 @@ static CGFloat indicatorRightMargin = 8.0;
 		
 		// Defaults
 		self.text = @"Loading...";
-		self.font = [UIFont systemFontOfSize:16.0];
+		self.font = [UIFont systemFontOfSize:16.0f];
 		self.textColor = [UIColor darkGrayColor];
 		self.shadowColor = [UIColor whiteColor];
-		_shadowOffset = CGSizeMake(0.0, 1.0);
+		_shadowOffset = CGSizeMake(0.0f, 1.0f);
 		
 		// Add observers
 		[self addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
@@ -77,15 +77,15 @@ static CGFloat indicatorRightMargin = 8.0;
 	CGRect frame = self.frame;
 	
 	// Calculate sizes
-	CGSize maxSize = CGSizeMake(frame.size.width - (interiorPadding * 2.0) - indicatorSize - indicatorRightMargin, indicatorSize);
+	CGSize maxSize = CGSizeMake(frame.size.width - (interiorPadding * 2.0f) - indicatorSize - indicatorRightMargin, indicatorSize);
 	CGSize textSize = [_text sizeWithFont:_font constrainedToSize:maxSize lineBreakMode:UILineBreakModeWordWrap];
 	
 	// Calculate position
 	CGFloat totalWidth = textSize.width + indicatorSize + indicatorRightMargin;
-	NSInteger y = (NSInteger)((frame.size.height / 2.0) - (indicatorSize / 2.0));
+	NSInteger y = (NSInteger)((frame.size.height / 2.0f) - (indicatorSize / 2.0f));
 	
 	// Position the indicator
-	_activityIndicatorView.frame = CGRectMake((NSInteger)((frame.size.width - totalWidth) / 2.0), y, indicatorSize, indicatorSize);
+	_activityIndicatorView.frame = CGRectMake((NSInteger)((frame.size.width - totalWidth) / 2.0f), y, indicatorSize, indicatorSize);
 	
 	// Calculate text position
 	CGRect textRect = CGRectMake(_activityIndicatorView.frame.origin.x + indicatorSize + indicatorRightMargin, y, textSize.width, textSize.height);

@@ -66,16 +66,16 @@ static CGFloat kIndicatorSize = 40.0;
 	if (_loading == NO) {
 		[[UIColor whiteColor] set];
 		NSString *dingbat = _successful ? @"✔" : @"✘";
-		CGFloat margin = roundf((kHUDSize - 40.0) / 2.0);
-		CGRect dingbatRect = CGRectMake(margin, margin - 20.0, 40.0, 40.0);
-		[dingbat drawInRect:dingbatRect withFont:[UIFont systemFontOfSize:60.0] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
+		CGFloat margin = roundf((kHUDSize - 40.0f) / 2.0f);
+		CGRect dingbatRect = CGRectMake(margin, margin - 20.0f, 40.0f, 40.0f);
+		[dingbat drawInRect:dingbatRect withFont:[UIFont systemFontOfSize:60.0f] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
 	}
 }
 
 
 - (void)layoutSubviews {
-	_activityIndicator.frame = CGRectMake(round((kHUDSize - kIndicatorSize) / 2.0), round((kHUDSize - kIndicatorSize) / 2.0), kIndicatorSize, kIndicatorSize);
-	_textLabel.frame = CGRectMake(0.0, round(kHUDSize - 30.0), kHUDSize, 20.0);
+	_activityIndicator.frame = CGRectMake(roundf((kHUDSize - kIndicatorSize) / 2.0f), roundf((kHUDSize - kIndicatorSize) / 2.0f), kIndicatorSize, kIndicatorSize);
+	_textLabel.frame = CGRectMake(0.0f, roundf(kHUDSize - 30.0f), kHUDSize, 20.0f);
 }
 
 
@@ -86,10 +86,10 @@ static CGFloat kIndicatorSize = 40.0;
 
 	// Set the frame to 20px larger than it should be because UIAlertView
 	// will automatically resize it down after the animation
-	CGFloat biggerSize = kHUDSize + 20.0;
+	CGFloat biggerSize = kHUDSize + 20.0f;
 	CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-	self.frame = CGRectMake(round((screenSize.width - biggerSize) / 2.0), 
-							round((screenSize.height - biggerSize) / 2.0) + 10.0, 
+	self.frame = CGRectMake(roundf((screenSize.width - biggerSize) / 2.0f), 
+							roundf((screenSize.height - biggerSize) / 2.0f) + 10.0f, 
 							biggerSize, biggerSize);
 }
 
@@ -108,7 +108,7 @@ static CGFloat kIndicatorSize = 40.0;
 
 
 - (id)initWithTitle:(NSString *)aTitle loading:(BOOL)isLoading {
-	if (self = [super initWithFrame:CGRectZero]) {
+	if ((self = [super initWithFrame:CGRectZero])) {
 
 		// Indicator
 		_activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];

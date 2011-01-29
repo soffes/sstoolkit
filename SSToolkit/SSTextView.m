@@ -33,7 +33,7 @@
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
-	if (self = [super initWithFrame:frame]) {
+	if ((self = [super initWithFrame:frame])) {
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_textChanged:) name:UITextViewTextDidChangeNotification object:self];
 		
 		self.placeholderColor = [UIColor lightGrayColor];
@@ -48,7 +48,7 @@
 	
 	if (_shouldDrawPlaceholder) {
 		[_placeholderColor set];
-		[_placeholder drawInRect:CGRectMake(8.0, 8.0, self.frame.size.width - 16.0, self.frame.size.height - 16.0) withFont:self.font];
+		[_placeholder drawInRect:CGRectMake(8.0f, 8.0f, self.frame.size.width - 16.0f, self.frame.size.height - 16.0f) withFont:self.font];
 	}
 }
 

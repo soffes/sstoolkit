@@ -22,12 +22,12 @@
 #pragma mark Class Methods
 
 + (CGSize)indicatorSize {
-	return CGSizeMake(20.0, 20.0);
+	return CGSizeMake(20.0f, 20.0f);
 }
 
 
 + (CGFloat)padding {
-	return 6.0;
+	return 6.0f;
 }
 
 #pragma mark NSObject
@@ -65,14 +65,14 @@
 	
 	// Loading
 	if (_loading) {
-		_textLabel.frame = CGRectMake(x, 0.0, rect.size.width - x, size.height);
-		_activityIndicatorView.frame = CGRectMake(0.0, 0.0, size.width, size.height);
+		_textLabel.frame = CGRectMake(x, 0.0f, rect.size.width - x, size.height);
+		_activityIndicatorView.frame = CGRectMake(0.0f, 0.0f, size.width, size.height);
 	}
 	
 	// Not loading
 	else {
-		_textLabel.frame = CGRectMake(0.0, 0.0, rect.size.width, size.height);
-		_activityIndicatorView.frame = CGRectMake(-x, 0.0, size.width, size.height);
+		_textLabel.frame = CGRectMake(0.0f, 0.0f, rect.size.width, size.height);
+		_activityIndicatorView.frame = CGRectMake(-x, 0.0f, size.width, size.height);
 	}
 }
 

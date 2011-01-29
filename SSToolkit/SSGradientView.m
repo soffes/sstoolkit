@@ -30,32 +30,32 @@
 #pragma mark Class Methods
 
 + (UIColor *)defaultTopColor {
-	return [UIColor colorWithRed:0.676 green:0.722 blue:0.765 alpha:1.0];
+	return [UIColor colorWithRed:0.676f green:0.722f blue:0.765f alpha:1.0f];
 }
 
 
 + (UIColor *)defaultBottomColor {
-	return [UIColor colorWithRed:0.514 green:0.568 blue:0.617 alpha:1.0];
+	return [UIColor colorWithRed:0.514f green:0.568f blue:0.617f alpha:1.0f];
 }
 
 
 + (UIColor *)defaultTopBorderColor {
-	return [UIColor colorWithRed:0.558 green:0.599 blue:0.643 alpha:1.0];
+	return [UIColor colorWithRed:0.558f green:0.599f blue:0.643f alpha:1.0f];
 }
 
 
 + (UIColor *)defaultBottomBorderColor {
-	return [UIColor colorWithRed:0.428 green:0.479 blue:0.520 alpha:1.0];
+	return [UIColor colorWithRed:0.428f green:0.479f blue:0.520f alpha:1.0f];
 }
 
 
 + (CGFloat)defaultTopInsetAlpha {
-	return 0.3;
+	return 0.3f;
 }
 
 
 + (CGFloat)defaultBottomInsetAlpha {
-	return 0.0;
+	return 0.0f;
 }
 
 #pragma mark NSObject
@@ -83,7 +83,7 @@
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
-	if (self = [super initWithFrame:frame]) {
+	if ((self = [super initWithFrame:frame])) {
 		self.opaque = YES;
 		
 		// Defaults
@@ -127,34 +127,34 @@
 	CGContextClipToRect(context, rect);
 	
 	// Gradient
-	CGPoint start = CGPointMake(0.0, 0.0);
-	CGPoint end = CGPointMake(0.0, rect.size.height);
+	CGPoint start = CGPointMake(0.0, 0.0f);
+	CGPoint end = CGPointMake(0.0f, rect.size.height);
 	CGContextDrawLinearGradient(context, _gradient, start, end, 0);
 	
-	CGContextSetLineWidth(context, 2.0);
+	CGContextSetLineWidth(context, 2.0f);
 	
 	if (_hasTopBorder) {
 		// Top inset
-		if (_showsInsets && _topInsetAlpha > 0.0) {
-			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0 alpha:_topInsetAlpha].CGColor);
-			CGContextMoveToPoint(context, 0.0, 1.0);
-			CGContextAddLineToPoint(context, rect.size.width, 1.0);
+		if (_showsInsets && _topInsetAlpha > 0.0f) {
+			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0f alpha:_topInsetAlpha].CGColor);
+			CGContextMoveToPoint(context, 0.0f, 1.0f);
+			CGContextAddLineToPoint(context, rect.size.width, 1.0f);
 			CGContextStrokePath(context);
 		}
 		
 		// Top border
 		CGContextSetStrokeColorWithColor(context, _topBorderColor.CGColor);
-		CGContextMoveToPoint(context, 0.0, 0.0);
-		CGContextAddLineToPoint(context, rect.size.width, 0.0);
+		CGContextMoveToPoint(context, 0.0f, 0.0f);
+		CGContextAddLineToPoint(context, rect.size.width, 0.0f);
 		CGContextStrokePath(context);
 	}
 	
 	if (_hasBottomBorder) {
 		// Bottom inset
-		if (_showsInsets && _bottomInsetAlpha > 0.0) {
-			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0 alpha:_bottomInsetAlpha].CGColor);
-			CGContextMoveToPoint(context, 0.0, rect.size.height - 1.0);
-			CGContextAddLineToPoint(context, rect.size.width, rect.size.height - 1.0);
+		if (_showsInsets && _bottomInsetAlpha > 0.0f) {
+			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0f alpha:_bottomInsetAlpha].CGColor);
+			CGContextMoveToPoint(context, 0.0f, rect.size.height - 1.0f);
+			CGContextAddLineToPoint(context, rect.size.width, rect.size.height - 1.0f);
 			CGContextStrokePath(context);
 		}
 		

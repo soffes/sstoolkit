@@ -21,42 +21,42 @@
 
 
 - (void)hide {
-	self.alpha = 0.0;
+	self.alpha = 0.0f;
 }
 
 
 - (void)show {
-	self.alpha = 1.0;
+	self.alpha = 1.0f;
 }
 
 
 - (void)fadeOut {
-	[self fadeAlphaTo:0.0 andPerformSelector:NULL withObject:nil];
+	[self fadeAlphaTo:0.0f andPerformSelector:NULL withObject:nil];
 }
 
 
 - (void)fadeOutAndPerformSelector:(SEL)selector {
-	[self fadeAlphaTo:0.0 andPerformSelector:selector withObject:nil];
+	[self fadeAlphaTo:0.0f andPerformSelector:selector withObject:nil];
 }
 
 
 - (void)fadeOutAndPerformSelector:(SEL)selector withObject:(id)object {
-	[self fadeAlphaTo:0.0 andPerformSelector:selector withObject:object];
+	[self fadeAlphaTo:0.0f andPerformSelector:selector withObject:object];
 }
 
 
 - (void)fadeIn {
-	[self fadeAlphaTo:1.0 andPerformSelector:NULL withObject:nil];
+	[self fadeAlphaTo:1.0f andPerformSelector:NULL withObject:nil];
 }
 
 
 - (void)fadeInAndPerformSelector:(SEL)selector {
-	[self fadeAlphaTo:1.0 andPerformSelector:selector withObject:nil];
+	[self fadeAlphaTo:1.0f andPerformSelector:selector withObject:nil];
 }
 
 
 - (void)fadeInAndPerformSelector:(SEL)selector withObject:(id)object {
-	[self fadeAlphaTo:1.0 andPerformSelector:selector withObject:object];
+	[self fadeAlphaTo:1.0f andPerformSelector:selector withObject:object];
 }
 
 

@@ -138,11 +138,11 @@
 	
 	if (animated) {
 		[UIView beginAnimations:[NSString stringWithFormat:@"SSSwitchAnimate%@", (_on ? @"On" : @"Off")] context:nil];
-		[UIView setAnimationDuration:0.2];
+		[UIView setAnimationDuration:0.2f];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
 	}
 	
-	[self _layoutSubviewsWithHandlePosition:(_on ? self.frame.size.width - _handleWidth : 0.0)];
+	[self _layoutSubviewsWithHandlePosition:(_on ? self.frame.size.width - _handleWidth : 0.0f)];
 	
 	if (animated) {
 		[UIView commitAnimations];
@@ -172,13 +172,13 @@
 	CGFloat labelHeight = height - _trackEdgeInsets.top - _trackEdgeInsets.bottom;
 	NSUInteger position = 1;
 	
-	_labelMaskView.frame = UIEdgeInsetsInsetRect(CGRectMake(0.0, 0.0, width, height), _trackEdgeInsets);
+	_labelMaskView.frame = UIEdgeInsetsInsetRect(CGRectMake(0.0f, 0.0f, width, height), _trackEdgeInsets);
 	
 	// Enforce limits
-	x = fmin(fmax(0.0, x), sideWidth);
+	x = fminf(fmaxf(0.0f, x), sideWidth);
 	
 	// Calculate shadow width
-	if (_handleShadowWidth > 0.0) {
+	if (_handleShadowWidth > 0.0f) {
 		position = x == 0 ? 0 : (x == sideWidth ? 2 : 1); // 0: left, 1: center, 2: right
 		
 		if (position == 0) {
@@ -196,13 +196,13 @@
 		[_handle setBackgroundImage:_centerHandleImageHighlighted forState:UIControlStateHighlighted];
 	}
 	
-	_handle.frame = UIEdgeInsetsInsetRect(CGRectMake(x - _handleShadowWidth, 0.0, _handleWidth + _handleShadowWidth + _handleShadowWidth, height), _trackEdgeInsets);
-	_onBackgroundImageView.frame = CGRectMake(0.0, 0.0, width, height);
-	_offBackgroundImageView.frame = CGRectMake(x + _trackEdgeInsets.left + (CGFloat)_handleLeftCapWidth, 0.0, width - x - _trackEdgeInsets.left - (CGFloat)_handleLeftCapWidth, height);
+	_handle.frame = UIEdgeInsetsInsetRect(CGRectMake(x - _handleShadowWidth, 0.0f, _handleWidth + _handleShadowWidth + _handleShadowWidth, height), _trackEdgeInsets);
+	_onBackgroundImageView.frame = CGRectMake(0.0f, 0.0f, width, height);
+	_offBackgroundImageView.frame = CGRectMake(x + _trackEdgeInsets.left + (CGFloat)_handleLeftCapWidth, 0.0f, width - x - _trackEdgeInsets.left - (CGFloat)_handleLeftCapWidth, height);
 	
 	// TODO: These are still a bit hacky (with the +2 and -1)
-	_onLabel.frame = CGRectMake(x - labelWidth - _trackEdgeInsets.left + 1.0, 0.0, labelWidth, labelHeight);
-	_offLabel.frame = CGRectMake(x + _handleWidth - _trackEdgeInsets.right - 1.0, 0.0, labelWidth, labelHeight);
+	_onLabel.frame = CGRectMake(x - labelWidth - _trackEdgeInsets.left + 1.0f, 0.0f, labelWidth, labelHeight);
+	_offLabel.frame = CGRectMake(x + _handleWidth - _trackEdgeInsets.right - 1.0f, 0.0f, labelWidth, labelHeight);
 }
 
 
@@ -267,14 +267,14 @@
 			self.onBackgroundImageView.image = [[UIImage imageNamed:@"images/UISwitchTrackBlue.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
 
 			self.onLabel.textColor = [UIColor whiteColor];
-			self.onLabel.font = [UIFont boldSystemFontOfSize:16.0];
-			self.onLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-			self.onLabel.shadowOffset = CGSizeMake(0.0, -1.0);
+			self.onLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+			self.onLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.5f];
+			self.onLabel.shadowOffset = CGSizeMake(0.0f, -1.0f);
 			
 			self.offBackgroundImageView.image = [[UIImage imageNamed:@"images/UISwitchTrackClear.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
 			
-			self.offLabel.textColor = [UIColor colorWithWhite:0.475 alpha:1.0];
-			self.offLabel.font = [UIFont boldSystemFontOfSize:16.0];
+			self.offLabel.textColor = [UIColor colorWithWhite:0.475f alpha:1.0f];
+			self.offLabel.font = [UIFont boldSystemFontOfSize:16.0f];
 			self.offLabel.shadowColor = nil;			
 			
 			self.trackEdgeInsets = UIEdgeInsetsZero;
@@ -288,7 +288,7 @@
 		}
 	}
 	
-	[self _layoutSubviewsWithHandlePosition:_on ? 1.0 : 0.0];
+	[self _layoutSubviewsWithHandlePosition:_on ? 1.0f : 0.0f];
 }
 
 @end

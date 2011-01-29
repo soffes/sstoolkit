@@ -30,8 +30,6 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 
 // Adapted from http://snipplr.com/view/2771/compare-two-version-strings
 - (NSComparisonResult)compareToVersionString:(NSString *)version {
-	NSInteger i;
-	
 	// Break version into fields (separated by '.')
 	NSMutableArray *leftFields  = [[NSMutableArray alloc] initWithArray:[self  componentsSeparatedByString:@"."]];
 	NSMutableArray *rightFields = [[NSMutableArray alloc] initWithArray:[version componentsSeparatedByString:@"."]];
@@ -48,7 +46,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 	}
 	
 	// Do a numeric comparison on each field
-	for (i = 0; i < [leftFields count]; i++) {
+	for (NSUInteger i = 0; i < [leftFields count]; i++) {
 		NSComparisonResult result = [[leftFields objectAtIndex:i] compare:[rightFields objectAtIndex:i] options:NSNumericSearch];
 		if (result != NSOrderedSame) {
 			[leftFields release];
@@ -74,8 +72,8 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 - (NSString *)escapeHTML {
 	NSMutableString *s = [NSMutableString string];
 	
-	int start = 0;
-	int len = [self length];
+	NSUInteger start = 0;
+	NSUInteger len = [self length];
 	NSCharacterSet *chs = [NSCharacterSet characterSetWithCharactersInString:@"<>&\""];
 	
 	while (start < len) {
@@ -236,7 +234,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 	}
 	
     const char *source = [self UTF8String];
-    int strlength  = strlen(source);
+    NSUInteger strlength  = strlen(source);
     
     char *characters = malloc(((strlength + 2) / 3) * 4);
     if (characters == NULL) {

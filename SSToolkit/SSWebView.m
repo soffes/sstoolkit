@@ -49,7 +49,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
-	if (self = [super initWithFrame:frame]) {
+	if ((self = [super initWithFrame:frame])) {
 		[self reset];
 		
 		_loadingPage = NO;
@@ -63,7 +63,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 
 - (void)layoutSubviews {
-	_webView.frame = CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height);
+	_webView.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height);
 }
 
 

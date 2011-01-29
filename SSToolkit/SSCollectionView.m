@@ -57,13 +57,13 @@
 		_minNumberOfColumns = 1;
 		_maxNumberOfColumns = 0;
 		
-		_minItemSize = CGSizeMake(40.0, 40.0);
-		_maxItemSize = CGSizeMake(300.0, 300.0);
+		_minItemSize = CGSizeMake(40.0f, 40.0f);
+		_maxItemSize = CGSizeMake(300.0f, 300.0f);
 		
-		_rowHeight = 80.0;
-		_rowSpacing = 20.0;
-		_columnWidth = 80.0;
-		_columnSpacing = 20.0;
+		_rowHeight = 80.0f;
+		_rowSpacing = 20.0f;
+		_columnWidth = 80.0f;
+		_columnSpacing = 20.0f;
 		
 		_allowsSelection = YES;
 		_items = [[NSMutableArray alloc] init];
@@ -79,20 +79,20 @@
 	if (_maxNumberOfColumns > 0) {
 		maxColumns = _maxNumberOfColumns;
 	} else {
-		maxColumns = floor((totalWidth + _columnSpacing)  / (_columnWidth + _columnSpacing));
+		maxColumns = (NSUInteger)floor((totalWidth + _columnSpacing)  / (_columnWidth + _columnSpacing));
 	}
 	
 	// Calculate padding
-	CGFloat horizontalPadding = roundf((totalWidth - (_columnWidth * maxColumns) - (_columnSpacing * (maxColumns - 1))) / 2.0);
+	CGFloat horizontalPadding = roundf((totalWidth - (_columnWidth * maxColumns) - (_columnSpacing * (maxColumns - 1))) / 2.0f);
 	
 	// Calculate verticalOffset
-	CGFloat verticalOffset = 0.0;
+	CGFloat verticalOffset = 0.0f;
 	if ([self.delegate respondsToSelector:@selector(collectionView:heightForHeaderInSection:)]) {
 		verticalOffset = [self.delegate collectionView:self heightForHeaderInSection:0];
 	}
 	
 	// Calculate bottomPadding
-	CGFloat bottomPadding = 0.0;
+	CGFloat bottomPadding = 0.0f;
 	if ([self.delegate respondsToSelector:@selector(collectionView:heightForFooterInSection:)]) {
 		bottomPadding = [self.delegate collectionView:self heightForFooterInSection:0];
 	}
@@ -100,10 +100,10 @@
 	// Layout items
 	NSUInteger index = 0;
 	NSUInteger row = 0;
-	NSUInteger column = -1;
+	NSInteger column = -1;
 	for (SSCollectionViewItem *item in _items) {
 		column++;
-		if (column >= maxColumns) {
+		if (column >= (NSInteger)maxColumns) {
 			column = 0;
 			row++;
 		}
@@ -115,13 +115,13 @@
 	CGRect lastFrame = [[_items lastObject] frame];
 	CGFloat contentWidth = totalWidth - self.contentInset.left - self.contentInset.right;
 	CGFloat contentHeight = lastFrame.origin.y + lastFrame.size.height + bottomPadding;
-	CGFloat minContentHeight = (self.frame.size.height - self.contentInset.top - self.contentInset.bottom) + 1.0;
-	self.contentSize = CGSizeMake(contentWidth, fmax(contentHeight, minContentHeight));
+	CGFloat minContentHeight = (self.frame.size.height - self.contentInset.top - self.contentInset.bottom) + 1.0f;
+	self.contentSize = CGSizeMake(contentWidth, fmaxf(contentHeight, minContentHeight));
 	
 	// Update background views
-	_backgroundView.frame = CGRectMake(0.0, 0.0, self.frame.size.width, self.contentSize.height + self.contentInset.top + self.contentInset.bottom);
-	_backgroundHeaderView.frame = CGRectMake(0.0, -_backgroundHeaderView.frame.size.height, self.frame.size.width, _backgroundHeaderView.frame.size.height);
-	_backgroundFooterView.frame = CGRectMake(0.0, _backgroundView.frame.size.height, self.frame.size.width, _backgroundFooterView.frame.size.height);
+	_backgroundView.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, self.contentSize.height + self.contentInset.top + self.contentInset.bottom);
+	_backgroundHeaderView.frame = CGRectMake(0.0f, -_backgroundHeaderView.frame.size.height, self.frame.size.width, _backgroundHeaderView.frame.size.height);
+	_backgroundFooterView.frame = CGRectMake(0.0f, _backgroundView.frame.size.height, self.frame.size.width, _backgroundFooterView.frame.size.height);
 }
 
 
@@ -154,7 +154,7 @@
 	
 	// Notify delegate of selection
 	if ([self.delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
-		[self.delegate collectionView:self didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:item.tag inSection:0]];
+		[self.delegate collectionView:self didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:(NSUInteger)item.tag inSection:0]];
 	}
 }
 
@@ -179,7 +179,7 @@
 			return;
 		}
 		
-		item.tag = i;
+		item.tag = (NSInteger)i;
 		[_items addObject:item];
 		[self addSubview:item];
 	}

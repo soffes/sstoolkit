@@ -77,7 +77,7 @@
 #pragma mark Initializer
 
 - (id)initWithStyle:(UITableViewStyle)style {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_tableView = [[UITableView alloc] initWithFrame:CGRectZero style:style];
 		_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		_tableView.dataSource = self;

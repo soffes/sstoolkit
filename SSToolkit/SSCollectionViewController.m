@@ -51,7 +51,7 @@
 
 #pragma mark SSCollectionViewDataSource
 
-- (NSInteger)collectionView:(SSCollectionView *)aCollectionView numberOfRowsInSection:(NSInteger)section {
+- (NSUInteger)collectionView:(SSCollectionView *)aCollectionView numberOfRowsInSection:(NSInteger)section {
 	return 0;
 }
 

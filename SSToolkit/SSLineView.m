@@ -33,7 +33,7 @@
 		self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		
 		self.lineColor = [UIColor grayColor];
-		self.insetColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+		self.insetColor = [UIColor colorWithWhite:1.0f alpha:0.5f];
 		
 		_showInset = YES;
 		_hasDrawn = NO;
@@ -53,20 +53,20 @@
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextClipToRect(context, rect);
-	CGContextSetLineWidth(context, 2.0);
+	CGContextSetLineWidth(context, 2.0f);
 
 	// Inset
 	if (self.showInset && self.insetColor) {
 		CGContextSetStrokeColorWithColor(context, _insetColor.CGColor);
-		CGContextMoveToPoint(context, 0.0, 1.0);
-		CGContextAddLineToPoint(context, rect.size.width, 1.0);
+		CGContextMoveToPoint(context, 0.0f, 1.0f);
+		CGContextAddLineToPoint(context, rect.size.width, 1.0f);
 		CGContextStrokePath(context);
 	}
 	
 	// Top border
 	CGContextSetStrokeColorWithColor(context, _lineColor.CGColor);
-	CGContextMoveToPoint(context, 0.0, 0.0);
-	CGContextAddLineToPoint(context, rect.size.width, 0.0);
+	CGContextMoveToPoint(context, 0.0f, 0.0f);
+	CGContextAddLineToPoint(context, rect.size.width, 0.0f);
 	CGContextStrokePath(context);
 }
 

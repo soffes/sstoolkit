@@ -26,7 +26,7 @@
 	
 	NSMutableArray *copy = [self mutableCopy];
 	while ([copy count] > 0) {
-		int index = arc4random() % [copy count];
+		NSUInteger index = arc4random() % [copy count];
 		id objectToMove = [copy objectAtIndex:index];
 		[array addObject:objectToMove];
 		[copy removeObjectAtIndex:index];

@@ -6,8 +6,10 @@
 //  Copyright 2009-2010 Sam Soffes. All rights reserved.
 //
 
+#import "SSDrawingMacros.h"
+
 CGFloat SSFLimit(CGFloat f, CGFloat min, CGFloat max) {
-	return fmin(fmax(f, min), max);
+	return fminf(fmaxf(f, min), max);
 }
 
 
@@ -42,24 +44,24 @@ CGRect CGRectSetSize(CGRect rect, CGSize size) {
 
 
 CGRect CGRectSetZeroOrigin(CGRect rect) {
-	return CGRectMake(0.0, 0.0, rect.size.width, rect.size.height);
+	return CGRectMake(0.0f, 0.0f, rect.size.width, rect.size.height);
 }
 
 
 CGRect CGRectSetZeroSize(CGRect rect) {
-	return CGRectMake(rect.origin.x, rect.origin.y, 0.0, 0.0);
+	return CGRectMake(rect.origin.x, rect.origin.y, 0.0f, 0.0f);
 }
 
 CGSize CGSizeAspectScaleToSize(CGSize size, CGSize toSize) {
 	// Probably a more efficient way to do this...
-	CGFloat aspect = 1.0;
+	CGFloat aspect = 1.0f;
 	
 	if (size.width > toSize.width) {
 		aspect = toSize.width / size.width;
 	}
 	
 	if (size.height > toSize.height) {
-		aspect = fmin(toSize.height / size.height, aspect);
+		aspect = fminf(toSize.height / size.height, aspect);
 	}
 	
 	return CGSizeMake(size.width * aspect, size.height * aspect);

@@ -9,7 +9,7 @@
 #import "SSPieProgressView.h"
 #import "SSDrawingMacros.h"
 
-#define kAngleOffset -90.0
+CGFloat const kAngleOffset = -90.0f;
 
 @implementation SSPieProgressView
 
@@ -34,10 +34,10 @@
     if ((self = [super initWithFrame:aFrame])) {
 		self.backgroundColor = [UIColor clearColor];
 		
-		self.progress = 0.0;
-		self.pieBorderWidth = 4.0;
-		self.pieBorderColor = [UIColor colorWithRed:0.612 green:0.710 blue:0.839 alpha:1.0];
-		self.pieFillColor = [UIColor colorWithRed:0.612 green:0.710 blue:0.839 alpha:1.0];
+		self.progress = 0.0f;
+		self.pieBorderWidth = 4.0f;
+		self.pieBorderColor = [UIColor colorWithRed:0.612f green:0.710f blue:0.839f alpha:1.0f];
+		self.pieFillColor = [UIColor colorWithRed:0.612f green:0.710f blue:0.839f alpha:1.0f];
 		self.pieBackgroundColor = [UIColor whiteColor];
     }
     return self;
@@ -65,11 +65,11 @@
 	if (_progress > 0.0) {
 		CGPoint center = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 		CGFloat radius = center.y;
-		CGFloat angle = DEGREES_TO_RADIANS((360.0 * _progress) + kAngleOffset);
+		CGFloat angle = DEGREES_TO_RADIANS((360.0f * _progress) + kAngleOffset);
 		CGPoint points[3] = {
-			CGPointMake(center.x, 0.0),
+			CGPointMake(center.x, 0.0f),
 			center,
-			CGPointMake(center.x + radius * cos(angle), center.y + radius * sin(angle))
+			CGPointMake(center.x + radius * cosf(angle), center.y + radius * sinf(angle))
 		};
 		CGContextAddLines(context, points, sizeof(points) / sizeof(points[0]));
 		CGContextAddArc(context, center.x, center.y, radius, DEGREES_TO_RADIANS(kAngleOffset), angle, false);
@@ -79,14 +79,14 @@
 	// Border
 	[_pieBorderColor set];
 	CGContextSetLineWidth(context, _pieBorderWidth);
-	CGRect pieInnerRect = CGRectMake(_pieBorderWidth / 2.0, _pieBorderWidth / 2.0, rect.size.width - _pieBorderWidth, rect.size.height - _pieBorderWidth);
+	CGRect pieInnerRect = CGRectMake(_pieBorderWidth / 2.0f, _pieBorderWidth / 2.0f, rect.size.width - _pieBorderWidth, rect.size.height - _pieBorderWidth);
 	CGContextStrokeEllipseInRect(context, pieInnerRect);	
 }
 
 #pragma mark Setters
 
 - (void)setProgress:(CGFloat)newProgress {
-	_progress = fmax(0.0, fmin(1.0, newProgress));
+	_progress = fmaxf(0.0f, fminf(1.0f, newProgress));
 	[self setNeedsDisplay];
 }
 

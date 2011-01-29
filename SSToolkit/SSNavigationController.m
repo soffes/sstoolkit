@@ -22,7 +22,7 @@
 	// Move nav bar up. This makes me cry.
 	if (self.modalParentViewController) {
 		UIView *navBar = [[self.view subviews] objectAtIndex:1];
-		navBar.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, 44.0);
+		navBar.frame = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 44.0f);
 	}
 }
 

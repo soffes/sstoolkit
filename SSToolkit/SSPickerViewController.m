@@ -73,7 +73,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.keys count];
+    return (NSInteger)[self.keys count];
 }
 
 

@@ -11,8 +11,8 @@
 #import "UIView+SSToolkitAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 
-static CGFloat kSSViewControllerModalPadding = 22.0;
-#define kSSViewControllerDefaultContentSizeForViewInCustomModal CGSizeMake(540.0, 620.0)
+static CGFloat const kSSViewControllerModalPadding = 22.0f;
+static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {540.0f, 620.0f};
 
 @interface SSViewController (PrivateMethods)
 - (void)_cleanUpModal;
@@ -79,14 +79,14 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 	
 	// Landscape
 	if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
-		screenSize = CGSizeMake(1024.0, 768.0);
-		_vignetteButton.frame = CGRectMake(0.0, -128.0, 1024.0, 1024.0);
+		screenSize = CGSizeMake(1024.0f, 768.0f);
+		_vignetteButton.frame = CGRectMake(0.0f, -128.0f, 1024.0f, 1024.0f);
 	}
 	
 	// Portrait
 	else {
-		screenSize = CGSizeMake(768.0, 1024.0);
-		_vignetteButton.frame = CGRectMake(-128.0, 0.0, 1024.0, 1024.0);
+		screenSize = CGSizeMake(768.0f, 1024.0f);
+		_vignetteButton.frame = CGRectMake(-128.0f, 0.0f, 1024.0f, 1024.0f);
 	}
 	
 	CGSize modalSize = kSSViewControllerDefaultContentSizeForViewInCustomModal;
@@ -98,7 +98,7 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 	if ([_customModalViewController respondsToSelector:@selector(originOffsetForViewInCustomModal)]) {
 		originOffset = [_customModalViewController originOffsetForViewInCustomModal];
 	}
-	_modalContainerBackgroundView.frame = CGRectMake((roundf(screenSize.width - modalSize.width - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0) + originOffset.x, (roundf(screenSize.height - modalSize.height - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0) + originOffset.y, modalSize.width + kSSViewControllerModalPadding + kSSViewControllerModalPadding, modalSize.height + kSSViewControllerModalPadding + kSSViewControllerModalPadding);
+	_modalContainerBackgroundView.frame = CGRectMake((roundf(screenSize.width - modalSize.width - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0f) + originOffset.x, (roundf(screenSize.height - modalSize.height - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0f) + originOffset.y, modalSize.width + kSSViewControllerModalPadding + kSSViewControllerModalPadding, modalSize.height + kSSViewControllerModalPadding + kSSViewControllerModalPadding);
 }
 
 #pragma mark Modal
@@ -126,14 +126,14 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 		_vignetteButton = [[UIButton alloc] initWithFrame:CGRectZero];
 		[_vignetteButton setImage:[UIImage imageNamed:@"images/SSViewControllerModalVignetteiPad.png" bundle:@"SSToolkit.bundle"] forState:UIControlStateNormal];
 		_vignetteButton.adjustsImageWhenHighlighted = NO;
-		_vignetteButton.alpha = 0.0;
+		_vignetteButton.alpha = 0.0f;
 	}
 	
 	[self.view addSubview:_vignetteButton];
 	[_vignetteButton fadeIn];
 	
 	if (_modalContainerBackgroundView == nil) {
-		UIImage *modalBackgroundImage = [[UIImage imageNamed:@"images/SSViewControllerFormBackground.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:43.0 topCapHeight:45.0];
+		UIImage *modalBackgroundImage = [[UIImage imageNamed:@"images/SSViewControllerFormBackground.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:43 topCapHeight:45];
 		_modalContainerBackgroundView = [[UIImageView alloc] initWithImage:modalBackgroundImage];
 		_modalContainerBackgroundView.autoresizesSubviews = NO;
 		_modalContainerBackgroundView.userInteractionEnabled = YES;
@@ -143,20 +143,20 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 	
 	if (_modalContainerView == nil) {
 		_modalContainerView = [[UIView alloc] initWithFrame:CGRectMake(kSSViewControllerModalPadding, kSSViewControllerModalPadding, modalSize.width, modalSize.height)];
-		_modalContainerView.layer.cornerRadius = 5.0;
+		_modalContainerView.layer.cornerRadius = 5.0f;
 		_modalContainerView.clipsToBounds = YES;
 		[_modalContainerBackgroundView addSubview:_modalContainerView];
 	}
 	
 	UIView *modalView = _customModalViewController.view;
 	[_modalContainerView addSubview:modalView];
-	modalView.frame = CGRectMake(0.0, 0.0, modalSize.width, modalSize.height);
+	modalView.frame = CGRectMake(0.0f, 0.0f, modalSize.width, modalSize.height);
 	
 	CGSize screenSize;
 	if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft || self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-		screenSize = CGSizeMake(1024.0, 768.0);
+		screenSize = CGSizeMake(1024.0f, 768.0f);
 	} else {
-		screenSize = CGSizeMake(768.0, 1024.0);
+		screenSize = CGSizeMake(768.0f, 1024.0f);
 	}
 	
 	CGPoint originOffset = CGPointZero;
@@ -164,7 +164,7 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 		originOffset = [_customModalViewController originOffsetForViewInCustomModal];
 	}
 	
-	_modalContainerBackgroundView.frame = CGRectMake((roundf(screenSize.width - modalSize.width - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0) + originOffset.x, (roundf(screenSize.height - modalSize.height - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0) + originOffset.y + screenSize.height, modalSize.width + kSSViewControllerModalPadding + kSSViewControllerModalPadding, modalSize.height + kSSViewControllerModalPadding + kSSViewControllerModalPadding);
+	_modalContainerBackgroundView.frame = CGRectMake((roundf(screenSize.width - modalSize.width - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0f) + originOffset.x, (roundf(screenSize.height - modalSize.height - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0f) + originOffset.y + screenSize.height, modalSize.width + kSSViewControllerModalPadding + kSSViewControllerModalPadding, modalSize.height + kSSViewControllerModalPadding + kSSViewControllerModalPadding);
 	
 	
 	if ([_customModalViewController respondsToSelector:@selector(viewWillAppear:)]) {
@@ -199,9 +199,9 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 - (void)dismissCustomModalViewController:(BOOL)animated {
 	CGSize screenSize;
 	if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft || self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-		screenSize = CGSizeMake(1024.0, 768.0);
+		screenSize = CGSizeMake(1024.0f, 768.0f);
 	} else {
-		screenSize = CGSizeMake(768.0, 1024.0);
+		screenSize = CGSizeMake(768.0f, 1024.0f);
 	}
 	
 	CGSize modalSize = kSSViewControllerDefaultContentSizeForViewInCustomModal;
@@ -225,7 +225,7 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 		[self _dismissModalAnimationDidStop:nil finished:nil context:nil];
 	}
 	
-	_modalContainerBackgroundView.frame = CGRectMake(roundf(screenSize.width - modalSize.width - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0, (roundf(screenSize.height - modalSize.height - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0) + screenSize.height, modalSize.width + kSSViewControllerModalPadding + kSSViewControllerModalPadding, modalSize.height + kSSViewControllerModalPadding + kSSViewControllerModalPadding);
+	_modalContainerBackgroundView.frame = CGRectMake(roundf(screenSize.width - modalSize.width - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0f, (roundf(screenSize.height - modalSize.height - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0f) + screenSize.height, modalSize.width + kSSViewControllerModalPadding + kSSViewControllerModalPadding, modalSize.height + kSSViewControllerModalPadding + kSSViewControllerModalPadding);
 	
 	if (animated) {
 		[UIView commitAnimations];
@@ -237,7 +237,7 @@ static CGFloat kSSViewControllerModalPadding = 22.0;
 		[UIView setAnimationDidStopSelector:@selector(_dismissVignetteAnimationDidStop:finished:context:)];
 	}
 	
-	_vignetteButton.alpha = 0.0;
+	_vignetteButton.alpha = 0.0f;
 	
 	if (animated) {
 		[UIView commitAnimations];
