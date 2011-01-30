@@ -13,12 +13,24 @@
 @synthesize verticalTextAlignment = _verticalTextAlignment;
 @synthesize textEdgeInsets = _textEdgeInsets;
 
+#pragma mark NSObject
+
+- (void)dealloc {
+	[self removeObserver:self forKeyPath:@"verticalTextAlignment"];
+	[self removeObserver:self forKeyPath:@"textEdgeInsets"];
+	[super dealloc];
+}
+
+
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)aFrame {
 	if ((self = [super initWithFrame:aFrame])) {
 		self.verticalTextAlignment = SSLabelVerticalTextAlignmentMiddle;
 		self.textEdgeInsets = UIEdgeInsetsZero;
+		
+		[self addObserver:self forKeyPath:@"verticalTextAlignment" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"textEdgeInsets" options:NSKeyValueObservingOptionNew context:nil];
 	}
 	return self;
 }
@@ -38,6 +50,19 @@
 	}
 		
 	[super drawTextInRect:rect];
+}
+
+
+#pragma mark NSKeyValueObserving
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	// Redraw when properties change
+	if ([keyPath isEqualToString:@"verticalTextAlignment"] || [keyPath isEqualToString:@"textEdgeInsets"]) {
+		[self setNeedsDisplay];
+		return;
+	}
+	
+	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end
