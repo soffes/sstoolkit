@@ -17,6 +17,7 @@ If you're using this in your project, I'd love to hear about it! [Send me an ema
 * [SSPieProgressView][] - pie chart style progress bar similar to the one in Xcode's status bar
 * [SSTextField][] - simply add edge insets
 * [SSWebView][] - handy delegate additions and control over shadows and scroll
+* [SSBadgeTableViewCell][] - badge accessory view for table cells, similar to Mail.app unread counts
 
 ### Controls
 
@@ -121,3 +122,4 @@ Huge thanks to [our contributors](http://github.com/samsoffes/sstoolkit/contribu
 [SSConcurrentOperation]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSConcurrentOperation.h
 [SSKeychain]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSKeychain.h
 [SSCatalog]: https://github.com/samsoffes/sstoolkit/tree/master/SSCatalog/
+[SSBadgeTableViewCell]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSBadgeView.h
