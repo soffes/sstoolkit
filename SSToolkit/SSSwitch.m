@@ -202,8 +202,8 @@
 	_offBackgroundImageView.frame = CGRectMake(x + _trackEdgeInsets.left + (CGFloat)_handleLeftCapWidth, 0.0f, width - x - _trackEdgeInsets.left - (CGFloat)_handleLeftCapWidth, height);
 	
 	// TODO: These are still a bit hacky (with the +2 and -1)
-	_onLabel.frame = CGRectMake(x - labelWidth - _trackEdgeInsets.left + 1.0f, 0.0f, labelWidth, labelHeight);
-	_offLabel.frame = CGRectMake(x + _handleWidth - _trackEdgeInsets.right - 1.0f, 0.0f, labelWidth, labelHeight);
+	_onLabel.frame = CGRectMake(x - labelWidth - _trackEdgeInsets.left - labelClipWidth + 2.0f, 0.0f, labelWidth, labelHeight);
+	_offLabel.frame = CGRectMake(x + _handleWidth - _trackEdgeInsets.right - labelClipWidth - 1.0f, 0.0f, labelWidth, labelHeight);
 }
 
 
