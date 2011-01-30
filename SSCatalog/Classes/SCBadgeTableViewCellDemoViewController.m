@@ -15,7 +15,7 @@
 #pragma mark Class Methods
 
 + (NSString *)title {
-	return @"Badge View Cell";
+	return @"Badge Table View Cell";
 }
 
 
@@ -23,11 +23,6 @@
 
 - (id)init {
 	return self = [super initWithStyle:UITableViewStyleGrouped];
-}
-
-
-- (void)dealloc {
-    [super dealloc];
 }
 
 
@@ -43,6 +38,7 @@
 	[super viewWillAppear:animated];
 	[self.tableView reloadData];
 }
+
 
 #pragma mark SSBadgeTableViewCellDemoViewController
 
@@ -74,20 +70,17 @@
 		cell = [[[SSBadgeTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
 	}
 	
-	SSBadgeView *badgeView = (SSBadgeView *) cell.accessoryView;
-	switch ([indexPath row]) {
+	switch (indexPath.row) {
 		case 0:
 			cell.textLabel.text = @"Default Badge View";
 			break;
 		case 1:
 			cell.textLabel.text = @"Unread Count";
-			[badgeView setText:@"3"];
+			cell.badgeView.text = @"3";
 			break;
 		case 2:
 			cell.textLabel.text = @"Text Badge";
-			[badgeView setText:@"New"];
-			break;
-		default:
+			cell.badgeView.text = @"New";
 			break;
 	}
 	
