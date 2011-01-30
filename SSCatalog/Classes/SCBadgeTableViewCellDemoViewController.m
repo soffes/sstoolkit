@@ -85,7 +85,6 @@
 			break;
 		case 2:
 			cell.textLabel.text = @"Text Badge";
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			[badgeView setText:@"New"];
 			break;
 		default:
