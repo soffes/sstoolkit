@@ -34,6 +34,7 @@
 		B2EA9F3412F4950600C929D6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2EA9F3312F4950600C929D6 /* CoreGraphics.framework */; };
 		B2EA9F3612F4950600C929D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2EA9F3512F4950600C929D6 /* Foundation.framework */; };
 		B2EA9F3812F4950600C929D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2EA9F3712F4950600C929D6 /* UIKit.framework */; };
+		E7FD242712F4FFC5006A6691 /* SCBadgeTableViewCellDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD242612F4FFC5006A6691 /* SCBadgeTableViewCellDemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,8 @@
 		B2EA9F3312F4950600C929D6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = iphoneos4.0/System/Library/Frameworks/CoreGraphics.framework; sourceTree = "<group>"; };
 		B2EA9F3512F4950600C929D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = iphoneos4.0/System/Library/Frameworks/Foundation.framework; sourceTree = "<group>"; };
 		B2EA9F3712F4950600C929D6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = iphoneos4.0/System/Library/Frameworks/UIKit.framework; sourceTree = "<group>"; };
+		E7FD242512F4FFC5006A6691 /* SCBadgeTableViewCellDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCBadgeTableViewCellDemoViewController.h; sourceTree = "<group>"; };
+		E7FD242612F4FFC5006A6691 /* SCBadgeTableViewCellDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBadgeTableViewCellDemoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +221,8 @@
 				B2572FEB12924C28001FC061 /* SCIndicatorLabelDemoViewController.m */,
 				B257303B1292524F001FC061 /* SCLoadingViewDemoViewController.h */,
 				B257303C1292524F001FC061 /* SCLoadingViewDemoViewController.m */,
+				E7FD242512F4FFC5006A6691 /* SCBadgeTableViewCellDemoViewController.h */,
+				E7FD242612F4FFC5006A6691 /* SCBadgeTableViewCellDemoViewController.m */,
 			);
 			name = "View Demos";
 			sourceTree = "<group>";
@@ -344,6 +349,7 @@
 				B2572FEC12924C28001FC061 /* SCIndicatorLabelDemoViewController.m in Sources */,
 				B257303D1292524F001FC061 /* SCLoadingViewDemoViewController.m in Sources */,
 				B2B3CEEF1296F78D001BAC94 /* SCSwitchDemoViewController.m in Sources */,
+				E7FD242712F4FFC5006A6691 /* SCBadgeTableViewCellDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

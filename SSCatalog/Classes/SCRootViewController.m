@@ -44,6 +44,7 @@ static NSString *const kClassesKey =  @"classes";
 						  @"SCLoadingViewDemoViewController",
 						  @"SCPieProgressViewDemoViewController",
 						  @"SCIndicatorLabelDemoViewController",
+						  @"SCBadgeTableViewCellDemoViewController",
 						  nil], kClassesKey,
 						 @"Views", kTitleKey,
 						 nil],
