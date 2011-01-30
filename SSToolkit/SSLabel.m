@@ -56,9 +56,9 @@
 #pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	// Redraw when properties change
+	// Relayout when properties change
 	if ([keyPath isEqualToString:@"verticalTextAlignment"] || [keyPath isEqualToString:@"textEdgeInsets"]) {
-		[self setNeedsDisplay];
+		[self setNeedsLayout];
 		return;
 	}
 	
