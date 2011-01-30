@@ -330,6 +330,8 @@
 		B2601A76122307B1005506D5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B2EA9F6012F4A5E100C929D6 /* SSBadgeView.h */,
+				B2EA9F6112F4A5E100C929D6 /* SSBadgeView.m */,
 				B27B1A1912241D3400111EA2 /* SSCollectionView.h */,
 				B27B1A1A12241D3400111EA2 /* SSCollectionView.m */,
 				B27B1A2012241D6F00111EA2 /* SSCollectionViewItem.h */,
@@ -352,8 +354,6 @@
 				B24E9E34121DC29A0085F81E /* SSWebView.m */,
 				B207C63512EA209100412418 /* SSWindow.h */,
 				B207C63612EA209100412418 /* SSWindow.m */,
-				B2EA9F6012F4A5E100C929D6 /* SSBadgeView.h */,
-				B2EA9F6112F4A5E100C929D6 /* SSBadgeView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";

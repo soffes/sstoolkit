@@ -52,6 +52,7 @@ CGRect CGRectSetZeroSize(CGRect rect) {
 	return CGRectMake(rect.origin.x, rect.origin.y, 0.0f, 0.0f);
 }
 
+
 CGSize CGSizeAspectScaleToSize(CGSize size, CGSize toSize) {
 	// Probably a more efficient way to do this...
 	CGFloat aspect = 1.0f;
@@ -67,6 +68,24 @@ CGSize CGSizeAspectScaleToSize(CGSize size, CGSize toSize) {
 	return CGSizeMake(size.width * aspect, size.height * aspect);
 }
 
+
 CGRect CGRectAddPoint(CGRect rect, CGPoint point) {
 	return CGRectMake(rect.origin.x + point.x, rect.origin.y + point.y, rect.size.width, rect.size.height);
+}
+
+
+void SSDrawRoundedRect(CGContextRef context, CGRect rect, CGFloat cornerRadius) {
+	CGFloat minx = CGRectGetMinX(rect);
+	CGFloat midx = CGRectGetMidX(rect);
+	CGFloat maxx = CGRectGetMaxX(rect);
+	CGFloat miny = CGRectGetMinY(rect);
+	CGFloat midy = CGRectGetMidY(rect);
+	CGFloat maxy = CGRectGetMaxY(rect);	
+	CGContextMoveToPoint(context, minx, midy);
+	CGContextAddArcToPoint(context, minx, miny, midx, miny, cornerRadius);
+	CGContextAddArcToPoint(context, maxx, miny, maxx, midy, cornerRadius);
+	CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, cornerRadius);
+	CGContextAddArcToPoint(context, minx, maxy, minx, midy, cornerRadius);
+	CGContextClosePath(context);
+	CGContextFillPath(context);
 }

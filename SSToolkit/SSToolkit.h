@@ -12,6 +12,7 @@
 #if 1
 
 // Views
+#import "SSBadgeView.h"
 #import "SSCollectionView.h"
 #import "SSCollectionViewItem.h"
 #import "SSGradientView.h"
@@ -23,6 +24,9 @@
 #import "SSPieProgressView.h"
 #import "SSWebView.h"
 #import "SSWindow.h"
+
+// Cells
+#import "SSBadgeTableViewCell.h"
 
 // Controls
 #import "SSTextField.h"
@@ -44,6 +48,7 @@
 #else
 
 // Views
+#import <SSToolkit/SSBadgeView.h>
 #import <SSToolkit/SSCollectionView.h>
 #import <SSToolkit/SSCollectionViewItem.h>
 #import <SSToolkit/SSGradientView.h>
@@ -55,6 +60,9 @@
 #import <SSToolkit/SSPieProgressView.h>
 #import <SSToolkit/SSWebView.h>
 #import <SSToolkit/SSWindow.h>
+
+// Cells
+#import <SSToolkit/SSBadgeTableViewCell.h>b
 
 // Controls
 #import <SSToolkit/SSTextField.h>
