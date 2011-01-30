@@ -170,9 +170,10 @@
 	CGFloat sideWidth = width - _handleWidth;
 	CGFloat labelWidth = sideWidth - _trackEdgeInsets.left - _trackEdgeInsets.right;
 	CGFloat labelHeight = height - _trackEdgeInsets.top - _trackEdgeInsets.bottom;
+	CGFloat labelClipWidth = 3.0f;
 	NSUInteger position = 1;
 	
-	_labelMaskView.frame = UIEdgeInsetsInsetRect(CGRectMake(0.0f, 0.0f, width, height), _trackEdgeInsets);
+	_labelMaskView.frame = UIEdgeInsetsInsetRect(CGRectMake(labelClipWidth, 0.0f, width-labelClipWidth*2, height), _trackEdgeInsets);
 	
 	// Enforce limits
 	x = fminf(fmaxf(0.0f, x), sideWidth);
