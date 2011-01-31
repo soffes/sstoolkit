@@ -20,7 +20,7 @@ typedef enum {
  
  Acts very much like the badges in Mail.app, with the key difference being that 
  Apple uses images and SSBadgeView is rendered with CoreGraphics for improved 
- scrolling performance.
+ scrolling performance. This also allows for more flexible resizing. 
  
  Not limited to numbers, strings should still be short enough to fit within the 
  accesoryView bounds.

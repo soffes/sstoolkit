@@ -77,10 +77,12 @@
 		case 1:
 			cell.textLabel.text = @"Unread Count";
 			cell.badgeView.text = @"3";
+			cell.badgeView.badgeColor = [UIColor colorWithRed:0.969f green:0.082f blue:0.078f alpha:1.0f];
 			break;
 		case 2:
 			cell.textLabel.text = @"Text Badge";
 			cell.badgeView.text = @"New";
+			cell.badgeView.badgeColor = [UIColor colorWithRed:0.388f green:0.686f blue:0.239f alpha:1.0f];
 			break;
 	}
 	
