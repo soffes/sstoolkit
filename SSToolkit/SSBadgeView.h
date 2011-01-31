@@ -16,17 +16,15 @@ typedef enum {
  @brief Badge view.
  
  Provides the accesory view for a SSBadgeTableViewCell, available through the 
- badgeView property of the same.
+ <code>badgeView</code> property.
  
  Acts very much like the badges in Mail.app, with the key difference being that 
  Apple uses images and SSBadgeView is rendered with CoreGraphics for improved 
  scrolling performance.
  
  Not limited to numbers, strings should still be short enough to fit within the 
- accesoryView bounds. 
- 
+ accesoryView bounds.
  */
-
 @interface SSBadgeView : UIView {
 
 	NSString *_text;
@@ -47,59 +45,67 @@ typedef enum {
 /**
  @brief Display value.
 
- Default is 0.
+ The default value of this property is "0".
  */
 @property (nonatomic, copy) NSString *text;
 
 /**
  @brief The color of the badge display value.
  
- Default is white.
+ The default value of this property is white.
  */
 @property (nonatomic, retain) UIColor *textColor;
 
 /**
  @brief The color of the badge display value while its cell is highlighted.
  
- Default is blue (matches UITableViewCell's default highlight background color).
+ The default value of this property is dark blue (that UITableViewCell's default highlighted background color).
  */
 @property (nonatomic, retain) UIColor *highlightedTextColor;
 
 /**
- @brief Read-only value for cell's highlighted status.
+ @brief The font of the text.
+ 
+ The default value of this property is bold system font at size 16.
  */
 @property (nonatomic, retain) UIFont *font;
 
 /**
  @brief The badge's background color.
  
- Default is grayish blue.
+ The default value of this property is grayish blue (that matches Mail.app).
  */
 @property (nonatomic, retain) UIColor *badgeColor;
 
 /**
  @brief The badge's background color while its cell is highlighted.
  
- Default is white.
+ The default value of this property is white.
  */
 @property (nonatomic, retain) UIColor *highlightedBadgeColor;
 
 /**
  @brief The corner radius used when rendering the badge's outline.
  
- Default is 10.
+ The default value of this property is 10.
  */
 @property (nonatomic, assign) CGFloat cornerRadius;
 
 /**
  @brief The badge's horizontal alignment within the accesoryView frame.
  
- Default is <code>SSBadgeViewAlignmentRight</code>.
+ This will position the badge in the view's bounds accordinly.
+ 
+ The default value of this property is <code>SSBadgeViewAlignmentCenter</code>.
  */
 @property (nonatomic, assign) SSBadgeViewAlignment badgeAlignment;
 
 /**
- @brief Parent cell's highlighted status. (read-only)
+ @brief A Boolean value indicating whether the receiver should be drawn with a highlight.
+ 
+ Setting this property causes the receiver to redraw with the appropriate highlight state.
+ 
+ The default value of this property is <code>NO</code>.
  */
 @property (nonatomic, assign, getter=isHighlighted) BOOL highlighted;
 
