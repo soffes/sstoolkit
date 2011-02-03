@@ -93,6 +93,8 @@
 		B27B1A1C12241D3400111EA2 /* SSCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B1A1A12241D3400111EA2 /* SSCollectionView.m */; };
 		B27B1A2212241D6F00111EA2 /* SSCollectionViewItem.h in Headers */ = {isa = PBXBuildFile; fileRef = B27B1A2012241D6F00111EA2 /* SSCollectionViewItem.h */; };
 		B27B1A2312241D6F00111EA2 /* SSCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B1A2112241D6F00111EA2 /* SSCollectionViewItem.m */; };
+		B28218BE12FA6AE100BAF3C6 /* SSToolkitDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = B28218BC12FA6AE100BAF3C6 /* SSToolkitDefines.h */; };
+		B28218BF12FA6AE100BAF3C6 /* SSToolkitDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = B28218BD12FA6AE100BAF3C6 /* SSToolkitDefines.m */; };
 		B2AAE65C1281B73E0068EE7F /* SSNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */; };
 		B2AAE65D1281B73E0068EE7F /* SSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */; };
 		B2AE1134126F963300534CF2 /* UIApplication+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */; };
@@ -188,6 +190,8 @@
 		B27B1A1A12241D3400111EA2 /* SSCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionView.m; sourceTree = "<group>"; };
 		B27B1A2012241D6F00111EA2 /* SSCollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewItem.h; sourceTree = "<group>"; };
 		B27B1A2112241D6F00111EA2 /* SSCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionViewItem.m; sourceTree = "<group>"; };
+		B28218BC12FA6AE100BAF3C6 /* SSToolkitDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSToolkitDefines.h; sourceTree = "<group>"; };
+		B28218BD12FA6AE100BAF3C6 /* SSToolkitDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSToolkitDefines.m; sourceTree = "<group>"; };
 		B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSNavigationController.h; sourceTree = "<group>"; };
 		B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSNavigationController.m; sourceTree = "<group>"; };
 		B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+SSToolkitAdditions.h"; sourceTree = "<group>"; };
@@ -396,6 +400,8 @@
 				B24E9E11121DC29A0085F81E /* SSConcurrentOperation.m */,
 				B24E9E12121DC29A0085F81E /* SSDrawingMacros.h */,
 				B21D2DFF121F2FE500161E66 /* SSDrawingMacros.m */,
+				B28218BC12FA6AE100BAF3C6 /* SSToolkitDefines.h */,
+				B28218BD12FA6AE100BAF3C6 /* SSToolkitDefines.m */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -457,6 +463,7 @@
 				B207C63712EA209100412418 /* SSWindow.h in Headers */,
 				B2EA9F5E12F4A5C900C929D6 /* SSBadgeTableViewCell.h in Headers */,
 				B2EA9F6212F4A5E100C929D6 /* SSBadgeView.h in Headers */,
+				B28218BE12FA6AE100BAF3C6 /* SSToolkitDefines.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +574,7 @@
 				B207C63812EA209100412418 /* SSWindow.m in Sources */,
 				B2EA9F5F12F4A5C900C929D6 /* SSBadgeTableViewCell.m in Sources */,
 				B2EA9F6312F4A5E100C929D6 /* SSBadgeView.m in Sources */,
+				B28218BF12FA6AE100BAF3C6 /* SSToolkitDefines.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

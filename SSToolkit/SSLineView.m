@@ -17,9 +17,6 @@
 #pragma mark NSObject
 
 - (void)dealloc {
-	[self removeObserver:self forKeyPath:@"lineColor"];
-	[self removeObserver:self forKeyPath:@"insetColor"];
-	[self removeObserver:self forKeyPath:@"showInset"];
 	self.lineColor = nil;
 	[super dealloc];
 }
@@ -37,21 +34,12 @@
 		self.insetColor = [UIColor colorWithWhite:1.0f alpha:0.5f];
 		
 		_showInset = YES;
-		_hasDrawn = NO;
 	}
 	return self;
 }
 
 
-- (void)drawRect:(CGRect)rect {
-	if (!_hasDrawn) {
-		// Add observers
-		[self addObserver:self forKeyPath:@"lineColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"insetColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"showInset" options:NSKeyValueObservingOptionNew context:nil];
-		_hasDrawn = YES;
-	}
-	
+- (void)drawRect:(CGRect)rect {	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextClipToRect(context, rect);
 	CGContextSetLineWidth(context, 2.0f);
@@ -69,6 +57,19 @@
 	CGContextMoveToPoint(context, 0.0f, 0.0f);
 	CGContextAddLineToPoint(context, rect.size.width, 0.0f);
 	CGContextStrokePath(context);
+}
+
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+	if (newSuperview) {
+		[self addObserver:self forKeyPath:@"lineColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"insetColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"showInset" options:NSKeyValueObservingOptionNew context:nil];		
+	} else {
+		[self removeObserver:self forKeyPath:@"lineColor"];
+		[self removeObserver:self forKeyPath:@"insetColor"];
+		[self removeObserver:self forKeyPath:@"showInset"];
+	}
 }
 
 

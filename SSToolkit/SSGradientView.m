@@ -62,18 +62,6 @@
 #pragma mark NSObject
 
 - (void)dealloc {
-	if (_hasDrawn) {
-		[self removeObserver:self forKeyPath:@"topColor"];
-		[self removeObserver:self forKeyPath:@"bottomColor"];
-		[self removeObserver:self forKeyPath:@"topBorderColor"];
-		[self removeObserver:self forKeyPath:@"bottomBorderColor"];
-		[self removeObserver:self forKeyPath:@"topInsetAlpha"];
-		[self removeObserver:self forKeyPath:@"bottomInsetAlpha"];
-		[self removeObserver:self forKeyPath:@"hasTopBorder"];
-		[self removeObserver:self forKeyPath:@"hasBottomBorder"];
-		[self removeObserver:self forKeyPath:@"showsInsets"];
-		CGGradientRelease(_gradient);
-	}
 	self.topColor = nil;
 	self.bottomColor = nil;
 	self.topBorderColor = nil;
@@ -99,7 +87,6 @@
 		self.hasBottomBorder = YES;
 		self.showsInsets = YES;
 		
-		_hasDrawn = NO;
 		_gradient = nil;		
 	}
 	return self;
@@ -107,24 +94,6 @@
 
 
 - (void)drawRect:(CGRect)rect {
-	if (!_hasDrawn) {
-		// Add observers
-		[self addObserver:self forKeyPath:@"topColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"bottomColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"topBorderColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"bottomBorderColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"topInsetAlpha" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"bottomInsetAlpha" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"hasTopBorder" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"hasBottomBorder" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"showsInsets" options:NSKeyValueObservingOptionNew context:nil];
-		
-		// Draw gradient
-		[self _refreshGradient];
-		
-		_hasDrawn = YES;
-	}
-	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextClipToRect(context, rect);
 	
@@ -165,6 +134,40 @@
 		CGContextMoveToPoint(context, 0.0, rect.size.height);
 		CGContextAddLineToPoint(context, rect.size.width, rect.size.height);
 		CGContextStrokePath(context);
+	}
+}
+
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+	if (newSuperview) {
+		// Add observers
+		[self addObserver:self forKeyPath:@"topColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"bottomColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"topBorderColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"bottomBorderColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"topInsetAlpha" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"bottomInsetAlpha" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"hasTopBorder" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"hasBottomBorder" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"showsInsets" options:NSKeyValueObservingOptionNew context:nil];
+		
+		// Draw gradient
+		[self _refreshGradient];
+	} else {
+		// Remove observers
+		[self removeObserver:self forKeyPath:@"topColor"];
+		[self removeObserver:self forKeyPath:@"bottomColor"];
+		[self removeObserver:self forKeyPath:@"topBorderColor"];
+		[self removeObserver:self forKeyPath:@"bottomBorderColor"];
+		[self removeObserver:self forKeyPath:@"topInsetAlpha"];
+		[self removeObserver:self forKeyPath:@"bottomInsetAlpha"];
+		[self removeObserver:self forKeyPath:@"hasTopBorder"];
+		[self removeObserver:self forKeyPath:@"hasBottomBorder"];
+		[self removeObserver:self forKeyPath:@"showsInsets"];
+		
+		// Release gradient
+		CGGradientRelease(_gradient);
+		_gradient = nil;
 	}
 }
 

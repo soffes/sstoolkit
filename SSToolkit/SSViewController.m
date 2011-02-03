@@ -127,7 +127,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 	
 	if (_vignetteButton == nil) {
 		_vignetteButton = [[UIButton alloc] initWithFrame:CGRectZero];
-		[_vignetteButton setImage:[UIImage imageNamed:@"images/SSViewControllerModalVignetteiPad.png" bundle:@"SSToolkit.bundle"] forState:UIControlStateNormal];
+		[_vignetteButton setImage:[UIImage imageNamed:@"SSViewControllerModalVignetteiPad.png" bundle:kSSToolkitBundleName] forState:UIControlStateNormal];
 		_vignetteButton.adjustsImageWhenHighlighted = NO;
 		_vignetteButton.alpha = 0.0f;
 	}
@@ -136,7 +136,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 	[_vignetteButton fadeIn];
 	
 	if (_modalContainerBackgroundView == nil) {
-		UIImage *modalBackgroundImage = [[UIImage imageNamed:@"images/SSViewControllerFormBackground.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:43 topCapHeight:45];
+		UIImage *modalBackgroundImage = [[UIImage imageNamed:@"SSViewControllerFormBackground.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:43 topCapHeight:45];
 		_modalContainerBackgroundView = [[UIImageView alloc] initWithImage:modalBackgroundImage];
 		_modalContainerBackgroundView.autoresizesSubviews = NO;
 		_modalContainerBackgroundView.userInteractionEnabled = YES;

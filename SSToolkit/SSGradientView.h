@@ -35,7 +35,6 @@
 	
 @protected
 	
-	BOOL _hasDrawn;	
 	CGGradientRef _gradient;
 }
 

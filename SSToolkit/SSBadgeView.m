@@ -28,16 +28,6 @@
 #pragma mark NSObject
 
 - (void)dealloc {
-	[self removeObserver:self forKeyPath:@"text"];
-	[self removeObserver:self forKeyPath:@"textColor"];
-	[self removeObserver:self forKeyPath:@"highlightedTextColor"];
-	[self removeObserver:self forKeyPath:@"font"];
-	[self removeObserver:self forKeyPath:@"badgeColor"];
-	[self removeObserver:self forKeyPath:@"highlightedBadgeColor"];
-	[self removeObserver:self forKeyPath:@"cornerRadius"];
-	[self removeObserver:self forKeyPath:@"badgeAlignment"];
-	[self removeObserver:self forKeyPath:@"highlighted"];
-		
 	[_text release];
 	[_textColor release];
 	[_highlightedTextColor release];
@@ -64,28 +54,12 @@
 		self.cornerRadius = 10.0f;
 		self.badgeAlignment = SSBadgeViewAlignmentCenter;
 		self.highlighted = NO;
-		
-		_hasDrawn = NO;
 	}
 	return self;
 }
 
 
 - (void)drawRect:(CGRect)rect {
-	if (!_hasDrawn) {
-		[self addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"highlightedTextColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"font" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"badgeColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"highlightedBadgeColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"cornerRadius" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"badgeAlignment" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:nil];
-		
-		_hasDrawn = YES;
-	}
-	
 	UIColor *aTextColor = nil;
 	if (_highlighted) {
 		[_highlightedBadgeColor set];
@@ -123,6 +97,31 @@
 - (CGSize)sizeThatFits:(CGSize)size {
 	CGSize textSize = [self _textSize];
 	return CGSizeMake(fmaxf(textSize.width + 12.0f, 30.0f), textSize.height + 8.0f);
+}
+
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+	if (newSuperview) {
+		[self addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"highlightedTextColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"font" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"badgeColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"highlightedBadgeColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"cornerRadius" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"badgeAlignment" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:nil];
+	} else {
+		[self removeObserver:self forKeyPath:@"text"];
+		[self removeObserver:self forKeyPath:@"textColor"];
+		[self removeObserver:self forKeyPath:@"highlightedTextColor"];
+		[self removeObserver:self forKeyPath:@"font"];
+		[self removeObserver:self forKeyPath:@"badgeColor"];
+		[self removeObserver:self forKeyPath:@"highlightedBadgeColor"];
+		[self removeObserver:self forKeyPath:@"cornerRadius"];
+		[self removeObserver:self forKeyPath:@"badgeAlignment"];
+		[self removeObserver:self forKeyPath:@"highlighted"];
+	}
 }
 
 

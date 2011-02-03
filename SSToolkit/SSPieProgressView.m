@@ -46,14 +46,6 @@ CGFloat const kAngleOffset = -90.0f;
 
 
 - (void)drawRect:(CGRect)rect {
-	if (!_hasDrawn) {
-		[self addObserver:self forKeyPath:@"pieBorderWidth" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"pieBorderColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"pieFillColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"pieBackgroundColor" options:NSKeyValueObservingOptionNew context:nil];
-		_hasDrawn = YES;
-	}
-	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextClipToRect(context, rect);
 	
@@ -82,6 +74,21 @@ CGFloat const kAngleOffset = -90.0f;
 	CGContextSetLineWidth(context, _pieBorderWidth);
 	CGRect pieInnerRect = CGRectMake(_pieBorderWidth / 2.0f, _pieBorderWidth / 2.0f, rect.size.width - _pieBorderWidth, rect.size.height - _pieBorderWidth);
 	CGContextStrokeEllipseInRect(context, pieInnerRect);	
+}
+
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+	if (newSuperview) {
+		[self addObserver:self forKeyPath:@"pieBorderWidth" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"pieBorderColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"pieFillColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"pieBackgroundColor" options:NSKeyValueObservingOptionNew context:nil];
+	} else {
+		[self removeObserver:self forKeyPath:@"pieBorderWidth"];
+		[self removeObserver:self forKeyPath:@"pieBorderColor"];
+		[self removeObserver:self forKeyPath:@"pieFillColor"];
+		[self removeObserver:self forKeyPath:@"pieBackgroundColor"];
+	}
 }
 
 

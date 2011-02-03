@@ -36,10 +36,6 @@ typedef enum {
 	CGFloat _cornerRadius;
 	SSBadgeViewAlignment _badgeAlignment;
 	BOOL _highlighted;
-	
-@protected
-	
-	BOOL _hasDrawn;
 }
 
 /**

@@ -16,10 +16,6 @@
 	UIColor *_pieBorderColor;
 	UIColor *_pieFillColor;
 	UIColor *_pieBackgroundColor;
-	
-@private
-	
-	BOOL _hasDrawn;
 }
 
 /**

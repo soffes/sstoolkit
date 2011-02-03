@@ -175,7 +175,8 @@
 		SSCollectionViewItem *item = [_dataSource collectionView:self itemForIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
 		
 		if (item == nil) {
-			NSException *exception = [NSException exceptionWithName:NSInternalInconsistencyException reason:@"SSCollectionView dataSource must return an item from collectionView:itemForIndexPath:" userInfo:nil];
+			NSException *exception = [NSException exceptionWithName:kSSCollectionViewNilItemExceptionName 
+															 reason:kSSCollectionViewNilItemExceptionReason userInfo:nil];
 			[exception raise];
 			return;
 		}
@@ -228,10 +229,8 @@
 		SSCollectionViewItem *newItem = [_dataSource collectionView:self itemForIndexPath:indexPaths];
 		
 		if (newItem == nil) {
-			NSException *exception = [NSException exceptionWithName:NSInternalInconsistencyException
-															 reason:@"SSCollectionView dataSource must return an item from collectionView:itemForIndexPath:"
-														   userInfo:nil];
-			
+			NSException *exception = [NSException exceptionWithName:kSSCollectionViewNilItemExceptionName 
+															 reason:kSSCollectionViewNilItemExceptionReason userInfo:nil];
 			[exception raise];
 			return;
 		}

@@ -254,25 +254,25 @@
 		case SSSwitchStyleDefault: {
 			NSInteger leftCap = 8;
 			
-			self.leftHandleImage = [[UIImage imageNamed:@"images/UISwitchButtonRightShadowed.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
-			self.leftHandleImageHighlighted = [[UIImage imageNamed:@"images/UISwitchButtonRightShadowedDown.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
-			self.centerHandleImage = [[UIImage imageNamed:@"images/UISwitchButtonFullShadowed.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
-			self.centerHandleImageHighlighted = [[UIImage imageNamed:@"images/UISwitchButtonFullShadowedDown.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
-			self.rightHandleImage = [[UIImage imageNamed:@"images/UISwitchButtonLeftShadowed.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
-			self.rightHandleImageHighlighted = [[UIImage imageNamed:@"images/UISwitchButtonLeftShadowedDown.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.leftHandleImage = [[UIImage imageNamed:@"UISwitchButtonRightShadowed.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.leftHandleImageHighlighted = [[UIImage imageNamed:@"UISwitchButtonRightShadowedDown.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.centerHandleImage = [[UIImage imageNamed:@"UISwitchButtonFullShadowed.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.centerHandleImageHighlighted = [[UIImage imageNamed:@"UISwitchButtonFullShadowedDown.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.rightHandleImage = [[UIImage imageNamed:@"UISwitchButtonLeftShadowed.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.rightHandleImageHighlighted = [[UIImage imageNamed:@"UISwitchButtonLeftShadowedDown.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
 			
 			self.handleWidth = 42;
 			self.handleLeftCapWidth = leftCap;
 			self.handleShadowWidth = 2;
 			
-			self.onBackgroundImageView.image = [[UIImage imageNamed:@"images/UISwitchTrackBlue.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
+			self.onBackgroundImageView.image = [[UIImage imageNamed:@"UISwitchTrackBlue.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
 
 			self.onLabel.textColor = [UIColor whiteColor];
 			self.onLabel.font = [UIFont boldSystemFontOfSize:16.0f];
 			self.onLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.5f];
 			self.onLabel.shadowOffset = CGSizeMake(0.0f, -1.0f);
 			
-			self.offBackgroundImageView.image = [[UIImage imageNamed:@"images/UISwitchTrackClear.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
+			self.offBackgroundImageView.image = [[UIImage imageNamed:@"UISwitchTrackClear.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
 			
 			self.offLabel.textColor = [UIColor colorWithWhite:0.475f alpha:1.0f];
 			self.offLabel.font = [UIFont boldSystemFontOfSize:16.0f];
@@ -284,7 +284,7 @@
 		}
 			
 		case SSSwitchStyleAirplane: {
-			self.onBackgroundImageView.image = [[UIImage imageNamed:@"images/UISwitchTrackOrange.png" bundle:@"SSToolkit.bundle"] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
+			self.onBackgroundImageView.image = [[UIImage imageNamed:@"UISwitchTrackOrange.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
 			break;
 		}
 	}

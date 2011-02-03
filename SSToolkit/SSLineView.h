@@ -18,10 +18,6 @@
 	UIColor *_lineColor;
 	UIColor *_insetColor;
 	BOOL _showInset;
-	
-@private
-	
-	BOOL _hasDrawn;
 }
 
 /**
