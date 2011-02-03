@@ -146,7 +146,7 @@
 	}
 	
 	// TODO: Improve
-	self.numberOfStars = roundf((point.x - left) / (_starSize.width + _starSpacing));
+	self.numberOfStars = ceilf((point.x - left) / (_starSize.width + _starSpacing));
 }
 
 
