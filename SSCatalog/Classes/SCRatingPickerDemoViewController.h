@@ -12,4 +12,6 @@
 
 + (NSString *)title;
 
+- (void)ratingChanged:(id)sender;
+
 @end

@@ -6,9 +6,7 @@
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
-#import "SSGradientView.h"
-
-@interface SSRatingPicker : SSGradientView {
+@interface SSRatingPicker : UIControl {
 
 	CGFloat _numberOfStars;
 	NSUInteger _totalNumberOfStars;
@@ -17,7 +15,6 @@
 	CGSize _starSize;
 	CGFloat _starSpacing;
 	UILabel *_textLabel;
-	BOOL _enableHalfStars;
 }
 
 @property (nonatomic, assign) CGFloat numberOfStars;
@@ -27,6 +24,5 @@
 @property (nonatomic, assign) CGSize starSize;
 @property (nonatomic, assign) CGFloat starSpacing;
 @property (nonatomic, retain) UILabel *textLabel;
-@property (nonatomic, assign) BOOL enableHalfStars;
 
 @end
