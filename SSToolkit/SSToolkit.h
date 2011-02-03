@@ -31,6 +31,7 @@
 // Controls
 #import "SSTextField.h"
 #import "SSTextView.h"
+#import "SSStarsSelector.h"
 #import "SSSwitch.h"
 
 // View Controllers
@@ -67,6 +68,7 @@
 // Controls
 #import <SSToolkit/SSTextField.h>
 #import <SSToolkit/SSTextView.h>
+#import <SSToolkit/SSStarSelector.h>
 #import <SSToolkit/SSSwitch.h>
 
 // View Controllers

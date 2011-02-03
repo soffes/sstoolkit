@@ -50,6 +50,7 @@ static NSString *const kClassesKey =  @"classes";
 						 nil],
 						[NSDictionary dictionaryWithObjectsAndKeys:
 						 [NSArray arrayWithObjects:
+						  @"SCStarSelectorDemoViewController",
 						  @"SCSwitchDemoViewController",
 						  nil], kClassesKey,
 						 @"Controls", kTitleKey,
