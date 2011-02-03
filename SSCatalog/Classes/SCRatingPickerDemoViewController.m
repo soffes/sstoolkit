@@ -1,20 +1,20 @@
 //
-//  SCStarSelectorDemoViewController.m
+//  SCRatingPickerDemoViewController.m
 //  SSCatalog
 //
 //  Created by Sam Soffes on 2/2/11.
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
-#import "SCStarSelectorDemoViewController.h"
-#import <SSToolkit/SSStarsSelector.h>
+#import "SCRatingPickerDemoViewController.h"
+#import <SSToolkit/SSRatingPicker.h>
 
-@implementation SCStarSelectorDemoViewController
+@implementation SCRatingPickerDemoViewController
 
 #pragma mark Class Methods
 
 + (NSString *)title {
-	return @"Star Selector";
+	return @"Rating Picker";
 }
 
 
@@ -25,7 +25,7 @@
 	self.title = [[self class] title];
 	self.view.backgroundColor = [UIColor whiteColor];
 	
-	SSStarsSelector *selector = [[SSStarsSelector alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 48.0f)];
+	SSRatingPicker *selector = [[SSRatingPicker alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 48.0f)];
 	selector.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
 	[self.view addSubview:selector];
 	[selector release];

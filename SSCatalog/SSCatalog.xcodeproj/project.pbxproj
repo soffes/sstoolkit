@@ -28,7 +28,7 @@
 		B27B1CD612248F9D00111EA2 /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CCC12248F9D00111EA2 /* Icon-57.png */; };
 		B27B1CD712248F9D00111EA2 /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CCD12248F9D00111EA2 /* Icon-114.png */; };
 		B27B1CD812248F9D00111EA2 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B27B1CCE12248F9D00111EA2 /* iTunesArtwork */; };
-		B282192112FA7B8800BAF3C6 /* SCStarSelectorDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B282192012FA7B8800BAF3C6 /* SCStarSelectorDemoViewController.m */; };
+		B282192112FA7B8800BAF3C6 /* SCRatingPickerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B282192012FA7B8800BAF3C6 /* SCRatingPickerDemoViewController.m */; };
 		B2B3CEEF1296F78D001BAC94 /* SCSwitchDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */; };
 		B2B3CF561296FA76001BAC94 /* SSToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B2B3CF551296FA76001BAC94 /* SSToolkit.bundle */; };
 		B2E0323F121DC49700D02434 /* libSSToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B24E9ECA121DC3CF0085F81E /* libSSToolkit.a */; };
@@ -92,8 +92,8 @@
 		B27B1CCD12248F9D00111EA2 /* Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-114.png"; sourceTree = "<group>"; };
 		B27B1CCE12248F9D00111EA2 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		B27B1CCF12248F9D00111EA2 /* SSCatalog-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SSCatalog-Info.plist"; sourceTree = "<group>"; };
-		B282191F12FA7B8800BAF3C6 /* SCStarSelectorDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCStarSelectorDemoViewController.h; sourceTree = "<group>"; };
-		B282192012FA7B8800BAF3C6 /* SCStarSelectorDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCStarSelectorDemoViewController.m; sourceTree = "<group>"; };
+		B282191F12FA7B8800BAF3C6 /* SCRatingPickerDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRatingPickerDemoViewController.h; sourceTree = "<group>"; };
+		B282192012FA7B8800BAF3C6 /* SCRatingPickerDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRatingPickerDemoViewController.m; sourceTree = "<group>"; };
 		B2B3CEED1296F78D001BAC94 /* SCSwitchDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSwitchDemoViewController.h; sourceTree = "<group>"; };
 		B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSwitchDemoViewController.m; sourceTree = "<group>"; };
 		B2B3CF551296FA76001BAC94 /* SSToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SSToolkit.bundle; path = ../Resources/SSToolkit.bundle; sourceTree = SOURCE_ROOT; };
@@ -244,8 +244,8 @@
 		B2B3CEFF1296F88B001BAC94 /* Control Demos */ = {
 			isa = PBXGroup;
 			children = (
-				B282191F12FA7B8800BAF3C6 /* SCStarSelectorDemoViewController.h */,
-				B282192012FA7B8800BAF3C6 /* SCStarSelectorDemoViewController.m */,
+				B282191F12FA7B8800BAF3C6 /* SCRatingPickerDemoViewController.h */,
+				B282192012FA7B8800BAF3C6 /* SCRatingPickerDemoViewController.m */,
 				B2B3CEED1296F78D001BAC94 /* SCSwitchDemoViewController.h */,
 				B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */,
 			);
@@ -355,7 +355,7 @@
 				B257303D1292524F001FC061 /* SCLoadingViewDemoViewController.m in Sources */,
 				B2B3CEEF1296F78D001BAC94 /* SCSwitchDemoViewController.m in Sources */,
 				E7FD242712F4FFC5006A6691 /* SCBadgeTableViewCellDemoViewController.m in Sources */,
-				B282192112FA7B8800BAF3C6 /* SCStarSelectorDemoViewController.m in Sources */,
+				B282192112FA7B8800BAF3C6 /* SCRatingPickerDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

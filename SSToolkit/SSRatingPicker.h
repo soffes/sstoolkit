@@ -1,5 +1,5 @@
 //
-//  SSStarsSelector.h
+//  SSRatingPicker.h
 //  SSToolkit
 //
 //  Created by Sam Soffes on 2/2/11.
@@ -8,7 +8,7 @@
 
 #import "SSGradientView.h"
 
-@interface SSStarsSelector : SSGradientView {
+@interface SSRatingPicker : SSGradientView {
 
 	CGFloat _numberOfStars;
 	NSUInteger _totalNumberOfStars;
