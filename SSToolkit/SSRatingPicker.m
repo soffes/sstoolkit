@@ -106,7 +106,6 @@
 		[self addObserver:self forKeyPath:@"starSpacing" options:NSKeyValueObservingOptionNew context:nil];
 	} else {
 		[self removeObserver:self forKeyPath:@"frame"];
-		[self removeObserver:self forKeyPath:@"backgroundView"];
 		[self removeObserver:self forKeyPath:@"numberOfStars"];
 		[self removeObserver:self forKeyPath:@"totalNumberOfStars"];
 		[self removeObserver:self forKeyPath:@"emptyStarImage"];
