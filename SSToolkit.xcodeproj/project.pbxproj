@@ -6,21 +6,6 @@
 	objectVersion = 45;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		B270BB1012DD8564001678EE /* Documentation */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = B270BB2012DD85B0001678EE /* Build configuration list for PBXAggregateTarget "Documentation" */;
-			buildPhases = (
-				B270BB0F12DD8564001678EE /* ShellScript */,
-			);
-			dependencies = (
-				B270BB1412DD8567001678EE /* PBXTargetDependency */,
-			);
-			name = Documentation;
-			productName = Documentation;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		B207C63712EA209100412418 /* SSWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = B207C63512EA209100412418 /* SSWindow.h */; };
@@ -97,6 +82,8 @@
 		B28218BF12FA6AE100BAF3C6 /* SSToolkitDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = B28218BD12FA6AE100BAF3C6 /* SSToolkitDefines.m */; };
 		B28219DD12FA8EB500BAF3C6 /* SSRatingPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = B28219DB12FA8EB500BAF3C6 /* SSRatingPicker.h */; };
 		B28219DE12FA8EB500BAF3C6 /* SSRatingPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B28219DC12FA8EB500BAF3C6 /* SSRatingPicker.m */; };
+		B28C6D0712FBE5C400667755 /* SSRatingPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B28C6D0512FBE5C400667755 /* SSRatingPickerViewController.h */; };
+		B28C6D0812FBE5C400667755 /* SSRatingPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28C6D0612FBE5C400667755 /* SSRatingPickerViewController.m */; };
 		B2AAE65C1281B73E0068EE7F /* SSNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */; };
 		B2AAE65D1281B73E0068EE7F /* SSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */; };
 		B2AE1134126F963300534CF2 /* UIApplication+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */; };
@@ -108,16 +95,6 @@
 		B2EA9F6212F4A5E100C929D6 /* SSBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2EA9F6012F4A5E100C929D6 /* SSBadgeView.h */; };
 		B2EA9F6312F4A5E100C929D6 /* SSBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EA9F6112F4A5E100C929D6 /* SSBadgeView.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		B270BB1312DD8567001678EE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = SSToolkit;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -196,6 +173,8 @@
 		B28218BD12FA6AE100BAF3C6 /* SSToolkitDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSToolkitDefines.m; sourceTree = "<group>"; };
 		B28219DB12FA8EB500BAF3C6 /* SSRatingPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRatingPicker.h; sourceTree = "<group>"; };
 		B28219DC12FA8EB500BAF3C6 /* SSRatingPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRatingPicker.m; sourceTree = "<group>"; };
+		B28C6D0512FBE5C400667755 /* SSRatingPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRatingPickerViewController.h; sourceTree = "<group>"; };
+		B28C6D0612FBE5C400667755 /* SSRatingPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRatingPickerViewController.m; sourceTree = "<group>"; };
 		B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSNavigationController.h; sourceTree = "<group>"; };
 		B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSNavigationController.m; sourceTree = "<group>"; };
 		B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+SSToolkitAdditions.h"; sourceTree = "<group>"; };
@@ -376,6 +355,8 @@
 				B24E9E27121DC29A0085F81E /* SSModalViewController.h */,
 				B24E9E28121DC29A0085F81E /* SSPickerViewController.h */,
 				B24E9E29121DC29A0085F81E /* SSPickerViewController.m */,
+				B28C6D0512FBE5C400667755 /* SSRatingPickerViewController.h */,
+				B28C6D0612FBE5C400667755 /* SSRatingPickerViewController.m */,
 				B20AC0671267988600687143 /* SSTableViewController.h */,
 				B20AC0681267988600687143 /* SSTableViewController.m */,
 				B24E9E31121DC29A0085F81E /* SSViewController.h */,
@@ -471,6 +452,7 @@
 				B2EA9F6212F4A5E100C929D6 /* SSBadgeView.h in Headers */,
 				B28218BE12FA6AE100BAF3C6 /* SSToolkitDefines.h in Headers */,
 				B28219DD12FA8EB500BAF3C6 /* SSRatingPicker.h in Headers */,
+				B28C6D0712FBE5C400667755 /* SSRatingPickerViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,26 +500,9 @@
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* SSToolkit */,
-				B270BB1012DD8564001678EE /* Documentation */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		B270BB0F12DD8564001678EE /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "rake --rakefile Documentation/Rakefile";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D2AAC07B0554694100DB518D /* Sources */ = {
@@ -583,18 +548,11 @@
 				B2EA9F6312F4A5E100C929D6 /* SSBadgeView.m in Sources */,
 				B28218BF12FA6AE100BAF3C6 /* SSToolkitDefines.m in Sources */,
 				B28219DE12FA8EB500BAF3C6 /* SSRatingPicker.m in Sources */,
+				B28C6D0812FBE5C400667755 /* SSRatingPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B270BB1412DD8567001678EE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D2AAC07D0554694100DB518D /* SSToolkit */;
-			targetProxy = B270BB1312DD8567001678EE /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB921F08733DC00010E9CD /* Debug */ = {
@@ -700,49 +658,6 @@
 			};
 			name = Release;
 		};
-		B270BB1112DD8564001678EE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_MISSING_PARENTHESES = YES;
-				GCC_WARN_PROTOTYPE_CONVERSION = YES;
-				GCC_WARN_SHADOW = YES;
-				GCC_WARN_SIGN_COMPARE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNKNOWN_PRAGMAS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_LABEL = YES;
-				GCC_WARN_UNUSED_VALUE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				OTHER_LDFLAGS = "-all_load";
-				PREBINDING = NO;
-				PRODUCT_NAME = Documentation;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "../SCFoundation/Sources/** ../SCModel/Sources/** ../SCAPI/Sources/**";
-			};
-			name = Debug;
-		};
-		B270BB1212DD8564001678EE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = Documentation;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -760,15 +675,6 @@
 			buildConfigurations = (
 				1DEB922308733DC00010E9CD /* Debug */,
 				1DEB922408733DC00010E9CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B270BB2012DD85B0001678EE /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B270BB1112DD8564001678EE /* Debug */,
-				B270BB1212DD8564001678EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

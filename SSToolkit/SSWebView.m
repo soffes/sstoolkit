@@ -445,8 +445,6 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 			return (UIScrollView *)view;
 		}
 	}
-	
-//	NSLog(@"Failed to find UIScrollView for SSWebView");
 	return nil;
 }
 
