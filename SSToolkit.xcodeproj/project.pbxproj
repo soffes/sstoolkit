@@ -74,6 +74,10 @@
 		B24E9E80121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E42121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m */; };
 		B267D3451226CE0400B66519 /* SSCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B267D3431226CE0400B66519 /* SSCollectionViewController.h */; };
 		B267D3461226CE0400B66519 /* SSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B267D3441226CE0400B66519 /* SSCollectionViewController.m */; };
+		B279539912FC67E300FFE28D /* UIScreen+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B279539712FC67E300FFE28D /* UIScreen+SSToolkitAdditions.h */; };
+		B279539A12FC67E300FFE28D /* UIScreen+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B279539812FC67E300FFE28D /* UIScreen+SSToolkitAdditions.m */; };
+		B279539E12FC6C6F00FFE28D /* SSRatingPickerScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = B279539C12FC6C6F00FFE28D /* SSRatingPickerScrollView.h */; };
+		B279539F12FC6C6F00FFE28D /* SSRatingPickerScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B279539D12FC6C6F00FFE28D /* SSRatingPickerScrollView.m */; };
 		B27B1A1B12241D3400111EA2 /* SSCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = B27B1A1912241D3400111EA2 /* SSCollectionView.h */; };
 		B27B1A1C12241D3400111EA2 /* SSCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B1A1A12241D3400111EA2 /* SSCollectionView.m */; };
 		B27B1A2212241D6F00111EA2 /* SSCollectionViewItem.h in Headers */ = {isa = PBXBuildFile; fileRef = B27B1A2012241D6F00111EA2 /* SSCollectionViewItem.h */; };
@@ -165,6 +169,10 @@
 		B24E9E42121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B267D3431226CE0400B66519 /* SSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewController.h; sourceTree = "<group>"; };
 		B267D3441226CE0400B66519 /* SSCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionViewController.m; sourceTree = "<group>"; };
+		B279539712FC67E300FFE28D /* UIScreen+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+SSToolkitAdditions.h"; sourceTree = "<group>"; };
+		B279539812FC67E300FFE28D /* UIScreen+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+SSToolkitAdditions.m"; sourceTree = "<group>"; };
+		B279539C12FC6C6F00FFE28D /* SSRatingPickerScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRatingPickerScrollView.h; sourceTree = "<group>"; };
+		B279539D12FC6C6F00FFE28D /* SSRatingPickerScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRatingPickerScrollView.m; sourceTree = "<group>"; };
 		B27B1A1912241D3400111EA2 /* SSCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionView.h; sourceTree = "<group>"; };
 		B27B1A1A12241D3400111EA2 /* SSCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionView.m; sourceTree = "<group>"; };
 		B27B1A2012241D6F00111EA2 /* SSCollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewItem.h; sourceTree = "<group>"; };
@@ -258,6 +266,7 @@
 				B2601A78122307CD005506D5 /* View Controllers */,
 				B2601A791223086D005506D5 /* Controls */,
 				B2601A8A122308E2005506D5 /* Misc */,
+				B279539B12FC6BD400FFE28D /* Private */,
 				B2601A6F12230794005506D5 /* Categories */,
 			);
 			path = SSToolkit;
@@ -304,6 +313,8 @@
 				B24E9E3A121DC29A0085F81E /* UIDevice+SSToolkitAdditions.m */,
 				B24E9E3B121DC29A0085F81E /* UIImage+SSToolkitAdditions.h */,
 				B24E9E3C121DC29A0085F81E /* UIImage+SSToolkitAdditions.m */,
+				B279539712FC67E300FFE28D /* UIScreen+SSToolkitAdditions.h */,
+				B279539812FC67E300FFE28D /* UIScreen+SSToolkitAdditions.m */,
 				B24E9E3D121DC29A0085F81E /* UIScrollView+SSToolkitAdditions.h */,
 				B24E9E3E121DC29A0085F81E /* UIScrollView+SSToolkitAdditions.m */,
 				B24E9E3F121DC29A0085F81E /* UIView+SSToolkitAdditions.h */,
@@ -393,6 +404,15 @@
 			name = Misc;
 			sourceTree = "<group>";
 		};
+		B279539B12FC6BD400FFE28D /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				B279539C12FC6C6F00FFE28D /* SSRatingPickerScrollView.h */,
+				B279539D12FC6C6F00FFE28D /* SSRatingPickerScrollView.m */,
+			);
+			name = Private;
+			sourceTree = "<group>";
+		};
 		B2EA9F5B12F4A5B900C929D6 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,6 +473,8 @@
 				B28218BE12FA6AE100BAF3C6 /* SSToolkitDefines.h in Headers */,
 				B28219DD12FA8EB500BAF3C6 /* SSRatingPicker.h in Headers */,
 				B28C6D0712FBE5C400667755 /* SSRatingPickerViewController.h in Headers */,
+				B279539912FC67E300FFE28D /* UIScreen+SSToolkitAdditions.h in Headers */,
+				B279539E12FC6C6F00FFE28D /* SSRatingPickerScrollView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +571,8 @@
 				B28218BF12FA6AE100BAF3C6 /* SSToolkitDefines.m in Sources */,
 				B28219DE12FA8EB500BAF3C6 /* SSRatingPicker.m in Sources */,
 				B28C6D0812FBE5C400667755 /* SSRatingPickerViewController.m in Sources */,
+				B279539A12FC67E300FFE28D /* UIScreen+SSToolkitAdditions.m in Sources */,
+				B279539F12FC6C6F00FFE28D /* SSRatingPickerScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

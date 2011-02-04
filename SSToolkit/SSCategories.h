@@ -25,7 +25,8 @@
 #import "UIControl+SSToolkitAdditions.h"
 #import "UIDevice+SSToolkitAdditions.h"
 #import "UIImage+SSToolkitAdditions.h"
-#import "UIScrollview+SSToolkitAdditions.h"
+#import "UIScreen+SSToolkitAdditions.h"
+#import "UIScrollView+SSToolkitAdditions.h"
 #import "UIView+SSToolkitAdditions.h"
 #import "UIViewController+SSToolkitAdditions.h"
 
@@ -45,7 +46,8 @@
 #import <SSToolkit/UIControl+SSToolkitAdditions.h>
 #import <SSToolkit/UIDevice+SSToolkitAdditions.h>
 #import <SSToolkit/UIImage+SSToolkitAdditions.h>
-#import <SSToolkit/UIScrollview+SSToolkitAdditions.h>
+#import <SSToolkit/UIScreen+SSToolkitAdditions.h>
+#import <SSToolkit/UIScrollView+SSToolkitAdditions.h>
 #import <SSToolkit/UIView+SSToolkitAdditions.h>
 #import <SSToolkit/UIViewController+SSToolkitAdditions.h>
 

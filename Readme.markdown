@@ -27,7 +27,8 @@ If you're using this in your project, I'd love to hear about it! [Send me an ema
 ### View Controllers
 
 * [SSCollectionViewController][] - manage a collection view
-* [SSPickerViewController][] - easily create picker view controllers like the Settings app
+* [SSPickerViewController][] - easily create picker view controllers like the Settings.app
+* [SSRatingPickerViewController][] - simple view controller for rating stuff like App Store.app
 * [SSViewController][] - custom modal craziness
 
 ### Misc
@@ -103,23 +104,24 @@ Here are some related libraries. Some of these used to be part of SSToolkit.
 
 Huge thanks to [our contributors](http://github.com/samsoffes/sstoolkit/contributors), [Jake Marsh](http://deallocatedobjects.com), and [Mike Rundle](http://flyosity.com).
 
-[SSViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSViewController.h
-[SSPickerViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSPickerViewController.h
-[SSHUDView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSHUDView.h
-[SSCollectionView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSCollectionView.h
-[SSGradientView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSGradientView.h
-[SSLabel]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSLabel.h
-[SSLineView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSLineView.h
-[SSLoadingView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSLoadingView.h
-[SSPieProgressView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSPieProgressView.h
+[SSViewController]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSViewController.h
+[SSPickerViewController]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSPickerViewController.h
+[SSHUDView]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSHUDView.h
+[SSCollectionView]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSCollectionView.h
+[SSGradientView]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSGradientView.h
+[SSLabel]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSLabel.h
+[SSLineView]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSLineView.h
+[SSLoadingView]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSLoadingView.h
+[SSPieProgressView]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSPieProgressView.h
 [SSTextField]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTextField.h
-[SSWebView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSWebView.h
-[SSCollectionViewController]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSCollectionViewController.h
-[SSTextField]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTextField.h
-[SSTextView]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTextView.h
-[SSTableViewCell]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTableViewCell.h
-[SSDrawingMacros]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSDrawingMacros.h
+[SSWebView]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSWebView.h
+[SSCollectionViewController]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSCollectionViewController.h
+[SSTextField]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTextField.h
+[SSTextView]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTextView.h
+[SSTableViewCell]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTableViewCell.h
+[SSDrawingMacros]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSDrawingMacros.h
 [SSConcurrentOperation]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSConcurrentOperation.h
-[SSKeychain]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSKeychain.h
+[SSKeychain]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSKeychain.h
 [SSCatalog]: https://github.com/samsoffes/sstoolkit/tree/master/SSCatalog/
 [SSBadgeTableViewCell]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSBadgeView.h
+[SSRatingPickerViewController]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSRatingPickerViewController.h
