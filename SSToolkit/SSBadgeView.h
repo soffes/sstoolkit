@@ -41,7 +41,8 @@ typedef enum {
 /**
  @brief Display value.
 
- The default value of this property is "0".
+ The default value of this property is "0". If this property is set to <code>nil</code> or an empty string, the receiver
+ will automatically hide itself.
  */
 @property (nonatomic, copy) NSString *text;
 
@@ -104,5 +105,12 @@ typedef enum {
  The default value of this property is <code>NO</code>.
  */
 @property (nonatomic, assign, getter=isHighlighted) BOOL highlighted;
+
+/**
+ @brief The default badge color.
+ 
+ @return A color with its value set to the default badge color.
+ */
++ (UIColor *)defaultBadgeColor;
 
 @end

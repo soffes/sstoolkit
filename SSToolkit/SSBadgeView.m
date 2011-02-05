@@ -25,6 +25,13 @@
 @synthesize badgeAlignment = _badgeAlignment;
 @synthesize highlighted = _highlighted;
 
+#pragma mark Class Methods
+
++ (UIColor *)defaultBadgeColor {
+	return [UIColor colorWithRed:0.541f green:0.596f blue:0.694f alpha:1.0f];
+}
+
+
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -49,7 +56,7 @@
 		self.textColor = [UIColor whiteColor];
 		self.highlightedTextColor = [UIColor colorWithRed:0.125f green:0.369f blue:0.871f alpha:1.0f];
 		self.font = [UIFont boldSystemFontOfSize:16.0f];
-		self.badgeColor = [UIColor colorWithRed:0.541f green:0.596f blue:0.694f alpha:1.0f];
+		self.badgeColor = [[self class] defaultBadgeColor];
 		self.highlightedBadgeColor = [UIColor whiteColor];
 		self.cornerRadius = 10.0f;
 		self.badgeAlignment = SSBadgeViewAlignmentCenter;
@@ -129,6 +136,16 @@
 
 - (CGSize)_textSize {
 	return [_text sizeWithFont:_font];
+}
+
+
+#pragma mark Setters
+
+- (void)setText:(NSString *)text {
+	[_text release];
+	_text = [text copy];
+	
+	self.hidden = ([_text length] == 0);
 }
 
 
