@@ -210,22 +210,22 @@
 		B27B1B0312246B4E00111EA2 /* View Demos */ = {
 			isa = PBXGroup;
 			children = (
+				E7FD242512F4FFC5006A6691 /* SCBadgeTableViewCellDemoViewController.h */,
+				E7FD242612F4FFC5006A6691 /* SCBadgeTableViewCellDemoViewController.m */,
 				B27B1A561224228000111EA2 /* SCCollectionViewDemoViewController.h */,
 				B27B1A571224228000111EA2 /* SCCollectionViewDemoViewController.m */,
 				B24E9E9A121DC35B0085F81E /* SCGradientViewDemoViewController.h */,
 				B24E9E9B121DC35B0085F81E /* SCGradientViewDemoViewController.m */,
 				B24E9E9C121DC35B0085F81E /* SCHUDViewDemoViewController.h */,
 				B24E9E9D121DC35B0085F81E /* SCHUDViewDemoViewController.m */,
-				B24E9E9E121DC35B0085F81E /* SCLineViewDemoViewController.h */,
-				B24E9E9F121DC35B0085F81E /* SCLineViewDemoViewController.m */,
-				B24E9EA6121DC35B0085F81E /* SCPieProgressViewDemoViewController.h */,
-				B24E9EA7121DC35B0085F81E /* SCPieProgressViewDemoViewController.m */,
 				B2572FEA12924C28001FC061 /* SCIndicatorLabelDemoViewController.h */,
 				B2572FEB12924C28001FC061 /* SCIndicatorLabelDemoViewController.m */,
+				B24E9E9E121DC35B0085F81E /* SCLineViewDemoViewController.h */,
+				B24E9E9F121DC35B0085F81E /* SCLineViewDemoViewController.m */,
 				B257303B1292524F001FC061 /* SCLoadingViewDemoViewController.h */,
 				B257303C1292524F001FC061 /* SCLoadingViewDemoViewController.m */,
-				E7FD242512F4FFC5006A6691 /* SCBadgeTableViewCellDemoViewController.h */,
-				E7FD242612F4FFC5006A6691 /* SCBadgeTableViewCellDemoViewController.m */,
+				B24E9EA6121DC35B0085F81E /* SCPieProgressViewDemoViewController.h */,
+				B24E9EA7121DC35B0085F81E /* SCPieProgressViewDemoViewController.m */,
 			);
 			name = "View Demos";
 			sourceTree = "<group>";

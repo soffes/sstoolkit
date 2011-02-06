@@ -37,14 +37,14 @@ static NSString *const kClassesKey =  @"classes";
     _viewControllers = [[NSArray alloc] initWithObjects:
 						[NSDictionary dictionaryWithObjectsAndKeys:
 						 [NSArray arrayWithObjects:
+						  @"SCBadgeTableViewCellDemoViewController",
 						  @"SCCollectionViewDemoViewController",
 						  @"SCGradientViewDemoViewController",
 						  @"SCHUDViewDemoViewController",
+						  @"SCIndicatorLabelDemoViewController",
 						  @"SCLineViewDemoViewController",
 						  @"SCLoadingViewDemoViewController",
 						  @"SCPieProgressViewDemoViewController",
-						  @"SCIndicatorLabelDemoViewController",
-						  @"SCBadgeTableViewCellDemoViewController",
 						  nil], kClassesKey,
 						 @"Views", kTitleKey,
 						 nil],
