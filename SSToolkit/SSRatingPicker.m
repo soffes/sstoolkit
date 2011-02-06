@@ -35,6 +35,18 @@
 }
 
 
+#pragma mark UIResponder
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self _setNumberOfStarsWithTouch:[touches anyObject]];
+}
+
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self _setNumberOfStarsWithTouch:[touches anyObject]];
+}
+
+
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)rect {
@@ -113,16 +125,6 @@
 		[self removeObserver:self forKeyPath:@"starSize"];
 		[self removeObserver:self forKeyPath:@"starSpacing"];
 	}
-}
-
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	[self _setNumberOfStarsWithTouch:[touches anyObject]];
-}
-
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	[self _setNumberOfStarsWithTouch:[touches anyObject]];
 }
 
 
