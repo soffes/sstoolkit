@@ -26,6 +26,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
 		_badgeView = [[SSBadgeView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 55.0f, 20.0f)];
+		_badgeView.backgroundColor = [UIColor clearColor];
 		_badgeView.badgeAlignment = SSBadgeViewAlignmentRight;
 		self.accessoryView = _badgeView;
 	}
