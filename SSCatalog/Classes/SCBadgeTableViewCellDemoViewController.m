@@ -74,6 +74,7 @@
 		switch (indexPath.row) {
 			case 0: {
 				cell.textLabel.text = @"Default Badge View";
+				cell.badgeView.text = @"0";
 				cell.badgeView.badgeColor = [SSBadgeView defaultBadgeColor];
 				break;
 			}
