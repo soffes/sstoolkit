@@ -18,6 +18,8 @@
 		B21D2E00121F2FE500161E66 /* SSDrawingMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = B21D2DFF121F2FE500161E66 /* SSDrawingMacros.m */; };
 		B227D2EA124931590078A059 /* NSDictionary+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B227D2E8124931590078A059 /* NSDictionary+SSToolkitAdditions.h */; };
 		B227D2EB124931590078A059 /* NSDictionary+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227D2E9124931590078A059 /* NSDictionary+SSToolkitAdditions.m */; };
+		B247ABAE1300930200971EC0 /* SSSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = B247ABAC1300930200971EC0 /* SSSegmentedControl.h */; };
+		B247ABAF1300930200971EC0 /* SSSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B247ABAD1300930200971EC0 /* SSSegmentedControl.m */; };
 		B24E9E43121DC29A0085F81E /* NSArray+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E05121DC29A0085F81E /* NSArray+SSToolkitAdditions.h */; };
 		B24E9E44121DC29A0085F81E /* NSArray+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E06121DC29A0085F81E /* NSArray+SSToolkitAdditions.m */; };
 		B24E9E45121DC29A0085F81E /* NSData+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E07121DC29A0085F81E /* NSData+SSToolkitAdditions.h */; };
@@ -112,6 +114,8 @@
 		B21D2DFF121F2FE500161E66 /* SSDrawingMacros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDrawingMacros.m; sourceTree = "<group>"; };
 		B227D2E8124931590078A059 /* NSDictionary+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B227D2E9124931590078A059 /* NSDictionary+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SSToolkitAdditions.m"; sourceTree = "<group>"; };
+		B247ABAC1300930200971EC0 /* SSSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSegmentedControl.h; sourceTree = "<group>"; };
+		B247ABAD1300930200971EC0 /* SSSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSegmentedControl.m; sourceTree = "<group>"; };
 		B24E9E01121DC2910085F81E /* SSToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SSToolkit.bundle; sourceTree = "<group>"; };
 		B24E9E05121DC29A0085F81E /* NSArray+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B24E9E06121DC29A0085F81E /* NSArray+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SSToolkitAdditions.m"; sourceTree = "<group>"; };
@@ -385,6 +389,8 @@
 				B24E9E2F121DC29A0085F81E /* SSTextView.m */,
 				B28219DB12FA8EB500BAF3C6 /* SSRatingPicker.h */,
 				B28219DC12FA8EB500BAF3C6 /* SSRatingPicker.m */,
+				B247ABAC1300930200971EC0 /* SSSegmentedControl.h */,
+				B247ABAD1300930200971EC0 /* SSSegmentedControl.m */,
 				B2B3CED61296F637001BAC94 /* SSSwitch.h */,
 				B2B3CED71296F637001BAC94 /* SSSwitch.m */,
 			);
@@ -475,6 +481,7 @@
 				B28C6D0712FBE5C400667755 /* SSRatingPickerViewController.h in Headers */,
 				B279539912FC67E300FFE28D /* UIScreen+SSToolkitAdditions.h in Headers */,
 				B279539E12FC6C6F00FFE28D /* SSRatingPickerScrollView.h in Headers */,
+				B247ABAE1300930200971EC0 /* SSSegmentedControl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +580,7 @@
 				B28C6D0812FBE5C400667755 /* SSRatingPickerViewController.m in Sources */,
 				B279539A12FC67E300FFE28D /* UIScreen+SSToolkitAdditions.m in Sources */,
 				B279539F12FC6C6F00FFE28D /* SSRatingPickerScrollView.m in Sources */,
+				B247ABAF1300930200971EC0 /* SSSegmentedControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
