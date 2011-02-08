@@ -6,6 +6,14 @@
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
+// Limitiations:
+// - Images not supported
+// - Removing and inserting items is not supported
+// - Momentary mode is not supported
+// - Setting item width is not supported
+// - Setting item content offset is not supported
+// - Enabling and disabling items is not supported
+
 @interface SSSegmentedControl : UIControl {
 
 	NSMutableArray *_items;

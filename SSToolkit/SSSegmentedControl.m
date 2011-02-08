@@ -63,7 +63,7 @@
 #pragma mark Segments
 
 - (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)segment {
-	
+//	[_items replaceObjectAtIndex:segment withObject:title];
 }
 
 
