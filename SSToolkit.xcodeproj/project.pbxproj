@@ -94,6 +94,12 @@
 		B2AE1135126F963300534CF2 /* UIApplication+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */; };
 		B2B3CED81296F637001BAC94 /* SSSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = B2B3CED61296F637001BAC94 /* SSSwitch.h */; };
 		B2B3CED91296F637001BAC94 /* SSSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B3CED71296F637001BAC94 /* SSSwitch.m */; };
+		B2E241541301C71400F7DC3B /* SSAddressBarTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = B2E2414E1301C71400F7DC3B /* SSAddressBarTextField.h */; };
+		B2E241551301C71400F7DC3B /* SSAddressBarTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E2414F1301C71400F7DC3B /* SSAddressBarTextField.m */; };
+		B2E241561301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2E241501301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.h */; };
+		B2E241571301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E241511301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.m */; };
+		B2E241581301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2E241521301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.h */; };
+		B2E241591301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E241531301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.m */; };
 		B2EA9F5E12F4A5C900C929D6 /* SSBadgeTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2EA9F5C12F4A5C900C929D6 /* SSBadgeTableViewCell.h */; };
 		B2EA9F5F12F4A5C900C929D6 /* SSBadgeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EA9F5D12F4A5C900C929D6 /* SSBadgeTableViewCell.m */; };
 		B2EA9F6212F4A5E100C929D6 /* SSBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2EA9F6012F4A5E100C929D6 /* SSBadgeView.h */; };
@@ -189,6 +195,12 @@
 		B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B2B3CED61296F637001BAC94 /* SSSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSwitch.h; sourceTree = "<group>"; };
 		B2B3CED71296F637001BAC94 /* SSSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSwitch.m; sourceTree = "<group>"; };
+		B2E2414E1301C71400F7DC3B /* SSAddressBarTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAddressBarTextField.h; sourceTree = "<group>"; };
+		B2E2414F1301C71400F7DC3B /* SSAddressBarTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSAddressBarTextField.m; sourceTree = "<group>"; };
+		B2E241501301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAddressBarTextFieldBackgroundView.h; sourceTree = "<group>"; };
+		B2E241511301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSAddressBarTextFieldBackgroundView.m; sourceTree = "<group>"; };
+		B2E241521301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAddressBarTextFieldBackgroundViewInnerView.h; sourceTree = "<group>"; };
+		B2E241531301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSAddressBarTextFieldBackgroundViewInnerView.m; sourceTree = "<group>"; };
 		B2EA9F5C12F4A5C900C929D6 /* SSBadgeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSBadgeTableViewCell.h; sourceTree = "<group>"; };
 		B2EA9F5D12F4A5C900C929D6 /* SSBadgeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSBadgeTableViewCell.m; sourceTree = "<group>"; };
 		B2EA9F6012F4A5E100C929D6 /* SSBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSBadgeView.h; sourceTree = "<group>"; };
@@ -379,6 +391,8 @@
 		B2601A791223086D005506D5 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				B2E2414E1301C71400F7DC3B /* SSAddressBarTextField.h */,
+				B2E2414F1301C71400F7DC3B /* SSAddressBarTextField.m */,
 				B24E9E2C121DC29A0085F81E /* SSTextField.h */,
 				B24E9E2D121DC29A0085F81E /* SSTextField.m */,
 				B24E9E2E121DC29A0085F81E /* SSTextView.h */,
@@ -409,6 +423,10 @@
 			children = (
 				B279539C12FC6C6F00FFE28D /* SSRatingPickerScrollView.h */,
 				B279539D12FC6C6F00FFE28D /* SSRatingPickerScrollView.m */,
+				B2E241501301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.h */,
+				B2E241511301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.m */,
+				B2E241521301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.h */,
+				B2E241531301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.m */,
 			);
 			name = Private;
 			sourceTree = "<group>";
@@ -475,6 +493,9 @@
 				B28C6D0712FBE5C400667755 /* SSRatingPickerViewController.h in Headers */,
 				B279539912FC67E300FFE28D /* UIScreen+SSToolkitAdditions.h in Headers */,
 				B279539E12FC6C6F00FFE28D /* SSRatingPickerScrollView.h in Headers */,
+				B2E241541301C71400F7DC3B /* SSAddressBarTextField.h in Headers */,
+				B2E241561301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.h in Headers */,
+				B2E241581301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +594,9 @@
 				B28C6D0812FBE5C400667755 /* SSRatingPickerViewController.m in Sources */,
 				B279539A12FC67E300FFE28D /* UIScreen+SSToolkitAdditions.m in Sources */,
 				B279539F12FC6C6F00FFE28D /* SSRatingPickerScrollView.m in Sources */,
+				B2E241551301C71400F7DC3B /* SSAddressBarTextField.m in Sources */,
+				B2E241571301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.m in Sources */,
+				B2E241591301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

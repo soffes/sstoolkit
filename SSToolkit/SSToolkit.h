@@ -29,6 +29,7 @@
 #import "SSBadgeTableViewCell.h"
 
 // Controls
+#import "SSAddressBarTextField.h"
 #import "SSTextField.h"
 #import "SSTextView.h"
 #import "SSRatingPicker.h"
@@ -67,6 +68,7 @@
 #import <SSToolkit/SSBadgeTableViewCell.h>b
 
 // Controls
+#import <SSToolkit/SSAddressBarTextField.h>
 #import <SSToolkit/SSTextField.h>
 #import <SSToolkit/SSTextView.h>
 #import <SSToolkit/SSRatingPicker.h>

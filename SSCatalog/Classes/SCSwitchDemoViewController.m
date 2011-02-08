@@ -7,6 +7,7 @@
 //
 
 #import "SCSwitchDemoViewController.h"
+#import <SSToolkit/SSSwitch.h>
 
 @implementation SCSwitchDemoViewController
 
