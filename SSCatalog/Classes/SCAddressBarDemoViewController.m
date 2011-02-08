@@ -43,7 +43,7 @@
 	_headerView.hasTopBorder = NO;
 	_headerView.hasBottomBorder = YES;
 	
-	_titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 21.0f)];
+	_titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 21.0f)];
 	_titleLabel.backgroundColor = [UIColor clearColor];
 	_titleLabel.textColor = [UIColor colorWithWhite:0.404f alpha:1.0f];
 	_titleLabel.textAlignment = UITextAlignmentCenter;
@@ -107,7 +107,13 @@
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 	
 	NSString *urlString = [[[_webView lastRequest] mainDocumentURL] absoluteString];
-	NSString *addressBarUrlString = urlString; // [urlString stringByReplacingOccurrencesOfRegex:@"^https?://" withString:@""];
+	
+	static NSRegularExpression *regularExpression = nil;
+	if (!regularExpression) {
+		regularExpression = [[NSRegularExpression alloc] initWithPattern:@"^https?://" options:NSRegularExpressionCaseInsensitive error:nil];
+	}
+	
+	NSString *addressBarUrlString = [regularExpression stringByReplacingMatchesInString:urlString options:0 range:NSMakeRange(0, [urlString length]) withTemplate:@""];
 	_addressBar.text = addressBarUrlString;
 	_titleLabel.text = urlString;
 }
