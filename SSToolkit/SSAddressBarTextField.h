@@ -13,7 +13,7 @@
 @interface SSAddressBarTextField : SSTextField {
 
 	BOOL _loading;
-	UIButton *_refreshButton;
+	UIButton *_reloadButton;
 	UIButton *_stopButton;
 
 @private
@@ -22,7 +22,7 @@
 }
 
 @property (nonatomic, assign, getter=isLoading) BOOL loading;
-@property (nonatomic, retain) UIButton *refreshButton;
+@property (nonatomic, retain) UIButton *reloadButton;
 @property (nonatomic, retain) UIButton *stopButton;
 
 @end

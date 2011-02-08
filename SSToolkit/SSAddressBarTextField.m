@@ -14,13 +14,13 @@
 @implementation SSAddressBarTextField
 
 @synthesize loading = _loading;
-@synthesize refreshButton = _refreshButton;
+@synthesize reloadButton = _reloadButton;
 @synthesize stopButton = _stopButton;
 
 #pragma mark NSObject
 
 - (void)dealloc {
-	self.refreshButton = nil;
+	self.reloadButton = nil;
 	self.stopButton = nil;
 	[_textFieldBackgroundView release];
 	[super dealloc];
@@ -50,12 +50,12 @@
 		[self insertSubview:_textFieldBackgroundView aboveSubview:[[self subviews] objectAtIndex:0]];
 		
 		// Refresh button
-		UIButton *aRefreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
-		aRefreshButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-		aRefreshButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-		[aRefreshButton setImage:[UIImage imageNamed:@"SSAddressBarTextFieldReload.png" bundle:kSSToolkitBundleName] forState:UIControlStateNormal];
-		self.refreshButton = aRefreshButton;
-		self.rightView = _refreshButton;
+		UIButton *aReloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		aReloadButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+		aReloadButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+		[aReloadButton setImage:[UIImage imageNamed:@"SSAddressBarTextFieldReload.png" bundle:kSSToolkitBundleName] forState:UIControlStateNormal];
+		self.reloadButton = aReloadButton;
+		self.rightView = _reloadButton;
 		
 		// Stop button
 		UIButton *aStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -93,7 +93,7 @@
 	}
 	_loading = isLoading;
 	
-	self.rightView = _loading ? _stopButton : _refreshButton;
+	self.rightView = _loading ? _stopButton : _reloadButton;
 	_textFieldBackgroundView.loading = _loading;
 }
 

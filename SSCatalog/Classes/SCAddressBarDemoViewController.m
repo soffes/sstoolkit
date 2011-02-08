@@ -63,7 +63,7 @@
 	_webView.delegate = self;
 	[self.view addSubview:_webView];
 	
-	[_addressBar.refreshButton addTarget:_webView action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
+	[_addressBar.reloadButton addTarget:_webView action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
 	[_addressBar.stopButton addTarget:_webView action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
 	
 	[_webView loadURLString:@"http://samsoff.es"];
