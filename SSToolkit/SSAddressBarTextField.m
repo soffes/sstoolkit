@@ -81,7 +81,8 @@
 #pragma mark UITextField
 
 - (CGRect)rightViewRectForBounds:(CGRect)bounds {
-	return CGRectMake(self.bounds.size.width - 24.0f, round((self.bounds.size.height - 15.0f) / 2.0f), 17.0f, 15.0f);
+	CGSize size = self.frame.size;
+	return CGRectMake(size.width - 24.0f, round((size.height - 18.0f) / 2.0f), 16.0f, 18.0f);
 }
 
 
