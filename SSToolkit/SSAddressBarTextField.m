@@ -43,7 +43,7 @@
 		self.clearButtonMode = UITextFieldViewModeWhileEditing;
 		self.enablesReturnKeyAutomatically = YES;
 		self.rightViewMode = UITextFieldViewModeUnlessEditing;
-		self.textEdgeInsets = UIEdgeInsetsMake(0.0f, 5.0f, 0.0f, 5.0f);
+		self.textEdgeInsets = UIEdgeInsetsMake(0.0f, 5.0f, 0.0f, 26.0f);
 		
 		// Background view
 		_textFieldBackgroundView = [[SSAddressBarTextFieldBackgroundView alloc] initWithFrame:CGRectZero];
@@ -82,7 +82,7 @@
 
 - (CGRect)rightViewRectForBounds:(CGRect)bounds {
 	CGSize size = self.frame.size;
-	return CGRectMake(size.width - 24.0f, round((size.height - 18.0f) / 2.0f), 16.0f, 18.0f);
+	return CGRectMake(size.width - 24.0f, roundf((size.height - 18.0f) / 2.0f), 16.0f, 18.0f);
 }
 
 
