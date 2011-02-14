@@ -15,7 +15,13 @@
 		return;
 	}
 	
-	[self displayErrorString:[error localizedDescription]];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[error localizedFailureReason] 
+													message:[error localizedRecoverySuggestion] 
+												   delegate:self 
+										  cancelButtonTitle:@"OK" 
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 

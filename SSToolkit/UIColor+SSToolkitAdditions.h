@@ -9,5 +9,5 @@
 @interface UIColor (SSToolkitAdditions)
 
 - (CGFloat)alpha;
-
+- (UIColor) colorFromHex:(int) hexColor; // Mugunth Kumar
 @end

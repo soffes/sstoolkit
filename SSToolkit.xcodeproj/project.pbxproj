@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		AB3EDE061308FF32007F0BF9 /* UIDevice+MKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = AB3EDE041308FF32007F0BF9 /* UIDevice+MKAdditions.h */; };
+		AB3EDE071308FF32007F0BF9 /* UIDevice+MKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3EDE051308FF32007F0BF9 /* UIDevice+MKAdditions.m */; };
 		B207C63712EA209100412418 /* SSWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = B207C63512EA209100412418 /* SSWindow.h */; };
 		B207C63812EA209100412418 /* SSWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B207C63612EA209100412418 /* SSWindow.m */; };
 		B20AC0691267988600687143 /* SSTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B20AC0671267988600687143 /* SSTableViewController.h */; };
@@ -62,8 +64,6 @@
 		B24E9E74121DC29A0085F81E /* UIColor+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E36121DC29A0085F81E /* UIColor+SSToolkitAdditions.m */; };
 		B24E9E75121DC29A0085F81E /* UIControl+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E37121DC29A0085F81E /* UIControl+SSToolkitAdditions.h */; };
 		B24E9E76121DC29A0085F81E /* UIControl+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E38121DC29A0085F81E /* UIControl+SSToolkitAdditions.m */; };
-		B24E9E77121DC29A0085F81E /* UIDevice+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E39121DC29A0085F81E /* UIDevice+SSToolkitAdditions.h */; };
-		B24E9E78121DC29A0085F81E /* UIDevice+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E3A121DC29A0085F81E /* UIDevice+SSToolkitAdditions.m */; };
 		B24E9E79121DC29A0085F81E /* UIImage+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E3B121DC29A0085F81E /* UIImage+SSToolkitAdditions.h */; };
 		B24E9E7A121DC29A0085F81E /* UIImage+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E3C121DC29A0085F81E /* UIImage+SSToolkitAdditions.m */; };
 		B24E9E7B121DC29A0085F81E /* UIScrollView+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E3D121DC29A0085F81E /* UIScrollView+SSToolkitAdditions.h */; };
@@ -108,6 +108,8 @@
 
 /* Begin PBXFileReference section */
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AB3EDE041308FF32007F0BF9 /* UIDevice+MKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+MKAdditions.h"; sourceTree = "<group>"; };
+		AB3EDE051308FF32007F0BF9 /* UIDevice+MKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+MKAdditions.m"; sourceTree = "<group>"; };
 		B207C63512EA209100412418 /* SSWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSWindow.h; sourceTree = "<group>"; };
 		B207C63612EA209100412418 /* SSWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSWindow.m; sourceTree = "<group>"; };
 		B20AC0671267988600687143 /* SSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTableViewController.h; sourceTree = "<group>"; };
@@ -163,8 +165,6 @@
 		B24E9E36121DC29A0085F81E /* UIColor+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B24E9E37121DC29A0085F81E /* UIControl+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B24E9E38121DC29A0085F81E /* UIControl+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+SSToolkitAdditions.m"; sourceTree = "<group>"; };
-		B24E9E39121DC29A0085F81E /* UIDevice+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+SSToolkitAdditions.h"; sourceTree = "<group>"; };
-		B24E9E3A121DC29A0085F81E /* UIDevice+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B24E9E3B121DC29A0085F81E /* UIImage+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B24E9E3C121DC29A0085F81E /* UIImage+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B24E9E3D121DC29A0085F81E /* UIScrollView+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SSToolkitAdditions.h"; sourceTree = "<group>"; };
@@ -315,14 +315,14 @@
 		B2601A72122307A2005506D5 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				AB3EDE041308FF32007F0BF9 /* UIDevice+MKAdditions.h */,
+				AB3EDE051308FF32007F0BF9 /* UIDevice+MKAdditions.m */,
 				B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */,
 				B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */,
 				B24E9E35121DC29A0085F81E /* UIColor+SSToolkitAdditions.h */,
 				B24E9E36121DC29A0085F81E /* UIColor+SSToolkitAdditions.m */,
 				B24E9E37121DC29A0085F81E /* UIControl+SSToolkitAdditions.h */,
 				B24E9E38121DC29A0085F81E /* UIControl+SSToolkitAdditions.m */,
-				B24E9E39121DC29A0085F81E /* UIDevice+SSToolkitAdditions.h */,
-				B24E9E3A121DC29A0085F81E /* UIDevice+SSToolkitAdditions.m */,
 				B24E9E3B121DC29A0085F81E /* UIImage+SSToolkitAdditions.h */,
 				B24E9E3C121DC29A0085F81E /* UIImage+SSToolkitAdditions.m */,
 				B279539712FC67E300FFE28D /* UIScreen+SSToolkitAdditions.h */,
@@ -472,7 +472,6 @@
 				B24E9E71121DC29A0085F81E /* SSWebView.h in Headers */,
 				B24E9E73121DC29A0085F81E /* UIColor+SSToolkitAdditions.h in Headers */,
 				B24E9E75121DC29A0085F81E /* UIControl+SSToolkitAdditions.h in Headers */,
-				B24E9E77121DC29A0085F81E /* UIDevice+SSToolkitAdditions.h in Headers */,
 				B24E9E79121DC29A0085F81E /* UIImage+SSToolkitAdditions.h in Headers */,
 				B24E9E7B121DC29A0085F81E /* UIScrollView+SSToolkitAdditions.h in Headers */,
 				B24E9E7D121DC29A0085F81E /* UIView+SSToolkitAdditions.h in Headers */,
@@ -496,6 +495,7 @@
 				B2E241541301C71400F7DC3B /* SSAddressBarTextField.h in Headers */,
 				B2E241561301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.h in Headers */,
 				B2E241581301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.h in Headers */,
+				AB3EDE061308FF32007F0BF9 /* UIDevice+MKAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,7 +572,6 @@
 				B24E9E72121DC29A0085F81E /* SSWebView.m in Sources */,
 				B24E9E74121DC29A0085F81E /* UIColor+SSToolkitAdditions.m in Sources */,
 				B24E9E76121DC29A0085F81E /* UIControl+SSToolkitAdditions.m in Sources */,
-				B24E9E78121DC29A0085F81E /* UIDevice+SSToolkitAdditions.m in Sources */,
 				B24E9E7A121DC29A0085F81E /* UIImage+SSToolkitAdditions.m in Sources */,
 				B24E9E7C121DC29A0085F81E /* UIScrollView+SSToolkitAdditions.m in Sources */,
 				B24E9E7E121DC29A0085F81E /* UIView+SSToolkitAdditions.m in Sources */,
@@ -597,6 +596,7 @@
 				B2E241551301C71400F7DC3B /* SSAddressBarTextField.m in Sources */,
 				B2E241571301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.m in Sources */,
 				B2E241591301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.m in Sources */,
+				AB3EDE071308FF32007F0BF9 /* UIDevice+MKAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
