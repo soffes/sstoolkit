@@ -14,17 +14,13 @@
 	return CGColorGetAlpha(self.CGColor);
 }
 
-- (UIColor) colorFromHex:(int) hexColor
+- (UIColor*) colorFromHex:(int) hexColor
 {
-
-	float redComponent = (float)((hexColor & 0xFF0000) >> 16))/255.0;
-	float greenComponent = (float)((hexColor & 0x00FF00) >> 8))/255.0;
-	float blueComponent = (float)(hexColor & 0x0000FF)/255.0;
+	float redComponent = (float)(((hexColor & 0xFF0000) >> 16)/255.0);
+	float greenComponent = (float)(((hexColor & 0x00FF00) >> 8)/255.0);
+	float blueComponent = (float)((hexColor & 0x0000FF)/255.0);
 	
-	return [UIColor colorWithRed:redComponent 
-				green:greenComponent 
-				 blue:blueComponent 
-				alpha:1.0] 
+	return [UIColor colorWithRed:redComponent green:greenComponent blue:blueComponent alpha:1.0];
 }
 
 @end
