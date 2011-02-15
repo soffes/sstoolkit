@@ -45,8 +45,8 @@ static CGFloat kIndicatorSize = 40.0;
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	// Draw rounded rectangle
-	CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.5);
-	CGRect rrect = CGRectMake(0.0, 0.0, kHUDSize, kHUDSize);
+	CGContextSetRGBFillColor(context, 0.0f, 0.0f, 0.0f, 0.5);
+	CGRect rrect = CGRectMake(0.0f, 0.0f, kHUDSize, kHUDSize);
 	CGFloat radius = 14.0;
 	CGFloat minx = CGRectGetMinX(rrect);
 	CGFloat midx = CGRectGetMidX(rrect);
@@ -122,7 +122,7 @@ static CGFloat kIndicatorSize = 40.0;
 		_textLabel.backgroundColor = [UIColor clearColor];
 		_textLabel.textColor = [UIColor whiteColor];
 		_textLabel.shadowColor = [UIColor blackColor];
-		_textLabel.shadowOffset = CGSizeMake(0.0, 1.0);
+		_textLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 		_textLabel.textAlignment = UITextAlignmentCenter;
 		_textLabel.lineBreakMode = UILineBreakModeTailTruncation;
 		_textLabel.text = aTitle ? aTitle : @"Loading";

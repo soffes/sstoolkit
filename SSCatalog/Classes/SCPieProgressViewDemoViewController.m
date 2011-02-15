@@ -35,37 +35,37 @@
 	self.title = [[self class] title];
 	self.view.backgroundColor = [UIColor colorWithRed:0.851 green:0.859 blue:0.882 alpha:1.0];
 	
-	SSPieProgressView *progressView1 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(20.0, 20.0, 55.0, 55.0)];
+	SSPieProgressView *progressView1 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(20.0f, 20.0f, 55.0f, 55.0f)];
 	progressView1.progress = 0.25;
 	[self.view addSubview:progressView1];
 	[progressView1 release];
 	
-	SSPieProgressView *progressView2 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(95.0, 20.0, 55.0, 55.0)];
+	SSPieProgressView *progressView2 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(95.0f, 20.0f, 55.0f, 55.0f)];
 	progressView2.progress = 0.50;
 	[self.view addSubview:progressView2];
 	[progressView2 release];
 	
-	SSPieProgressView *progressView3 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(170.0, 20.0, 55.0, 55.0)];
+	SSPieProgressView *progressView3 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(170.0f, 20.0f, 55.0f, 55.0f)];
 	progressView3.progress = 0.75;
 	[self.view addSubview:progressView3];
 	[progressView3 release];
 	
-	SSPieProgressView *progressView4 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(245.0, 20.0, 55.0, 55.0)];
+	SSPieProgressView *progressView4 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(245.0f, 20.0f, 55.0f, 55.0f)];
 	progressView4.progress = 1.0;
 	[self.view addSubview:progressView4];
 	[progressView4 release];
 	
-	SSPieProgressView *progressView5 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(20.0, 95.0, 130.0, 130.0)];
+	SSPieProgressView *progressView5 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(20.0f, 95.0f, 130.0f, 130.0f)];
 	progressView5.progress = 0.33;
 	[self.view addSubview:progressView5];
 	[progressView5 release];
 	
-	SSPieProgressView *progressView6 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(170.0, 95.0, 130.0, 130.0)];
+	SSPieProgressView *progressView6 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(170.0f, 95.0f, 130.0f, 130.0f)];
 	progressView6.progress = 0.66;
 	[self.view addSubview:progressView6];
 	[progressView6 release];
 	
-	_progressView7 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(95.0, 245.0, 130.0, 130.0)];
+	_progressView7 = [[SSPieProgressView alloc] initWithFrame:CGRectMake(95.0f, 245.0f, 130.0f, 130.0f)];
 	[self.view addSubview:_progressView7];
 	[_progressView7 release];
 	
@@ -91,7 +91,7 @@
 
 - (void)incrementProgress:(NSTimer *)timer {
 	_progressView7.progress = _progressView7.progress + 0.01;
-	if (_progressView7.progress == 1.0) {
+	if (_progressView7.progress == 1.0f) {
 		_progressView7.progress = 0.0;
 	}
 }

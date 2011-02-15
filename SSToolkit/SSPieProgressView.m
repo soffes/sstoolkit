@@ -55,7 +55,7 @@ CGFloat const kAngleOffset = -90.0f;
 	
 	// Fill
 	[_pieFillColor set];
-	if (_progress > 0.0) {
+	if (_progress > 0.0f) {
 		CGPoint center = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 		CGFloat radius = center.y;
 		CGFloat angle = DEGREES_TO_RADIANS((360.0f * _progress) + kAngleOffset);

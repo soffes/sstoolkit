@@ -27,7 +27,7 @@
 	
 	CGSize size = self.view.frame.size;
 	
-	SSLoadingView *loadingView = [[SSLoadingView alloc] initWithFrame:CGRectMake(0.0, 0.0, size.width, size.height)];
+	SSLoadingView *loadingView = [[SSLoadingView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
 	[self.view addSubview:loadingView];
 	[loadingView release];
 }

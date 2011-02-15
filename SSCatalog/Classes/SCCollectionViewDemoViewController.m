@@ -49,7 +49,7 @@
 		
 		// Customize item for demo
 		item.textLabel.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
-		item.textLabel.frame = CGRectMake(0.0, 0.0, 80.0, 80.0);
+		item.textLabel.frame = CGRectMake(0.0f, 0.0f, 80.0f, 80.0f);
 	}
 	
 	item.textLabel.text = [NSString stringWithFormat:@"%i", indexPath.row];

@@ -105,7 +105,7 @@
 	CGContextClipToRect(context, rect);
 	
 	// Gradient
-	CGPoint start = CGPointMake(0.0, 0.0f);
+	CGPoint start = CGPointMake(0.0f, 0.0f);
 	CGPoint end = CGPointMake(0.0f, rect.size.height);
 	CGContextDrawLinearGradient(context, _gradient, start, end, 0);
 	
@@ -138,7 +138,7 @@
 		
 		// Bottom border
 		CGContextSetStrokeColorWithColor(context, _bottomBorderColor.CGColor);
-		CGContextMoveToPoint(context, 0.0, rect.size.height);
+		CGContextMoveToPoint(context, 0.0f, rect.size.height);
 		CGContextAddLineToPoint(context, rect.size.width, rect.size.height);
 		CGContextStrokePath(context);
 	}

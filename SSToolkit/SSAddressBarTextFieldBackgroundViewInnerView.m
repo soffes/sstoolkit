@@ -27,7 +27,7 @@
 
 - (void)drawRect:(CGRect)rect {
 	CGSize size = self.frame.size;
-	[[UIImage imageNamed:@"SSAddressBarTextFieldBackground.png" bundle:kSSToolkitBundleName] drawAsPatternInRect:CGRectMake(0.0, 0.0, size.width, size.height)];
+	[[UIImage imageNamed:@"SSAddressBarTextFieldBackground.png" bundle:kSSToolkitBundleName] drawAsPatternInRect:CGRectMake(0.0f, 0.0f, size.width, size.height)];
 }
 
 @end

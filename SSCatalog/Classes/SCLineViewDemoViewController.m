@@ -25,11 +25,11 @@
 	self.title = [[self class] title];
 	self.view.backgroundColor = [UIColor colorWithRed:0.851 green:0.859 blue:0.882 alpha:1.0];
 	
-	SSLineView *lineView1 = [[SSLineView alloc] initWithFrame:CGRectMake(20.0, 20.0, 280.0, 2.0)];
+	SSLineView *lineView1 = [[SSLineView alloc] initWithFrame:CGRectMake(20.0f, 20.0f, 280.0f, 2.0f)];
 	[self.view addSubview:lineView1];
 	[lineView1 release];
 	
-	SSLineView *lineView2 = [[SSLineView alloc] initWithFrame:CGRectMake(20.0, 42.0, 280.0, 2.0)];
+	SSLineView *lineView2 = [[SSLineView alloc] initWithFrame:CGRectMake(20.0f, 42.0f, 280.0f, 2.0f)];
 	lineView2.lineColor = [UIColor blueColor];
 	[self.view addSubview:lineView2];
 	[lineView2 release];
