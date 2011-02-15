@@ -29,7 +29,6 @@ typedef enum {
 	UIImage *_rightHandleImage;
 	UIImage *_rightHandleImageHighlighted;
 	CGFloat _handleWidth;
-	NSInteger _handleLeftCapWidth;
 	CGFloat _handleShadowWidth;
 	UIImageView *_onBackgroundImageView;
 	UILabel *_onLabel;
@@ -50,7 +49,7 @@ typedef enum {
 
 @property (nonatomic, assign, getter=isOn) BOOL on;
 @property (nonatomic, assign) SSSwitchStyle style;
-@property (nonatomic, retain) UIButton *handle;
+@property (nonatomic, retain, readonly) UIButton *handle;
 @property (nonatomic, retain) UIImage *leftHandleImage;
 @property (nonatomic, retain) UIImage *leftHandleImageHighlighted;
 @property (nonatomic, retain) UIImage *centerHandleImage;
@@ -58,14 +57,13 @@ typedef enum {
 @property (nonatomic, retain) UIImage *rightHandleImage;
 @property (nonatomic, retain) UIImage *rightHandleImageHighlighted;
 @property (nonatomic, assign) CGFloat handleWidth;
-@property (nonatomic, assign) NSInteger handleLeftCapWidth;
 @property (nonatomic, assign) CGFloat handleShadowWidth;
-@property (nonatomic, retain) UIImageView *onBackgroundImageView;
-@property (nonatomic, retain) UILabel *onLabel;
-@property (nonatomic, retain) UIView *onView;
-@property (nonatomic, retain) UIImageView *offBackgroundImageView;
-@property (nonatomic, retain) UILabel *offLabel;
-@property (nonatomic, retain) UIView *offView;
+@property (nonatomic, retain, readonly) UIImageView *onBackgroundImageView;
+@property (nonatomic, retain, readonly) UILabel *onLabel;
+@property (nonatomic, retain, readonly) UIView *onView;
+@property (nonatomic, retain, readonly) UIImageView *offBackgroundImageView;
+@property (nonatomic, retain, readonly) UILabel *offLabel;
+@property (nonatomic, retain, readonly) UIView *offView;
 @property (nonatomic, assign) UIEdgeInsets trackEdgeInsets;
 @property (nonatomic, assign) SSSwitchLabelStyle switchLabelStyle;
 

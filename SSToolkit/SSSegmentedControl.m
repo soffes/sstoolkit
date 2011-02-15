@@ -18,6 +18,11 @@
 @synthesize highlightedButtonImage = _highlightedButtonImage;
 @synthesize dividerImage = _dividerImage;
 @synthesize highlightedDividerImage = _highlightedDividerImage;
+@synthesize font = _font;
+@synthesize textColor = _textColor;
+@synthesize textShadowColor = _textShadowColor;
+@synthesize textShadowOffset = _textShadowOffset;
+@synthesize textEdgeInsets = _textEdgeInsets;
 
 #pragma mark NSObject
 
@@ -65,7 +70,7 @@
 		
 		_font = [[UIFont boldSystemFontOfSize:12.0f] retain];
 		_textColor = [[UIColor whiteColor] retain];
-		_textShadowColor = [[UIColor colorWithWhite:0.0f alpha:0.05f] retain];
+		_textShadowColor = [[UIColor colorWithWhite:0.0f alpha:0.5f] retain];
 		_textShadowOffset = CGSizeMake(0.0f, -1.0f);
 		_textEdgeInsets = UIEdgeInsetsMake(-1.0f, 0.0f, 0.0f, 0.0f);
 	}
@@ -145,12 +150,14 @@
 		if ([item isKindOfClass:[NSString class]]) {
 			NSString *string = (NSString *)item;
 			
-			[_textColor set];
-			
 			CGSize textSize = [string sizeWithFont:_font constrainedToSize:CGSizeMake(segmentWidth, size.height) lineBreakMode:UILineBreakModeTailTruncation];
 			CGRect textRect = CGRectMake(x, roundf((size.height - textSize.height) / 2.0f), segmentWidth, size.height);
 			textRect = UIEdgeInsetsInsetRect(textRect, _textEdgeInsets);
+
+			[_textShadowColor set];
+			[string drawInRect:CGRectAddPoint(textRect, CGPointMake(_textShadowOffset.width, _textShadowOffset.height)) withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
 			
+			[_textColor set];
 			[string drawInRect:textRect withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
 		}
 		
@@ -163,11 +170,29 @@
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
 	[super willMoveToSuperview:newSuperview];
-	
+		
 	if (newSuperview) {
 		[self addObserver:self forKeyPath:@"selectedSegmentIndex" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"buttonImage" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"highlightedButtonImage" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"dividerImage" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"highlightedDividerImage" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"font" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"textShadowColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"textShadowOffset" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"textEdgeInsets" options:NSKeyValueObservingOptionNew context:nil];
 	} else {
 		[self removeObserver:self forKeyPath:@"selectedSegmentIndex"];
+		[self removeObserver:self forKeyPath:@"buttonImage"];
+		[self removeObserver:self forKeyPath:@"highlightedButtonImage"];
+		[self removeObserver:self forKeyPath:@"dividerImage"];
+		[self removeObserver:self forKeyPath:@"highlightedDividerImage"];
+		[self removeObserver:self forKeyPath:@"font"];
+		[self removeObserver:self forKeyPath:@"textColor"];
+		[self removeObserver:self forKeyPath:@"textShadowColor"];
+		[self removeObserver:self forKeyPath:@"textShadowOffset"];
+		[self removeObserver:self forKeyPath:@"textEdgeInsets"];
 	}
 }
 
@@ -196,6 +221,8 @@
 	} else {
 		[_items replaceObjectAtIndex:segment withObject:title];
 	}
+	
+	[self setNeedsDisplay];
 }
 
 
@@ -220,6 +247,13 @@
 		[self setNeedsDisplay];
 		[self sendActionsForControlEvents:UIControlEventValueChanged];
 		return;
+	}
+	
+	if ([keyPath isEqual:@"buttonImage"] || [keyPath isEqual:@"highlightedButtonImage"] ||
+		[keyPath isEqual:@"dividerImage"] || [keyPath isEqual:@"highlightedDividerImage"] ||
+		[keyPath isEqual:@"font"] || [keyPath isEqual:@"textColor"] || [keyPath isEqual:@"textShadowColor"] ||
+		[keyPath isEqual:@"textShadowOffset"] || [keyPath isEqual:@"textEdgeInsets"]) {
+		[self setNeedsDisplay];
 	}
 	
 	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];

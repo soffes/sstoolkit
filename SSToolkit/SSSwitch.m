@@ -28,7 +28,6 @@
 @synthesize rightHandleImage = _rightHandleImage;
 @synthesize rightHandleImageHighlighted = _rightHandleImageHighlighted;
 @synthesize handleWidth = _handleWidth;
-@synthesize handleLeftCapWidth = _handleLeftCapWidth;
 @synthesize handleShadowWidth = _handleShadowWidth;
 @synthesize onBackgroundImageView = _onBackgroundImageView;
 @synthesize onLabel = _onLabel;
@@ -42,19 +41,19 @@
 #pragma mark NSObject
 
 - (void)dealloc {
-	self.handle = nil;
 	self.leftHandleImage = nil;
 	self.leftHandleImageHighlighted = nil;
 	self.centerHandleImage = nil;
 	self.centerHandleImageHighlighted = nil;
 	self.rightHandleImage = nil;
 	self.rightHandleImageHighlighted = nil;
-	self.onBackgroundImageView = nil;
-	self.onLabel = nil;
-	self.onView = nil;
-	self.onBackgroundImageView = nil;
-	self.offLabel = nil;	
-	self.offView = nil;
+	[_handle release];
+	[_onBackgroundImageView release];
+	[_onLabel release];
+	[_onView release];
+	[_onBackgroundImageView release];
+	[_offLabel release];
+	[_offView release];
 	[_labelMaskView release];
 	[super dealloc];
 }
@@ -122,6 +121,37 @@
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
 	// Forward all touches to the handle
 	return [super hitTest:point withEvent:event] ? _handle : nil;
+}
+
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+	[super willMoveToSuperview:newSuperview];
+	
+	if (newSuperview) {
+		[self addObserver:self forKeyPath:@"on" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"style" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+		[self addObserver:self forKeyPath:@"leftHandleImage" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"leftHandleImageHighlighted" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"centerHandleImage" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"centerHandleImageHighlighted" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"rightHandleImage" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"rightHandleImageHighlighted" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"handleShadowWidth" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"trackEdgeInsets" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"switchLabelStyle" options:NSKeyValueObservingOptionNew context:nil];
+	} else {
+		[self removeObserver:self forKeyPath:@"on"];
+		[self removeObserver:self forKeyPath:@"style"];
+		[self removeObserver:self forKeyPath:@"leftHandleImage"];
+		[self removeObserver:self forKeyPath:@"leftHandleImageHighlighted"];
+		[self removeObserver:self forKeyPath:@"centerHandleImage"];
+		[self removeObserver:self forKeyPath:@"centerHandleImageHighlighted"];
+		[self removeObserver:self forKeyPath:@"rightHandleImage"];
+		[self removeObserver:self forKeyPath:@"rightHandleImageHighlighted"];
+		[self removeObserver:self forKeyPath:@"handleShadowWidth"];
+		[self removeObserver:self forKeyPath:@"trackEdgeInsets"];
+		[self removeObserver:self forKeyPath:@"switchLabelStyle"];
+	}
 }
 
 
@@ -199,7 +229,9 @@
 	
 	_handle.frame = UIEdgeInsetsInsetRect(CGRectMake(x - _handleShadowWidth, 0.0f, _handleWidth + _handleShadowWidth + _handleShadowWidth, height), _trackEdgeInsets);
 	_onBackgroundImageView.frame = CGRectMake(0.0f, 0.0f, width, height);
-	_offBackgroundImageView.frame = CGRectMake(x + _trackEdgeInsets.left + (CGFloat)_handleLeftCapWidth, 0.0f, width - x - _trackEdgeInsets.left - (CGFloat)_handleLeftCapWidth, height);
+
+	CGFloat leftCapWidth = _leftHandleImage.leftCapWidth;
+	_offBackgroundImageView.frame = CGRectMake(x + _trackEdgeInsets.left + leftCapWidth, 0.0f, width - x - _trackEdgeInsets.left - leftCapWidth, height);
 	
 	// TODO: These are still a bit hacky (with the +2 and -1)
 	_onLabel.frame = CGRectMake(x - labelWidth - _trackEdgeInsets.left - labelClipWidth + 2.0f, 0.0f, labelWidth, labelHeight);
@@ -262,7 +294,6 @@
 			self.rightHandleImageHighlighted = [[UIImage imageNamed:@"UISwitchButtonLeftShadowedDown.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
 			
 			self.handleWidth = 42;
-			self.handleLeftCapWidth = leftCap;
 			self.handleShadowWidth = 2;
 			
 			self.onBackgroundImageView.image = [[UIImage imageNamed:@"UISwitchTrackBlue.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
@@ -290,6 +321,23 @@
 	}
 	
 	[self _layoutSubviewsWithHandlePosition:_on ? 1.0f : 0.0f];
+}
+
+
+
+#pragma mark NSKeyValueObserving
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if ([keyPath isEqual:@"on"] || [keyPath isEqual:@"style"] || [keyPath isEqual:@"leftHandleImage"] ||
+		[keyPath isEqual:@"leftHandleImageHighlighted"] || [keyPath isEqual:@"centerHandleImage"] ||
+		[keyPath isEqual:@"centerHandleImageHighlighted"] || [keyPath isEqual:@"rightHandleImage"] ||
+		[keyPath isEqual:@"rightHandleImageHighlighted"] || [keyPath isEqual:@"handleShadowWidth"] ||
+		[keyPath isEqual:@"trackEdgeInsets"] || [keyPath isEqual:@"switchLabelStyle"]) {
+		[self setNeedsDisplay];
+		return;
+	}
+	
+	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end
