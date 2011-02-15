@@ -16,6 +16,8 @@
 
 @interface SSSegmentedControl : UIControl {
 
+@private
+	
 	NSMutableArray *_items;
 	NSInteger _selectedSegmentIndex;
 	
@@ -23,6 +25,12 @@
 	UIImage *_highlightedButtonImage;
 	UIImage *_dividerImage;
 	UIImage *_highlightedDividerImage;
+	
+	UIFont *_font;
+	UIColor *_textColor;
+	UIColor *_textShadowColor;
+	CGSize _textShadowOffset;
+	UIEdgeInsets _textEdgeInsets;
 }
 
 //@property (nonatomic, getter=isMomentary) BOOL momentary;

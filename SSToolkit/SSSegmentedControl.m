@@ -7,6 +7,7 @@
 //
 
 #import "SSSegmentedControl.h"
+#import "SSDrawingMacros.h"
 #import "UIImage+SSToolkitAdditions.h"
 
 @implementation SSSegmentedControl
@@ -26,6 +27,9 @@
 	[_highlightedButtonImage release];
 	[_dividerImage release];
 	[_highlightedDividerImage release];
+	[_font release];
+	[_textColor release];
+	[_textShadowColor release];
 	[super dealloc];
 }
 
@@ -34,13 +38,65 @@
 
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
+		self.backgroundColor = [UIColor clearColor];
+		
 		_items = [[NSMutableArray alloc] init];
+		
 		self.buttonImage = [UIImage imageNamed:@"UISegmentedBarButton.png" bundle:kSSToolkitBundleName];
 		self.highlightedButtonImage = [UIImage imageNamed:@"UISegmentedBarButtonHighlighted.png" bundle:kSSToolkitBundleName];
 		self.dividerImage = [UIImage imageNamed:@"UISegmentedBarDivider.png" bundle:kSSToolkitBundleName];
 		self.highlightedDividerImage = [UIImage imageNamed:@"UISegmentedBarDividerHighlighted.png" bundle:kSSToolkitBundleName];
+		
+		_font = [[UIFont boldSystemFontOfSize:12.0f] retain];
+		_textColor = [[UIColor whiteColor] retain];
+		_textShadowColor = [[UIColor colorWithWhite:0.0f alpha:0.05f] retain];
+		_textShadowOffset = CGSizeMake(0.0f, -1.0f);
+		_textEdgeInsets = UIEdgeInsetsMake(-1.0f, 0.0f, 0.0f, 0.0f);
 	}
 	return self;
+}
+
+
+- (void)drawRect:(CGRect)frame {
+	
+	static CGFloat dividerWidth = 1.0f;
+	
+	NSUInteger count = [_items count];
+	CGSize size = frame.size;
+	CGFloat segmentWidth = roundf((size.width - count - 1) / (CGFloat)count);
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	
+	for (NSUInteger i = 0; i < count; i++) {
+		id item = [_items objectAtIndex:i];
+		
+		CGFloat x = (segmentWidth * (CGFloat)i + (((CGFloat)i + 1) * dividerWidth));
+		
+		// Draw dividers
+		if (i > 0) {
+			[[UIColor blackColor] set];
+			CGContextFillRect(context, CGRectMake(x - 1.0f, 0.0f, dividerWidth, size.height));
+		}
+		
+		CGRect segmentRect = CGRectMake(x, 0.0f, segmentWidth, size.height);
+		
+		// Background
+		[[UIColor lightGrayColor] set];
+		CGContextFillRect(context, segmentRect);
+		
+		// Strings
+		if ([item isKindOfClass:[NSString class]]) {
+			NSString *string = (NSString *)item;
+			
+			[_textColor set];
+			
+			CGSize textSize = [string sizeWithFont:_font constrainedToSize:CGSizeMake(segmentWidth, size.height) lineBreakMode:UILineBreakModeTailTruncation];
+			CGRect textRect = CGRectMake(x, roundf((size.height - textSize.height) / 2.0f), segmentWidth, size.height);
+			textRect = UIEdgeInsetsInsetRect(textRect, _textEdgeInsets);
+			
+			[string drawInRect:textRect withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
+		}
+		
+	}
 }
 
 
@@ -63,7 +119,11 @@
 #pragma mark Segments
 
 - (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)segment {
-//	[_items replaceObjectAtIndex:segment withObject:title];
+	if ((NSInteger)([_items count] - 1) < (NSInteger)segment) {
+		[_items addObject:title];
+	} else {
+		[_items replaceObjectAtIndex:segment withObject:title];
+	}
 }
 
 

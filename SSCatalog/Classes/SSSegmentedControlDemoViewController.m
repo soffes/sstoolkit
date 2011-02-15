@@ -56,7 +56,7 @@
 	[customLabel release];
 	
 	SSSegmentedControl *customSegmentedControl = [[SSSegmentedControl alloc] initWithItems:items];
-	customSegmentedControl.frame = CGRectMake(20.0f, 50.0f, 280.0f, 32.0f);
+	customSegmentedControl.frame = CGRectMake(20.0f, 137.0f, 280.0f, 32.0f);
 	customSegmentedControl.selectedSegmentIndex = 0;
 	[self.view addSubview:customSegmentedControl];
 	[customSegmentedControl release];
