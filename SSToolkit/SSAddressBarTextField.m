@@ -29,7 +29,7 @@
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)aFrame {
-	if ((self = [super initWithFrame:CGRectSetHeight(aFrame, 31.0f)])) {
+	if ((self = [super initWithFrame:aFrame])) {
 		
 		// Configure text field
 		self.borderStyle = UITextBorderStyleRoundedRect;
