@@ -125,23 +125,24 @@
 			backgroundImage = _buttonImage;
 		}
 		
-		CGFloat capWidth = backgroundImage.leftCapWidth;
+		CGFloat leftCapWidth = [backgroundImage leftCapWidth];
+		CGFloat rightCapWidth = [backgroundImage rightCapWidth];
 		
 		// First segment
 		if (i == 0) {
-			backgroundRect = CGRectSetWidth(backgroundRect, backgroundRect.size.width + capWidth);
+			backgroundRect = CGRectSetWidth(backgroundRect, backgroundRect.size.width + rightCapWidth);
 		}
 		
 		// Last segment
 		else if (i == count - 1) {
-			backgroundRect = CGRectMake(backgroundRect.origin.x - capWidth, backgroundRect.origin.y,
-										backgroundRect.size.width + capWidth, backgroundRect.size.height);
+			backgroundRect = CGRectMake(backgroundRect.origin.x - leftCapWidth, backgroundRect.origin.y,
+										backgroundRect.size.width + leftCapWidth, backgroundRect.size.height);
 		}
 		
 		// Middle segment
 		else {
-			backgroundRect = CGRectMake(backgroundRect.origin.x - capWidth, backgroundRect.origin.y,
-										backgroundRect.size.width + capWidth + capWidth, backgroundRect.size.height);
+			backgroundRect = CGRectMake(backgroundRect.origin.x - leftCapWidth, backgroundRect.origin.y,
+										backgroundRect.size.width + leftCapWidth + rightCapWidth, backgroundRect.size.height);
 		}
 		
 		[backgroundImage drawInRect:backgroundRect];

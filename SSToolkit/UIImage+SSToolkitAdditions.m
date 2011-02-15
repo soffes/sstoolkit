@@ -39,4 +39,9 @@
 	return [self imageCroppedToRect:CGRectMake(0.0f, 0.0f, shortestSide, shortestSide)];
 }
 
+
+- (NSInteger)rightCapWidth {
+	return self.size.width - (self.leftCapWidth + 1);
+}
+
 @end

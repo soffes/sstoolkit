@@ -15,4 +15,6 @@
 
 - (UIImage *)squareImage;
 
+- (NSInteger)rightCapWidth;
+
 @end
