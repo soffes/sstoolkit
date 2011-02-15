@@ -14,6 +14,10 @@
 // - Setting item content offset is not supported
 // - Enabling and disabling items is not supported
 
+enum {
+ SSSegmentedControlNoSegment = UISegmentedControlNoSegment
+};
+
 @interface SSSegmentedControl : UIControl {
 
 @private

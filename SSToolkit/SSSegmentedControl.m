@@ -34,6 +34,21 @@
 }
 
 
+#pragma mark UIResponder
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	UITouch *touch = [touches anyObject];
+	CGFloat x = [touch locationInView:self].x;
+	
+	// Ignore touches that don't matter
+	if (x < 0 || x > self.frame.size.width) {
+		return;
+	}
+	
+	self.selectedSegmentIndex = (NSInteger)floorf((CGFloat)x / (self.frame.size.width / (CGFloat)[_items count]));	
+}
+
+
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
@@ -42,10 +57,11 @@
 		
 		_items = [[NSMutableArray alloc] init];
 		
-		self.buttonImage = [UIImage imageNamed:@"UISegmentedBarButton.png" bundle:kSSToolkitBundleName];
-		self.highlightedButtonImage = [UIImage imageNamed:@"UISegmentedBarButtonHighlighted.png" bundle:kSSToolkitBundleName];
-		self.dividerImage = [UIImage imageNamed:@"UISegmentedBarDivider.png" bundle:kSSToolkitBundleName];
-		self.highlightedDividerImage = [UIImage imageNamed:@"UISegmentedBarDividerHighlighted.png" bundle:kSSToolkitBundleName];
+		self.buttonImage = [UIImage imageNamed:@"UISegmentBarButton.png" bundle:kSSToolkitBundleName];
+		self.highlightedButtonImage = [UIImage imageNamed:@"UISegmentBarButtonHighlighted.png" bundle:kSSToolkitBundleName];
+		self.dividerImage = [UIImage imageNamed:@"UISegmentBarDivider.png" bundle:kSSToolkitBundleName];
+		self.highlightedDividerImage = [UIImage imageNamed:@"UISegmentBarDividerHighlighted.png" bundle:kSSToolkitBundleName];
+		self.selectedSegmentIndex = SSSegmentedControlNoSegment;
 		
 		_font = [[UIFont boldSystemFontOfSize:12.0f] retain];
 		_textColor = [[UIColor whiteColor] retain];
@@ -61,26 +77,43 @@
 	
 	static CGFloat dividerWidth = 1.0f;
 	
-	NSUInteger count = [_items count];
+	NSInteger count = [_items count];
 	CGSize size = frame.size;
 	CGFloat segmentWidth = roundf((size.width - count - 1) / (CGFloat)count);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	for (NSUInteger i = 0; i < count; i++) {
+	for (NSInteger i = 0; i < count; i++) {
 		id item = [_items objectAtIndex:i];
 		
 		CGFloat x = (segmentWidth * (CGFloat)i + (((CGFloat)i + 1) * dividerWidth));
 		
 		// Draw dividers
 		if (i > 0) {
-			[[UIColor blackColor] set];
-			CGContextFillRect(context, CGRectMake(x - 1.0f, 0.0f, dividerWidth, size.height));
+			
+			NSInteger p  = i - 1;
+			UIImage *dividerImage = nil;
+			
+			// Selected divider
+			if ((p >= 0 && p == _selectedSegmentIndex) || i == _selectedSegmentIndex) {
+				dividerImage = _highlightedDividerImage;
+			}
+			
+			// Normal divider
+			else {
+				dividerImage = _dividerImage;
+			}
+			
+			[dividerImage drawInRect:CGRectMake(x - 1.0f, 0.0f, dividerWidth, size.height)];
 		}
 		
 		CGRect segmentRect = CGRectMake(x, 0.0f, segmentWidth, size.height);
 		
 		// Background
-		[[UIColor lightGrayColor] set];
+		if (_selectedSegmentIndex == i) {
+			[[UIColor redColor] set];
+		} else {
+			[[UIColor lightGrayColor] set];
+		}
 		CGContextFillRect(context, segmentRect);
 		
 		// Strings
@@ -96,6 +129,17 @@
 			[string drawInRect:textRect withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
 		}
 		
+	}
+}
+
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+	[super willMoveToSuperview:newSuperview];
+	
+	if (newSuperview) {
+		[self addObserver:self forKeyPath:@"selectedSegmentIndex" options:NSKeyValueObservingOptionNew context:nil];
+	} else {
+		[self removeObserver:self forKeyPath:@"selectedSegmentIndex"];
 	}
 }
 
@@ -138,6 +182,19 @@
 	}
 	
 	return nil;
+}
+
+
+#pragma mark NSKeyValueObserving
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if ([keyPath isEqual:@"selectedSegmentIndex"]) {
+		[self setNeedsDisplay];
+		[self sendActionsForControlEvents:UIControlEventValueChanged];
+		return;
+	}
+	
+	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end

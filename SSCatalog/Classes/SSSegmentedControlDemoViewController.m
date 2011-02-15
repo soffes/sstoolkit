@@ -18,6 +18,15 @@
 }
 
 
+#pragma mark NSObject
+
+- (void)dealloc {
+	[_systemSegmentedControl release];
+	[_customSegmentedControl release];
+	[super dealloc];
+}
+
+
 #pragma mark UIViewController
 
 - (void)viewDidLoad {
@@ -38,12 +47,12 @@
 	[self.view addSubview:systemLabel];
 	[systemLabel release];
 	
-	UISegmentedControl *systemSegmentedControl = [[UISegmentedControl alloc] initWithItems:items];
-	systemSegmentedControl.frame = CGRectMake(20.0f, 50.0f, 280.0f, 32.0f);
-	systemSegmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-	systemSegmentedControl.selectedSegmentIndex = 0;
-	[self.view addSubview:systemSegmentedControl];
-	[systemSegmentedControl release];
+	_systemSegmentedControl = [[UISegmentedControl alloc] initWithItems:items];
+	_systemSegmentedControl.frame = CGRectMake(20.0f, 50.0f, 280.0f, 32.0f);
+	_systemSegmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+	_systemSegmentedControl.selectedSegmentIndex = 0;
+	[_systemSegmentedControl addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
+	[self.view addSubview:_systemSegmentedControl];
 	
 	// Custom segmented control
 	UILabel *customLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 107.0f, 280.0f, 20.0f)];
@@ -55,11 +64,11 @@
 	[self.view addSubview:customLabel];
 	[customLabel release];
 	
-	SSSegmentedControl *customSegmentedControl = [[SSSegmentedControl alloc] initWithItems:items];
-	customSegmentedControl.frame = CGRectMake(20.0f, 137.0f, 280.0f, 32.0f);
-	customSegmentedControl.selectedSegmentIndex = 0;
-	[self.view addSubview:customSegmentedControl];
-	[customSegmentedControl release];
+	_customSegmentedControl = [[SSSegmentedControl alloc] initWithItems:items];
+	_customSegmentedControl.frame = CGRectMake(20.0f, 137.0f, 280.0f, 32.0f);
+	_customSegmentedControl.selectedSegmentIndex = 0;
+	[_customSegmentedControl addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
+	[self.view addSubview:_customSegmentedControl];
 }
 
 
@@ -68,6 +77,17 @@
 		return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 	}
 	return YES;
+}
+
+
+#pragma mark Actions
+
+- (void)valueChanged:(id)sender {
+	if (sender == _systemSegmentedControl) {
+		_customSegmentedControl.selectedSegmentIndex = _systemSegmentedControl.selectedSegmentIndex;
+	} else {
+		_systemSegmentedControl.selectedSegmentIndex = _customSegmentedControl.selectedSegmentIndex;
+	}
 }
 
 @end
