@@ -57,8 +57,8 @@
 		
 		_items = [[NSMutableArray alloc] init];
 		
-		self.buttonImage = [UIImage imageNamed:@"UISegmentBarButton.png" bundle:kSSToolkitBundleName];
-		self.highlightedButtonImage = [UIImage imageNamed:@"UISegmentBarButtonHighlighted.png" bundle:kSSToolkitBundleName];
+		self.buttonImage = [[UIImage imageNamed:@"UISegmentBarButton.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+		self.highlightedButtonImage = [[UIImage imageNamed:@"UISegmentBarButtonHighlighted.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
 		self.dividerImage = [UIImage imageNamed:@"UISegmentBarDivider.png" bundle:kSSToolkitBundleName];
 		self.highlightedDividerImage = [UIImage imageNamed:@"UISegmentBarDividerHighlighted.png" bundle:kSSToolkitBundleName];
 		self.selectedSegmentIndex = SSSegmentedControlNoSegment;
@@ -83,6 +83,8 @@
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	for (NSInteger i = 0; i < count; i++) {
+		CGContextSaveGState(context);
+		
 		id item = [_items objectAtIndex:i];
 		
 		CGFloat x = (segmentWidth * (CGFloat)i + (((CGFloat)i + 1) * dividerWidth));
@@ -107,14 +109,37 @@
 		}
 		
 		CGRect segmentRect = CGRectMake(x, 0.0f, segmentWidth, size.height);
+		CGContextClipToRect(context, segmentRect);
 		
 		// Background
+		UIImage *backgroundImage = nil;
+		CGRect backgroundRect = segmentRect;
 		if (_selectedSegmentIndex == i) {
-			[[UIColor redColor] set];
+			backgroundImage = _highlightedButtonImage;
 		} else {
-			[[UIColor lightGrayColor] set];
+			backgroundImage = _buttonImage;
 		}
-		CGContextFillRect(context, segmentRect);
+		
+		CGFloat capWidth = backgroundImage.leftCapWidth;
+		
+		// First segment
+		if (i == 0) {
+			backgroundRect = CGRectSetWidth(backgroundRect, backgroundRect.size.width + capWidth);
+		}
+		
+		// Last segment
+		else if (i == count - 1) {
+			backgroundRect = CGRectMake(backgroundRect.origin.x - capWidth, backgroundRect.origin.y,
+										backgroundRect.size.width + capWidth, backgroundRect.size.height);
+		}
+		
+		// Middle segment
+		else {
+			backgroundRect = CGRectMake(backgroundRect.origin.x - capWidth, backgroundRect.origin.y,
+										backgroundRect.size.width + capWidth + capWidth, backgroundRect.size.height);
+		}
+		
+		[backgroundImage drawInRect:backgroundRect];
 		
 		// Strings
 		if ([item isKindOfClass:[NSString class]]) {
@@ -129,6 +154,9 @@
 			[string drawInRect:textRect withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
 		}
 		
+		// TODO: Images
+		
+		CGContextRestoreGState(context);
 	}
 }
 
