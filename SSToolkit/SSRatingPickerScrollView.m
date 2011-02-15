@@ -90,7 +90,7 @@
 	[super layoutSubviews];
 	
 	CGFloat height = [_reviewTextView sizeThatFits:CGSizeMake(self.frame.size.width, 2000.0f)].height + 91.0f;
-	height = fmax(height, 191.0f);
+	height = fmaxf(height, 191.0f);
 	self.contentSize = CGSizeMake(self.frame.size.width, height);
 	
 	CGSize size = self.contentSize;

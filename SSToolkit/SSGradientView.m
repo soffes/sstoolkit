@@ -22,7 +22,8 @@
 @synthesize topBorderColor = _topBorderColor;
 @synthesize bottomBorderColor = _bottomBorderColor;
 @synthesize topInsetAlpha = _topInsetAlpha;
-@synthesize bottomInsetAlpha = _bottomInsetAlpha;	
+@synthesize bottomInsetAlpha = _bottomInsetAlpha;
+@synthesize gradientScale = _gradientScale;
 @synthesize hasTopBorder = _hasTopBorder;
 @synthesize hasBottomBorder = _hasBottomBorder;
 @synthesize showsInsets = _showsInsets;
@@ -59,6 +60,11 @@
 }
 
 
++ (CGFloat)defaultGradientScale {
+	return 1.0f;
+}
+
+
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -83,6 +89,7 @@
 		self.bottomBorderColor = [SSGradientView defaultBottomBorderColor];
 		self.topInsetAlpha = [SSGradientView defaultTopInsetAlpha];
 		self.bottomInsetAlpha = [SSGradientView defaultBottomInsetAlpha];
+		self.gradientScale = [SSGradientView defaultGradientScale];
 		self.hasTopBorder = YES;
 		self.hasBottomBorder = YES;
 		self.showsInsets = YES;
@@ -98,7 +105,7 @@
 	CGContextClipToRect(context, rect);
 	
 	// Gradient
-	CGPoint start = CGPointMake(0.0, 0.0f);
+	CGPoint start = CGPointMake(0.0f, 0.0f);
 	CGPoint end = CGPointMake(0.0f, rect.size.height);
 	CGContextDrawLinearGradient(context, _gradient, start, end, 0);
 	
@@ -131,7 +138,7 @@
 		
 		// Bottom border
 		CGContextSetStrokeColorWithColor(context, _bottomBorderColor.CGColor);
-		CGContextMoveToPoint(context, 0.0, rect.size.height);
+		CGContextMoveToPoint(context, 0.0f, rect.size.height);
 		CGContextAddLineToPoint(context, rect.size.width, rect.size.height);
 		CGContextStrokePath(context);
 	}
@@ -147,6 +154,7 @@
 		[self addObserver:self forKeyPath:@"bottomBorderColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"topInsetAlpha" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"bottomInsetAlpha" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"gradientScale" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"hasTopBorder" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"hasBottomBorder" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"showsInsets" options:NSKeyValueObservingOptionNew context:nil];
@@ -161,6 +169,7 @@
 		[self removeObserver:self forKeyPath:@"bottomBorderColor"];
 		[self removeObserver:self forKeyPath:@"topInsetAlpha"];
 		[self removeObserver:self forKeyPath:@"bottomInsetAlpha"];
+		[self removeObserver:self forKeyPath:@"gradientScale"];
 		[self removeObserver:self forKeyPath:@"hasTopBorder"];
 		[self removeObserver:self forKeyPath:@"hasBottomBorder"];
 		[self removeObserver:self forKeyPath:@"showsInsets"];
@@ -175,11 +184,25 @@
 #pragma mark Gradient Methods
 
 - (void)_refreshGradient {
+	CGGradientRelease(_gradient);
+	
+	// Setup colors
 	// TODO: Automatically convert colors into the same colorspace
 	CGColorSpaceRef colorSpace = CGColorGetColorSpace(_topColor.CGColor);
-	NSArray *colors = [NSArray arrayWithObjects:(id)_topColor.CGColor, (id)_bottomColor.CGColor, nil];
-	CGGradientRelease(_gradient);
-	_gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)colors, NULL);
+	NSArray *colors = [[NSArray alloc] initWithObjects:(id)_topColor.CGColor, (id)_bottomColor.CGColor, nil];
+	
+	// Calculate locations based on scale
+	CGFloat top = (1.0f - _gradientScale) / 2.0f;
+	CGFloat locations[] = {
+		top,
+		top + _gradientScale
+	};
+	
+	// Create gradient
+	_gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)colors, locations);
+	[colors release];
+	
+	// Redraw
 	[self setNeedsDisplay];	
 }
 
@@ -188,7 +211,8 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	// Update the gradient and redraw if gradient colors changed
-	if ([keyPath isEqualToString:@"topColor"] || [keyPath isEqualToString:@"bottomColor"]) {
+	if ([keyPath isEqualToString:@"topColor"] || [keyPath isEqualToString:@"bottomColor"] ||
+		[keyPath isEqualToString:@"gradientScale"]) {
 		[self _refreshGradient];
 		return;
 	}

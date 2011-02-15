@@ -23,25 +23,25 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.title = [[self class] title];
-	self.view.backgroundColor = [UIColor colorWithRed:0.851 green:0.859 blue:0.882 alpha:1.0];
+	self.view.backgroundColor = [UIColor colorWithRed:0.851f green:0.859f blue:0.882f alpha:1.0f];
 	
 	CGFloat width = self.view.frame.size.width;
 	
 	// Indicator label
-	_indicatorLabel = [[SSIndicatorLabel alloc] initWithFrame:CGRectMake(20.0, 20.0, width - 40.0, 44.0)];
+	_indicatorLabel = [[SSIndicatorLabel alloc] initWithFrame:CGRectMake(20.0f, 20.0f, width - 40.0f, 44.0f)];
 	_indicatorLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
 	_indicatorLabel.backgroundColor = [UIColor clearColor];
 	_indicatorLabel.activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
 	_indicatorLabel.textLabel.text = @"Click start";
 	[self.view addSubview:_indicatorLabel];
 	
-	CGFloat buttonWidth = (width / 2.0) - 30.0;
+	CGFloat buttonWidth = (width / 2.0f) - 30.0;
 	
 	// Start button
 	UIButton *startButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	[startButton setTitle:@"Start" forState:UIControlStateNormal];
 	[startButton addTarget:self action:@selector(start:) forControlEvents:UIControlEventTouchUpInside];
-	startButton.frame = CGRectMake(20.0, 84.0, buttonWidth, 44.0);
+	startButton.frame = CGRectMake(20.0f, 84.0f, buttonWidth, 44.0f);
 	startButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
 	[self.view addSubview:startButton];
 	
@@ -49,7 +49,7 @@
 	UIButton *stopButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	[stopButton setTitle:@"Stop" forState:UIControlStateNormal];
 	[stopButton addTarget:self action:@selector(stop:) forControlEvents:UIControlEventTouchUpInside];
-	stopButton.frame = CGRectMake(40.0 + buttonWidth, 84.0, buttonWidth, 44.0);
+	stopButton.frame = CGRectMake(40.0 + buttonWidth, 84.0f, buttonWidth, 44.0f);
 	stopButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
 	[self.view addSubview:stopButton];
 }

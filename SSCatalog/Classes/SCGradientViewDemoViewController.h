@@ -16,5 +16,6 @@
 + (NSString *)title;
 
 - (void)changeColor:(id)sender;
+- (void)updateScale:(id)sender;
 
 @end

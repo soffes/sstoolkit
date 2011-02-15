@@ -12,28 +12,27 @@
  
  @section known_bugs Known bugs
  
- @li startColor and endColor must be in the same colorspace. The colorspace 
- of the first color is used to draw the gradient. If you did a gradient from 
- white to blue, it would look like a gradient from white to black because the
- first color, white, is in the gray color space, not the RGB color space. 
- If you did it from blue to white, it would look like blue to black because
- white in the gray colorspace isn't a valid color in the RGB colorspace (because
- there are only 2 components in the gray colorspace and 4 in the RGB colorspace).
- Automatic colorspace conversions are planned for the future.
+ @li <code>startColor</code> and <code>endColor</code> must be in the same colorspace. The colorspace of the first color
+ is used to draw the gradient. If you did a gradient from white to blue, it would look like a gradient from white to
+ black because the first color, white, is in the gray color space, not the RGB color space. If you did it from blue to
+ white, it would look like blue to black because white in the gray colorspace isn't a valid color in the RGB colorspace
+ (because there are only 2 components in the gray colorspace and 4 in the RGB colorspace). Automatic colorspace
+ conversions are planned for the future.
  */
 @interface SSGradientView : UIView {
+	
+@private
 	
 	UIColor *_topColor;
 	UIColor *_bottomColor;
 	UIColor *_topBorderColor;
 	UIColor *_bottomBorderColor;
 	CGFloat _topInsetAlpha;
-	CGFloat _bottomInsetAlpha;	
+	CGFloat _bottomInsetAlpha;
+	CGFloat _gradientScale;
 	BOOL _hasTopBorder;
 	BOOL _hasBottomBorder;
 	BOOL _showsInsets;
-	
-@protected
 	
 	CGGradientRef _gradient;
 }
@@ -69,8 +68,7 @@
 /**
  @brief The top border inset alpha.
  
- If the value is less than or equal to 0.0, it will not be drawn. The
- default 0.3.
+ If the value is less than or equal to <code>0.0</code>, it will not be drawn. The default is <code>0.3</code>.
  
  @see defaultTopInsetAlpha
  */
@@ -79,25 +77,33 @@
 /**
  @brief The bottom border inset alpha.
  
- If the value is less than or equal to 0.0, it will not be drawn. The
- default 0.0.
+ If the value is less than or equal to <code>0.0</code>, it will not be drawn. The default is <code>0.0</code>.
  
  @see defaultBottomInsetAlpha
  */
 @property (nonatomic, assign) CGFloat bottomInsetAlpha;
 
 /**
- @brief A Boolean value that determines whether showing the top border is enabled.
+ @brief The scale of the gradient.
+ 
+ The default is <code>1.0</code>.
+ 
+ @see defaultGradientScale
+ */
+@property (nonatomic, assign) CGFloat gradientScale;
+
+/**
+ @brief A Boolean value that determines whether showing the top border is enabled. The default is <code>YES</code>.
  */
 @property (nonatomic, assign) BOOL hasTopBorder;
 
 /**
- @brief A Boolean value that determines whether showing the bottom border is enabled.
+ @brief A Boolean value that determines whether showing the bottom border is enabled. The default is <code>YES</code>
  */
 @property (nonatomic, assign) BOOL hasBottomBorder;
 
 /**
- @brief A Boolean value that determines whether the border insets are enabled.
+ @brief A Boolean value that determines whether the border insets are enabled. The default is <code>YES</code>.
  */
 @property (nonatomic, assign) BOOL showsInsets;
 
@@ -142,5 +148,12 @@
  @return The default bottom inset alpha.
  */
 + (CGFloat)defaultBottomInsetAlpha;
+
+/**
+ @brief The default gradient scale.
+ 
+ @return The default gradient scale.
+ */
++ (CGFloat)defaultGradientScale;
 
 @end
