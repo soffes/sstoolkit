@@ -25,11 +25,15 @@
 	self.title = [[self class] title];
 	self.view.backgroundColor = [UIColor colorWithRed:0.851f green:0.859f blue:0.882f alpha:1.0f];
 	
+	UIFont *labelFont = [UIFont boldSystemFontOfSize:15.0f];
+	
 	// System switch
 	UILabel *systemLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 20.0f, 280.0f, 20.0f)];
 	systemLabel.text = @"Standard UISwitch";
-	systemLabel.font = [UIFont boldSystemFontOfSize:15.0];
+	systemLabel.font = labelFont;
 	systemLabel.backgroundColor = self.view.backgroundColor;
+	systemLabel.shadowColor = [UIColor whiteColor];
+	systemLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 	[self.view addSubview:systemLabel];
 	[systemLabel release];
 	
@@ -45,8 +49,10 @@
 	// Default style
 	UILabel *defaultLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 107.0f, 280.0f, 20.0f)];
 	defaultLabel.text = @"SSSwitchStyleDefault";
-	defaultLabel.font = [UIFont boldSystemFontOfSize:15.0];
+	defaultLabel.font = labelFont;
 	defaultLabel.backgroundColor = self.view.backgroundColor;
+	defaultLabel.shadowColor = [UIColor whiteColor];
+	defaultLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 	[self.view addSubview:defaultLabel];
 	[defaultLabel release];
 	
@@ -62,8 +68,10 @@
 	// Airplane mode style
 	UILabel *airplaneLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 194.0f, 280.0f, 20.0f)];
 	airplaneLabel.text = @"SSSwitchStyleAirplane";
-	airplaneLabel.font = [UIFont boldSystemFontOfSize:15.0];
+	airplaneLabel.font = labelFont;
 	airplaneLabel.backgroundColor = self.view.backgroundColor;
+	airplaneLabel.shadowColor = [UIColor whiteColor];
+	airplaneLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 	[self.view addSubview:airplaneLabel];
 	[airplaneLabel release];
 	

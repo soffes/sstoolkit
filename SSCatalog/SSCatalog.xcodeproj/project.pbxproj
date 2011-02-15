@@ -252,12 +252,12 @@
 		B2B3CEFF1296F88B001BAC94 /* Control Demos */ = {
 			isa = PBXGroup;
 			children = (
-				B2B3CEED1296F78D001BAC94 /* SCSwitchDemoViewController.h */,
-				B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */,
-				B2ABED94130A0EC000AD7A1C /* SSSegmentedControlDemoViewController.h */,
-				B2ABED95130A0EC000AD7A1C /* SSSegmentedControlDemoViewController.m */,
 				B2E241801301CE4900F7DC3B /* SCAddressBarDemoViewController.h */,
 				B2E241811301CE4900F7DC3B /* SCAddressBarDemoViewController.m */,
+				B2ABED94130A0EC000AD7A1C /* SSSegmentedControlDemoViewController.h */,
+				B2ABED95130A0EC000AD7A1C /* SSSegmentedControlDemoViewController.m */,
+				B2B3CEED1296F78D001BAC94 /* SCSwitchDemoViewController.h */,
+				B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */,
 			);
 			name = "Control Demos";
 			sourceTree = "<group>";
