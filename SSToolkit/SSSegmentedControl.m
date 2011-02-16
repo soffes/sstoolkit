@@ -255,6 +255,7 @@
 		[keyPath isEqual:@"font"] || [keyPath isEqual:@"textColor"] || [keyPath isEqual:@"textShadowColor"] ||
 		[keyPath isEqual:@"textShadowOffset"] || [keyPath isEqual:@"textEdgeInsets"]) {
 		[self setNeedsDisplay];
+		return;
 	}
 	
 	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
