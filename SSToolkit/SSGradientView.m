@@ -200,6 +200,7 @@
 	
 	// Create gradient
 	_gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)colors, locations);
+	CFRelease(colorSpace);
 	[colors release];
 	
 	// Redraw
