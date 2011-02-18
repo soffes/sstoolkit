@@ -89,3 +89,34 @@ void SSDrawRoundedRect(CGContextRef context, CGRect rect, CGFloat cornerRadius) 
 	CGContextClosePath(context);
 	CGContextFillPath(context);
 }
+
+
+CGGradientRef SSGradientWithColors(UIColor *topColor, UIColor *bottomColor) {
+	CGColorRef topCGColor = topColor.CGColor;
+	CGColorSpaceRef colorSpace = CGColorGetColorSpace(topCGColor);
+	NSArray *colors = [[NSArray alloc] initWithObjects:(id)topCGColor, (id)bottomColor.CGColor, nil];
+	CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)colors, NULL);
+	[colors release];
+	
+	return gradient;
+}
+
+
+void SSDrawGradientInRect(CGContextRef context, UIColor *topColor, UIColor *bottomColor, CGRect rect) {
+	// Fill if same color
+	if ([topColor isEqual:bottomColor]) {
+		[topColor set];
+		CGContextFillRect(context, rect);
+		return;
+	}	
+	
+	// Create gradient
+	CGGradientRef gradient = SSGradientWithColors(topColor, bottomColor);	
+	CGContextSaveGState(context);
+	CGContextClipToRect(context, rect);
+	CGPoint start = CGPointMake(rect.origin.x, rect.origin.y);
+	CGPoint end = CGPointMake(rect.origin.x, rect.origin.y + rect.size.height);
+	CGContextDrawLinearGradient(context, gradient, start, end, 0);
+	CGContextRestoreGState(context);	
+	CGGradientRelease(gradient);
+}
