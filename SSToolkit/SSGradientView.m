@@ -7,6 +7,7 @@
 //
 
 #import "SSGradientView.h"
+#import "SSDrawingMacros.h"
 
 @interface SSGradientView (PrivateMethods)
 
@@ -186,21 +187,9 @@
 - (void)_refreshGradient {
 	CGGradientRelease(_gradient);
 	
-	// Setup colors
-	// TODO: Automatically convert colors into the same colorspace
-	CGColorSpaceRef colorSpace = CGColorGetColorSpace(_topColor.CGColor);
-	NSArray *colors = [[NSArray alloc] initWithObjects:(id)_topColor.CGColor, (id)_bottomColor.CGColor, nil];
-	
 	// Calculate locations based on scale
 	CGFloat top = (1.0f - _gradientScale) / 2.0f;
-	CGFloat locations[] = {
-		top,
-		top + _gradientScale
-	};
-	
-	// Create gradient
-	_gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)colors, locations);
-	[colors release];
+	_gradient = SSGradientWithColorsAndLocations(_topColor, _bottomColor, top, top + _gradientScale);
 	
 	// Redraw
 	[self setNeedsDisplay];	
