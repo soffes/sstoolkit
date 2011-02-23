@@ -7,6 +7,7 @@
 //
 
 #import "NSDate+SSToolkitAdditions.h"
+#include <time.h>
 
 @implementation NSDate (SSToolkitAdditions)
 
@@ -15,24 +16,27 @@
 		return nil;
 	}
 	
-	static NSDateFormatter *dateFormatter = nil;
-	if (!dateFormatter) {
-		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
-	}
+	struct tm tm;
+	time_t t;	
 	
-    return [dateFormatter dateFromString:string];
+	strptime([string cStringUsingEncoding:NSUTF8StringEncoding], "%Y-%m-%dT%H:%M:%S%z", &tm);
+	tm.tm_isdst = -1;
+	t = mktime(&tm);
+	
+	return [NSDate dateWithTimeIntervalSince1970:t + [[NSTimeZone localTimeZone] secondsFromGMT]];
 }
 
 
 - (NSString *)ISO8601String {
-	static NSDateFormatter *dateFormatter = nil;
-	if (!dateFormatter) {
-		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
-	}
+	struct tm *timeinfo;
+	char buffer[80];
 	
-	return [dateFormatter stringFromDate:self];
+	time_t rawtime = [self timeIntervalSince1970] - [[NSTimeZone localTimeZone] secondsFromGMT];
+	timeinfo = localtime(&rawtime);
+	
+	strftime(buffer, 80, "%Y-%m-%dT%H:%M:%S%z", timeinfo);
+	
+	return [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
 }
 
 
