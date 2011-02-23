@@ -24,6 +24,7 @@
 #pragma mark NSObject
 
 - (void)dealloc {
+	[_imageView release];
 	[_textLabel release];
 	[_detailTextLabel release];
 	[_backgroundView release];
