@@ -40,11 +40,6 @@
 }
 
 
-- (NSDate *)adjustedDate {
-	return [[[NSDate alloc] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT] sinceDate:self] autorelease];
-}
-
-
 //	Adapted from http://github.com/gabriel/gh-kit/blob/master/Classes/GHNSString+TimeInterval.m
 + (NSString *)timeAgoInWordsFromTimeInterval:(NSTimeInterval)intervalInSeconds includingSeconds:(BOOL)includeSeconds {
 	double intervalInMinutes = round(intervalInSeconds / 60.0f);
@@ -98,14 +93,5 @@
 	return [[self class] timeAgoInWordsFromTimeInterval:fabs([self timeIntervalSinceNow]) includingSeconds:includeSeconds];		
 }
 
-
-- (NSString *)adjustedTimeAgoInWords {
-	return [self adjustedTimeAgoInWordsIncludingSeconds:YES];
-}
-
-
-- (NSString *)adjustedTimeAgoInWordsIncludingSeconds:(BOOL)includeSeconds {
-	return [[self class] timeAgoInWordsFromTimeInterval:fabs([self timeIntervalSinceNow] + [[NSTimeZone localTimeZone] secondsFromGMT]) includingSeconds:includeSeconds];		
-}
 
 @end
