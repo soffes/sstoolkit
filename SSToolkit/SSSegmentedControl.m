@@ -82,7 +82,7 @@
 	
 	static CGFloat dividerWidth = 1.0f;
 	
-	NSInteger count = [_items count];
+	NSInteger count = (NSInteger)[_items count];
 	CGSize size = frame.size;
 	CGFloat segmentWidth = roundf((size.width - count - 1) / (CGFloat)count);
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -90,7 +90,7 @@
 	for (NSInteger i = 0; i < count; i++) {
 		CGContextSaveGState(context);
 		
-		id item = [_items objectAtIndex:i];
+		id item = [_items objectAtIndex:(NSUInteger)i];
 		
 		CGFloat x = (segmentWidth * (CGFloat)i + (((CGFloat)i + 1) * dividerWidth));
 		
@@ -125,24 +125,23 @@
 			backgroundImage = _buttonImage;
 		}
 		
-		CGFloat leftCapWidth = [backgroundImage leftCapWidth];
-		CGFloat rightCapWidth = [backgroundImage rightCapWidth];
+		CGFloat capWidth = backgroundImage.leftCapWidth;
 		
 		// First segment
 		if (i == 0) {
-			backgroundRect = CGRectSetWidth(backgroundRect, backgroundRect.size.width + rightCapWidth);
+			backgroundRect = CGRectSetWidth(backgroundRect, backgroundRect.size.width + capWidth);
 		}
 		
 		// Last segment
 		else if (i == count - 1) {
-			backgroundRect = CGRectMake(backgroundRect.origin.x - leftCapWidth, backgroundRect.origin.y,
-										backgroundRect.size.width + leftCapWidth, backgroundRect.size.height);
+			backgroundRect = CGRectMake(backgroundRect.origin.x - capWidth, backgroundRect.origin.y,
+										backgroundRect.size.width + capWidth, backgroundRect.size.height);
 		}
 		
 		// Middle segment
 		else {
-			backgroundRect = CGRectMake(backgroundRect.origin.x - leftCapWidth, backgroundRect.origin.y,
-										backgroundRect.size.width + leftCapWidth + rightCapWidth, backgroundRect.size.height);
+			backgroundRect = CGRectMake(backgroundRect.origin.x - capWidth, backgroundRect.origin.y,
+										backgroundRect.size.width + capWidth + capWidth, backgroundRect.size.height);
 		}
 		
 		[backgroundImage drawInRect:backgroundRect];
@@ -205,7 +204,7 @@
 		NSInteger index = 0;
 		for (id item in items) {
 			if ([item isKindOfClass:[NSString class]]) {
-				[self setTitle:item forSegmentAtIndex:index];
+				[self setTitle:item forSegmentAtIndex:(NSUInteger)index];
 				index++;
 			}
 		}
