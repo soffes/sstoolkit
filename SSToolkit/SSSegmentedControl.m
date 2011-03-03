@@ -243,16 +243,16 @@
 #pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ([keyPath isEqual:@"selectedSegmentIndex"]) {
+	if ([keyPath isEqualToString:@"selectedSegmentIndex"]) {
 		[self setNeedsDisplay];
 		[self sendActionsForControlEvents:UIControlEventValueChanged];
 		return;
 	}
 	
-	if ([keyPath isEqual:@"buttonImage"] || [keyPath isEqual:@"highlightedButtonImage"] ||
-		[keyPath isEqual:@"dividerImage"] || [keyPath isEqual:@"highlightedDividerImage"] ||
-		[keyPath isEqual:@"font"] || [keyPath isEqual:@"textColor"] || [keyPath isEqual:@"textShadowColor"] ||
-		[keyPath isEqual:@"textShadowOffset"] || [keyPath isEqual:@"textEdgeInsets"]) {
+	if ([keyPath isEqualToString:@"buttonImage"] || [keyPath isEqualToString:@"highlightedButtonImage"] ||
+		[keyPath isEqualToString:@"dividerImage"] || [keyPath isEqualToString:@"highlightedDividerImage"] ||
+		[keyPath isEqualToString:@"font"] || [keyPath isEqualToString:@"textColor"] || [keyPath isEqualToString:@"textShadowColor"] ||
+		[keyPath isEqualToString:@"textShadowOffset"] || [keyPath isEqualToString:@"textEdgeInsets"]) {
 		[self setNeedsDisplay];
 		return;
 	}

@@ -328,11 +328,11 @@
 #pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ([keyPath isEqual:@"on"] || [keyPath isEqual:@"style"] || [keyPath isEqual:@"leftHandleImage"] ||
-		[keyPath isEqual:@"leftHandleImageHighlighted"] || [keyPath isEqual:@"centerHandleImage"] ||
-		[keyPath isEqual:@"centerHandleImageHighlighted"] || [keyPath isEqual:@"rightHandleImage"] ||
-		[keyPath isEqual:@"rightHandleImageHighlighted"] || [keyPath isEqual:@"handleShadowWidth"] ||
-		[keyPath isEqual:@"trackEdgeInsets"] || [keyPath isEqual:@"switchLabelStyle"]) {
+	if ([keyPath isEqualToString:@"on"] || [keyPath isEqualToString:@"style"] || [keyPath isEqualToString:@"leftHandleImage"] ||
+		[keyPath isEqualToString:@"leftHandleImageHighlighted"] || [keyPath isEqualToString:@"centerHandleImage"] ||
+		[keyPath isEqualToString:@"centerHandleImageHighlighted"] || [keyPath isEqualToString:@"rightHandleImage"] ||
+		[keyPath isEqualToString:@"rightHandleImageHighlighted"] || [keyPath isEqualToString:@"handleShadowWidth"] ||
+		[keyPath isEqualToString:@"trackEdgeInsets"] || [keyPath isEqualToString:@"switchLabelStyle"]) {
 		[self setNeedsDisplay];
 		return;
 	}

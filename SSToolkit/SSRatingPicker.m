@@ -155,13 +155,13 @@
 #pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ([keyPath isEqual:@"frame"] || [keyPath isEqual:@"totalNumberOfStars"] || [keyPath isEqual:@"emptyStarImage"] ||
-		[keyPath isEqual:@"filledStarImage"] || [keyPath isEqual:@"starSize"] || [keyPath isEqual:@"starSpacing"]) {
+	if ([keyPath isEqualToString:@"frame"] || [keyPath isEqualToString:@"totalNumberOfStars"] || [keyPath isEqualToString:@"emptyStarImage"] ||
+		[keyPath isEqualToString:@"filledStarImage"] || [keyPath isEqualToString:@"starSize"] || [keyPath isEqualToString:@"starSpacing"]) {
 		[self setNeedsDisplay];
 		return;
 	}
 	
-	if ([keyPath isEqual:@"numberOfStars"]) {
+	if ([keyPath isEqualToString:@"numberOfStars"]) {
 		CGFloat new = [[change valueForKey:NSKeyValueChangeNewKey] floatValue];
 		CGFloat old = [[change valueForKey:NSKeyValueChangeOldKey] floatValue];
 		

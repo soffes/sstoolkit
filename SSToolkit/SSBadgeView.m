@@ -153,9 +153,9 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	// Redraw if something we care about changed	
-	if ([keyPath isEqual:@"text"] || [keyPath isEqual:@"textColor"] || [keyPath isEqual:@"highlightedTextColor"] ||
-		[keyPath isEqual:@"font"] || [keyPath isEqual:@"badgeColor"] || [keyPath isEqual:@"highlightedBadgeColor"] ||
-		[keyPath isEqual:@"cornerRadius"] || [keyPath isEqual:@"badgeAlignment"] || [keyPath isEqual:@"highlighted"]) {
+	if ([keyPath isEqualToString:@"text"] || [keyPath isEqualToString:@"textColor"] || [keyPath isEqualToString:@"highlightedTextColor"] ||
+		[keyPath isEqualToString:@"font"] || [keyPath isEqualToString:@"badgeColor"] || [keyPath isEqualToString:@"highlightedBadgeColor"] ||
+		[keyPath isEqualToString:@"cornerRadius"] || [keyPath isEqualToString:@"badgeAlignment"] || [keyPath isEqualToString:@"highlighted"]) {
 		[self setNeedsDisplay];
 		return;
 	}

@@ -490,11 +490,11 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	NSString *scheme = [url scheme];
     
 	// Check for DOM load message
-	if ([scheme isEqual:@"x-sswebview"]) {
+	if ([scheme isEqualToString:@"x-sswebview"]) {
 		NSString *host = [url host];
-		if ([host isEqual:@"dom-loaded"]) {
+		if ([host isEqualToString:@"dom-loaded"]) {
 			[self _DOMLoaded];
-		} else if ([host isEqual:@"log"] && _consoleEnabled) {
+		} else if ([host isEqualToString:@"log"] && _consoleEnabled) {
 			NSLog(@"[SSWebView Console] %@", [[url query] URLDecodedString]);
 		}
 		return NO;
