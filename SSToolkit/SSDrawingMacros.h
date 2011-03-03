@@ -26,7 +26,8 @@ extern CGRect CGRectSetZeroSize(CGRect rect);
 extern CGSize CGSizeAspectScaleToSize(CGSize size, CGSize toSize);
 extern CGRect CGRectAddPoint(CGRect rect, CGPoint point);
 
+extern CGMutablePathRef SSRoundedRectPath(CGRect rect, CGFloat cornerRadius);
 extern void SSDrawRoundedRect(CGContextRef context, CGRect rect, CGFloat cornerRadius);
 extern CGGradientRef SSGradientWithColors(UIColor *topColor, UIColor *bottomColor);
 extern CGGradientRef SSGradientWithColorsAndLocations(UIColor *topColor, UIColor *bottomColor, CGFloat topLocation, CGFloat bottomLocation);
-extern void SSDrawGradientInRect(CGContextRef context, UIColor *topColor, UIColor *bottomColor, CGRect rect);
+extern void SSDrawGradientInRect(CGContextRef context, CGGradientRef gradient, CGRect rect);

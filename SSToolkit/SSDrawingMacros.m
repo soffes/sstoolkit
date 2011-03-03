@@ -74,18 +74,34 @@ CGRect CGRectAddPoint(CGRect rect, CGPoint point) {
 }
 
 
+extern CGMutablePathRef SSRoundedRectPath(CGRect rect, CGFloat cornerRadius) {
+	CGPoint min = CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect));
+	CGPoint mid = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+	CGPoint max = CGPointMake(CGRectGetMaxX(rect), CGRectGetMaxY(rect));
+	
+	CGMutablePathRef path = CGPathCreateMutable();
+	
+	CGPathMoveToPoint(path, NULL, min.x, mid.y);
+	CGPathAddArcToPoint(path, NULL, min.x, min.y, mid.x, min.y, cornerRadius);
+	CGPathAddArcToPoint(path, NULL, max.x, min.y, max.x, mid.y, cornerRadius);
+	CGPathAddArcToPoint(path, NULL, max.x, max.y, mid.x, max.y, cornerRadius);
+	CGPathAddArcToPoint(path, NULL, min.x, max.y, min.x, mid.y, cornerRadius);
+	
+	return path;
+}
+
+
 void SSDrawRoundedRect(CGContextRef context, CGRect rect, CGFloat cornerRadius) {
-	CGFloat minx = CGRectGetMinX(rect);
-	CGFloat midx = CGRectGetMidX(rect);
-	CGFloat maxx = CGRectGetMaxX(rect);
-	CGFloat miny = CGRectGetMinY(rect);
-	CGFloat midy = CGRectGetMidY(rect);
-	CGFloat maxy = CGRectGetMaxY(rect);	
-	CGContextMoveToPoint(context, minx, midy);
-	CGContextAddArcToPoint(context, minx, miny, midx, miny, cornerRadius);
-	CGContextAddArcToPoint(context, maxx, miny, maxx, midy, cornerRadius);
-	CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, cornerRadius);
-	CGContextAddArcToPoint(context, minx, maxy, minx, midy, cornerRadius);
+	CGPoint min = CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect));
+	CGPoint mid = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+	CGPoint max = CGPointMake(CGRectGetMaxX(rect), CGRectGetMaxY(rect));
+	
+	CGContextMoveToPoint(context, min.x, mid.y);
+	CGContextAddArcToPoint(context, min.x, min.y, mid.x, min.y, cornerRadius);
+	CGContextAddArcToPoint(context, max.x, min.y, max.x, mid.y, cornerRadius);
+	CGContextAddArcToPoint(context, max.x, max.y, mid.x, max.y, cornerRadius);
+	CGContextAddArcToPoint(context, min.x, max.y, min.x, mid.y, cornerRadius);
+	
 	CGContextClosePath(context);
 	CGContextFillPath(context);
 }
@@ -113,21 +129,11 @@ CGGradientRef SSGradientWithColorsAndLocations(UIColor *topColor, UIColor *botto
 
 
 
-void SSDrawGradientInRect(CGContextRef context, UIColor *topColor, UIColor *bottomColor, CGRect rect) {
-	// Fill if same color
-	if ([topColor isEqual:bottomColor]) {
-		[topColor set];
-		CGContextFillRect(context, rect);
-		return;
-	}	
-	
-	// Create gradient
-	CGGradientRef gradient = SSGradientWithColors(topColor, bottomColor);	
+void SSDrawGradientInRect(CGContextRef context, CGGradientRef gradient, CGRect rect) {
 	CGContextSaveGState(context);
 	CGContextClipToRect(context, rect);
 	CGPoint start = CGPointMake(rect.origin.x, rect.origin.y);
 	CGPoint end = CGPointMake(rect.origin.x, rect.origin.y + rect.size.height);
 	CGContextDrawLinearGradient(context, gradient, start, end, 0);
-	CGContextRestoreGState(context);	
-	CGGradientRelease(gradient);
+	CGContextRestoreGState(context);
 }
