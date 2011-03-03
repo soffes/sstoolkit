@@ -93,9 +93,9 @@
 	}
 	
 	// Calculate bottomPadding
-	CGFloat bottomPadding = 0.0f;
+	CGFloat bottomPadding = self.contentInset.bottom;
 	if ([self.delegate respondsToSelector:@selector(collectionView:heightForFooterInSection:)]) {
-		bottomPadding = [self.delegate collectionView:self heightForFooterInSection:0];
+		bottomPadding += [self.delegate collectionView:self heightForFooterInSection:0];
 	}
 	
 	// Layout items
@@ -136,7 +136,7 @@
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
 	[super touchesCancelled:touches withEvent:event];
-
+	
 	SSCollectionViewItem *item = [self _itemForTouches:touches event:event];
 	item.highlighted = NO;
 }
