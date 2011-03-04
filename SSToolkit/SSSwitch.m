@@ -51,7 +51,7 @@
 	[_onBackgroundImageView release];
 	[_onLabel release];
 	[_onView release];
-	[_onBackgroundImageView release];
+	[_offBackgroundImageView release];
 	[_offLabel release];
 	[_offView release];
 	[_labelMaskView release];
