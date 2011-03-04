@@ -7,12 +7,9 @@
 //
 
 // Limitiations:
-// - Images not supported
 // - Removing and inserting items is not supported
-// - Momentary mode is not supported
 // - Setting item width is not supported
 // - Setting item content offset is not supported
-// - Enabling and disabling items is not supported
 
 enum {
  SSSegmentedControlNoSegment = UISegmentedControlNoSegment
@@ -22,8 +19,10 @@ enum {
 
 @private
 	
-	NSMutableArray *_items;
+	NSMutableArray *_segments;
 	NSInteger _selectedSegmentIndex;
+	BOOL _momentary;
+	NSMutableSet *_disabledSegmentIndexes;
 	
 	UIImage *_buttonImage;
 	UIImage *_highlightedButtonImage;
@@ -37,9 +36,9 @@ enum {
 	UIEdgeInsets _textEdgeInsets;
 }
 
-//@property (nonatomic, getter=isMomentary) BOOL momentary;
 @property (nonatomic, assign, readonly) NSUInteger numberOfSegments;
 @property (nonatomic, assign) NSInteger selectedSegmentIndex;
+@property (nonatomic, getter=isMomentary) BOOL momentary;
 
 @property (nonatomic, retain) UIImage *buttonImage;
 @property (nonatomic, retain) UIImage *highlightedButtonImage;
@@ -54,7 +53,7 @@ enum {
 
 - (id)initWithItems:(NSArray *)items;
 
-//- (void)insertSegmentWithTitle:(NSString *)title atIndex:(NSUInteger)segment animated:(BOOL)animated; // insert before segment number. 0..#segments. value pinned
+//- (void)insertSegmentWithTitle:(NSString *)title atIndex:(NSUInteger)segment animated:(BOOL)animated;
 //- (void)insertSegmentWithImage:(UIImage *)image  atIndex:(NSUInteger)segment animated:(BOOL)animated;
 //- (void)removeSegmentAtIndex:(NSUInteger)segment animated:(BOOL)animated;
 //- (void)removeAllSegments;
@@ -62,8 +61,8 @@ enum {
 - (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)segment;
 - (NSString *)titleForSegmentAtIndex:(NSUInteger)segment;
 
-//- (void)setImage:(UIImage *)image forSegmentAtIndex:(NSUInteger)segment;
-//- (UIImage *)imageForSegmentAtIndex:(NSUInteger)segment;
+- (void)setImage:(UIImage *)image forSegmentAtIndex:(NSUInteger)segment;
+- (UIImage *)imageForSegmentAtIndex:(NSUInteger)segment;
 
 //- (void)setWidth:(CGFloat)width forSegmentAtIndex:(NSUInteger)segment;
 //- (CGFloat)widthForSegmentAtIndex:(NSUInteger)segment;
@@ -71,7 +70,7 @@ enum {
 //- (void)setContentOffset:(CGSize)offset forSegmentAtIndex:(NSUInteger)segment;
 //- (CGSize)contentOffsetForSegmentAtIndex:(NSUInteger)segment;
 
-//- (void)setEnabled:(BOOL)enabled forSegmentAtIndex:(NSUInteger)segment;
-//- (BOOL)isEnabledForSegmentAtIndex:(NSUInteger)segment;
+- (void)setEnabled:(BOOL)enabled forSegmentAtIndex:(NSUInteger)segment;
+- (BOOL)isEnabledForSegmentAtIndex:(NSUInteger)segment;
 
 @end

@@ -12,8 +12,9 @@
 
 @implementation SSSegmentedControl
 
-@synthesize numberOfSegments = _numberOfSegments;
+@synthesize numberOfSegments;
 @synthesize selectedSegmentIndex = _selectedSegmentIndex;
+@synthesize momentary = _momentary;
 @synthesize buttonImage = _buttonImage;
 @synthesize highlightedButtonImage = _highlightedButtonImage;
 @synthesize dividerImage = _dividerImage;
@@ -27,7 +28,7 @@
 #pragma mark NSObject
 
 - (void)dealloc {
-	[_items release];
+	[_segments release];
 	[_buttonImage release];
 	[_highlightedButtonImage release];
 	[_dividerImage release];
@@ -50,7 +51,17 @@
 		return;
 	}
 	
-	self.selectedSegmentIndex = (NSInteger)floorf((CGFloat)x / (self.frame.size.width / (CGFloat)[_items count]));	
+	self.selectedSegmentIndex = (NSInteger)floorf((CGFloat)x / (self.frame.size.width / (CGFloat)[self numberOfSegments]));	
+}
+
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	if (!_momentary) {
+		return;
+	}
+	
+	_selectedSegmentIndex = UISegmentedControlNoSegment;
+	[self setNeedsDisplay];
 }
 
 
@@ -60,7 +71,8 @@
 	if ((self = [super initWithFrame:frame])) {
 		self.backgroundColor = [UIColor clearColor];
 		
-		_items = [[NSMutableArray alloc] init];
+		_segments = [[NSMutableArray alloc] init];
+		_momentary = NO;
 		
 		self.buttonImage = [[UIImage imageNamed:@"UISegmentBarButton.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
 		self.highlightedButtonImage = [[UIImage imageNamed:@"UISegmentBarButtonHighlighted.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
@@ -82,7 +94,7 @@
 	
 	static CGFloat dividerWidth = 1.0f;
 	
-	NSInteger count = (NSInteger)[_items count];
+	NSInteger count = (NSInteger)[self numberOfSegments];
 	CGSize size = frame.size;
 	CGFloat segmentWidth = roundf((size.width - count - 1) / (CGFloat)count);
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -90,7 +102,7 @@
 	for (NSInteger i = 0; i < count; i++) {
 		CGContextSaveGState(context);
 		
-		id item = [_items objectAtIndex:(NSUInteger)i];
+		id item = [_segments objectAtIndex:(NSUInteger)i];
 		
 		CGFloat x = (segmentWidth * (CGFloat)i + (((CGFloat)i + 1) * dividerWidth));
 		
@@ -161,7 +173,10 @@
 			[string drawInRect:textRect withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
 		}
 		
-		// TODO: Images
+		// Images
+		else if ([item isKindOfClass:[UIImage class]]) {
+			// TODO
+		}
 		
 		CGContextRestoreGState(context);
 	}
@@ -215,11 +230,16 @@
 
 #pragma mark Segments
 
+- (NSUInteger)numberOfSegments {
+	return [_segments count];
+}
+
+
 - (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)segment {
-	if ((NSInteger)([_items count] - 1) < (NSInteger)segment) {
-		[_items addObject:title];
+	if ((NSInteger)([self numberOfSegments] - 1) < (NSInteger)segment) {
+		[_segments addObject:title];
 	} else {
-		[_items replaceObjectAtIndex:segment withObject:title];
+		[_segments replaceObjectAtIndex:segment withObject:title];
 	}
 	
 	[self setNeedsDisplay];
@@ -227,16 +247,63 @@
 
 
 - (NSString *)titleForSegmentAtIndex:(NSUInteger)segment {
-	if ([_items count] - 1 >= segment) {
+	if ([self numberOfSegments] - 1 >= segment) {
 		return nil;
 	}
 	
-	id item = [_items objectAtIndex:segment];
+	id item = [_segments objectAtIndex:segment];
 	if ([item isKindOfClass:[NSString class]]) {
 		return item;
 	}
 	
 	return nil;
+}
+
+
+- (void)setImage:(UIImage *)image forSegmentAtIndex:(NSUInteger)segment {
+	if ((NSInteger)([self numberOfSegments] - 1) < (NSInteger)segment) {
+		[_segments addObject:image];
+	} else {
+		[_segments replaceObjectAtIndex:segment withObject:image];
+	}
+	
+	[self setNeedsDisplay];
+}
+
+
+- (UIImage *)imageForSegmentAtIndex:(NSUInteger)segment {
+	if ([self numberOfSegments] - 1 >= segment) {
+		return nil;
+	}
+	
+	id item = [_segments objectAtIndex:segment];
+	if ([item isKindOfClass:[UIImage class]]) {
+		return item;
+	}
+	
+	return nil;
+}
+
+
+- (void)setEnabled:(BOOL)enabled forSegmentAtIndex:(NSUInteger)segment {
+	NSNumber *number = [NSNumber numberWithInteger:segment];
+	
+	if (enabled) {
+		if (![self isEnabledForSegmentAtIndex:segment]) {
+			[_disabledSegmentIndexes addObject:number];
+		}
+	} else {
+		if ([self isEnabledForSegmentAtIndex:segment]) {
+			[_disabledSegmentIndexes removeObject:number];
+		}
+	}
+	
+	[self setNeedsDisplay];
+}
+
+
+- (BOOL)isEnabledForSegmentAtIndex:(NSUInteger)segment {
+	return [_disabledSegmentIndexes containsObject:[NSNumber numberWithInteger:segment]];
 }
 
 
