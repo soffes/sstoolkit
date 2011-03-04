@@ -35,7 +35,7 @@
 	self.view.backgroundColor = [UIColor colorWithRed:0.851f green:0.859f blue:0.882f alpha:1.0f];
 	
 	UIFont *labelFont = [UIFont boldSystemFontOfSize:15.0f];
-	NSArray *items = [NSArray arrayWithObjects:@"Apples", @"Oranges", @"Grapes", nil];
+	NSArray *items = [NSArray arrayWithObjects:@"Apples", @"Oranges", [UIImage imageNamed:@"SamLogo.png"], nil];
 	
 	// System segmented control
 	UILabel *systemLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 20.0f, 280.0f, 20.0f)];
@@ -51,6 +51,7 @@
 	_systemSegmentedControl.frame = CGRectMake(20.0f, 50.0f, 280.0f, 32.0f);
 	_systemSegmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
 	_systemSegmentedControl.selectedSegmentIndex = 0;
+	[_systemSegmentedControl setEnabled:NO forSegmentAtIndex:1];
 	[_systemSegmentedControl addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
 	[self.view addSubview:_systemSegmentedControl];
 	
@@ -67,6 +68,7 @@
 	_customSegmentedControl = [[SSSegmentedControl alloc] initWithItems:items];
 	_customSegmentedControl.frame = CGRectMake(20.0f, 137.0f, 280.0f, 32.0f);
 	_customSegmentedControl.selectedSegmentIndex = 0;
+	[_customSegmentedControl setEnabled:NO forSegmentAtIndex:1];
 	[_customSegmentedControl addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
 	[self.view addSubview:_customSegmentedControl];
 }

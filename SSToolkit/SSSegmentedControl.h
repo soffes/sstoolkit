@@ -12,7 +12,7 @@
 // - Setting item content offset is not supported
 
 enum {
- SSSegmentedControlNoSegment = UISegmentedControlNoSegment
+	SSSegmentedControlNoSegment = UISegmentedControlNoSegment
 };
 
 @interface SSSegmentedControl : UIControl {
@@ -22,7 +22,7 @@ enum {
 	NSMutableArray *_segments;
 	NSInteger _selectedSegmentIndex;
 	BOOL _momentary;
-	NSMutableSet *_disabledSegmentIndexes;
+	NSMutableDictionary *_segmentMeta;
 	
 	UIImage *_buttonImage;
 	UIImage *_highlightedButtonImage;
@@ -31,6 +31,7 @@ enum {
 	
 	UIFont *_font;
 	UIColor *_textColor;
+	UIColor *_disabledTextColor;
 	UIColor *_textShadowColor;
 	CGSize _textShadowOffset;
 	UIEdgeInsets _textEdgeInsets;
@@ -47,6 +48,7 @@ enum {
 
 @property (nonatomic, retain) UIFont *font;
 @property (nonatomic, retain) UIColor *textColor;
+@property (nonatomic, retain) UIColor *disabledTextColor;
 @property (nonatomic, retain) UIColor *textShadowColor;
 @property (nonatomic, assign) CGSize textShadowOffset;
 @property (nonatomic, assign) UIEdgeInsets textEdgeInsets;

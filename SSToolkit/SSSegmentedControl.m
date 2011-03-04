@@ -10,6 +10,14 @@
 #import "SSDrawingMacros.h"
 #import "UIImage+SSToolkitAdditions.h"
 
+static NSString *kSSSegmentedControlEnabledKey = @"enabled";
+
+@interface SSSegmentedControl (PrivateMethods)
+- (NSMutableDictionary *)_metaForSegmentIndex:(NSInteger)index;
+- (id)_metaValueForKey:(NSString *)key segmentIndex:(NSInteger)index;
+- (void)_setMetaValue:(id)value forKey:(NSString *)key segmentIndex:(NSInteger)index;
+@end
+
 @implementation SSSegmentedControl
 
 @synthesize numberOfSegments;
@@ -21,6 +29,7 @@
 @synthesize highlightedDividerImage = _highlightedDividerImage;
 @synthesize font = _font;
 @synthesize textColor = _textColor;
+@synthesize disabledTextColor = _disabledTextColor;
 @synthesize textShadowColor = _textShadowColor;
 @synthesize textShadowOffset = _textShadowOffset;
 @synthesize textEdgeInsets = _textEdgeInsets;
@@ -35,7 +44,9 @@
 	[_highlightedDividerImage release];
 	[_font release];
 	[_textColor release];
+	[_disabledTextColor release];
 	[_textShadowColor release];
+	[_segmentMeta release];
 	[super dealloc];
 }
 
@@ -51,7 +62,10 @@
 		return;
 	}
 	
-	self.selectedSegmentIndex = (NSInteger)floorf((CGFloat)x / (self.frame.size.width / (CGFloat)[self numberOfSegments]));	
+	NSInteger index = (NSInteger)floorf((CGFloat)x / (self.frame.size.width / (CGFloat)[self numberOfSegments]));
+	if ([self isEnabledForSegmentAtIndex:index]) {
+		self.selectedSegmentIndex = index;
+	}
 }
 
 
@@ -82,6 +96,7 @@
 		
 		_font = [[UIFont boldSystemFontOfSize:12.0f] retain];
 		_textColor = [[UIColor whiteColor] retain];
+		_disabledTextColor = [[UIColor colorWithWhite:0.561f alpha:1.0f] retain];
 		_textShadowColor = [[UIColor colorWithWhite:0.0f alpha:0.5f] retain];
 		_textShadowOffset = CGSizeMake(0.0f, -1.0f);
 		_textEdgeInsets = UIEdgeInsetsMake(-1.0f, 0.0f, 0.0f, 0.0f);
@@ -103,6 +118,7 @@
 		CGContextSaveGState(context);
 		
 		id item = [_segments objectAtIndex:(NSUInteger)i];
+		BOOL enabled = [self isEnabledForSegmentAtIndex:i];
 		
 		CGFloat x = (segmentWidth * (CGFloat)i + (((CGFloat)i + 1) * dividerWidth));
 		
@@ -161,21 +177,30 @@
 		// Strings
 		if ([item isKindOfClass:[NSString class]]) {
 			NSString *string = (NSString *)item;
-			
 			CGSize textSize = [string sizeWithFont:_font constrainedToSize:CGSizeMake(segmentWidth, size.height) lineBreakMode:UILineBreakModeTailTruncation];
 			CGRect textRect = CGRectMake(x, roundf((size.height - textSize.height) / 2.0f), segmentWidth, size.height);
 			textRect = UIEdgeInsetsInsetRect(textRect, _textEdgeInsets);
-
-			[_textShadowColor set];
-			[string drawInRect:CGRectAddPoint(textRect, CGPointMake(_textShadowOffset.width, _textShadowOffset.height)) withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
 			
-			[_textColor set];
+			if (enabled) {
+				[_textShadowColor set];
+				[string drawInRect:CGRectAddPoint(textRect, CGPointMake(_textShadowOffset.width, _textShadowOffset.height)) withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
+				
+				[_textColor set];
+			} else {
+				[_disabledTextColor set];
+			}
+			
 			[string drawInRect:textRect withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
 		}
 		
 		// Images
 		else if ([item isKindOfClass:[UIImage class]]) {
-			// TODO
+			UIImage *image = (UIImage *)item;
+			CGSize imageSize = image.size;
+			CGRect imageRect = CGRectMake(x + roundf((segmentRect.size.width - imageSize.width) / 2.0f),
+										  roundf((segmentRect.size.height - imageSize.height) / 2.0f),
+										  imageSize.width, imageSize.height);
+			[image drawInRect:imageRect];
 		}
 		
 		CGContextRestoreGState(context);
@@ -194,6 +219,7 @@
 		[self addObserver:self forKeyPath:@"highlightedDividerImage" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"font" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"disabledTextColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"textShadowColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"textShadowOffset" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"textEdgeInsets" options:NSKeyValueObservingOptionNew context:nil];
@@ -205,6 +231,7 @@
 		[self removeObserver:self forKeyPath:@"highlightedDividerImage"];
 		[self removeObserver:self forKeyPath:@"font"];
 		[self removeObserver:self forKeyPath:@"textColor"];
+		[self removeObserver:self forKeyPath:@"disabledTextColor"];
 		[self removeObserver:self forKeyPath:@"textShadowColor"];
 		[self removeObserver:self forKeyPath:@"textShadowOffset"];
 		[self removeObserver:self forKeyPath:@"textEdgeInsets"];
@@ -220,6 +247,9 @@
 		for (id item in items) {
 			if ([item isKindOfClass:[NSString class]]) {
 				[self setTitle:item forSegmentAtIndex:(NSUInteger)index];
+				index++;
+			} else if ([item isKindOfClass:[UIImage class]]) {
+				[self setImage:item forSegmentAtIndex:(NSUInteger)index];
 				index++;
 			}
 		}
@@ -286,24 +316,52 @@
 
 
 - (void)setEnabled:(BOOL)enabled forSegmentAtIndex:(NSUInteger)segment {
-	NSNumber *number = [NSNumber numberWithInteger:segment];
+	[self _setMetaValue:[NSNumber numberWithBool:enabled] forKey:kSSSegmentedControlEnabledKey segmentIndex:segment];
 	
-	if (enabled) {
-		if (![self isEnabledForSegmentAtIndex:segment]) {
-			[_disabledSegmentIndexes addObject:number];
-		}
-	} else {
-		if ([self isEnabledForSegmentAtIndex:segment]) {
-			[_disabledSegmentIndexes removeObject:number];
-		}
-	}
-	
-	[self setNeedsDisplay];
 }
 
 
 - (BOOL)isEnabledForSegmentAtIndex:(NSUInteger)segment {
-	return [_disabledSegmentIndexes containsObject:[NSNumber numberWithInteger:segment]];
+	NSNumber *value = [self _metaValueForKey:kSSSegmentedControlEnabledKey segmentIndex:segment];
+	if (!value) {
+		return YES;
+	}
+	return [value boolValue];
+}
+
+
+#pragma mark Private Methods
+
+- (NSMutableDictionary *)_metaForSegmentIndex:(NSInteger)index {
+	if (!_segmentMeta) {
+		return nil;
+	}
+	
+	NSString *key = [NSString stringWithFormat:@"%i", index];
+	return [_segmentMeta objectForKey:key];
+}
+
+
+- (id)_metaValueForKey:(NSString *)key segmentIndex:(NSInteger)index {
+	NSMutableDictionary *meta = [self _metaForSegmentIndex:index];
+	return [meta objectForKey:key];
+}
+
+
+- (void)_setMetaValue:(id)value forKey:(NSString *)key segmentIndex:(NSInteger)index {
+	NSMutableDictionary *meta = [self _metaForSegmentIndex:index];
+	if (!meta) {
+		meta = [NSMutableDictionary dictionary];
+	}
+	
+	[meta setValue:value forKey:key];
+	
+	if (!_segmentMeta) {
+		_segmentMeta = [[NSMutableDictionary alloc] init];
+	}
+	
+	[_segmentMeta setValue:meta forKey:[NSString stringWithFormat:@"%i", index]];
+	[self setNeedsDisplay];
 }
 
 
