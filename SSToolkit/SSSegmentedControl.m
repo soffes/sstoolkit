@@ -13,9 +13,9 @@
 static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 
 @interface SSSegmentedControl (PrivateMethods)
-- (NSMutableDictionary *)_metaForSegmentIndex:(NSInteger)index;
-- (id)_metaValueForKey:(NSString *)key segmentIndex:(NSInteger)index;
-- (void)_setMetaValue:(id)value forKey:(NSString *)key segmentIndex:(NSInteger)index;
+- (NSMutableDictionary *)_metaForSegmentIndex:(NSUInteger)index;
+- (id)_metaValueForKey:(NSString *)key segmentIndex:(NSUInteger)index;
+- (void)_setMetaValue:(id)value forKey:(NSString *)key segmentIndex:(NSUInteger)index;
 @end
 
 @implementation SSSegmentedControl
@@ -62,9 +62,9 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 		return;
 	}
 	
-	NSInteger index = (NSInteger)floorf((CGFloat)x / (self.frame.size.width / (CGFloat)[self numberOfSegments]));
+	NSUInteger index = (NSUInteger)floorf((CGFloat)x / (self.frame.size.width / (CGFloat)[self numberOfSegments]));
 	if ([self isEnabledForSegmentAtIndex:index]) {
-		self.selectedSegmentIndex = index;
+		self.selectedSegmentIndex = (NSInteger)index;
 	}
 }
 
@@ -118,7 +118,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 		CGContextSaveGState(context);
 		
 		id item = [_segments objectAtIndex:(NSUInteger)i];
-		BOOL enabled = [self isEnabledForSegmentAtIndex:i];
+		BOOL enabled = [self isEnabledForSegmentAtIndex:(NSUInteger)i];
 		
 		CGFloat x = (segmentWidth * (CGFloat)i + (((CGFloat)i + 1) * dividerWidth));
 		
@@ -332,7 +332,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 
 #pragma mark Private Methods
 
-- (NSMutableDictionary *)_metaForSegmentIndex:(NSInteger)index {
+- (NSMutableDictionary *)_metaForSegmentIndex:(NSUInteger)index {
 	if (!_segmentMeta) {
 		return nil;
 	}
@@ -342,13 +342,13 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
-- (id)_metaValueForKey:(NSString *)key segmentIndex:(NSInteger)index {
+- (id)_metaValueForKey:(NSString *)key segmentIndex:(NSUInteger)index {
 	NSMutableDictionary *meta = [self _metaForSegmentIndex:index];
 	return [meta objectForKey:key];
 }
 
 
-- (void)_setMetaValue:(id)value forKey:(NSString *)key segmentIndex:(NSInteger)index {
+- (void)_setMetaValue:(id)value forKey:(NSString *)key segmentIndex:(NSUInteger)index {
 	NSMutableDictionary *meta = [self _metaForSegmentIndex:index];
 	if (!meta) {
 		meta = [NSMutableDictionary dictionary];

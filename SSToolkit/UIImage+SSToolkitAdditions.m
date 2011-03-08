@@ -41,7 +41,7 @@
 
 
 - (NSInteger)rightCapWidth {
-	return self.size.width - (self.leftCapWidth + 1);
+	return (NSInteger)self.size.width - (self.leftCapWidth + 1);
 }
 
 @end

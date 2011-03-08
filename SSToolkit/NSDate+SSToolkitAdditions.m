@@ -31,7 +31,7 @@
 	struct tm *timeinfo;
 	char buffer[80];
 	
-	time_t rawtime = [self timeIntervalSince1970] - [[NSTimeZone localTimeZone] secondsFromGMT];
+	time_t rawtime = (time_t)[self timeIntervalSince1970] - [[NSTimeZone localTimeZone] secondsFromGMT];
 	timeinfo = localtime(&rawtime);
 	
 	strftime(buffer, 80, "%Y-%m-%dT%H:%M:%S%z", timeinfo);

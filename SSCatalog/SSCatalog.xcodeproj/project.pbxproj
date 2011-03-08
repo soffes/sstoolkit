@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B21B85BE1067D4F300E5C076 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B21B85BC1067D4F300E5C076 /* main.m */; };
-		B21F40AB1321646000C6DE23 /* Icon-48.png in Resources */ = {isa = PBXBuildFile; fileRef = B21F40A81321646000C6DE23 /* Icon-48.png */; };
-		B21F40AC1321646000C6DE23 /* SamLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B21F40A91321646000C6DE23 /* SamLogo.png */; };
-		B21F40AD1321646000C6DE23 /* SamLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B21F40AA1321646000C6DE23 /* SamLogo@2x.png */; };
 		B24E9EAA121DC35B0085F81E /* SCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E99121DC35B0085F81E /* SCAppDelegate.m */; };
 		B24E9EAB121DC35B0085F81E /* SCGradientViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E9B121DC35B0085F81E /* SCGradientViewDemoViewController.m */; };
 		B24E9EAC121DC35B0085F81E /* SCHUDViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E9D121DC35B0085F81E /* SCHUDViewDemoViewController.m */; };
@@ -63,9 +60,6 @@
 /* Begin PBXFileReference section */
 		1D6058910D05DD3D006BFB54 /* SSCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21B85BC1067D4F300E5C076 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B21F40A81321646000C6DE23 /* Icon-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-48.png"; sourceTree = "<group>"; };
-		B21F40A91321646000C6DE23 /* SamLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SamLogo.png; sourceTree = "<group>"; };
-		B21F40AA1321646000C6DE23 /* SamLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SamLogo@2x.png"; sourceTree = "<group>"; };
 		B24E9E98121DC35B0085F81E /* SCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAppDelegate.h; sourceTree = "<group>"; };
 		B24E9E99121DC35B0085F81E /* SCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAppDelegate.m; sourceTree = "<group>"; };
 		B24E9E9A121DC35B0085F81E /* SCGradientViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGradientViewDemoViewController.h; sourceTree = "<group>"; };
@@ -185,11 +179,8 @@
 		B21B85BF1067D4FD00E5C076 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B21F40A91321646000C6DE23 /* SamLogo.png */,
-				B21F40AA1321646000C6DE23 /* SamLogo@2x.png */,
 				B2E709AD12FF286E00DFF898 /* Icon.png */,
 				B2E709A812FF286E00DFF898 /* Icon-29.png */,
-				B21F40A81321646000C6DE23 /* Icon-48.png */,
 				B2E709AA12FF286E00DFF898 /* Icon-72.png */,
 				B2E709AB12FF286E00DFF898 /* Icon-114.png */,
 				B2AED4B312FF2145006C956B /* Default.png */,
@@ -350,9 +341,6 @@
 				B2E709B112FF286E00DFF898 /* Icon-114.png in Resources */,
 				B2E709B312FF286E00DFF898 /* Icon.png in Resources */,
 				B2E709B512FF28CB00DFF898 /* iTunesArtwork in Resources */,
-				B21F40AB1321646000C6DE23 /* Icon-48.png in Resources */,
-				B21F40AC1321646000C6DE23 /* SamLogo.png in Resources */,
-				B21F40AD1321646000C6DE23 /* SamLogo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
