@@ -10,4 +10,6 @@
 
 - (BOOL)isPirated;
 
+- (void)setNetworkActivity:(BOOL)inProgress;
+
 @end
