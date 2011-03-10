@@ -200,7 +200,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 			CGRect imageRect = CGRectMake(x + roundf((segmentRect.size.width - imageSize.width) / 2.0f),
 										  roundf((segmentRect.size.height - imageSize.height) / 2.0f),
 										  imageSize.width, imageSize.height);
-			[image drawInRect:imageRect];
+			[image drawInRect:imageRect blendMode:kCGBlendModeNormal alpha:enabled ? 1.0f : 0.5f];
 		}
 		
 		CGContextRestoreGState(context);

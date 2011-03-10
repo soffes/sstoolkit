@@ -18,6 +18,7 @@
 
 - (void)dealloc {
 	self.lineColor = nil;
+	self.insetColor = nil;
 	[super dealloc];
 }
 
