@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.title = [[self class] title];
+	self.collectionView.minimumColumnSpacing = 20.0f;
 }
 
 
@@ -35,8 +36,8 @@
 
 #pragma mark SSCollectionViewDataSource
 
-- (NSUInteger)collectionView:(SSCollectionView *)aCollectionView numberOfRowsInSection:(NSInteger)section {
-	return 32;
+- (NSInteger)collectionView:(SSCollectionView *)aCollectionView numberOfItemsInSection:(NSInteger)section {
+	return 1024;
 }
 
 
@@ -59,6 +60,11 @@
 
 
 #pragma mark SSCollectionViewDelegate
+
+- (CGSize)collectionView:(SSCollectionView *)aCollectionView itemSizeForSection:(NSInteger)section {
+	return CGSizeMake(80.0f, 80.0f);
+}
+
 
 - (void)collectionView:(SSCollectionView *)aCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"\nYou selected item #%i!\n\n", indexPath.row] message:nil delegate:nil cancelButtonTitle:@"Oh, awesome!" otherButtonTitles:nil];

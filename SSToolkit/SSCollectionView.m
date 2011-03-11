@@ -7,29 +7,26 @@
 //
 
 #import "SSCollectionView.h"
+#import "SSCollectionViewItem.h"
+#import "SSCollectionViewTableViewCell.h"
 #import "SSDrawingMacros.h"
 #import "UIView+SSToolkitAdditions.h"
 
 @interface SSCollectionView (PrivateMethods)
-- (SSCollectionViewItem *)_itemForTouches:(NSSet *)touches event:(UIEvent *)event;
+- (CGSize)_itemSizeForSection:(NSInteger)section;
+- (NSInteger)_numberOfItemsInSection:(NSInteger)section;
+- (NSArray *)_itemsForRowIndexPath:(NSIndexPath *)rowIndexPath;
 @end
-
 
 @implementation SSCollectionView
 
 @synthesize dataSource = _dataSource;
-@synthesize delegate;
-@synthesize rowHeight = _rowHeight;
+@synthesize delegate = _delegate;
+@synthesize minimumColumnSpacing = _minimumColumnSpacing;
 @synthesize rowSpacing = _rowSpacing;
-@synthesize columnWidth = _columnWidth;
-@synthesize columnSpacing = _columnSpacing;
 @synthesize backgroundView = _backgroundView;
 @synthesize backgroundHeaderView = _backgroundHeaderView;
 @synthesize backgroundFooterView = _backgroundFooterView;
-@synthesize minNumberOfColumns = _minNumberOfColumns;
-@synthesize maxNumberOfColumns = _maxNumberOfColumns;
-@synthesize minItemSize = _minItemSize;
-@synthesize maxItemSize = _maxItemSize;
 @synthesize allowsSelection = _allowsSelection;
 
 #pragma mark NSObject
@@ -38,7 +35,9 @@
 	self.dataSource = nil;
 	self.delegate = nil;
 	
-	[_items release];
+	_tableView.dataSource = nil;
+	_tableView.delegate = nil;
+	[_tableView release];
 	
 	self.backgroundView = nil;
 	self.backgroundHeaderView = nil;
@@ -55,138 +54,25 @@
 		self.backgroundColor = [UIColor whiteColor];
 		self.opaque = YES;
 		
-		_minNumberOfColumns = 1;
-		_maxNumberOfColumns = 0;
-		
-		_minItemSize = CGSizeMake(40.0f, 40.0f);
-		_maxItemSize = CGSizeMake(300.0f, 300.0f);
-		
-		_rowHeight = 80.0f;
+		_minimumColumnSpacing = 10.0f;
 		_rowSpacing = 20.0f;
-		_columnWidth = 80.0f;
-		_columnSpacing = 20.0f;
-		
 		_allowsSelection = YES;
-		_items = [[NSMutableArray alloc] init];
+		
+		_tableView = [[UITableView alloc] initWithFrame:CGRectSetZeroOrigin(frame)];
+		_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+		_tableView.dataSource = self;
+		_tableView.delegate = self;
+		_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+		[self addSubview:_tableView];
     }
     return self;
-}
-
-
-- (void)layoutSubviews {
-	// Calculate columns
-	CGFloat totalWidth = self.frame.size.width;
-	NSUInteger maxColumns;
-	if (_maxNumberOfColumns > 0) {
-		maxColumns = _maxNumberOfColumns;
-	} else {
-		maxColumns = (NSUInteger)floor((totalWidth + _columnSpacing)  / (_columnWidth + _columnSpacing));
-	}
-	
-	// Calculate padding
-	CGFloat horizontalPadding = roundf((totalWidth - (_columnWidth * maxColumns) - (_columnSpacing * (maxColumns - 1))) / 2.0f);
-	
-	// Calculate verticalOffset
-	CGFloat verticalOffset = 0.0f;
-	if ([self.delegate respondsToSelector:@selector(collectionView:heightForHeaderInSection:)]) {
-		verticalOffset = [self.delegate collectionView:self heightForHeaderInSection:0];
-	}
-	
-	// Calculate bottomPadding
-	CGFloat bottomPadding = self.contentInset.bottom;
-	if ([self.delegate respondsToSelector:@selector(collectionView:heightForFooterInSection:)]) {
-		bottomPadding += [self.delegate collectionView:self heightForFooterInSection:0];
-	}
-	
-	// Layout items
-	NSUInteger index = 0;
-	NSUInteger row = 0;
-	NSInteger column = -1;
-	for (SSCollectionViewItem *item in _items) {
-		column++;
-		if (column >= (NSInteger)maxColumns) {
-			column = 0;
-			row++;
-		}
-		item.frame = CGRectMake((column * _columnWidth) + (column * _columnSpacing) + horizontalPadding, (row * _rowHeight) + (row * _rowSpacing) + verticalOffset, _columnWidth, _rowHeight);
-		index++;
-	}
-	
-	// Set content size
-	CGRect lastFrame = [[_items lastObject] frame];
-	CGFloat contentWidth = totalWidth - self.contentInset.left - self.contentInset.right;
-	CGFloat contentHeight = lastFrame.origin.y + lastFrame.size.height + bottomPadding;
-	CGFloat minContentHeight = (self.frame.size.height - self.contentInset.top - self.contentInset.bottom) + 1.0f;
-	self.contentSize = CGSizeMake(contentWidth, fmaxf(contentHeight, minContentHeight));
-	
-	// Update background views
-	_backgroundView.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, self.contentSize.height + self.contentInset.top + self.contentInset.bottom);
-	_backgroundHeaderView.frame = CGRectMake(0.0f, -_backgroundHeaderView.frame.size.height, self.frame.size.width, _backgroundHeaderView.frame.size.height);
-	_backgroundFooterView.frame = CGRectMake(0.0f, _backgroundView.frame.size.height, self.frame.size.width, _backgroundFooterView.frame.size.height);
-}
-
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	[super touchesBegan:touches withEvent:event];
-	
-	SSCollectionViewItem *item = [self _itemForTouches:touches event:event];
-	item.highlighted = YES;
-}
-
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-	[super touchesCancelled:touches withEvent:event];
-	
-	SSCollectionViewItem *item = [self _itemForTouches:touches event:event];
-	item.highlighted = NO;
-}
-
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	[super touchesEnded:touches withEvent:event];
-	
-	SSCollectionViewItem *item = [self _itemForTouches:touches event:event];
-	if (!item) {
-		return;
-	}
-	
-	item.highlighted = NO;
-	item.selected = YES;
-	
-	// Notify delegate of selection
-	if ([self.delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
-		[self.delegate collectionView:self didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:(NSUInteger)item.tag inSection:0]];
-	}
 }
 
 
 #pragma mark SSCollectionView
 
 - (void)reloadData {
-	// TODO: This is wildly inefficient. Only grab items
-	// that will be on the screen
-	
-	[_items makeObjectsPerformSelector:@selector(removeFromSuperview)];
-	[_items removeAllObjects];
-	
-	NSUInteger total = [_dataSource collectionView:self numberOfRowsInSection:0];
-	for (NSUInteger i = 0; i < total; i++) {
-		// TODO: Store item so it can be dequeued later
-		SSCollectionViewItem *item = [_dataSource collectionView:self itemForIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-		
-		if (item == nil) {
-			NSException *exception = [NSException exceptionWithName:kSSCollectionViewNilItemExceptionName 
-															 reason:kSSCollectionViewNilItemExceptionReason userInfo:nil];
-			[exception raise];
-			return;
-		}
-		
-		item.tag = (NSInteger)i;
-		[_items addObject:item];
-		[self addSubview:item];
-	}
-	
-	[self setNeedsLayout];
+	[_tableView reloadData];
 }
 
 
@@ -197,15 +83,14 @@
 
 
 - (SSCollectionViewItem *)itemPathForIndex:(NSIndexPath *)indexPath {
-	if (indexPath.row >= [_items count]) {
-		return nil;
-	}
-	return [_items objectAtIndex:indexPath.row];
+	// TODO: Implement
+	return nil;
 }
 
 
 - (NSIndexPath *)indexPathForItem:(SSCollectionViewItem *)item {
-	return [NSIndexPath indexPathForRow:[_items indexOfObject:item] inSection:0];
+	// TODO: Implement
+	return nil;
 }
 
 
@@ -215,49 +100,65 @@
 
 
 - (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
-	SSCollectionViewItem *item = [self itemPathForIndex:indexPath];
-	
-	if (item) {
-		[self scrollRectToVisible:[item frame] animated:animated];
-	}
+	// TODO: Implement
 }
 
 
 - (void)reloadItemAtIndexPaths:(NSIndexPath *)indexPaths {
-	if ([indexPaths row] < [_items count]) {
-		SSCollectionViewItem *oldItem = [_items objectAtIndex:[indexPaths row]];
-		SSCollectionViewItem *newItem = [_dataSource collectionView:self itemForIndexPath:indexPaths];
-		
-		if (newItem == nil) {
-			NSException *exception = [NSException exceptionWithName:kSSCollectionViewNilItemExceptionName 
-															 reason:kSSCollectionViewNilItemExceptionReason userInfo:nil];
-			[exception raise];
-			return;
-		}
-		
-		[newItem setFrame:[oldItem frame]];
-		[newItem setTag:[oldItem tag]];
-		[_items replaceObjectAtIndex:[indexPaths row] withObject:newItem];
-		[oldItem removeFromSuperview];
-		[self addSubview:newItem];
-	}
+	// TODO: Implement
+}
+
+
+- (void)flashScrollIndicators {
+	[_tableView flashScrollIndicators];
 }
 
 
 #pragma mark Private Methods
 
-- (SSCollectionViewItem *)_itemForTouches:(NSSet *)touches event:(UIEvent *)event {
-	CGPoint point = [[touches anyObject] locationInView:self];
-	UIView *view = [self hitTest:point withEvent:event];
-	if (view == self || view == _backgroundView) {
-		return nil;
+- (CGSize)_itemSizeForSection:(NSInteger)section {
+	// TODO: Cache this value to elminate lots of method calls
+	if ([_delegate respondsToSelector:@selector(collectionView:itemSizeForSection:)] == NO) {
+		[[NSException exceptionWithName:kSSCollectionViewMissingItemSizeExceptionName reason:kSSCollectionViewMissingItemSizeExceptionReason userInfo:nil] raise];
+		return CGSizeZero;
+	}	
+	return [_delegate collectionView:self itemSizeForSection:section];
+}
+
+
+- (NSInteger)_numberOfItemsInSection:(NSInteger)section {
+	if ([_dataSource respondsToSelector:@selector(collectionView:numberOfItemsInSection:)] == NO) {
+		return 0;
+	}
+	return [_dataSource collectionView:self numberOfItemsInSection:section];
+}
+
+
+- (NSArray *)_itemsForRowIndexPath:(NSIndexPath *)rowIndexPath {
+	NSInteger totalItems = [self _numberOfItemsInSection:rowIndexPath.section];
+	CGSize itemSize = [self _itemSizeForSection:rowIndexPath.section];
+	NSInteger itemsPerRow = (NSInteger)floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
+	
+	NSInteger startIndex = itemsPerRow * (NSInteger)rowIndexPath.row;
+	NSInteger endIndex = (NSInteger)fmin(totalItems, startIndex + itemsPerRow);
+
+	NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:endIndex - startIndex];
+	
+	for (NSInteger i = startIndex; i < endIndex; i++) {
+		// TODO: Store item so it can be dequeued later
+		SSCollectionViewItem *item = [_dataSource collectionView:self itemForIndexPath:[NSIndexPath indexPathForRow:i inSection:rowIndexPath.section]];
+		if (item == nil) {
+			NSException *exception = [NSException exceptionWithName:kSSCollectionViewNilItemExceptionName 
+															 reason:kSSCollectionViewNilItemExceptionReason userInfo:nil];
+			[exception raise];
+			return nil;
+		}
+		
+		item.tag = i;
+		[items addObject:item];
 	}
 	
-	if([view isKindOfClass:[SSCollectionViewItem class]]) {
-		return (SSCollectionViewItem*)view;
-	} else {
-		return [view firstSuperviewOfClass:[SSCollectionViewItem class]];
-	}
+	return [items autorelease];
 }
 
 
@@ -265,7 +166,19 @@
 
 - (void)setDataSource:(id<SSCollectionViewDataSource>)dataSource {
 	_dataSource = dataSource;
-	[self reloadData];
+	
+	if (_delegate) {
+		[self reloadData];
+	}
+}
+
+
+- (void)setDelegate:(id<SSCollectionViewDelegate>)delegate {
+	_delegate = delegate;
+	
+	if (_dataSource) {
+		[self reloadData];
+	}
 }
 
 
@@ -326,5 +239,47 @@
 	[self setNeedsLayout];
 }
 
+
+#pragma mark UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	if ([_dataSource respondsToSelector:@selector(numberOfSectionsInCollectionView:)]) {
+		return [_dataSource numberOfSectionsInCollectionView:self];
+	}
+	
+	return 1;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	NSInteger totalItems = [self _numberOfItemsInSection:section];
+	CGSize itemSize = [self _itemSizeForSection:section];
+	CGFloat itemsPerRow = floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
+	
+	NSInteger rows = (NSInteger)ceilf((CGFloat)totalItems / itemsPerRow);
+	return rows;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	static NSString *cellIdentifier = @"SSCollectionViewTableViewCellIdentifier";
+	
+	SSCollectionViewTableViewCell *cell = (SSCollectionViewTableViewCell *)[_tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+	if (!cell) {
+		cell = [[SSCollectionViewTableViewCell alloc] initWithReuseIdentifier:cellIdentifier];
+		cell.itemSize = [self _itemSizeForSection:indexPath.section];
+	}
+	
+	cell.items = [self _itemsForRowIndexPath:indexPath];
+	
+	return cell;
+}
+
+
+#pragma mark UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return [self _itemSizeForSection:indexPath.section].height + _rowSpacing;
+}
 
 @end

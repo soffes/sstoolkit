@@ -23,31 +23,22 @@
  Editing and performance will be my next focus. Then animating changes when data changes 
  and an option to disable that.
  */
-
-@interface SSCollectionView : UIScrollView {
+@interface SSCollectionView : UIView <UITableViewDataSource, UITableViewDelegate> {
 	
-	id <SSCollectionViewDataSource> _dataSource;
+@private
 	
-	CGFloat _rowHeight;
+	id<SSCollectionViewDelegate> _delegate;
+	id<SSCollectionViewDataSource> _dataSource;
+	
+	CGFloat _minimumColumnSpacing;
 	CGFloat _rowSpacing;
-	CGFloat _columnWidth;
-	CGFloat _columnSpacing;
+	BOOL _allowsSelection;
+	
+	UITableView *_tableView;
 	
 	UIView *_backgroundView;
 	UIView *_backgroundHeaderView;
 	UIView *_backgroundFooterView;
-	
-	NSUInteger _minNumberOfColumns;
-	NSUInteger _maxNumberOfColumns;
-	
-	CGSize _minItemSize;
-	CGSize _maxItemSize;
-	
-	BOOL _allowsSelection;
-	
-@protected
-	
-	NSMutableArray *_items;
 }
 
 /**
@@ -58,14 +49,9 @@
 /**
  @brief The object that acts as the delegate of the receiving collection view.
  */
-@property (nonatomic, assign) id<SSCollectionViewDelegate, UIScrollViewDelegate> delegate;
+@property (nonatomic, assign) id<SSCollectionViewDelegate> delegate;
 
-/**
- @brief The height of each row in the receiver.
- 
- The row height is in points. The default is 80.
- */
-@property (nonatomic, assign) CGFloat rowHeight;
+@property (nonatomic, assign) CGFloat minimumColumnSpacing;
 
 /**
  @brief The spacing between each row in the receiver. This does not add space 
@@ -76,31 +62,12 @@
 @property (nonatomic, assign) CGFloat rowSpacing;
 
 /**
- @brief The width of each column in the receiver.
- 
- The column width is in points. The default is 80.
- */
-@property (nonatomic, assign) CGFloat columnWidth;
-
-/**
- @brief The spacing between each column in the receiver. This does not add space 
- to the left of the first column or the right of the last column.
- 
- The column spacing is in points. The default is 20.
- */
-@property (nonatomic, assign) CGFloat columnSpacing;
-
-/**
  @brief The background view of the collection view.
  */
 @property (nonatomic, retain) UIView *backgroundView;
 
 @property (nonatomic, retain) UIView *backgroundHeaderView;
 @property (nonatomic, retain) UIView *backgroundFooterView;
-@property (nonatomic, assign) NSUInteger minNumberOfColumns;
-@property (nonatomic, assign) NSUInteger maxNumberOfColumns;
-@property (nonatomic, assign) CGSize minItemSize;
-@property (nonatomic, assign) CGSize maxItemSize;
 
 /**
  @brief A Boolean value that determines whether selecting items is enabled.
@@ -175,6 +142,8 @@
  */
 - (void)reloadItemAtIndexPaths:(NSIndexPath *)indexPaths;
 
+- (void)flashScrollIndicators;
+
 @end
 
 
@@ -182,13 +151,21 @@
 
 @required
 
-- (NSUInteger)collectionView:(SSCollectionView *)aCollectionView numberOfRowsInSection:(NSInteger)section;
+- (NSInteger)collectionView:(SSCollectionView *)aCollectionView numberOfItemsInSection:(NSInteger)section;
 - (SSCollectionViewItem *)collectionView:(SSCollectionView *)aCollectionView itemForIndexPath:(NSIndexPath *)indexPath;
+
+@optional
+
+- (NSInteger)numberOfSectionsInCollectionView:(SSCollectionView *)aCollectionView;
 
 @end
 
 
-@protocol SSCollectionViewDelegate <NSObject, UIScrollViewDelegate>
+@protocol SSCollectionViewDelegate <NSObject>
+
+@required
+
+- (CGSize)collectionView:(SSCollectionView *)aCollectionView itemSizeForSection:(NSInteger)section;
 
 @optional
 

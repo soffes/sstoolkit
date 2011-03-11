@@ -51,13 +51,20 @@
 
 #pragma mark SSCollectionViewDataSource
 
-- (NSUInteger)collectionView:(SSCollectionView *)aCollectionView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(SSCollectionView *)aCollectionView numberOfItemsInSection:(NSInteger)section {
 	return 0;
 }
 
 
 - (SSCollectionViewItem *)collectionView:(SSCollectionView *)aCollectionView itemForIndexPath:(NSIndexPath *)indexPath {
 	return nil;
+}
+
+
+#pragma mark SSCollectionViewDelegate
+
+- (CGSize)collectionView:(SSCollectionView *)aCollectionView itemSizeForSection:(NSInteger)section {
+	return CGSizeZero;
 }
 
 @end

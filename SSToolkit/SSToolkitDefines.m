@@ -9,3 +9,5 @@
 NSString *const kSSToolkitBundleName = @"SSToolkit.bundle";
 NSString *const kSSCollectionViewNilItemExceptionName = @"SSCollectionViewNilItemException";
 NSString *const kSSCollectionViewNilItemExceptionReason = @"SSCollectionView dataSource must return an item from collectionView:itemForIndexPath:";
+NSString *const kSSCollectionViewMissingItemSizeExceptionName = @"SSCollectionViewMissingItemSizeException";
+NSString *const kSSCollectionViewMissingItemSizeExceptionReason = @"SSCollectionView delegate must return a size from collectionView:itemSizeForSection:";

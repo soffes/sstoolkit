@@ -8,7 +8,8 @@
 //	Greatly inspired by BWGradientBox. http://brandonwalkin.com/bwtoolkit
 //
 
-/** @brief Simple UIView wrapper for CGGradient.
+/**
+ @brief Simple UIView wrapper for CGGradient.
  
  @section known_bugs Known bugs
  

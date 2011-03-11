@@ -12,5 +12,7 @@
 extern NSString *const kSSToolkitBundleName;
 extern NSString *const kSSCollectionViewNilItemExceptionName;
 extern NSString *const kSSCollectionViewNilItemExceptionReason;
+extern NSString *const kSSCollectionViewMissingItemSizeExceptionName;
+extern NSString *const kSSCollectionViewMissingItemSizeExceptionReason;
 
 #endif
