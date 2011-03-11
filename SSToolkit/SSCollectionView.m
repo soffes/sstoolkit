@@ -267,9 +267,14 @@
 	SSCollectionViewTableViewCell *cell = (SSCollectionViewTableViewCell *)[_tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 	if (!cell) {
 		cell = [[SSCollectionViewTableViewCell alloc] initWithReuseIdentifier:cellIdentifier];
-		cell.itemSize = [self _itemSizeForSection:indexPath.section];
 	}
 	
+	// TODO: Cache
+	CGSize itemSize = [self _itemSizeForSection:indexPath.section];
+	CGFloat itemsPerRow = floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
+	
+	cell.itemSize = itemSize;
+	cell.itemSpacing = roundf((self.frame.size.width - (itemSize.width * itemsPerRow)) / itemsPerRow);	
 	cell.items = [self _itemsForRowIndexPath:indexPath];
 	
 	return cell;

@@ -12,7 +12,6 @@
 @implementation SSCollectionViewTableViewCell
 
 @synthesize itemSize = _itemSize;
-@synthesize leftMargin = _leftMargin;
 @synthesize itemSpacing = _itemSpacing;
 @synthesize items = _items;
 
@@ -27,7 +26,7 @@
 #pragma mark UIView
 
 - (void)layoutSubviews {
-	CGFloat x = _leftMargin;
+	CGFloat x = roundf(_itemSpacing / 2.0f);
 	
 	for (SSCollectionViewItem *item in _items) {
 		item.frame = CGRectMake(x, 0.0f, _itemSize.width, _itemSize.height);
@@ -49,7 +48,6 @@
 		self.selectionStyle = UITableViewCellEditingStyleNone;
 		
 		_itemSize = CGSizeZero;
-		_leftMargin = 0.0f;
 		_itemSpacing = 0.0f;
 	}
 	return self;
