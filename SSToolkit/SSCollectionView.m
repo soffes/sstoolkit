@@ -109,11 +109,6 @@
 }
 
 
-- (void)flashScrollIndicators {
-	[_tableView flashScrollIndicators];
-}
-
-
 #pragma mark Private Methods
 
 - (CGSize)_itemSizeForSection:(NSInteger)section {
@@ -141,7 +136,7 @@
 	
 	NSInteger startIndex = itemsPerRow * (NSInteger)rowIndexPath.row;
 	NSInteger endIndex = (NSInteger)fmin(totalItems, startIndex + itemsPerRow);
-
+	
 	NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:endIndex - startIndex];
 	
 	for (NSInteger i = startIndex; i < endIndex; i++) {
@@ -159,6 +154,13 @@
 	}
 	
 	return [items autorelease];
+}
+
+
+#pragma mark Getters
+
+- (UIScrollView *)scrollView {
+	return _tableView;
 }
 
 

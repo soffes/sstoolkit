@@ -45,7 +45,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-	[_collectionView flashScrollIndicators];
+	[_collectionView.scrollView flashScrollIndicators];
 }
 
 

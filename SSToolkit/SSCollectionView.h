@@ -77,6 +77,8 @@
  */
 @property (nonatomic, assign) BOOL allowsSelection;
 
+@property (nonatomic, retain, readonly) UIScrollView *scrollView;
+
 /**
  @brief Reloads the items and sections of the receiver.
  */
@@ -141,8 +143,6 @@
  @param indexPath An index path that identifies an item in the collection view by its row index and its section index.
  */
 - (void)reloadItemAtIndexPaths:(NSIndexPath *)indexPaths;
-
-- (void)flashScrollIndicators;
 
 @end
 
