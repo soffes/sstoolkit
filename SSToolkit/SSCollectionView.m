@@ -16,6 +16,8 @@
 - (CGSize)_itemSizeForSection:(NSInteger)section;
 - (NSInteger)_numberOfItemsInSection:(NSInteger)section;
 - (NSArray *)_itemsForRowIndexPath:(NSIndexPath *)rowIndexPath;
+- (NSIndexPath *)_rowIndexPathForItemIndexPath:(NSIndexPath *)itemIndexPath;
+- (NSIndexPath *)_deepRowIndexPathForItemIndexPath:(NSIndexPath *)itemIndexPath;
 @end
 
 @implementation SSCollectionView
@@ -154,6 +156,18 @@
 	}
 	
 	return [items autorelease];
+}
+
+
+- (NSIndexPath *)_rowIndexPathForItemIndexPath:(NSIndexPath *)itemIndexPath {
+	// TODO: Implement
+	return nil;	
+}
+
+
+- (NSIndexPath *)_deepRowIndexPathForItemIndexPath:(NSIndexPath *)itemIndexPath {
+	// TODO: Implement
+	return nil;
 }
 
 
