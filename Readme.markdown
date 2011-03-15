@@ -8,7 +8,7 @@ If you're using this in your project, I'd love to hear about it! [Send me an ema
 
 ### Views
 
-* [SSCollectionView][] - simple collection view modeled after UITableView and NSCollectionView (*Note: currently unstable. Use the version in the stable branch unless you're feeling adventurous.*)
+* [SSCollectionView][] - simple collection view modeled after UITableView and NSCollectionView
 * [SSGradientView][] - easily create gradients with optional borders and insets
 * [SSHUDView][] - simple heads-up display
 * [SSLabel][] - ever wanted to align your text to the top or the bottom

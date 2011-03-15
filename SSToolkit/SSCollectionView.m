@@ -7,7 +7,9 @@
 //
 
 #import "SSCollectionView.h"
+#import "SSCollectionViewInternal.h"
 #import "SSCollectionViewItem.h"
+#import "SSCollectionViewItemInternal.h"
 #import "SSCollectionViewTableViewCell.h"
 #import "SSDrawingMacros.h"
 #import "UIView+SSToolkitAdditions.h"
@@ -16,8 +18,6 @@
 - (CGSize)_itemSizeForSection:(NSInteger)section;
 - (NSInteger)_numberOfItemsInSection:(NSInteger)section;
 - (NSArray *)_itemsForRowIndexPath:(NSIndexPath *)rowIndexPath;
-- (NSIndexPath *)_rowIndexPathForItemIndexPath:(NSIndexPath *)itemIndexPath;
-- (NSIndexPath *)_deepRowIndexPathForItemIndexPath:(NSIndexPath *)itemIndexPath;
 @end
 
 @implementation SSCollectionView
@@ -26,9 +26,6 @@
 @synthesize delegate = _delegate;
 @synthesize minimumColumnSpacing = _minimumColumnSpacing;
 @synthesize rowSpacing = _rowSpacing;
-@synthesize backgroundView = _backgroundView;
-@synthesize backgroundHeaderView = _backgroundHeaderView;
-@synthesize backgroundFooterView = _backgroundFooterView;
 @synthesize allowsSelection = _allowsSelection;
 
 #pragma mark NSObject
@@ -37,13 +34,28 @@
 	self.dataSource = nil;
 	self.delegate = nil;
 	
+	// Remove references to visible items
+	for (NSValue *value in _visibleItemPointers) {
+		[(SSCollectionViewItem *)[value pointerValue] setCollectionView:nil];
+	}
+	[_visibleItemPointers removeAllObjects];
+	[_visibleItemPointers release];
+	_visibleItemPointers = nil;
+	
+	// Remove all reuseable items
+	for (NSString *key in _reuseableItems) {
+		NSArray *items = [_reuseableItems objectForKey:key];
+		for (SSCollectionViewItem *item in items) {
+			item.collectionView = nil;
+		}
+		[_reuseableItems removeObjectForKey:key];
+	}
+	[_reuseableItems release];
+	_reuseableItems = nil;
+	
 	_tableView.dataSource = nil;
 	_tableView.delegate = nil;
 	[_tableView release];
-	
-	self.backgroundView = nil;
-	self.backgroundHeaderView = nil;
-	self.backgroundFooterView = nil;
 	
 	[super dealloc];
 }
@@ -59,6 +71,8 @@
 		_minimumColumnSpacing = 10.0f;
 		_rowSpacing = 20.0f;
 		_allowsSelection = YES;
+		_reuseableItems = [[NSMutableDictionary alloc] init];
+		_visibleItemPointers = [[NSMutableSet alloc] init];
 		
 		_tableView = [[UITableView alloc] initWithFrame:CGRectSetZeroOrigin(frame)];
 		_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -79,8 +93,20 @@
 
 
 - (SSCollectionViewItem *)dequeueReusableItemWithIdentifier:(NSString *)identifier {
-	// TODO: Store items and reuse
-	return nil;
+	if (!identifier) {
+		return nil;
+	}
+	
+	NSMutableArray *items = [_reuseableItems objectForKey:identifier];
+	if (!items || [items count] == 0) {
+		return nil;
+	}
+	
+	SSCollectionViewItem *item = [items lastObject];
+	[items removeLastObject];
+	
+	[item prepareForReuse];
+	return item;
 }
 
 
@@ -113,6 +139,23 @@
 
 #pragma mark Private Methods
 
+- (void)_reuseItem:(SSCollectionViewItem *)item {
+	NSMutableArray *items = [_reuseableItems objectForKey:item.reuseIdentifier];
+	if (!items) {
+		[_reuseableItems setObject:[NSMutableArray array] forKey:item.reuseIdentifier];
+	}
+	
+	[items addObject:item];
+}
+
+
+- (void)_itemsWillDisappear:(NSArray *)items {
+	for (SSCollectionViewItem *item in items) {
+		[_visibleItemPointers removeObject:[NSValue valueWithPointer:item]];
+	}
+}
+
+
 - (CGSize)_itemSizeForSection:(NSInteger)section {
 	// TODO: Cache this value to elminate lots of method calls
 	if ([_delegate respondsToSelector:@selector(collectionView:itemSizeForSection:)] == NO) {
@@ -138,7 +181,7 @@
 	
 	NSInteger startIndex = itemsPerRow * (NSInteger)rowIndexPath.row;
 	NSInteger endIndex = (NSInteger)fmin(totalItems, startIndex + itemsPerRow);
-	
+
 	NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:endIndex - startIndex];
 	
 	for (NSInteger i = startIndex; i < endIndex; i++) {
@@ -152,22 +195,12 @@
 		}
 		
 		item.tag = i;
+		item.collectionView = self;
 		[items addObject:item];
+		[_visibleItemPointers addObject:[NSValue valueWithPointer:item]];
 	}
 	
 	return [items autorelease];
-}
-
-
-- (NSIndexPath *)_rowIndexPathForItemIndexPath:(NSIndexPath *)itemIndexPath {
-	// TODO: Implement
-	return nil;	
-}
-
-
-- (NSIndexPath *)_deepRowIndexPathForItemIndexPath:(NSIndexPath *)itemIndexPath {
-	// TODO: Implement
-	return nil;
 }
 
 
@@ -178,7 +211,18 @@
 }
 
 
+- (UIView *)backgroundView {
+	return _tableView.backgroundView;
+}
+
+
 #pragma mark Setters
+
+- (void)setBackgroundColor:(UIColor *)color {
+	[super setBackgroundColor:color];
+	_tableView.backgroundColor = color;
+}
+
 
 - (void)setDataSource:(id<SSCollectionViewDataSource>)dataSource {
 	_dataSource = dataSource;
@@ -198,61 +242,8 @@
 }
 
 
-- (void)setFrame:(CGRect)rect {
-	[super setFrame:rect];
-	
-	[UIView beginAnimations:@"SSCollectionViewAnimationUpdateLayout" context:self];
-	[self setNeedsLayout];
-	[UIView commitAnimations];
-}
-
-
 - (void)setBackgroundView:(UIView *)background {
-	[_backgroundView removeFromSuperview];
-	[_backgroundView release];
-	
-	_backgroundView = [background retain];
-	_backgroundView.tag = -1;
-	_backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	[self insertSubview:_backgroundView atIndex:0];
-	
-	[self setNeedsLayout];
-}
-
-
-- (void)setBackgroundHeaderView:(UIView *)backgroundHeader {
-	[_backgroundHeaderView removeFromSuperview];
-	[_backgroundHeaderView release];
-	
-	_backgroundHeaderView = [backgroundHeader retain];
-	_backgroundHeaderView.tag = -2;
-	_backgroundHeaderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	
-	if (_backgroundView) {
-		[self insertSubview:_backgroundHeaderView aboveSubview:_backgroundView];
-	} else {
-		[self insertSubview:_backgroundHeaderView atIndex:0];
-	}
-	
-	[self setNeedsLayout];
-}
-
-
-- (void)setBackgroundFooterView:(UIView *)backgroundFooter {
-	[_backgroundFooterView removeFromSuperview];
-	[_backgroundFooterView release];
-	
-	_backgroundFooterView = [backgroundFooter retain];
-	_backgroundFooterView.tag = -3;
-	_backgroundFooterView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	
-	if (_backgroundView) {
-		[self insertSubview:_backgroundFooterView aboveSubview:_backgroundView];
-	} else {
-		[self insertSubview:_backgroundFooterView atIndex:0];
-	}
-	
-	[self setNeedsLayout];
+	_tableView.backgroundView = background;
 }
 
 
@@ -282,16 +273,18 @@
 	
 	SSCollectionViewTableViewCell *cell = (SSCollectionViewTableViewCell *)[_tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 	if (!cell) {
-		cell = [[SSCollectionViewTableViewCell alloc] initWithReuseIdentifier:cellIdentifier];
+		cell = [[[SSCollectionViewTableViewCell alloc] initWithReuseIdentifier:cellIdentifier] autorelease];
 	}
 	
 	// TODO: Cache
 	CGSize itemSize = [self _itemSizeForSection:indexPath.section];
 	CGFloat itemsPerRow = floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
+	CGFloat itemSpacing = roundf((self.frame.size.width - (itemSize.width * itemsPerRow)) / itemsPerRow);
 	
 	cell.itemSize = itemSize;
-	cell.itemSpacing = roundf((self.frame.size.width - (itemSize.width * itemsPerRow)) / itemsPerRow);	
+	cell.itemSpacing = itemSpacing;
 	cell.items = [self _itemsForRowIndexPath:indexPath];
+	cell.collectionView = nil;
 	
 	return cell;
 }

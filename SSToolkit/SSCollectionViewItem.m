@@ -7,6 +7,9 @@
 //
 
 #import "SSCollectionViewItem.h"
+#import "SSCollectionViewItemInternal.h"
+#import "SSCollectionView.h"
+#import "SSCollectionViewInternal.h"
 #import "SSLabel.h"
 #import "SSDrawingMacros.h"
 
@@ -20,10 +23,20 @@
 @synthesize reuseIdentifier = _reuseIdentifier;
 @synthesize selected = _selected;
 @synthesize highlighted = _highlighted;
+@synthesize collectionView = _collectionView;
 
 #pragma mark NSObject
 
 - (void)dealloc {
+	if (self.collectionView) {
+		[self retain];
+		NSLog(@"REUSE: %p", self);
+		[self.collectionView _reuseItem:self];
+		return;
+	}
+	
+	NSLog(@"DEALLOC: %p", self);
+		
 	[_imageView release];
 	[_textLabel release];
 	[_detailTextLabel release];
@@ -74,7 +87,7 @@
 
 
 - (void)prepareForReuse {
-	// !!!: Reuse is currently not implemented
+	// Do nothing. Subclasses can override this
 }
 
 

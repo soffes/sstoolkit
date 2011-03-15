@@ -46,11 +46,14 @@
 	
 	SSCollectionViewItem *item = [aCollectionView dequeueReusableItemWithIdentifier:itemIdentifier];
 	if (item == nil) {
+		NSLog(@"Allocating");
 		item = [[[SSCollectionViewItem alloc] initWithStyle:SSCollectionViewItemStyleDefault reuseIdentifier:itemIdentifier] autorelease];
 		
 		// Customize item for demo
 		item.textLabel.backgroundColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
 		item.textLabel.frame = CGRectMake(0.0f, 0.0f, 80.0f, 80.0f);
+	} else {
+		NSLog(@"Reusing");
 	}
 	
 	item.textLabel.text = [NSString stringWithFormat:@"%i", indexPath.row];

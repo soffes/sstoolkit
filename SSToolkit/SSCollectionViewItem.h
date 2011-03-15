@@ -14,6 +14,7 @@ typedef enum {
 } SSCollectionViewItemStyle;
 
 @class SSLabel;
+@class SSCollectionView;
 
 /**
  @brief View for display in a collection view.
@@ -31,6 +32,8 @@ typedef enum {
 
 	BOOL _selected;
 	BOOL _highlighted;
+	
+	SSCollectionView *_collectionView;
 }
 
 /**

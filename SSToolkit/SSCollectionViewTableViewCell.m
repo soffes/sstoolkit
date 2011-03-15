@@ -8,16 +8,20 @@
 
 #import "SSCollectionViewTableViewCell.h"
 #import "SSCollectionViewItem.h"
+#import "SSCollectionView.h"
+#import "SSCollectionViewInternal.h"
 
 @implementation SSCollectionViewTableViewCell
 
 @synthesize itemSize = _itemSize;
 @synthesize itemSpacing = _itemSpacing;
 @synthesize items = _items;
+@synthesize collectionView = _collectionView;
 
 #pragma mark NSObject
 
 - (void)dealloc {
+	self.collectionView = nil;
 	self.items = nil;
 	[super dealloc];
 }
@@ -56,6 +60,7 @@
 
 - (void)prepareForReuse {
 	[super prepareForReuse];
+	[self.collectionView _itemsWillDisappear:_items];
 	self.items = nil;
 }
 

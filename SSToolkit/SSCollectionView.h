@@ -33,12 +33,10 @@
 	CGFloat _minimumColumnSpacing;
 	CGFloat _rowSpacing;
 	BOOL _allowsSelection;
+	NSMutableDictionary *_reuseableItems;
+	NSMutableSet *_visibleItemPointers;
 	
 	UITableView *_tableView;
-	
-	UIView *_backgroundView;
-	UIView *_backgroundHeaderView;
-	UIView *_backgroundFooterView;
 }
 
 /**
@@ -65,9 +63,6 @@
  @brief The background view of the collection view.
  */
 @property (nonatomic, retain) UIView *backgroundView;
-
-@property (nonatomic, retain) UIView *backgroundHeaderView;
-@property (nonatomic, retain) UIView *backgroundFooterView;
 
 /**
  @brief A Boolean value that determines whether selecting items is enabled.
