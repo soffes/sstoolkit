@@ -117,8 +117,7 @@
 
 
 - (NSIndexPath *)indexPathForItem:(SSCollectionViewItem *)item {
-	// TODO: Implement
-	return nil;
+	return item.indexPath;
 }
 
 
