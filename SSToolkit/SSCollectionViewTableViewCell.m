@@ -60,7 +60,7 @@
 
 - (void)prepareForReuse {
 	[super prepareForReuse];
-	[self.collectionView _itemsWillDisappear:_items];
+	[self.collectionView _reuseItems:_items];
 	self.items = nil;
 }
 

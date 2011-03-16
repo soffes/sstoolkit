@@ -9,7 +9,6 @@
 #import "SSCollectionView.h"
 #import "SSCollectionViewInternal.h"
 #import "SSCollectionViewItem.h"
-#import "SSCollectionViewItemInternal.h"
 #import "SSCollectionViewTableViewCell.h"
 #import "SSDrawingMacros.h"
 #import "UIView+SSToolkitAdditions.h"
@@ -34,22 +33,7 @@
 	self.dataSource = nil;
 	self.delegate = nil;
 	
-	// Remove references to visible items
-	for (NSValue *value in _visibleItemPointers) {
-		[(SSCollectionViewItem *)[value pointerValue] setCollectionView:nil];
-	}
-	[_visibleItemPointers removeAllObjects];
-	[_visibleItemPointers release];
-	_visibleItemPointers = nil;
-	
-	// Remove all reuseable items
-	for (NSString *key in _reuseableItems) {
-		NSArray *items = [_reuseableItems objectForKey:key];
-		for (SSCollectionViewItem *item in items) {
-			item.collectionView = nil;
-		}
-		[_reuseableItems removeObjectForKey:key];
-	}
+	[_reuseableItems removeAllObjects];
 	[_reuseableItems release];
 	_reuseableItems = nil;
 	
@@ -72,7 +56,6 @@
 		_rowSpacing = 20.0f;
 		_allowsSelection = YES;
 		_reuseableItems = [[NSMutableDictionary alloc] init];
-		_visibleItemPointers = [[NSMutableSet alloc] init];
 		
 		_tableView = [[UITableView alloc] initWithFrame:CGRectSetZeroOrigin(frame)];
 		_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -149,9 +132,9 @@
 }
 
 
-- (void)_itemsWillDisappear:(NSArray *)items {
+- (void)_reuseItems:(NSArray *)items {
 	for (SSCollectionViewItem *item in items) {
-		[_visibleItemPointers removeObject:[NSValue valueWithPointer:item]];
+		[self _reuseItem:item];
 	}
 }
 
@@ -195,9 +178,7 @@
 		}
 		
 		item.tag = i;
-		item.collectionView = self;
 		[items addObject:item];
-		[_visibleItemPointers addObject:[NSValue valueWithPointer:item]];
 	}
 	
 	return [items autorelease];
@@ -284,7 +265,7 @@
 	cell.itemSize = itemSize;
 	cell.itemSpacing = itemSpacing;
 	cell.items = [self _itemsForRowIndexPath:indexPath];
-	cell.collectionView = nil;
+	cell.collectionView = self;
 	
 	return cell;
 }

@@ -76,7 +76,6 @@
 		B24E9E80121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E42121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m */; };
 		B267D3451226CE0400B66519 /* SSCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B267D3431226CE0400B66519 /* SSCollectionViewController.h */; };
 		B267D3461226CE0400B66519 /* SSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B267D3441226CE0400B66519 /* SSCollectionViewController.m */; };
-		B2721B9E132F131100D762FD /* SSCollectionViewItemInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = B2721B9D132F131100D762FD /* SSCollectionViewItemInternal.h */; };
 		B2721BA0132F136C00D762FD /* SSCollectionViewInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = B2721B9F132F136C00D762FD /* SSCollectionViewInternal.h */; };
 		B279539912FC67E300FFE28D /* UIScreen+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B279539712FC67E300FFE28D /* UIScreen+SSToolkitAdditions.h */; };
 		B279539A12FC67E300FFE28D /* UIScreen+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B279539812FC67E300FFE28D /* UIScreen+SSToolkitAdditions.m */; };
@@ -183,7 +182,6 @@
 		B24E9E42121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B267D3431226CE0400B66519 /* SSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewController.h; sourceTree = "<group>"; };
 		B267D3441226CE0400B66519 /* SSCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionViewController.m; sourceTree = "<group>"; };
-		B2721B9D132F131100D762FD /* SSCollectionViewItemInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewItemInternal.h; sourceTree = "<group>"; };
 		B2721B9F132F136C00D762FD /* SSCollectionViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewInternal.h; sourceTree = "<group>"; };
 		B279539712FC67E300FFE28D /* UIScreen+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B279539812FC67E300FFE28D /* UIScreen+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+SSToolkitAdditions.m"; sourceTree = "<group>"; };
@@ -442,7 +440,6 @@
 				B2721B9F132F136C00D762FD /* SSCollectionViewInternal.h */,
 				B2ABC6901329D14300521D20 /* SSCollectionViewTableViewCell.h */,
 				B2ABC6911329D14300521D20 /* SSCollectionViewTableViewCell.m */,
-				B2721B9D132F131100D762FD /* SSCollectionViewItemInternal.h */,
 				B279539C12FC6C6F00FFE28D /* SSRatingPickerScrollView.h */,
 				B279539D12FC6C6F00FFE28D /* SSRatingPickerScrollView.m */,
 			);
@@ -516,7 +513,6 @@
 				B2E241561301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.h in Headers */,
 				B2E241581301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.h in Headers */,
 				B2ABC6921329D14300521D20 /* SSCollectionViewTableViewCell.h in Headers */,
-				B2721B9E132F131100D762FD /* SSCollectionViewItemInternal.h in Headers */,
 				B2721BA0132F136C00D762FD /* SSCollectionViewInternal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

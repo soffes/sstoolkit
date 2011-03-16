@@ -34,7 +34,6 @@
 	CGFloat _rowSpacing;
 	BOOL _allowsSelection;
 	NSMutableDictionary *_reuseableItems;
-	NSMutableSet *_visibleItemPointers;
 	
 	UITableView *_tableView;
 }
