@@ -85,11 +85,11 @@
 		return nil;
 	}
 	
-	SSCollectionViewItem *item = [items lastObject];
-	[items removeLastObject];
+	SSCollectionViewItem *item = [[items lastObject] retain];
+	[items removeObject:item];
 	
 	[item prepareForReuse];
-	return item;
+	return [item autorelease];
 }
 
 
