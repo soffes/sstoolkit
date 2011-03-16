@@ -74,6 +74,12 @@
 }
 
 
+- (void)setFrame:(CGRect)frame {
+	[super setFrame:frame];
+	[_tableView reloadData];
+}
+
+
 #pragma mark SSCollectionView
 
 - (void)reloadData {
