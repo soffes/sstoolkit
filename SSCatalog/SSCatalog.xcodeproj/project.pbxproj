@@ -30,6 +30,9 @@
 		B2AED4BC12FF21F8006C956B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2AED4B912FF21F8006C956B /* UIKit.framework */; };
 		B2B3CEEF1296F78D001BAC94 /* SCSwitchDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */; };
 		B2B3CF561296FA76001BAC94 /* SSToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B2B3CF551296FA76001BAC94 /* SSToolkit.bundle */; };
+		B2DAC3C413304D5700091D5F /* Icon-48.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DAC3C113304D5700091D5F /* Icon-48.png */; };
+		B2DAC3C513304D5700091D5F /* SamLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DAC3C213304D5700091D5F /* SamLogo.png */; };
+		B2DAC3C613304D5700091D5F /* SamLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DAC3C313304D5700091D5F /* SamLogo@2x.png */; };
 		B2E0323F121DC49700D02434 /* libSSToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B24E9ECA121DC3CF0085F81E /* libSSToolkit.a */; };
 		B2E241821301CE4900F7DC3B /* SCAddressBarDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E241811301CE4900F7DC3B /* SCAddressBarDemoViewController.m */; };
 		B2E709AE12FF286E00DFF898 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E709A812FF286E00DFF898 /* Icon-29.png */; };
@@ -99,6 +102,9 @@
 		B2B3CEED1296F78D001BAC94 /* SCSwitchDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSwitchDemoViewController.h; sourceTree = "<group>"; };
 		B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSwitchDemoViewController.m; sourceTree = "<group>"; };
 		B2B3CF551296FA76001BAC94 /* SSToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SSToolkit.bundle; path = ../Resources/SSToolkit.bundle; sourceTree = SOURCE_ROOT; };
+		B2DAC3C113304D5700091D5F /* Icon-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-48.png"; sourceTree = "<group>"; };
+		B2DAC3C213304D5700091D5F /* SamLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SamLogo.png; sourceTree = "<group>"; };
+		B2DAC3C313304D5700091D5F /* SamLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SamLogo@2x.png"; sourceTree = "<group>"; };
 		B2E241801301CE4900F7DC3B /* SCAddressBarDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAddressBarDemoViewController.h; sourceTree = "<group>"; };
 		B2E241811301CE4900F7DC3B /* SCAddressBarDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAddressBarDemoViewController.m; sourceTree = "<group>"; };
 		B2E709A812FF286E00DFF898 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
@@ -179,6 +185,9 @@
 		B21B85BF1067D4FD00E5C076 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B2DAC3C113304D5700091D5F /* Icon-48.png */,
+				B2DAC3C213304D5700091D5F /* SamLogo.png */,
+				B2DAC3C313304D5700091D5F /* SamLogo@2x.png */,
 				B2E709AD12FF286E00DFF898 /* Icon.png */,
 				B2E709A812FF286E00DFF898 /* Icon-29.png */,
 				B2E709AA12FF286E00DFF898 /* Icon-72.png */,
@@ -341,6 +350,9 @@
 				B2E709B112FF286E00DFF898 /* Icon-114.png in Resources */,
 				B2E709B312FF286E00DFF898 /* Icon.png in Resources */,
 				B2E709B512FF28CB00DFF898 /* iTunesArtwork in Resources */,
+				B2DAC3C413304D5700091D5F /* Icon-48.png in Resources */,
+				B2DAC3C513304D5700091D5F /* SamLogo.png in Resources */,
+				B2DAC3C613304D5700091D5F /* SamLogo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
