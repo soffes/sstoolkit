@@ -14,4 +14,6 @@
 
 + (NSString *)title;
 
+- (void)goTo999:(id)sender;
+
 @end

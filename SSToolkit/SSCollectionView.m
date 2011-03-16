@@ -18,6 +18,7 @@
 - (CGSize)_itemSizeForSection:(NSInteger)section;
 - (NSInteger)_numberOfItemsInSection:(NSInteger)section;
 - (NSArray *)_itemsForRowIndexPath:(NSIndexPath *)rowIndexPath;
+- (NSIndexPath *)_cellIndexPathFromItemIndexPath:(NSIndexPath *)rowIndexPath;
 @end
 
 @implementation SSCollectionView
@@ -155,15 +156,23 @@
 }
 
 
-- (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
-	// TODO: Implement
-	NSLog(@"[SSCollectionView] scrollToItemAtIndexPath:animated: is not yet implemented.");
+- (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(SSCollectionViewScrollPosition)scrollPosition animated:(BOOL)animated {
+	NSIndexPath *cellIndexPath = [self _cellIndexPathFromItemIndexPath:indexPath];
+	[_tableView scrollToRowAtIndexPath:cellIndexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:animated];
 }
 
 
-- (void)reloadItemAtIndexPaths:(NSIndexPath *)indexPaths {
-	// TODO: Implement
-	NSLog(@"[SSCollectionView] reloadItemAtIndexPaths: is not yet implemented.");
+- (void)reloadItemAtIndexPaths:(NSArray *)indexPaths {
+	NSMutableArray *rowIndexPaths = [[NSMutableArray alloc] init];
+	for (NSIndexPath *itemIndexPath in indexPaths) {
+		NSIndexPath *rowIndexPath = [self _cellIndexPathFromItemIndexPath:itemIndexPath];
+		if (![rowIndexPaths containsObject:rowIndexPaths]) {
+			[rowIndexPaths addObject:rowIndexPath];
+		}
+	}
+	
+	[_tableView reloadRowsAtIndexPaths:rowIndexPaths withRowAnimation:UITableViewRowAnimationFade];	
+	[rowIndexPaths release];
 }
 
 
@@ -234,6 +243,15 @@
 	}
 	
 	return [items autorelease];
+}
+
+
+- (NSIndexPath *)_cellIndexPathFromItemIndexPath:(NSIndexPath *)rowIndexPath {
+	CGSize itemSize = [self _itemSizeForSection:rowIndexPath.section];
+	NSInteger itemsPerRow = (NSInteger)floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
+	
+	NSInteger row = (NSInteger)floor(rowIndexPath.row / itemsPerRow);
+	return [NSIndexPath indexPathForRow:row inSection:rowIndexPath.section];
 }
 
 

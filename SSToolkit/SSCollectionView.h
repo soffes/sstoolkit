@@ -8,20 +8,23 @@
 
 #import "SSCollectionViewItem.h"
 
+typedef enum {
+	SSCollectionViewScrollPositionNone = UITableViewScrollPositionNone,
+	SSCollectionViewScrollPositionTop = UITableViewScrollPositionTop,
+	SSCollectionViewScrollPositionMiddle = UITableViewScrollPositionMiddle,
+	SSCollectionViewScrollPositionBottom = UITableViewScrollPositionBottom
+} SSCollectionViewScrollPosition;
+
 @protocol SSCollectionViewDelegate;
 @protocol SSCollectionViewDataSource;
 
 /**
  @brief Simple collection view.
  
- This is very alphay. My goals are to be similar to UITableView and NSCollectionView when 
- possible. Currently it's pretty inefficient and doesn't reuse items and all items have to
- be the same size. Only scrolling vertically is currently supported.
+ My goals are to be similar to UITableView and NSCollectionView when possible. Only scrolling vertically is currently
+ supported.
  
- Multiple sections are not supported.
- 
- Editing and performance will be my next focus. Then animating changes when data changes 
- and an option to disable that.
+ Editing will be my next focus. Then animating changes when data changes and an option to disable that.
  */
 @interface SSCollectionView : UIView <UITableViewDataSource, UITableViewDelegate> {
 	
@@ -52,8 +55,7 @@
 @property (nonatomic, assign) CGFloat minimumColumnSpacing;
 
 /**
- @brief The spacing between each row in the receiver. This does not add space 
- above the first row or below the last.
+ @brief The spacing between each row in the receiver. This does not add space above the first row or below the last.
  
  The row spacing is in points. The default is 20.
  */
@@ -67,8 +69,8 @@
 /**
  @brief A Boolean value that determines whether selecting items is enabled.
  
- If the value of this property is <code>YES</code>, selecting is enabled, and if it is <code>NO</code>, 
- selecting is disabled. The default is <code>YES</code>.
+ If the value of this property is <code>YES</code>, selecting is enabled, and if it is <code>NO</code>, selecting is
+ disabled. The default is <code>YES</code>.
  */
 @property (nonatomic, assign) BOOL allowsSelection;
 
@@ -84,8 +86,8 @@
  
  @param identifier A string identifying the cell object to be reused.
  
- @return A SSCollectionViewItem object with the associated identifier or nil if no such object
- exists in the reusable-item queue.
+ @return A SSCollectionViewItem object with the associated identifier or nil if no such object exists in the
+ reusable-item queue.
  */
 - (SSCollectionViewItem *)dequeueReusableItemWithIdentifier:(NSString *)identifier;
 
@@ -94,8 +96,7 @@
  
  @param indexPath The index path locating the item in the receiver.
  
- @return An object representing a cell of the table or nil if the cell is not visible or indexPath is
- out of range.
+ @return An object representing a cell of the table or nil if the cell is not visible or indexPath is out of range.
  
  @see indexPathForItem:
  */
@@ -117,29 +118,20 @@
 /**
  @brief Deselects a given item identified by index path, with an option to animate the deselection.
  
- <strong>Currently not implemented.</strong>
- 
  @param indexPath An index path identifying an item in the receiver.
- @param animated <code>YES</code> if you want to animate the deselection and <code>NO</code> if the
- change should be immediate.
+ @param animated <code>YES</code> if you want to animate the deselection and <code>NO</code> if the change should be
+ immediate.
  */
 - (void)deselectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
 
-/**
- @brief Scrolls the receiver until a row identified by index path is at a particular location on the screen.
- 
- @param indexPath An index path that identifies an item in the collection view by its row index and its section index.
- @param animated <code>YES</code> if you want to animate the deselection and <code>NO</code> if the
- change should be immediate.
- */
-- (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
+- (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(SSCollectionViewScrollPosition)scrollPosition animated:(BOOL)animated;
 
 /**
  @brief Reloads the specified item.
  
  @param indexPath An index path that identifies an item in the collection view by its row index and its section index.
  */
-- (void)reloadItemAtIndexPaths:(NSIndexPath *)indexPaths;
+- (void)reloadItemAtIndexPaths:(NSArray *)indexPaths;
 
 @end
 

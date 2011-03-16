@@ -23,6 +23,10 @@
 	[super viewDidLoad];
 	self.title = [[self class] title];
 	self.collectionView.minimumColumnSpacing = 20.0f;
+	
+	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"999" style:UIBarButtonItemStyleBordered target:self action:@selector(goTo999:)];
+	self.navigationItem.rightBarButtonItem = rightButton;
+	[rightButton release];
 }
 
 
@@ -31,6 +35,14 @@
 		return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 	}
 	return YES;
+}
+
+
+#pragma mark Actions
+
+- (void)goTo999:(id)sender {
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:999 inSection:0];
+	[self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:SSCollectionViewScrollPositionTop animated:YES];
 }
 
 
