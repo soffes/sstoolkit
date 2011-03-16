@@ -157,11 +157,13 @@
 
 - (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
 	// TODO: Implement
+	NSLog(@"[SSCollectionView] scrollToItemAtIndexPath:animated: is not yet implemented.");
 }
 
 
 - (void)reloadItemAtIndexPaths:(NSIndexPath *)indexPaths {
 	// TODO: Implement
+	NSLog(@"[SSCollectionView] reloadItemAtIndexPaths: is not yet implemented.");
 }
 
 
