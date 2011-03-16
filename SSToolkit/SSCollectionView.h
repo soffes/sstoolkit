@@ -111,6 +111,8 @@
  */
 - (NSIndexPath *)indexPathForItem:(SSCollectionViewItem *)item;
 
+- (void)selectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
+
 /**
  @brief Deselects a given item identified by index path, with an option to animate the deselection.
  

@@ -7,6 +7,7 @@
 //
 
 #import "SSCollectionViewItem.h"
+#import "SSCollectionViewItemInternal.h"
 #import "SSCollectionView.h"
 #import "SSCollectionViewInternal.h"
 #import "SSLabel.h"
@@ -22,6 +23,7 @@
 @synthesize reuseIdentifier = _reuseIdentifier;
 @synthesize selected = _selected;
 @synthesize highlighted = _highlighted;
+@synthesize collectionView = _collectionView;
 
 #pragma mark NSObject
 
@@ -33,6 +35,27 @@
 	[_selectedBackgroundView release];
 	[_reuseIdentifier release];
 	[super dealloc];
+}
+
+
+#pragma mark UIResponder
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self setHighlighted:YES animated:NO];
+}
+
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self setHighlighted:NO animated:NO];
+}
+
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self setHighlighted:YES animated:NO];
+	
+	if (CGRectContainsPoint(self.frame, [[touches anyObject] locationInView:self])) {
+		[self.collectionView _selectItem:self animated:YES];
+	}
 }
 
 

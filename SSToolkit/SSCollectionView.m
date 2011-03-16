@@ -9,6 +9,7 @@
 #import "SSCollectionView.h"
 #import "SSCollectionViewInternal.h"
 #import "SSCollectionViewItem.h"
+#import "SSCollectionViewItemInternal.h"
 #import "SSCollectionViewTableViewCell.h"
 #import "SSDrawingMacros.h"
 #import "UIView+SSToolkitAdditions.h"
@@ -105,6 +106,18 @@
 }
 
 
+- (void)selectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
+	SSCollectionViewItem *item = [self itemPathForIndex:indexPath];
+	[item setHighlighted:NO animated:NO];
+	[item setSelected:YES animated:YES];
+	
+	// Notify delegate of selection
+	if ([self.delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
+		[self.delegate collectionView:self didSelectItemAtIndexPath:indexPath];
+	}
+}
+
+
 - (void)deselectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
 	// TODO: Implement
 }
@@ -136,6 +149,12 @@
 	for (SSCollectionViewItem *item in items) {
 		[self _reuseItem:item];
 	}
+}
+
+
+- (void)_selectItem:(SSCollectionViewItem *)item animated:(BOOL)animated {
+	// TODO: Since the item is being displayed, we could probably lookup the index path quick than this way
+	[self selectItemAtIndexPath:[self indexPathForItem:item] animated:animated];
 }
 
 
@@ -178,6 +197,7 @@
 		}
 		
 		item.tag = i;
+		item.collectionView = self;
 		[items addObject:item];
 	}
 	

@@ -10,5 +10,6 @@
 
 - (void)_reuseItems:(NSArray *)items;
 - (void)_reuseItem:(SSCollectionViewItem *)item;
+- (void)_selectItem:(SSCollectionViewItem *)item animated:(BOOL)animated;
 
 @end
