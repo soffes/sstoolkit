@@ -33,6 +33,7 @@
 	CGFloat _minimumColumnSpacing;
 	CGFloat _rowSpacing;
 	BOOL _allowsSelection;
+	NSMutableSet *_visibleItems;
 	NSMutableDictionary *_reuseableItems;
 	
 	UITableView *_tableView;
@@ -167,6 +168,9 @@
 
 - (CGFloat)collectionView:(SSCollectionView *)aCollectionView heightForHeaderInSection:(NSInteger)section;
 - (CGFloat)collectionView:(SSCollectionView *)aCollectionView heightForFooterInSection:(NSInteger)section;
+- (void)collectionView:(SSCollectionView *)aCollectionView willSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 - (void)collectionView:(SSCollectionView *)aCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+- (void)collectionView:(SSCollectionView *)aCollectionView willDeselectItemAtIndexPath:(NSIndexPath *)indexPath;
+- (void)collectionView:(SSCollectionView *)aCollectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

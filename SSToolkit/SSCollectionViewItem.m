@@ -23,11 +23,14 @@
 @synthesize reuseIdentifier = _reuseIdentifier;
 @synthesize selected = _selected;
 @synthesize highlighted = _highlighted;
+@synthesize indexPath = _indexPath;
 @synthesize collectionView = _collectionView;
 
 #pragma mark NSObject
 
 - (void)dealloc {
+	self.collectionView = nil;
+	[_indexPath release];
 	[_imageView release];
 	[_textLabel release];
 	[_detailTextLabel release];
@@ -53,8 +56,8 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	[self setHighlighted:YES animated:NO];
 	
-	if (CGRectContainsPoint(self.frame, [[touches anyObject] locationInView:self])) {
-		[self.collectionView _selectItem:self animated:YES];
+	if (CGRectContainsPoint(CGRectSetZeroOrigin(self.frame), [[touches anyObject] locationInView:self])) {
+		[self.collectionView selectItemAtIndexPath:self.indexPath animated:YES];
 	}
 }
 

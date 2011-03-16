@@ -34,6 +34,10 @@
 	self.dataSource = nil;
 	self.delegate = nil;
 	
+	[_visibleItems removeAllObjects];
+	[_visibleItems release];
+	_visibleItems = nil;
+	
 	[_reuseableItems removeAllObjects];
 	[_reuseableItems release];
 	_reuseableItems = nil;
@@ -57,6 +61,7 @@
 		_rowSpacing = 20.0f;
 		_allowsSelection = YES;
 		_reuseableItems = [[NSMutableDictionary alloc] init];
+		_visibleItems = [[NSMutableSet alloc] init];
 		
 		_tableView = [[UITableView alloc] initWithFrame:CGRectSetZeroOrigin(frame)];
 		_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -95,7 +100,12 @@
 
 
 - (SSCollectionViewItem *)itemPathForIndex:(NSIndexPath *)indexPath {
-	// TODO: Implement
+	for (SSCollectionViewItem *item in _visibleItems) {
+		if ([item.indexPath isEqual:indexPath]) {
+			return item;
+		}
+	}	
+	
 	return nil;
 }
 
@@ -107,11 +117,16 @@
 
 
 - (void)selectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
+	// Notify delegate that it will select
+	if ([self.delegate respondsToSelector:@selector(collectionView:willSelectItemAtIndexPath:)]) {
+		[self.delegate collectionView:self willSelectItemAtIndexPath:indexPath];
+	}
+	
 	SSCollectionViewItem *item = [self itemPathForIndex:indexPath];
 	[item setHighlighted:NO animated:NO];
 	[item setSelected:YES animated:YES];
 	
-	// Notify delegate of selection
+	// Notify delegate that it did selection
 	if ([self.delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
 		[self.delegate collectionView:self didSelectItemAtIndexPath:indexPath];
 	}
@@ -119,7 +134,19 @@
 
 
 - (void)deselectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
-	// TODO: Implement
+	// Notify delegate that it will deselect
+	if ([self.delegate respondsToSelector:@selector(collectionView:willDeselectItemAtIndexPath:)]) {
+		[self.delegate collectionView:self willDeselectItemAtIndexPath:indexPath];
+	}
+	
+	SSCollectionViewItem *item = [self itemPathForIndex:indexPath];
+	[item setHighlighted:NO animated:NO];
+	[item setSelected:NO animated:YES];
+	
+	// Notify delegate that it did deselection
+	if ([self.delegate respondsToSelector:@selector(collectionView:didDeselectItemAtIndexPath:)]) {
+		[self.delegate collectionView:self didDeselectItemAtIndexPath:indexPath];
+	}
 }
 
 
@@ -136,6 +163,8 @@
 #pragma mark Private Methods
 
 - (void)_reuseItem:(SSCollectionViewItem *)item {
+	[_visibleItems removeObject:item];
+	
 	NSMutableArray *items = [_reuseableItems objectForKey:item.reuseIdentifier];
 	if (!items) {
 		[_reuseableItems setObject:[NSMutableArray array] forKey:item.reuseIdentifier];
@@ -149,12 +178,6 @@
 	for (SSCollectionViewItem *item in items) {
 		[self _reuseItem:item];
 	}
-}
-
-
-- (void)_selectItem:(SSCollectionViewItem *)item animated:(BOOL)animated {
-	// TODO: Since the item is being displayed, we could probably lookup the index path quick than this way
-	[self selectItemAtIndexPath:[self indexPathForItem:item] animated:animated];
 }
 
 
@@ -187,8 +210,8 @@
 	NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:endIndex - startIndex];
 	
 	for (NSInteger i = startIndex; i < endIndex; i++) {
-		// TODO: Store item so it can be dequeued later
-		SSCollectionViewItem *item = [_dataSource collectionView:self itemForIndexPath:[NSIndexPath indexPathForRow:i inSection:rowIndexPath.section]];
+		NSIndexPath *itemIndexPath = [NSIndexPath indexPathForRow:i inSection:rowIndexPath.section];
+		SSCollectionViewItem *item = [_dataSource collectionView:self itemForIndexPath:itemIndexPath];
 		if (item == nil) {
 			NSException *exception = [NSException exceptionWithName:kSSCollectionViewNilItemExceptionName 
 															 reason:kSSCollectionViewNilItemExceptionReason userInfo:nil];
@@ -197,7 +220,9 @@
 		}
 		
 		item.tag = i;
+		item.indexPath = itemIndexPath;
 		item.collectionView = self;
+		[_visibleItems addObject:item];
 		[items addObject:item];
 	}
 	
