@@ -74,23 +74,6 @@ CGRect CGRectAddPoint(CGRect rect, CGPoint point) {
 }
 
 
-extern CGMutablePathRef SSRoundedRectPath(CGRect rect, CGFloat cornerRadius) {
-	CGPoint min = CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect));
-	CGPoint mid = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
-	CGPoint max = CGPointMake(CGRectGetMaxX(rect), CGRectGetMaxY(rect));
-	
-	CGMutablePathRef path = CGPathCreateMutable();
-	
-	CGPathMoveToPoint(path, NULL, min.x, mid.y);
-	CGPathAddArcToPoint(path, NULL, min.x, min.y, mid.x, min.y, cornerRadius);
-	CGPathAddArcToPoint(path, NULL, max.x, min.y, max.x, mid.y, cornerRadius);
-	CGPathAddArcToPoint(path, NULL, max.x, max.y, mid.x, max.y, cornerRadius);
-	CGPathAddArcToPoint(path, NULL, min.x, max.y, min.x, mid.y, cornerRadius);
-	
-	return path;
-}
-
-
 void SSDrawRoundedRect(CGContextRef context, CGRect rect, CGFloat cornerRadius) {
 	CGPoint min = CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect));
 	CGPoint mid = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
