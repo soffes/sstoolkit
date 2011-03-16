@@ -162,7 +162,7 @@
 }
 
 
-- (void)reloadItemAtIndexPaths:(NSArray *)indexPaths {
+- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths {
 	NSMutableArray *rowIndexPaths = [[NSMutableArray alloc] init];
 	for (NSIndexPath *itemIndexPath in indexPaths) {
 		NSIndexPath *rowIndexPath = [self _cellIndexPathFromItemIndexPath:itemIndexPath];

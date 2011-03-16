@@ -131,7 +131,7 @@ typedef enum {
  
  @param indexPath An index path that identifies an item in the collection view by its row index and its section index.
  */
-- (void)reloadItemAtIndexPaths:(NSArray *)indexPaths;
+- (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
 
 @end
 
