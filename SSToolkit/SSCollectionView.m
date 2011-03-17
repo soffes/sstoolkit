@@ -222,7 +222,7 @@
 	
 	NSInteger startIndex = itemsPerRow * (NSInteger)rowIndexPath.row;
 	NSInteger endIndex = (NSInteger)fmin(totalItems, startIndex + itemsPerRow);
-
+	
 	NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:(NSUInteger)(endIndex - startIndex)];
 	
 	for (NSInteger i = startIndex; i < endIndex; i++) {
@@ -345,6 +345,66 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return [self _itemSizeForSection:(NSInteger)indexPath.section].height + _rowSpacing;
+}
+
+
+#pragma mark UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	if ([_delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
+		[_delegate scrollViewDidScroll:scrollView];
+	}
+}
+
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+	if ([_delegate respondsToSelector:@selector(scrollViewWillBeginDragging:)]) {
+		[_delegate scrollViewWillBeginDragging:scrollView];
+	}
+}
+
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+	if ([_delegate respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)]) {
+		[_delegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+	}
+}
+
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+	if ([_delegate respondsToSelector:@selector(scrollViewWillBeginDecelerating:)]) {
+		[_delegate scrollViewWillBeginDecelerating:scrollView];
+	}
+}
+
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+	if ([_delegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
+		[_delegate scrollViewDidEndDecelerating:scrollView];
+	}
+}
+
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+	if ([_delegate respondsToSelector:@selector(scrollViewDidEndScrollingAnimation:)]) {
+		[_delegate scrollViewDidEndScrollingAnimation:scrollView];
+	}
+}
+
+
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
+	if ([_delegate respondsToSelector:@selector(scrollViewShouldScrollToTop:)]) {
+		return [_delegate scrollViewShouldScrollToTop:scrollView];
+	}
+	
+	return YES;
+}
+
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+	if ([_delegate respondsToSelector:@selector(scrollViewDidScrollToTop:)]) {
+		[_delegate scrollViewDidScrollToTop:scrollView];
+	}
 }
 
 @end

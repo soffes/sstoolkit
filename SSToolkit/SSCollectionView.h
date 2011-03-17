@@ -150,7 +150,7 @@ typedef enum {
 @end
 
 
-@protocol SSCollectionViewDelegate <NSObject>
+@protocol SSCollectionViewDelegate <NSObject, UIScrollViewDelegate>
 
 @required
 
