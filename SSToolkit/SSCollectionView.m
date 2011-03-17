@@ -216,17 +216,17 @@
 
 
 - (NSArray *)_itemsForRowIndexPath:(NSIndexPath *)rowIndexPath {
-	NSInteger totalItems = [self _numberOfItemsInSection:rowIndexPath.section];
-	CGSize itemSize = [self _itemSizeForSection:rowIndexPath.section];
+	NSInteger totalItems = [self _numberOfItemsInSection:(NSInteger)rowIndexPath.section];
+	CGSize itemSize = [self _itemSizeForSection:(NSInteger)rowIndexPath.section];
 	NSInteger itemsPerRow = (NSInteger)floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
 	
 	NSInteger startIndex = itemsPerRow * (NSInteger)rowIndexPath.row;
 	NSInteger endIndex = (NSInteger)fmin(totalItems, startIndex + itemsPerRow);
 
-	NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:endIndex - startIndex];
+	NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:(NSUInteger)(endIndex - startIndex)];
 	
 	for (NSInteger i = startIndex; i < endIndex; i++) {
-		NSIndexPath *itemIndexPath = [NSIndexPath indexPathForRow:i inSection:rowIndexPath.section];
+		NSIndexPath *itemIndexPath = [NSIndexPath indexPathForRow:(NSUInteger)i inSection:rowIndexPath.section];
 		SSCollectionViewItem *item = [_dataSource collectionView:self itemForIndexPath:itemIndexPath];
 		if (item == nil) {
 			NSException *exception = [NSException exceptionWithName:kSSCollectionViewNilItemExceptionName 
@@ -247,10 +247,10 @@
 
 
 - (NSIndexPath *)_cellIndexPathFromItemIndexPath:(NSIndexPath *)rowIndexPath {
-	CGSize itemSize = [self _itemSizeForSection:rowIndexPath.section];
-	NSInteger itemsPerRow = (NSInteger)floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
+	CGSize itemSize = [self _itemSizeForSection:(NSInteger)rowIndexPath.section];
+	NSUInteger itemsPerRow = (NSUInteger)floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
 	
-	NSInteger row = (NSInteger)floor(rowIndexPath.row / itemsPerRow);
+	NSUInteger row = (NSUInteger)floor(rowIndexPath.row / itemsPerRow);
 	return [NSIndexPath indexPathForRow:row inSection:rowIndexPath.section];
 }
 
@@ -328,7 +328,7 @@
 	}
 	
 	// TODO: Cache
-	CGSize itemSize = [self _itemSizeForSection:indexPath.section];
+	CGSize itemSize = [self _itemSizeForSection:(NSInteger)indexPath.section];
 	CGFloat itemsPerRow = floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
 	CGFloat itemSpacing = roundf((self.frame.size.width - (itemSize.width * itemsPerRow)) / itemsPerRow);
 	
@@ -344,7 +344,7 @@
 #pragma mark UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return [self _itemSizeForSection:indexPath.section].height + _rowSpacing;
+	return [self _itemSizeForSection:(NSInteger)indexPath.section].height + _rowSpacing;
 }
 
 @end
