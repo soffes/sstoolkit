@@ -41,7 +41,7 @@
 	[_hud show];
 	
 	// After 2 seconds, complete action
-//	[self performSelector:@selector(complete:) withObject:nil afterDelay:2.0];
+	[self performSelector:@selector(complete:) withObject:nil afterDelay:2.0];
 }
 
 
