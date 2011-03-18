@@ -34,11 +34,14 @@
 	self.view.backgroundColor = [UIColor whiteColor];
 	
 	// Show HUD
-	_hud = [[SSHUDView alloc] initWithTitle:@"Custom Message"];
+	_hud = [[SSHUDView alloc] initWithTitle:@"Loading..."];
+//	_hud.hudSize = CGSizeMake(60.0f, 60.0f);
+//	_hud.textLabelHidden = YES;
+//	_hud.showsVignette = NO;
 	[_hud show];
 	
 	// After 2 seconds, complete action
-	[self performSelector:@selector(complete:) withObject:nil afterDelay:2.0];
+//	[self performSelector:@selector(complete:) withObject:nil afterDelay:2.0];
 }
 
 
@@ -53,7 +56,7 @@
 #pragma mark Actions
 
 - (void)complete:(id)sender {
-	[_hud completeWithTitle:@"Finished!"];
+	[_hud completeWithTitle:@"Finished"];
 	[self performSelector:@selector(pop:) withObject:nil afterDelay:0.7];
 }
 

@@ -127,7 +127,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 	
 	if (_vignetteButton == nil) {
 		_vignetteButton = [[UIButton alloc] initWithFrame:CGRectZero];
-		[_vignetteButton setImage:[UIImage imageNamed:@"SSViewControllerModalVignetteiPad.png" bundle:kSSToolkitBundleName] forState:UIControlStateNormal];
+		[_vignetteButton setImage:[UIImage imageNamed:@"SSVignetteiPad.png" bundle:kSSToolkitBundleName] forState:UIControlStateNormal];
 		_vignetteButton.adjustsImageWhenHighlighted = NO;
 		_vignetteButton.alpha = 0.0f;
 	}

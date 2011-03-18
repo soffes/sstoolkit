@@ -30,6 +30,7 @@
 		B2AED4BC12FF21F8006C956B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2AED4B912FF21F8006C956B /* UIKit.framework */; };
 		B2B3CEEF1296F78D001BAC94 /* SCSwitchDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */; };
 		B2B3CF561296FA76001BAC94 /* SSToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B2B3CF551296FA76001BAC94 /* SSToolkit.bundle */; };
+		B2D883F01332D645006B3F55 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D883EF1332D645006B3F55 /* QuartzCore.framework */; };
 		B2DAC3C413304D5700091D5F /* Icon-48.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DAC3C113304D5700091D5F /* Icon-48.png */; };
 		B2DAC3C513304D5700091D5F /* SamLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DAC3C213304D5700091D5F /* SamLogo.png */; };
 		B2DAC3C613304D5700091D5F /* SamLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DAC3C313304D5700091D5F /* SamLogo@2x.png */; };
@@ -102,6 +103,7 @@
 		B2B3CEED1296F78D001BAC94 /* SCSwitchDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSwitchDemoViewController.h; sourceTree = "<group>"; };
 		B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSwitchDemoViewController.m; sourceTree = "<group>"; };
 		B2B3CF551296FA76001BAC94 /* SSToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SSToolkit.bundle; path = ../Resources/SSToolkit.bundle; sourceTree = SOURCE_ROOT; };
+		B2D883EF1332D645006B3F55 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = iphoneos4.0/System/Library/Frameworks/QuartzCore.framework; sourceTree = "<group>"; };
 		B2DAC3C113304D5700091D5F /* Icon-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-48.png"; sourceTree = "<group>"; };
 		B2DAC3C213304D5700091D5F /* SamLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SamLogo.png; sourceTree = "<group>"; };
 		B2DAC3C313304D5700091D5F /* SamLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SamLogo@2x.png"; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				B2AED4BB12FF21F8006C956B /* Foundation.framework in Frameworks */,
 				B2AED4BC12FF21F8006C956B /* UIKit.framework in Frameworks */,
 				B2E0323F121DC49700D02434 /* libSSToolkit.a in Frameworks */,
+				B2D883F01332D645006B3F55 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +171,7 @@
 				B24E9EC5121DC3CF0085F81E /* SSToolkit.xcodeproj */,
 				B2AED4B712FF21F8006C956B /* CoreGraphics.framework */,
 				B2AED4B812FF21F8006C956B /* Foundation.framework */,
+				B2D883EF1332D645006B3F55 /* QuartzCore.framework */,
 				B2AED4B912FF21F8006C956B /* UIKit.framework */,
 			);
 			name = Frameworks;

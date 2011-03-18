@@ -7,16 +7,19 @@
 //
 
 #import "SSHUDView.h"
-#import "UIImage+SSToolkitAdditions.h"
+#import "SSHUDWindow.h"
+#import "SSDrawingMacros.h"
+#import "UIView+SSToolkitAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 
-static CGFloat kHUDSize = 172.0;
 static CGFloat kIndicatorSize = 40.0;
 
 @implementation SSHUDView
 
 @synthesize textLabel = _textLabel;
+@synthesize textLabelHidden = _textLabelHidden;
 @synthesize activityIndicator = _activityIndicator;
+@synthesize hudSize = _hudSize;
 @synthesize loading = _loading;
 @synthesize successful = _successful;
 
@@ -28,6 +31,7 @@ static CGFloat kIndicatorSize = 40.0;
 
 
 - (void)dealloc {
+	[_hudWindow release];
 	[_activityIndicator release];
 	[_textLabel release];
 	[super dealloc];
@@ -45,58 +49,34 @@ static CGFloat kIndicatorSize = 40.0;
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	// Draw rounded rectangle
-	CGContextSetRGBFillColor(context, 0.0f, 0.0f, 0.0f, 0.5);
-	CGRect rrect = CGRectMake(0.0f, 0.0f, kHUDSize, kHUDSize);
-	CGFloat radius = 14.0;
-	CGFloat minx = CGRectGetMinX(rrect);
-	CGFloat midx = CGRectGetMidX(rrect);
-	CGFloat maxx = CGRectGetMaxX(rrect);
-	CGFloat miny = CGRectGetMinY(rrect);
-	CGFloat midy = CGRectGetMidY(rrect);
-	CGFloat maxy = CGRectGetMaxY(rrect);	
-	CGContextMoveToPoint(context, minx, midy);
-	CGContextAddArcToPoint(context, minx, miny, midx, miny, radius);
-	CGContextAddArcToPoint(context, maxx, miny, maxx, midy, radius);
-	CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
-	CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
-	CGContextClosePath(context);
-	CGContextFillPath(context);
+	CGContextSetRGBFillColor(context, 0.0f, 0.0f, 0.0f, 0.5f);
+	CGRect rrect = CGRectMake(0.0f, 0.0f, _hudSize.width, _hudSize.height);
+	SSDrawRoundedRect(context, rrect, 14.0f);
 	
 	// Image
 	if (_loading == NO) {
 		[[UIColor whiteColor] set];
 		NSString *dingbat = _successful ? @"✔" : @"✘";
-		CGFloat margin = roundf((kHUDSize - 40.0f) / 2.0f);
-		CGRect dingbatRect = CGRectMake(margin, margin - 20.0f, 40.0f, 40.0f);
-		[dingbat drawInRect:dingbatRect withFont:[UIFont systemFontOfSize:60.0f] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
+		UIFont *dingbatFont = [UIFont systemFontOfSize:60.0f];
+		CGSize dingbatSize = [dingbat sizeWithFont:dingbatFont];
+		CGRect dingbatRect = CGRectMake(roundf((_hudSize.width - dingbatSize.width) / 2.0f),
+										roundf((_hudSize.height - dingbatSize.height) / 2.0f),
+										dingbatSize.width, dingbatSize.height);
+		[dingbat drawInRect:dingbatRect withFont:dingbatFont lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
 	}
 }
 
 
 - (void)layoutSubviews {
-	_activityIndicator.frame = CGRectMake(roundf((kHUDSize - kIndicatorSize) / 2.0f), roundf((kHUDSize - kIndicatorSize) / 2.0f), kIndicatorSize, kIndicatorSize);
-	_textLabel.frame = CGRectMake(0.0f, roundf(kHUDSize - 30.0f), kHUDSize, 20.0f);
-}
-
-
-#pragma mark UIAlertView
-
-- (void)show {
-	[super show];
-
-	// Set the frame to 20px larger than it should be because UIAlertView
-	// will automatically resize it down after the animation
-	CGFloat biggerSize = kHUDSize + 20.0f;
-	CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-	self.frame = CGRectMake(roundf((screenSize.width - biggerSize) / 2.0f), 
-							roundf((screenSize.height - biggerSize) / 2.0f) + 10.0f, 
-							biggerSize, biggerSize);
-}
-
-
-// Deprecated. Overridding UIAlertView's setTitle.
-- (void)setTitle:(NSString *)aTitle {
-	_textLabel.text = aTitle;
+	_activityIndicator.frame = CGRectMake(roundf((_hudSize.width - kIndicatorSize) / 2.0f),
+										  roundf((_hudSize.height - kIndicatorSize) / 2.0f),
+										  kIndicatorSize, kIndicatorSize);
+	
+	if (_textLabelHidden) {
+		_textLabel.frame = CGRectZero;
+	} else {
+		_textLabel.frame = CGRectMake(0.0f, roundf(_hudSize.height - 30.0f), _hudSize.width, 20.0f);
+	}
 }
 
 
@@ -109,7 +89,11 @@ static CGFloat kIndicatorSize = 40.0;
 
 - (id)initWithTitle:(NSString *)aTitle loading:(BOOL)isLoading {
 	if ((self = [super initWithFrame:CGRectZero])) {
+		self.backgroundColor = [UIColor clearColor];
 
+		_hudWindow = [[SSHUDWindow alloc] init];
+		_hudSize = CGSizeMake(172.0f, 172.0f);
+		
 		// Indicator
 		_activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 		_activityIndicator.alpha = 0.0;
@@ -121,7 +105,7 @@ static CGFloat kIndicatorSize = 40.0;
 		_textLabel.font = [UIFont boldSystemFontOfSize:14];
 		_textLabel.backgroundColor = [UIColor clearColor];
 		_textLabel.textColor = [UIColor whiteColor];
-		_textLabel.shadowColor = [UIColor blackColor];
+		_textLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.7f];
 		_textLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 		_textLabel.textAlignment = UITextAlignmentCenter;
 		_textLabel.lineBreakMode = UILineBreakModeTailTruncation;
@@ -132,6 +116,37 @@ static CGFloat kIndicatorSize = 40.0;
 		self.loading = isLoading;
 	}
 	return self;
+}
+
+
+- (void)show {
+	_hudWindow.alpha = 0.0f;
+	self.alpha = 0.0f;
+	[_hudWindow addSubview:self];
+	[_hudWindow makeKeyAndVisible];
+	
+	[UIView beginAnimations:@"SSHUDViewFadeInWindow" context:nil];
+	_hudWindow.alpha = 1.0f;
+	[UIView commitAnimations];
+	
+	CGSize windowSize = _hudWindow.frame.size;
+	CGRect contentFrame = CGRectMake(roundf((windowSize.width - _hudSize.width) / 2.0f), 
+									 roundf((windowSize.height - _hudSize.height) / 2.0f) + 10.0f,
+									 _hudSize.width, _hudSize.height);
+	
+	self.frame = CGRectSetY(contentFrame, contentFrame.origin.y + 20.0f);
+	
+	[UIView beginAnimations:@"SSHUDViewFadeInContentAlpha" context:nil];
+	[UIView setAnimationDelay:0.1];
+	[UIView setAnimationDuration:0.2];
+	self.alpha = 1.0f;
+	[UIView commitAnimations];
+	
+	[UIView beginAnimations:@"SSHUDViewFadeInContentFrame" context:nil];
+	[UIView setAnimationDelay:0.1];
+	[UIView setAnimationDuration:0.3];
+	self.frame = contentFrame;
+	[UIView commitAnimations];
 }
 
 
@@ -175,7 +190,14 @@ static CGFloat kIndicatorSize = 40.0;
 
 
 - (void)dismissAnimated:(BOOL)animated {
-	[super dismissWithClickedButtonIndex:0 animated:animated];
+	[_hudWindow fadeOutAndPerformSelector:@selector(resignKeyWindow)];
+}
+
+
+#pragma mark Getters
+
+- (BOOL)showsVignette {
+	return _hudWindow.showsVignette;
 }
 
 
@@ -185,6 +207,18 @@ static CGFloat kIndicatorSize = 40.0;
 	_loading = isLoading;
 	_activityIndicator.alpha = _loading ? 1.0 : 0.0;
 	[self setNeedsDisplay];
+}
+
+
+- (void)setTextLabelHidden:(BOOL)hidden {
+	_textLabelHidden = hidden;
+	_textLabel.hidden = hidden;
+	[self setNeedsLayout];
+}
+
+
+- (void)setShowsVignette:(BOOL)show {
+	_hudWindow.showsVignette = show;
 }
 
 @end

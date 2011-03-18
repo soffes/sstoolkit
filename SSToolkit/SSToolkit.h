@@ -23,7 +23,6 @@
 #import "SSLoadingView.h"
 #import "SSPieProgressView.h"
 #import "SSWebView.h"
-#import "SSWindow.h"
 
 // Cells
 #import "SSBadgeTableViewCell.h"
@@ -63,7 +62,6 @@
 #import <SSToolkit/SSLoadingView.h>
 #import <SSToolkit/SSPieProgressView.h>
 #import <SSToolkit/SSWebView.h>
-#import <SSToolkit/SSWindow.h>
 
 // Cells
 #import <SSToolkit/SSBadgeTableViewCell.h>b
