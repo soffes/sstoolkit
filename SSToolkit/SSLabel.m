@@ -16,8 +16,10 @@
 #pragma mark NSObject
 
 - (void)dealloc {
-	[self removeObserver:self forKeyPath:@"verticalTextAlignment"];
-	[self removeObserver:self forKeyPath:@"textEdgeInsets"];
+    if ([self observationInfo] != nil) {
+        [self removeObserver:self forKeyPath:@"verticalTextAlignment"];
+        [self removeObserver:self forKeyPath:@"textEdgeInsets"];
+    }
 	[super dealloc];
 }
 
