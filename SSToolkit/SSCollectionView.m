@@ -199,11 +199,14 @@
 
 - (CGSize)_itemSizeForSection:(NSInteger)section {
 	// TODO: Cache this value to elminate lots of method calls
-	if ([_delegate respondsToSelector:@selector(collectionView:itemSizeForSection:)] == NO) {
-		[[NSException exceptionWithName:kSSCollectionViewMissingItemSizeExceptionName reason:kSSCollectionViewMissingItemSizeExceptionReason userInfo:nil] raise];
-		return CGSizeZero;
-	}	
-	return [_delegate collectionView:self itemSizeForSection:section];
+    if (_delegate) {
+        if ([_delegate respondsToSelector:@selector(collectionView:itemSizeForSection:)] == NO) {
+            [[NSException exceptionWithName:kSSCollectionViewMissingItemSizeExceptionName reason:kSSCollectionViewMissingItemSizeExceptionReason userInfo:nil] raise];
+            return CGSizeZero;
+        }	
+        return [_delegate collectionView:self itemSizeForSection:section];
+    }
+    return CGSizeZero;
 }
 
 
