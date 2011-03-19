@@ -278,7 +278,7 @@
 - (void)setDataSource:(id<SSCollectionViewDataSource>)dataSource {
 	_dataSource = dataSource;
 	
-	if (_delegate) {
+	if (_delegate && _dataSource) {
 		[self reloadData];
 	}
 }
@@ -287,7 +287,7 @@
 - (void)setDelegate:(id<SSCollectionViewDelegate>)delegate {
 	_delegate = delegate;
 	
-	if (_dataSource) {
+	if (_delegate && _dataSource) {
 		[self reloadData];
 	}
 }
