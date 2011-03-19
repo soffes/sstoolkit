@@ -196,8 +196,8 @@ static CGFloat kIndicatorSize = 40.0;
 
 #pragma mark Getters
 
-- (BOOL)showsVignette {
-	return _hudWindow.showsVignette;
+- (BOOL)hidesVignette {
+	return _hudWindow.hidesVignette;
 }
 
 
@@ -217,8 +217,8 @@ static CGFloat kIndicatorSize = 40.0;
 }
 
 
-- (void)setShowsVignette:(BOOL)show {
-	_hudWindow.showsVignette = show;
+- (void)setHidesVignette:(BOOL)hide {
+	_hudWindow.hidesVignette = hide;
 }
 
 @end

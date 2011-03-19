@@ -11,7 +11,7 @@
 
 @implementation SSHUDWindow
 
-@synthesize showsVignette = _showsVignette;
+@synthesize hidesVignette = _hidesVignette;
 
 #pragma mark NSObject
 
@@ -19,7 +19,7 @@
 	if ((self = [super initWithFrame:[[UIScreen mainScreen] bounds]])) {
 		self.backgroundColor = [UIColor clearColor];
 		self.windowLevel = UIWindowLevelStatusBar + 1.0f;
-		_showsVignette = YES;
+		self.userInteractionEnabled = NO;
 	}
 	return self;
 }
@@ -28,7 +28,7 @@
 #pragma mark UIView
 
 - (void)drawRect:(CGRect)rect {
-	if (!_showsVignette) {
+	if (_hidesVignette) {
 		return;
 	}
 	
@@ -48,8 +48,8 @@
 
 #pragma mark Setters
 
-- (void)setShowsVignette:(BOOL)show {
-	_showsVignette = show;
+- (void)setHidesVignette:(BOOL)hide {
+	_hidesVignette = hide;
 	[self setNeedsDisplay];
 }
 

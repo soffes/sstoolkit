@@ -8,10 +8,9 @@
 
 @interface SSHUDWindow : UIWindow {
 
-	BOOL _showsVignette;
-	BOOL _restoreDeviceOrientationNotifications;
+	BOOL _hidesVignette;
 }
 
-@property (nonatomic, assign) BOOL showsVignette;
+@property (nonatomic, assign) BOOL hidesVignette;
 
 @end

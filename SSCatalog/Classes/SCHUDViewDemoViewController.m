@@ -37,7 +37,7 @@
 	_hud = [[SSHUDView alloc] initWithTitle:@"Loading..."];
 //	_hud.hudSize = CGSizeMake(60.0f, 60.0f);
 //	_hud.textLabelHidden = YES;
-//	_hud.showsVignette = NO;
+	_hud.hidesVignette = YES;
 	[_hud show];
 	
 	// After 2 seconds, complete action
