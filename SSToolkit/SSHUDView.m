@@ -14,6 +14,11 @@
 
 static CGFloat kIndicatorSize = 40.0;
 
+@interface SSHUDView (PrivateMethods)
+- (void)_setTransformForCurrentOrientation:(BOOL)animated;
+- (void)_deviceOrientationChanged:(NSNotification *)notification;
+@end
+
 @implementation SSHUDView
 
 @synthesize textLabel = _textLabel;
@@ -31,6 +36,8 @@ static CGFloat kIndicatorSize = 40.0;
 
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:self];
+    
 	[_hudWindow release];
 	[_activityIndicator release];
 	[_textLabel release];
@@ -79,7 +86,6 @@ static CGFloat kIndicatorSize = 40.0;
 	}
 }
 
-
 #pragma mark HUD
 
 - (id)initWithTitle:(NSString *)aTitle {
@@ -114,6 +120,10 @@ static CGFloat kIndicatorSize = 40.0;
 		
 		// Loading
 		self.loading = isLoading;
+        
+        // Orientation
+        [self _setTransformForCurrentOrientation:NO];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_deviceOrientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
 	}
 	return self;
 }
@@ -134,7 +144,13 @@ static CGFloat kIndicatorSize = 40.0;
 									 roundf((windowSize.height - _hudSize.height) / 2.0f) + 10.0f,
 									 _hudSize.width, _hudSize.height);
 	
-	self.frame = CGRectSetY(contentFrame, contentFrame.origin.y + 20.0f);
+    
+    CGFloat offset = 20.0f;
+    if (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        self.frame = CGRectSetY(contentFrame, contentFrame.origin.y + offset);
+    } else {
+        self.frame = CGRectSetX(contentFrame, contentFrame.origin.x + offset);
+    }
 	
 	[UIView beginAnimations:@"SSHUDViewFadeInContentAlpha" context:nil];
 	[UIView setAnimationDelay:0.1];
@@ -221,4 +237,45 @@ static CGFloat kIndicatorSize = 40.0;
 	_hudWindow.hidesVignette = hide;
 }
 
+#pragma mark Orientation Methods
+- (void)_setTransformForCurrentOrientation:(BOOL)animated {
+	UIDeviceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+	NSInteger degrees = 0;
+    
+    // Landscape
+	if (UIInterfaceOrientationIsLandscape(orientation)) {
+		if (orientation == UIInterfaceOrientationLandscapeLeft) {
+            degrees = -90;
+        }
+		else {
+            degrees = 90;
+        }
+    
+    // Portrait
+	} else {
+		if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
+            degrees = 180;
+        }
+		else {
+            degrees = 0;
+        }
+	}
+    
+    CGAffineTransform rotationTransform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(degrees));
+    
+	if (animated) {
+		[UIView beginAnimations:@"SSHUDViewRotationTransform" context:nil];
+	}
+    
+	[self setTransform:rotationTransform];
+    
+    if (animated) {
+		[UIView commitAnimations];
+	}
+}
+
+- (void)_deviceOrientationChanged:(NSNotification *)notification {
+    [self _setTransformForCurrentOrientation:YES];
+	[self setNeedsDisplay];
+}
 @end
