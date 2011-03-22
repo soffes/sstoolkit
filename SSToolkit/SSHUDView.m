@@ -206,7 +206,22 @@ static CGFloat kIndicatorSize = 40.0;
 
 
 - (void)dismissAnimated:(BOOL)animated {
-	[_hudWindow fadeOutAndPerformSelector:@selector(resignKeyWindow)];
+	[UIView beginAnimations:@"SSHUDViewFadeInContentFrame" context:nil];
+	[UIView setAnimationDuration:0.2];
+	self.frame = CGRectSetY(self.frame, self.frame.origin.y + 20.0f);
+	[UIView commitAnimations];
+	
+	[UIView beginAnimations:@"SSHUDViewFadeInContentAlpha" context:nil];
+	[UIView setAnimationDelay:0.1];
+	[UIView setAnimationDuration:0.2];
+	self.alpha = 0.0f;
+	[UIView commitAnimations];
+	
+	if (animated) {
+		[_hudWindow fadeOutAndPerformSelector:@selector(resignKeyWindow)];
+	} else {
+		[_hudWindow resignKeyWindow];
+	}
 }
 
 
@@ -238,6 +253,7 @@ static CGFloat kIndicatorSize = 40.0;
 }
 
 #pragma mark Orientation Methods
+
 - (void)_setTransformForCurrentOrientation:(BOOL)animated {
 	UIDeviceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
 	NSInteger degrees = 0;
@@ -253,18 +269,15 @@ static CGFloat kIndicatorSize = 40.0;
     
     // Portrait
 	} else {
-		if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
-            degrees = 180;
-        }
-		else {
-            degrees = 0;
-        }
+		degrees = orientation == UIInterfaceOrientationPortraitUpsideDown ? 180 : 0;
 	}
     
     CGAffineTransform rotationTransform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(degrees));
     
 	if (animated) {
 		[UIView beginAnimations:@"SSHUDViewRotationTransform" context:nil];
+		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+		[UIView setAnimationDuration:0.3];
 	}
     
 	[self setTransform:rotationTransform];
@@ -273,6 +286,7 @@ static CGFloat kIndicatorSize = 40.0;
 		[UIView commitAnimations];
 	}
 }
+
 
 - (void)_deviceOrientationChanged:(NSNotification *)notification {
     [self _setTransformForCurrentOrientation:YES];
