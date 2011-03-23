@@ -28,6 +28,8 @@ static CGFloat kIndicatorSize = 40.0;
 @synthesize hudSize = _hudSize;
 @synthesize loading = _loading;
 @synthesize successful = _successful;
+@synthesize completeImage = _completeImage;
+@synthesize failImage = _failImage;
 
 #pragma mark NSObject
 
@@ -42,6 +44,8 @@ static CGFloat kIndicatorSize = 40.0;
 	[self _removeWindow];
 	[_activityIndicator release];
 	[_textLabel release];
+	[_completeImage release];
+	[_failImage release];
 	[super dealloc];
 }
 
@@ -64,6 +68,18 @@ static CGFloat kIndicatorSize = 40.0;
 	// Image
 	if (_loading == NO) {
 		[[UIColor whiteColor] set];
+		
+		UIImage *image = _successful ? _completeImage : _failImage;
+		
+		if (image) {
+			CGSize imageSize = image.size;
+			CGRect imageRect = CGRectMake(roundf((_hudSize.width - imageSize.width) / 2.0f),
+										  roundf((_hudSize.height - imageSize.height) / 2.0f),
+										  imageSize.width, imageSize.height);
+			[image drawInRect:imageRect];			
+			return;
+		}
+		
 		NSString *dingbat = _successful ? @"✔" : @"✘";
 		UIFont *dingbatFont = [UIFont systemFontOfSize:60.0f];
 		CGSize dingbatSize = [dingbat sizeWithFont:dingbatFont];
