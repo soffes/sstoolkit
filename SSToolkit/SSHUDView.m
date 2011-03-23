@@ -256,24 +256,26 @@ static CGFloat kIndicatorSize = 40.0;
 	_hudWindow.hidesVignette = hide;
 }
 
+
 #pragma mark Orientation Methods
 
 - (void)_setTransformForCurrentOrientation:(BOOL)animated {
 	UIDeviceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
 	NSInteger degrees = 0;
     
-    // Landscape
-	if (UIInterfaceOrientationIsLandscape(orientation)) {
-		if (orientation == UIInterfaceOrientationLandscapeLeft) {
-            degrees = -90;
-        }
-		else {
-            degrees = 90;
-        }
-		
-		// Portrait
-	} else {
-		degrees = orientation == UIInterfaceOrientationPortraitUpsideDown ? 180 : 0;
+    // Landscape left
+	if (orientation == UIInterfaceOrientationLandscapeLeft) {
+		degrees = -90;
+	}
+	
+	// Landscape right
+	if (orientation == UIInterfaceOrientationLandscapeRight) {
+		degrees = 90;
+	}
+	
+	// Portrait upside down
+	else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
+		degrees = 180;
 	}
     
     CGAffineTransform rotationTransform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(degrees));
@@ -296,4 +298,5 @@ static CGFloat kIndicatorSize = 40.0;
     [self _setTransformForCurrentOrientation:YES];
 	[self setNeedsDisplay];
 }
+
 @end
