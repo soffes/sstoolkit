@@ -30,12 +30,17 @@
 
 - (id)initWithTitle:(NSString *)aTitle;
 - (id)initWithTitle:(NSString *)aTitle loading:(BOOL)isLoading;
+
 - (void)show;
-- (void)completeWithTitle:(NSString *)aTitle;
-- (void)completeAndDismissWithTitle:(NSString *)aTitle;
-- (void)failWithTitle:(NSString *)aTitle;
-- (void)failAndDismissWithTitle:(NSString *)aTitle;
 - (void)dismiss;
 - (void)dismissAnimated:(BOOL)animated;
+
+- (void)completeWithTitle:(NSString *)aTitle;
+- (void)completeAndDismissWithTitle:(NSString *)aTitle;
+- (void)completeQuicklyWithTitle:(NSString *)aTitle;
+
+- (void)failWithTitle:(NSString *)aTitle;
+- (void)failAndDismissWithTitle:(NSString *)aTitle;
+- (void)failQuicklyWithTitle:(NSString *)aTitle;
 
 @end

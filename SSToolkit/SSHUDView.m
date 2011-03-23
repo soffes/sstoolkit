@@ -17,6 +17,7 @@ static CGFloat kIndicatorSize = 40.0;
 @interface SSHUDView (PrivateMethods)
 - (void)_setTransformForCurrentOrientation:(BOOL)animated;
 - (void)_deviceOrientationChanged:(NSNotification *)notification;
+- (void)_removeWindow;
 @end
 
 @implementation SSHUDView
@@ -38,7 +39,7 @@ static CGFloat kIndicatorSize = 40.0;
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:self];
     
-	[_hudWindow release];
+	[self _removeWindow];
 	[_activityIndicator release];
 	[_textLabel release];
 	[super dealloc];
@@ -129,6 +130,8 @@ static CGFloat kIndicatorSize = 40.0;
 
 
 - (void)show {
+	[self retain];
+	
 	if (!_hudWindow) {
 		_hudWindow = [[SSHUDWindow alloc] init];
 	}
@@ -178,8 +181,14 @@ static CGFloat kIndicatorSize = 40.0;
 
 - (void)completeAndDismissWithTitle:(NSString *)aTitle {
 	[self completeWithTitle:aTitle];
-	[self retain];
-	[self performSelector:@selector(releaseAndDismiss) withObject:nil afterDelay:1.0];
+	[self performSelector:@selector(dismiss) withObject:nil afterDelay:1.0];
+}
+
+
+- (void)completeQuicklyWithTitle:(NSString *)aTitle {
+	[self completeWithTitle:aTitle];
+	[self show];
+	[self performSelector:@selector(dismiss) withObject:nil afterDelay:1.05];
 }
 
 
@@ -192,40 +201,42 @@ static CGFloat kIndicatorSize = 40.0;
 
 - (void)failAndDismissWithTitle:(NSString *)aTitle {
 	[self failWithTitle:aTitle];
-	[self retain];
-	[self performSelector:@selector(releaseAndDismiss) withObject:nil afterDelay:1.0];
+	[self performSelector:@selector(dismiss) withObject:nil afterDelay:1.0];
 }
 
 
-- (void)releaseAndDismiss {
+- (void)failQuicklyWithTitle:(NSString *)aTitle {
+	[self failWithTitle:aTitle];
+	[self show];
+	[self performSelector:@selector(dismiss) withObject:nil afterDelay:1.05];
+}
+
+
+- (void)dismiss {
 	[self autorelease];
 	[self dismissAnimated:YES];
 }
 
 
-- (void)dismiss {
-	[self dismissAnimated:YES];
-}
-
-
 - (void)dismissAnimated:(BOOL)animated {
-	[UIView beginAnimations:@"SSHUDViewFadeInContentFrame" context:nil];
+	[UIView beginAnimations:@"SSHUDViewFadeOutContentFrame" context:nil];
 	[UIView setAnimationDuration:0.2];
 	self.frame = CGRectSetY(self.frame, self.frame.origin.y + 20.0f);
 	[UIView commitAnimations];
 	
-	[UIView beginAnimations:@"SSHUDViewFadeInContentAlpha" context:nil];
+	[UIView beginAnimations:@"SSHUDViewFadeOutContentAlpha" context:nil];
 	[UIView setAnimationDelay:0.1];
 	[UIView setAnimationDuration:0.2];
 	self.alpha = 0.0f;
 	[UIView commitAnimations];
 	
 	if (animated) {
-		[_hudWindow fadeOut];
+		[UIView beginAnimations:@"SSHUDViewFadeOutWindow" context:nil];
+		_hudWindow.alpha = 0.0f;
+		[UIView commitAnimations];
+	} else {
+		[self performSelector:@selector(_removeWindow) withObject:nil afterDelay:0.3];
 	}
-	[_hudWindow resignKeyWindow];
-	[_hudWindow release];
-	_hudWindow = nil;
 }
 
 
@@ -257,7 +268,7 @@ static CGFloat kIndicatorSize = 40.0;
 }
 
 
-#pragma mark Orientation Methods
+#pragma mark Private Methods
 
 - (void)_setTransformForCurrentOrientation:(BOOL)animated {
 	UIDeviceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
@@ -297,6 +308,13 @@ static CGFloat kIndicatorSize = 40.0;
 - (void)_deviceOrientationChanged:(NSNotification *)notification {
     [self _setTransformForCurrentOrientation:YES];
 	[self setNeedsDisplay];
+}
+
+
+- (void)_removeWindow {
+	[_hudWindow resignKeyWindow];
+	[_hudWindow release];
+	_hudWindow = nil;
 }
 
 @end
