@@ -85,6 +85,8 @@
 #pragma mark Actions
 
 - (void)valueChanged:(id)sender {
+	NSLog(@"Value changed to %i", [sender selectedSegmentIndex]);
+	
 	if (sender == _systemSegmentedControl) {
 		_customSegmentedControl.selectedSegmentIndex = _systemSegmentedControl.selectedSegmentIndex;
 	} else {

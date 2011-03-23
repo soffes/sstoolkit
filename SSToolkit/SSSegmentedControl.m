@@ -212,7 +212,6 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	[super willMoveToSuperview:newSuperview];
 		
 	if (newSuperview) {
-		[self addObserver:self forKeyPath:@"selectedSegmentIndex" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"buttonImage" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"highlightedButtonImage" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"dividerImage" options:NSKeyValueObservingOptionNew context:nil];
@@ -224,7 +223,6 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 		[self addObserver:self forKeyPath:@"textShadowOffset" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"textEdgeInsets" options:NSKeyValueObservingOptionNew context:nil];
 	} else {
-		[self removeObserver:self forKeyPath:@"selectedSegmentIndex"];
 		[self removeObserver:self forKeyPath:@"buttonImage"];
 		[self removeObserver:self forKeyPath:@"highlightedButtonImage"];
 		[self removeObserver:self forKeyPath:@"dividerImage"];
@@ -330,6 +328,19 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
+#pragma mark Setters
+
+- (void)setSelectedSegmentIndex:(NSInteger)index {
+	if (_selectedSegmentIndex == index) {
+		return;
+	}
+	
+	_selectedSegmentIndex = index;
+	[self setNeedsDisplay];
+	[self sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
+
 #pragma mark Private Methods
 
 - (NSMutableDictionary *)_metaForSegmentIndex:(NSUInteger)index {
@@ -368,12 +379,6 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 #pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ([keyPath isEqualToString:@"selectedSegmentIndex"]) {
-		[self setNeedsDisplay];
-		[self sendActionsForControlEvents:UIControlEventValueChanged];
-		return;
-	}
-	
 	if ([keyPath isEqualToString:@"buttonImage"] || [keyPath isEqualToString:@"highlightedButtonImage"] ||
 		[keyPath isEqualToString:@"dividerImage"] || [keyPath isEqualToString:@"highlightedDividerImage"] ||
 		[keyPath isEqualToString:@"font"] || [keyPath isEqualToString:@"textColor"] || [keyPath isEqualToString:@"textShadowColor"] ||
