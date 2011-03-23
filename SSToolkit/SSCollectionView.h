@@ -159,7 +159,9 @@ typedef enum {
 
 @optional
 
+- (UIView *)collectionView:(SSCollectionView *)aCollectionView viewForHeaderInSection:(NSInteger)section;
 - (CGFloat)collectionView:(SSCollectionView *)aCollectionView heightForHeaderInSection:(NSInteger)section;
+- (UIView *)collectionView:(SSCollectionView *)aCollectionView viewForFooterInSection:(NSInteger)section;
 - (CGFloat)collectionView:(SSCollectionView *)aCollectionView heightForFooterInSection:(NSInteger)section;
 - (void)collectionView:(SSCollectionView *)aCollectionView willSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 - (void)collectionView:(SSCollectionView *)aCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;

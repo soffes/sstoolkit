@@ -358,6 +358,38 @@
 }
 
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	if ([_delegate respondsToSelector:@selector(collectionView:viewForHeaderInSection:)]) {
+		return [_delegate collectionView:self viewForHeaderInSection:section];
+	}
+	return nil;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	if ([_delegate respondsToSelector:@selector(collectionView:heightForHeaderInSection:)]) {
+		return [_delegate collectionView:self heightForHeaderInSection:section];
+	}
+	return 0.0f;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+	if ([_delegate respondsToSelector:@selector(collectionView:viewForFooterInSection:)]) {
+		return [_delegate collectionView:self viewForFooterInSection:section];
+	}
+	return nil;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+	if ([_delegate respondsToSelector:@selector(collectionView:heightForFooterInSection:)]) {
+		return [_delegate collectionView:self heightForFooterInSection:section];
+	}
+	return 0.0f;
+}
+
+
 #pragma mark UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
