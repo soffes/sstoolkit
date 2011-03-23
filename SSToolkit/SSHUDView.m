@@ -96,8 +96,7 @@ static CGFloat kIndicatorSize = 40.0;
 - (id)initWithTitle:(NSString *)aTitle loading:(BOOL)isLoading {
 	if ((self = [super initWithFrame:CGRectZero])) {
 		self.backgroundColor = [UIColor clearColor];
-
-		_hudWindow = [[SSHUDWindow alloc] init];
+		
 		_hudSize = CGSizeMake(172.0f, 172.0f);
 		
 		// Indicator
@@ -130,6 +129,10 @@ static CGFloat kIndicatorSize = 40.0;
 
 
 - (void)show {
+	if (!_hudWindow) {
+		_hudWindow = [[SSHUDWindow alloc] init];
+	}
+	
 	_hudWindow.alpha = 0.0f;
 	self.alpha = 0.0f;
 	[_hudWindow addSubview:self];
@@ -218,10 +221,11 @@ static CGFloat kIndicatorSize = 40.0;
 	[UIView commitAnimations];
 	
 	if (animated) {
-		[_hudWindow fadeOutAndPerformSelector:@selector(resignKeyWindow)];
-	} else {
-		[_hudWindow resignKeyWindow];
+		[_hudWindow fadeOut];
 	}
+	[_hudWindow resignKeyWindow];
+	[_hudWindow release];
+	_hudWindow = nil;
 }
 
 
@@ -266,8 +270,8 @@ static CGFloat kIndicatorSize = 40.0;
 		else {
             degrees = 90;
         }
-    
-    // Portrait
+		
+		// Portrait
 	} else {
 		degrees = orientation == UIInterfaceOrientationPortraitUpsideDown ? 180 : 0;
 	}
