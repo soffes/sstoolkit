@@ -38,6 +38,7 @@ typedef enum {
 	BOOL _allowsSelection;
 	NSMutableSet *_visibleItems;
 	NSMutableDictionary *_reuseableItems;
+	NSMutableDictionary *_sectionCache;
 	
 	UITableView *_tableView;
 }

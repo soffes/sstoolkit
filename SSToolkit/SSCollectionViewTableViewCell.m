@@ -30,7 +30,7 @@
 #pragma mark UIView
 
 - (void)layoutSubviews {
-	CGFloat x = roundf(_itemSpacing / 2.0f);
+	CGFloat x = _itemSpacing;
 	
 	for (SSCollectionViewItem *item in _items) {
 		item.frame = CGRectMake(x, 0.0f, _itemSize.width, _itemSize.height);

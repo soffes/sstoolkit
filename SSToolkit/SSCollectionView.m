@@ -47,6 +47,8 @@
 	_tableView.delegate = nil;
 	[_tableView release];
 	
+	[_sectionCache release];
+	
 	[super dealloc];
 }
 
@@ -84,6 +86,8 @@
 #pragma mark SSCollectionView
 
 - (void)reloadData {
+	[_sectionCache release];
+	_sectionCache = [[NSMutableDictionary alloc] init];
 	[_tableView reloadData];
 }
 
@@ -198,12 +202,19 @@
 
 
 - (CGSize)_itemSizeForSection:(NSInteger)section {
-	// TODO: Cache this value to elminate lots of method calls
+	NSNumber *key = [NSNumber numberWithInteger:section];
+	NSValue *value = [_sectionCache objectForKey:key];
+	if (value) {
+		return [value CGSizeValue];
+	}
+	
 	if ([_delegate respondsToSelector:@selector(collectionView:itemSizeForSection:)] == NO) {
 		[[NSException exceptionWithName:kSSCollectionViewMissingItemSizeExceptionName reason:kSSCollectionViewMissingItemSizeExceptionReason userInfo:nil] raise];
 		return CGSizeZero;
 	}	
-	return [_delegate collectionView:self itemSizeForSection:section];
+	CGSize size = [_delegate collectionView:self itemSizeForSection:section];
+	[_sectionCache setObject:[NSValue valueWithCGSize:size] forKey:key];
+	return size;
 }
 
 
@@ -327,10 +338,9 @@
 		cell = [[[SSCollectionViewTableViewCell alloc] initWithReuseIdentifier:cellIdentifier] autorelease];
 	}
 	
-	// TODO: Cache
 	CGSize itemSize = [self _itemSizeForSection:(NSInteger)indexPath.section];
 	CGFloat itemsPerRow = floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
-	CGFloat itemSpacing = roundf((self.frame.size.width - (itemSize.width * itemsPerRow)) / itemsPerRow);
+	CGFloat itemSpacing = roundf((self.frame.size.width - (itemSize.width * itemsPerRow)) / (itemsPerRow + 1));
 	
 	cell.itemSize = itemSize;
 	cell.itemSpacing = itemSpacing;
