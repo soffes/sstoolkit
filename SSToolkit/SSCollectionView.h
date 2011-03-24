@@ -134,6 +134,12 @@ typedef enum {
  */
 - (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
 
+- (NSInteger)numberOfSections;
+- (NSInteger)numberOfItemsInSection:(NSInteger)section;
+- (CGRect)rectForSection:(NSInteger)section;
+- (CGRect)rectForHeaderInSection:(NSInteger)section;
+- (CGRect)rectForFooterInSection:(NSInteger)section;
+
 @end
 
 

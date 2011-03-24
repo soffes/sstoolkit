@@ -16,7 +16,6 @@
 
 @interface SSCollectionView (PrivateMethods)
 - (CGSize)_itemSizeForSection:(NSInteger)section;
-- (NSInteger)_numberOfItemsInSection:(NSInteger)section;
 - (NSArray *)_itemsForRowIndexPath:(NSIndexPath *)rowIndexPath;
 - (NSIndexPath *)_cellIndexPathFromItemIndexPath:(NSIndexPath *)rowIndexPath;
 @end
@@ -180,6 +179,34 @@
 }
 
 
+- (NSInteger)numberOfSections {
+	return [_tableView numberOfSections];
+}
+
+
+- (NSInteger)numberOfItemsInSection:(NSInteger)section {
+	if ([_dataSource respondsToSelector:@selector(collectionView:numberOfItemsInSection:)] == NO) {
+		return 0;
+	}
+	return [_dataSource collectionView:self numberOfItemsInSection:section];
+}
+
+
+- (CGRect)rectForSection:(NSInteger)section {
+	return [_tableView rectForSection:section];
+}
+
+
+- (CGRect)rectForHeaderInSection:(NSInteger)section {
+	return [_tableView rectForSection:section];
+}
+
+
+- (CGRect)rectForFooterInSection:(NSInteger)section {
+	return [_tableView rectForFooterInSection:section];
+}
+
+
 #pragma mark Private Methods
 
 - (void)_reuseItem:(SSCollectionViewItem *)item {
@@ -218,16 +245,8 @@
 }
 
 
-- (NSInteger)_numberOfItemsInSection:(NSInteger)section {
-	if ([_dataSource respondsToSelector:@selector(collectionView:numberOfItemsInSection:)] == NO) {
-		return 0;
-	}
-	return [_dataSource collectionView:self numberOfItemsInSection:section];
-}
-
-
 - (NSArray *)_itemsForRowIndexPath:(NSIndexPath *)rowIndexPath {
-	NSInteger totalItems = [self _numberOfItemsInSection:(NSInteger)rowIndexPath.section];
+	NSInteger totalItems = [self numberOfItemsInSection:(NSInteger)rowIndexPath.section];
 	CGSize itemSize = [self _itemSizeForSection:(NSInteger)rowIndexPath.section];
 	NSInteger itemsPerRow = (NSInteger)floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
 	
@@ -321,7 +340,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	NSInteger totalItems = [self _numberOfItemsInSection:section];
+	NSInteger totalItems = [self numberOfItemsInSection:section];
 	CGSize itemSize = [self _itemSizeForSection:section];
 	CGFloat itemsPerRow = floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
 	
