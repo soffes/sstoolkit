@@ -19,7 +19,6 @@
 	if ((self = [super initWithFrame:[[UIScreen mainScreen] bounds]])) {
 		self.backgroundColor = [UIColor clearColor];
 		self.windowLevel = UIWindowLevelStatusBar + 1.0f;
-		self.userInteractionEnabled = NO;
 	}
 	return self;
 }
@@ -50,6 +49,7 @@
 
 - (void)setHidesVignette:(BOOL)hide {
 	_hidesVignette = hide;
+	self.userInteractionEnabled = !hide;
 	[self setNeedsDisplay];
 }
 
