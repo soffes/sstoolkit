@@ -1,5 +1,5 @@
 //
-//  SSHUDView.h
+//  SSHUDView.m
 //  SSToolkit
 //
 //  Created by Sam Soffes on 9/29/09.
@@ -237,7 +237,13 @@ static CGFloat kIndicatorSize = 40.0;
 - (void)dismissAnimated:(BOOL)animated {
 	[UIView beginAnimations:@"SSHUDViewFadeOutContentFrame" context:nil];
 	[UIView setAnimationDuration:0.2];
-	self.frame = CGRectSetY(self.frame, self.frame.origin.y + 20.0f);
+	CGRect contentFrame = self.frame;
+    CGFloat offset = 20.0f;
+    if (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        self.frame = CGRectSetY(contentFrame, contentFrame.origin.y + offset);
+    } else {
+        self.frame = CGRectSetX(contentFrame, contentFrame.origin.x + offset);
+    }
 	[UIView commitAnimations];
 	
 	[UIView beginAnimations:@"SSHUDViewFadeOutContentAlpha" context:nil];
