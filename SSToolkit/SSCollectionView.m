@@ -212,6 +212,11 @@
 - (void)_reuseItem:(SSCollectionViewItem *)item {
 	[_visibleItems removeObject:item];
 	
+	if (!item.reuseIdentifier) {
+		NSLog(@"[SSCollectionView] Your item identifier is nil. You should really provide a reuse identifier.");
+		return;
+	}
+	
 	NSMutableArray *items = [_reuseableItems objectForKey:item.reuseIdentifier];
 	if (!items) {
 		[_reuseableItems setObject:[NSMutableArray array] forKey:item.reuseIdentifier];

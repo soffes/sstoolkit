@@ -77,6 +77,8 @@ typedef enum {
 
 @property (nonatomic, retain, readonly) UIScrollView *scrollView;
 
+@property (nonatomic, assign) NSInteger numberOfSections;
+
 /**
  @brief Reloads the items and sections of the receiver.
  */
@@ -134,7 +136,6 @@ typedef enum {
  */
 - (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
 
-- (NSInteger)numberOfSections;
 - (NSInteger)numberOfItemsInSection:(NSInteger)section;
 - (CGRect)rectForSection:(NSInteger)section;
 - (CGRect)rectForHeaderInSection:(NSInteger)section;
