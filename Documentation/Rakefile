@@ -1,5 +1,3 @@
-require 'tempfile'
-
 prefix           = File.dirname( __FILE__ )
 sstoolkit        = File.join(prefix, '../')
 output_dir       = File.join(prefix, 'Output')
@@ -15,7 +13,6 @@ task :default => :all
 
 desc 'Clean, build, and reformat docs'
 task :all => [:clean, :build, :reformat] do
-  # system "rm -rf #{temp_dir}"
   puts "Done!"
 end
 
