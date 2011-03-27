@@ -15,14 +15,19 @@ If you're using this in your project, I'd love to hear about it! [Send me an ema
 * [SSLineView][] - easily create lines with an inset
 * [SSLoadingView][] - flexible loading view
 * [SSPieProgressView][] - pie chart style progress bar similar to the one in Xcode's status bar
-* [SSTextField][] - simply add edge insets
 * [SSWebView][] - handy delegate additions and control over shadows and scroll
+
+## Cells
+
 * [SSBadgeTableViewCell][] - badge accessory view for table cells, similar to Mail.app unread counts
 
 ### Controls
 
+* [SSAddressBarTextField][] - textfield to show loading progress and control a web view
 * [SSTextField][] - inset your text
 * [SSTextView][] - placeholder!
+* [SSSegmentedControl][] - segmented control clone so make customizing the appearance easier
+* [SSSwitch][] - switch clone so make customizing the appearance easier
 
 ### View Controllers
 
@@ -42,41 +47,11 @@ If you're using this in your project, I'd love to hear about it! [Send me an ema
 
 ## Adding SSToolkit to your project
 
-1. Run the following command to add the submodule. Be sure you have are you in the root of your git repository.
-
-        $ git submodule add git://github.com/samsoffes/sstoolkit.git Frameworks/SSToolkit
-
-2. In Finder, navigate to the `Frameworks/SSToolkit` folder and drag the `xcodeproj` file into the `Frameworks` folder in your Xcode project.
-
-3. In Finder, drag `SSToolkit.bundle` located in `Frameworks/SSToolkit/Resources` into the `Resources` folder in your Xcode project.
-
-4. Select the SSToolkit Xcode project from the sidebar in Xcode. In the file browser on the right in Xcode, click the checkbox next to `libSSToolkit.a`. (If you don't see the file browser, hit Command-Shift-E to toggle it on.)
-
-5. Select your target from the sidebar and open Get Info (Command-I).
-
-6. Choose the *General* tab from the top.
-
-7. Under the *Direct Dependencies* area, click the plus button, select *SSToolkit* from the menu, and choose *Add Target*.
-
-8. Choose the build tab from the top of the window. Make sure the configuration dropdown at the top is set to *All Configurations*.
-
-9. Add `Frameworks/SSToolkit` to *Header Search Path* (do not click the *Recursive* checkbox).
-
-10. Add `-all_load -ObjC` to *Other Linker Flags*.
+For installation instructions, see [the getting started guide on the SSToolkit website](http://sstoolk.it/#getting-started).
 
 ## Usage
 
-To use SSToolkit, simply add the following line to your source file.
-
-    #import <SSToolkit/SSToolkit.h>
-
-You can add this to your prefix to make things easy if you want. You can also import individual files instead of the whole framework (for faster compile times) by doing something like:
-
-    #import <SSToolkit/SSLoadingView.h>
-
-If you are going to use SSToolkit's categories, you will need to import then separately (since some people might not want to use them). You import then like this:
-
-    #import <SSToolkit/SSCategories.h>
+For usage instructions, see [the usage guide on the SSToolkit website](http://sstoolk.it/#usage).
 
 ## Demo
 
@@ -89,16 +64,6 @@ If you are going to use SSToolkit's categories, you will need to import then sep
 * [Documentation](http://sstoolk.it/documentation/)
 * [Known bugs](http://github.com/samsoffes/sstoolkit/issues/labels/Bug)
 * [Future features](http://github.com/samsoffes/sstoolkit/issues/labels/Feature)
-
-### Other Libraries
- 
-Here are some related libraries. Some of these used to be part of SSToolkit.
-
-* [SSZipArchive](http://github.com/samsoffes/ssziparchive) - Cocoa library for easily unzipping files.
-* [SSKeychain](http://github.com/samsoffes/sskeychain) - Cocoa library for making working with the keychain less sucky.
-* [SSOAuthKit](http://github.com/samsoffes/ssoauthkit) - iOS library for working with OAuth 1.0 provider with easy view controllers for getting a Twitter access token.
-* [SSTableViewCell](http://github.com/samsoffes/sstableviewcell) - iOS UITableViewCell based on ABTableViewCell.
-* [SSMessagesViewController](http://github.com/samsoffes/ssmessagesviewcontroller) - iOS Messages.app style table view controller.
 
 ## Thanks
 
