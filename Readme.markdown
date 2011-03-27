@@ -90,3 +90,6 @@ Huge thanks to [our contributors](http://github.com/samsoffes/sstoolkit/contribu
 [SSCatalog]: https://github.com/samsoffes/sstoolkit/tree/master/SSCatalog/
 [SSBadgeTableViewCell]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSBadgeView.h
 [SSRatingPickerViewController]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSRatingPickerViewController.h
+[SSAddressBarTextField]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSAddressBarTextField.h
+[SSSegmentedControl]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSSegmentedControl.h
+[SSSwitch]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSSwitch.h
