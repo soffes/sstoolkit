@@ -3,7 +3,7 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 6/11/10.
-//  Copyright 2009-2010 Sam Soffes. All rights reserved.
+//  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
 #import "SSCollectionView.h"
@@ -11,7 +11,7 @@
 #import "SSCollectionViewItem.h"
 #import "SSCollectionViewItemInternal.h"
 #import "SSCollectionViewTableViewCell.h"
-#import "SSDrawingMacros.h"
+#import "SSDrawingUtilities.h"
 #import "UIView+SSToolkitAdditions.h"
 
 @interface SSCollectionView (PrivateMethods)

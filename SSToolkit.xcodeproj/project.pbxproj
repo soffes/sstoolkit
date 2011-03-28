@@ -12,7 +12,7 @@
 		B20AC06A1267988600687143 /* SSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC0681267988600687143 /* SSTableViewController.m */; };
 		B215045F10583A7300409ED4 /* SSToolkit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B215045E10583A7300409ED4 /* SSToolkit_Prefix.pch */; };
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
-		B21D2E00121F2FE500161E66 /* SSDrawingMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = B21D2DFF121F2FE500161E66 /* SSDrawingMacros.m */; };
+		B21D2E00121F2FE500161E66 /* SSDrawingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B21D2DFF121F2FE500161E66 /* SSDrawingUtilities.m */; };
 		B227D2EA124931590078A059 /* NSDictionary+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B227D2E8124931590078A059 /* NSDictionary+SSToolkitAdditions.h */; };
 		B227D2EB124931590078A059 /* NSDictionary+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227D2E9124931590078A059 /* NSDictionary+SSToolkitAdditions.m */; };
 		B247ABAE1300930200971EC0 /* SSSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = B247ABAC1300930200971EC0 /* SSSegmentedControl.h */; };
@@ -30,7 +30,7 @@
 		B24E9E4D121DC29A0085F81E /* SSCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E0F121DC29A0085F81E /* SSCategories.h */; };
 		B24E9E4E121DC29A0085F81E /* SSConcurrentOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E10121DC29A0085F81E /* SSConcurrentOperation.h */; };
 		B24E9E4F121DC29A0085F81E /* SSConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E11121DC29A0085F81E /* SSConcurrentOperation.m */; };
-		B24E9E50121DC29A0085F81E /* SSDrawingMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E12121DC29A0085F81E /* SSDrawingMacros.h */; };
+		B24E9E50121DC29A0085F81E /* SSDrawingUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E12121DC29A0085F81E /* SSDrawingUtilities.h */; };
 		B24E9E51121DC29A0085F81E /* SSGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E13121DC29A0085F81E /* SSGradientView.h */; };
 		B24E9E52121DC29A0085F81E /* SSGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E14121DC29A0085F81E /* SSGradientView.m */; };
 		B24E9E53121DC29A0085F81E /* SSHUDView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E15121DC29A0085F81E /* SSHUDView.h */; };
@@ -118,7 +118,7 @@
 		B20AC0681267988600687143 /* SSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTableViewController.m; sourceTree = "<group>"; };
 		B215045E10583A7300409ED4 /* SSToolkit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSToolkit_Prefix.pch; sourceTree = "<group>"; };
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B21D2DFF121F2FE500161E66 /* SSDrawingMacros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDrawingMacros.m; sourceTree = "<group>"; };
+		B21D2DFF121F2FE500161E66 /* SSDrawingUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDrawingUtilities.m; sourceTree = "<group>"; };
 		B227D2E8124931590078A059 /* NSDictionary+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B227D2E9124931590078A059 /* NSDictionary+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B247ABAC1300930200971EC0 /* SSSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSegmentedControl.h; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		B24E9E0F121DC29A0085F81E /* SSCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCategories.h; sourceTree = "<group>"; };
 		B24E9E10121DC29A0085F81E /* SSConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSConcurrentOperation.h; sourceTree = "<group>"; };
 		B24E9E11121DC29A0085F81E /* SSConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSConcurrentOperation.m; sourceTree = "<group>"; };
-		B24E9E12121DC29A0085F81E /* SSDrawingMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDrawingMacros.h; sourceTree = "<group>"; };
+		B24E9E12121DC29A0085F81E /* SSDrawingUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDrawingUtilities.h; sourceTree = "<group>"; };
 		B24E9E13121DC29A0085F81E /* SSGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSGradientView.h; sourceTree = "<group>"; };
 		B24E9E14121DC29A0085F81E /* SSGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSGradientView.m; sourceTree = "<group>"; };
 		B24E9E15121DC29A0085F81E /* SSHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSHUDView.h; sourceTree = "<group>"; };
@@ -422,8 +422,8 @@
 			children = (
 				B24E9E10121DC29A0085F81E /* SSConcurrentOperation.h */,
 				B24E9E11121DC29A0085F81E /* SSConcurrentOperation.m */,
-				B24E9E12121DC29A0085F81E /* SSDrawingMacros.h */,
-				B21D2DFF121F2FE500161E66 /* SSDrawingMacros.m */,
+				B24E9E12121DC29A0085F81E /* SSDrawingUtilities.h */,
+				B21D2DFF121F2FE500161E66 /* SSDrawingUtilities.m */,
 				B28218BC12FA6AE100BAF3C6 /* SSToolkitDefines.h */,
 				B28218BD12FA6AE100BAF3C6 /* SSToolkitDefines.m */,
 			);
@@ -473,7 +473,7 @@
 				B24E9E4B121DC29A0085F81E /* NSURL+SSToolkitAdditions.h in Headers */,
 				B24E9E4D121DC29A0085F81E /* SSCategories.h in Headers */,
 				B24E9E4E121DC29A0085F81E /* SSConcurrentOperation.h in Headers */,
-				B24E9E50121DC29A0085F81E /* SSDrawingMacros.h in Headers */,
+				B24E9E50121DC29A0085F81E /* SSDrawingUtilities.h in Headers */,
 				B24E9E51121DC29A0085F81E /* SSGradientView.h in Headers */,
 				B24E9E53121DC29A0085F81E /* SSHUDView.h in Headers */,
 				B24E9E55121DC29A0085F81E /* SSIndicatorLabel.h in Headers */,
@@ -599,7 +599,7 @@
 				B24E9E7C121DC29A0085F81E /* UIScrollView+SSToolkitAdditions.m in Sources */,
 				B24E9E7E121DC29A0085F81E /* UIView+SSToolkitAdditions.m in Sources */,
 				B24E9E80121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m in Sources */,
-				B21D2E00121F2FE500161E66 /* SSDrawingMacros.m in Sources */,
+				B21D2E00121F2FE500161E66 /* SSDrawingUtilities.m in Sources */,
 				B27B1A1C12241D3400111EA2 /* SSCollectionView.m in Sources */,
 				B27B1A2312241D6F00111EA2 /* SSCollectionViewItem.m in Sources */,
 				B267D3461226CE0400B66519 /* SSCollectionViewController.m in Sources */,

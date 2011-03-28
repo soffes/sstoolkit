@@ -11,7 +11,7 @@
 #import "SSRatingPicker.h"
 #import "SSTextField.h"
 #import "SSTextView.h"
-#import "SSDrawingMacros.h"
+#import "SSDrawingUtilities.h"
 
 @implementation SSRatingPickerScrollView
 

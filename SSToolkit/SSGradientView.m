@@ -3,11 +3,11 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 10/27/09.
-//  Copyright 2009-2010 Sam Soffes. All rights reserved.
+//  Copyright 2009-2011 Sam Soffes. All rights reserved.
 //
 
 #import "SSGradientView.h"
-#import "SSDrawingMacros.h"
+#import "SSDrawingUtilities.h"
 
 @interface SSGradientView (PrivateMethods)
 

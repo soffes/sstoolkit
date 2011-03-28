@@ -7,7 +7,7 @@
 //
 
 #import "SSBadgeView.h"
-#import "SSDrawingMacros.h"
+#import "SSDrawingUtilities.h"
 
 @interface SSBadgeView (PrivateMethod)
 - (CGSize)_textSize;

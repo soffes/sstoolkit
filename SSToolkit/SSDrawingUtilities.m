@@ -1,12 +1,12 @@
 //
-//  SSDrawingMacros.m
+//  SSDrawingUtilities.m
 //  SSToolkit
 //
 //  Created by Sam Soffes on 8/20/10.
-//  Copyright 2009-2010 Sam Soffes. All rights reserved.
+//  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
-#import "SSDrawingMacros.h"
+#import "SSDrawingUtilities.h"
 
 CGFloat SSFLimit(CGFloat f, CGFloat min, CGFloat max) {
 	return fminf(fmaxf(f, min), max);

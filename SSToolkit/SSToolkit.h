@@ -3,7 +3,7 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 3/19/09.
-//  Copyright 2009-2010 Sam Soffes. All rights reserved.
+//  Copyright 2009-2011 Sam Soffes. All rights reserved.
 //
 
 // This setting of 1 is best if you copy the source into your project. 
@@ -45,7 +45,7 @@
 #import "SSViewController.h"
 
 // Misc
-#import "SSDrawingMacros.h"
+#import "SSDrawingUtilities.h"
 #import "SSConcurrentOperation.h"
 
 #else
@@ -84,7 +84,7 @@
 #import <SSToolkit/SSViewController.h>
 
 // Misc
-#import <SSToolkit/SSDrawingMacros.h>
+#import <SSToolkit/SSDrawingUtilities.h>
 #import <SSToolkit/SSConcurrentOperation.h>
 
 #endif

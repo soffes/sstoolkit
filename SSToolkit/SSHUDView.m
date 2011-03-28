@@ -3,12 +3,12 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 9/29/09.
-//  Copyright 2009-2010 Sam Soffes. All rights reserved.
+//  Copyright 2009-2011 Sam Soffes. All rights reserved.
 //
 
 #import "SSHUDView.h"
 #import "SSHUDWindow.h"
-#import "SSDrawingMacros.h"
+#import "SSDrawingUtilities.h"
 #import "UIView+SSToolkitAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 

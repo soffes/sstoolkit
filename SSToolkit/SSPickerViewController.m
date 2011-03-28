@@ -3,7 +3,7 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 10/9/08.
-//  Copyright 2009-2010 Sam Soffes. All rights reserved.
+//  Copyright 2008-2011 Sam Soffes. All rights reserved.
 //
 
 #import "SSPickerViewController.h"

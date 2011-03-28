@@ -3,11 +3,11 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 4/22/10.
-//  Copyright 2009-2010 Sam Soffes. All rights reserved.
+//  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
 #import "SSPieProgressView.h"
-#import "SSDrawingMacros.h"
+#import "SSDrawingUtilities.h"
 
 CGFloat const kAngleOffset = -90.0f;
 

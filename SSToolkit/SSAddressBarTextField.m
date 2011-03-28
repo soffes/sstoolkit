@@ -3,12 +3,12 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 2/8/11.
-//  Copyright 2010 Sam Soffes. All rights reserved.
+//  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
 #import "SSAddressBarTextField.h"
 #import "SSAddressBarTextFieldBackgroundView.h"
-#import "SSDrawingMacros.h"
+#import "SSDrawingUtilities.h"
 #import "UIImage+SSToolkitAdditions.h"
 
 @implementation SSAddressBarTextField

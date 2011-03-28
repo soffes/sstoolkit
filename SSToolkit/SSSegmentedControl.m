@@ -7,7 +7,7 @@
 //
 
 #import "SSSegmentedControl.h"
-#import "SSDrawingMacros.h"
+#import "SSDrawingUtilities.h"
 #import "UIImage+SSToolkitAdditions.h"
 
 static NSString *kSSSegmentedControlEnabledKey = @"enabled";

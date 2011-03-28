@@ -3,7 +3,7 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 6/11/10.
-//  Copyright 2009-2010 Sam Soffes. All rights reserved.
+//  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
 #import "SSCollectionViewItem.h"
@@ -53,6 +53,11 @@ typedef enum {
  */
 @property (nonatomic, assign) id<SSCollectionViewDelegate> delegate;
 
+/**
+ @brief The minimum column spacing.
+ 
+ The default is 0.
+ */
 @property (nonatomic, assign) CGFloat minimumColumnSpacing;
 
 /**
@@ -75,7 +80,11 @@ typedef enum {
  */
 @property (nonatomic, assign) BOOL allowsSelection;
 
+/**
+ @brief The internal scroll view of the collection view. The delegate <strong>must not</strong> be overridden.
+ */
 @property (nonatomic, retain, readonly) UIScrollView *scrollView;
+
 
 @property (nonatomic, assign, readonly) NSInteger numberOfSections;
 

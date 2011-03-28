@@ -3,7 +3,7 @@
 //  SSToolkit
 //
 //  Created by Sam Soffes on 7/8/09.
-//  Copyright 2009-2010 Sam Soffes. All rights reserved.
+//  Copyright 2009-2011 Sam Soffes. All rights reserved.
 //
 
 #import "SSLoadingView.h"

@@ -1,20 +1,32 @@
 //
-//  SSDrawingMacros.h
+//  SSDrawingUtilities.h
 //  SSToolkit
 //
 //  Created by Sam Soffes on 4/22/10.
-//  Copyright 2009-2010 Sam Soffes. All rights reserved.
+//  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
-#ifndef SSDRAWINGMACROS
-#define SSDRAWINGMACROS
+#ifndef SSDRAWINGUTILITIES
+#define SSDRAWINGUTILITIES
 
+/**
+ A macro that converts a number from degress to radians.
+ @param d number in degrees
+ @returns The number converted to radians.
+ */
 #define DEGREES_TO_RADIANS(d) ((d) * 0.0174532925199432958f)
+
+/**
+ A macro that converts a number from radians to degrees.
+ @param r number in radians
+ @returns The number converted to degrees.
+ */
 #define RADIANS_TO_DEGREES(r) ((r) * 57.29577951308232f)
 
 #endif
 
 extern CGFloat SSFLimit(CGFloat f, CGFloat min, CGFloat max);
+
 extern CGRect CGRectSetX(CGRect rect, CGFloat x);
 extern CGRect CGRectSetY(CGRect rect, CGFloat y);
 extern CGRect CGRectSetWidth(CGRect rect, CGFloat width);

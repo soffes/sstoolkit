@@ -53,7 +53,7 @@ task :bundle do
     puts 'You must `gem install bundler` to run rake tasks' and return
   end
   
-  puts 'Updating gems...'
+  # puts 'Updating gems...'
   system "bundle install --gemfile=#{gemfile} --quiet"
 end
 
