@@ -25,6 +25,10 @@ typedef enum {
  supported.
  
  Editing will be my next focus. Then animating changes when data changes and an option to disable that.
+ 
+ Note: NSIndexPath is uses the same way UITableView uses it. The <code>row</code> property is used to specify the item
+ instead of row. This is done to make working with other classes that use NSIndexPath (like NSFetchedResultsController)
+ easier.
  */
 @interface SSCollectionView : UIView <UITableViewDataSource, UITableViewDelegate> {
 	
@@ -81,11 +85,15 @@ typedef enum {
 @property (nonatomic, assign) BOOL allowsSelection;
 
 /**
- @brief The internal scroll view of the collection view. The delegate <strong>must not</strong> be overridden.
+ @brief The internal scroll view of the collection view. The delegate must not be overridden.
  */
 @property (nonatomic, retain, readonly) UIScrollView *scrollView;
 
-
+/**
+ @brief The number of sections in the collection view.
+ 
+ <code>SSCollectionView</code> gets the value returned by this method from its data source and caches it.
+ */
 @property (nonatomic, assign, readonly) NSInteger numberOfSections;
 
 /**
@@ -98,7 +106,7 @@ typedef enum {
  
  @param identifier A string identifying the cell object to be reused.
  
- @return A SSCollectionViewItem object with the associated identifier or nil if no such object exists in the
+ @return A <code>SSCollectionViewItem</code< object with the associated identifier or nil if no such object exists in the
  reusable-item queue.
  */
 - (SSCollectionViewItem *)dequeueReusableItemWithIdentifier:(NSString *)identifier;
@@ -125,7 +133,20 @@ typedef enum {
  */
 - (NSIndexPath *)indexPathForItem:(SSCollectionViewItem *)item;
 
-- (void)selectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
+/**
+ @brief Selects an item in the receiver identified by index path, optionally scrolling the item to a location in the
+ receiver.
+ 
+ @param indexPath An index path identifying an item in the receiver.
+ @param animated <code>YES</code> if you want to animate the selection and any change in position, <code>NO</code> if
+ the change should be immediate.
+ @param scrollPosition A constant that identifies a relative position in the receiving collection view (top, middle,
+ bottom) for the row when scrolling concludes.
+ 
+ Calling this method does cause the delegate to receive a <code>collectionView:willSelectRowAtIndexPath:</code> and
+ <code>collectionView:didSelectRowAtIndexPath:</code> message, which differs from <code>UITableView</code>.
+ */
+- (void)selectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(SSCollectionViewScrollPosition)scrollPosition;
 
 /**
  @brief Deselects a given item identified by index path, with an option to animate the deselection.
@@ -136,6 +157,15 @@ typedef enum {
  */
 - (void)deselectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
 
+/**
+ @brief Scrolls the receiver until an item identified by index path is at a particular location on the screen.
+ 
+ @param indexPath An index path that identifies an item in the table view by its row index and its section index.
+ @param scrollPosition A constant that identifies a relative position in the receiving collection view (top, middle,
+ bottom) for row when scrolling concludes.
+ @param animated <code>YES</code> if you want to animate the change in position, <code>NO</code> if it should be
+ immediate.
+ */
 - (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(SSCollectionViewScrollPosition)scrollPosition animated:(BOOL)animated;
 
 /**
@@ -145,9 +175,40 @@ typedef enum {
  */
 - (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
 
+/**
+ @brief Returns the number of item (collection view items) in a specified section.
+ 
+ @param section An index number that identifies a section of the collection.
+ 
+ @return The number of items in the section.
+ */
 - (NSInteger)numberOfItemsInSection:(NSInteger)section;
+
+/**
+ @brief Returns the drawing area for a specified section of the receiver.
+ 
+ @param section An index number identifying a section of the collection view.
+ 
+ @return A rectangle defining the area in which the collection view draws the section.
+ */
 - (CGRect)rectForSection:(NSInteger)section;
+
+/**
+ @brief Returns the drawing area for the header of the specified section.
+ 
+ @param section An index number identifying a section of the collection view.
+ 
+ @return A rectangle defining the area in which the collection view draws the section header.
+ */
 - (CGRect)rectForHeaderInSection:(NSInteger)section;
+
+/**
+ @brief Returns the drawing area for the footer of the specified section.
+ 
+ @param section An index number identifying a section of the collection view.
+ 
+ @return A rectangle defining the area in which the collection view draws the section footer.
+ */
 - (CGRect)rectForFooterInSection:(NSInteger)section;
 
 @end

@@ -125,7 +125,7 @@
 }
 
 
-- (void)selectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
+- (void)selectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(SSCollectionViewScrollPosition)scrollPosition {
 	// Notify delegate that it will select
 	if ([self.delegate respondsToSelector:@selector(collectionView:willSelectItemAtIndexPath:)]) {
 		[self.delegate collectionView:self willSelectItemAtIndexPath:indexPath];
@@ -134,6 +134,11 @@
 	SSCollectionViewItem *item = [self itemPathForIndex:indexPath];
 	[item setHighlighted:NO animated:NO];
 	[item setSelected:YES animated:YES];
+	
+	if (scrollPosition == SSCollectionViewScrollPositionTop || scrollPosition == SSCollectionViewScrollPositionMiddle ||
+		scrollPosition == SSCollectionViewScrollPositionBottom) {
+		[self scrollToItemAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
+	}
 	
 	// Notify delegate that it did selection
 	if ([self.delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
