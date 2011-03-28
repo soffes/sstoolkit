@@ -57,7 +57,7 @@
 	[self setHighlighted:YES animated:NO];
 	
 	if (CGRectContainsPoint(CGRectSetZeroOrigin(self.frame), [[touches anyObject] locationInView:self])) {
-		[self.collectionView selectItemAtIndexPath:self.indexPath animated:YES];
+		[self.collectionView selectItemAtIndexPath:self.indexPath animated:YES scrollPosition:SSCollectionViewScrollPositionNone];
 	}
 }
 

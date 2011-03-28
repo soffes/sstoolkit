@@ -7,7 +7,7 @@
 //
 
 /**
- @brief Pie chart style progress bar similar to the one in Xcode's status bar
+ @brief Pie chart style progress bar similar to the one in Xcode 3's status bar
  */
 @interface SSPieProgressView : UIView {
 
