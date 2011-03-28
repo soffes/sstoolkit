@@ -18,6 +18,8 @@ typedef enum {
  */
 @interface SSLabel : UILabel {
 	
+@private
+	
 	SSLabelVerticalTextAlignment _verticalTextAlignment;
 	UIEdgeInsets _textEdgeInsets;
 }

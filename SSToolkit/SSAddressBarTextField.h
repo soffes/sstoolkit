@@ -12,11 +12,11 @@
 
 @interface SSAddressBarTextField : SSTextField {
 
+@private
+	
 	BOOL _loading;
 	UIButton *_reloadButton;
 	UIButton *_stopButton;
-
-@private
 	
 	SSAddressBarTextFieldBackgroundView *_textFieldBackgroundView;
 }

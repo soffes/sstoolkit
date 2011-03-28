@@ -16,14 +16,14 @@
  */
 @interface SSViewController : UIViewController <SSModalViewController> {
 
+@private
+	
 	SSViewController *_modalParentViewController;
 	UIViewController<SSModalViewController> *_customModalViewController;
 	BOOL _dismissCustomModalOnVignetteTap;
 	CGSize _contentSizeForViewInCustomModal;
 	CGPoint _originForViewInCustomModal;
-	
-@protected
-	
+		
 	UIView *_modalContainerView;
 	UIImageView *_modalContainerBackgroundView;
 	UIButton *_vignetteButton;

@@ -10,6 +10,8 @@
 
 @interface SSHUDView : UIView {
 	
+@private
+	
 	SSHUDWindow *_hudWindow;
 	UILabel *_textLabel;
 	UIActivityIndicatorView *_activityIndicator;

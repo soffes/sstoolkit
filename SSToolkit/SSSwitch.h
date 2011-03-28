@@ -19,6 +19,8 @@ typedef enum {
 
 @interface SSSwitch : UIControl {
 	
+@private
+	
 	BOOL _on;
 	SSSwitchStyle _style;
 	UIButton *_handle;
@@ -38,8 +40,6 @@ typedef enum {
 	UIView *_offView;
 	UIEdgeInsets _trackEdgeInsets;
 	SSSwitchLabelStyle _switchLabelStyle;
-	
-@private
 	
 	UIView *_labelMaskView;
 	BOOL _dragging;

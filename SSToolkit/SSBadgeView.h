@@ -27,6 +27,8 @@ typedef enum {
  */
 @interface SSBadgeView : UIView {
 
+@private
+	
 	NSString *_text;
 	UIColor *_textColor;
 	UIColor *_highlightedTextColor;

@@ -8,6 +8,8 @@
 
 @interface SSHUDWindow : UIWindow {
 
+@private
+	
 	BOOL _hidesVignette;
 }
 

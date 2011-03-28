@@ -8,6 +8,8 @@
 
 @interface SSRatingPicker : UIControl {
 
+@private
+	
 	CGFloat _numberOfStars;
 	NSUInteger _totalNumberOfStars;
 	UIImage *_emptyStarImage;

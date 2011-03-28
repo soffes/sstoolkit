@@ -21,6 +21,8 @@
  */
 @interface SSNavigationController : UINavigationController <SSModalViewController> {
 
+@private
+	
 	SSViewController *_modalParentViewController;
 	BOOL _dismissCustomModalOnVignetteTap;
 	CGSize _contentSizeForViewInCustomModal;

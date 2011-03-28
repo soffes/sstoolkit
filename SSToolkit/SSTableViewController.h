@@ -15,6 +15,8 @@
  */
 @interface SSTableViewController : SSViewController <UITableViewDataSource, UITableViewDelegate> {
 
+@private
+	
 	UITableView *_tableView;
 	BOOL _clearsSelectionOnViewWillAppear;
 }

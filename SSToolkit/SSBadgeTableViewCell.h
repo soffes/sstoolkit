@@ -13,6 +13,8 @@
  */
 @interface SSBadgeTableViewCell : UITableViewCell {
 
+@private
+	
 	SSBadgeView *_badgeView;
 }
 

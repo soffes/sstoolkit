@@ -21,6 +21,8 @@ typedef enum {
  */
 @interface SSCollectionViewItem : UIView {
 	
+@private
+	
 	SSCollectionViewItemStyle _style;
 	
 	NSString *_reuseIdentifier;

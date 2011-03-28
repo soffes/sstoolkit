@@ -20,6 +20,8 @@
  */
 @interface SSWebView : UIView <UIWebViewDelegate> {
 
+@private
+	
 	id<SSWebViewDelegate> _delegate;
 	 
 	UIWebView *_webView;
@@ -28,8 +30,6 @@
 	BOOL _bounces;
 	BOOL _shadowsHidden;
 	BOOL _consoleEnabled;
-	
-@protected
 	
 	BOOL _testedDOM;
 	BOOL _DOMloaded;

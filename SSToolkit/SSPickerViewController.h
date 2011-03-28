@@ -14,6 +14,8 @@
 
 @interface SSPickerViewController : UITableViewController {
 
+@private
+	
 	NSArray *_keys;
 	NSString *_selectedKey;
 	NSIndexPath *_currentIndexPath;

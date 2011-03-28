@@ -30,7 +30,7 @@
  */
 @interface SSConcurrentOperation : NSOperation {
 
-@protected
+@private
 	
     BOOL _isExecuting;
     BOOL _isFinished;

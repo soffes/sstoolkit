@@ -15,6 +15,8 @@
  */
 @interface SSLineView : UIView {
 
+@private
+	
 	UIColor *_lineColor;
 	UIColor *_insetColor;
 	BOOL _showInset;

@@ -11,6 +11,8 @@
  */
 @interface SSTextField : UITextField {
 
+@private
+	
 	UIEdgeInsets _textEdgeInsets;
 }
 

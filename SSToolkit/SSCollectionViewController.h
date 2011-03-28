@@ -14,6 +14,8 @@
  */
 @interface SSCollectionViewController : SSViewController <SSCollectionViewDataSource, SSCollectionViewDelegate> {
 
+@private
+	
 	SSCollectionView *_collectionView;
 }
 

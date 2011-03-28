@@ -11,6 +11,8 @@
  */
 @interface SSPieProgressView : UIView {
 
+@private
+	
 	CGFloat _progress;
 	CGFloat _pieBorderWidth;
 	UIColor *_pieBorderColor;

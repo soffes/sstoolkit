@@ -16,6 +16,8 @@
  */
 @interface SSIndicatorLabel : UIView {
 
+@private	
+
 	UILabel *_textLabel;
 	UIActivityIndicatorView *_indicator;
 	BOOL _loading;

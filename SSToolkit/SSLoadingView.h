@@ -15,6 +15,8 @@
  */
 @interface SSLoadingView : UIView {
 
+@private
+	
 	UIActivityIndicatorView *_activityIndicatorView;
 	NSString *_text;
 	UIFont *_font;

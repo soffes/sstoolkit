@@ -12,11 +12,11 @@
  */
 @interface SSTextView : UITextView {
 	
+@private
+	
 	NSString *_placeholder;
 	UIColor *_placeholderColor;
 
-@protected
-	
 	BOOL _shouldDrawPlaceholder;
 }
 
