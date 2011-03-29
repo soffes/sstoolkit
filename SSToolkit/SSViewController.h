@@ -22,7 +22,7 @@
 	UIViewController<SSModalViewController> *_customModalViewController;
 	BOOL _dismissCustomModalOnVignetteTap;
 	CGSize _contentSizeForViewInCustomModal;
-	CGPoint _originForViewInCustomModal;
+	CGPoint _originOffsetForViewInCustomModal;
 		
 	UIView *_modalContainerView;
 	UIImageView *_modalContainerBackgroundView;

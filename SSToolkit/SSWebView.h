@@ -32,7 +32,6 @@
 	BOOL _consoleEnabled;
 	
 	BOOL _testedDOM;
-	BOOL _DOMloaded;
 }
 
 /**

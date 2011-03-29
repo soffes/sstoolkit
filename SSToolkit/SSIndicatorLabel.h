@@ -19,7 +19,7 @@
 @private	
 
 	UILabel *_textLabel;
-	UIActivityIndicatorView *_indicator;
+	UIActivityIndicatorView *_activityIndicatorView;
 	BOOL _loading;
 }
 
