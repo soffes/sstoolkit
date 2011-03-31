@@ -290,6 +290,11 @@
 	CGSize itemSize = [self _itemSizeForSection:(NSInteger)rowIndexPath.section];
 	NSUInteger itemsPerRow = (NSUInteger)floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
 	
+	// Avoid division by zero
+	if (itemsPerRow == 0) {
+		return nil;
+	}	
+	
 	NSUInteger row = (NSUInteger)floor(rowIndexPath.row / itemsPerRow);
 	return [NSIndexPath indexPathForRow:row inSection:rowIndexPath.section];
 }
