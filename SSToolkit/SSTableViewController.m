@@ -33,6 +33,7 @@
 #pragma mark UIViewController
 
 - (void)loadView {
+	_tableView.frame = [[UIScreen mainScreen] applicationFrame];
 	self.view = _tableView;
 }
 

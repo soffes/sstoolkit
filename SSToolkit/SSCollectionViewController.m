@@ -37,6 +37,7 @@
 
 
 - (void)loadView {
+	_collectionView.frame = [[UIScreen mainScreen] applicationFrame];
 	self.view = _collectionView;
 }
 
