@@ -33,12 +33,7 @@
 #pragma mark UIViewController
 
 - (void)loadView {
-	[super loadView];
-	
-	// Unlike UITableViewController, add the UITableView to the view controller's
-	// view instead of replacing it for more flexibility
-	
-	[self.view addSubview:self.tableView];
+	self.view = _tableView;
 }
 
 

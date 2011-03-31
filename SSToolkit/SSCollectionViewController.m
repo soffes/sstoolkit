@@ -25,15 +25,19 @@
 
 #pragma mark UIViewController
 
-- (void)loadView {
-	[super loadView];
-	
-	_collectionView = [[SSCollectionView alloc] initWithFrame:CGRectSetZeroOrigin(self.view.frame)];
-	_collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	_collectionView.dataSource = self;
-	_collectionView.delegate = self;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+	if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
+		_collectionView = [[SSCollectionView alloc] initWithFrame:CGRectZero];
+		_collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+		_collectionView.dataSource = self;
+		_collectionView.delegate = self;
+	}
+	return self;
+}
 
-	[self.view addSubview:_collectionView];
+
+- (void)loadView {
+	self.view = _collectionView;
 }
 
 
