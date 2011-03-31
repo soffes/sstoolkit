@@ -256,8 +256,9 @@ static CGFloat kIndicatorSize = 40.0;
 		[UIView beginAnimations:@"SSHUDViewFadeOutWindow" context:nil];
 		_hudWindow.alpha = 0.0f;
 		[UIView commitAnimations];
-	} else {
 		[self performSelector:@selector(_removeWindow) withObject:nil afterDelay:0.3];
+	} else {
+		[self _removeWindow];
 	}
 }
 
