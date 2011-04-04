@@ -10,6 +10,7 @@
 
 - (BOOL)containsString:(NSString *)string;
 - (NSString *)MD5Sum;
+- (NSString *)SHA1Sum;
 - (NSComparisonResult)compareToVersionString:(NSString *)version;
 
 // Localization
