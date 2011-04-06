@@ -15,4 +15,6 @@
 - (NSString *)timeAgoInWords;
 - (NSString *)timeAgoInWordsIncludingSeconds:(BOOL)includeSeconds;
 
+- (NSString *)briefTimeAgoInWords;
+
 @end
