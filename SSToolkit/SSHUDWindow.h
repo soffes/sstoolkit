@@ -15,4 +15,6 @@
 
 @property (nonatomic, assign) BOOL hidesVignette;
 
++ (SSHUDWindow *)defaultWindow;
+
 @end
