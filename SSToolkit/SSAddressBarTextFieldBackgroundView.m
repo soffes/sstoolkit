@@ -53,20 +53,6 @@ static CGFloat kLoadingBackgroundWidth = 49.0f;
 
 #pragma mark Private Methods
 
-- (void)_moveStep:(NSTimer *)timer {
-	CGFloat frameX = self.frame.origin.x;
-	CGFloat loadingX = _innerView.frame.origin.x;
-	
-	if (loadingX >= frameX) {
-		loadingX = frameX - kLoadingBackgroundWidth - 1.0f;
-	}
-	loadingX = loadingX + 1.0f;
-	
-	_innerView.frame = CGRectMake(loadingX, self.frame.origin.y, self.frame.size.width + kLoadingBackgroundWidth, self.frame.size.height);
-
-}
-
-
 - (void)_setupAnimation {
 	
 	if (![_innerView.layer animationForKey:@"translation"]) {
@@ -77,6 +63,9 @@ static CGFloat kLoadingBackgroundWidth = 49.0f;
 		translation.autoreverses = NO;
 		translation.fromValue = [NSNumber numberWithFloat: - kLoadingBackgroundWidth];
 		translation.toValue = [NSNumber numberWithFloat: 0.0f];
+		
+		CAMediaTimingFunction *easeInEffect = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+		[translation setTimingFunction:easeInEffect];
 		[_innerView.layer addAnimation:translation forKey:@"translation"];
 	}
 }
