@@ -13,7 +13,6 @@
 @private
 	
 	BOOL _loading;
-	NSTimer *_moveTimer;
 	SSAddressBarTextFieldBackgroundViewInnerView *_innerView;
 }
 
