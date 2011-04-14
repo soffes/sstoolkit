@@ -564,7 +564,6 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 		[_delegate webViewDidStartLoad:self];
 	}
 	_requestCount++;
-	NSLog(@"%s (%d)", __FUNCTION__, _requestCount);
 }
 
 @end
