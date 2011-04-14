@@ -9,9 +9,21 @@
 #import "SSHUDWindow.h"
 #import "UIImage+SSToolkitAdditions.h"
 
+static SSHUDWindow *kHUDWindow = nil;
+
 @implementation SSHUDWindow
 
 @synthesize hidesVignette = _hidesVignette;
+
+#pragma mark Class Methods
+
++ (SSHUDWindow *)defaultWindow {
+	if (!kHUDWindow) {
+		kHUDWindow = [[SSHUDWindow alloc] init];
+	}
+	return kHUDWindow;
+}
+
 
 #pragma mark NSObject
 

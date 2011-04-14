@@ -149,7 +149,7 @@ static CGFloat kIndicatorSize = 40.0;
 	[self retain];
 	
 	if (!_hudWindow) {
-		_hudWindow = [[SSHUDWindow alloc] init];
+		_hudWindow = [SSHUDWindow defaultWindow];
 	}
 	
 	_hudWindow.alpha = 0.0f;
@@ -336,7 +336,6 @@ static CGFloat kIndicatorSize = 40.0;
 
 - (void)_removeWindow {
 	[_hudWindow resignKeyWindow];
-	[_hudWindow release];
 	_hudWindow = nil;
 }
 
