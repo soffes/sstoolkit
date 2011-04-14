@@ -15,6 +15,7 @@
 
 - (id)initWithFrame:(CGRect)aFrame {
 	if ((self = [super initWithFrame:aFrame])) {
+		self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		self.backgroundColor = [UIColor clearColor];
 		self.opaque = NO;
 		self.clipsToBounds = YES;

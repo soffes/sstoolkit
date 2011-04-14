@@ -9,7 +9,6 @@
 #import "SSWebView.h"
 #import "NSString+SSToolkitAdditions.h"
 
-static NSTimeInterval kSSWebViewLoadDelay = 0.3;
 static BOOL SSWebViewIsBackedByScroller;
 static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
@@ -34,10 +33,6 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 #pragma mark NSObject
 
 - (void)dealloc {
-	// TODO: If you dealloc when the page is almost loaded, _loadingStatusChanged still
-	// gets called sometimes causing a crash, even with this cancel. Ugh.
-	[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(_loadingStatusChanged) object:nil];
-	
 	_delegate = nil;
 	_webView.delegate = nil;
 	[_webView stopLoading];
@@ -52,7 +47,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
 		[self reset];
-		
+
 		_loadingPage = NO;
 		_scrollEnabled = YES;
 		_bounces = YES;
@@ -79,7 +74,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	if (_webView.userInteractionEnabled == NO) {
 		return;
 	}
-	
+
 	_webView.userInteractionEnabled = NO;
 	_webView.userInteractionEnabled = YES;
 }
@@ -93,11 +88,11 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	BOOL tempAllowsInlineMediaPlayback;
 	BOOL tempMediaPlaybackRequiresUserAction;
 #endif
-	
+
 	if (_webView) {
 		_webView.delegate = nil;
 		[_webView stopLoading];
-		
+
 		loadPreviousSettings = YES;
 		tempDataDetectorTypes = _webView.dataDetectorTypes;
 		tempScalesPageToFit = _webView.scalesPageToFit;
@@ -105,14 +100,14 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 		tempAllowsInlineMediaPlayback = _webView.allowsInlineMediaPlayback;
 		tempMediaPlaybackRequiresUserAction = _webView.mediaPlaybackRequiresUserAction;
 #endif
-		
+
 		[_webView removeFromSuperview];
 		[_webView release];
 	}
-	
+
 	_webView = [[UIWebView alloc] initWithFrame:CGRectZero];
 	_webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	
+
 	if (loadPreviousSettings) {
 		_webView.dataDetectorTypes = tempDataDetectorTypes;
 		_webView.scalesPageToFit = tempScalesPageToFit;
@@ -121,7 +116,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 		_webView.mediaPlaybackRequiresUserAction = tempMediaPlaybackRequiresUserAction;
 #endif
 	}
-	
+
 	_webView.delegate = self;
 	[self addSubview:_webView];
 }
@@ -143,7 +138,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	if ([string length] < 5) {
 		return;
 	}
-	
+
 	if ([string hasPrefix:@"http://"] == NO && [string hasPrefix:@"https://"] == NO) {
 		string = [NSString stringWithFormat:@"http://%@", string];
 	}
@@ -226,13 +221,13 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	if (_scrollEnabled == enabled) {
 		return;
 	}
-	
+
 	_scrollEnabled = enabled;
-	
+
 	// UIScroller in < 3.2
 	if ([[self class] _isBackedByScroller]) {
 		id scroller = [self.subviews objectAtIndex:0];
-		
+
 		// This prevents the solution from be rejected
 		NSString *selectorString = @"";
 		selectorString = [selectorString stringByAppendingFormat:@"s"];
@@ -255,9 +250,9 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 		selectorString = [selectorString stringByAppendingFormat:@"e"];
 		selectorString = [selectorString stringByAppendingFormat:@"d"];
 		selectorString = [selectorString stringByAppendingFormat:@":"];
-		
+
 		SEL selector = NSSelectorFromString(selectorString);
-		
+
 		if ([scroller respondsToSelector:selector]) {
 			// Yay invocation magic
 			NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[scroller class] instanceMethodSignatureForSelector:selector]];
@@ -266,7 +261,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 			[invocation invokeWithTarget:scroller];
 		}
 	}
-	
+
 	// UIScrollView >= 3.2
 	else {
 		self.scrollView.scrollEnabled = _scrollEnabled;
@@ -278,13 +273,13 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	if (_bounces == allow) {
 		return;
 	}
-	
+
 	_bounces = allow;
-	
+
 	// UIScroller in < 3.2
 	if ([[self class] _isBackedByScroller]) {
 		id scroller = [self.subviews objectAtIndex:0];
-		
+
 		// Thanks @jakemarsh for this hacky workaround
 		// This prevents the solution from be rejected
 		NSString *selectorString = @"";
@@ -311,9 +306,9 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 		selectorString = [selectorString stringByAppendingFormat:@"n"];
 		selectorString = [selectorString stringByAppendingFormat:@"g"];
 		selectorString = [selectorString stringByAppendingFormat:@":"];
-		
+
 		SEL selector = NSSelectorFromString(selectorString);
-		
+
 		if ([scroller respondsToSelector:selector]) {
 			// Yay invocation magic
 			NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[scroller class] instanceMethodSignatureForSelector:selector]];
@@ -322,7 +317,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 			[invocation invokeWithTarget:scroller];
 		}
 	}
-	
+
 	// UIScrollView >= 3.2
 	else {
 		UIScrollView *scrollView = [_webView.subviews objectAtIndex:0];
@@ -335,9 +330,9 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	if (_shadowsHidden == hide) {
 		return;
 	}
-	
+
 	_shadowsHidden = hide;
-	
+
 	// Thanks @flyosity http://twitter.com/flyosity/status/17951035384
 	for (UIView *view in [_webView subviews]) {
 		if ([view isKindOfClass:[UIScrollView class]]) {
@@ -473,13 +468,14 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 #pragma mark UIWebViewDelegate
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-	// Reset load timer
-	[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(_loadingStatusChanged) object:nil];
-	[self performSelector:@selector(_loadingStatusChanged) withObject:nil afterDelay:kSSWebViewLoadDelay];
-	
 	// Forward delegate message
 	if ([_delegate respondsToSelector:@selector(webView:didFailLoadWithError:)]) {
 		[_delegate webView:self didFailLoadWithError:error];
+	}
+
+	_requestCount--;
+	if (_requestCount == 0) {
+		[self _loadingStatusChanged];
 	}
 }
 
@@ -488,7 +484,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	BOOL should = YES;
 	NSURL *url = [aRequest URL];
 	NSString *scheme = [url scheme];
-    
+
 	// Check for DOM load message
 	if ([scheme isEqualToString:@"x-sswebview"]) {
 		NSString *host = [url host];
@@ -499,64 +495,65 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 		}
 		return NO;
 	}
-	
+
 	// Forward delegate message
 	if ([_delegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)]) {
 		should = [_delegate webView:self shouldStartLoadWithRequest:aRequest navigationType:navigationType];
 	}
-	
+
 	// Only load http or http requests if delegate doesn't care
 	else {
 		should = [scheme isEqualToString:@"http"] || [scheme isEqualToString:@"https"] || [scheme isEqualToString:@"file"];
 	}
-	
+
 	// Stop if we shouldn't load it
 	if (should == NO) {
 		return NO;
 	}
-	
+
 	// Starting a new request
 	if ([[aRequest mainDocumentURL] isEqual:[_lastRequest mainDocumentURL]] == NO) {
 		[_lastRequest release];
 		_lastRequest = [aRequest retain];
 		_testedDOM = NO;
-		
+
 		[self _startLoading];
 	}
-	
+
 	// Child request for same page
 	else {
 		// Reset load timer
 		[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(_loadingStatusChanged) object:nil];
 	}
-	
+
 	return should;
 }
 
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-	// Reset load timer
-	[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(_loadingStatusChanged) object:nil];
-	[self performSelector:@selector(_loadingStatusChanged) withObject:nil afterDelay:kSSWebViewLoadDelay];
-	
 	// Check DOM
 	if (_testedDOM == NO) {
 		_testedDOM = YES;
-		
+
         // The internal delegate will intercept this load and forward the event to the real delegate
         // Crazy javascript from http://dean.edwards.name/weblog/2006/06/again
 		static NSString *testDOM = @"var _SSWebViewDOMLoadTimer=setInterval(function(){if(/loaded|complete/.test(document.readyState)){clearInterval(_SSWebViewDOMLoadTimer);location.href='x-sswebview://dom-loaded'}},10);";
 		[self stringByEvaluatingJavaScriptFromString:testDOM];
-		
+
 		// Override console to pass messages to NSLog
 		if (_consoleEnabled) {
 			[self stringByEvaluatingJavaScriptFromString:@"console.log=function(msg){location.href='x-sswebview://log/?'+escape(msg.toString())}"];
 		}
 	}
-	
+
 	// Forward delegate message
 	if ([_delegate respondsToSelector:@selector(webViewDidFinishLoad:)]) {
 		[_delegate webViewDidFinishLoad:self];
+	}
+
+	_requestCount--;
+	if (_requestCount == 0) {
+		[self _loadingStatusChanged];
 	}
 }
 
@@ -566,6 +563,8 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	if ([_delegate respondsToSelector:@selector(webViewDidStartLoad:)]) {
 		[_delegate webViewDidStartLoad:self];
 	}
+	_requestCount++;
+	NSLog(@"%s (%d)", __FUNCTION__, _requestCount);
 }
 
 @end
