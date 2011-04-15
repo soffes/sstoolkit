@@ -100,6 +100,8 @@
 		B28219DE12FA8EB500BAF3C6 /* SSRatingPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B28219DC12FA8EB500BAF3C6 /* SSRatingPicker.m */; };
 		B28C6D0712FBE5C400667755 /* SSRatingPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B28C6D0512FBE5C400667755 /* SSRatingPickerViewController.h */; };
 		B28C6D0812FBE5C400667755 /* SSRatingPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28C6D0612FBE5C400667755 /* SSRatingPickerViewController.m */; };
+		B2A5D4D6135873B300AC4BA7 /* ColorCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A5D4D5135873B300AC4BA7 /* ColorCategoryTest.m */; };
+		B2A5D4DE1358748700AC4BA7 /* ControlCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A5D4DD1358748700AC4BA7 /* ControlCategoryTest.m */; };
 		B2AAE65C1281B73E0068EE7F /* SSNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */; };
 		B2AAE65D1281B73E0068EE7F /* SSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */; };
 		B2ABC6921329D14300521D20 /* SSCollectionViewTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2ABC6901329D14300521D20 /* SSCollectionViewTableViewCell.h */; };
@@ -129,7 +131,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D /* SSToolkit */;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = SSToolkit;
 		};
 /* End PBXContainerItemProxy section */
@@ -231,6 +233,8 @@
 		B28219DC12FA8EB500BAF3C6 /* SSRatingPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRatingPicker.m; sourceTree = "<group>"; };
 		B28C6D0512FBE5C400667755 /* SSRatingPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRatingPickerViewController.h; sourceTree = "<group>"; };
 		B28C6D0612FBE5C400667755 /* SSRatingPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRatingPickerViewController.m; sourceTree = "<group>"; };
+		B2A5D4D5135873B300AC4BA7 /* ColorCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCategoryTest.m; sourceTree = "<group>"; };
+		B2A5D4DD1358748700AC4BA7 /* ControlCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlCategoryTest.m; sourceTree = "<group>"; };
 		B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSNavigationController.h; sourceTree = "<group>"; };
 		B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSNavigationController.m; sourceTree = "<group>"; };
 		B2ABC6901329D14300521D20 /* SSCollectionViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewTableViewCell.h; sourceTree = "<group>"; };
@@ -334,6 +338,8 @@
 			isa = PBXGroup;
 			children = (
 				B23910BF1357E07A00ADE21B /* ArrayCategoryTest.m */,
+				B2A5D4D5135873B300AC4BA7 /* ColorCategoryTest.m */,
+				B2A5D4DD1358748700AC4BA7 /* ControlCategoryTest.m */,
 				B23910C11357E08600ADE21B /* DataCategoryTest.m */,
 				B23910A61357DED300ADE21B /* DateCategoryTest.m */,
 				B23910A71357DED300ADE21B /* DictionaryCategoryTest.m */,
@@ -688,6 +694,8 @@
 				B23910C01357E07A00ADE21B /* ArrayCategoryTest.m in Sources */,
 				B23910C21357E08600ADE21B /* DataCategoryTest.m in Sources */,
 				B23910C41357E08E00ADE21B /* URLCategoryTest.m in Sources */,
+				B2A5D4D6135873B300AC4BA7 /* ColorCategoryTest.m in Sources */,
+				B2A5D4DE1358748700AC4BA7 /* ControlCategoryTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
