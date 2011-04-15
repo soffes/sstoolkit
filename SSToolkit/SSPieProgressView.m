@@ -36,7 +36,7 @@ CGFloat const kAngleOffset = -90.0f;
 		self.backgroundColor = [UIColor clearColor];
 		
 		self.progress = 0.0f;
-		self.pieBorderWidth = 4.0f;
+		self.pieBorderWidth = 2.0f;
 		self.pieBorderColor = [UIColor colorWithRed:0.612f green:0.710f blue:0.839f alpha:1.0f];
 		self.pieFillColor = [UIColor colorWithRed:0.612f green:0.710f blue:0.839f alpha:1.0f];
 		self.pieBackgroundColor = [UIColor whiteColor];
