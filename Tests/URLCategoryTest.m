@@ -13,7 +13,17 @@
 
 @implementation URLCategoryTest
 
-// To test:
-//- (NSDictionary *)queryDictionary;
+- (void)testQueryDictionary {
+	NSURL *url = [[NSURL alloc] initWithString:@"http://sstoolk.it/test?foo=bar&awesome=true"];
+	NSDictionary *dictionary = [[NSDictionary alloc] initWithObjectsAndKeys:
+								@"bar", @"foo",
+								@"true", @"awesome",
+								nil];
+	
+	GHAssertEqualObjects([url queryDictionary], dictionary, nil);
+	
+	[url release];
+	[dictionary release];
+}
 
 @end

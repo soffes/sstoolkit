@@ -14,8 +14,13 @@
 @implementation ArrayCategoryTest
 
 // To test:
-//- (id)firstObject;
 //- (id)randomObject;
 //- (NSArray *)shuffledArray;
+
+- (void)testFirstObject {
+	NSArray *array = [[NSArray alloc] initWithObjects:@"foo", @"bar", nil];
+	GHAssertEqualObjects([array firstObject], @"foo", nil);
+	[array release];
+}
 
 @end
