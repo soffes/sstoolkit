@@ -359,6 +359,10 @@
 	CGSize itemSize = [self _itemSizeForSection:section];
 	CGFloat itemsPerRow = floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
 	
+	if (itemsPerRow == 0.00) {
+		return 0;
+	}
+
 	NSInteger rows = (NSInteger)ceilf((CGFloat)totalItems / itemsPerRow);
 	return rows;
 }
