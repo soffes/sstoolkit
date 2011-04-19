@@ -334,9 +334,12 @@ static CGFloat kIndicatorSize = 40.0;
 }
 
 
-- (void)_removeWindow {
+- (void)_removeWindow {	
 	[_hudWindow resignKeyWindow];
 	_hudWindow = nil;
+	
+	// Return focus to the first window
+	[[[[UIApplication sharedApplication] windows] objectAtIndex:0] makeKeyWindow];
 }
 
 @end
