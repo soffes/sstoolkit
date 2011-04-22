@@ -237,6 +237,12 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
+- (void)setFrame:(CGRect)rect {
+	[super setFrame:rect];
+	[self setNeedsDisplay];
+}
+
+
 #pragma mark Initializer
 
 - (id)initWithItems:(NSArray *)items {
