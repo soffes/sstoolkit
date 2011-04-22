@@ -11,4 +11,6 @@
 - (CGRect)currentBounds;
 - (CGRect)boundsForOrientation:(UIInterfaceOrientation)orientation;
 
+- (BOOL)isRetinaDisplay;
+
 @end
