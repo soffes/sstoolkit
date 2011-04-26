@@ -359,7 +359,7 @@
 	CGSize itemSize = [self _itemSizeForSection:section];
 	CGFloat itemsPerRow = floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
 	
-	if (itemsPerRow == 0.00) {
+	if (itemsPerRow == 0.0f) {
 		return 0;
 	}
 
