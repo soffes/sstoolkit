@@ -124,6 +124,7 @@
 		B2EA9F6212F4A5E100C929D6 /* SSBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2EA9F6012F4A5E100C929D6 /* SSBadgeView.h */; };
 		B2EA9F6312F4A5E100C929D6 /* SSBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EA9F6112F4A5E100C929D6 /* SSBadgeView.m */; };
 		B2FC71BB1330424F00D4FCCF /* SSCollectionViewItemInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FC71BA1330424F00D4FCCF /* SSCollectionViewItemInternal.h */; };
+		B2FE26B9136684D400B97612 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE26B8136684D400B97612 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,6 +258,7 @@
 		B2EA9F6012F4A5E100C929D6 /* SSBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSBadgeView.h; sourceTree = "<group>"; };
 		B2EA9F6112F4A5E100C929D6 /* SSBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSBadgeView.m; sourceTree = "<group>"; };
 		B2FC71BA1330424F00D4FCCF /* SSCollectionViewItemInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewItemInternal.h; sourceTree = "<group>"; };
+		B2FE26B8136684D400B97612 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libSSToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSSToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -270,6 +272,7 @@
 				B23910621357DCF700ADE21B /* CoreGraphics.framework in Frameworks */,
 				B23910641357DCF700ADE21B /* Foundation.framework in Frameworks */,
 				B23910661357DCF700ADE21B /* UIKit.framework in Frameworks */,
+				B2FE26B9136684D400B97612 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +363,7 @@
 				B23910611357DCF700ADE21B /* CoreGraphics.framework */,
 				B23910631357DCF700ADE21B /* Foundation.framework */,
 				B23910651357DCF700ADE21B /* UIKit.framework */,
+				B2FE26B8136684D400B97612 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
