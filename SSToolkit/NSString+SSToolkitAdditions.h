@@ -31,4 +31,10 @@
 // Base64
 - (NSString *)base64EncodedString;
 
+// Trimming
+- (NSString *)stringByTrimmingLeadingCharactersInSet:(NSCharacterSet *)characterSet;
+- (NSString *)stringByTrimmingLeadingWhitespaceAndNewlineCharacters;
+- (NSString *)stringByTrimmingTrailingCharactersInSet:(NSCharacterSet *)characterSet;
+- (NSString *)stringByTrimmingTrailingWhitespaceAndNewlineCharacters;
+
 @end
