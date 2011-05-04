@@ -7,6 +7,8 @@
 //
 
 #import "SCCollectionViewDemoViewController.h"
+#import "SCImageCollectionViewItem.h"
+#import "EGOImageView.h"
 
 @implementation SCCollectionViewDemoViewController
 
@@ -56,16 +58,18 @@
 - (SSCollectionViewItem *)collectionView:(SSCollectionView *)aCollectionView itemForIndexPath:(NSIndexPath *)indexPath {
 	static NSString *const itemIdentifier = @"itemIdentifier";
 	
-	SSCollectionViewItem *item = [aCollectionView dequeueReusableItemWithIdentifier:itemIdentifier];
+	SCImageCollectionViewItem *item = (SCImageCollectionViewItem *)[aCollectionView dequeueReusableItemWithIdentifier:itemIdentifier];
 	if (item == nil) {
-		item = [[[SSCollectionViewItem alloc] initWithStyle:SSCollectionViewItemStyleDefault reuseIdentifier:itemIdentifier] autorelease];
+		item = [[[SCImageCollectionViewItem alloc] initWithStyle:SSCollectionViewItemStyleDefault reuseIdentifier:itemIdentifier] autorelease];
 		
 		// Customize item for demo
 		item.textLabel.backgroundColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
 		item.textLabel.frame = CGRectMake(0.0f, 0.0f, 80.0f, 80.0f);
 	}
 	
-	item.textLabel.text = [NSString stringWithFormat:@"%i", indexPath.row];
+	CGFloat size = 80.0f * [[UIScreen mainScreen] scale];
+	NSString *urlString = [NSString stringWithFormat:@"http://www.gravatar.com/avatar/%i?s=%0.f&d=identicon", indexPath.row, size];
+	item.remoteImageView.imageURL = [NSURL URLWithString:urlString];
 	
 	return item;
 }

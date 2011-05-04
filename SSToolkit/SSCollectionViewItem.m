@@ -84,16 +84,16 @@
 		_reuseIdentifier = [aReuseIdentifier copy];
 		
 		if (_style != SSCollectionViewItemStyleBlank) {
-			_imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-			[self addSubview:_imageView];
+			_detailTextLabel = [[SSLabel alloc] initWithFrame:CGRectZero];
+			_detailTextLabel.textAlignment = UITextAlignmentCenter;
+			[self addSubview:_detailTextLabel];
 			
 			_textLabel = [[SSLabel alloc] initWithFrame:CGRectZero];
 			_textLabel.textAlignment = UITextAlignmentCenter;
 			[self addSubview:_textLabel];
-
-			_detailTextLabel = [[SSLabel alloc] initWithFrame:CGRectZero];
-			_detailTextLabel.textAlignment = UITextAlignmentCenter;
-			[self addSubview:_detailTextLabel];
+			
+			_imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+			[self addSubview:_imageView];
 		}
 		
     }

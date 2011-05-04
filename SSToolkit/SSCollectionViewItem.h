@@ -20,7 +20,7 @@ typedef enum {
  @brief View for display in a collection view.
  */
 @interface SSCollectionViewItem : UIView {
-	
+
 @private
 	
 	SSCollectionViewItemStyle _style;
@@ -36,6 +36,7 @@ typedef enum {
 	BOOL _highlighted;
 	
 	SSCollectionView *_collectionView;
+	NSIndexPath *_indexPath;
 }
 
 /**
