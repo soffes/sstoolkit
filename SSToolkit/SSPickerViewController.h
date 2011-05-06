@@ -17,15 +17,15 @@
 @private
 	
 	NSArray *_keys;
-	NSString *_selectedKey;
+	id _selectedKey;
 	NSIndexPath *_currentIndexPath;
 }
 
 @property (nonatomic, retain) NSArray *keys;
-@property (nonatomic, retain) NSString *selectedKey;
+@property (nonatomic, retain) id selectedKey;
 @property (nonatomic, retain) NSIndexPath *currentIndexPath;
 
 - (void)loadKeys;
-- (NSString *)cellTextForKey:(NSString *)key;
+- (NSString *)cellTextForKey:(id)key;
 
 @end

@@ -55,7 +55,7 @@
 
 
 // This method should be overridden by a subclass
-- (NSString *)cellTextForKey:(NSString *)key {
+- (NSString *)cellTextForKey:(id)key {
 	return key;
 }
 
@@ -89,7 +89,7 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier] autorelease];
     }
-	NSString *key = [self.keys objectAtIndex:indexPath.row];
+	id key = [self.keys objectAtIndex:indexPath.row];
 	cell.textLabel.text = [self cellTextForKey:key];
 	if([key isEqual:self.selectedKey] == YES) {
 		cell.accessoryType = UITableViewCellAccessoryCheckmark;
