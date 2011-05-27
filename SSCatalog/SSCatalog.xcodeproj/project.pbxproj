@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		B21B85BE1067D4F300E5C076 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B21B85BC1067D4F300E5C076 /* main.m */; };
 		B22042911370FD1800604D62 /* SCImageCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B22042901370FD1800604D62 /* SCImageCollectionViewItem.m */; };
-		B22042A21370FD3500604D62 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B22042961370FD3500604D62 /* EGOCache.m */; };
-		B22042A31370FD3500604D62 /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B22042991370FD3500604D62 /* EGOImageButton.m */; };
-		B22042A41370FD3500604D62 /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B220429C1370FD3500604D62 /* EGOImageLoadConnection.m */; };
-		B22042A51370FD3500604D62 /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B220429E1370FD3500604D62 /* EGOImageLoader.m */; };
-		B22042A61370FD3500604D62 /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B22042A11370FD3500604D62 /* EGOImageView.m */; };
 		B24E9EAA121DC35B0085F81E /* SCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E99121DC35B0085F81E /* SCAppDelegate.m */; };
 		B24E9EAB121DC35B0085F81E /* SCGradientViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E9B121DC35B0085F81E /* SCGradientViewDemoViewController.m */; };
 		B24E9EAC121DC35B0085F81E /* SCHUDViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E9D121DC35B0085F81E /* SCHUDViewDemoViewController.m */; };
@@ -36,6 +31,8 @@
 		B2AED4BC12FF21F8006C956B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2AED4B912FF21F8006C956B /* UIKit.framework */; };
 		B2B3CEEF1296F78D001BAC94 /* SCSwitchDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */; };
 		B2B3CF561296FA76001BAC94 /* SSToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B2B3CF551296FA76001BAC94 /* SSToolkit.bundle */; };
+		B2B4562F1390649B0060C279 /* JMImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B4562D1390649B0060C279 /* JMImageCache.m */; };
+		B2B456301390649B0060C279 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = B2B4562E1390649B0060C279 /* README.markdown */; };
 		B2D883F01332D645006B3F55 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D883EF1332D645006B3F55 /* QuartzCore.framework */; };
 		B2DAC3C413304D5700091D5F /* Icon-48.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DAC3C113304D5700091D5F /* Icon-48.png */; };
 		B2DAC3C513304D5700091D5F /* SamLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DAC3C213304D5700091D5F /* SamLogo.png */; };
@@ -79,16 +76,6 @@
 		B21B85BC1067D4F300E5C076 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B220428F1370FD1800604D62 /* SCImageCollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageCollectionViewItem.h; sourceTree = "<group>"; };
 		B22042901370FD1800604D62 /* SCImageCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageCollectionViewItem.m; sourceTree = "<group>"; };
-		B22042951370FD3500604D62 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
-		B22042961370FD3500604D62 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
-		B22042981370FD3500604D62 /* EGOImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageButton.h; sourceTree = "<group>"; };
-		B22042991370FD3500604D62 /* EGOImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageButton.m; sourceTree = "<group>"; };
-		B220429B1370FD3500604D62 /* EGOImageLoadConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoadConnection.h; sourceTree = "<group>"; };
-		B220429C1370FD3500604D62 /* EGOImageLoadConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoadConnection.m; sourceTree = "<group>"; };
-		B220429D1370FD3500604D62 /* EGOImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoader.h; sourceTree = "<group>"; };
-		B220429E1370FD3500604D62 /* EGOImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoader.m; sourceTree = "<group>"; };
-		B22042A01370FD3500604D62 /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageView.h; sourceTree = "<group>"; };
-		B22042A11370FD3500604D62 /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageView.m; sourceTree = "<group>"; };
 		B24E9E98121DC35B0085F81E /* SCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAppDelegate.h; sourceTree = "<group>"; };
 		B24E9E99121DC35B0085F81E /* SCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAppDelegate.m; sourceTree = "<group>"; };
 		B24E9E9A121DC35B0085F81E /* SCGradientViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGradientViewDemoViewController.h; sourceTree = "<group>"; };
@@ -128,6 +115,9 @@
 		B2B3CEED1296F78D001BAC94 /* SCSwitchDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSwitchDemoViewController.h; sourceTree = "<group>"; };
 		B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSwitchDemoViewController.m; sourceTree = "<group>"; };
 		B2B3CF551296FA76001BAC94 /* SSToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SSToolkit.bundle; path = ../Resources/SSToolkit.bundle; sourceTree = SOURCE_ROOT; };
+		B2B4562C1390649B0060C279 /* JMImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMImageCache.h; sourceTree = "<group>"; };
+		B2B4562D1390649B0060C279 /* JMImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMImageCache.m; sourceTree = "<group>"; };
+		B2B4562E1390649B0060C279 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		B2D883EF1332D645006B3F55 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = iphoneos4.0/System/Library/Frameworks/QuartzCore.framework; sourceTree = "<group>"; };
 		B2DAC3C113304D5700091D5F /* Icon-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-48.png"; sourceTree = "<group>"; };
 		B2DAC3C213304D5700091D5F /* SamLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SamLogo.png; sourceTree = "<group>"; };
@@ -236,58 +226,9 @@
 		B22042921370FD3500604D62 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				B22042931370FD3500604D62 /* EGOImageLoading */,
+				B2B4562B1390649B0060C279 /* JMImageCache */,
 			);
 			path = Vendor;
-			sourceTree = "<group>";
-		};
-		B22042931370FD3500604D62 /* EGOImageLoading */ = {
-			isa = PBXGroup;
-			children = (
-				B22042941370FD3500604D62 /* EGOCache */,
-				B22042971370FD3500604D62 /* EGOImageButton */,
-				B220429A1370FD3500604D62 /* EGOImageLoader */,
-				B220429F1370FD3500604D62 /* EGOImageView */,
-			);
-			path = EGOImageLoading;
-			sourceTree = "<group>";
-		};
-		B22042941370FD3500604D62 /* EGOCache */ = {
-			isa = PBXGroup;
-			children = (
-				B22042951370FD3500604D62 /* EGOCache.h */,
-				B22042961370FD3500604D62 /* EGOCache.m */,
-			);
-			path = EGOCache;
-			sourceTree = "<group>";
-		};
-		B22042971370FD3500604D62 /* EGOImageButton */ = {
-			isa = PBXGroup;
-			children = (
-				B22042981370FD3500604D62 /* EGOImageButton.h */,
-				B22042991370FD3500604D62 /* EGOImageButton.m */,
-			);
-			path = EGOImageButton;
-			sourceTree = "<group>";
-		};
-		B220429A1370FD3500604D62 /* EGOImageLoader */ = {
-			isa = PBXGroup;
-			children = (
-				B220429B1370FD3500604D62 /* EGOImageLoadConnection.h */,
-				B220429C1370FD3500604D62 /* EGOImageLoadConnection.m */,
-				B220429D1370FD3500604D62 /* EGOImageLoader.h */,
-				B220429E1370FD3500604D62 /* EGOImageLoader.m */,
-			);
-			path = EGOImageLoader;
-			sourceTree = "<group>";
-		};
-		B220429F1370FD3500604D62 /* EGOImageView */ = {
-			isa = PBXGroup;
-			children = (
-				B22042A01370FD3500604D62 /* EGOImageView.h */,
-				B22042A11370FD3500604D62 /* EGOImageView.m */,
-			);
-			path = EGOImageView;
 			sourceTree = "<group>";
 		};
 		B24E9EC6121DC3CF0085F81E /* Products */ = {
@@ -359,6 +300,16 @@
 				B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */,
 			);
 			name = "Control Demos";
+			sourceTree = "<group>";
+		};
+		B2B4562B1390649B0060C279 /* JMImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				B2B4562C1390649B0060C279 /* JMImageCache.h */,
+				B2B4562D1390649B0060C279 /* JMImageCache.m */,
+				B2B4562E1390649B0060C279 /* README.markdown */,
+			);
+			path = JMImageCache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +401,7 @@
 				B2DAC3C413304D5700091D5F /* Icon-48.png in Resources */,
 				B2DAC3C513304D5700091D5F /* SamLogo.png in Resources */,
 				B2DAC3C613304D5700091D5F /* SamLogo@2x.png in Resources */,
+				B2B456301390649B0060C279 /* README.markdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,11 +430,7 @@
 				B2E241821301CE4900F7DC3B /* SCAddressBarDemoViewController.m in Sources */,
 				B2ABED96130A0EC000AD7A1C /* SCSegmentedControlDemoViewController.m in Sources */,
 				B22042911370FD1800604D62 /* SCImageCollectionViewItem.m in Sources */,
-				B22042A21370FD3500604D62 /* EGOCache.m in Sources */,
-				B22042A31370FD3500604D62 /* EGOImageButton.m in Sources */,
-				B22042A41370FD3500604D62 /* EGOImageLoadConnection.m in Sources */,
-				B22042A51370FD3500604D62 /* EGOImageLoader.m in Sources */,
-				B22042A61370FD3500604D62 /* EGOImageView.m in Sources */,
+				B2B4562F1390649B0060C279 /* JMImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

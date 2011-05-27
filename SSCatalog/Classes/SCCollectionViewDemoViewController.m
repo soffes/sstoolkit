@@ -8,7 +8,6 @@
 
 #import "SCCollectionViewDemoViewController.h"
 #import "SCImageCollectionViewItem.h"
-#import "EGOImageView.h"
 
 @implementation SCCollectionViewDemoViewController
 
@@ -59,17 +58,12 @@
 	
 	SCImageCollectionViewItem *item = (SCImageCollectionViewItem *)[aCollectionView dequeueReusableItemWithIdentifier:itemIdentifier];
 	if (item == nil) {
-		item = [[[SCImageCollectionViewItem alloc] initWithStyle:SSCollectionViewItemStyleDefault reuseIdentifier:itemIdentifier] autorelease];
-		
-		// Customize item for demo
-		item.textLabel.backgroundColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
-		item.textLabel.frame = CGRectMake(0.0f, 0.0f, 80.0f, 80.0f);
+		item = [[[SCImageCollectionViewItem alloc] initWithStyle:SSCollectionViewItemStyleImage reuseIdentifier:itemIdentifier] autorelease];
 	}
 	
 	CGFloat size = 80.0f * [[UIScreen mainScreen] scale];
 	NSInteger i = (50 * indexPath.section) + indexPath.row;
-	NSString *urlString = [NSString stringWithFormat:@"http://www.gravatar.com/avatar/%i?s=%0.f&d=identicon", i, size];
-	item.remoteImageView.imageURL = [NSURL URLWithString:urlString];
+	item.imageURL = [NSString stringWithFormat:@"http://www.gravatar.com/avatar/%i?s=%0.f&d=identicon", i, size];
 	
 	return item;
 }
