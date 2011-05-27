@@ -10,10 +10,11 @@
 
 @interface SCCollectionViewDemoViewController : SSCollectionViewController {
 
+@private
+	
+	NSCache *_headerCache;
 }
 
 + (NSString *)title;
-
-- (void)goTo999:(id)sender;
 
 @end

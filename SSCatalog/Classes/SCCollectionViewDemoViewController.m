@@ -19,16 +19,20 @@
 }
 
 
+#pragma mark NSObject
+
+- (void)dealloc {
+	[_headerCache release];
+	[super dealloc];
+}
+
+
 #pragma mark UIViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.title = [[self class] title];
 	self.collectionView.minimumColumnSpacing = 20.0f;
-	
-	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"999" style:UIBarButtonItemStyleBordered target:self action:@selector(goTo999:)];
-	self.navigationItem.rightBarButtonItem = rightButton;
-	[rightButton release];
 }
 
 
@@ -39,19 +43,14 @@
 	return YES;
 }
 
-
-#pragma mark Actions
-
-- (void)goTo999:(id)sender {
-	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:999 inSection:0];
-	[self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:SSCollectionViewScrollPositionTop animated:YES];
-}
-
-
 #pragma mark SSCollectionViewDataSource
 
+- (NSInteger)numberOfSectionsInCollectionView:(SSCollectionView *)aCollectionView {
+	return 10;
+}
+
 - (NSInteger)collectionView:(SSCollectionView *)aCollectionView numberOfItemsInSection:(NSInteger)section {
-	return 1024;
+	return 50;
 }
 
 
@@ -68,10 +67,34 @@
 	}
 	
 	CGFloat size = 80.0f * [[UIScreen mainScreen] scale];
-	NSString *urlString = [NSString stringWithFormat:@"http://www.gravatar.com/avatar/%i?s=%0.f&d=identicon", indexPath.row, size];
+	NSInteger i = (50 * indexPath.section) + indexPath.row;
+	NSString *urlString = [NSString stringWithFormat:@"http://www.gravatar.com/avatar/%i?s=%0.f&d=identicon", i, size];
 	item.remoteImageView.imageURL = [NSURL URLWithString:urlString];
 	
 	return item;
+}
+
+
+- (UIView *)collectionView:(SSCollectionView *)aCollectionView viewForHeaderInSection:(NSInteger)section {
+	if (!_headerCache) {
+		_headerCache = [[NSCache alloc] init];
+	}
+	
+	NSNumber *key = [NSNumber numberWithInteger:section];
+	SSLabel *header = [_headerCache objectForKey:key];
+	if (!header) {
+		header = [[SSLabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
+		header.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+		header.text = [NSString stringWithFormat:@"Section %i", section + 1];
+		header.textEdgeInsets = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 10.0f);
+		header.shadowColor = [UIColor whiteColor];
+		header.shadowOffset = CGSizeMake(0.0f, 1.0f);
+		header.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.8f];
+		
+		[_headerCache setObject:header forKey:key];
+		[header autorelease];
+	}
+	return header;
 }
 
 
@@ -86,6 +109,11 @@
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"\nYou selected item #%i!\n\n", indexPath.row] message:nil delegate:nil cancelButtonTitle:@"Oh, awesome!" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
+}
+
+
+- (CGFloat)collectionView:(SSCollectionView *)aCollectionView heightForHeaderInSection:(NSInteger)section {
+	return 40.0f;
 }
 
 @end
