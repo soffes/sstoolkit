@@ -100,7 +100,10 @@
 
 
 - (void)collectionView:(SSCollectionView *)aCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"\nYou selected item #%i!\n\n", indexPath.row] message:nil delegate:nil cancelButtonTitle:@"Oh, awesome!" otherButtonTitles:nil];
+	NSString *title = [NSString stringWithFormat:@"You selected item %i in section %i!",
+					   indexPath.row + 1, indexPath.section + 1];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:nil delegate:nil
+										  cancelButtonTitle:@"Oh, awesome!" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
 }
