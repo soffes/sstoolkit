@@ -45,6 +45,8 @@
 		
 		// Defaults
 		self.gradientScale = 1.0f;
+		self.topInsetAlpha = 0.0f;
+		self.bottomInsetAlpha = 0.0f;
 		
 		_gradient = nil;		
 	}
@@ -69,7 +71,7 @@
 		// Top inset
 		if (_topInsetAlpha > 0.0f) {
 			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0f alpha:_topInsetAlpha].CGColor);
-			CGContextMoveToPoint(context, 0.0f, 1.0f);
+			CGContextMoveToPoint(context, 0.0f, 1.5f);
 			CGContextAddLineToPoint(context, rect.size.width, 1.0f);
 			CGContextStrokePath(context);
 		}
@@ -85,14 +87,14 @@
 		// Bottom inset
 		if (_bottomInsetAlpha > 0.0f) {
 			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0f alpha:_bottomInsetAlpha].CGColor);
-			CGContextMoveToPoint(context, 0.0f, rect.size.height - 1.0f);
+			CGContextMoveToPoint(context, 0.0f, rect.size.height - 1.5f);
 			CGContextAddLineToPoint(context, rect.size.width, rect.size.height - 1.0f);
 			CGContextStrokePath(context);
 		}
 		
 		// Bottom border
 		CGContextSetStrokeColorWithColor(context, _bottomBorderColor.CGColor);
-		CGContextMoveToPoint(context, 0.0f, rect.size.height);
+		CGContextMoveToPoint(context, 0.0f, rect.size.height - 0.5f);
 		CGContextAddLineToPoint(context, rect.size.width, rect.size.height);
 		CGContextStrokePath(context);
 	}
