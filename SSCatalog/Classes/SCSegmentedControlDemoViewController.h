@@ -1,5 +1,5 @@
 //
-//  SSSegmentedControlDemoViewController.h
+//  SCSegmentedControlDemoViewController.h
 //  SSCatalog
 //
 //  Created by Sam Soffes on 2/14/11.
@@ -8,8 +8,10 @@
 
 @class SSSegmentedControl;
 
-@interface SSSegmentedControlDemoViewController : UIViewController {
+@interface SCSegmentedControlDemoViewController : UIViewController {
  
+@private	
+
 	UISegmentedControl *_systemSegmentedControl;
 	SSSegmentedControl *_customSegmentedControl;
 }

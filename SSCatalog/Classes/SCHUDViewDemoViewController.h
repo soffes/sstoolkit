@@ -10,6 +10,8 @@
 
 @interface SCHUDViewDemoViewController : UIViewController {
 
+@private
+	
 	SSHUDView *_hud;
 }
 

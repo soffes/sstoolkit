@@ -10,6 +10,8 @@
 
 @interface SCIndicatorLabelDemoViewController : UIViewController {
 
+@private
+	
 	SSIndicatorLabel *_indicatorLabel;
 }
 

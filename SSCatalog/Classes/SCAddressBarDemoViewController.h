@@ -10,6 +10,8 @@
 
 @interface SCAddressBarDemoViewController : UIViewController <UITextFieldDelegate, SSWebViewDelegate> {
     
+@private
+	
 	SSGradientView *_headerView;
 	UILabel *_titleLabel;
 	SSAddressBarTextField *_addressBar;

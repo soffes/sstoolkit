@@ -10,6 +10,9 @@
 
 @interface SCGradientViewDemoViewController : UIViewController {
 
+@private
+	
+	BOOL _blue;
 	SSGradientView *_gradientView;
 }
 

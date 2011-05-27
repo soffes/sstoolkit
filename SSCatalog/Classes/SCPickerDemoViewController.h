@@ -8,6 +8,8 @@
 
 @interface SCPickerDemoViewController : UITableViewController {
 	
+@private
+	
 	NSString *_selectedAbbreviation;
 }
 

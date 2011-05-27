@@ -35,6 +35,9 @@
 	
 	// Gradient view
 	_gradientView = [[SSGradientView alloc] initWithFrame:CGRectMake(20.0f, 20.0f, 280.0f, 280.0f)];
+	_gradientView.topInsetAlpha = 0.3f;
+	_gradientView.topBorderColor = [UIColor colorWithRed:0.558f green:0.599f blue:0.643f alpha:1.0f];
+	_gradientView.bottomBorderColor = [UIColor colorWithRed:0.428f green:0.479f blue:0.520f alpha:1.0f];
 	[self.view addSubview:_gradientView];
 	
 	// Change color button
@@ -66,13 +69,15 @@
 #pragma mark Actions
 
 - (void)changeColor:(id)sender {
-	if ([_gradientView.topColor isEqual:[SSGradientView defaultTopColor]]) {
+	if (_blue) {
 		_gradientView.topColor = [UIColor whiteColor];
 		_gradientView.bottomColor = [UIColor grayColor];
 	} else {
-		_gradientView.topColor = [SSGradientView defaultTopColor];
-		_gradientView.bottomColor = [SSGradientView defaultBottomColor];
-	}	
+		_gradientView.topColor = [UIColor colorWithRed:0.676f green:0.722f blue:0.765f alpha:1.0f];
+		_gradientView.bottomColor = [UIColor colorWithRed:0.514f green:0.568f blue:0.617f alpha:1.0f];
+	}
+	
+	_blue = !_blue;
 }
 
 

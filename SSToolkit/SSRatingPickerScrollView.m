@@ -52,9 +52,6 @@
 		_gradientView.topColor = topColor;
 		_gradientView.bottomColor = [UIColor colorWithRed:0.961f green:0.965f blue:0.973f alpha:1.0f];
 		_gradientView.bottomBorderColor = lineColor;
-		_gradientView.hasTopBorder = NO;
-		_gradientView.hasBottomBorder = YES;
-		_gradientView.showsInsets = NO;	
 		[self addSubview:_gradientView];
 		
 		_ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectZero];

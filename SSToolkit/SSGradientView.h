@@ -31,45 +31,34 @@
 	CGFloat _topInsetAlpha;
 	CGFloat _bottomInsetAlpha;
 	CGFloat _gradientScale;
-	BOOL _hasTopBorder;
-	BOOL _hasBottomBorder;
-	BOOL _showsInsets;
 	
 	CGGradientRef _gradient;
 }
 
 /**
- @brief The top gradient color.
- 
- @see defaultTopColor
+ @brief The top gradient color. The default is <code>nil</code>.
  */
 @property (nonatomic, retain) UIColor *topColor;
 
 /**
- @brief The bottom gradient color.
- 
- @see defaultBottomColor
+ @brief The bottom gradient color. The default is <code>nil</code>.
  */
 @property (nonatomic, retain) UIColor *bottomColor;
 
 /**
- @brief The top border color.
- 
- @see defaultTopBorderColor
+ @brief The top border color. The default is <code>nil</code>.
  */
 @property (nonatomic, retain) UIColor *topBorderColor;
 
 /**
- @brief The bottom border color.
- 
- @see defaultBottomColor
+ @brief The bottom border color. The default is <code>nil</code>.
  */
 @property (nonatomic, retain) UIColor *bottomBorderColor;
 
 /**
  @brief The top border inset alpha.
  
- If the value is less than or equal to <code>0.0</code>, it will not be drawn. The default is <code>0.3</code>.
+ If the value is less than or equal to <code>0.0</code>, it will not be drawn. The default is <code>0.0</code>.
  
  @see defaultTopInsetAlpha
  */
@@ -79,8 +68,6 @@
  @brief The bottom border inset alpha.
  
  If the value is less than or equal to <code>0.0</code>, it will not be drawn. The default is <code>0.0</code>.
- 
- @see defaultBottomInsetAlpha
  */
 @property (nonatomic, assign) CGFloat bottomInsetAlpha;
 
@@ -88,73 +75,7 @@
  @brief The scale of the gradient.
  
  The default is <code>1.0</code>.
- 
- @see defaultGradientScale
  */
 @property (nonatomic, assign) CGFloat gradientScale;
-
-/**
- @brief A Boolean value that determines whether showing the top border is enabled. The default is <code>YES</code>.
- */
-@property (nonatomic, assign) BOOL hasTopBorder;
-
-/**
- @brief A Boolean value that determines whether showing the bottom border is enabled. The default is <code>YES</code>
- */
-@property (nonatomic, assign) BOOL hasBottomBorder;
-
-/**
- @brief A Boolean value that determines whether the border insets are enabled. The default is <code>YES</code>.
- */
-@property (nonatomic, assign) BOOL showsInsets;
-
-/**
- @brief The default top gradient color.
- 
- @return A color with its value set to the default top gradient color.
- */
-+ (UIColor *)defaultTopColor;
-
-/**
- @brief The default bottom gradient color.
- 
- @return A color with its value set to the default bottom gradient color.
- */
-+ (UIColor *)defaultBottomColor;
-
-/**
- @brief The default top border color.
- 
- @return A color with its value set to the default top border color.
- */
-+ (UIColor *)defaultTopBorderColor;
-
-/**
- @brief The default bottom border color.
- 
- @return A color with its value set to the default bottom border color.
- */
-+ (UIColor *)defaultBottomBorderColor;
-
-/**
- @brief The default top inset alpha.
- 
- @return The default top inset alpha.
- */
-+ (CGFloat)defaultTopInsetAlpha;
-
-/**
- @brief The default bottom inset alpha.
- 
- @return The default bottom inset alpha.
- */
-+ (CGFloat)defaultBottomInsetAlpha;
-
-/**
- @brief The default gradient scale.
- 
- @return The default gradient scale.
- */
-+ (CGFloat)defaultGradientScale;
 
 @end
