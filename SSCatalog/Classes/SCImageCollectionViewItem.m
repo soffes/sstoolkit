@@ -48,7 +48,6 @@
 #pragma mark JMImageCacheDelegate
 
 - (void)cache:(JMImageCache *)cache didDownloadImage:(UIImage *)image forURL:(NSString *)url {
-	NSLog(@"url: %@, imageURL: %@", url, _imageURL);
 	if ([url isEqualToString:_imageURL]) {
 		self.imageView.image = image;
 		[self setNeedsDisplay];
