@@ -11,8 +11,13 @@
 
 @implementation SSBadgeTableViewCell
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize badgeView = _badgeView;
 
+
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -21,6 +26,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UITableView
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {

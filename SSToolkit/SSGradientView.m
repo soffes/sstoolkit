@@ -18,6 +18,9 @@
 
 @implementation SSGradientView
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize topColor = _topColor;
 @synthesize bottomColor = _bottomColor;
 @synthesize topBorderColor = _topBorderColor;
@@ -26,6 +29,8 @@
 @synthesize bottomInsetAlpha = _bottomInsetAlpha;
 @synthesize gradientScale = _gradientScale;
 
+
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -37,6 +42,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
@@ -137,6 +143,7 @@
 }
 
 
+#pragma mark -
 #pragma mark Gradient Methods
 
 - (void)_refreshGradient {
@@ -156,6 +163,7 @@
 }
 
 
+#pragma mark -
 #pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

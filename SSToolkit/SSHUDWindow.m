@@ -13,8 +13,19 @@ static SSHUDWindow *kHUDWindow = nil;
 
 @implementation SSHUDWindow
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize hidesVignette = _hidesVignette;
 
+- (void)setHidesVignette:(BOOL)hide {
+	_hidesVignette = hide;
+	self.userInteractionEnabled = !hide;
+	[self setNeedsDisplay];
+}
+
+
+#pragma mark -
 #pragma mark Class Methods
 
 + (SSHUDWindow *)defaultWindow {
@@ -25,6 +36,7 @@ static SSHUDWindow *kHUDWindow = nil;
 }
 
 
+#pragma mark -
 #pragma mark NSObject
 
 - (id)init {
@@ -36,6 +48,7 @@ static SSHUDWindow *kHUDWindow = nil;
 }
 
 
+#pragma mark -
 #pragma mark UIView
 
 - (void)drawRect:(CGRect)rect {
@@ -50,15 +63,6 @@ static SSHUDWindow *kHUDWindow = nil;
 	[image drawInRect:CGRectMake(roundf((screenSize.width - image.size.width) / 2.0f), 
 								 roundf((screenSize.height - image.size.height) / 2.0f), 
 								 image.size.width, image.size.height)];	
-}
-
-
-#pragma mark Setters
-
-- (void)setHidesVignette:(BOOL)hide {
-	_hidesVignette = hide;
-	self.userInteractionEnabled = !hide;
-	[self setNeedsDisplay];
 }
 
 @end

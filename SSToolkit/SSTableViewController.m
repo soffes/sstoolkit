@@ -11,9 +11,14 @@
 
 @implementation SSTableViewController
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize tableView = _tableView;
 @synthesize clearsSelectionOnViewWillAppear = _clearsSelectionOnViewWillAppear;
 
+
+#pragma mark -
 #pragma mark NSObject
 
 - (id)init {
@@ -30,6 +35,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIViewController
 
 - (void)loadView {
@@ -62,6 +68,7 @@
 }
 
 
+#pragma mark -
 #pragma mark SSViewController
 
 - (void)layoutViewsWithOrientation:(UIInterfaceOrientation)orientation {
@@ -70,6 +77,7 @@
 }
 
 
+#pragma mark -
 #pragma mark Initializer
 
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -84,6 +92,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -22,12 +22,69 @@
 
 @implementation SSCollectionView
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize dataSource = _dataSource;
+
+- (void)setDataSource:(id<SSCollectionViewDataSource>)dataSource {
+	_dataSource = dataSource;
+	
+	if (_delegate && _dataSource) {
+		[self reloadData];
+	}
+}
+
+
 @synthesize delegate = _delegate;
+
+- (void)setDelegate:(id<SSCollectionViewDelegate>)delegate {
+	_delegate = delegate;
+	
+	if (_delegate && _dataSource) {
+		[self reloadData];
+	}
+}
+
+
 @synthesize minimumColumnSpacing = _minimumColumnSpacing;
 @synthesize rowSpacing = _rowSpacing;
 @synthesize allowsSelection = _allowsSelection;
 
+- (UIScrollView *)scrollView {
+	return _tableView;
+}
+
+
+- (UIView *)backgroundView {
+	return _tableView.backgroundView;
+}
+
+
+- (void)setBackgroundColor:(UIColor *)color {
+	[super setBackgroundColor:color];
+	_tableView.backgroundColor = color;
+}
+
+
+- (void)setBackgroundView:(UIView *)background {
+	_tableView.backgroundView = background;
+}
+
+
+@synthesize extremitiesStyle = _extremitiesStyle;
+
+- (void)setExtremitiesStyle:(SSCollectionViewExtremitiesStyle)style {
+	if (_extremitiesStyle == style) {
+		return;
+	}
+	
+	_extremitiesStyle = style;
+	[self reloadData];
+}
+
+
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -52,6 +109,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
@@ -82,6 +140,7 @@
 }
 
 
+#pragma mark -
 #pragma mark SSCollectionView
 
 - (void)reloadData {
@@ -212,6 +271,7 @@
 }
 
 
+#pragma mark -
 #pragma mark Private Methods
 
 - (void)_reuseItem:(SSCollectionViewItem *)item {
@@ -300,49 +360,7 @@
 }
 
 
-#pragma mark Getters
-
-- (UIScrollView *)scrollView {
-	return _tableView;
-}
-
-
-- (UIView *)backgroundView {
-	return _tableView.backgroundView;
-}
-
-
-#pragma mark Setters
-
-- (void)setBackgroundColor:(UIColor *)color {
-	[super setBackgroundColor:color];
-	_tableView.backgroundColor = color;
-}
-
-
-- (void)setDataSource:(id<SSCollectionViewDataSource>)dataSource {
-	_dataSource = dataSource;
-	
-	if (_delegate && _dataSource) {
-		[self reloadData];
-	}
-}
-
-
-- (void)setDelegate:(id<SSCollectionViewDelegate>)delegate {
-	_delegate = delegate;
-	
-	if (_delegate && _dataSource) {
-		[self reloadData];
-	}
-}
-
-
-- (void)setBackgroundView:(UIView *)background {
-	_tableView.backgroundView = background;
-}
-
-
+#pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -389,6 +407,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -428,6 +447,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

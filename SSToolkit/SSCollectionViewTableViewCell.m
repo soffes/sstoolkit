@@ -13,11 +13,34 @@
 
 @implementation SSCollectionViewTableViewCell
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize itemSize = _itemSize;
 @synthesize itemSpacing = _itemSpacing;
+
 @synthesize items = _items;
+
+- (void)setItems:(NSArray *)someItems {
+	[_items makeObjectsPerformSelector:@selector(removeFromSuperview)];
+	[_items release];
+	_items = [someItems retain];
+	
+	if (_items == nil) {
+		return;
+	}
+	
+	for (SSCollectionViewItem *item in _items) {
+		[self addSubview:item];
+	}
+	
+	[self setNeedsLayout];
+}
+
 @synthesize collectionView = _collectionView;
 
+
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -27,6 +50,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIView
 
 - (void)layoutSubviews {
@@ -39,6 +63,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UITableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -65,30 +90,12 @@
 }
 
 
+#pragma mark -
 #pragma mark Initializer
 
 - (id)initWithReuseIdentifier:(NSString *)aReuseIdentifier {
 	self = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:aReuseIdentifier];
 	return self;
-}
-
-
-#pragma mark Setters
-
-- (void)setItems:(NSArray *)items {
-	[_items makeObjectsPerformSelector:@selector(removeFromSuperview)];
-	[_items release];
-	_items = [items retain];
-	
-	if (_items == nil) {
-		return;
-	}
-	
-	for (SSCollectionViewItem *item in _items) {
-		[self addSubview:item];
-	}
-	
-	[self setNeedsLayout];
 }
 
 @end

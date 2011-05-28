@@ -17,6 +17,9 @@
 
 @implementation SSRatingPicker
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize numberOfStars = _numberOfStars;
 @synthesize totalNumberOfStars = _totalNumberOfStars;
 @synthesize emptyStarImage = _emptyStarImage;
@@ -25,6 +28,8 @@
 @synthesize starSpacing = _starSpacing;
 @synthesize textLabel = _textLabel;
 
+
+#pragma mark
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -35,6 +40,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIResponder
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -47,6 +53,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)rect {
@@ -128,6 +135,7 @@
 }
 
 
+#pragma mark -
 #pragma mark Private Methods
 
 - (void)_setNumberOfStarsWithTouch:(UITouch *)touch {
@@ -152,6 +160,7 @@
 }
 
 
+#pragma mark -
 #pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

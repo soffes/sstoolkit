@@ -15,6 +15,11 @@ typedef enum {
 	SSCollectionViewScrollPositionBottom = UITableViewScrollPositionBottom
 } SSCollectionViewScrollPosition;
 
+typedef enum {
+	SSCollectionViewExtremitiesStyleFixed = UITableViewStylePlain,
+	SSCollectionViewExtremitiesStyleScrolling = UITableViewStyleGrouped
+} SSCollectionViewExtremitiesStyle;
+
 @protocol SSCollectionViewDelegate;
 @protocol SSCollectionViewDataSource;
 
@@ -37,6 +42,7 @@ typedef enum {
 	id<SSCollectionViewDelegate> _delegate;
 	id<SSCollectionViewDataSource> _dataSource;
 	
+	SSCollectionViewExtremitiesStyle _extremitiesStyle;
 	CGFloat _minimumColumnSpacing;
 	CGFloat _rowSpacing;
 	BOOL _allowsSelection;
@@ -56,6 +62,17 @@ typedef enum {
  @brief The object that acts as the delegate of the receiving collection view.
  */
 @property (nonatomic, assign) id<SSCollectionViewDelegate> delegate;
+
+/**
+ @brief The style of the receiving collection view's headers and footers.
+ 
+ Setting to <code>SSCollectionViewExtremitiesStyleFixed</code> will cause the headers and footer to behave like a
+ <code>UITableView</code> with its style set to <code>UITableViewStylePlain</code>. Setting to
+ <code>SSCollectionViewExtremitiesStyleScrolling</code> will cause the headers and footer to behave like a
+ <code>UITableView</code> with its style set to <code>UITableViewStyleGrouped</code>. The default is
+ <code>SSCollectionViewExtremitiesStyleFixed</code>.
+ */
+@property (nonatomic, assign, readonly) SSCollectionViewExtremitiesStyle extremitiesStyle;
 
 /**
  @brief The minimum column spacing.
@@ -106,8 +123,8 @@ typedef enum {
  
  @param identifier A string identifying the cell object to be reused.
  
- @return A <code>SSCollectionViewItem</code< object with the associated identifier or nil if no such object exists in the
- reusable-item queue.
+ @return A <code>SSCollectionViewItem</code< object with the associated identifier or nil if no such object exists in
+ the reusable-item queue.
  */
 - (SSCollectionViewItem *)dequeueReusableItemWithIdentifier:(NSString *)identifier;
 

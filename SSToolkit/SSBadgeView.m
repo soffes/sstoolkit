@@ -15,6 +15,9 @@
 
 @implementation SSBadgeView
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize text = _text;
 @synthesize textColor = _textColor;
 @synthesize highlightedTextColor = _highlightedTextColor;
@@ -25,6 +28,7 @@
 @synthesize badgeAlignment = _badgeAlignment;
 @synthesize highlighted = _highlighted;
 
+#pragma mark -
 #pragma mark Class Methods
 
 + (UIColor *)defaultBadgeColor {
@@ -32,6 +36,7 @@
 }
 
 
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -45,6 +50,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)rect {
@@ -132,6 +138,7 @@
 }
 
 
+#pragma mark -
 #pragma mark Private Methods
 
 - (CGSize)_textSize {
@@ -139,6 +146,7 @@
 }
 
 
+#pragma mark -
 #pragma mark Setters
 
 - (void)setText:(NSString *)text {
@@ -149,6 +157,7 @@
 }
 
 
+#pragma mark -
 #pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

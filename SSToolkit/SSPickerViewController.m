@@ -10,10 +10,15 @@
 
 @implementation SSPickerViewController
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize selectedKey = _selectedKey;
 @synthesize keys = _keys;
 @synthesize currentIndexPath = _currentIndexPath;
 
+
+#pragma mark -
 #pragma mark NSObject
 
 - (id)init {
@@ -30,6 +35,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIViewController Methods
 
 - (void)viewDidLoad {
@@ -45,6 +51,7 @@
 }
 
 
+#pragma mark -
 #pragma mark SSPickerViewController
 
 // This method should be overridden by a subclass
@@ -60,6 +67,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -69,6 +77,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

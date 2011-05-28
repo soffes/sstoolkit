@@ -15,10 +15,27 @@
 
 @implementation SSIndicatorLabel
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize textLabel = _textLabel;
 @synthesize activityIndicatorView = _activityIndicatorView;
+
 @synthesize loading = _loading;
 
+- (void)setLoading:(BOOL)l {
+	if (_loading == l) {
+		return;
+	}
+	
+	[UIView beginAnimations:@"loading" context:nil];
+	_loading = l;
+	[self layoutSubviews];
+	[UIView commitAnimations];
+}
+
+
+#pragma mark -
 #pragma mark Class Methods
 
 + (CGSize)indicatorSize {
@@ -31,6 +48,7 @@
 }
 
 
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -40,6 +58,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)rect {
@@ -93,6 +112,7 @@
 }
 
 
+#pragma mark -
 #pragma mark Status
 
 - (void)startWithText:(NSString *)text {
@@ -103,20 +123,6 @@
 - (void)completeWithText:(NSString *)text {
 	self.loading = NO;
 	_textLabel.text = text;
-}
-
-
-#pragma mark Custom Setters
-
-- (void)setLoading:(BOOL)l {
-	if (_loading == l) {
-		return;
-	}
-	
-	[UIView beginAnimations:@"loading" context:nil];
-	_loading = l;
-	[self layoutSubviews];
-	[UIView commitAnimations];
 }
 
 @end

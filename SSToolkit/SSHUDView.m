@@ -22,15 +22,47 @@ static CGFloat kIndicatorSize = 40.0;
 
 @implementation SSHUDView
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize textLabel = _textLabel;
+
 @synthesize textLabelHidden = _textLabelHidden;
+
+- (void)setTextLabelHidden:(BOOL)hidden {
+	_textLabelHidden = hidden;
+	_textLabel.hidden = hidden;
+	[self setNeedsLayout];
+}
+
+
 @synthesize activityIndicator = _activityIndicator;
 @synthesize hudSize = _hudSize;
+
 @synthesize loading = _loading;
+
+- (void)setLoading:(BOOL)isLoading {
+	_loading = isLoading;
+	_activityIndicator.alpha = _loading ? 1.0 : 0.0;
+	[self setNeedsDisplay];
+}
+
+
 @synthesize successful = _successful;
 @synthesize completeImage = _completeImage;
 @synthesize failImage = _failImage;
 
+- (BOOL)hidesVignette {
+	return _hudWindow.hidesVignette;
+}
+
+
+- (void)setHidesVignette:(BOOL)hide {
+	_hudWindow.hidesVignette = hide;
+}
+
+
+#pragma mark -
 #pragma mark NSObject
 
 - (id)init {
@@ -50,6 +82,7 @@ static CGFloat kIndicatorSize = 40.0;
 }
 
 
+#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
@@ -103,6 +136,8 @@ static CGFloat kIndicatorSize = 40.0;
 	}
 }
 
+
+#pragma mark -
 #pragma mark HUD
 
 - (id)initWithTitle:(NSString *)aTitle {
@@ -263,34 +298,7 @@ static CGFloat kIndicatorSize = 40.0;
 }
 
 
-#pragma mark Getters
-
-- (BOOL)hidesVignette {
-	return _hudWindow.hidesVignette;
-}
-
-
-#pragma mark Setters
-
-- (void)setLoading:(BOOL)isLoading {
-	_loading = isLoading;
-	_activityIndicator.alpha = _loading ? 1.0 : 0.0;
-	[self setNeedsDisplay];
-}
-
-
-- (void)setTextLabelHidden:(BOOL)hidden {
-	_textLabelHidden = hidden;
-	_textLabel.hidden = hidden;
-	[self setNeedsLayout];
-}
-
-
-- (void)setHidesVignette:(BOOL)hide {
-	_hudWindow.hidesVignette = hide;
-}
-
-
+#pragma mark -
 #pragma mark Private Methods
 
 - (void)_setTransformForCurrentOrientation:(BOOL)animated {

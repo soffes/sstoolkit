@@ -10,6 +10,7 @@
 
 @implementation SSConcurrentOperation
 
+#pragma mark -
 #pragma mark NSObject
 
 - (id)init {
@@ -21,6 +22,7 @@
 }
 
 
+#pragma mark -
 #pragma mark NSOperation
 
 - (BOOL)isConcurrent {
@@ -45,6 +47,7 @@
 }
 
 
+#pragma mark -
 #pragma mark SSConcurrentOperation
 
 - (void)finish {
@@ -57,6 +60,5 @@
     [self didChangeValueForKey:@"isExecuting"];
     [self didChangeValueForKey:@"isFinished"];
 }
-
 
 @end

@@ -11,9 +11,14 @@
 
 @implementation SSTextField
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize textEdgeInsets = _textEdgeInsets;
 @synthesize clearButtonEdgeInsets = _clearButtonEdgeInsets;
 
+
+#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
@@ -25,6 +30,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UITextField
 
 - (CGRect)textRectForBounds:(CGRect)bounds {

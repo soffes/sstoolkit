@@ -10,9 +10,13 @@
 
 @implementation SSLabel
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize verticalTextAlignment = _verticalTextAlignment;
 @synthesize textEdgeInsets = _textEdgeInsets;
 
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -24,6 +28,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)aFrame {
@@ -38,6 +43,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UILabel
 
 - (void)drawTextInRect:(CGRect)rect {
@@ -55,6 +61,7 @@
 }
 
 
+#pragma mark -
 #pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

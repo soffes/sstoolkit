@@ -20,8 +20,10 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 
 @implementation SSSegmentedControl
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize numberOfSegments;
-@synthesize selectedSegmentIndex = _selectedSegmentIndex;
 @synthesize momentary = _momentary;
 @synthesize buttonImage = _buttonImage;
 @synthesize highlightedButtonImage = _highlightedButtonImage;
@@ -34,6 +36,26 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize textShadowOffset = _textShadowOffset;
 @synthesize textEdgeInsets = _textEdgeInsets;
 
+@synthesize selectedSegmentIndex = _selectedSegmentIndex;
+
+- (void)setSelectedSegmentIndex:(NSInteger)index {
+	if (_selectedSegmentIndex == index) {
+		return;
+	}
+	
+	_selectedSegmentIndex = index;
+	[self setNeedsDisplay];
+	[self sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
+
+- (void)setFrame:(CGRect)rect {
+	[super setFrame:rect];
+	[self setNeedsDisplay];
+}
+
+
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -51,6 +73,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
+#pragma mark -
 #pragma mark UIResponder
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -79,6 +102,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
+#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
@@ -237,12 +261,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
-- (void)setFrame:(CGRect)rect {
-	[super setFrame:rect];
-	[self setNeedsDisplay];
-}
-
-
+#pragma mark -
 #pragma mark Initializer
 
 - (id)initWithItems:(NSArray *)items {
@@ -262,6 +281,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
+#pragma mark -
 #pragma mark Segments
 
 - (NSUInteger)numberOfSegments {
@@ -334,19 +354,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
-#pragma mark Setters
-
-- (void)setSelectedSegmentIndex:(NSInteger)index {
-	if (_selectedSegmentIndex == index) {
-		return;
-	}
-	
-	_selectedSegmentIndex = index;
-	[self setNeedsDisplay];
-	[self sendActionsForControlEvents:UIControlEventValueChanged];
-}
-
-
+#pragma mark -
 #pragma mark Private Methods
 
 - (NSMutableDictionary *)_metaForSegmentIndex:(NSUInteger)index {
@@ -382,6 +390,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
+#pragma mark -
 #pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

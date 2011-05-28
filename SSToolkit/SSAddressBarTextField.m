@@ -13,10 +13,27 @@
 
 @implementation SSAddressBarTextField
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize loading = _loading;
+
+- (void)setLoading:(BOOL)isLoading {
+	if (_loading == isLoading) {
+		return;
+	}
+	_loading = isLoading;
+	
+	self.rightView = _loading ? _stopButton : _reloadButton;
+	_textFieldBackgroundView.loading = _loading;
+}
+
+
 @synthesize reloadButton = _reloadButton;
 @synthesize stopButton = _stopButton;
 
+
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -26,6 +43,8 @@
 	[super dealloc];
 }
 
+
+#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)aFrame {
@@ -78,24 +97,12 @@
 }
 
 
+#pragma mark -
 #pragma mark UITextField
 
 - (CGRect)rightViewRectForBounds:(CGRect)bounds {
 	CGSize size = self.frame.size;
 	return CGRectMake(size.width - 24.0f, roundf((size.height - 18.0f) / 2.0f), 16.0f, 18.0f);
-}
-
-
-#pragma mark Setters
-
-- (void)setLoading:(BOOL)isLoading {
-	if (_loading == isLoading) {
-		return;
-	}
-	_loading = isLoading;
-	
-	self.rightView = _loading ? _stopButton : _reloadButton;
-	_textFieldBackgroundView.loading = _loading;
 }
 
 @end

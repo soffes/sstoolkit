@@ -14,6 +14,7 @@
 @synthesize insetColor = _insetColor;
 @synthesize showInset = _showInset;
 
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -23,6 +24,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
@@ -74,6 +76,7 @@
 }
 
 
+#pragma mark -
 #pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

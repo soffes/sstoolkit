@@ -23,6 +23,23 @@ static CGFloat kLoadingBackgroundWidth = 49.0f;
 
 @synthesize loading;
 
+- (void)setLoading:(BOOL)isLoading {
+	if (_loading == isLoading) {
+		return;
+	}
+	_loading = isLoading;
+	
+	if (_loading) {
+		[self _setupAnimation];
+		[_innerView fadeIn];
+	} else {
+		[_innerView fadeOut];
+	}
+	[self setNeedsDisplay];
+}
+
+
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -31,6 +48,7 @@ static CGFloat kLoadingBackgroundWidth = 49.0f;
 }
 
 
+#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)aFrame {
@@ -51,6 +69,7 @@ static CGFloat kLoadingBackgroundWidth = 49.0f;
 }
 
 
+#pragma mark -
 #pragma mark Private Methods
 
 - (void)_setupAnimation {
@@ -68,23 +87,6 @@ static CGFloat kLoadingBackgroundWidth = 49.0f;
 		[translation setTimingFunction:easeInEffect];
 		[_innerView.layer addAnimation:translation forKey:@"translation"];
 	}
-}
-
-#pragma mark Setters
-
-- (void)setLoading:(BOOL)isLoading {
-	if (_loading == isLoading) {
-		return;
-	}
-	_loading = isLoading;
-	
-	if (_loading) {
-		[self _setupAnimation];
-		[_innerView fadeIn];
-	} else {
-		[_innerView fadeOut];
-	}
-	[self setNeedsDisplay];
 }
 
 @end

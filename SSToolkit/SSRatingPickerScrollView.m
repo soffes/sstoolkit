@@ -15,10 +15,14 @@
 
 @implementation SSRatingPickerScrollView
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize ratingPicker = _ratingPicker;
 @synthesize titleTextField = _titleTextField;
 @synthesize reviewTextField = _reviewTextField;
 
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -32,6 +36,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
@@ -101,14 +106,7 @@
 }
 
 
-#pragma mark UIScrollView
-
-//- (void)setContentSize:(CGSize)size {
-//	[super setContentSize:size];
-//	[self setNeedsDisplay];
-//}
-
-
+#pragma mark -
 #pragma mark UITextViewDelegate
 
 - (void)textViewDidChange:(UITextView *)textView {

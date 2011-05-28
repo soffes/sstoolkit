@@ -16,9 +16,31 @@
 
 @implementation SSTextView
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize placeholder = _placeholder;
 @synthesize placeholderColor = _placeholderColor;
 
+- (void)setText:(NSString *)string {
+	[super setText:string];
+	[self _updateShouldDrawPlaceholder];
+}
+
+
+- (void)setPlaceholder:(NSString *)string {
+	if ([string isEqual:_placeholder]) {
+		return;
+	}
+	
+	[_placeholder release];
+	_placeholder = [string retain];
+	
+	[self _updateShouldDrawPlaceholder];
+}
+
+
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -30,6 +52,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
@@ -53,26 +76,7 @@
 }
 
 
-#pragma mark Setters
-
-- (void)setText:(NSString *)string {
-	[super setText:string];
-	[self _updateShouldDrawPlaceholder];
-}
-
-
-- (void)setPlaceholder:(NSString *)string {
-	if ([string isEqual:_placeholder]) {
-		return;
-	}
-	
-	[_placeholder release];
-	_placeholder = [string retain];
-	
-	[self _updateShouldDrawPlaceholder];
-}
-
-
+#pragma mark -
 #pragma mark Private Methods
 
 - (void)_updateShouldDrawPlaceholder {

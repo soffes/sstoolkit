@@ -22,6 +22,9 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 @implementation SSWebView
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize delegate = _delegate;
 @synthesize scrollEnabled = _scrollEnabled;
 @synthesize bounces = _bounces;
@@ -30,6 +33,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 @synthesize lastRequest = _lastRequest;
 @synthesize loadingPage = _loadingPage;
 
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -42,6 +46,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 }
 
 
+#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame {
@@ -63,6 +68,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 }
 
 
+#pragma mark -
 #pragma mark SSWebView Methods
 
 - (void)dismissKeyboard {
@@ -122,6 +128,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 }
 
 
+#pragma mark -
 #pragma mark Convenience Methods
 
 - (void)loadHTMLString:(NSString *)string {
@@ -146,6 +153,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 }
 
 
+#pragma mark -
 #pragma mark Private Methods
 
 + (BOOL)_isBackedByScroller {
@@ -187,6 +195,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 }
 
 
+#pragma mark -
 #pragma mark Getters
 
 - (BOOL)shadowsHidden {
@@ -203,6 +212,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 }
 
 
+#pragma mark -
 #pragma mark Setters
 
 - (void)setOpaque:(BOOL)o {
@@ -346,6 +356,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 }
 
 
+#pragma mark -
 #pragma mark UIWebView Methods
 
 - (BOOL)canGoBack {
@@ -465,6 +476,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 #endif
 
 
+#pragma mark -
 #pragma mark UIWebViewDelegate
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {

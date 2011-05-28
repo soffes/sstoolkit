@@ -11,8 +11,13 @@
 
 @implementation SSCollectionViewController
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize collectionView = _collectionView;
 
+
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -23,6 +28,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -54,6 +60,7 @@
 }
 
 
+#pragma mark -
 #pragma mark SSCollectionViewDataSource
 
 - (NSInteger)collectionView:(SSCollectionView *)aCollectionView numberOfItemsInSection:(NSInteger)section {
@@ -66,6 +73,7 @@
 }
 
 
+#pragma mark -
 #pragma mark SSCollectionViewDelegate
 
 - (CGSize)collectionView:(SSCollectionView *)aCollectionView itemSizeForSection:(NSInteger)section {

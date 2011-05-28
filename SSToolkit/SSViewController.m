@@ -24,12 +24,17 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 
 @implementation SSViewController
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize modalParentViewController = _modalParentViewController;
 @synthesize customModalViewController = _customModalViewController;
 @synthesize dismissCustomModalOnVignetteTap = _dismissCustomModalOnVignetteTap;
 @synthesize contentSizeForViewInCustomModal = _contentSizeForViewInCustomModal;
 @synthesize originOffsetForViewInCustomModal = _originOffsetForViewInCustomModal;
 
+
+#pragma mark -
 #pragma mark NSObject
 
 - (id)init {
@@ -48,6 +53,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 }
 
 
+#pragma mark -
 #pragma mark UIViewController
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
@@ -63,6 +69,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 }
 
 
+#pragma mark -
 #pragma mark Layout
 
 - (void)layoutViews {
@@ -104,6 +111,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 }
 
 
+#pragma mark -
 #pragma mark Modal
 
 - (void)presentCustomModalViewController:(UIViewController<SSModalViewController> *)viewController {
@@ -270,6 +278,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 }
 
 
+#pragma mark -
 #pragma mark Private Methods
 
 - (void)_cleanUpModal {
