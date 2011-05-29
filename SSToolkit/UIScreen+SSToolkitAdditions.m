@@ -11,7 +11,7 @@
 @implementation UIScreen (SSToolkitAdditions)
 
 - (CGRect)currentBounds {
-	return [self boundsForOrientation:[[UIDevice currentDevice] orientation]];
+	return [self boundsForOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
 }
 
 
