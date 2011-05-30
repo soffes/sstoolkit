@@ -302,7 +302,7 @@ static CGFloat kIndicatorSize = 40.0;
 #pragma mark Private Methods
 
 - (void)_setTransformForCurrentOrientation:(BOOL)animated {
-	UIDeviceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+	UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
 	NSInteger degrees = 0;
     
     // Landscape left

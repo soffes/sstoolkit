@@ -74,7 +74,7 @@
 		self.textLabel.hidden = YES;
 		self.detailTextLabel.hidden = YES;
 		self.imageView.hidden = YES;
-		self.selectionStyle = UITableViewCellEditingStyleNone;
+		self.selectionStyle = UITableViewCellSelectionStyleNone;
 		
 		_itemSize = CGSizeZero;
 		_itemSpacing = 0.0f;
