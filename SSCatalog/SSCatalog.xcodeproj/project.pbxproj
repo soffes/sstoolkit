@@ -32,7 +32,6 @@
 		B2B3CEEF1296F78D001BAC94 /* SCSwitchDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B3CEEE1296F78D001BAC94 /* SCSwitchDemoViewController.m */; };
 		B2B3CF561296FA76001BAC94 /* SSToolkit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B2B3CF551296FA76001BAC94 /* SSToolkit.bundle */; };
 		B2B4562F1390649B0060C279 /* JMImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B4562D1390649B0060C279 /* JMImageCache.m */; };
-		B2B456301390649B0060C279 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = B2B4562E1390649B0060C279 /* README.markdown */; };
 		B2D883F01332D645006B3F55 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D883EF1332D645006B3F55 /* QuartzCore.framework */; };
 		B2DAC3C413304D5700091D5F /* Icon-48.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DAC3C113304D5700091D5F /* Icon-48.png */; };
 		B2DAC3C513304D5700091D5F /* SamLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DAC3C213304D5700091D5F /* SamLogo.png */; };
@@ -117,7 +116,6 @@
 		B2B3CF551296FA76001BAC94 /* SSToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SSToolkit.bundle; path = ../Resources/SSToolkit.bundle; sourceTree = SOURCE_ROOT; };
 		B2B4562C1390649B0060C279 /* JMImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMImageCache.h; sourceTree = "<group>"; };
 		B2B4562D1390649B0060C279 /* JMImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMImageCache.m; sourceTree = "<group>"; };
-		B2B4562E1390649B0060C279 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		B2D883EF1332D645006B3F55 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = iphoneos4.0/System/Library/Frameworks/QuartzCore.framework; sourceTree = "<group>"; };
 		B2DAC3C113304D5700091D5F /* Icon-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-48.png"; sourceTree = "<group>"; };
 		B2DAC3C213304D5700091D5F /* SamLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SamLogo.png; sourceTree = "<group>"; };
@@ -307,7 +305,6 @@
 			children = (
 				B2B4562C1390649B0060C279 /* JMImageCache.h */,
 				B2B4562D1390649B0060C279 /* JMImageCache.m */,
-				B2B4562E1390649B0060C279 /* README.markdown */,
 			);
 			path = JMImageCache;
 			sourceTree = "<group>";
@@ -401,7 +398,6 @@
 				B2DAC3C413304D5700091D5F /* Icon-48.png in Resources */,
 				B2DAC3C513304D5700091D5F /* SamLogo.png in Resources */,
 				B2DAC3C613304D5700091D5F /* SamLogo@2x.png in Resources */,
-				B2B456301390649B0060C279 /* README.markdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
