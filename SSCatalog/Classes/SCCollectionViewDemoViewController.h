@@ -10,9 +10,6 @@
 
 @interface SCCollectionViewDemoViewController : SSCollectionViewController {
 
-@private
-	
-	NSCache *_headerCache;
 }
 
 + (NSString *)title;

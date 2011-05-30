@@ -11,6 +11,9 @@
 
 @implementation SCImageCollectionViewItem
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize imageURL = _imageURL;
 
 - (void)setImageURL:(NSString *)url {
@@ -21,6 +24,7 @@
 }
 
 
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -29,6 +33,7 @@
 }
 
 
+#pragma mark -
 #pragma mark SSCollectionViewItem
 
 - (id)initWithStyle:(SSCollectionViewItemStyle)style reuseIdentifier:(NSString *)aReuseIdentifier {
@@ -45,10 +50,10 @@
 }
 
 
+#pragma mark -
 #pragma mark JMImageCacheDelegate
 
 - (void)cache:(JMImageCache *)cache didDownloadImage:(UIImage *)image forURL:(NSString *)url {
-	NSLog(@"url: %@, imageURL: %@", url, _imageURL);
 	if ([url isEqualToString:_imageURL]) {
 		self.imageView.image = image;
 		[self setNeedsDisplay];

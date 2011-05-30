@@ -11,8 +11,13 @@
 
 @implementation SCPickerDemoViewController
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize selectedAbbreviation = _selectedAbbreviation;
 
+
+#pragma mark -
 #pragma mark Class Methods
 
 + (NSString *)title {
@@ -20,6 +25,7 @@
 }
 
 
+#pragma mark -
 #pragma mark NSObject
 
 - (id)init {
@@ -33,6 +39,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIViewController
 
 - (void)viewDidLoad {
@@ -56,6 +63,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -84,6 +92,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

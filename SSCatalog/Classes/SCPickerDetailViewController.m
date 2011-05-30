@@ -11,6 +11,7 @@
 
 @implementation SCPickerDetailViewController
 
+#pragma mark -
 #pragma mark UIViewController
 
 - (void)viewDidLoad {
@@ -19,6 +20,7 @@
 }
 
 
+#pragma mark -
 #pragma mark SSPickerViewController
 
 - (void)loadKeys {
@@ -39,6 +41,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

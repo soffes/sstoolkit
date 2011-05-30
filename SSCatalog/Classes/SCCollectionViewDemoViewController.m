@@ -11,6 +11,7 @@
 
 @implementation SCCollectionViewDemoViewController
 
+#pragma mark -
 #pragma mark Class Methods
 
 + (NSString *)title {
@@ -18,20 +19,14 @@
 }
 
 
-#pragma mark NSObject
-
-- (void)dealloc {
-	[_headerCache release];
-	[super dealloc];
-}
-
-
+#pragma mark -
 #pragma mark UIViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.title = [[self class] title];
-	self.collectionView.minimumColumnSpacing = 20.0f;
+	
+	self.collectionView.extremitiesStyle = SSCollectionViewExtremitiesStyleScrolling;
 }
 
 
@@ -42,13 +37,16 @@
 	return YES;
 }
 
+
+#pragma mark -
 #pragma mark SSCollectionViewDataSource
 
-- (NSInteger)numberOfSectionsInCollectionView:(SSCollectionView *)aCollectionView {
+- (NSUInteger)numberOfSectionsInCollectionView:(SSCollectionView *)aCollectionView {
 	return 10;
 }
 
-- (NSInteger)collectionView:(SSCollectionView *)aCollectionView numberOfItemsInSection:(NSInteger)section {
+
+- (NSUInteger)collectionView:(SSCollectionView *)aCollectionView numberOfItemsInSection:(NSUInteger)section {
 	return 50;
 }
 
@@ -69,32 +67,22 @@
 }
 
 
-- (UIView *)collectionView:(SSCollectionView *)aCollectionView viewForHeaderInSection:(NSInteger)section {
-	if (!_headerCache) {
-		_headerCache = [[NSCache alloc] init];
-	}
-	
-	NSNumber *key = [NSNumber numberWithInteger:section];
-	SSLabel *header = [_headerCache objectForKey:key];
-	if (!header) {
-		header = [[SSLabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
-		header.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		header.text = [NSString stringWithFormat:@"Section %i", section + 1];
-		header.textEdgeInsets = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 10.0f);
-		header.shadowColor = [UIColor whiteColor];
-		header.shadowOffset = CGSizeMake(0.0f, 1.0f);
-		header.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.8f];
-		
-		[_headerCache setObject:header forKey:key];
-		[header autorelease];
-	}
-	return header;
+- (UIView *)collectionView:(SSCollectionView *)aCollectionView viewForHeaderInSection:(NSUInteger)section {
+	SSLabel *header = [[SSLabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 40.0f)];
+	header.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	header.text = [NSString stringWithFormat:@"Section %i", section + 1];
+	header.textEdgeInsets = UIEdgeInsetsMake(0.0f, 19.0f, 0.0f, 19.0f);
+	header.shadowColor = [UIColor whiteColor];
+	header.shadowOffset = CGSizeMake(0.0f, 1.0f);
+	header.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.8f];
+	return [header autorelease];
 }
 
 
+#pragma mark -
 #pragma mark SSCollectionViewDelegate
 
-- (CGSize)collectionView:(SSCollectionView *)aCollectionView itemSizeForSection:(NSInteger)section {
+- (CGSize)collectionView:(SSCollectionView *)aCollectionView itemSizeForSection:(NSUInteger)section {
 	return CGSizeMake(80.0f, 80.0f);
 }
 
@@ -109,7 +97,7 @@
 }
 
 
-- (CGFloat)collectionView:(SSCollectionView *)aCollectionView heightForHeaderInSection:(NSInteger)section {
+- (CGFloat)collectionView:(SSCollectionView *)aCollectionView heightForHeaderInSection:(NSUInteger)section {
 	return 40.0f;
 }
 

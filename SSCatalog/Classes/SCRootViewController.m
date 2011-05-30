@@ -19,6 +19,7 @@ static NSString *const kClassesKey =  @"classes";
 
 @implementation SCRootViewController
 
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -27,6 +28,7 @@ static NSString *const kClassesKey =  @"classes";
 }
 
 
+#pragma mark -
 #pragma mark UIViewController
 
 - (void)viewDidLoad {
@@ -75,6 +77,7 @@ static NSString *const kClassesKey =  @"classes";
 }
 
 
+#pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -109,6 +112,7 @@ static NSString *const kClassesKey =  @"classes";
 }
 
 
+#pragma mark -
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

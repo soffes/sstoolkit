@@ -10,6 +10,7 @@
 
 @implementation SCAddressBarDemoViewController
 
+#pragma mark -
 #pragma mark Class Methods
 
 + (NSString *)title {
@@ -17,6 +18,7 @@
 }
 
 
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -29,6 +31,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIViewController
 
 - (void)viewDidLoad {
@@ -82,6 +85,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UITextFieldDelegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -112,6 +116,7 @@
 }
 
 
+#pragma mark -
 #pragma mark SSWebViewDelegate
 
 - (void)webViewDidStartLoadingPage:(SSWebView *)aWebView {

@@ -1,5 +1,5 @@
 //
-//  SSCollectionViewTableViewCell.h
+//  SSCollectionViewItemTableViewCell.h
 //  SSToolkit
 //
 //  Created by Sam Soffes on 3/10/11.
@@ -8,7 +8,7 @@
 
 @class SSCollectionView;
 
-@interface SSCollectionViewTableViewCell : UITableViewCell {
+@interface SSCollectionViewItemTableViewCell : UITableViewCell {
 
 @private
 	

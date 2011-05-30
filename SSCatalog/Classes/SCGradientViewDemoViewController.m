@@ -11,6 +11,7 @@
 
 @implementation SCGradientViewDemoViewController
 
+#pragma mark -
 #pragma mark Class Methods
 
 + (NSString *)title {
@@ -18,6 +19,7 @@
 }
 
 
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -26,6 +28,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIViewController
 
 - (void)viewDidLoad {
@@ -70,6 +73,7 @@
 }
 
 
+#pragma mark -
 #pragma mark Actions
 
 - (void)changeColor:(id)sender {

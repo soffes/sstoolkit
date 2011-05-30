@@ -11,9 +11,14 @@
 
 @implementation SCAppDelegate
 
+#pragma mark -
+#pragma mark Accessors
+
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
 
+
+#pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
@@ -23,6 +28,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    

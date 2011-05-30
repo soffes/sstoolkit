@@ -11,6 +11,7 @@
 
 @implementation SCIndicatorLabelDemoViewController
 
+#pragma mark -
 #pragma mark Class Methods
 
 + (NSString *)title {
@@ -18,6 +19,7 @@
 }
 
 
+#pragma mark -
 #pragma mark UIViewController
 
 - (void)viewDidLoad {
@@ -63,6 +65,7 @@
 }
 
 
+#pragma mark -
 #pragma mark Actions
 
 - (void)start:(id)sender {

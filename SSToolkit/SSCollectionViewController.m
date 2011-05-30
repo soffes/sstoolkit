@@ -63,7 +63,7 @@
 #pragma mark -
 #pragma mark SSCollectionViewDataSource
 
-- (NSInteger)collectionView:(SSCollectionView *)aCollectionView numberOfItemsInSection:(NSInteger)section {
+- (NSUInteger)collectionView:(SSCollectionView *)aCollectionView numberOfItemsInSection:(NSUInteger)section {
 	return 0;
 }
 
@@ -76,7 +76,7 @@
 #pragma mark -
 #pragma mark SSCollectionViewDelegate
 
-- (CGSize)collectionView:(SSCollectionView *)aCollectionView itemSizeForSection:(NSInteger)section {
+- (CGSize)collectionView:(SSCollectionView *)aCollectionView itemSizeForSection:(NSUInteger)section {
 	return CGSizeZero;
 }
 

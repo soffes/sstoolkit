@@ -10,14 +10,41 @@
 #import "SSCollectionViewInternal.h"
 #import "SSCollectionViewItem.h"
 #import "SSCollectionViewItemInternal.h"
-#import "SSCollectionViewTableViewCell.h"
+#import "SSCollectionViewItemTableViewCell.h"
+#import "SSCollectionViewExtremityTableViewCell.h"
 #import "SSDrawingUtilities.h"
 #import "UIView+SSToolkitAdditions.h"
 
+typedef enum {
+	SSCollectionViewCellTypeRow,
+	SSCollectionViewCellTypeHeader,
+	SSCollectionViewCellTypeFooter
+} SSCollectionViewCellType;
+
+static NSString *kSSCollectionViewSectionNumberOfItemsKey = @"SSCollectionViewSectionNumberOfItems";
+static NSString *kSSCollectionViewSectionNumberOfRowsKey = @"SSCollectionViewSectionNumberOfRows";
+static NSString *kSSCollectionViewSectionHeaderViewKey = @"SSCollectionViewSectionHeaderView";
+static NSString *kSSCollectionViewSectionFooterViewKey = @"SSCollectionViewSectionFooterView";
+static NSString *kSSCollectionViewSectionHeaderHeightKey = @"SSCollectionViewSectionHeaderHeight";
+static NSString *kSSCollectionViewSectionFooterHeightKey = @"SSCollectionViewSectionFooterHeight";
+static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSectionItemSize";
+
 @interface SSCollectionView (PrivateMethods)
-- (CGSize)_itemSizeForSection:(NSInteger)section;
+- (void)_reuseItem:(SSCollectionViewItem *)item;
+- (void)_reuseItems:(NSArray *)items;
+
+- (CGSize)_itemSizeForSection:(NSUInteger)section;
+- (NSUInteger)_numberOfItemsPerRowForSection:(NSUInteger)section;
+- (NSUInteger)_numberOfRowsInSection:(NSUInteger)section;
+
 - (NSArray *)_itemsForRowIndexPath:(NSIndexPath *)rowIndexPath;
 - (NSIndexPath *)_cellIndexPathFromItemIndexPath:(NSIndexPath *)rowIndexPath;
+- (SSCollectionViewCellType)_cellTypeForRowIndexPath:(NSIndexPath *)indexPath;
+- (UIView *)_extremityViewForSection:(NSUInteger)section type:(SSCollectionViewCellType)type;
+
+- (NSMutableDictionary *)_sectionInfoForIndex:(NSUInteger)section;
+- (id)_sectionInfoItemForKey:(NSString *)key section:(NSUInteger)section;
+- (void)_setSectionInfoItem:(id)object forKey:(NSString *)key section:(NSUInteger)section;
 @end
 
 @implementation SSCollectionView
@@ -103,7 +130,9 @@
 	_tableView.delegate = nil;
 	[_tableView release];
 	
+	[_sectionCache removeAllObjects];
 	[_sectionCache release];
+	_sectionCache = nil;
 	
 	[super dealloc];
 }
@@ -120,8 +149,9 @@
 		_minimumColumnSpacing = 10.0f;
 		_rowSpacing = 20.0f;
 		_allowsSelection = YES;
-		_reuseableItems = [[NSMutableDictionary alloc] init];
 		_visibleItems = [[NSMutableSet alloc] init];
+		_reuseableItems = [[NSCache alloc] init];
+		_sectionCache = [[NSCache alloc] init];
 		
 		_tableView = [[UITableView alloc] initWithFrame:CGRectSetZeroOrigin(frame)];
 		_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -144,8 +174,7 @@
 #pragma mark SSCollectionView
 
 - (void)reloadData {
-	[_sectionCache release];
-	_sectionCache = [[NSMutableDictionary alloc] init];
+	[_sectionCache removeAllObjects];
 	[_tableView reloadData];
 }
 
@@ -190,10 +219,12 @@
 		[self.delegate collectionView:self willSelectItemAtIndexPath:indexPath];
 	}
 	
+	// Select
 	SSCollectionViewItem *item = [self itemPathForIndex:indexPath];
 	[item setHighlighted:NO animated:NO];
 	[item setSelected:YES animated:YES];
 	
+	// Scroll to position
 	if (scrollPosition == SSCollectionViewScrollPositionTop || scrollPosition == SSCollectionViewScrollPositionMiddle ||
 		scrollPosition == SSCollectionViewScrollPositionBottom) {
 		[self scrollToItemAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
@@ -212,6 +243,7 @@
 		[self.delegate collectionView:self willDeselectItemAtIndexPath:indexPath];
 	}
 	
+	// Deselect
 	SSCollectionViewItem *item = [self itemPathForIndex:indexPath];
 	[item setHighlighted:NO animated:NO];
 	[item setSelected:NO animated:YES];
@@ -243,31 +275,40 @@
 }
 
 
-- (NSInteger)numberOfSections {
-	return [_tableView numberOfSections];
-}
-
-
-- (NSInteger)numberOfItemsInSection:(NSInteger)section {
-	if ([_dataSource respondsToSelector:@selector(collectionView:numberOfItemsInSection:)] == NO) {
-		return 0;
+- (NSUInteger)numberOfSections {
+	if ([_dataSource respondsToSelector:@selector(numberOfSectionsInCollectionView:)]) {
+		return [_dataSource numberOfSectionsInCollectionView:self];
 	}
-	return [_dataSource collectionView:self numberOfItemsInSection:section];
+	
+	return 1;
 }
 
 
-- (CGRect)rectForSection:(NSInteger)section {
-	return [_tableView rectForSection:section];
+- (NSUInteger)numberOfItemsInSection:(NSUInteger)section {
+	NSNumber *items = [self _sectionInfoItemForKey:kSSCollectionViewSectionNumberOfItemsKey section:section];
+	if (!items) {
+		if ([_dataSource respondsToSelector:@selector(collectionView:numberOfItemsInSection:)] == NO) {
+			return 0;
+		}
+		items = [NSNumber numberWithUnsignedInteger:[_dataSource collectionView:self numberOfItemsInSection:section]];
+		[self _setSectionInfoItem:items forKey:kSSCollectionViewSectionNumberOfItemsKey section:section];
+	}
+	return [items unsignedIntegerValue];
 }
 
 
-- (CGRect)rectForHeaderInSection:(NSInteger)section {
-	return [_tableView rectForSection:section];
+- (CGRect)rectForSection:(NSUInteger)section {
+	return [_tableView rectForSection:(NSInteger)section];
 }
 
 
-- (CGRect)rectForFooterInSection:(NSInteger)section {
-	return [_tableView rectForFooterInSection:section];
+- (CGRect)rectForHeaderInSection:(NSUInteger)section {
+	return [_tableView rectForSection:(NSInteger)section];
+}
+
+
+- (CGRect)rectForFooterInSection:(NSUInteger)section {
+	return [_tableView rectForFooterInSection:(NSInteger)section];
 }
 
 
@@ -298,35 +339,79 @@
 }
 
 
-- (CGSize)_itemSizeForSection:(NSInteger)section {
-	NSNumber *key = [NSNumber numberWithInteger:section];
-	NSValue *value = [_sectionCache objectForKey:key];
-	if (value) {
-		return [value CGSizeValue];
+- (CGSize)_itemSizeForSection:(NSUInteger)section {
+	NSValue *size = [self _sectionInfoItemForKey:kSSCollectionViewSectionItemSizeKey section:section];
+	if (size) {
+		return [size CGSizeValue];
 	}
 	
 	if ([_delegate respondsToSelector:@selector(collectionView:itemSizeForSection:)] == NO) {
 		[[NSException exceptionWithName:kSSCollectionViewMissingItemSizeExceptionName reason:kSSCollectionViewMissingItemSizeExceptionReason userInfo:nil] raise];
 		return CGSizeZero;
-	}	
-	CGSize size = [_delegate collectionView:self itemSizeForSection:section];
-	[_sectionCache setObject:[NSValue valueWithCGSize:size] forKey:key];
-	return size;
+	}
+	
+	CGSize itemSize = [_delegate collectionView:self itemSizeForSection:section];
+	[self _setSectionInfoItem:[NSValue valueWithCGSize:itemSize] forKey:kSSCollectionViewSectionItemSizeKey section:section];
+	
+	return itemSize;
+}
+
+
+- (NSUInteger)_numberOfItemsPerRowForSection:(NSUInteger)section {
+	CGSize itemSize = [self _itemSizeForSection:section];
+	return (NSUInteger)floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
+}
+
+
+- (NSUInteger)_numberOfRowsInSection:(NSUInteger)section {
+	NSUInteger totalItems = [self numberOfItemsInSection:section];
+	NSUInteger itemsPerRow = [self _numberOfItemsPerRowForSection:section];
+	
+	if (itemsPerRow == 0) {
+		return 0;
+	}
+	
+	NSUInteger rows = (NSUInteger)ceilf(totalItems / itemsPerRow);
+	
+	// Check for headers and footers
+	if ([self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:section]) {
+		rows++;
+	}
+	
+	if ([self _sectionInfoItemForKey:kSSCollectionViewSectionFooterViewKey section:section]) {
+		rows++;
+	}
+	
+	return rows;
+}
+
+
+- (CGFloat)_itemSpacingForSection:(NSUInteger)section {
+	CGSize itemSize = [self _itemSizeForSection:section];
+	NSUInteger itemsPerRow = [self _numberOfItemsPerRowForSection:section];
+	return roundf((self.frame.size.width - (itemSize.width * (CGFloat)itemsPerRow)) / (itemsPerRow + 1));
 }
 
 
 - (NSArray *)_itemsForRowIndexPath:(NSIndexPath *)rowIndexPath {
-	NSInteger totalItems = [self numberOfItemsInSection:(NSInteger)rowIndexPath.section];
-	CGSize itemSize = [self _itemSizeForSection:(NSInteger)rowIndexPath.section];
-	NSInteger itemsPerRow = (NSInteger)floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
+	NSUInteger totalItems = [self numberOfItemsInSection:rowIndexPath.section];
+	NSUInteger itemsPerRow = [self _numberOfItemsPerRowForSection:rowIndexPath.section];
 	
-	NSInteger startIndex = itemsPerRow * (NSInteger)rowIndexPath.row;
-	NSInteger endIndex = (NSInteger)fmin(totalItems, startIndex + itemsPerRow);
+	NSUInteger row = (NSUInteger)rowIndexPath.row;
 	
-	NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:(NSUInteger)(endIndex - startIndex)];
+	// Check for header
+	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling &&
+		[self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:rowIndexPath.section]) {
+		row--;
+	}
 	
-	for (NSInteger i = startIndex; i < endIndex; i++) {
-		NSIndexPath *itemIndexPath = [NSIndexPath indexPathForRow:(NSUInteger)i inSection:rowIndexPath.section];
+	NSUInteger startIndex = itemsPerRow * row;
+	NSUInteger endIndex = (NSUInteger)fmin(totalItems, startIndex + itemsPerRow);
+	
+	NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:endIndex - startIndex];
+	
+	for (NSUInteger i = startIndex; i < endIndex; i++) {
+		NSIndexPath *itemIndexPath = [NSIndexPath indexPathForRow:i inSection:rowIndexPath.section];
 		SSCollectionViewItem *item = [_dataSource collectionView:self itemForIndexPath:itemIndexPath];
 		if (item == nil) {
 			NSException *exception = [NSException exceptionWithName:kSSCollectionViewNilItemExceptionName 
@@ -335,7 +420,7 @@
 			return nil;
 		}
 		
-		item.tag = i;
+		item.tag = (NSInteger)i;
 		item.indexPath = itemIndexPath;
 		item.collectionView = self;
 		[_visibleItems addObject:item];
@@ -347,8 +432,7 @@
 
 
 - (NSIndexPath *)_cellIndexPathFromItemIndexPath:(NSIndexPath *)rowIndexPath {
-	CGSize itemSize = [self _itemSizeForSection:(NSInteger)rowIndexPath.section];
-	NSUInteger itemsPerRow = (NSUInteger)floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
+	NSUInteger itemsPerRow = [self _numberOfItemsPerRowForSection:rowIndexPath.section];
 	
 	// Avoid division by zero
 	if (itemsPerRow == 0) {
@@ -360,48 +444,113 @@
 }
 
 
+- (SSCollectionViewCellType)_cellTypeForRowIndexPath:(NSIndexPath *)indexPath {
+	// If extremity style is fixed, everything is a row
+	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleFixed) {
+		return SSCollectionViewCellTypeRow;
+	}
+	
+	// Check for header
+	if (indexPath.row == 0 && [self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:indexPath.section]) {
+		return SSCollectionViewCellTypeHeader;
+	}
+
+	// Check for footer
+	BOOL hasFooter = ([self _sectionInfoItemForKey:kSSCollectionViewSectionFooterViewKey section:indexPath.section] != nil);
+	if (hasFooter && indexPath.row == [self _numberOfRowsInSection:indexPath.section] - 1) {
+		return SSCollectionViewCellTypeFooter;
+	}
+	
+	return SSCollectionViewCellTypeRow;
+}
+
+
+- (UIView *)_extremityViewForSection:(NSUInteger)section type:(SSCollectionViewCellType)type {
+	// Note: It might be good for this method to check if the cache has been set and hit the delegate if not. For now,
+	// we are relying on UITableView to hit the delegate in the correct order.
+	
+	// Header
+	if (type == SSCollectionViewCellTypeHeader) {
+		return [self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:section];
+	}
+	
+	// Footer
+	else if (type == SSCollectionViewCellTypeFooter) {
+		return [self _sectionInfoItemForKey:kSSCollectionViewSectionFooterViewKey section:section];
+	}
+	
+	return nil;
+}
+
+
+- (NSMutableDictionary *)_sectionInfoForIndex:(NSUInteger)section {
+	NSNumber *sectionKey = [NSNumber numberWithUnsignedInteger:section];
+	NSMutableDictionary *dictionary = [_sectionCache objectForKey:sectionKey];
+	if (dictionary) {
+		return dictionary;
+	}
+	
+	dictionary = [[NSMutableDictionary alloc] init];
+	[_sectionCache setObject:dictionary forKey:sectionKey];
+	[dictionary release];
+	
+	return dictionary;
+}
+
+
+- (id)_sectionInfoItemForKey:(NSString *)key section:(NSUInteger)section {
+	NSDictionary *dictionary = [self _sectionInfoForIndex:section];
+	return [dictionary objectForKey:key];
+}
+
+
+- (void)_setSectionInfoItem:(id)object forKey:(NSString *)key section:(NSUInteger)section {
+	NSMutableDictionary *dictionary = [self _sectionInfoForIndex:section];
+	[dictionary setObject:object forKey:key];
+}
+
+
 #pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	if ([_dataSource respondsToSelector:@selector(numberOfSectionsInCollectionView:)]) {
-		return [_dataSource numberOfSectionsInCollectionView:self];
-	}
-	
-	return 1;
+	return (NSInteger)[self numberOfSections];
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	NSInteger totalItems = [self numberOfItemsInSection:section];
-	CGSize itemSize = [self _itemSizeForSection:section];
-	CGFloat itemsPerRow = floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
-	
-	if (itemsPerRow == 0.0f) {
-		return 0;
-	}
-
-	NSInteger rows = (NSInteger)ceilf((CGFloat)totalItems / itemsPerRow);
-	return rows;
+	return (NSInteger)[self _numberOfRowsInSection:(NSUInteger)section];
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	static NSString *cellIdentifier = @"SSCollectionViewTableViewCellIdentifier";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)rowIndexPath {
+	static NSString *itemCellIdentifier = @"SSCollectionViewItemTableViewCellIdentifier";
+	static NSString *extremityCellIdentifier = @"SSCollectionViewExtremityTableViewCellIdentifier";
 	
-	SSCollectionViewTableViewCell *cell = (SSCollectionViewTableViewCell *)[_tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-	if (!cell) {
-		cell = [[[SSCollectionViewTableViewCell alloc] initWithReuseIdentifier:cellIdentifier] autorelease];
+	SSCollectionViewCellType cellType = [self _cellTypeForRowIndexPath:rowIndexPath];
+	
+	// Extremities
+	if (cellType != SSCollectionViewCellTypeRow) {
+		SSCollectionViewExtremityTableViewCell *cell = (SSCollectionViewExtremityTableViewCell *)[_tableView dequeueReusableCellWithIdentifier:extremityCellIdentifier];
+		if (!cell) {
+			cell = [[[SSCollectionViewExtremityTableViewCell alloc] initWithReuseIdentifier:extremityCellIdentifier] autorelease];
+		}
+		
+		cell.extrimityView = [self _extremityViewForSection:rowIndexPath.section type:cellType];
+		
+		return cell;
 	}
 	
-	CGSize itemSize = [self _itemSizeForSection:(NSInteger)indexPath.section];
-	CGFloat itemsPerRow = floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
-	CGFloat itemSpacing = roundf((self.frame.size.width - (itemSize.width * itemsPerRow)) / (itemsPerRow + 1));
+	// Normal row	
+	SSCollectionViewItemTableViewCell *cell = (SSCollectionViewItemTableViewCell *)[_tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
+	if (!cell) {
+		cell = [[[SSCollectionViewItemTableViewCell alloc] initWithReuseIdentifier:itemCellIdentifier] autorelease];
+		cell.collectionView = self;
+	}
 	
-	cell.itemSize = itemSize;
-	cell.itemSpacing = itemSpacing;
-	cell.items = [self _itemsForRowIndexPath:indexPath];
-	cell.collectionView = self;
+	cell.itemSize = [self _itemSizeForSection:rowIndexPath.section];
+	cell.itemSpacing = [self _itemSpacingForSection:rowIndexPath.section];
+	cell.items = [self _itemsForRowIndexPath:rowIndexPath];
 	
 	return cell;
 }
@@ -410,39 +559,111 @@
 #pragma mark -
 #pragma mark UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return [self _itemSizeForSection:(NSInteger)indexPath.section].height + _rowSpacing;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)rowIndexPath {
+	// If scrolling extremity style, provide the height for the extermity
+	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
+		SSCollectionViewCellType cellType = [self _cellTypeForRowIndexPath:rowIndexPath];
+		
+		// Header
+		if (cellType == SSCollectionViewCellTypeHeader) {
+			return [[self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderHeightKey section:rowIndexPath.section] floatValue];
+		}
+		
+		// Footer
+		else if (cellType == SSCollectionViewCellTypeFooter) {
+			return [[self _sectionInfoItemForKey:kSSCollectionViewSectionFooterHeightKey section:rowIndexPath.section] floatValue];
+		}
+	}
+
+	// Row
+	return [self _itemSizeForSection:rowIndexPath.section].height + _rowSpacing;
 }
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-	if ([_delegate respondsToSelector:@selector(collectionView:viewForHeaderInSection:)]) {
-		return [_delegate collectionView:self viewForHeaderInSection:section];
+	// If scrolling extremity style, don't use table view's header since we will draw it in a cell
+	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
+		// Hit delegate and cache result for use later
+		if ([_delegate respondsToSelector:@selector(collectionView:viewForHeaderInSection:)]) {
+			UIView *view = [_delegate collectionView:self viewForHeaderInSection:(NSUInteger)section];
+			[self _setSectionInfoItem:view forKey:kSSCollectionViewSectionHeaderViewKey section:(NSUInteger)section];
+		}
+		
+		return nil;
 	}
+	
+	// If the collection view's delegate provides a header, forward it to the table view
+	if ([_delegate respondsToSelector:@selector(collectionView:viewForHeaderInSection:)]) {
+		return [_delegate collectionView:self viewForHeaderInSection:(NSUInteger)section];
+	}
+	
+	// Default to none
 	return nil;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-	if ([_delegate respondsToSelector:@selector(collectionView:heightForHeaderInSection:)]) {
-		return [_delegate collectionView:self heightForHeaderInSection:section];
+	// If scrolling extremity style, don't use table view's header since we will draw it in a cell
+	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
+		
+		// Hit delegate and cache result for use later
+		if ([_delegate respondsToSelector:@selector(collectionView:heightForHeaderInSection:)]) {
+			CGFloat height = [_delegate collectionView:self heightForHeaderInSection:(NSUInteger)section];
+			[self _setSectionInfoItem:[NSNumber numberWithFloat:height] forKey:kSSCollectionViewSectionHeaderHeightKey section:(NSUInteger)section];
+		}
+		return 0.0f;
 	}
+	
+	// If the collection view's delegate provides a header height, forward it to the table view
+	if ([_delegate respondsToSelector:@selector(collectionView:heightForHeaderInSection:)]) {
+		return [_delegate collectionView:self heightForHeaderInSection:(NSUInteger)section];
+	}
+	
+	// Default to none
 	return 0.0f;
 }
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-	if ([_delegate respondsToSelector:@selector(collectionView:viewForFooterInSection:)]) {
-		return [_delegate collectionView:self viewForFooterInSection:section];
+	// If scrolling extremity style, don't use table view's footer since we will draw it in a cell
+	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
+		
+		// Hit delegate and cache result for use later
+		if ([_delegate respondsToSelector:@selector(collectionView:viewForFooterInSection:)]) {
+			UIView *view = [_delegate collectionView:self viewForFooterInSection:(NSUInteger)section];
+			[self _setSectionInfoItem:view forKey:kSSCollectionViewSectionFooterViewKey section:(NSUInteger)section];
+		}
+		return nil;
 	}
+	
+	// If the collection view's delegate provides a footer, forward it to the table view
+	if ([_delegate respondsToSelector:@selector(collectionView:viewForFooterInSection:)]) {
+		return [_delegate collectionView:self viewForFooterInSection:(NSUInteger)section];
+	}
+	
+	// Default to none
 	return nil;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-	if ([_delegate respondsToSelector:@selector(collectionView:heightForFooterInSection:)]) {
-		return [_delegate collectionView:self heightForFooterInSection:section];
+	// If scrolling extremity style, don't use table view's footer since we will draw it in a cell
+	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
+		
+		// Hit delegate and cache result for use later
+		if ([_delegate respondsToSelector:@selector(collectionView:heightForFooterInSection:)]) {
+			CGFloat height = [_delegate collectionView:self heightForFooterInSection:(NSUInteger)section];
+			[self _setSectionInfoItem:[NSNumber numberWithFloat:height] forKey:kSSCollectionViewSectionFooterHeightKey section:(NSUInteger)section];
+		}
+		return 0.0f;
 	}
+	
+	// If the collection view's delegate provides a footer height, forward it to the table view
+	if ([_delegate respondsToSelector:@selector(collectionView:heightForFooterInSection:)]) {
+		return [_delegate collectionView:self heightForFooterInSection:(NSUInteger)section];
+	}
+	
+	// Default to none
 	return 0.0f;
 }
 
@@ -450,60 +671,60 @@
 #pragma mark -
 #pragma mark UIScrollViewDelegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+- (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
 	if ([_delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
-		[_delegate scrollViewDidScroll:scrollView];
+		[_delegate scrollViewDidScroll:aScrollView];
 	}
 }
 
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+- (void)scrollViewWillBeginDragging:(UIScrollView *)aScrollView {
 	if ([_delegate respondsToSelector:@selector(scrollViewWillBeginDragging:)]) {
-		[_delegate scrollViewWillBeginDragging:scrollView];
+		[_delegate scrollViewWillBeginDragging:aScrollView];
 	}
 }
 
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+- (void)scrollViewDidEndDragging:(UIScrollView *)aScrollView willDecelerate:(BOOL)decelerate {
 	if ([_delegate respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)]) {
-		[_delegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+		[_delegate scrollViewDidEndDragging:aScrollView willDecelerate:decelerate];
 	}
 }
 
 
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)aScrollView {
 	if ([_delegate respondsToSelector:@selector(scrollViewWillBeginDecelerating:)]) {
-		[_delegate scrollViewWillBeginDecelerating:scrollView];
+		[_delegate scrollViewWillBeginDecelerating:aScrollView];
 	}
 }
 
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)aScrollView {
 	if ([_delegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
-		[_delegate scrollViewDidEndDecelerating:scrollView];
+		[_delegate scrollViewDidEndDecelerating:aScrollView];
 	}
 }
 
 
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)aScrollView {
 	if ([_delegate respondsToSelector:@selector(scrollViewDidEndScrollingAnimation:)]) {
-		[_delegate scrollViewDidEndScrollingAnimation:scrollView];
+		[_delegate scrollViewDidEndScrollingAnimation:aScrollView];
 	}
 }
 
 
-- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)aScrollView {
 	if ([_delegate respondsToSelector:@selector(scrollViewShouldScrollToTop:)]) {
-		return [_delegate scrollViewShouldScrollToTop:scrollView];
+		return [_delegate scrollViewShouldScrollToTop:aScrollView];
 	}
 	
 	return YES;
 }
 
 
-- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+- (void)scrollViewDidScrollToTop:(UIScrollView *)aScrollView {
 	if ([_delegate respondsToSelector:@selector(scrollViewDidScrollToTop:)]) {
-		[_delegate scrollViewDidScrollToTop:scrollView];
+		[_delegate scrollViewDidScrollToTop:aScrollView];
 	}
 }
 

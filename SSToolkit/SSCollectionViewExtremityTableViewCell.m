@@ -1,51 +1,33 @@
 //
-//  SSCollectionViewTableViewCell.m
+//  SSCollectionViewExtremityTableViewCell.m
 //  SSToolkit
 //
-//  Created by Sam Soffes on 3/10/11.
+//  Created by Sam Soffes on 5/27/11.
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
-#import "SSCollectionViewTableViewCell.h"
-#import "SSCollectionViewItem.h"
-#import "SSCollectionView.h"
-#import "SSCollectionViewInternal.h"
+#import "SSCollectionViewExtremityTableViewCell.h"
 
-@implementation SSCollectionViewTableViewCell
+@implementation SSCollectionViewExtremityTableViewCell
 
 #pragma mark -
 #pragma mark Accessors
 
-@synthesize itemSize = _itemSize;
-@synthesize itemSpacing = _itemSpacing;
+@synthesize extrimityView = _extrimityView;
 
-@synthesize items = _items;
-
-- (void)setItems:(NSArray *)someItems {
-	[_items makeObjectsPerformSelector:@selector(removeFromSuperview)];
-	[_items release];
-	_items = [someItems retain];
-	
-	if (_items == nil) {
-		return;
-	}
-	
-	for (SSCollectionViewItem *item in _items) {
-		[self addSubview:item];
-	}
-	
-	[self setNeedsLayout];
+- (void)setExtrimityView:(UIView *)view {
+	[_extrimityView removeFromSuperview];
+	[_extrimityView release];
+	_extrimityView = [view retain];
+	[self addSubview:_extrimityView];
 }
-
-@synthesize collectionView = _collectionView;
 
 
 #pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
-	self.collectionView = nil;
-	self.items = nil;
+	[_extrimityView release];
 	[super dealloc];
 }
 
@@ -54,12 +36,7 @@
 #pragma mark UIView
 
 - (void)layoutSubviews {
-	CGFloat x = _itemSpacing;
-	
-	for (SSCollectionViewItem *item in _items) {
-		item.frame = CGRectMake(x, 0.0f, _itemSize.width, _itemSize.height);
-		x += _itemSize.width + _itemSpacing;
-	}
+	_extrimityView.frame = self.bounds;
 }
 
 
@@ -75,9 +52,6 @@
 		self.detailTextLabel.hidden = YES;
 		self.imageView.hidden = YES;
 		self.selectionStyle = UITableViewCellEditingStyleNone;
-		
-		_itemSize = CGSizeZero;
-		_itemSpacing = 0.0f;
 	}
 	return self;
 }
@@ -85,8 +59,7 @@
 
 - (void)prepareForReuse {
 	[super prepareForReuse];
-	[self.collectionView _reuseItems:_items];
-	self.items = nil;
+	self.extrimityView = nil;
 }
 
 
