@@ -23,6 +23,7 @@ typedef enum {
 
 static NSString *kSSCollectionViewSectionNumberOfItemsKey = @"SSCollectionViewSectionNumberOfItems";
 static NSString *kSSCollectionViewSectionNumberOfRowsKey = @"SSCollectionViewSectionNumberOfRows";
+static NSString *kSSCollectionViewSectionNumberOfItemsPerRowsKey = @"SSCollectionViewSectionNumberOfItemsPerRows";
 static NSString *kSSCollectionViewSectionHeaderViewKey = @"SSCollectionViewSectionHeaderView";
 static NSString *kSSCollectionViewSectionFooterViewKey = @"SSCollectionViewSectionFooterView";
 static NSString *kSSCollectionViewSectionHeaderHeightKey = @"SSCollectionViewSectionHeaderHeight";
@@ -358,12 +359,24 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 
 - (NSUInteger)_numberOfItemsPerRowForSection:(NSUInteger)section {
+	NSNumber *items = [self _sectionInfoItemForKey:kSSCollectionViewSectionNumberOfItemsPerRowsKey section:section];
+	if (items) {
+		return [items unsignedIntegerValue];
+	}
+	
 	CGSize itemSize = [self _itemSizeForSection:section];
-	return (NSUInteger)floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
+	NSUInteger itemsPerRow = (NSUInteger)floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
+	[self _setSectionInfoItem:[NSNumber numberWithUnsignedInteger:itemsPerRow] forKey:kSSCollectionViewSectionNumberOfItemsPerRowsKey section:section];
+	return itemsPerRow;
 }
 
 
 - (NSUInteger)_numberOfRowsInSection:(NSUInteger)section {
+	NSNumber *numberOfRows = [self _sectionInfoItemForKey:kSSCollectionViewSectionNumberOfRowsKey section:section];
+	if (numberOfRows) {
+		return [numberOfRows unsignedIntegerValue];
+	}
+	
 	NSUInteger totalItems = [self numberOfItemsInSection:section];
 	NSUInteger itemsPerRow = [self _numberOfItemsPerRowForSection:section];
 	
@@ -381,6 +394,8 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	if ([self _sectionInfoItemForKey:kSSCollectionViewSectionFooterViewKey section:section]) {
 		rows++;
 	}
+	
+	[self _setSectionInfoItem:[NSNumber numberWithUnsignedInteger:rows] forKey:kSSCollectionViewSectionNumberOfRowsKey section:section];
 	
 	return rows;
 }
