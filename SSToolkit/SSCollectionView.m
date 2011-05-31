@@ -387,12 +387,14 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	NSUInteger rows = (NSUInteger)ceilf(totalItems / itemsPerRow);
 	
 	// Check for headers and footers
-	if ([self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:section]) {
-		rows++;
-	}
-	
-	if ([self _sectionInfoItemForKey:kSSCollectionViewSectionFooterViewKey section:section]) {
-		rows++;
+	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
+		if ([self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:section]) {
+			rows++;
+		}
+		
+		if ([self _sectionInfoItemForKey:kSSCollectionViewSectionFooterViewKey section:section]) {
+			rows++;
+		}
 	}
 	
 	[self _setSectionInfoItem:[NSNumber numberWithUnsignedInteger:rows] forKey:kSSCollectionViewSectionNumberOfRowsKey section:section];
