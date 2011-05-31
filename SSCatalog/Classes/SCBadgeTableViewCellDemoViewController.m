@@ -7,8 +7,6 @@
 //
 
 #import "SCBadgeTableViewCellDemoViewController.h"
-#import <SSToolkit/SSBadgeTableViewCell.h>
-#import <SSToolkit/SSBadgeView.h>
 
 @implementation SCBadgeTableViewCellDemoViewController
 

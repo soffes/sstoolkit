@@ -6,8 +6,6 @@
 //  Copyright 2009 Sam Soffes, Inc. All rights reserved.
 //
 
-@class SSHUDView;
-
 @interface SCHUDViewDemoViewController : UIViewController {
 
 @private

@@ -7,7 +7,6 @@
 //
 
 #import "SCHUDViewDemoViewController.h"
-#import <SSToolkit/SSToolkit.h>
 
 @implementation SCHUDViewDemoViewController
 

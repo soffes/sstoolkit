@@ -7,7 +7,6 @@
 //
 
 #import "SCLineViewDemoViewController.h"
-#import <SSToolkit/SSToolkit.h>
 
 @implementation SCLineViewDemoViewController
 

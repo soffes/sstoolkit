@@ -7,8 +7,8 @@
 //
 
 typedef enum {
-	SSCollectionViewItemStyleDefault = UITableViewCellStyleDefault,
-	SSCollectionViewItemStyleSubtitle = UITableViewCellStyleSubtitle,
+	SSCollectionViewItemStyleDefault, // = UITableViewCellStyleDefault,
+	SSCollectionViewItemStyleSubtitle, // = UITableViewCellStyleSubtitle,
 	SSCollectionViewItemStyleBlank,
 	SSCollectionViewItemStyleImage
 } SSCollectionViewItemStyle;

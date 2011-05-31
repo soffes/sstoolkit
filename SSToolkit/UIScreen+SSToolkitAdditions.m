@@ -31,7 +31,7 @@
 	static dispatch_once_t predicate;
 	static BOOL answer;
 
-	dispatch_once(&predicate, ^(){
+	dispatch_once(&predicate, ^{
 		answer = ([self respondsToSelector:@selector(scale)] && [self scale] == 2);
 	});
 	return answer;
