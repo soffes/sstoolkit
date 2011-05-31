@@ -7,7 +7,6 @@
 //
 
 #import "SCLoadingViewDemoViewController.h"
-#import <SSToolkit/SSLoadingView.h>
 
 @implementation SCLoadingViewDemoViewController
 

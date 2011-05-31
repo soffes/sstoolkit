@@ -44,7 +44,7 @@
 	[self loadKeys];
 	
 	if(self.selectedKey != nil) {
-		self.currentIndexPath = [[NSIndexPath indexPathForRow:[self.keys indexOfObject:self.selectedKey] inSection:0] retain];
+		self.currentIndexPath = [NSIndexPath indexPathForRow:[self.keys indexOfObject:self.selectedKey] inSection:0];
 		[self.tableView reloadData];
 		[self.tableView scrollToRowAtIndexPath:self.currentIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
 	}

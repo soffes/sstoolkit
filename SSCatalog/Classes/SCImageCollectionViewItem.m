@@ -7,7 +7,6 @@
 //
 
 #import "SCImageCollectionViewItem.h"
-#import <SSToolkit/SSDrawingUtilities.h>
 
 @implementation SCImageCollectionViewItem
 
@@ -34,9 +33,9 @@
 
 
 #pragma mark -
-#pragma mark SSCollectionViewItem
+#pragma mark Initializer
 
-- (id)initWithStyle:(SSCollectionViewItemStyle)style reuseIdentifier:(NSString *)aReuseIdentifier {
+- (id)initWithReuseIdentifier:(NSString *)aReuseIdentifier {
 	if ((self = [super initWithStyle:SSCollectionViewItemStyleImage reuseIdentifier:aReuseIdentifier])) {
 		self.imageView.backgroundColor = [UIColor colorWithWhite:0.95f alpha:1.0f];
 	}

@@ -56,7 +56,7 @@
 	
 	SCImageCollectionViewItem *item = (SCImageCollectionViewItem *)[aCollectionView dequeueReusableItemWithIdentifier:itemIdentifier];
 	if (item == nil) {
-		item = [[[SCImageCollectionViewItem alloc] initWithStyle:SSCollectionViewItemStyleImage reuseIdentifier:itemIdentifier] autorelease];
+		item = [[[SCImageCollectionViewItem alloc] initWithReuseIdentifier:itemIdentifier] autorelease];
 	}
 	
 	CGFloat size = 80.0f * [[UIScreen mainScreen] scale];

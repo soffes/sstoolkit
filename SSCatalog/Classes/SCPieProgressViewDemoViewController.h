@@ -6,8 +6,6 @@
 //  Copyright 2010 Sam Soffes, Inc. All rights reserved.
 //
 
-@class SSPieProgressView;
-
 @interface SCPieProgressViewDemoViewController : UIViewController {
 
 @private

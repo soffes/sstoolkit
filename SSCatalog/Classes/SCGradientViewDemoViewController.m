@@ -7,7 +7,6 @@
 //
 
 #import "SCGradientViewDemoViewController.h"
-#import <SSToolkit/SSGradientView.h>
 
 @implementation SCGradientViewDemoViewController
 

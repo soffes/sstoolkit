@@ -7,7 +7,6 @@
 //
 
 #import "SCPieProgressViewDemoViewController.h"
-#import <SSToolkit/SSToolkit.h>
 
 @implementation SCPieProgressViewDemoViewController
 

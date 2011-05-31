@@ -7,7 +7,6 @@
 //
 
 #import "SCIndicatorLabelDemoViewController.h"
-#import <SSToolkit/SSIndicatorLabel.h>
 
 @implementation SCIndicatorLabelDemoViewController
 
