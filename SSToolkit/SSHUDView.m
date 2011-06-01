@@ -71,7 +71,7 @@ static CGFloat kIndicatorSize = 40.0;
 
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
     
 	[self _removeWindow];
 	[_activityIndicator release];
