@@ -9,11 +9,7 @@
 #import "SSWebView.h"
 #import "NSString+SSToolkitAdditions.h"
 
-static BOOL SSWebViewIsBackedByScroller;
-static BOOL SSWebViewIsBackedByScrollerCached = NO;
-
 @interface SSWebView (PrivateMethods)
-+ (BOOL)_isBackedByScroller;
 - (void)_loadingStatusChanged;
 - (void)_startLoading;
 - (void)_finishedLoading;
@@ -90,10 +86,8 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	BOOL loadPreviousSettings = NO;
 	UIDataDetectorTypes tempDataDetectorTypes;
 	BOOL tempScalesPageToFit;
-#ifdef __IPHONE_4_0
 	BOOL tempAllowsInlineMediaPlayback;
 	BOOL tempMediaPlaybackRequiresUserAction;
-#endif
 
 	if (_webView) {
 		_webView.delegate = nil;
@@ -102,10 +96,8 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 		loadPreviousSettings = YES;
 		tempDataDetectorTypes = _webView.dataDetectorTypes;
 		tempScalesPageToFit = _webView.scalesPageToFit;
-#ifdef __IPHONE_4_0
 		tempAllowsInlineMediaPlayback = _webView.allowsInlineMediaPlayback;
 		tempMediaPlaybackRequiresUserAction = _webView.mediaPlaybackRequiresUserAction;
-#endif
 
 		[_webView removeFromSuperview];
 		[_webView release];
@@ -117,10 +109,8 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	if (loadPreviousSettings) {
 		_webView.dataDetectorTypes = tempDataDetectorTypes;
 		_webView.scalesPageToFit = tempScalesPageToFit;
-#ifdef __IPHONE_4_0
 		_webView.allowsInlineMediaPlayback = tempAllowsInlineMediaPlayback;
 		_webView.mediaPlaybackRequiresUserAction = tempMediaPlaybackRequiresUserAction;
-#endif
 	}
 
 	_webView.delegate = self;
@@ -155,15 +145,6 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 #pragma mark -
 #pragma mark Private Methods
-
-+ (BOOL)_isBackedByScroller {
-	if (SSWebViewIsBackedByScrollerCached == NO) {
-		SSWebViewIsBackedByScroller = [[[UIDevice currentDevice] systemVersion] compareToVersionString:@"3.2"] == NSOrderedAscending;
-		SSWebViewIsBackedByScrollerCached = YES;
-	}
-	return SSWebViewIsBackedByScroller;
-}
-
 
 - (void)_loadingStatusChanged {
 	if (self.loading == NO) {
@@ -233,49 +214,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 	}
 
 	_scrollEnabled = enabled;
-
-	// UIScroller in < 3.2
-	if ([[self class] _isBackedByScroller]) {
-		id scroller = [self.subviews objectAtIndex:0];
-
-		// This prevents the solution from be rejected
-		NSString *selectorString = @"";
-		selectorString = [selectorString stringByAppendingFormat:@"s"];
-		selectorString = [selectorString stringByAppendingFormat:@"e"];
-		selectorString = [selectorString stringByAppendingFormat:@"t"];
-		selectorString = [selectorString stringByAppendingFormat:@"S"];
-		selectorString = [selectorString stringByAppendingFormat:@"c"];
-		selectorString = [selectorString stringByAppendingFormat:@"r"];
-		selectorString = [selectorString stringByAppendingFormat:@"o"];
-		selectorString = [selectorString stringByAppendingFormat:@"l"];
-		selectorString = [selectorString stringByAppendingFormat:@"l"];
-		selectorString = [selectorString stringByAppendingFormat:@"i"];
-		selectorString = [selectorString stringByAppendingFormat:@"n"];
-		selectorString = [selectorString stringByAppendingFormat:@"g"];
-		selectorString = [selectorString stringByAppendingFormat:@"E"];
-		selectorString = [selectorString stringByAppendingFormat:@"n"];
-		selectorString = [selectorString stringByAppendingFormat:@"a"];
-		selectorString = [selectorString stringByAppendingFormat:@"b"];
-		selectorString = [selectorString stringByAppendingFormat:@"l"];
-		selectorString = [selectorString stringByAppendingFormat:@"e"];
-		selectorString = [selectorString stringByAppendingFormat:@"d"];
-		selectorString = [selectorString stringByAppendingFormat:@":"];
-
-		SEL selector = NSSelectorFromString(selectorString);
-
-		if ([scroller respondsToSelector:selector]) {
-			// Yay invocation magic
-			NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[scroller class] instanceMethodSignatureForSelector:selector]];
-			[invocation setSelector:selector];
-			[invocation setArgument:&_bounces atIndex:2];
-			[invocation invokeWithTarget:scroller];
-		}
-	}
-
-	// UIScrollView >= 3.2
-	else {
-		self.scrollView.scrollEnabled = _scrollEnabled;
-	}
+	self.scrollView.scrollEnabled = _scrollEnabled;
 }
 
 
@@ -286,53 +225,7 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 
 	_bounces = allow;
 
-	// UIScroller in < 3.2
-	if ([[self class] _isBackedByScroller]) {
-		id scroller = [self.subviews objectAtIndex:0];
-
-		// Thanks @jakemarsh for this hacky workaround
-		// This prevents the solution from be rejected
-		NSString *selectorString = @"";
-		selectorString = [selectorString stringByAppendingFormat:@"s"];
-		selectorString = [selectorString stringByAppendingFormat:@"e"];
-		selectorString = [selectorString stringByAppendingFormat:@"t"];
-		selectorString = [selectorString stringByAppendingFormat:@"A"];
-		selectorString = [selectorString stringByAppendingFormat:@"l"];
-		selectorString = [selectorString stringByAppendingFormat:@"l"];
-		selectorString = [selectorString stringByAppendingFormat:@"o"];
-		selectorString = [selectorString stringByAppendingFormat:@"w"];
-		selectorString = [selectorString stringByAppendingFormat:@"s"];
-		selectorString = [selectorString stringByAppendingFormat:@"R"];
-		selectorString = [selectorString stringByAppendingFormat:@"u"];
-		selectorString = [selectorString stringByAppendingFormat:@"b"];
-		selectorString = [selectorString stringByAppendingFormat:@"b"];
-		selectorString = [selectorString stringByAppendingFormat:@"e"];
-		selectorString = [selectorString stringByAppendingFormat:@"r"];
-		selectorString = [selectorString stringByAppendingFormat:@"B"];
-		selectorString = [selectorString stringByAppendingFormat:@"a"];
-		selectorString = [selectorString stringByAppendingFormat:@"n"];
-		selectorString = [selectorString stringByAppendingFormat:@"d"];
-		selectorString = [selectorString stringByAppendingFormat:@"i"];
-		selectorString = [selectorString stringByAppendingFormat:@"n"];
-		selectorString = [selectorString stringByAppendingFormat:@"g"];
-		selectorString = [selectorString stringByAppendingFormat:@":"];
-
-		SEL selector = NSSelectorFromString(selectorString);
-
-		if ([scroller respondsToSelector:selector]) {
-			// Yay invocation magic
-			NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[scroller class] instanceMethodSignatureForSelector:selector]];
-			[invocation setSelector:selector];
-			[invocation setArgument:&_bounces atIndex:2];
-			[invocation invokeWithTarget:scroller];
-		}
-	}
-
-	// UIScrollView >= 3.2
-	else {
-		UIScrollView *scrollView = [_webView.subviews objectAtIndex:0];
-		scrollView.bounces = _bounces;
-	}
+	self.scrollView.bounces = _bounces;
 }
 
 
@@ -443,8 +336,6 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 }
 
 
-#ifdef __IPHONE_4_0
-
 - (UIScrollView *)scrollView {
 	for (UIView *view in [_webView subviews]) {
 		if ([view isKindOfClass:[UIScrollView class]]) {
@@ -472,8 +363,6 @@ static BOOL SSWebViewIsBackedByScrollerCached = NO;
 - (void)setMediaPlaybackRequiresUserAction:(BOOL)requires {
 	_webView.mediaPlaybackRequiresUserAction = requires;
 }
-
-#endif
 
 
 #pragma mark -
