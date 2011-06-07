@@ -30,7 +30,6 @@
 	UIWebView *_webView;
 	NSURLRequest *_lastRequest;
 	BOOL _loadingPage;
-	BOOL _bounces;
 	BOOL _shadowsHidden;
 	BOOL _consoleEnabled;
 
@@ -46,27 +45,6 @@
  Note: Setting this isn't 100% reliable since it is very hacky underneath.
  */
 @property (nonatomic, readonly, getter=isLoadingPage) BOOL loadingPage;
-
-/**
- @brief A Boolean value that determines whether scrolling is enabled.
-
- If the value of this property is <code>YES</code>, scrolling is enabled, and if it is <code>NO</code>,
- scrolling is disabled. The default is <code>YES</code>.
-
- Note: Setting this isn't 100% reliable since it is very hacky underneath.
- */
-@property (nonatomic, assign) BOOL scrollEnabled;
-
-/**
- @brief A Boolean value that controls whether the web view bounces past the edge of
- content and back again.
-
- If the value of this property is <code>YES</code>, the web view bounces when it encounters a boundary
- of the content. Bouncing visually indicates that scrolling has reached an edge of the content. If the
- value is <code>NO</code>, scrolling stops immediately at the content boundary without bouncing. The
- default value is <code>YES</code>.
- */
-@property (nonatomic, assign) BOOL bounces;
 
 /**
  @brief A Boolean value that controls whether the web view draws shadows around the outside
@@ -148,7 +126,7 @@
  */
 @property (nonatomic, assign) UIDataDetectorTypes dataDetectorTypes;
 
-#ifdef __IPHONE_4_0
+#ifndef __IPHONE_5_0
 
 /**
  @brief The last UIScrollView backing the UIWebView.
@@ -156,6 +134,8 @@
  The caller <strong>must</strong> check for a nil return value and handle appropriately.
  */
 @property (nonatomic, retain, readonly) UIScrollView *scrollView;
+
+#endif
 
 /**
  @brief A Boolean value that determines whether HTML5 videos play inline or use the native
@@ -172,8 +152,6 @@
  The default value on both iPad and iPhone is <code>YES</code>.
  */
 @property (nonatomic, assign) BOOL mediaPlaybackRequiresUserAction;
-
-#endif
 
 /**
  @brief Uses JavaScript to remove focus from the active element.
