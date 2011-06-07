@@ -891,7 +891,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Tests/SSToolkitTests_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)\"";
 				INFOPLIST_FILE = "Tests/SSToolkitTests-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -923,7 +923,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Tests/SSToolkitTests_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)\"";
 				INFOPLIST_FILE = "Tests/SSToolkitTests-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";

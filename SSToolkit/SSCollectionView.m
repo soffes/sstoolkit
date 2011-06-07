@@ -474,7 +474,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 	// Check for footer
 	BOOL hasFooter = ([self _sectionInfoItemForKey:kSSCollectionViewSectionFooterViewKey section:indexPath.section] != nil);
-	if (hasFooter && indexPath.row == [self _numberOfRowsInSection:indexPath.section] - 1) {
+	if (hasFooter && (NSUInteger)indexPath.row == [self _numberOfRowsInSection:indexPath.section] - 1) {
 		return SSCollectionViewCellTypeFooter;
 	}
 	
