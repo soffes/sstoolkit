@@ -8,6 +8,8 @@
 
 @interface SCRootViewController : UITableViewController {
 
+@private
+	
 	NSArray *_viewControllers;
 }
 

@@ -29,8 +29,6 @@
 		B2453A1D1394AE5000275B6B /* DictionaryCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B23910A71357DED300ADE21B /* DictionaryCategoryTest.m */; };
 		B2453A1E1394AE5000275B6B /* StringCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B23910A81357DED300ADE21B /* StringCategoryTest.m */; };
 		B2453A1F1394AE5000275B6B /* URLCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B23910C31357E08E00ADE21B /* URLCategoryTest.m */; };
-		B247ABAE1300930200971EC0 /* SSSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = B247ABAC1300930200971EC0 /* SSSegmentedControl.h */; };
-		B247ABAF1300930200971EC0 /* SSSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B247ABAD1300930200971EC0 /* SSSegmentedControl.m */; };
 		B24E9E43121DC29A0085F81E /* NSArray+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E05121DC29A0085F81E /* NSArray+SSToolkitAdditions.h */; };
 		B24E9E44121DC29A0085F81E /* NSArray+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E06121DC29A0085F81E /* NSArray+SSToolkitAdditions.m */; };
 		B24E9E45121DC29A0085F81E /* NSData+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E07121DC29A0085F81E /* NSData+SSToolkitAdditions.h */; };
@@ -109,8 +107,6 @@
 		B2ABC6931329D14300521D20 /* SSCollectionViewItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ABC6911329D14300521D20 /* SSCollectionViewItemTableViewCell.m */; };
 		B2AE1134126F963300534CF2 /* UIApplication+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */; };
 		B2AE1135126F963300534CF2 /* UIApplication+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */; };
-		B2B3CED81296F637001BAC94 /* SSSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = B2B3CED61296F637001BAC94 /* SSSwitch.h */; };
-		B2B3CED91296F637001BAC94 /* SSSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B3CED71296F637001BAC94 /* SSSwitch.m */; };
 		B2D8829413328EEF006B3F55 /* SSHUDWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = B2D8829213328EEF006B3F55 /* SSHUDWindow.h */; };
 		B2D8829513328EEF006B3F55 /* SSHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D8829313328EEF006B3F55 /* SSHUDWindow.m */; };
 		B2D883C01332D636006B3F55 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D883BF1332D636006B3F55 /* QuartzCore.framework */; };
@@ -161,8 +157,6 @@
 		B23910BF1357E07A00ADE21B /* ArrayCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayCategoryTest.m; sourceTree = "<group>"; };
 		B23910C11357E08600ADE21B /* DataCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCategoryTest.m; sourceTree = "<group>"; };
 		B23910C31357E08E00ADE21B /* URLCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCategoryTest.m; sourceTree = "<group>"; };
-		B247ABAC1300930200971EC0 /* SSSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSegmentedControl.h; sourceTree = "<group>"; };
-		B247ABAD1300930200971EC0 /* SSSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSegmentedControl.m; sourceTree = "<group>"; };
 		B24E9E01121DC2910085F81E /* SSToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SSToolkit.bundle; sourceTree = "<group>"; };
 		B24E9E05121DC29A0085F81E /* NSArray+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B24E9E06121DC29A0085F81E /* NSArray+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SSToolkitAdditions.m"; sourceTree = "<group>"; };
@@ -243,8 +237,6 @@
 		B2ABC6911329D14300521D20 /* SSCollectionViewItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionViewItemTableViewCell.m; sourceTree = "<group>"; };
 		B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+SSToolkitAdditions.m"; sourceTree = "<group>"; };
-		B2B3CED61296F637001BAC94 /* SSSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSwitch.h; sourceTree = "<group>"; };
-		B2B3CED71296F637001BAC94 /* SSSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSwitch.m; sourceTree = "<group>"; };
 		B2B456FB139078B80060C279 /* SSCollectionViewExtremityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewExtremityTableViewCell.h; sourceTree = "<group>"; };
 		B2B456FC139078B80060C279 /* SSCollectionViewExtremityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionViewExtremityTableViewCell.m; sourceTree = "<group>"; };
 		B2D8829213328EEF006B3F55 /* SSHUDWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSHUDWindow.h; sourceTree = "<group>"; };
@@ -500,10 +492,6 @@
 				B24E9E2F121DC29A0085F81E /* SSTextView.m */,
 				B28219DB12FA8EB500BAF3C6 /* SSRatingPicker.h */,
 				B28219DC12FA8EB500BAF3C6 /* SSRatingPicker.m */,
-				B247ABAC1300930200971EC0 /* SSSegmentedControl.h */,
-				B247ABAD1300930200971EC0 /* SSSegmentedControl.m */,
-				B2B3CED61296F637001BAC94 /* SSSwitch.h */,
-				B2B3CED71296F637001BAC94 /* SSSwitch.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -595,7 +583,6 @@
 				B20AC0691267988600687143 /* SSTableViewController.h in Headers */,
 				B2AE1134126F963300534CF2 /* UIApplication+SSToolkitAdditions.h in Headers */,
 				B2AAE65C1281B73E0068EE7F /* SSNavigationController.h in Headers */,
-				B2B3CED81296F637001BAC94 /* SSSwitch.h in Headers */,
 				B2EA9F5E12F4A5C900C929D6 /* SSBadgeTableViewCell.h in Headers */,
 				B2EA9F6212F4A5E100C929D6 /* SSBadgeView.h in Headers */,
 				B28218BE12FA6AE100BAF3C6 /* SSToolkitDefines.h in Headers */,
@@ -603,7 +590,6 @@
 				B28C6D0712FBE5C400667755 /* SSRatingPickerViewController.h in Headers */,
 				B279539912FC67E300FFE28D /* UIScreen+SSToolkitAdditions.h in Headers */,
 				B279539E12FC6C6F00FFE28D /* SSRatingPickerScrollView.h in Headers */,
-				B247ABAE1300930200971EC0 /* SSSegmentedControl.h in Headers */,
 				B2E241541301C71400F7DC3B /* SSAddressBarTextField.h in Headers */,
 				B2E241561301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.h in Headers */,
 				B2E241581301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.h in Headers */,
@@ -746,7 +732,6 @@
 				B20AC06A1267988600687143 /* SSTableViewController.m in Sources */,
 				B2AE1135126F963300534CF2 /* UIApplication+SSToolkitAdditions.m in Sources */,
 				B2AAE65D1281B73E0068EE7F /* SSNavigationController.m in Sources */,
-				B2B3CED91296F637001BAC94 /* SSSwitch.m in Sources */,
 				B2EA9F5F12F4A5C900C929D6 /* SSBadgeTableViewCell.m in Sources */,
 				B2EA9F6312F4A5E100C929D6 /* SSBadgeView.m in Sources */,
 				B28218BF12FA6AE100BAF3C6 /* SSToolkitDefines.m in Sources */,
@@ -754,7 +739,6 @@
 				B28C6D0812FBE5C400667755 /* SSRatingPickerViewController.m in Sources */,
 				B279539A12FC67E300FFE28D /* UIScreen+SSToolkitAdditions.m in Sources */,
 				B279539F12FC6C6F00FFE28D /* SSRatingPickerScrollView.m in Sources */,
-				B247ABAF1300930200971EC0 /* SSSegmentedControl.m in Sources */,
 				B2E241551301C71400F7DC3B /* SSAddressBarTextField.m in Sources */,
 				B2E241571301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.m in Sources */,
 				B2E241591301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.m in Sources */,
