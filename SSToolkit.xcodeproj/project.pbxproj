@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		B20AC0691267988600687143 /* SSTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B20AC0671267988600687143 /* SSTableViewController.h */; };
-		B20AC06A1267988600687143 /* SSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC0681267988600687143 /* SSTableViewController.m */; };
 		B215045F10583A7300409ED4 /* SSToolkit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B215045E10583A7300409ED4 /* SSToolkit_Prefix.pch */; };
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
 		B21D2E00121F2FE500161E66 /* SSDrawingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B21D2DFF121F2FE500161E66 /* SSDrawingUtilities.m */; };
@@ -54,7 +52,6 @@
 		B24E9E5C121DC29A0085F81E /* SSLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E1E121DC29A0085F81E /* SSLineView.m */; };
 		B24E9E5D121DC29A0085F81E /* SSLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E1F121DC29A0085F81E /* SSLoadingView.h */; };
 		B24E9E5E121DC29A0085F81E /* SSLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E20121DC29A0085F81E /* SSLoadingView.m */; };
-		B24E9E65121DC29A0085F81E /* SSModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E27121DC29A0085F81E /* SSModalViewController.h */; };
 		B24E9E66121DC29A0085F81E /* SSPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E28121DC29A0085F81E /* SSPickerViewController.h */; };
 		B24E9E67121DC29A0085F81E /* SSPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E29121DC29A0085F81E /* SSPickerViewController.m */; };
 		B24E9E68121DC29A0085F81E /* SSPieProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E2A121DC29A0085F81E /* SSPieProgressView.h */; };
@@ -64,8 +61,6 @@
 		B24E9E6C121DC29A0085F81E /* SSTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E2E121DC29A0085F81E /* SSTextView.h */; };
 		B24E9E6D121DC29A0085F81E /* SSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E2F121DC29A0085F81E /* SSTextView.m */; };
 		B24E9E6E121DC29A0085F81E /* SSToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E30121DC29A0085F81E /* SSToolkit.h */; };
-		B24E9E6F121DC29A0085F81E /* SSViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E31121DC29A0085F81E /* SSViewController.h */; };
-		B24E9E70121DC29A0085F81E /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E32121DC29A0085F81E /* SSViewController.m */; };
 		B24E9E71121DC29A0085F81E /* SSWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E33121DC29A0085F81E /* SSWebView.h */; };
 		B24E9E72121DC29A0085F81E /* SSWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E34121DC29A0085F81E /* SSWebView.m */; };
 		B24E9E73121DC29A0085F81E /* UIColor+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E35121DC29A0085F81E /* UIColor+SSToolkitAdditions.h */; };
@@ -101,8 +96,6 @@
 		B28219DE12FA8EB500BAF3C6 /* SSRatingPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B28219DC12FA8EB500BAF3C6 /* SSRatingPicker.m */; };
 		B28C6D0712FBE5C400667755 /* SSRatingPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B28C6D0512FBE5C400667755 /* SSRatingPickerViewController.h */; };
 		B28C6D0812FBE5C400667755 /* SSRatingPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28C6D0612FBE5C400667755 /* SSRatingPickerViewController.m */; };
-		B2AAE65C1281B73E0068EE7F /* SSNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */; };
-		B2AAE65D1281B73E0068EE7F /* SSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */; };
 		B2ABC6921329D14300521D20 /* SSCollectionViewItemTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2ABC6901329D14300521D20 /* SSCollectionViewItemTableViewCell.h */; };
 		B2ABC6931329D14300521D20 /* SSCollectionViewItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ABC6911329D14300521D20 /* SSCollectionViewItemTableViewCell.m */; };
 		B2AE1134126F963300534CF2 /* UIApplication+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */; };
@@ -136,8 +129,6 @@
 
 /* Begin PBXFileReference section */
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		B20AC0671267988600687143 /* SSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTableViewController.h; sourceTree = "<group>"; };
-		B20AC0681267988600687143 /* SSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTableViewController.m; sourceTree = "<group>"; };
 		B215045E10583A7300409ED4 /* SSToolkit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSToolkit_Prefix.pch; sourceTree = "<group>"; };
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B21D2DFF121F2FE500161E66 /* SSDrawingUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDrawingUtilities.m; sourceTree = "<group>"; };
@@ -184,7 +175,6 @@
 		B24E9E1E121DC29A0085F81E /* SSLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSLineView.m; sourceTree = "<group>"; };
 		B24E9E1F121DC29A0085F81E /* SSLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLoadingView.h; sourceTree = "<group>"; };
 		B24E9E20121DC29A0085F81E /* SSLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSLoadingView.m; sourceTree = "<group>"; };
-		B24E9E27121DC29A0085F81E /* SSModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSModalViewController.h; sourceTree = "<group>"; };
 		B24E9E28121DC29A0085F81E /* SSPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPickerViewController.h; sourceTree = "<group>"; };
 		B24E9E29121DC29A0085F81E /* SSPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPickerViewController.m; sourceTree = "<group>"; };
 		B24E9E2A121DC29A0085F81E /* SSPieProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPieProgressView.h; sourceTree = "<group>"; };
@@ -194,8 +184,6 @@
 		B24E9E2E121DC29A0085F81E /* SSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTextView.h; sourceTree = "<group>"; };
 		B24E9E2F121DC29A0085F81E /* SSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTextView.m; sourceTree = "<group>"; };
 		B24E9E30121DC29A0085F81E /* SSToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSToolkit.h; sourceTree = "<group>"; };
-		B24E9E31121DC29A0085F81E /* SSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
-		B24E9E32121DC29A0085F81E /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
 		B24E9E33121DC29A0085F81E /* SSWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSWebView.h; sourceTree = "<group>"; };
 		B24E9E34121DC29A0085F81E /* SSWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSWebView.m; sourceTree = "<group>"; };
 		B24E9E35121DC29A0085F81E /* UIColor+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SSToolkitAdditions.h"; sourceTree = "<group>"; };
@@ -231,8 +219,6 @@
 		B28C6D0612FBE5C400667755 /* SSRatingPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRatingPickerViewController.m; sourceTree = "<group>"; };
 		B2A5D4D5135873B300AC4BA7 /* ColorCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCategoryTest.m; sourceTree = "<group>"; };
 		B2A5D4DD1358748700AC4BA7 /* ControlCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlCategoryTest.m; sourceTree = "<group>"; };
-		B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSNavigationController.h; sourceTree = "<group>"; };
-		B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSNavigationController.m; sourceTree = "<group>"; };
 		B2ABC6901329D14300521D20 /* SSCollectionViewItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewItemTableViewCell.h; sourceTree = "<group>"; };
 		B2ABC6911329D14300521D20 /* SSCollectionViewItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionViewItemTableViewCell.m; sourceTree = "<group>"; };
 		B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+SSToolkitAdditions.h"; sourceTree = "<group>"; };
@@ -466,17 +452,10 @@
 			children = (
 				B267D3431226CE0400B66519 /* SSCollectionViewController.h */,
 				B267D3441226CE0400B66519 /* SSCollectionViewController.m */,
-				B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */,
-				B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */,
-				B24E9E27121DC29A0085F81E /* SSModalViewController.h */,
 				B24E9E28121DC29A0085F81E /* SSPickerViewController.h */,
 				B24E9E29121DC29A0085F81E /* SSPickerViewController.m */,
 				B28C6D0512FBE5C400667755 /* SSRatingPickerViewController.h */,
 				B28C6D0612FBE5C400667755 /* SSRatingPickerViewController.m */,
-				B20AC0671267988600687143 /* SSTableViewController.h */,
-				B20AC0681267988600687143 /* SSTableViewController.m */,
-				B24E9E31121DC29A0085F81E /* SSViewController.h */,
-				B24E9E32121DC29A0085F81E /* SSViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -561,13 +540,11 @@
 				B24E9E59121DC29A0085F81E /* SSLabel.h in Headers */,
 				B24E9E5B121DC29A0085F81E /* SSLineView.h in Headers */,
 				B24E9E5D121DC29A0085F81E /* SSLoadingView.h in Headers */,
-				B24E9E65121DC29A0085F81E /* SSModalViewController.h in Headers */,
 				B24E9E66121DC29A0085F81E /* SSPickerViewController.h in Headers */,
 				B24E9E68121DC29A0085F81E /* SSPieProgressView.h in Headers */,
 				B24E9E6A121DC29A0085F81E /* SSTextField.h in Headers */,
 				B24E9E6C121DC29A0085F81E /* SSTextView.h in Headers */,
 				B24E9E6E121DC29A0085F81E /* SSToolkit.h in Headers */,
-				B24E9E6F121DC29A0085F81E /* SSViewController.h in Headers */,
 				B24E9E71121DC29A0085F81E /* SSWebView.h in Headers */,
 				B24E9E73121DC29A0085F81E /* UIColor+SSToolkitAdditions.h in Headers */,
 				B24E9E75121DC29A0085F81E /* UIControl+SSToolkitAdditions.h in Headers */,
@@ -580,9 +557,7 @@
 				B27B1A2212241D6F00111EA2 /* SSCollectionViewItem.h in Headers */,
 				B267D3451226CE0400B66519 /* SSCollectionViewController.h in Headers */,
 				B227D2EA124931590078A059 /* NSDictionary+SSToolkitAdditions.h in Headers */,
-				B20AC0691267988600687143 /* SSTableViewController.h in Headers */,
 				B2AE1134126F963300534CF2 /* UIApplication+SSToolkitAdditions.h in Headers */,
-				B2AAE65C1281B73E0068EE7F /* SSNavigationController.h in Headers */,
 				B2EA9F5E12F4A5C900C929D6 /* SSBadgeTableViewCell.h in Headers */,
 				B2EA9F6212F4A5E100C929D6 /* SSBadgeView.h in Headers */,
 				B28218BE12FA6AE100BAF3C6 /* SSToolkitDefines.h in Headers */,
@@ -715,7 +690,6 @@
 				B24E9E69121DC29A0085F81E /* SSPieProgressView.m in Sources */,
 				B24E9E6B121DC29A0085F81E /* SSTextField.m in Sources */,
 				B24E9E6D121DC29A0085F81E /* SSTextView.m in Sources */,
-				B24E9E70121DC29A0085F81E /* SSViewController.m in Sources */,
 				B24E9E72121DC29A0085F81E /* SSWebView.m in Sources */,
 				B24E9E74121DC29A0085F81E /* UIColor+SSToolkitAdditions.m in Sources */,
 				B24E9E76121DC29A0085F81E /* UIControl+SSToolkitAdditions.m in Sources */,
@@ -729,9 +703,7 @@
 				B27B1A2312241D6F00111EA2 /* SSCollectionViewItem.m in Sources */,
 				B267D3461226CE0400B66519 /* SSCollectionViewController.m in Sources */,
 				B227D2EB124931590078A059 /* NSDictionary+SSToolkitAdditions.m in Sources */,
-				B20AC06A1267988600687143 /* SSTableViewController.m in Sources */,
 				B2AE1135126F963300534CF2 /* UIApplication+SSToolkitAdditions.m in Sources */,
-				B2AAE65D1281B73E0068EE7F /* SSNavigationController.m in Sources */,
 				B2EA9F5F12F4A5C900C929D6 /* SSBadgeTableViewCell.m in Sources */,
 				B2EA9F6312F4A5E100C929D6 /* SSBadgeView.m in Sources */,
 				B28218BF12FA6AE100BAF3C6 /* SSToolkitDefines.m in Sources */,

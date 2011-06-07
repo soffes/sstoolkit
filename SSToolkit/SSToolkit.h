@@ -35,12 +35,8 @@
 
 // View Controllers
 #import "SSCollectionViewController.h"
-#import "SSModalViewController.h"
-#import "SSNavigationController.h"
 #import "SSPickerViewController.h"
 #import "SSRatingPickerViewController.h"
-#import "SSTableViewController.h"
-#import "SSViewController.h"
 
 // Misc
 #import "SSDrawingUtilities.h"
@@ -72,12 +68,8 @@
 
 // View Controllers
 #import <SSToolkit/SSCollectionViewController.h>
-#import <SSToolkit/SSModalViewController.h>
-#import <SSToolkit/SSNavigationController.h>
 #import <SSToolkit/SSPickerViewController.h>
 #import <SSToolkit/SSRatingPickerViewController.h>
-#import <SSToolkit/SSTableViewController.h>
-#import <SSToolkit/SSViewController.h>
 
 // Misc
 #import <SSToolkit/SSDrawingUtilities.h>

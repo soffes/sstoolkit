@@ -6,14 +6,12 @@
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
-#import "SSViewController.h"
-
 @class SSRatingPickerScrollView;
 @class SSRatingPicker;
 @class SSTextField;
 @class SSTextView;
 
-@interface SSRatingPickerViewController : SSViewController {
+@interface SSRatingPickerViewController : UIViewController {
 
 @private
 	
