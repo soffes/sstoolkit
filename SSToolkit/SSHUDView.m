@@ -71,7 +71,7 @@ static CGFloat kIndicatorSize = 40.0;
 
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
     
 	[self _removeWindow];
 	[_activityIndicator release];
@@ -109,7 +109,7 @@ static CGFloat kIndicatorSize = 40.0;
 			CGRect imageRect = CGRectMake(roundf((_hudSize.width - imageSize.width) / 2.0f),
 										  roundf((_hudSize.height - imageSize.height) / 2.0f),
 										  imageSize.width, imageSize.height);
-			[image drawInRect:imageRect];			
+			[image drawInRect:imageRect];
 			return;
 		}
 		
@@ -132,7 +132,8 @@ static CGFloat kIndicatorSize = 40.0;
 	if (_textLabelHidden) {
 		_textLabel.frame = CGRectZero;
 	} else {
-		_textLabel.frame = CGRectMake(0.0f, roundf(_hudSize.height - 30.0f), _hudSize.width, 20.0f);
+		CGSize textSize = [_textLabel.text sizeWithFont:_textLabel.font constrainedToSize:CGSizeMake(self.bounds.size.width, CGFLOAT_MAX) lineBreakMode:_textLabel.lineBreakMode];
+		_textLabel.frame = CGRectMake(0.0f, roundf(_hudSize.height - textSize.height - 10.0f), _hudSize.width, textSize.height);
 	}
 }
 
