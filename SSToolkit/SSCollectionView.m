@@ -23,6 +23,7 @@ typedef enum {
 
 static NSString *kSSCollectionViewSectionNumberOfItemsKey = @"SSCollectionViewSectionNumberOfItems";
 static NSString *kSSCollectionViewSectionNumberOfRowsKey = @"SSCollectionViewSectionNumberOfRows";
+static NSString *kSSCollectionViewSectionNumberOfItemsPerRowsKey = @"SSCollectionViewSectionNumberOfItemsPerRows";
 static NSString *kSSCollectionViewSectionHeaderViewKey = @"SSCollectionViewSectionHeaderView";
 static NSString *kSSCollectionViewSectionFooterViewKey = @"SSCollectionViewSectionFooterView";
 static NSString *kSSCollectionViewSectionHeaderHeightKey = @"SSCollectionViewSectionHeaderHeight";
@@ -358,15 +359,24 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 
 - (NSUInteger)_numberOfItemsPerRowForSection:(NSUInteger)section {
-    // TODO: Cache
+	NSNumber *items = [self _sectionInfoItemForKey:kSSCollectionViewSectionNumberOfItemsPerRowsKey section:section];
+	if (items) {
+		return [items unsignedIntegerValue];
+	}
+	
 	CGSize itemSize = [self _itemSizeForSection:section];
-	return (NSUInteger)floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
+	NSUInteger itemsPerRow = (NSUInteger)floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
+	[self _setSectionInfoItem:[NSNumber numberWithUnsignedInteger:itemsPerRow] forKey:kSSCollectionViewSectionNumberOfItemsPerRowsKey section:section];
+	return itemsPerRow;
 }
 
 
 - (NSUInteger)_numberOfRowsInSection:(NSUInteger)section {
-    NSNumber *numberOfRows = [self _sectionInfoItemForKey:kSSCollectionViewSectionNumberOfRowsKey section:section];
-    if (!numberOfRows) {
+	NSNumber *numberOfRows = [self _sectionInfoItemForKey:kSSCollectionViewSectionNumberOfRowsKey section:section];
+	if (numberOfRows) {
+		return [numberOfRows unsignedIntegerValue];
+	}
+	
         NSUInteger totalItems = [self numberOfItemsInSection:section];
         NSUInteger itemsPerRow = [self _numberOfItemsPerRowForSection:section];
         
@@ -377,17 +387,18 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
         NSUInteger rows = (NSUInteger)ceilf(totalItems / itemsPerRow);
         
         // Check for headers and footers
-        if ([self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:section]) {
-            rows++;
-        }
-        
-        if ([self _sectionInfoItemForKey:kSSCollectionViewSectionFooterViewKey section:section]) {
-            rows++;
-        }
-        
-        [self _setSectionInfoItem:[NSNumber numberWithUnsignedInteger:rows] forKey:kSSCollectionViewSectionNumberOfRowsKey section:section];
-    }
+	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
+		if ([self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:section]) {
+			rows++;
+		}
+		
+		if ([self _sectionInfoItemForKey:kSSCollectionViewSectionFooterViewKey section:section]) {
+			rows++;
+		}
+	}
 	
+	[self _setSectionInfoItem:[NSNumber numberWithUnsignedInteger:rows] forKey:kSSCollectionViewSectionNumberOfRowsKey section:section];
+		
 	return [numberOfRows unsignedIntegerValue];
 }
 
