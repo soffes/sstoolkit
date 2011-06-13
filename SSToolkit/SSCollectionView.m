@@ -166,8 +166,12 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 
 - (void)setFrame:(CGRect)frame {
+	BOOL shouldReload = (CGSizeEqualToSize(frame.size, self.frame.size) == NO);
 	[super setFrame:frame];
-	[_tableView reloadData];
+	
+	if (shouldReload) {
+		[self reloadData];
+	}
 }
 
 
@@ -376,30 +380,30 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	if (numberOfRows) {
 		return [numberOfRows unsignedIntegerValue];
 	}
-	
-        NSUInteger totalItems = [self numberOfItemsInSection:section];
-        NSUInteger itemsPerRow = [self _numberOfItemsPerRowForSection:section];
-        
-        if (itemsPerRow == 0) {
-            return 0;
-        }
-        
-        NSUInteger rows = (NSUInteger)ceilf(totalItems / itemsPerRow);
-        
-        // Check for headers and footers
+
+	NSUInteger totalItems = [self numberOfItemsInSection:section];
+	NSUInteger itemsPerRow = [self _numberOfItemsPerRowForSection:section];
+
+	if (itemsPerRow == 0) {
+		return 0;
+	}
+
+	NSUInteger rows = (NSUInteger)ceilf(totalItems / itemsPerRow);
+
+	// Check for headers and footers
 	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
 		if ([self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:section]) {
 			rows++;
 		}
-		
+
 		if ([self _sectionInfoItemForKey:kSSCollectionViewSectionFooterViewKey section:section]) {
 			rows++;
 		}
 	}
-	
+
 	[self _setSectionInfoItem:[NSNumber numberWithUnsignedInteger:rows] forKey:kSSCollectionViewSectionNumberOfRowsKey section:section];
-		
-	return [numberOfRows unsignedIntegerValue];
+
+	return rows;
 }
 
 
