@@ -27,6 +27,10 @@
 	self.title = [[self class] title];
 	
 	self.collectionView.extremitiesStyle = SSCollectionViewExtremitiesStyleScrolling;
+	
+	UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Reload" style:UIBarButtonItemStyleBordered target:self.collectionView action:@selector(reloadData)];
+	self.navigationItem.rightBarButtonItem = button;
+	[button release];
 }
 
 
