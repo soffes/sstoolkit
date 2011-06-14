@@ -53,6 +53,7 @@ static CGFloat indicatorRightMargin = 8.0f;
 		self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		self.backgroundColor = [UIColor whiteColor];
 		self.opaque = YES;
+		self.contentMode = UIViewContentModeRedraw;
 		
 		// Setup the indicator
 		_activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
