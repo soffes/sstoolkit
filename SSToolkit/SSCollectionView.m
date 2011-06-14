@@ -388,7 +388,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 		return 0;
 	}
 
-	NSUInteger rows = (NSUInteger)ceilf(totalItems / itemsPerRow);
+	NSUInteger rows = (NSUInteger)ceilf(totalItems / itemsPerRow) + 1;
 
 	// Check for headers and footers
 	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
