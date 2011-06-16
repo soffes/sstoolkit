@@ -521,12 +521,19 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 - (id)_sectionInfoItemForKey:(NSString *)key section:(NSUInteger)section {
 	NSDictionary *dictionary = [self _sectionInfoForIndex:section];
-	return [dictionary objectForKey:key];
+	id object = [dictionary objectForKey:key];
+	if (object == [NSNull null]) {
+		return nil;
+	}
+	return object;
 }
 
 
 - (void)_setSectionInfoItem:(id)object forKey:(NSString *)key section:(NSUInteger)section {
 	NSMutableDictionary *dictionary = [self _sectionInfoForIndex:section];
+	if (!object) {
+		object = [NSNull null];
+	}
 	[dictionary setObject:object forKey:key];
 }
 
