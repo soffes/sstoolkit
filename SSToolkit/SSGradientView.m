@@ -289,6 +289,7 @@
 	if ((self = [super initWithFrame:frame])) {
 		self.opaque = YES;
 		self.backgroundColor = [UIColor whiteColor];
+		self.layer.masksToBounds = YES;
 	}
 	return self;
 }
