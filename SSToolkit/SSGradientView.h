@@ -5,11 +5,9 @@
 //  Created by Sam Soffes on 10/27/09.
 //  Copyright 2009-2011 Sam Soffes. All rights reserved.
 //
-//	Greatly inspired by BWGradientBox. http://brandonwalkin.com/bwtoolkit
-//
 
 /**
- @brief Simple UIView wrapper for CGGradient.
+ @brief Simple UIView wrapper for drawing gradients. Greatly inspired by BWGradientBox.
  
  @section known_bugs Known bugs
  
@@ -24,26 +22,25 @@
 	
 @private
 	
-	UIColor *_topColor;
-	UIColor *_bottomColor;
-	UIColor *_topBorderColor;
-	UIColor *_bottomBorderColor;
-	CGFloat _topInsetAlpha;
-	CGFloat _bottomInsetAlpha;
-	CGFloat _gradientScale;
-	
-	CGGradientRef _gradient;
+	CALayer *_topBorderLayer;
+	CALayer *_topInsetLayer;
+	CALayer *_bottomInsetLayer;
+	CALayer *_bottomBorderLayer;
 }
 
 /**
- @brief The top gradient color. The default is <code>nil</code>.
+ @brief An array of <code>UIColor</code> objects used to draw the gradient. If the value is <code>nil</code>, the
+ <code>backgroundColor</code> will be drawn instead of a gradient. The default is <code>nil</code>.
  */
-@property (nonatomic, retain) UIColor *topColor;
+@property (nonatomic, copy) NSArray *colors;
 
 /**
- @brief The bottom gradient color. The default is <code>nil</code>.
+ @brief An optional array of NSNumber objects defining the location of each gradient stop.
+ 
+ The gradient stops are specified as values between <code>0</code> and <code>1</code>. The values must be monotonically
+ increasing. If <code>nil</code>, the stops are spread uniformly across the range. Defaults to <code>nil</code>.
  */
-@property (nonatomic, retain) UIColor *bottomColor;
+@property (nonatomic, copy) NSArray *locations;
 
 /**
  @brief The top border color. The default is <code>nil</code>.
@@ -56,26 +53,48 @@
 @property (nonatomic, retain) UIColor *bottomBorderColor;
 
 /**
- @brief The top border inset alpha.
- 
- If the value is less than or equal to <code>0.0</code>, it will not be drawn. The default is <code>0.0</code>.
- 
- @see defaultTopInsetAlpha
+ @brief The top border inset color. The default is <code>nil</code>.
  */
-@property (nonatomic, assign) CGFloat topInsetAlpha;
+@property (nonatomic, retain) UIColor *topInsetColor;
 
 /**
- @brief The bottom border inset alpha.
- 
- If the value is less than or equal to <code>0.0</code>, it will not be drawn. The default is <code>0.0</code>.
+ @brief The bottom border inset color. The default is <code>nil</code>.
  */
-@property (nonatomic, assign) CGFloat bottomInsetAlpha;
+@property (nonatomic, retain) UIColor *bottomInsetColor;
+
+
+#pragma mark -
+#pragma mark Deprecated
 
 /**
  @brief The scale of the gradient.
  
- The default is <code>1.0</code>.
+ The default is <code>1.0</code>. DEPRECATED.
  */
 @property (nonatomic, assign) CGFloat gradientScale;
+
+/**
+ @brief The top gradient color. The default is <code>nil</code>. DEPRECATED.
+ */
+@property (nonatomic, retain) UIColor *topColor;
+
+/**
+ @brief The bottom gradient color. The default is <code>nil</code>. DEPRECATED.
+ */
+@property (nonatomic, retain) UIColor *bottomColor;
+
+/**
+ @brief The top border inset alpha. DEPRECATED.
+ 
+ If the value is less than or equal to <code>0.0</code>, it will not be drawn. The default is <code>0.0</code>.
+ */
+@property (nonatomic, assign) CGFloat topInsetAlpha;
+
+/**
+ @brief The bottom border inset alpha. DEPRECATED.
+ 
+ If the value is less than or equal to <code>0.0</code>, it will not be drawn. The default is <code>0.0</code>.
+ */
+@property (nonatomic, assign) CGFloat bottomInsetAlpha;
 
 @end

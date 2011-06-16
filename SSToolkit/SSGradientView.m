@@ -8,36 +8,271 @@
 
 #import "SSGradientView.h"
 #import "SSDrawingUtilities.h"
+#import "UIColor+SSToolkitAdditions.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface SSGradientView (PrivateMethods)
-
-- (void)_refreshGradient;
-
+@interface SSGradientView ()
+@property (nonatomic, retain, readonly) CAGradientLayer *gradientLayer;
+@property (nonatomic, retain) CALayer *topBorderLayer;
+@property (nonatomic, retain) CALayer *topInsetLayer;
+@property (nonatomic, retain) CALayer *bottomInsetLayer;
+@property (nonatomic, retain) CALayer *bottomBorderLayer;
 @end
-
 
 @implementation SSGradientView
 
 #pragma mark -
-#pragma mark Accessors
+#pragma mark Private Accessors
 
-@synthesize topColor = _topColor;
-@synthesize bottomColor = _bottomColor;
-@synthesize topBorderColor = _topBorderColor;
-@synthesize bottomBorderColor = _bottomBorderColor;
-@synthesize topInsetAlpha = _topInsetAlpha;
-@synthesize bottomInsetAlpha = _bottomInsetAlpha;
-@synthesize gradientScale = _gradientScale;
+- (CAGradientLayer *)gradientLayer {
+	return (CAGradientLayer *)self.layer;
+}
+
+
+@synthesize topBorderLayer;
+
+- (CALayer *)topBorderLayer {
+	if (!_topBorderLayer) {
+		_topBorderLayer = [[CALayer alloc] init];
+		[self.layer addSublayer:_topBorderLayer];
+	}
+	return _topBorderLayer;
+}
+
+
+@synthesize topInsetLayer;
+
+- (CALayer *)topInsetLayer {
+	if (!_topInsetLayer) {
+		_topInsetLayer = [[CALayer alloc] init];
+		[self.layer addSublayer:_topInsetLayer];
+	}
+	return _topInsetLayer;
+}
+
+
+@synthesize bottomInsetLayer;
+
+- (CALayer *)bottomInsetLayer {
+	if (!_bottomInsetLayer) {
+		_bottomInsetLayer = [[CALayer alloc] init];
+		[self.layer addSublayer:_bottomInsetLayer];
+	}
+	return _bottomInsetLayer;
+}
+
+
+@synthesize bottomBorderLayer;
+
+- (CALayer *)bottomBorderLayer {
+	if (!_bottomBorderLayer) {
+		_bottomBorderLayer = [[CALayer alloc] init];
+		[self.layer addSublayer:_bottomBorderLayer];
+	}
+	return _bottomBorderLayer;
+}
+
+
+#pragma mark -
+#pragma mark Public Accessors
+
+
+- (NSArray *)colors {
+	NSArray *cgColors = self.gradientLayer.colors;
+	if (!cgColors || [cgColors count] == 0) {
+		return nil;
+	}
+	
+	NSMutableArray *uiColors = [[NSMutableArray alloc] initWithCapacity:[cgColors count]];
+	for (id cgColor in cgColors) {
+		UIColor *uiColor = [[UIColor alloc] initWithCGColor:(CGColorRef)cgColor];
+		[uiColors addObject:uiColor];
+		[uiColor release];
+	}
+	return [uiColors autorelease];
+}
+
+
+- (void)setColors:(NSArray *)colors {
+	NSLog(@"settings colors: %@", colors);
+	
+	if (!colors || [colors count] == 0) {
+		self.gradientLayer.colors = nil;
+		return;
+	}
+	
+	NSMutableArray *cgColors = [[NSMutableArray alloc] initWithCapacity:[colors count]];
+	for (UIColor *color in colors) {
+		[cgColors addObject:(id)color.CGColor];
+	}
+	self.gradientLayer.colors = cgColors;
+	[cgColors release];
+}
+
+
+- (NSArray *)locations {
+	return self.gradientLayer.locations;
+}
+
+
+- (void)setLocations:(NSArray *)locations {
+	self.gradientLayer.locations = locations;
+}
+
+
+- (UIColor *)topBorderColor {
+	if (!_topBorderLayer) {
+		return nil;
+	}
+	return [UIColor colorWithCGColor:_topBorderLayer.backgroundColor];
+}
+
+
+- (void)setTopBorderColor:(UIColor *)topBorderColor {
+	self.topBorderLayer.backgroundColor = topBorderColor.CGColor;
+}
+
+
+- (UIColor *)topInsetColor {
+	if (!_topInsetLayer) {
+		return nil;
+	}
+	return [UIColor colorWithCGColor:_topInsetLayer.backgroundColor];
+}
+
+
+- (void)setTopInsetColor:(UIColor *)topInsetColor {
+	self.topInsetLayer.backgroundColor = topInsetColor.CGColor;
+}
+
+
+- (UIColor *)bottomInsetColor {
+	if (!_bottomInsetLayer) {
+		return nil;
+	}
+	return [UIColor colorWithCGColor:_bottomInsetLayer.backgroundColor];
+}
+
+
+- (void)setBottomInsetColor:(UIColor *)bottomInsetColor {
+	self.bottomInsetLayer.backgroundColor = bottomInsetColor.CGColor;
+}
+
+
+- (UIColor *)bottomBorderColor {
+	if (!_bottomBorderLayer) {
+		return nil;
+	}
+	return [UIColor colorWithCGColor:_bottomBorderLayer.backgroundColor];
+}
+
+
+- (void)setBottomBorderColor:(UIColor *)bottomBorderColor {
+	self.bottomBorderLayer.backgroundColor = bottomBorderColor.CGColor;
+}
+
+
+#pragma mark -
+#pragma mark Deprecated Accessors
+
+- (CGFloat)gradientScale {
+	// TODO
+	return 0.0f;
+}
+
+
+- (void)setGradientScale:(CGFloat)gradientScale {
+	if ([self.colors count] != 2) {
+		return;
+	}
+	
+	CGFloat top = (1.0f - gradientScale) / 2.0f;
+	CGFloat bottom = top + gradientScale;
+	self.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:top], [NSNumber numberWithFloat:bottom], nil];
+}
+
+
+- (UIColor *)topColor {
+	if ([self.colors count] >= 1) {
+		return [self.colors objectAtIndex:0];
+	}
+	return nil;
+}
+
+
+- (void)setTopColor:(UIColor *)topColor {
+	NSArray *colors = self.colors;
+	if ([colors count] >= 1) {
+		NSMutableArray *newColors = [colors mutableCopy];
+		[newColors replaceObjectAtIndex:0 withObject:topColor];
+		self.colors = newColors;
+		[newColors release];
+		return;
+	}
+	
+	self.colors = [NSArray arrayWithObject:topColor];
+}
+
+
+- (UIColor *)bottomColor {
+	return [self.colors lastObject];
+}
+
+
+- (void)setBottomColor:(UIColor *)bottomColor {
+	NSArray *colors = self.colors;
+	NSUInteger count = [colors count];
+	if (count >= 2) {
+		NSMutableArray *newColors = [colors mutableCopy];
+		[newColors replaceObjectAtIndex:count - 1 withObject:bottomColor];
+		self.colors = newColors;
+		[newColors release];
+	} else if (count == 1) {
+		self.colors = [NSArray arrayWithObjects:[colors objectAtIndex:0], bottomColor, nil];
+	} else {
+		self.colors = [NSArray arrayWithObject:bottomColor];
+	}
+}
+
+
+- (CGFloat)topInsetAlpha {
+	return self.topBorderColor.alpha;
+}
+
+
+- (void)setTopInsetAlpha:(CGFloat)topInsetAlpha {
+	UIColor *color = self.topBorderColor;
+	if (!color) {
+		self.topBorderColor = [UIColor colorWithWhite:1.0f alpha:topInsetAlpha];
+	} else {
+		self.topBorderColor = [color colorWithAlphaComponent:topInsetAlpha];
+	}
+}
+
+
+- (CGFloat)bottomInsetAlpha {
+	return self.bottomBorderColor.alpha;
+}
+
+
+- (void)setBottomInsetAlpha:(CGFloat)bottomInsetAlpha {
+	UIColor *color = self.bottomBorderColor;
+	if (!color) {
+		self.bottomBorderColor = [UIColor colorWithWhite:1.0f alpha:bottomInsetAlpha];
+	} else {
+		self.bottomBorderColor = [color colorWithAlphaComponent:bottomInsetAlpha];
+	}
+}
 
 
 #pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
-	self.topColor = nil;
-	self.bottomColor = nil;
-	self.topBorderColor = nil;
-	self.bottomBorderColor = nil;
+	self.topBorderLayer = nil;
+	self.topInsetLayer = nil;
+	self.bottomInsetLayer = nil;
+	self.bottomBorderLayer = nil;
 	[super dealloc];
 }
 
@@ -45,145 +280,26 @@
 #pragma mark -
 #pragma mark UIView
 
++ (Class)layerClass {
+	return [CAGradientLayer class];
+}
+
+
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
 		self.opaque = YES;
-		
-		// Defaults
-		self.gradientScale = 1.0f;
-		self.topInsetAlpha = 0.0f;
-		self.bottomInsetAlpha = 0.0f;
-		
-		_gradient = nil;		
+		self.backgroundColor = [UIColor whiteColor];
 	}
 	return self;
 }
 
 
-- (void)drawRect:(CGRect)rect {
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextClipToRect(context, rect);
-	
-	// Gradient
-	if (_gradient) {
-		CGPoint start = CGPointMake(0.0f, 0.0f);
-		CGPoint end = CGPointMake(0.0f, rect.size.height);
-		CGContextDrawLinearGradient(context, _gradient, start, end, 0);
-	}
-	
-	CGContextSetLineWidth(context, 1.0f);
-	
-	if (_topBorderColor) {
-		// Top inset
-		if (_topInsetAlpha > 0.0f) {
-			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0f alpha:_topInsetAlpha].CGColor);
-			CGContextMoveToPoint(context, 0.0f, 1.5f);
-			CGContextAddLineToPoint(context, rect.size.width, 1.0f);
-			CGContextStrokePath(context);
-		}
-		
-		// Top border
-		CGContextSetStrokeColorWithColor(context, _topBorderColor.CGColor);
-		CGContextMoveToPoint(context, 0.0f, 0.5f);
-		CGContextAddLineToPoint(context, rect.size.width, 0.0f);
-		CGContextStrokePath(context);
-	}
-	
-	if (_bottomBorderColor) {
-		// Bottom inset
-		if (_bottomInsetAlpha > 0.0f) {
-			CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0f alpha:_bottomInsetAlpha].CGColor);
-			CGContextMoveToPoint(context, 0.0f, rect.size.height - 1.5f);
-			CGContextAddLineToPoint(context, rect.size.width, rect.size.height - 1.0f);
-			CGContextStrokePath(context);
-		}
-		
-		// Bottom border
-		CGContextSetStrokeColorWithColor(context, _bottomBorderColor.CGColor);
-		CGContextMoveToPoint(context, 0.0f, rect.size.height - 0.5f);
-		CGContextAddLineToPoint(context, rect.size.width, rect.size.height);
-		CGContextStrokePath(context);
-	}
-}
-
-
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-	if (newSuperview) {
-		// Add observers
-		[self addObserver:self forKeyPath:@"topColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"bottomColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"topBorderColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"bottomBorderColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"topInsetAlpha" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"bottomInsetAlpha" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"gradientScale" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"hasTopBorder" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"hasBottomBorder" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"showsInsets" options:NSKeyValueObservingOptionNew context:nil];
-		
-		// Draw gradient
-		[self _refreshGradient];
-	} else {
-		// Remove observers
-		[self removeObserver:self forKeyPath:@"topColor"];
-		[self removeObserver:self forKeyPath:@"bottomColor"];
-		[self removeObserver:self forKeyPath:@"topBorderColor"];
-		[self removeObserver:self forKeyPath:@"bottomBorderColor"];
-		[self removeObserver:self forKeyPath:@"topInsetAlpha"];
-		[self removeObserver:self forKeyPath:@"bottomInsetAlpha"];
-		[self removeObserver:self forKeyPath:@"gradientScale"];
-		[self removeObserver:self forKeyPath:@"hasTopBorder"];
-		[self removeObserver:self forKeyPath:@"hasBottomBorder"];
-		[self removeObserver:self forKeyPath:@"showsInsets"];
-		
-		// Release gradient
-		CGGradientRelease(_gradient);
-		_gradient = nil;
-	}
-}
-
-
-#pragma mark -
-#pragma mark Gradient Methods
-
-- (void)_refreshGradient {
-	CGGradientRelease(_gradient);
-	_gradient = nil;
-	
-	if (_topColor && _bottomColor) {
-		// Calculate locations based on scale
-		CGFloat top = (1.0f - _gradientScale) / 2.0f;
-		
-		// Create gradient
-		_gradient = SSGradientWithColorsAndLocations(_topColor, _bottomColor, top, top + _gradientScale);
-	}
-	
-	// Redraw
-	[self setNeedsDisplay];	
-}
-
-
-#pragma mark -
-#pragma mark NSKeyValueObserving
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	// Update the gradient and redraw if gradient colors changed
-	if ([keyPath isEqualToString:@"topColor"] || [keyPath isEqualToString:@"bottomColor"] ||
-		[keyPath isEqualToString:@"gradientScale"]) {
-		[self _refreshGradient];
-		return;
-	}
-	
-	// Redraw if colors or borders changed
-	if ([keyPath isEqualToString:@"topBorderColor"] || [keyPath isEqualToString:@"bottomBorderColor"] || 
-		[keyPath isEqualToString:@"topInsetAlpha"] || [keyPath isEqualToString:@"bottomInsetAlpha"] || 
-		[keyPath isEqualToString:@"hasTopBorder"] || [keyPath isEqualToString:@"hasBottomBorder"] ||
-		[keyPath isEqualToString:@"showsInsets"]) {
-		[self setNeedsDisplay];
-		return;
-	}
-	
-	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+- (void)layoutSubviews {
+	CGSize size = self.frame.size;
+	_topBorderLayer.frame = CGRectMake(0.0f, 0.0f, size.width, 1.0f);
+	_topInsetLayer.frame = CGRectMake(0.0f, 1.0f, size.width, 1.0f);
+	_bottomInsetLayer.frame = CGRectMake(0.0f, size.height - 2.0f, size.width, 1.0f);
+	_bottomBorderLayer.frame = CGRectMake(0.0f, size.height - 1.0f, size.width, 1.0f);
 }
 
 @end
