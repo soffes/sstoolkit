@@ -29,7 +29,7 @@
 }
 
 
-@synthesize topBorderLayer;
+@synthesize topBorderLayer = _topBorderLayer;
 
 - (CALayer *)topBorderLayer {
 	if (!_topBorderLayer) {
@@ -40,7 +40,7 @@
 }
 
 
-@synthesize topInsetLayer;
+@synthesize topInsetLayer = _topInsetLayer;
 
 - (CALayer *)topInsetLayer {
 	if (!_topInsetLayer) {
@@ -51,7 +51,7 @@
 }
 
 
-@synthesize bottomInsetLayer;
+@synthesize bottomInsetLayer = _bottomInsetLayer;
 
 - (CALayer *)bottomInsetLayer {
 	if (!_bottomInsetLayer) {
@@ -62,7 +62,7 @@
 }
 
 
-@synthesize bottomBorderLayer;
+@synthesize bottomBorderLayer = _bottomBorderLayer;
 
 - (CALayer *)bottomBorderLayer {
 	if (!_bottomBorderLayer) {
@@ -82,7 +82,7 @@
 	if (!cgColors || [cgColors count] == 0) {
 		return nil;
 	}
-	
+
 	NSMutableArray *uiColors = [[NSMutableArray alloc] initWithCapacity:[cgColors count]];
 	for (id cgColor in cgColors) {
 		UIColor *uiColor = [[UIColor alloc] initWithCGColor:(CGColorRef)cgColor];
@@ -93,12 +93,12 @@
 }
 
 
-- (void)setColors:(NSArray *)colors {	
+- (void)setColors:(NSArray *)colors {
 	if (!colors || [colors count] == 0) {
 		self.gradientLayer.colors = nil;
 		return;
 	}
-	
+
 	NSMutableArray *cgColors = [[NSMutableArray alloc] initWithCapacity:[colors count]];
 	for (UIColor *color in colors) {
 		[cgColors addObject:(id)color.CGColor];
@@ -183,7 +183,7 @@
 	if ([self.colors count] != 2) {
 		return;
 	}
-	
+
 	CGFloat top = (1.0f - gradientScale) / 2.0f;
 	CGFloat bottom = top + gradientScale;
 	self.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:top], [NSNumber numberWithFloat:bottom], nil];
@@ -207,7 +207,7 @@
 		[newColors release];
 		return;
 	}
-	
+
 	self.colors = [NSArray arrayWithObject:topColor];
 }
 
