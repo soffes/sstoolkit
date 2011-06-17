@@ -6,13 +6,14 @@
 //  Copyright 2009-2011 Sam Soffes. All rights reserved.
 //
 
-// This setting of 1 is best if you copy the source into your project. 
-// The build transforms the 1 to a 0 when building the framework and static lib.
+// This setting of 1 is best if you copy the source into your project. The build transforms the 1 to a 0 when building
+// the framework and static lib. Thanks @stig
 
 #if 1
 
 // Views
 #import "SSBadgeView.h"
+#import "SSBorderdView.h"
 #import "SSCollectionView.h"
 #import "SSCollectionViewItem.h"
 #import "SSGradientView.h"
@@ -52,6 +53,7 @@
 
 // Views
 #import <SSToolkit/SSBadgeView.h>
+#import <SSToolkit/SSBorderdView.h>
 #import <SSToolkit/SSCollectionView.h>
 #import <SSToolkit/SSCollectionViewItem.h>
 #import <SSToolkit/SSGradientView.h>
