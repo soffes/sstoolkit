@@ -93,9 +93,7 @@
 }
 
 
-- (void)setColors:(NSArray *)colors {
-	NSLog(@"settings colors: %@", colors);
-	
+- (void)setColors:(NSArray *)colors {	
 	if (!colors || [colors count] == 0) {
 		self.gradientLayer.colors = nil;
 		return;
