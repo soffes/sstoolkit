@@ -295,10 +295,11 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
     return [self substringFromIndex:rangeOfFirstWantedCharacter.location];
 }
 
+
 - (NSString *)stringByTrimmingLeadingWhitespaceAndNewlineCharacters {
-    return [self stringByTrimmingLeadingCharactersInSet:
-            [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return [self stringByTrimmingLeadingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
+
 
 - (NSString *)stringByTrimmingTrailingCharactersInSet:(NSCharacterSet *)characterSet {
     NSRange rangeOfLastWantedCharacter = [self rangeOfCharacterFromSet:[characterSet invertedSet]
@@ -309,9 +310,9 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
     return [self substringToIndex:rangeOfLastWantedCharacter.location+1]; // non-inclusive
 }
 
+
 - (NSString *)stringByTrimmingTrailingWhitespaceAndNewlineCharacters {
-    return [self stringByTrimmingTrailingCharactersInSet:
-            [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return [self stringByTrimmingTrailingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 @end
