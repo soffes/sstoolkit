@@ -64,15 +64,19 @@
 
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
-	if (newSuperview) {
+	[super willMoveToSuperview:newSuperview];
+	if (newSuperview && ![self observationInfo]) {
 		[self addObserver:self forKeyPath:@"lineColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"insetColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"showInset" options:NSKeyValueObservingOptionNew context:nil];		
-	} else {
+		[self addObserver:self forKeyPath:@"showInset" options:NSKeyValueObservingOptionNew context:nil];
+		return;
+	}
+	
+	if (!newSuperview && [self observationInfo]) {
 		[self removeObserver:self forKeyPath:@"lineColor"];
 		[self removeObserver:self forKeyPath:@"insetColor"];
 		[self removeObserver:self forKeyPath:@"showInset"];
-	}
+	}	
 }
 
 

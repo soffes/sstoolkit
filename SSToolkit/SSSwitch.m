@@ -139,7 +139,7 @@
 - (void)willMoveToSuperview:(UIView *)newSuperview {
 	[super willMoveToSuperview:newSuperview];
 	
-	if (newSuperview) {
+	if (newSuperview && ![self observationInfo]) {
 		[self addObserver:self forKeyPath:@"on" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"style" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
 		[self addObserver:self forKeyPath:@"leftHandleImage" options:NSKeyValueObservingOptionNew context:nil];
@@ -151,7 +151,10 @@
 		[self addObserver:self forKeyPath:@"handleShadowWidth" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"trackEdgeInsets" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"switchLabelStyle" options:NSKeyValueObservingOptionNew context:nil];
-	} else {
+		return;
+	}
+	
+	if (!newSuperview && [self observationInfo]) {
 		[self removeObserver:self forKeyPath:@"on"];
 		[self removeObserver:self forKeyPath:@"style"];
 		[self removeObserver:self forKeyPath:@"leftHandleImage"];

@@ -17,29 +17,29 @@
 @synthesize textEdgeInsets = _textEdgeInsets;
 
 #pragma mark -
-#pragma mark NSObject
-
-- (void)dealloc {
-    if ([self observationInfo] != nil) {
-        [self removeObserver:self forKeyPath:@"verticalTextAlignment"];
-        [self removeObserver:self forKeyPath:@"textEdgeInsets"];
-    }
-	[super dealloc];
-}
-
-
-#pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)aFrame {
 	if ((self = [super initWithFrame:aFrame])) {
 		self.verticalTextAlignment = SSLabelVerticalTextAlignmentMiddle;
 		self.textEdgeInsets = UIEdgeInsetsZero;
-		
-		[self addObserver:self forKeyPath:@"verticalTextAlignment" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"textEdgeInsets" options:NSKeyValueObservingOptionNew context:nil];
 	}
 	return self;
+}
+
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+	[super willMoveToSuperview:newSuperview];
+	if (newSuperview && ![self observationInfo]) {
+		[self addObserver:self forKeyPath:@"verticalTextAlignment" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"textEdgeInsets" options:NSKeyValueObservingOptionNew context:nil];
+		return;
+	}
+	
+	if (!newSuperview && [self observationInfo]) {
+		[self removeObserver:self forKeyPath:@"verticalTextAlignment"];
+        [self removeObserver:self forKeyPath:@"textEdgeInsets"];
+	}	
 }
 
 

@@ -91,12 +91,17 @@ CGFloat const kAngleOffset = -90.0f;
 
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
-	if (newSuperview) {
+	[super willMoveToSuperview:newSuperview];
+	
+	if (newSuperview && ![self observationInfo]) {
 		[self addObserver:self forKeyPath:@"pieBorderWidth" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"pieBorderColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"pieFillColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"pieBackgroundColor" options:NSKeyValueObservingOptionNew context:nil];
-	} else {
+		return;
+	}
+	
+	if (!newSuperview && [self observationInfo]) {
 		[self removeObserver:self forKeyPath:@"pieBorderWidth"];
 		[self removeObserver:self forKeyPath:@"pieBorderColor"];
 		[self removeObserver:self forKeyPath:@"pieFillColor"];

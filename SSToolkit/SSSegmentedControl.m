@@ -235,7 +235,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 - (void)willMoveToSuperview:(UIView *)newSuperview {
 	[super willMoveToSuperview:newSuperview];
 		
-	if (newSuperview) {
+	if (newSuperview && ![self observationInfo]) {
 		[self addObserver:self forKeyPath:@"buttonImage" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"highlightedButtonImage" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"dividerImage" options:NSKeyValueObservingOptionNew context:nil];
@@ -246,7 +246,10 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 		[self addObserver:self forKeyPath:@"textShadowColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"textShadowOffset" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"textEdgeInsets" options:NSKeyValueObservingOptionNew context:nil];
-	} else {
+		return;
+	}
+	
+	if (!newSuperview && [self observationInfo]) {
 		[self removeObserver:self forKeyPath:@"buttonImage"];
 		[self removeObserver:self forKeyPath:@"highlightedButtonImage"];
 		[self removeObserver:self forKeyPath:@"dividerImage"];
