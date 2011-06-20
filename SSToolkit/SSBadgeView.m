@@ -116,7 +116,7 @@
 - (void)willMoveToSuperview:(UIView *)newSuperview {
 	[super willMoveToSuperview:newSuperview];
 	
-	if (newSuperview && ![self observationInfo]) {
+	if (newSuperview) {
 		[self addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"highlightedTextColor" options:NSKeyValueObservingOptionNew context:nil];
@@ -126,10 +126,7 @@
 		[self addObserver:self forKeyPath:@"cornerRadius" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"badgeAlignment" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:nil];
-		return;
-	}
-	
-	if (!newSuperview && [self observationInfo]) {
+	} else {
 		[self removeObserver:self forKeyPath:@"text"];
 		[self removeObserver:self forKeyPath:@"textColor"];
 		[self removeObserver:self forKeyPath:@"highlightedTextColor"];

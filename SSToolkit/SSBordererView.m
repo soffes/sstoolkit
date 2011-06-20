@@ -78,16 +78,12 @@
 - (void)willMoveToSuperview:(UIView *)newSuperview {
 	[super willMoveToSuperview:newSuperview];
 	
-	if (newSuperview && ![self observationInfo]) {
+	if (newSuperview) {
 		[self addObserver:self forKeyPath:@"topBorderColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"topInsetColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"bottomInsetColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"bottomBorderColor" options:NSKeyValueObservingOptionNew context:nil];
-		return;
-	}
-	
-	if (!newSuperview && [self observationInfo]) {
-		// Remove observers
+	} else {
 		[self removeObserver:self forKeyPath:@"topBorderColor"];
 		[self removeObserver:self forKeyPath:@"topInsetColor"];
 		[self removeObserver:self forKeyPath:@"bottomInsetColor"];

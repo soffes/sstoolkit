@@ -115,7 +115,7 @@
 - (void)willMoveToSuperview:(UIView *)newSuperview {
 	[super willMoveToSuperview:newSuperview];
 	
-	if (newSuperview && ![self observationInfo]) {
+	if (newSuperview) {
 		[self addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"numberOfStars" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
 		[self addObserver:self forKeyPath:@"totalNumberOfStars" options:NSKeyValueObservingOptionNew context:nil];
@@ -123,10 +123,7 @@
 		[self addObserver:self forKeyPath:@"filledStarImage" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"starSize" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"starSpacing" options:NSKeyValueObservingOptionNew context:nil];
-		return;
-	}
-	
-	if (!newSuperview && [self observationInfo]) {
+	} else {
 		[self removeObserver:self forKeyPath:@"frame"];
 		[self removeObserver:self forKeyPath:@"numberOfStars"];
 		[self removeObserver:self forKeyPath:@"totalNumberOfStars"];

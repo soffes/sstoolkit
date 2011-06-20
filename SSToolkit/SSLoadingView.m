@@ -68,16 +68,14 @@ static CGFloat indicatorRightMargin = 8.0f;
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
 	[super willMoveToSuperview:newSuperview];
-	if (newSuperview && ![self observationInfo]) {
+
+	if (newSuperview) {
 		[self addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"font" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"shadowColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"shadowOffset" options:NSKeyValueObservingOptionNew context:nil];
-		return;
-	}
-	
-	if (!newSuperview && [self observationInfo]) {
+	} else {
 		[self removeObserver:self forKeyPath:@"text"];
 		[self removeObserver:self forKeyPath:@"font"];
 		[self removeObserver:self forKeyPath:@"textColor"];

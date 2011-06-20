@@ -235,7 +235,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 - (void)willMoveToSuperview:(UIView *)newSuperview {
 	[super willMoveToSuperview:newSuperview];
 		
-	if (newSuperview && ![self observationInfo]) {
+	if (newSuperview) {
 		[self addObserver:self forKeyPath:@"buttonImage" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"highlightedButtonImage" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"dividerImage" options:NSKeyValueObservingOptionNew context:nil];
@@ -249,7 +249,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 		return;
 	}
 	
-	if (!newSuperview && [self observationInfo]) {
+	if (!newSuperview) {
 		[self removeObserver:self forKeyPath:@"buttonImage"];
 		[self removeObserver:self forKeyPath:@"highlightedButtonImage"];
 		[self removeObserver:self forKeyPath:@"dividerImage"];
