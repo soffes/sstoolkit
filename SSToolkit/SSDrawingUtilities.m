@@ -90,28 +90,42 @@ void SSDrawRoundedRect(CGContextRef context, CGRect rect, CGFloat cornerRadius) 
 }
 
 
-CGGradientRef SSGradientWithColors(UIColor *topColor, UIColor *bottomColor) {
-	return SSGradientWithColorsAndLocations(topColor, bottomColor, 0.0f, 1.0f);
+CGGradientRef SSCreateGradientWithColors(NSArray *colors) {
+	return SSCreateGradientWithColorsAndLocations(colors, nil);
 }
 
 
-CGGradientRef SSGradientWithColorsAndLocations(UIColor *topColor, UIColor *bottomColor, CGFloat topLocation, CGFloat bottomLocation) {
-	CGFloat locations[] = {
-		topLocation,
-		bottomLocation
-	};
+CGGradientRef SSCreateGradientWithColorsAndLocations(NSArray *colors, NSArray *locations) {
+	NSUInteger colorsCount = [colors count];
+	if (colorsCount < 2) {
+		return nil;
+	}
 	
-	CGColorRef topCGColor = topColor.CGColor;
-	CGColorSpaceRef colorSpace = CGColorGetColorSpace(topCGColor);
+	CGColorSpaceRef colorSpace = CGColorGetColorSpace([[colors objectAtIndex:0] CGColor]);
 	
-	CGColorRef colorRefs[] = { topCGColor, bottomColor.CGColor };
-	CFArrayRef colors = CFArrayCreate(NULL, (const void**)colorRefs, sizeof(colorRefs) / sizeof(CGColorRef), &kCFTypeArrayCallBacks);
-	CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)colors, locations);
-	CFRelease(colors);
+	CGFloat *gradientLocations = NULL;
+	NSUInteger locationsCount = [locations count];
+	if (locationsCount == colorsCount) {
+		gradientLocations = (CGFloat *)malloc(sizeof(CGFloat) * locationsCount);
+		for (NSUInteger i = 0; i < [locations count]; i++) {
+			gradientLocations[i] = [[locations objectAtIndex:i] floatValue];
+		}
+	}		
+	
+	NSMutableArray *gradientColors = [[NSMutableArray alloc] initWithCapacity:colorsCount];
+	for (UIColor *color in colors) {
+		[gradientColors addObject:(id)color.CGColor];
+	}
+	
+	CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)gradientColors, gradientLocations);
+	
+	[gradientColors release];
+	if (gradientLocations) {
+		free(gradientLocations);
+	}
 	
 	return gradient;
 }
-
 
 
 void SSDrawGradientInRect(CGContextRef context, CGGradientRef gradient, CGRect rect) {

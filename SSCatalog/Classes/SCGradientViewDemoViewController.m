@@ -81,8 +81,8 @@
 - (void)changeColor:(id)sender {
 	if (_blue) {
 		_gradientView.colors = [NSArray arrayWithObjects:
-								[UIColor whiteColor],
-								[UIColor blueColor],
+								[UIColor redColor],
+								[UIColor orangeColor],
 								nil];
 	} else {
 		_gradientView.colors = [NSArray arrayWithObjects:
