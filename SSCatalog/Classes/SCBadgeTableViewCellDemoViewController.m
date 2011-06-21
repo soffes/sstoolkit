@@ -74,28 +74,28 @@
 		switch (indexPath.row) {
 			case 0: {
 				cell.textLabel.text = @"Default Badge View";
-				cell.badgeView.text = @"0";
+				cell.badgeView.textLabel.text = @"0";
 				cell.badgeView.badgeColor = [SSBadgeView defaultBadgeColor];
 				break;
 			}
 			
 			case 1: {
 				cell.textLabel.text = @"Unread Count";
-				cell.badgeView.text = @"3";
+				cell.badgeView.textLabel.text = @"3";
 				cell.badgeView.badgeColor = [UIColor colorWithRed:0.969f green:0.082f blue:0.078f alpha:1.0f];
 				break;
 			}
 			
 			case 2: {
 				cell.textLabel.text = @"Text Badge";
-				cell.badgeView.text = @"New";
+				cell.badgeView.textLabel.text = @"New";
 				cell.badgeView.badgeColor = [UIColor colorWithRed:0.388f green:0.686f blue:0.239f alpha:1.0f];
 				break;
 			}
 			
 			case 3: {
 				cell.textLabel.text = @"Nil value";
-				cell.badgeView.text = nil;
+				cell.badgeView.textLabel.text = nil;
 				cell.badgeView.badgeColor = [SSBadgeView defaultBadgeColor];
 				break;
 			}
@@ -103,7 +103,7 @@
 	} else {
 		NSNumber *number = [NSNumber numberWithInteger:indexPath.row * 256];
 		cell.textLabel.text = [[NSNumberFormatter localizedStringFromNumber:number numberStyle:NSNumberFormatterSpellOutStyle] capitalizedString];
-		cell.badgeView.text = [NSNumberFormatter localizedStringFromNumber:number numberStyle:NSNumberFormatterDecimalStyle];
+		cell.badgeView.textLabel.text = [NSNumberFormatter localizedStringFromNumber:number numberStyle:NSNumberFormatterDecimalStyle];
 		cell.badgeView.badgeColor = [SSBadgeView defaultBadgeColor];
 	}
 	

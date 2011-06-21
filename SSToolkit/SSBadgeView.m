@@ -7,21 +7,15 @@
 //
 
 #import "SSBadgeView.h"
+#import "SSLabel.h"
 #import "SSDrawingUtilities.h"
-
-@interface SSBadgeView (PrivateMethod)
-- (CGSize)_textSize;
-@end
 
 @implementation SSBadgeView
 
 #pragma mark -
 #pragma mark Accessors
 
-@synthesize text = _text;
-@synthesize textColor = _textColor;
-@synthesize highlightedTextColor = _highlightedTextColor;
-@synthesize font = _font;
+@synthesize textLabel = _textLabel;
 @synthesize badgeColor = _badgeColor;
 @synthesize highlightedBadgeColor = _highlightedBadgeColor;
 @synthesize badgeImage = _badgeImage;
@@ -42,10 +36,7 @@
 #pragma mark NSObject
 
 - (void)dealloc {
-	[_text release];
-	[_textColor release];
-	[_highlightedTextColor release];
-	[_font release];
+	[_textLabel release];
 	[_badgeColor release];
 	[_highlightedBadgeColor release];
 	[_badgeImage release];
@@ -62,10 +53,13 @@
 		self.backgroundColor = [UIColor whiteColor];
 		self.opaque = YES;
 		
-		self.text = @"0";
-		self.textColor = [UIColor whiteColor];
-		self.highlightedTextColor = [UIColor colorWithRed:0.125f green:0.369f blue:0.871f alpha:1.0f];
-		self.font = [UIFont boldSystemFontOfSize:16.0f];
+		_textLabel = [[SSLabel alloc] initWithFrame:CGRectZero];
+		_textLabel.text = @"0";
+		_textLabel.textColor = [UIColor whiteColor];
+		_textLabel.highlightedTextColor = [UIColor colorWithRed:0.125f green:0.369f blue:0.871f alpha:1.0f];
+		_textLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+		_textLabel.textAlignment = UITextAlignmentCenter;
+		
 		self.badgeColor = [[self class] defaultBadgeColor];
 		self.highlightedBadgeColor = [UIColor whiteColor];
 		self.cornerRadius = 10.0f;
@@ -77,16 +71,13 @@
 
 
 - (void)drawRect:(CGRect)rect {
-	UIColor *currentTextColor = nil;
 	UIColor *currentBadgeColor = nil;
 	UIImage *currentBadgeImage = nil;
 	
 	if (_highlighted) {
-		currentTextColor = _highlightedTextColor;
-		currentBadgeColor = _highlightedBadgeColor;
-		currentBadgeImage = _highlightedBadgeImage;
+		currentBadgeColor = _highlightedBadgeColor ? _highlightedBadgeColor : _badgeColor;
+		currentBadgeImage = _highlightedBadgeImage ? _highlightedBadgeImage : _badgeImage;
 	} else {
-		currentTextColor = _textColor;
 		currentBadgeColor = _badgeColor;
 		currentBadgeImage = _badgeImage;
 	}
@@ -113,21 +104,18 @@
 	}
 	
 	// Draw rectangle
-	else {
+	else if (currentBadgeColor) {
 		[currentBadgeColor set];		
 		SSDrawRoundedRect(context, badgeRect, _cornerRadius);
 	}
 	
 	// Text
-	[currentTextColor set];
-	CGSize textSize = [self _textSize];
-	CGRect textRect = CGRectMake(badgeRect.origin.x + roundf((badgeSize.width - textSize.width) / 2.0f), badgeRect.origin.y, textSize.width, badgeSize.height);
-	[_text drawInRect:textRect withFont:_font];
+	[_textLabel drawTextInRect:badgeRect];
 }
 
 
 - (CGSize)sizeThatFits:(CGSize)size {
-	CGSize textSize = [self _textSize];
+	CGSize textSize = [_textLabel sizeThatFits:self.bounds.size];
 	return CGSizeMake(fmaxf(textSize.width + 12.0f, 30.0f), textSize.height + 8.0f);
 }
 
@@ -136,22 +124,18 @@
 	[super willMoveToSuperview:newSuperview];
 	
 	if (newSuperview) {
-		[self addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"highlightedTextColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"font" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"badgeColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"highlightedBadgeColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"badgeImage" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"highlightedBadgeImage" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"cornerRadius" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"badgeAlignment" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:nil];
+		[_textLabel addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"badgeColor" options:0 context:nil];
+		[self addObserver:self forKeyPath:@"highlightedBadgeColor" options:0 context:nil];
+		[self addObserver:self forKeyPath:@"badgeImage" options:0 context:nil];
+		[self addObserver:self forKeyPath:@"highlightedBadgeImage" options:0 context:nil];
+		[self addObserver:self forKeyPath:@"cornerRadius" options:0 context:nil];
+		[self addObserver:self forKeyPath:@"badgeAlignment" options:0 context:nil];
+		[self addObserver:self forKeyPath:@"highlighted" options:0 context:nil];
+		
+		self.hidden = ([_textLabel.text length] == 0);
 	} else {
-		[self removeObserver:self forKeyPath:@"text"];
-		[self removeObserver:self forKeyPath:@"textColor"];
-		[self removeObserver:self forKeyPath:@"highlightedTextColor"];
-		[self removeObserver:self forKeyPath:@"font"];
+		[_textLabel removeObserver:self forKeyPath:@"text"];
 		[self removeObserver:self forKeyPath:@"badgeColor"];
 		[self removeObserver:self forKeyPath:@"highlightedBadgeColor"];
 		[self removeObserver:self forKeyPath:@"badgeImage"];
@@ -164,32 +148,11 @@
 
 
 #pragma mark -
-#pragma mark Private Methods
-
-- (CGSize)_textSize {
-	return [_text sizeWithFont:_font];
-}
-
-
-#pragma mark -
-#pragma mark Setters
-
-- (void)setText:(NSString *)text {
-	[_text release];
-	_text = [text copy];
-	
-	self.hidden = ([_text length] == 0);
-}
-
-
-#pragma mark -
 #pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	// Redraw if something we care about changed	
-	if ([keyPath isEqualToString:@"text"] || [keyPath isEqualToString:@"textColor"] ||
-		[keyPath isEqualToString:@"highlightedTextColor"] || [keyPath isEqualToString:@"font"] ||
-		[keyPath isEqualToString:@"badgeColor"] || [keyPath isEqualToString:@"highlightedBadgeColor"] ||
+	if ([keyPath isEqualToString:@"badgeColor"] || [keyPath isEqualToString:@"highlightedBadgeColor"] ||
 		[keyPath isEqualToString:@"badgeImage"] || [keyPath isEqualToString:@"highlightedBadgeImage"] ||
 		[keyPath isEqualToString:@"cornerRadius"] || [keyPath isEqualToString:@"badgeAlignment"] ||
 		[keyPath isEqualToString:@"highlighted"]) {
@@ -197,8 +160,20 @@
 		return;
 	}
 	
+	if (object == _textLabel && [keyPath isEqualToString:@"text"]) {
+		NSString *text = [change objectForKey:NSKeyValueChangeNewKey];
+		if ([text isEqual:[NSNull null]]) {
+			text = nil;
+		}
+		self.hidden = ([text length] == 0);
+		
+		if (!self.hidden) {
+			[self setNeedsDisplay];
+		}
+		return;
+	}
+	
 	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
-
 
 @end

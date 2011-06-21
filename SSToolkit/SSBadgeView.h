@@ -12,6 +12,8 @@ typedef enum {
 	SSBadgeViewAlignmentRight = UITextAlignmentRight
 } SSBadgeViewAlignment;
 
+@class SSLabel;
+
 /**
  @brief Badge view.
  
@@ -27,10 +29,7 @@ typedef enum {
 
 @private
 	
-	NSString *_text;
-	UIColor *_textColor;
-	UIColor *_highlightedTextColor;
-	UIFont *_font;
+	SSLabel *_textLabel;
 	UIColor *_badgeColor;
 	UIColor *_highlightedBadgeColor;
 	UIImage *_badgeImage;
@@ -41,33 +40,9 @@ typedef enum {
 }
 
 /**
- @brief Display value.
-
- The default value of this property is "0". If this property is set to <code>nil</code> or an empty string, the receiver
- will automatically hide itself.
+ @brief The badge text label.
  */
-@property (nonatomic, copy) NSString *text;
-
-/**
- @brief The color of the badge display value.
- 
- The default value of this property is white.
- */
-@property (nonatomic, retain) UIColor *textColor;
-
-/**
- @brief The color of the badge display value while its cell is highlighted.
- 
- The default value of this property is dark blue (that UITableViewCell's default highlighted background color).
- */
-@property (nonatomic, retain) UIColor *highlightedTextColor;
-
-/**
- @brief The font of the text.
- 
- The default value of this property is bold system font at size 16.
- */
-@property (nonatomic, retain) UIFont *font;
+@property (nonatomic, retain, readonly) SSLabel *textLabel;
 
 /**
  @brief The badge's background color.
