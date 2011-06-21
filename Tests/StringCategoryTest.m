@@ -71,4 +71,30 @@
 	GHAssertEqualObjects([@"I+want+a+27-inch+iMac%21" stringByUnescapingFromURLQuery], @"I want a 27-inch iMac!", nil);
 }
 
+
+- (void)testStringByTrimmingLeadingCharactersInSet {
+    NSCharacterSet *letterCharSet = [NSCharacterSet letterCharacterSet];
+    GHAssertEqualObjects([@"zip90210zip" stringByTrimmingLeadingCharactersInSet:letterCharSet], @"90210zip", nil);
+}
+
+
+- (void)testStringByTrimmingLeadingWhitespaceAndNewlineCharacters {
+    GHAssertEqualObjects([@"" stringByTrimmingLeadingWhitespaceAndNewlineCharacters], @"", nil);
+    GHAssertEqualObjects([@"\n \n " stringByTrimmingLeadingWhitespaceAndNewlineCharacters], @"", nil);
+    GHAssertEqualObjects([@"\n hello \n" stringByTrimmingLeadingWhitespaceAndNewlineCharacters], @"hello \n", nil);
+}
+
+
+- (void)testStringByTrimmingTrailingCharactersInSet {
+    NSCharacterSet *letterCharSet = [NSCharacterSet letterCharacterSet];
+    GHAssertEqualObjects([@"zip90210zip" stringByTrimmingTrailingCharactersInSet:letterCharSet], @"zip90210", nil);
+}
+
+
+- (void)testStringByTrimmingTrailingWhitespaceAndNewlineCharacters {
+    GHAssertEqualObjects([@"" stringByTrimmingLeadingWhitespaceAndNewlineCharacters], @"", nil);
+    GHAssertEqualObjects([@"\n \n " stringByTrimmingLeadingWhitespaceAndNewlineCharacters], @"", nil);
+    GHAssertEqualObjects([@"\n hello \n" stringByTrimmingTrailingWhitespaceAndNewlineCharacters], @"\n hello", nil);
+}
+
 @end

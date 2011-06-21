@@ -114,6 +114,8 @@
 
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
+	[super willMoveToSuperview:newSuperview];
+	
 	if (newSuperview) {
 		[self addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:nil];

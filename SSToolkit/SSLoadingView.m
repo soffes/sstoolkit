@@ -27,13 +27,7 @@ static CGFloat indicatorRightMargin = 8.0f;
 #pragma mark -
 #pragma mark NSObject
 
-- (void)dealloc {
-	[self removeObserver:self forKeyPath:@"text"];
-	[self removeObserver:self forKeyPath:@"font"];
-	[self removeObserver:self forKeyPath:@"textColor"];
-	[self removeObserver:self forKeyPath:@"shadowColor"];
-	[self removeObserver:self forKeyPath:@"shadowOffset"];
-	
+- (void)dealloc {	
 	self.font = nil;
 	self.text = nil;
 	self.textColor = nil;
@@ -53,6 +47,7 @@ static CGFloat indicatorRightMargin = 8.0f;
 		self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		self.backgroundColor = [UIColor whiteColor];
 		self.opaque = YES;
+		self.contentMode = UIViewContentModeRedraw;
 		
 		// Setup the indicator
 		_activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -66,15 +61,27 @@ static CGFloat indicatorRightMargin = 8.0f;
 		self.textColor = [UIColor darkGrayColor];
 		self.shadowColor = [UIColor whiteColor];
 		_shadowOffset = CGSizeMake(0.0f, 1.0f);
-		
-		// Add observers
+   }
+    return self;
+}
+
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+	[super willMoveToSuperview:newSuperview];
+
+	if (newSuperview) {
 		[self addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"font" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"shadowColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"shadowOffset" options:NSKeyValueObservingOptionNew context:nil];
-    }
-    return self;
+	} else {
+		[self removeObserver:self forKeyPath:@"text"];
+		[self removeObserver:self forKeyPath:@"font"];
+		[self removeObserver:self forKeyPath:@"textColor"];
+		[self removeObserver:self forKeyPath:@"shadowColor"];
+		[self removeObserver:self forKeyPath:@"shadowOffset"];
+	}	
 }
 
 

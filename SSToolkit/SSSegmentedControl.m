@@ -246,7 +246,10 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 		[self addObserver:self forKeyPath:@"textShadowColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"textShadowOffset" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"textEdgeInsets" options:NSKeyValueObservingOptionNew context:nil];
-	} else {
+		return;
+	}
+	
+	if (!newSuperview) {
 		[self removeObserver:self forKeyPath:@"buttonImage"];
 		[self removeObserver:self forKeyPath:@"highlightedButtonImage"];
 		[self removeObserver:self forKeyPath:@"dividerImage"];

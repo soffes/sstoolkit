@@ -258,11 +258,9 @@
 	
 	// Drag release
 	_dragging = NO;
-	if (_on) {
-		[self setOn:(_handle.frame.origin.x >= self.frame.size.width - _handleWidth + _trackEdgeInsets.right) animated:YES];
-	} else {
-		[self setOn:(_handle.frame.origin.x > _trackEdgeInsets.right) animated:YES];
-	}
+	CGFloat halfHandleSize = (_handleWidth - _handleShadowWidth) / 2.0;
+	BOOL onOrOff = (_handle.frame.origin.x + halfHandleSize) > (self.frame.size.width / 2.0);
+	[self setOn:onOrOff animated:YES];
 }
 
 

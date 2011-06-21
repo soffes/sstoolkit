@@ -22,8 +22,6 @@
 #pragma mark Accessors
 
 @synthesize delegate = _delegate;
-@synthesize scrollEnabled = _scrollEnabled;
-@synthesize bounces = _bounces;
 @synthesize shadowsHidden = _shadowsHidden;
 @synthesize consoleEnabled = _consoleEnabled;
 @synthesize lastRequest = _lastRequest;
@@ -50,8 +48,6 @@
 		[self reset];
 
 		_loadingPage = NO;
-		_scrollEnabled = YES;
-		_bounces = YES;
 		_shadowsHidden = NO;
 		_consoleEnabled = NO;
 	}
@@ -208,27 +204,6 @@
 }
 
 
-- (void)setScrollEnabled:(BOOL)enabled {
-	if (_scrollEnabled == enabled) {
-		return;
-	}
-
-	_scrollEnabled = enabled;
-	self.scrollView.scrollEnabled = _scrollEnabled;
-}
-
-
-- (void)setBounces:(BOOL)allow {
-	if (_bounces == allow) {
-		return;
-	}
-
-	_bounces = allow;
-
-	self.scrollView.bounces = _bounces;
-}
-
-
 - (void)setShadowsHidden:(BOOL)hide {
 	if (_shadowsHidden == hide) {
 		return;
@@ -336,6 +311,7 @@
 }
 
 
+#ifndef __IPHONE_5_0
 - (UIScrollView *)scrollView {
 	for (UIView *view in [_webView subviews]) {
 		if ([view isKindOfClass:[UIScrollView class]]) {
@@ -344,6 +320,9 @@
 	}
 	return nil;
 }
+
+#endif
+
 
 - (BOOL)allowsInlineMediaPlayback {
 	return _webView.allowsInlineMediaPlayback;
