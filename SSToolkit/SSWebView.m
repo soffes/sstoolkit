@@ -312,7 +312,6 @@
 
 
 #ifndef __IPHONE_5_0
-
 - (UIScrollView *)scrollView {
 	for (UIView *view in [_webView subviews]) {
 		if ([view isKindOfClass:[UIScrollView class]]) {

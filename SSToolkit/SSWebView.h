@@ -9,12 +9,10 @@
 @protocol SSWebViewDelegate;
 
 /**
- @brief This class pushes UIWebView to its limits and many common
- and usually difficult tasks very simple.
+ @brief This class pushes UIWebView to its limits and many common and usually difficult tasks very simple.
 
- Note that this class doesn't actually inherit from UIWebView, but instead
- forwards all of UIWebView's public methods to an internal instance. It has
- been designed to be a drop in replacement for UIWebView.
+ Note that this class doesn't actually inherit from UIWebView, but instead forwards all of UIWebView's public methods to
+ an internal instance. It has been designed to be a drop in replacement for UIWebView.
 
  Things of interest are the SSWebView properties and the extra delegate methods.
  */
@@ -39,20 +37,18 @@
 /**
  @brief Returns whether the web view is loading a page. (read-only)
 
- This will return <code>YES</code> when the first NSURLRequest starts and <code>NO</code> when there
- are no more requests loading.
+ This will return <code>YES</code> when the first NSURLRequest starts and <code>NO</code> when there are no more
+ requests loading.
 
  Note: Setting this isn't 100% reliable since it is very hacky underneath.
  */
 @property (nonatomic, readonly, getter=isLoadingPage) BOOL loadingPage;
 
 /**
- @brief A Boolean value that controls whether the web view draws shadows around the outside
- of its content.
+ @brief A Boolean value that controls whether the web view draws shadows around the outside of its content.
 
- If the value of this property is <code>YES</code>, the web view will the shadows around the outside of
- its content. If the value is <code>NO</code>, shadows will be displayed like normal. The default value
- is <code>NO</code>.
+ If the value of this property is <code>YES</code>, the web view will the shadows around the outside of its content. If
+ the value is <code>NO</code>, shadows will be displayed like normal. The default value is <code>NO</code>.
 
  Note: This isn't 100% reliable since it is very hacky underneath.
  */
@@ -61,9 +57,9 @@
 /**
  @brief A Boolean value that controls whether <code>console.log</code> messages are intercepted.
 
- If the value of this property is <code>YES</code>, the web view will inject some JavaScript after the
- DOM has loaded that replaces <code>console.log</code> with a custom implementation that will NSLog
- the <code>console.log</code> messages.
+ If the value of this property is <code>YES</code>, the web view will inject some JavaScript after the DOM has loaded
+ that replaces <code>console.log</code> with a custom implementation that will NSLog the <code>console.log</code>
+ messages.
 
  Note: This isn't 100% reliable since it is very hacky underneath.
  */
@@ -108,26 +104,23 @@
 @property (nonatomic, readonly, retain) NSURLRequest *request;
 
 /**
- @brief A Boolean value determining whether the webpage scales to fit the view and the user
- can change the scale.
+ @brief A Boolean value determining whether the webpage scales to fit the view and the user can change the scale.
 
- If <code>YES</code>, the webpage is scaled to fit and the user can zoom in and zoom out. If
- <code>NO</code>, user zooming is disabled. The default value is <code>NO</code>.
+ If <code>YES</code>, the webpage is scaled to fit and the user can zoom in and zoom out. If <code>NO</code>, user
+ zooming is disabled. The default value is <code>NO</code>.
  */
 @property (nonatomic, assign) BOOL scalesPageToFit;
 
 /**
  @brief The types of data converted to clickable URLs in the web view’s content.
 
- You can use this property to specify the types of data (phone numbers, http links, email
- address, and so on) that should be automatically converted to clickable URLs in the web view.
- When clicked, the web view opens the application responsible for handling the URL type and
- passes it the URL.
+ You can use this property to specify the types of data (phone numbers, http links, email address, and so on) that
+ should be automatically converted to clickable URLs in the web view. When clicked, the web view opens the application
+ responsible for handling the URL type and passes it the URL.
  */
 @property (nonatomic, assign) UIDataDetectorTypes dataDetectorTypes;
 
 #ifndef __IPHONE_5_0
-
 /**
  @brief The last UIScrollView backing the UIWebView.
 
@@ -156,17 +149,15 @@
 /**
  @brief Uses JavaScript to remove focus from the active element.
 
- If the receiver is in a modal UIViewController with the modalPresentationStyle
- UIModalPresentationFormSheet, it will not dismiss the keyboard due to how
- UIModalPresentationFormSheet works.
+ If the receiver is in a modal UIViewController with the modalPresentationStyle UIModalPresentationFormSheet, it will
+ not dismiss the keyboard due to how UIModalPresentationFormSheet works.
  */
 - (void)dismissKeyboard;
 
 /**
  @brief Removes the text selection in the web view.
 
- Using Javascript to this doesn't always work as expected. This method will correctly
- remove the text selection.
+ Using Javascript to this doesn't always work as expected. This method will correctly remove the text selection.
  */
 - (void)removeTextSelection;
 
@@ -193,8 +184,8 @@
 
  @param aURL A URL identifying the location of the content to load.
 
- To stop this load, use the stopLoading method. To see whether the receiver is done loading the
- content, use the loading property.
+ To stop this load, use the stopLoading method. To see whether the receiver is done loading the content, use the loading
+ property.
 
  @see loadURLString:
  @see loadRequest:
@@ -210,8 +201,8 @@
 
  @param string A string containing a URL identifying the location of the content to load.
 
- To stop this load, use the stopLoading method. To see whether the receiver is done loading the
- content, use the loading property.
+ To stop this load, use the stopLoading method. To see whether the receiver is done loading the content, use the loading
+ property.
 
  @see loadURL:
  @see loadRequest:
@@ -283,26 +274,25 @@
 /**
  @brief Stops the loading of any web content managed by the receiver.
 
- Stops any content in the process of being loaded by the main frame or any of its children frames.
- Does nothing if no content is being loaded.
+ Stops any content in the process of being loaded by the main frame or any of its children frames. Does nothing if no
+ content is being loaded.
  */
 - (void)stopLoading;
 
 /**
  @brief Returns the result of running a script.
-
+ 
  @param script The script to run.
 
  @return The result of running script or nil if it fails.
 
- JavaScript execution time is limited to 10 seconds for each top-level entry point. If your script
- executes for more than 10 seconds, the web view stops executing the script. This is likely to occur
- at a random place in your code, so unintended consequences may result. This limit is imposed because
- JavaScript execution may cause the main thread to block, so when scripts are running, the user is not
- able to interact with the webpage.
+ JavaScript execution time is limited to 10 seconds for each top-level entry point. If your script executes for more
+ than 10 seconds, the web view stops executing the script. This is likely to occur at a random place in your code, so
+ unintended consequences may result. This limit is imposed because JavaScript execution may cause the main thread to
+ block, so when scripts are running, the user is not able to interact with the webpage.
 
- JavaScript allocations are also limited to 10 MB. The web view raises an exception if you exceed this
- limit on the total memory allocation for JavaScript.
+ JavaScript allocations are also limited to 10 MB. The web view raises an exception if you exceed this limit on the
+ total memory allocation for JavaScript.
  */
 - (NSString *)stringByEvaluatingJavaScriptFromString:(NSString *)script;
 

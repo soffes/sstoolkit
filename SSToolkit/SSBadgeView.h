@@ -15,15 +15,13 @@ typedef enum {
 /**
  @brief Badge view.
  
- Provides the accesory view for a SSBadgeTableViewCell, available through the 
- <code>badgeView</code> property.
+ Provides the accesory view for a SSBadgeTableViewCell, available through the <code>badgeView</code> property.
  
- Acts very much like the badges in Mail.app, with the key difference being that 
- Apple uses images and SSBadgeView is rendered with CoreGraphics for improved 
- scrolling performance. This also allows for more flexible resizing. 
+ Acts very much like the badges in Mail.app, with the key difference being that Apple uses images and SSBadgeView is
+ rendered with CoreGraphics for improved scrolling performance (although images are supported). This also allows for
+ more flexible resizing. 
  
- Not limited to numbers, strings should still be short enough to fit within the 
- accesoryView bounds.
+ Not limited to numbers, strings should still be short enough to fit within the accesoryView bounds.
  */
 @interface SSBadgeView : UIView {
 
@@ -35,6 +33,8 @@ typedef enum {
 	UIFont *_font;
 	UIColor *_badgeColor;
 	UIColor *_highlightedBadgeColor;
+	UIImage *_badgeImage;
+	UIImage *_highlightedBadgeImage;
 	CGFloat _cornerRadius;
 	SSBadgeViewAlignment _badgeAlignment;
 	BOOL _highlighted;
@@ -73,6 +73,8 @@ typedef enum {
  @brief The badge's background color.
  
  The default value of this property is grayish blue (that matches Mail.app).
+ 
+ @see defaultBadgeColor
  */
 @property (nonatomic, retain) UIColor *badgeColor;
 
@@ -82,6 +84,24 @@ typedef enum {
  The default value of this property is white.
  */
 @property (nonatomic, retain) UIColor *highlightedBadgeColor;
+
+/**
+ @brief The badge's background image.
+ 
+ The default value of this property is <code>nil</code>. If the value is non-nil, it will be draw instead of the color.
+ 
+ Setting a strechable image for this property is recommended.
+ */
+@property (nonatomic, retain) UIImage *badgeImage;
+
+/**
+ @brief The badge's background image while its cell is highlighted.
+ 
+ The default value of this property is <code>nil</code>. If the value is non-nil, it will be draw instead of the color.
+ 
+ Setting a strechable image for this property is recommended.
+ */
+@property (nonatomic, retain) UIImage *highlightedBadgeImage;
 
 /**
  @brief The corner radius used when rendering the badge's outline.

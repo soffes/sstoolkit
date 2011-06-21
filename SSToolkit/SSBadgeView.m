@@ -24,6 +24,8 @@
 @synthesize font = _font;
 @synthesize badgeColor = _badgeColor;
 @synthesize highlightedBadgeColor = _highlightedBadgeColor;
+@synthesize badgeImage = _badgeImage;
+@synthesize highlightedBadgeImage = _highlightedBadgeImage;
 @synthesize cornerRadius = _cornerRadius;
 @synthesize badgeAlignment = _badgeAlignment;
 @synthesize highlighted = _highlighted;
@@ -46,6 +48,8 @@
 	[_font release];
 	[_badgeColor release];
 	[_highlightedBadgeColor release];
+	[_badgeImage release];
+	[_highlightedBadgeImage release];
 	[super dealloc];
 }
 
@@ -73,13 +77,18 @@
 
 
 - (void)drawRect:(CGRect)rect {
-	UIColor *aTextColor = nil;
+	UIColor *currentTextColor = nil;
+	UIColor *currentBadgeColor = nil;
+	UIImage *currentBadgeImage = nil;
+	
 	if (_highlighted) {
-		[_highlightedBadgeColor set];
-		aTextColor = _highlightedTextColor;
+		currentTextColor = _highlightedTextColor;
+		currentBadgeColor = _highlightedBadgeColor;
+		currentBadgeImage = _highlightedBadgeImage;
 	} else {
-		[_badgeColor set];
-		aTextColor = _textColor;
+		currentTextColor = _textColor;
+		currentBadgeColor = _badgeColor;
+		currentBadgeImage = _badgeImage;
 	}
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -97,10 +106,20 @@
 	}
 	
 	CGRect badgeRect = CGRectMake(x, roundf((size.height - badgeSize.height) / 2.0f), badgeSize.width, badgeSize.height);
-	SSDrawRoundedRect(context, badgeRect, _cornerRadius);
+	
+	// Draw image
+	if (currentBadgeImage) {
+		[currentBadgeImage drawInRect:badgeRect];
+	}
+	
+	// Draw rectangle
+	else {
+		[currentBadgeColor set];		
+		SSDrawRoundedRect(context, badgeRect, _cornerRadius);
+	}
 	
 	// Text
-	[aTextColor set];
+	[currentTextColor set];
 	CGSize textSize = [self _textSize];
 	CGRect textRect = CGRectMake(badgeRect.origin.x + roundf((badgeSize.width - textSize.width) / 2.0f), badgeRect.origin.y, textSize.width, badgeSize.height);
 	[_text drawInRect:textRect withFont:_font];
@@ -123,6 +142,8 @@
 		[self addObserver:self forKeyPath:@"font" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"badgeColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"highlightedBadgeColor" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"badgeImage" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"highlightedBadgeImage" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"cornerRadius" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"badgeAlignment" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:nil];
@@ -133,6 +154,8 @@
 		[self removeObserver:self forKeyPath:@"font"];
 		[self removeObserver:self forKeyPath:@"badgeColor"];
 		[self removeObserver:self forKeyPath:@"highlightedBadgeColor"];
+		[self removeObserver:self forKeyPath:@"badgeImage"];
+		[self removeObserver:self forKeyPath:@"highlightedBadgeImage"];
 		[self removeObserver:self forKeyPath:@"cornerRadius"];
 		[self removeObserver:self forKeyPath:@"badgeAlignment"];
 		[self removeObserver:self forKeyPath:@"highlighted"];
@@ -164,9 +187,12 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	// Redraw if something we care about changed	
-	if ([keyPath isEqualToString:@"text"] || [keyPath isEqualToString:@"textColor"] || [keyPath isEqualToString:@"highlightedTextColor"] ||
-		[keyPath isEqualToString:@"font"] || [keyPath isEqualToString:@"badgeColor"] || [keyPath isEqualToString:@"highlightedBadgeColor"] ||
-		[keyPath isEqualToString:@"cornerRadius"] || [keyPath isEqualToString:@"badgeAlignment"] || [keyPath isEqualToString:@"highlighted"]) {
+	if ([keyPath isEqualToString:@"text"] || [keyPath isEqualToString:@"textColor"] ||
+		[keyPath isEqualToString:@"highlightedTextColor"] || [keyPath isEqualToString:@"font"] ||
+		[keyPath isEqualToString:@"badgeColor"] || [keyPath isEqualToString:@"highlightedBadgeColor"] ||
+		[keyPath isEqualToString:@"badgeImage"] || [keyPath isEqualToString:@"highlightedBadgeImage"] ||
+		[keyPath isEqualToString:@"cornerRadius"] || [keyPath isEqualToString:@"badgeAlignment"] ||
+		[keyPath isEqualToString:@"highlighted"]) {
 		[self setNeedsDisplay];
 		return;
 	}
