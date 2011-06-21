@@ -111,7 +111,10 @@
 - (void)dealloc {
 	[_colors release];
 	[_locations release];
-	// _gradient is released when the view moves out of a view
+	
+	CGGradientRelease(_gradient);
+	_gradient = nil;
+
 	[super dealloc];
 }
 
@@ -131,19 +134,6 @@
 	}
 	
 	[super drawRect:rect];
-}
-
-
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-	[super willMoveToSuperview:newSuperview];
-	
-	if (newSuperview) {
-		[self _refreshGradient];
-	} else {
-		// Release gradient
-		CGGradientRelease(_gradient);
-		_gradient = nil;
-	}
 }
 
 
