@@ -13,13 +13,15 @@
 @synthesize lineColor = _lineColor;
 @synthesize insetColor = _insetColor;
 @synthesize showInset = _showInset;
+@synthesize dashLengths = _dashLengths;
 
 #pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
-	self.lineColor = nil;
-	self.insetColor = nil;
+	[_lineColor release];
+	[_insetColor release];
+	[_dashLengths release];
 	[super dealloc];
 }
 
@@ -46,6 +48,18 @@
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextClipToRect(context, rect);
 	CGContextSetLineWidth(context, 2.0f);
+	
+	if (_dashLengths) {
+		NSUInteger dashLengthsCount = [_dashLengths count];
+		CGFloat *lengths = (CGFloat *)malloc(sizeof(CGFloat) * dashLengthsCount);
+		for (NSUInteger i = 0; i < dashLengthsCount; i++) {
+			lengths[i] = [[_dashLengths objectAtIndex:i] floatValue];
+		}
+		
+		CGContextSetLineDash(context, 0, lengths, dashLengthsCount);
+		
+		free(lengths);
+	}
 
 	// Inset
 	if (self.showInset && self.insetColor) {
@@ -70,10 +84,12 @@
 		[self addObserver:self forKeyPath:@"lineColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"insetColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"showInset" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"dashLengths" options:NSKeyValueObservingOptionNew context:nil];
 	} else {
 		[self removeObserver:self forKeyPath:@"lineColor"];
 		[self removeObserver:self forKeyPath:@"insetColor"];
 		[self removeObserver:self forKeyPath:@"showInset"];
+		[self removeObserver:self forKeyPath:@"dashLengths"];
 	}	
 }
 

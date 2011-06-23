@@ -107,10 +107,10 @@ CGGradientRef SSCreateGradientWithColorsAndLocations(NSArray *colors, NSArray *l
 	NSUInteger locationsCount = [locations count];
 	if (locationsCount == colorsCount) {
 		gradientLocations = (CGFloat *)malloc(sizeof(CGFloat) * locationsCount);
-		for (NSUInteger i = 0; i < [locations count]; i++) {
+		for (NSUInteger i = 0; i < locationsCount; i++) {
 			gradientLocations[i] = [[locations objectAtIndex:i] floatValue];
 		}
-	}		
+	}
 	
 	NSMutableArray *gradientColors = [[NSMutableArray alloc] initWithCapacity:colorsCount];
 	for (UIColor *color in colors) {
