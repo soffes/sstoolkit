@@ -47,8 +47,8 @@ typedef enum {
 	CGFloat _rowSpacing;
 	BOOL _allowsSelection;
 	NSMutableSet *_visibleItems;
-	NSCache *_reuseableItems;
-	NSCache *_sectionCache;
+	NSMutableDictionary *_reuseableItems;
+	NSMutableDictionary *_sectionCache;
 	
 	UITableView *_tableView;
 }

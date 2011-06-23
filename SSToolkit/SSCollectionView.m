@@ -151,8 +151,8 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 		_rowSpacing = 20.0f;
 		_allowsSelection = YES;
 		_visibleItems = [[NSMutableSet alloc] init];
-		_reuseableItems = [[NSCache alloc] init];
-		_sectionCache = [[NSCache alloc] init];
+		_reuseableItems = [[NSMutableDictionary alloc] init];
+		_sectionCache = [[NSMutableDictionary alloc] init];
 		
 		_tableView = [[UITableView alloc] initWithFrame:CGRectSetZeroOrigin(frame)];
 		_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
