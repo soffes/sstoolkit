@@ -20,6 +20,7 @@
 	UIColor *_lineColor;
 	UIColor *_insetColor;
 	BOOL _showInset;
+	CGFloat _dashPhase;
 	NSArray *_dashLengths;
 }
 
@@ -37,6 +38,16 @@
  @brief A Boolean value that determines whether showing the inset is enabled. The default is <code>YES</code>.
  */
 @property (nonatomic, assign) BOOL showInset;
+
+/**
+ @brief A float that specifies how far into the dash pattern the line starts, in points.
+ 
+ For example, passing a value of 3 means the line is drawn with the dash pattern starting at 3 points from its
+ beginning. Passing a value of 0 draws a line starting with the beginning of a dash pattern.
+ 
+ The default is <code>0.0</code>.
+ */
+@property (nonatomic, assign) CGFloat dashPhase;
 
 /**
  @brief An array of values that specify the lengths of the painted segments and unpainted segments, respectively, of the

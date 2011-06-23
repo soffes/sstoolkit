@@ -13,6 +13,7 @@
 @synthesize lineColor = _lineColor;
 @synthesize insetColor = _insetColor;
 @synthesize showInset = _showInset;
+@synthesize dashPhase = _dashPhase;
 @synthesize dashLengths = _dashLengths;
 
 #pragma mark -
@@ -56,7 +57,7 @@
 			lengths[i] = [[_dashLengths objectAtIndex:i] floatValue];
 		}
 		
-		CGContextSetLineDash(context, 0, lengths, dashLengthsCount);
+		CGContextSetLineDash(context, _dashPhase, lengths, dashLengthsCount);
 		
 		free(lengths);
 	}
@@ -84,11 +85,13 @@
 		[self addObserver:self forKeyPath:@"lineColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"insetColor" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"showInset" options:NSKeyValueObservingOptionNew context:nil];
+		[self addObserver:self forKeyPath:@"dashPhase" options:NSKeyValueObservingOptionNew context:nil];
 		[self addObserver:self forKeyPath:@"dashLengths" options:NSKeyValueObservingOptionNew context:nil];
 	} else {
 		[self removeObserver:self forKeyPath:@"lineColor"];
 		[self removeObserver:self forKeyPath:@"insetColor"];
 		[self removeObserver:self forKeyPath:@"showInset"];
+		[self removeObserver:self forKeyPath:@"dashPhase"];
 		[self removeObserver:self forKeyPath:@"dashLengths"];
 	}	
 }
@@ -98,8 +101,10 @@
 #pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	// Redraw if colors changed
-	if ([keyPath isEqualToString:@"lineColor"] || [keyPath isEqualToString:@"insetColor"] || [keyPath isEqualToString:@"showInset"]) {
+	// Redraw if colors or dash configuration changed
+	if ([keyPath isEqualToString:@"lineColor"] || [keyPath isEqualToString:@"insetColor"] ||
+		[keyPath isEqualToString:@"showInset"] || [keyPath isEqualToString:@"dashPhase"] ||
+		[keyPath isEqualToString:@"dashLengths"]) {
 		[self setNeedsDisplay];
 		return;
 	}
