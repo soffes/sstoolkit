@@ -290,7 +290,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 
 - (NSUInteger)numberOfItemsInSection:(NSUInteger)section {
-	NSNumber *items = [self _sectionInfoItemForKey:kSSCollectionViewSectionNumberOfItemsKey section:section];
+	NSNumber *items = [self _sectionInfoItemForKey:kSSCollectionViewSectionNumberOfItemsKey section:section];	
 	if (!items) {
 		if ([_dataSource respondsToSelector:@selector(collectionView:numberOfItemsInSection:)] == NO) {
 			return 0;
@@ -522,7 +522,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 - (id)_sectionInfoItemForKey:(NSString *)key section:(NSUInteger)section {
 	NSDictionary *dictionary = [self _sectionInfoForIndex:section];
 	id object = [dictionary objectForKey:key];
-	if (object == [NSNull null]) {
+	if ([object isEqual:[NSNull null]]) {
 		return nil;
 	}
 	return object;
