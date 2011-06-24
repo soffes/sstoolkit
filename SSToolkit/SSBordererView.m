@@ -15,19 +15,53 @@
 #pragma mark Accessors
 
 @synthesize topBorderColor = _topBorderColor;
+
+- (void)setTopBorderColor:(UIColor *)topBorderColor {
+	[_topBorderColor release];
+	_topBorderColor = [topBorderColor retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize topInsetColor = _topInsetColor;
+
+- (void)setTopInsetColor:(UIColor *)topInsetColor {
+	[_topInsetColor release];
+	_topInsetColor = [topInsetColor retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize bottomInsetColor = _bottomInsetColor;
+
+- (void)setBottomInsetColor:(UIColor *)bottomInsetColor {
+	[_bottomInsetColor release];
+	_bottomInsetColor = [bottomInsetColor retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize bottomBorderColor = _bottomBorderColor;
+
+- (void)setBottomBorderColor:(UIColor *)bottomBorderColor {
+	[_bottomBorderColor release];
+	_bottomBorderColor = [bottomBorderColor retain];
+	
+	[self setNeedsDisplay];
+}
 
 
 #pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
-	self.topBorderColor = nil;
-	self.topInsetColor = nil;
-	self.bottomInsetColor = nil;
-	self.bottomBorderColor = nil;
+	[_topBorderColor release];
+	[_topInsetColor release];
+	[_bottomInsetColor release];
+	[_bottomBorderColor release];
 	[super dealloc];
 }
 
@@ -72,38 +106,6 @@
 		CGContextAddLineToPoint(context, rect.size.width, rect.size.height);
 		CGContextStrokePath(context);
 	}
-}
-
-
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-	[super willMoveToSuperview:newSuperview];
-	
-	if (newSuperview) {
-		[self addObserver:self forKeyPath:@"topBorderColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"topInsetColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"bottomInsetColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"bottomBorderColor" options:NSKeyValueObservingOptionNew context:nil];
-	} else {
-		[self removeObserver:self forKeyPath:@"topBorderColor"];
-		[self removeObserver:self forKeyPath:@"topInsetColor"];
-		[self removeObserver:self forKeyPath:@"bottomInsetColor"];
-		[self removeObserver:self forKeyPath:@"bottomBorderColor"];
-	}
-}
-
-
-#pragma mark -
-#pragma mark NSKeyValueObserving
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	// Redraw if colors changed
-	if ([keyPath isEqualToString:@"topBorderColor"] || [keyPath isEqualToString:@"bottomBorderColor"] || 
-		[keyPath isEqualToString:@"topInsetColor"] || [keyPath isEqualToString:@"bottomInsetColor"]) {
-		[self setNeedsDisplay];
-		return;
-	}
-	
-	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end

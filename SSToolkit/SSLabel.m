@@ -14,7 +14,22 @@
 #pragma mark Accessors
 
 @synthesize verticalTextAlignment = _verticalTextAlignment;
+
+- (void)setVerticalTextAlignment:(SSLabelVerticalTextAlignment)verticalTextAlignment {
+	_verticalTextAlignment = verticalTextAlignment;
+
+	[self setNeedsLayout];
+}
+
+
 @synthesize textEdgeInsets = _textEdgeInsets;
+
+- (void)setTextEdgeInsets:(UIEdgeInsets)textEdgeInsets {
+	_textEdgeInsets = textEdgeInsets;
+	
+	[self setNeedsLayout];
+}
+
 
 #pragma mark -
 #pragma mark UIView
@@ -25,21 +40,6 @@
 		self.textEdgeInsets = UIEdgeInsetsZero;
 	}
 	return self;
-}
-
-
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-	[super willMoveToSuperview:newSuperview];
-	if (newSuperview && ![self observationInfo]) {
-		[self addObserver:self forKeyPath:@"verticalTextAlignment" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"textEdgeInsets" options:NSKeyValueObservingOptionNew context:nil];
-		return;
-	}
-	
-	if (!newSuperview && [self observationInfo]) {
-		[self removeObserver:self forKeyPath:@"verticalTextAlignment"];
-        [self removeObserver:self forKeyPath:@"textEdgeInsets"];
-	}	
 }
 
 
@@ -58,20 +58,6 @@
 	}
 		
 	[super drawTextInRect:rect];
-}
-
-
-#pragma mark -
-#pragma mark NSKeyValueObserving
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	// Relayout when properties change
-	if ([keyPath isEqualToString:@"verticalTextAlignment"] || [keyPath isEqualToString:@"textEdgeInsets"]) {
-		[self setNeedsLayout];
-		return;
-	}
-	
-	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end

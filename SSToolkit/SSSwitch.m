@@ -29,35 +29,169 @@
 
 
 @synthesize style = _style;
+
+- (void)setStyle:(SSSwitchStyle)s {
+	_style = s;
+	
+	// TODO: Always apply default style before changing style for more consistent results
+	
+	switch (_style) {
+		case SSSwitchStyleDefault: {
+			NSInteger leftCap = 8;
+			
+			self.leftHandleImage = [[UIImage imageNamed:@"UISwitchButtonRightShadowed.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.leftHandleImageHighlighted = [[UIImage imageNamed:@"UISwitchButtonRightShadowedDown.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.centerHandleImage = [[UIImage imageNamed:@"UISwitchButtonFullShadowed.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.centerHandleImageHighlighted = [[UIImage imageNamed:@"UISwitchButtonFullShadowedDown.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.rightHandleImage = [[UIImage imageNamed:@"UISwitchButtonLeftShadowed.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			self.rightHandleImageHighlighted = [[UIImage imageNamed:@"UISwitchButtonLeftShadowedDown.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
+			
+			self.handleWidth = 42;
+			self.handleShadowWidth = 2;
+			
+			self.onBackgroundImageView.image = [[UIImage imageNamed:@"UISwitchTrackBlue.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
+			
+			self.onLabel.textColor = [UIColor whiteColor];
+			self.onLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+			self.onLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.5f];
+			self.onLabel.shadowOffset = CGSizeMake(0.0f, -1.0f);
+			
+			self.offBackgroundImageView.image = [[UIImage imageNamed:@"UISwitchTrackClear.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
+			
+			self.offLabel.textColor = [UIColor colorWithWhite:0.475f alpha:1.0f];
+			self.offLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+			self.offLabel.shadowColor = nil;			
+			
+			self.trackEdgeInsets = UIEdgeInsetsZero;
+			
+			break;
+		}
+			
+		case SSSwitchStyleAirplane: {
+			self.onBackgroundImageView.image = [[UIImage imageNamed:@"UISwitchTrackOrange.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
+			break;
+		}
+	}
+	
+	[self _layoutSubviewsWithHandlePosition:_on ? 1.0f : 0.0f];
+}
+
+
 @synthesize handle = _handle;
+
 @synthesize leftHandleImage = _leftHandleImage;
+
+- (void)setLeftHandleImage:(UIImage *)leftHandleImage {
+	[_leftHandleImage release];
+	_leftHandleImage = [leftHandleImage retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize leftHandleImageHighlighted = _leftHandleImageHighlighted;
+
+- (void)setLeftHandleImageHighlighted:(UIImage *)leftHandleImageHighlighted {
+	[_leftHandleImageHighlighted release];
+	_leftHandleImageHighlighted = [leftHandleImageHighlighted retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize centerHandleImage = _centerHandleImage;
+
+- (void)setCenterHandleImage:(UIImage *)centerHandleImage {
+	[_centerHandleImage release];
+	_centerHandleImage = [centerHandleImage retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize centerHandleImageHighlighted = _centerHandleImageHighlighted;
+
+- (void)setCenterHandleImageHighlighted:(UIImage *)centerHandleImageHighlighted {
+	[_centerHandleImageHighlighted release];
+	_centerHandleImageHighlighted = [centerHandleImageHighlighted retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize rightHandleImage = _rightHandleImage;
+
+- (void)setRightHandleImage:(UIImage *)rightHandleImage {
+	[_rightHandleImage release];
+	_rightHandleImage = [rightHandleImage retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize rightHandleImageHighlighted = _rightHandleImageHighlighted;
+
+- (void)setRightHandleImageHighlighted:(UIImage *)rightHandleImageHighlighted {
+	[_rightHandleImageHighlighted release];
+	_rightHandleImageHighlighted = [rightHandleImageHighlighted retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize handleWidth = _handleWidth;
+
+- (void)setHandleWidth:(CGFloat)handleWidth {
+	_handleWidth = handleWidth;
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize handleShadowWidth = _handleShadowWidth;
+
+- (void)setHandleShadowWidth:(CGFloat)handleShadowWidth {
+	_handleShadowWidth = handleShadowWidth;
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize onBackgroundImageView = _onBackgroundImageView;
 @synthesize onLabel = _onLabel;
 @synthesize onView = _onView;
 @synthesize offBackgroundImageView = _offBackgroundImageView;
 @synthesize offLabel = _offLabel;
 @synthesize offView = _offView;
+
 @synthesize trackEdgeInsets = _trackEdgeInsets;
+
+- (void)setTrackEdgeInsets:(UIEdgeInsets)trackEdgeInsets {
+	_trackEdgeInsets = trackEdgeInsets;
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize switchLabelStyle = _switchLabelStyle;
+
+- (void)setSwitchLabelStyle:(SSSwitchLabelStyle)switchLabelStyle {
+	_switchLabelStyle = switchLabelStyle;
+	
+	[self setNeedsDisplay];
+}
 
 
 #pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
-	self.leftHandleImage = nil;
-	self.leftHandleImageHighlighted = nil;
-	self.centerHandleImage = nil;
-	self.centerHandleImageHighlighted = nil;
-	self.rightHandleImage = nil;
-	self.rightHandleImageHighlighted = nil;
+	[_leftHandleImage release];
+	[_leftHandleImageHighlighted release];
+	[_centerHandleImage release];
+	[_centerHandleImageHighlighted release];
+	[_rightHandleImage release];
+	[_rightHandleImageHighlighted release];
 	[_handle release];
 	[_onBackgroundImageView release];
 	[_onLabel release];
@@ -133,37 +267,6 @@
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
 	// Forward all touches to the handle
 	return [super hitTest:point withEvent:event] ? _handle : nil;
-}
-
-
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-	[super willMoveToSuperview:newSuperview];
-	
-	if (newSuperview) {
-		[self addObserver:self forKeyPath:@"on" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"style" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-		[self addObserver:self forKeyPath:@"leftHandleImage" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"leftHandleImageHighlighted" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"centerHandleImage" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"centerHandleImageHighlighted" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"rightHandleImage" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"rightHandleImageHighlighted" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"handleShadowWidth" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"trackEdgeInsets" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"switchLabelStyle" options:NSKeyValueObservingOptionNew context:nil];
-	} else {
-		[self removeObserver:self forKeyPath:@"on"];
-		[self removeObserver:self forKeyPath:@"style"];
-		[self removeObserver:self forKeyPath:@"leftHandleImage"];
-		[self removeObserver:self forKeyPath:@"leftHandleImageHighlighted"];
-		[self removeObserver:self forKeyPath:@"centerHandleImage"];
-		[self removeObserver:self forKeyPath:@"centerHandleImageHighlighted"];
-		[self removeObserver:self forKeyPath:@"rightHandleImage"];
-		[self removeObserver:self forKeyPath:@"rightHandleImageHighlighted"];
-		[self removeObserver:self forKeyPath:@"handleShadowWidth"];
-		[self removeObserver:self forKeyPath:@"trackEdgeInsets"];
-		[self removeObserver:self forKeyPath:@"switchLabelStyle"];
-	}
 }
 
 
@@ -279,73 +382,6 @@
 - (void)_handleDraggingEnded:(id)sender {
 	_dragging = NO;
 	[self _handleReleased:sender];
-}
-
-
-#pragma mark -
-#pragma mark Setters
-
-- (void)setStyle:(SSSwitchStyle)s {
-	_style = s;
-	
-	// TODO: Always apply default style before changing style for more consistent results
-	
-	switch (_style) {
-		case SSSwitchStyleDefault: {
-			NSInteger leftCap = 8;
-			
-			self.leftHandleImage = [[UIImage imageNamed:@"UISwitchButtonRightShadowed.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
-			self.leftHandleImageHighlighted = [[UIImage imageNamed:@"UISwitchButtonRightShadowedDown.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
-			self.centerHandleImage = [[UIImage imageNamed:@"UISwitchButtonFullShadowed.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
-			self.centerHandleImageHighlighted = [[UIImage imageNamed:@"UISwitchButtonFullShadowedDown.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
-			self.rightHandleImage = [[UIImage imageNamed:@"UISwitchButtonLeftShadowed.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
-			self.rightHandleImageHighlighted = [[UIImage imageNamed:@"UISwitchButtonLeftShadowedDown.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:leftCap topCapHeight:0];
-			
-			self.handleWidth = 42;
-			self.handleShadowWidth = 2;
-			
-			self.onBackgroundImageView.image = [[UIImage imageNamed:@"UISwitchTrackBlue.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
-
-			self.onLabel.textColor = [UIColor whiteColor];
-			self.onLabel.font = [UIFont boldSystemFontOfSize:16.0f];
-			self.onLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.5f];
-			self.onLabel.shadowOffset = CGSizeMake(0.0f, -1.0f);
-			
-			self.offBackgroundImageView.image = [[UIImage imageNamed:@"UISwitchTrackClear.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
-			
-			self.offLabel.textColor = [UIColor colorWithWhite:0.475f alpha:1.0f];
-			self.offLabel.font = [UIFont boldSystemFontOfSize:16.0f];
-			self.offLabel.shadowColor = nil;			
-			
-			self.trackEdgeInsets = UIEdgeInsetsZero;
-
-			break;
-		}
-			
-		case SSSwitchStyleAirplane: {
-			self.onBackgroundImageView.image = [[UIImage imageNamed:@"UISwitchTrackOrange.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:5 topCapHeight:0];
-			break;
-		}
-	}
-	
-	[self _layoutSubviewsWithHandlePosition:_on ? 1.0f : 0.0f];
-}
-
-
-#pragma mark -
-#pragma mark NSKeyValueObserving
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ([keyPath isEqualToString:@"on"] || [keyPath isEqualToString:@"style"] || [keyPath isEqualToString:@"leftHandleImage"] ||
-		[keyPath isEqualToString:@"leftHandleImageHighlighted"] || [keyPath isEqualToString:@"centerHandleImage"] ||
-		[keyPath isEqualToString:@"centerHandleImageHighlighted"] || [keyPath isEqualToString:@"rightHandleImage"] ||
-		[keyPath isEqualToString:@"rightHandleImageHighlighted"] || [keyPath isEqualToString:@"handleShadowWidth"] ||
-		[keyPath isEqualToString:@"trackEdgeInsets"] || [keyPath isEqualToString:@"switchLabelStyle"]) {
-		[self setNeedsDisplay];
-		return;
-	}
-	
-	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end

@@ -25,18 +25,51 @@ CGFloat const kAngleOffset = -90.0f;
 
 
 @synthesize pieBorderWidth = _pieBorderWidth;
+
+- (void)setPieBorderWidth:(CGFloat)pieBorderWidth {
+	_pieBorderWidth = pieBorderWidth;
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize pieBorderColor = _pieBorderColor;
+
+- (void)setPieBorderColor:(UIColor *)pieBorderColor {
+	[_pieBorderColor release];
+	_pieBorderColor = [pieBorderColor retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize pieFillColor = _pieFillColor;
+
+- (void)setPieFillColor:(UIColor *)pieFillColor {
+	[_pieFillColor release];
+	_pieFillColor = [pieFillColor retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize pieBackgroundColor = _pieBackgroundColor;
+
+- (void)setPieBackgroundColor:(UIColor *)pieBackgroundColor {
+	[_pieBackgroundColor release];
+	_pieBackgroundColor = [pieBackgroundColor retain];
+	
+	[self setNeedsDisplay];
+}
 
 
 #pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {
-	self.pieBorderColor = nil;
-	self.pieFillColor = nil;
-	self.pieBackgroundColor = nil;
+	[_pieBorderColor release];
+	[_pieFillColor release];
+	[_pieBackgroundColor release];
 	[super dealloc];
 }
 
@@ -51,7 +84,7 @@ CGFloat const kAngleOffset = -90.0f;
 		self.progress = 0.0f;
 		self.pieBorderWidth = 2.0f;
 		self.pieBorderColor = [UIColor colorWithRed:0.612f green:0.710f blue:0.839f alpha:1.0f];
-		self.pieFillColor = [UIColor colorWithRed:0.612f green:0.710f blue:0.839f alpha:1.0f];
+		self.pieFillColor = self.pieBorderColor;
 		self.pieBackgroundColor = [UIColor whiteColor];
     }
     return self;
@@ -87,37 +120,6 @@ CGFloat const kAngleOffset = -90.0f;
 	CGContextSetLineWidth(context, _pieBorderWidth);
 	CGRect pieInnerRect = CGRectMake(_pieBorderWidth / 2.0f, _pieBorderWidth / 2.0f, rect.size.width - _pieBorderWidth, rect.size.height - _pieBorderWidth);
 	CGContextStrokeEllipseInRect(context, pieInnerRect);	
-}
-
-
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-	[super willMoveToSuperview:newSuperview];
-	
-	if (newSuperview) {
-		[self addObserver:self forKeyPath:@"pieBorderWidth" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"pieBorderColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"pieFillColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"pieBackgroundColor" options:NSKeyValueObservingOptionNew context:nil];
-	} else {
-		[self removeObserver:self forKeyPath:@"pieBorderWidth"];
-		[self removeObserver:self forKeyPath:@"pieBorderColor"];
-		[self removeObserver:self forKeyPath:@"pieFillColor"];
-		[self removeObserver:self forKeyPath:@"pieBackgroundColor"];
-	}
-}
-
-
-#pragma mark -
-#pragma mark NSKeyValueObserving
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	// Redraw if attributes changed
-	if ([keyPath isEqualToString:@"pieBorderWidth"] || [keyPath isEqualToString:@"pieBorderColor"] || [keyPath isEqualToString:@"pieFillColor"] || [keyPath isEqualToString:@"pieBackgroundColor"]) {
-		[self setNeedsDisplay];
-		return;
-	}
-	
-	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end

@@ -11,10 +11,43 @@
 @implementation SSLineView
 
 @synthesize lineColor = _lineColor;
+
+- (void)setLineColor:(UIColor *)lineColor {
+	[_lineColor release];
+	_lineColor = [lineColor retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize insetColor = _insetColor;
-@synthesize showInset = _showInset;
+
+- (void)setInsetColor:(UIColor *)insetColor {
+	[_insetColor release];
+	_insetColor = [insetColor retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize dashPhase = _dashPhase;
+
+- (void)setDashPhase:(CGFloat)dashPhase {
+	_dashPhase = dashPhase;
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize dashLengths = _dashLengths;
+
+- (void)setDashLengths:(NSArray *)dashLengths {
+	[_dashLengths release];
+	_dashLengths = [dashLengths copy];
+	
+	[self setNeedsDisplay];
+}
+
 
 #pragma mark -
 #pragma mark NSObject
@@ -38,8 +71,6 @@
 		
 		self.lineColor = [UIColor grayColor];
 		self.insetColor = [UIColor colorWithWhite:1.0f alpha:0.5f];
-		
-		_showInset = YES;
 	}
 	return self;
 }
@@ -63,7 +94,7 @@
 	}
 
 	// Inset
-	if (self.showInset && self.insetColor) {
+	if (_insetColor) {
 		CGContextSetStrokeColorWithColor(context, _insetColor.CGColor);
 		CGContextMoveToPoint(context, 0.0f, 1.0f);
 		CGContextAddLineToPoint(context, rect.size.width, 1.0f);
@@ -75,41 +106,6 @@
 	CGContextMoveToPoint(context, 0.0f, 0.0f);
 	CGContextAddLineToPoint(context, rect.size.width, 0.0f);
 	CGContextStrokePath(context);
-}
-
-
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-	[super willMoveToSuperview:newSuperview];
-
-	if (newSuperview) {
-		[self addObserver:self forKeyPath:@"lineColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"insetColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"showInset" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"dashPhase" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"dashLengths" options:NSKeyValueObservingOptionNew context:nil];
-	} else {
-		[self removeObserver:self forKeyPath:@"lineColor"];
-		[self removeObserver:self forKeyPath:@"insetColor"];
-		[self removeObserver:self forKeyPath:@"showInset"];
-		[self removeObserver:self forKeyPath:@"dashPhase"];
-		[self removeObserver:self forKeyPath:@"dashLengths"];
-	}	
-}
-
-
-#pragma mark -
-#pragma mark NSKeyValueObserving
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	// Redraw if colors or dash configuration changed
-	if ([keyPath isEqualToString:@"lineColor"] || [keyPath isEqualToString:@"insetColor"] ||
-		[keyPath isEqualToString:@"showInset"] || [keyPath isEqualToString:@"dashPhase"] ||
-		[keyPath isEqualToString:@"dashLengths"]) {
-		[self setNeedsDisplay];
-		return;
-	}
-	
-	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end

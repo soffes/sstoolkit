@@ -16,13 +16,71 @@
 #pragma mark Accessors
 
 @synthesize textLabel = _textLabel;
+
 @synthesize badgeColor = _badgeColor;
+
+- (void)setBadgeColor:(UIColor *)badgeColor {
+	[_badgeColor release];
+	_badgeColor = [badgeColor retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize highlightedBadgeColor = _highlightedBadgeColor;
+
+- (void)setHighlightedBadgeColor:(UIColor *)highlightedBadgeColor {
+	[_highlightedBadgeColor release];
+	_highlightedBadgeColor = [highlightedBadgeColor retain];
+	
+	[self setNeedsDisplay];
+}
+
 @synthesize badgeImage = _badgeImage;
+
+- (void)setBadgeImage:(UIImage *)badgeImage {
+	[_badgeImage release];
+	_badgeImage = [badgeImage retain];
+	
+	[self setNeedsDisplay];
+}
+
 @synthesize highlightedBadgeImage = _highlightedBadgeImage;
+
+- (void)setHighlightedBadgeImage:(UIImage *)highlightedBadgeImage {
+	[_highlightedBadgeImage release];
+	_highlightedBadgeImage = [highlightedBadgeImage retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize cornerRadius = _cornerRadius;
+
+- (void)setCornerRadius:(CGFloat)cornerRadius {
+	_cornerRadius = cornerRadius;
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize badgeAlignment = _badgeAlignment;
+
+- (void)setBadgeAlignment:(SSBadgeViewAlignment)badgeAlignment {
+	_badgeAlignment = badgeAlignment;
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize highlighted = _highlighted;
+
+- (void)setHighlighted:(BOOL)highlighted {
+	_highlighted = highlighted;
+	
+	[self setNeedsDisplay];
+}
+
 
 #pragma mark -
 #pragma mark Class Methods
@@ -125,24 +183,9 @@
 	
 	if (newSuperview) {
 		[_textLabel addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"badgeColor" options:0 context:nil];
-		[self addObserver:self forKeyPath:@"highlightedBadgeColor" options:0 context:nil];
-		[self addObserver:self forKeyPath:@"badgeImage" options:0 context:nil];
-		[self addObserver:self forKeyPath:@"highlightedBadgeImage" options:0 context:nil];
-		[self addObserver:self forKeyPath:@"cornerRadius" options:0 context:nil];
-		[self addObserver:self forKeyPath:@"badgeAlignment" options:0 context:nil];
-		[self addObserver:self forKeyPath:@"highlighted" options:0 context:nil];
-		
 		self.hidden = ([_textLabel.text length] == 0);
 	} else {
 		[_textLabel removeObserver:self forKeyPath:@"text"];
-		[self removeObserver:self forKeyPath:@"badgeColor"];
-		[self removeObserver:self forKeyPath:@"highlightedBadgeColor"];
-		[self removeObserver:self forKeyPath:@"badgeImage"];
-		[self removeObserver:self forKeyPath:@"highlightedBadgeImage"];
-		[self removeObserver:self forKeyPath:@"cornerRadius"];
-		[self removeObserver:self forKeyPath:@"badgeAlignment"];
-		[self removeObserver:self forKeyPath:@"highlighted"];
 	}
 }
 
@@ -151,15 +194,6 @@
 #pragma mark NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	// Redraw if something we care about changed	
-	if ([keyPath isEqualToString:@"badgeColor"] || [keyPath isEqualToString:@"highlightedBadgeColor"] ||
-		[keyPath isEqualToString:@"badgeImage"] || [keyPath isEqualToString:@"highlightedBadgeImage"] ||
-		[keyPath isEqualToString:@"cornerRadius"] || [keyPath isEqualToString:@"badgeAlignment"] ||
-		[keyPath isEqualToString:@"highlighted"]) {
-		[self setNeedsDisplay];
-		return;
-	}
-	
 	if (object == _textLabel && [keyPath isEqualToString:@"text"]) {
 		NSString *text = [change objectForKey:NSKeyValueChangeNewKey];
 		if ([text isEqual:[NSNull null]]) {

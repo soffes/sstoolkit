@@ -21,11 +21,79 @@
 #pragma mark Accessors
 
 @synthesize numberOfStars = _numberOfStars;
+
+- (void)setNumberOfStars:(CGFloat)numberOfStars {
+	if (_numberOfStars == numberOfStars) {
+		return;
+	}
+	
+	CGFloat old = _numberOfStars;
+	_numberOfStars = numberOfStars;
+	
+	[self setNeedsDisplay];
+	
+	// Animate in the text label if necessary
+	if ((_numberOfStars > 0 && old == 0) || (_numberOfStars == 0 && old > 0)) {
+		[UIView beginAnimations:@"fadeTextLabel" context:nil];
+		
+		// TODO: Make animation parameters match Apple more
+		[UIView setAnimationDuration:0.2];
+		[UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+		_textLabel.alpha = (_numberOfStars == 0.0f) ? 1.0f : 0.0f;
+		[UIView commitAnimations];
+	}
+	
+	[self sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
+
 @synthesize totalNumberOfStars = _totalNumberOfStars;
+
+- (void)setTotalNumberOfStars:(NSUInteger)totalNumberOfStars {
+	_totalNumberOfStars = totalNumberOfStars;
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize emptyStarImage = _emptyStarImage;
+
+- (void)setEmptyStarImage:(UIImage *)emptyStarImage {
+	[_emptyStarImage release];
+	_emptyStarImage = [emptyStarImage retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize filledStarImage = _filledStarImage;
+
+- (void)setFilledStarImage:(UIImage *)filledStarImage {
+	[_filledStarImage release];
+	_filledStarImage = [filledStarImage retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize starSize = _starSize;
+
+- (void)setStarSize:(CGSize)starSize {
+	_starSize = starSize;
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize starSpacing = _starSpacing;
+
+- (void)setStarSpacing:(CGFloat)starSpacing {
+	_starSpacing = starSpacing;
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize textLabel = _textLabel;
 
 
@@ -112,29 +180,6 @@
 }
 
 
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-	[super willMoveToSuperview:newSuperview];
-	
-	if (newSuperview) {
-		[self addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"numberOfStars" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-		[self addObserver:self forKeyPath:@"totalNumberOfStars" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"emptyStarImage" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"filledStarImage" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"starSize" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"starSpacing" options:NSKeyValueObservingOptionNew context:nil];
-	} else {
-		[self removeObserver:self forKeyPath:@"frame"];
-		[self removeObserver:self forKeyPath:@"numberOfStars"];
-		[self removeObserver:self forKeyPath:@"totalNumberOfStars"];
-		[self removeObserver:self forKeyPath:@"emptyStarImage"];
-		[self removeObserver:self forKeyPath:@"filledStarImage"];
-		[self removeObserver:self forKeyPath:@"starSize"];
-		[self removeObserver:self forKeyPath:@"starSpacing"];
-	}
-}
-
-
 #pragma mark -
 #pragma mark Private Methods
 
@@ -157,46 +202,6 @@
 	
 	// TODO: Improve
 	self.numberOfStars = ceilf((point.x - left) / (_starSize.width + _starSpacing));
-}
-
-
-#pragma mark -
-#pragma mark NSKeyValueObserving
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ([keyPath isEqualToString:@"frame"] || [keyPath isEqualToString:@"totalNumberOfStars"] || [keyPath isEqualToString:@"emptyStarImage"] ||
-		[keyPath isEqualToString:@"filledStarImage"] || [keyPath isEqualToString:@"starSize"] || [keyPath isEqualToString:@"starSpacing"]) {
-		[self setNeedsDisplay];
-		return;
-	}
-	
-	if ([keyPath isEqualToString:@"numberOfStars"]) {
-		CGFloat new = [[change valueForKey:NSKeyValueChangeNewKey] floatValue];
-		CGFloat old = [[change valueForKey:NSKeyValueChangeOldKey] floatValue];
-		
-		if (new == old) {
-			return;
-		}
-		
-		[self setNeedsDisplay];
-		
-		// Animate in the text label if necessary
-		if ((new > 0 && old == 0) || (new == 0 && old > 0)) {
-			[UIView beginAnimations:@"fadeTextLabel" context:nil];
-			
-			// TODO: Make animation parameters match Apple more
-			[UIView setAnimationDuration:0.2];
-			[UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-			_textLabel.alpha = (new == 0.0f) ? 1.0f : 0.0f;
-			[UIView commitAnimations];
-		}
-		
-		[self sendActionsForControlEvents:UIControlEventValueChanged];
-		
-		return;
-	}
-	
-	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end

@@ -23,18 +23,107 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 #pragma mark -
 #pragma mark Accessors
 
-@synthesize numberOfSegments;
+- (NSUInteger)numberOfSegments {
+	return [_segments count];
+}
+
 @synthesize momentary = _momentary;
 @synthesize buttonImage = _buttonImage;
+
+- (void)setButtonImage:(UIImage *)buttonImage {
+	[_buttonImage release];
+	_buttonImage = [buttonImage retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize highlightedButtonImage = _highlightedButtonImage;
+
+- (void)setHighlightedButtonImage:(UIImage *)highlightedButtonImage {
+	[_highlightedButtonImage release];
+	_highlightedButtonImage = [highlightedButtonImage retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize dividerImage = _dividerImage;
+
+- (void)setDividerImage:(UIImage *)dividerImage {
+	[_dividerImage release];
+	_dividerImage = [dividerImage retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize highlightedDividerImage = _highlightedDividerImage;
+
+- (void)setHighlightedDividerImage:(UIImage *)highlightedDividerImage {
+	[_highlightedDividerImage release];
+	_highlightedDividerImage = [highlightedDividerImage retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize font = _font;
+
+- (void)setFont:(UIFont *)font {
+	[_font release];
+	_font = [font retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize textColor = _textColor;
+
+- (void)setTextColor:(UIColor *)textColor {
+	[_textColor release];
+	_textColor = [textColor retain];
+	
+	[self setNeedsDisplay];
+}
+
 @synthesize disabledTextColor = _disabledTextColor;
+
+- (void)setDisabledTextColor:(UIColor *)disabledTextColor {
+	[_disabledTextColor release];
+	_disabledTextColor = [disabledTextColor retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize textShadowColor = _textShadowColor;
+
+- (void)setTextShadowColor:(UIColor *)textShadowColor {
+	[_textShadowColor release];
+	_textShadowColor = [textShadowColor retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize textShadowOffset = _textShadowOffset;
+
+- (void)setTextShadowOffset:(CGSize)textShadowOffset {
+	_textShadowOffset = textShadowOffset;
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize textEdgeInsets = _textEdgeInsets;
+
+- (void)setTextEdgeInsets:(UIEdgeInsets)textEdgeInsets {
+	_textEdgeInsets = textEdgeInsets;
+	
+	[self setNeedsDisplay];
+}
+
 
 @synthesize selectedSegmentIndex = _selectedSegmentIndex;
 
@@ -232,38 +321,6 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-	[super willMoveToSuperview:newSuperview];
-		
-	if (newSuperview) {
-		[self addObserver:self forKeyPath:@"buttonImage" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"highlightedButtonImage" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"dividerImage" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"highlightedDividerImage" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"font" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"disabledTextColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"textShadowColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"textShadowOffset" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"textEdgeInsets" options:NSKeyValueObservingOptionNew context:nil];
-		return;
-	}
-	
-	if (!newSuperview) {
-		[self removeObserver:self forKeyPath:@"buttonImage"];
-		[self removeObserver:self forKeyPath:@"highlightedButtonImage"];
-		[self removeObserver:self forKeyPath:@"dividerImage"];
-		[self removeObserver:self forKeyPath:@"highlightedDividerImage"];
-		[self removeObserver:self forKeyPath:@"font"];
-		[self removeObserver:self forKeyPath:@"textColor"];
-		[self removeObserver:self forKeyPath:@"disabledTextColor"];
-		[self removeObserver:self forKeyPath:@"textShadowColor"];
-		[self removeObserver:self forKeyPath:@"textShadowOffset"];
-		[self removeObserver:self forKeyPath:@"textEdgeInsets"];
-	}
-}
-
-
 #pragma mark -
 #pragma mark Initializer
 
@@ -286,11 +343,6 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 
 #pragma mark -
 #pragma mark Segments
-
-- (NSUInteger)numberOfSegments {
-	return [_segments count];
-}
-
 
 - (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)segment {
 	if ((NSInteger)([self numberOfSegments] - 1) < (NSInteger)segment) {
@@ -390,22 +442,6 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	
 	[_segmentMeta setValue:meta forKey:[NSString stringWithFormat:@"%i", index]];
 	[self setNeedsDisplay];
-}
-
-
-#pragma mark -
-#pragma mark NSKeyValueObserving
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ([keyPath isEqualToString:@"buttonImage"] || [keyPath isEqualToString:@"highlightedButtonImage"] ||
-		[keyPath isEqualToString:@"dividerImage"] || [keyPath isEqualToString:@"highlightedDividerImage"] ||
-		[keyPath isEqualToString:@"font"] || [keyPath isEqualToString:@"textColor"] || [keyPath isEqualToString:@"textShadowColor"] ||
-		[keyPath isEqualToString:@"textShadowOffset"] || [keyPath isEqualToString:@"textEdgeInsets"]) {
-		[self setNeedsDisplay];
-		return;
-	}
-	
-	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end

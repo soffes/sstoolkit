@@ -19,7 +19,6 @@
 	
 	UIColor *_lineColor;
 	UIColor *_insetColor;
-	BOOL _showInset;
 	CGFloat _dashPhase;
 	NSArray *_dashLengths;
 }
@@ -33,11 +32,6 @@
  @brief The color of the line inset. The default is 50% opaque white.
  */
 @property (nonatomic, retain) UIColor *insetColor;
-
-/**
- @brief A Boolean value that determines whether showing the inset is enabled. The default is <code>YES</code>.
- */
-@property (nonatomic, assign) BOOL showInset;
 
 /**
  @brief A float that specifies how far into the dash pattern the line starts, in points.

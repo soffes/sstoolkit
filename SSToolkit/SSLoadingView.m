@@ -18,20 +18,64 @@ static CGFloat indicatorRightMargin = 8.0f;
 #pragma mark Accessors
 
 @synthesize activityIndicatorView = _activityIndicatorView;
+
 @synthesize text = _text;
+
+- (void)setText:(NSString *)text {
+	[_text release];
+	_text = [text copy];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize font = _font;
+
+- (void)setFont:(UIFont *)font {
+	[_font release];
+	_font = [font retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize textColor = _textColor;
+
+- (void)setTextColor:(UIColor *)textColor {
+	[_textColor release];
+	_textColor = [textColor retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize shadowColor = _shadowColor;
+
+- (void)setShadowColor:(UIColor *)shadowColor {
+	[_shadowColor release];
+	_shadowColor = [shadowColor retain];
+	
+	[self setNeedsDisplay];
+}
+
+
 @synthesize shadowOffset = _shadowOffset;
+
+- (void)setShadowOffset:(CGSize)shadowOffset {
+	_shadowOffset = shadowOffset;
+	
+	[self setNeedsDisplay];
+}
+
 
 #pragma mark -
 #pragma mark NSObject
 
 - (void)dealloc {	
-	self.font = nil;
-	self.text = nil;
-	self.textColor = nil;
-	self.shadowColor = nil;
+	[_font release];
+	[_text release];
+	[_textColor release];
+	[_shadowColor release];
 	[_activityIndicatorView release];
 	[super dealloc];
 }
@@ -66,25 +110,6 @@ static CGFloat indicatorRightMargin = 8.0f;
 }
 
 
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-	[super willMoveToSuperview:newSuperview];
-
-	if (newSuperview) {
-		[self addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"font" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"shadowColor" options:NSKeyValueObservingOptionNew context:nil];
-		[self addObserver:self forKeyPath:@"shadowOffset" options:NSKeyValueObservingOptionNew context:nil];
-	} else {
-		[self removeObserver:self forKeyPath:@"text"];
-		[self removeObserver:self forKeyPath:@"font"];
-		[self removeObserver:self forKeyPath:@"textColor"];
-		[self removeObserver:self forKeyPath:@"shadowColor"];
-		[self removeObserver:self forKeyPath:@"shadowOffset"];
-	}	
-}
-
-
 - (void)drawRect:(CGRect)rect {
 	
 	CGRect frame = self.frame;
@@ -113,22 +138,6 @@ static CGFloat indicatorRightMargin = 8.0f;
 	// Draw text
 	[_textColor set];
 	[_text drawInRect:textRect withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentLeft];
-}
-
-
-#pragma mark -
-#pragma mark NSKeyValueObserving
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {	
-	
-	// Redraw if colors or borders changed
-	if ([keyPath isEqualToString:@"text"] || [keyPath isEqualToString:@"font"] || 
-		[keyPath isEqualToString:@"textColor"] || [keyPath isEqualToString:@"shadowColor"]) {
-		[self setNeedsDisplay];
-		return;
-	}
-	
-	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end
