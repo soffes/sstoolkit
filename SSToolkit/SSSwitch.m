@@ -361,7 +361,7 @@
 	
 	// Drag release
 	_dragging = NO;
-	CGFloat halfHandleSize = (_handleWidth - _handleShadowWidth) / 2.0;
+	CGFloat halfHandleSize = (_handleWidth - _handleShadowWidth) / 2.0f;
 	BOOL onOrOff = (_handle.frame.origin.x + halfHandleSize) > (self.frame.size.width / 2.0);
 	[self setOn:onOrOff animated:YES];
 }
