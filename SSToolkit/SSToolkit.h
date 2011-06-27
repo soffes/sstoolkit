@@ -12,6 +12,7 @@
 #if 1
 
 // Views
+#import "SSAnimatedImageView.h"
 #import "SSBadgeView.h"
 #import "SSBordererView.h"
 #import "SSCollectionView.h"
@@ -52,6 +53,7 @@
 #else
 
 // Views
+#import <SSToolkit/SSAnimatedImageView.h>
 #import <SSToolkit/SSBadgeView.h>
 #import <SSToolkit/SSBordererView.h>
 #import <SSToolkit/SSCollectionView.h>
