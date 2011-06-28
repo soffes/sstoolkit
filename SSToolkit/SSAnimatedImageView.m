@@ -42,6 +42,11 @@
 }
 
 
+- (void)startImageAnimation:(NSString *)animationName images:(NSArray *)images delegate:(id<SSAnimatedImageViewDelegate>)delegate {
+	[self startImageAnimation:animationName images:images duration:([images count] / 30.0) repeatCount:1 delegate:delegate];
+}
+
+
 - (void)startImageAnimation:(NSString *)animationName images:(NSArray *)images duration:(NSTimeInterval)duration repeatCount:(NSUInteger)repeatCount delegate:(id<SSAnimatedImageViewDelegate>)delegate {
 	CAKeyframeAnimation *animation = [self _animationWithName:animationName images:images repeatCount:repeatCount delegate:delegate];
 	animation.duration = duration;

@@ -18,20 +18,6 @@
 }
 
 
-+ (NSArray *)animationImagesWithBaseName:(NSString *)baseName start:(NSUInteger)start end:(NSUInteger)end {
-	NSMutableArray *images = [[NSMutableArray alloc] initWithCapacity:(end - start) + 1];
-	
-	for (NSUInteger i = start; i < end; i++) {
-		UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%04d.png", baseName, i]];
-		if (image) {
-			[images addObject:image];
-		}
-	}
-	
-	return [images autorelease];	
-}
-
-
 - (UIImage *)initWithImage:(UIImage *)image croppedToRect:(CGRect)rect {
 	CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], rect);
 	UIImage *cropped = [[UIImage alloc] initWithCGImage:imageRef];

@@ -10,10 +10,6 @@
 
 + (UIImage *)imageNamed:(NSString *)imageName bundle:(NSString *)bundleName;
 
-// Given baseName = @"Foo", start = 1, end = 3, an array of images will be returned with the following names:
-// @"Foo0001.png", @"Foo0002.png", @"Foo0003.png"
-+ (NSArray *)animationImagesWithBaseName:(NSString *)baseName start:(NSUInteger)start end:(NSUInteger)end;
-
 - (UIImage *)initWithImage:(UIImage *)image croppedToRect:(CGRect)rect;
 - (UIImage *)imageCroppedToRect:(CGRect)rect;
 
