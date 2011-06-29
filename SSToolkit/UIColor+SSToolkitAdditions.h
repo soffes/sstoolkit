@@ -8,6 +8,6 @@
 
 @interface UIColor (SSToolkitAdditions)
 
-- (CGFloat)alpha;
+@property (nonatomic, assign, readonly) CGFloat alpha;
 
 @end
