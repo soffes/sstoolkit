@@ -128,7 +128,7 @@
 	if ((self = [super initWithFrame:rect])) {
 		self.backgroundColor = [UIColor whiteColor];
 		self.opaque = YES;
-		self.clipsToBounds = YES;
+		self.contentMode = UIViewContentModeRedraw;
 		
 		self.emptyStarImage = [UIImage imageNamed:@"gray-star.png" bundle:kSSToolkitBundleName];
 		self.filledStarImage = [UIImage imageNamed:@"orange-star.png" bundle:kSSToolkitBundleName];
