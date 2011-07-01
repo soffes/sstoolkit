@@ -10,6 +10,11 @@
 
 #import "SSBordererView.h"
 
+typedef enum {
+	SSGradientViewDirectionHorizontal,
+	SSGradientViewDirectionVertical
+} SSGradientViewDirection;
+
 /**
  @brief Simple UIView wrapper for CGGradient.
  */
@@ -19,6 +24,7 @@
 	
 	NSArray *_colors;
 	NSArray *_locations;
+	SSGradientViewDirection _direction;
 
 	CGGradientRef _gradient;
 }
@@ -36,6 +42,13 @@
  increasing. If <code>nil</code>, the stops are spread uniformly across the range. Defaults to <code>nil</code>.
  */
 @property (nonatomic, copy) NSArray *locations;
+
+/**
+ @brief The direction of the gradient.
+ 
+ The default is <code>SSGradientViewDirectionHorizontal</code>.
+ */
+@property (nonatomic, assign) SSGradientViewDirection direction;
 
 
 #pragma mark -

@@ -37,6 +37,14 @@
 }
 
 
+@synthesize direction = _direction;
+
+- (void)setDirection:(SSGradientViewDirection)direction {
+	_direction = direction;
+	[self setNeedsDisplay];
+}
+
+
 #pragma mark -
 #pragma mark Deprecated Accessors
 
@@ -122,6 +130,15 @@
 #pragma mark -
 #pragma mark UIView
 
+
+- (id)initWithFrame:(CGRect)frame {
+	if ((self = [super initWithFrame:frame])) {
+		_direction = SSGradientViewDirectionVertical;
+	}
+	return self;
+}
+
+
 - (void)drawRect:(CGRect)rect {
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextClipToRect(context, rect);
@@ -129,7 +146,8 @@
 	// Gradient
 	if (_gradient) {
 		CGPoint start = CGPointMake(0.0f, 0.0f);
-		CGPoint end = CGPointMake(0.0f, rect.size.height);
+		CGPoint end = (_direction == SSGradientViewDirectionVertical ? CGPointMake(0.0f, rect.size.height) :
+					   CGPointMake(rect.size.width, 0.0f));
 		CGContextDrawLinearGradient(context, _gradient, start, end, 0);
 	}
 	
