@@ -270,7 +270,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	NSMutableArray *rowIndexPaths = [[NSMutableArray alloc] init];
 	for (NSIndexPath *itemIndexPath in indexPaths) {
 		NSIndexPath *rowIndexPath = [self _cellIndexPathFromItemIndexPath:itemIndexPath];
-		if (![rowIndexPaths containsObject:rowIndexPaths]) {
+		if (![rowIndexPaths containsObject:rowIndexPath]) {
 			[rowIndexPaths addObject:rowIndexPath];
 		}
 	}
@@ -461,7 +461,13 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	}	
 	
 	NSUInteger row = (NSUInteger)floor(rowIndexPath.row / itemsPerRow);
-	return [NSIndexPath indexPathForRow:row inSection:rowIndexPath.section];
+	NSUInteger offset = 0;
+	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling &&
+		[self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:rowIndexPath.row]) {
+		offset = 1;
+	}
+	
+	return [NSIndexPath indexPathForRow:(row + offset) inSection:rowIndexPath.section];
 }
 
 

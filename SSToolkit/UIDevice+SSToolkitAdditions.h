@@ -9,5 +9,6 @@
 @interface UIDevice (SSToolkitAdditions)
 
 - (BOOL)isSimulator;
+- (BOOL)isCrappy;
 
 @end
