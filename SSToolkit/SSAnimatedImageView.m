@@ -15,7 +15,7 @@
 
 @implementation SSAnimatedImageView
 
-// Adapted from https://gist.github.com/415172
+// Adapted from https://gist.github.com/415172 Thanks Matt!
 - (CAKeyframeAnimation *)_animationWithName:(NSString *)animationName images:(NSArray *)images repeatCount:(NSUInteger)repeatCount delegate:(id<SSAnimatedImageViewDelegate>)delegate {
 	CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"contents"];
 	NSMutableArray *values = [[NSMutableArray alloc] initWithCapacity:[images count]];
