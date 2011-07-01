@@ -461,8 +461,12 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	}	
 	
 	NSUInteger row = (NSUInteger)floor(rowIndexPath.row / itemsPerRow);
+	NSUInteger offset = 0;
+	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling &&
+		[self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:rowIndexPath.row]) {
+		offset = 1;
+	}
 	
-	NSInteger offset = (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) ? 1 : 0;
 	return [NSIndexPath indexPathForRow:(row + offset) inSection:rowIndexPath.section];
 }
 
