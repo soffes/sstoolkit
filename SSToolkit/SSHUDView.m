@@ -22,8 +22,7 @@ static CGFloat kIndicatorSize = 40.0;
 
 @implementation SSHUDView
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize textLabel = _textLabel;
 
@@ -62,8 +61,7 @@ static CGFloat kIndicatorSize = 40.0;
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (id)init {
 	return [self initWithTitle:nil loading:YES];
@@ -82,8 +80,7 @@ static CGFloat kIndicatorSize = 40.0;
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (id)initWithFrame:(CGRect)frame {
 	return [self initWithTitle:nil loading:YES];
@@ -138,8 +135,7 @@ static CGFloat kIndicatorSize = 40.0;
 }
 
 
-#pragma mark -
-#pragma mark HUD
+#pragma mark - HUD
 
 - (id)initWithTitle:(NSString *)aTitle {
 	return [self initWithTitle:aTitle loading:YES];
@@ -299,8 +295,7 @@ static CGFloat kIndicatorSize = 40.0;
 }
 
 
-#pragma mark -
-#pragma mark Private Methods
+#pragma mark - Private Methods
 
 - (void)_setTransformForCurrentOrientation:(BOOL)animated {
 	UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;

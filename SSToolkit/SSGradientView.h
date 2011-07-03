@@ -5,8 +5,6 @@
 //  Created by Sam Soffes on 10/27/09.
 //  Copyright 2009-2011 Sam Soffes. All rights reserved.
 //
-//	Greatly inspired by BWGradientBox. http://brandonwalkin.com/bwtoolkit
-//
 
 #import "SSBordererView.h"
 
@@ -15,9 +13,7 @@ typedef enum {
 	SSGradientViewDirectionVertical
 } SSGradientViewDirection;
 
-/**
- @brief Simple UIView wrapper for CGGradient.
- */
+/// Simple `UIView` wrapper for `CGGradient`.
 @interface SSGradientView : SSBordererView {
 	
 @private
@@ -29,45 +25,49 @@ typedef enum {
 	CGGradientRef _gradient;
 }
 
-/**
- @brief An array of <code>UIColor</code> objects used to draw the gradient. If the value is <code>nil</code>, the
- <code>backgroundColor</code> will be drawn instead of a gradient. The default is <code>nil</code>.
+///---------------------------
+/// @name Drawing the Gradient
+///-------------------------
+
+/** An array of `UIColor` objects used to draw the gradient. If the value is `nil`, the
+ `backgroundColor` will be drawn instead of a gradient.
+ 
+ The default is `nil`.
  */
 @property (nonatomic, copy) NSArray *colors;
 
-/**
- @brief An optional array of NSNumber objects defining the location of each gradient stop.
+/** An optional array of `NSNumber` objects defining the location of each gradient stop.
  
- The gradient stops are specified as values between <code>0</code> and <code>1</code>. The values must be monotonically
- increasing. If <code>nil</code>, the stops are spread uniformly across the range. Defaults to <code>nil</code>.
+ The gradient stops are specified as values between `0` and `1`. The values must be monotonically
+ increasing. If `nil`, the stops are spread uniformly across the range. Defaults to `nil`.
  */
 @property (nonatomic, copy) NSArray *locations;
 
-/**
- @brief The direction of the gradient.
+/** The direction of the gradient.
  
- The default is <code>SSGradientViewDirectionHorizontal</code>.
+ The default is `SSGradientViewDirectionHorizontal`.
  */
 @property (nonatomic, assign) SSGradientViewDirection direction;
 
+///-------------------------
+/// @name Deprecated Methods
+///-------------------------
 
-#pragma mark -
-#pragma mark Deprecated
-
-/**
- @brief The top gradient color. The default is <code>nil</code>. DEPRECATED.
+/** The top gradient color. This method is deprecated.
+ 
+ The default is `nil`.
  */
 @property (nonatomic, retain) UIColor *topColor;
 
-/**
- @brief The bottom gradient color. The default is <code>nil</code>. DEPRECATED.
+/** The bottom gradient color. This method is deprecated.
+ 
+ The default is `nil`.
  */
 @property (nonatomic, retain) UIColor *bottomColor;
 
-/**
- @brief The scale of the gradient. DEPRECATED.
+/** The scale of the gradient. This method is deprecated.
  
- The default is <code>1.0</code>.
+ The default is `1.0`.
  */
 @property (nonatomic, assign) CGFloat gradientScale;
 

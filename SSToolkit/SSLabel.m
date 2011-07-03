@@ -10,8 +10,7 @@
 
 @implementation SSLabel
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize verticalTextAlignment = _verticalTextAlignment;
 
@@ -31,8 +30,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (id)initWithFrame:(CGRect)aFrame {
 	if ((self = [super initWithFrame:aFrame])) {
@@ -43,8 +41,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UILabel
+#pragma mark - UILabel
 
 - (void)drawTextInRect:(CGRect)rect {
 	rect = UIEdgeInsetsInsetRect(rect, _textEdgeInsets);

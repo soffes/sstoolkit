@@ -14,17 +14,15 @@ typedef enum {
 
 @class SSLabel;
 
-/**
- @brief Badge view.
+/** Badge view.
  
- Provides the accesory view for a SSBadgeTableViewCell, available through the <code>badgeView</code> property.
+ Provides the accesory view for a SSBadgeTableViewCell, available through the `badgeView` property.
  
- Acts very much like the badges in Mail.app, with the key difference being that Apple uses images and SSBadgeView is
- rendered with CoreGraphics for improved scrolling performance (although images are supported). This also allows for
- more flexible resizing. 
- 
- Not limited to numbers, strings should still be short enough to fit within the accesoryView bounds.
+ Acts very much like the badges in Mail.app, with the key difference being that Apple uses images and `SSBadgeView` is
+ rendered with Core Graphics for improved scrolling performance (although images are supported). This also allows for
+ more flexible resizing.
  */
+
 @interface SSBadgeView : UIView {
 
 @private
@@ -39,13 +37,19 @@ typedef enum {
 	BOOL _highlighted;
 }
 
-/**
- @brief The badge text label.
+///--------------------------------
+/// @name Accessing the Badge Label
+///--------------------------------
+
+/** The badge text label.
  */
 @property (nonatomic, retain, readonly) SSLabel *textLabel;
 
-/**
- @brief The badge's background color.
+///-------------------------------------
+/// @name Accessing the Badge Attributes
+///-------------------------------------
+
+/** The badge's background color.
  
  The default value of this property is grayish blue (that matches Mail.app).
  
@@ -53,58 +57,59 @@ typedef enum {
  */
 @property (nonatomic, retain) UIColor *badgeColor;
 
-/**
- @brief The badge's background color while its cell is highlighted.
+/** The badge's background color while its cell is highlighted.
  
  The default value of this property is white.
  */
 @property (nonatomic, retain) UIColor *highlightedBadgeColor;
 
-/**
- @brief The badge's background image.
- 
- The default value of this property is <code>nil</code>. If the value is non-nil, it will be draw instead of the color.
- 
- Setting a strechable image for this property is recommended.
- */
-@property (nonatomic, retain) UIImage *badgeImage;
-
-/**
- @brief The badge's background image while its cell is highlighted.
- 
- The default value of this property is <code>nil</code>. If the value is non-nil, it will be draw instead of the color.
- 
- Setting a strechable image for this property is recommended.
- */
-@property (nonatomic, retain) UIImage *highlightedBadgeImage;
-
-/**
- @brief The corner radius used when rendering the badge's outline.
+/** The corner radius used when rendering the badge's outline.
  
  The default value of this property is 10.
  */
 @property (nonatomic, assign) CGFloat cornerRadius;
 
-/**
- @brief The badge's horizontal alignment within the accesoryView frame.
+/** The badge's horizontal alignment within the accesoryView frame.
  
  This will position the badge in the view's bounds accordinly.
  
- The default value of this property is <code>SSBadgeViewAlignmentCenter</code>.
+ The default value of this property is `SSBadgeViewAlignmentCenter`.
  */
 @property (nonatomic, assign) SSBadgeViewAlignment badgeAlignment;
 
-/**
- @brief A Boolean value indicating whether the receiver should be drawn with a highlight.
+/** A Boolean value indicating whether the receiver should be drawn with a highlight.
  
  Setting this property causes the receiver to redraw with the appropriate highlight state.
  
- The default value of this property is <code>NO</code>.
+ The default value of this property is `NO`.
  */
 @property (nonatomic, assign, getter=isHighlighted) BOOL highlighted;
 
-/**
- @brief The default badge color.
+///---------------------
+/// @name Drawing Images
+///---------------------
+
+/** The badge's background image.
+ 
+ The default value of this property is `nil`. If the value is non-nil, it will be draw instead of the color.
+ 
+ Setting a strechable image for this property is recommended.
+ */
+@property (nonatomic, retain) UIImage *badgeImage;
+
+/** The badge's background image while its cell is highlighted.
+ 
+ The default value of this property is `nil`. If the value is non-nil, it will be draw instead of the color.
+ 
+ Setting a strechable image for this property is recommended.
+ */
+@property (nonatomic, retain) UIImage *highlightedBadgeImage;
+
+///---------------
+/// @name Defaults
+///---------------
+
+/** The default badge color.
  
  @return A color with its value set to the default badge color.
  */

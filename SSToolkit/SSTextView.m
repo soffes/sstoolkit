@@ -16,8 +16,7 @@
 
 @implementation SSTextView
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize placeholder = _placeholder;
 @synthesize placeholderColor = _placeholderColor;
@@ -40,8 +39,7 @@
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:self];
@@ -52,8 +50,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
@@ -76,8 +73,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Private Methods
+#pragma mark - Private Methods
 
 - (void)_updateShouldDrawPlaceholder {
 	BOOL prev = _shouldDrawPlaceholder;

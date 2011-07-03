@@ -16,8 +16,7 @@
 
 @implementation SSGradientView
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize colors = _colors;
 
@@ -45,8 +44,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Deprecated Accessors
+#pragma mark - Deprecated Accessors
 
 - (CGFloat)gradientScale {
 	if ([self.locations count] == 2) {
@@ -113,8 +111,7 @@
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_colors release];
@@ -127,8 +124,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 
 - (id)initWithFrame:(CGRect)frame {
@@ -155,8 +151,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Gradient Methods
+#pragma mark - Gradient Methods
 
 - (void)_refreshGradient {
 	CGGradientRelease(_gradient);

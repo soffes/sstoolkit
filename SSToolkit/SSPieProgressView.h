@@ -6,9 +6,7 @@
 //  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
-/**
- @brief Pie chart style progress bar similar to the one in Xcode 3's status bar
- */
+/// Pie chart style progress pie chart similar to the one in Xcode 3's status bar.
 @interface SSPieProgressView : UIView {
 
 @private
@@ -20,33 +18,52 @@
 	UIColor *_pieBackgroundColor;
 }
 
-/**
- @brief The current progress shown by the receiver.
+///---------------------------
+///@name Managing the Progress
+///---------------------------
+
+/** The current progress shown by the receiver.
  
- The current progress is represented by a floating-point value between 0.0 and 
- 1.0f, inclusive, where 1.0 indicates the completion of the task. The default 
- value is 0.0. Values less than 0.0 and greater than 1.0 are pinned to those limits.
+ The current progress is represented by a floating-point value between `0.0` and `1.0`, inclusive, where `1.0` indicates
+ the completion of the task. Values less than `0.0` and greater than `1.0` are pinned to those limits.
+ 
+ The default value is `0.0`.
  */
 @property (nonatomic, assign) CGFloat progress;
 
-/**
- @brief The outer border width.
+///-------------------------------------
+/// @name Configuring the Pie Appearance
+///-------------------------------------
+
+/** The outer border width.
+ 
+ The default is `2.0`.
  */
 @property (nonatomic, assign) CGFloat pieBorderWidth;
 
-/**
- @brief The border color.
+/** The border color.
+ 
+ @see defaultPieColor
  */
 @property (nonatomic, retain) UIColor *pieBorderColor;
 
-/**
- @brief The fill color.
+/** The fill color.
+ 
+ @see defaultPieColor
  */
 @property (nonatomic, retain) UIColor *pieFillColor;
 
-/**
- @brief The background color.
+/** The background color.
+ 
+ The default is white.
  */
 @property (nonatomic, retain) UIColor *pieBackgroundColor;
+
+///---------------
+/// @name Defaults
+///---------------
+
+/// The default value of `pieBorderColor` and `pieFillColor`.
++ (UIColor *)defaultPieColor;
 
 @end

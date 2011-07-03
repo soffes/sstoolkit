@@ -13,8 +13,7 @@
 
 @implementation SSCollectionViewItemTableViewCell
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize itemSize = _itemSize;
 @synthesize itemSpacing = _itemSpacing;
@@ -40,8 +39,7 @@
 @synthesize collectionView = _collectionView;
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	self.collectionView = nil;
@@ -50,8 +48,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (void)layoutSubviews {
 	CGFloat x = _itemSpacing;
@@ -63,8 +60,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UITableViewCell
+#pragma mark - UITableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	if ((self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])) {
@@ -90,8 +86,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Initializer
+#pragma mark - Initializer
 
 - (id)initWithReuseIdentifier:(NSString *)aReuseIdentifier {
 	self = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:aReuseIdentifier];

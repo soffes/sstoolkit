@@ -18,8 +18,7 @@
 
 @implementation SSWebView
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize delegate = _delegate;
 @synthesize shadowsHidden = _shadowsHidden;
@@ -27,8 +26,7 @@
 @synthesize lastRequest = _lastRequest;
 @synthesize loadingPage = _loadingPage;
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	_delegate = nil;
@@ -40,8 +38,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
@@ -60,8 +57,7 @@
 }
 
 
-#pragma mark -
-#pragma mark SSWebView Methods
+#pragma mark - SSWebView Methods
 
 - (void)dismissKeyboard {
 	[_webView stringByEvaluatingJavaScriptFromString:@"document.activeElement.blur()"];
@@ -114,8 +110,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Convenience Methods
+#pragma mark - Convenience Methods
 
 - (void)loadHTMLString:(NSString *)string {
 	[self loadHTMLString:string baseURL:nil];
@@ -139,8 +134,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Private Methods
+#pragma mark - Private Methods
 
 - (void)_loadingStatusChanged {
 	if (self.loading == NO) {
@@ -172,8 +166,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Getters
+#pragma mark - Getters
 
 - (BOOL)shadowsHidden {
 	for (UIView *view in [_webView subviews]) {
@@ -189,8 +182,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Setters
+#pragma mark - Setters
 
 - (void)setOpaque:(BOOL)o {
 	[super setOpaque:o];
@@ -224,8 +216,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIWebView Methods
+#pragma mark - UIWebView Methods
 
 - (BOOL)canGoBack {
 	return [_webView canGoBack];
@@ -283,7 +274,7 @@
 
 - (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL {
 	if (!baseURL) {
-		baseURL = [NSURL URLWithString:@"http://localhost"];
+		baseURL = [NSURL URLWithString:@"http://localhost/"];
 	}
 	[_webView loadHTMLString:string baseURL:baseURL];
 }
@@ -311,17 +302,18 @@
 }
 
 
-#ifndef __IPHONE_5_0
 - (UIScrollView *)scrollView {
+#ifndef __IPHONE_5_0
 	for (UIView *view in [_webView subviews]) {
 		if ([view isKindOfClass:[UIScrollView class]]) {
 			return (UIScrollView *)view;
 		}
 	}
 	return nil;
-}
-
+#else
+	return _webView.scrollView;
 #endif
+}
 
 
 - (BOOL)allowsInlineMediaPlayback {
@@ -344,8 +336,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIWebViewDelegate
+#pragma mark - UIWebViewDelegate
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
 	// Forward delegate message

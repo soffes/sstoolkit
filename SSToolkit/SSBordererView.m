@@ -11,8 +11,7 @@
 
 @implementation SSBordererView
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize topBorderColor = _topBorderColor;
 
@@ -54,8 +53,7 @@
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_topBorderColor release];
@@ -66,8 +64,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (void)drawRect:(CGRect)rect {
 	CGContextRef context = UIGraphicsGetCurrentContext();

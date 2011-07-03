@@ -17,8 +17,7 @@
 
 @implementation SSRatingPicker
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize numberOfStars = _numberOfStars;
 
@@ -108,8 +107,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIResponder
+#pragma mark - UIResponder
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	[self _setNumberOfStarsWithTouch:[touches anyObject]];
@@ -121,8 +119,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (id)initWithFrame:(CGRect)rect {
 	if ((self = [super initWithFrame:rect])) {
@@ -180,8 +177,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Private Methods
+#pragma mark - Private Methods
 
 - (void)_setNumberOfStarsWithTouch:(UITouch *)touch {
 	CGPoint point = [touch locationInView:self];

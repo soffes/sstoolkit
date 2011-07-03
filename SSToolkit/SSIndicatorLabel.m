@@ -15,8 +15,7 @@
 
 @implementation SSIndicatorLabel
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize textLabel = _textLabel;
 @synthesize activityIndicatorView = _activityIndicatorView;
@@ -35,8 +34,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Class Methods
+#pragma mark - Class Methods
 
 + (CGSize)indicatorSize {
 	return CGSizeMake(20.0f, 20.0f);
@@ -48,8 +46,7 @@
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_textLabel release];
@@ -58,8 +55,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (id)initWithFrame:(CGRect)rect {
 	if ((self = [super initWithFrame:rect])) {
@@ -112,8 +108,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Status
+#pragma mark - Status
 
 - (void)startWithText:(NSString *)text {
 	self.loading = YES;

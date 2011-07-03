@@ -11,8 +11,7 @@
 
 @implementation SSNavigationController
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize modalParentViewController = _modalParentViewController;
 @synthesize dismissCustomModalOnVignetteTap = _dismissCustomModalOnVignetteTap;
@@ -20,8 +19,7 @@
 @synthesize originOffsetForViewInCustomModal = _originOffsetForViewInCustomModal;
 
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - UIViewController
 
 - (void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];

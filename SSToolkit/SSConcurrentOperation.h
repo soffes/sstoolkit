@@ -6,14 +6,12 @@
 //  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
-/**
- @brief A simple wrapper for concurrent NSOperations
+/** A simple wrapper for concurrent NSOperations
  
  Subclasses should override the start and stop methods. Here is
  a basic example.
  
- @code
- - (void)start {
+ <pre><code>- (void)start {
      [super start];
      networkRequest = [[NetworkRequest alloc] init];
      [networkRequest start];
@@ -23,8 +21,7 @@
      [networkRequest cancel];
      [networkRequest release];
      [super finish];
- }
- @endcode
+ }</code></pre>
  
  This allows for convenient handling of asynchronous calls in an operation.
  */
@@ -36,12 +33,11 @@
     BOOL _isFinished;
 }
 
-/**
- @brief Finishes the receiver's task.
+/** Finishes the receiver's task.
  
- Subclasses must implement their own versions of finish to clean up anything
- before the operation completes. After performing the class-specific functionality,
- the subclass method should incorporate superclass versions of finish through a message to super.
+ Subclasses must implement their own versions of `finish` to clean up anything before the operation completes. After
+ performing the class-specific functionality, the subclass method should incorporate superclass versions of `finish`
+ through a message to `super`.
  */
 - (void)finish;
 

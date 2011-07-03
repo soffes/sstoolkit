@@ -11,14 +11,12 @@
 
 @implementation SSCollectionViewController
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize collectionView = _collectionView;
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	_collectionView.dataSource = nil;
@@ -28,8 +26,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - UIViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
@@ -54,8 +51,7 @@
 }
 
 
-#pragma mark -
-#pragma mark SSCollectionViewDataSource
+#pragma mark - SSCollectionViewDataSource
 
 - (NSUInteger)collectionView:(SSCollectionView *)aCollectionView numberOfItemsInSection:(NSUInteger)section {
 	return 0;
@@ -67,8 +63,7 @@
 }
 
 
-#pragma mark -
-#pragma mark SSCollectionViewDelegate
+#pragma mark - SSCollectionViewDelegate
 
 - (CGSize)collectionView:(SSCollectionView *)aCollectionView itemSizeForSection:(NSUInteger)section {
 	return CGSizeZero;

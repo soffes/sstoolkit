@@ -12,8 +12,7 @@
 
 @implementation SSBadgeView
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize textLabel = _textLabel;
 
@@ -82,16 +81,14 @@
 }
 
 
-#pragma mark -
-#pragma mark Class Methods
+#pragma mark - Class Methods
 
 + (UIColor *)defaultBadgeColor {
 	return [UIColor colorWithRed:0.541f green:0.596f blue:0.694f alpha:1.0f];
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_textLabel release];
@@ -103,8 +100,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (id)initWithFrame:(CGRect)rect {
 	if ((self = [super initWithFrame:rect])) {
@@ -190,8 +186,7 @@
 }
 
 
-#pragma mark -
-#pragma mark NSKeyValueObserving
+#pragma mark - NSKeyValueObserving
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	if (object == _textLabel && [keyPath isEqualToString:@"text"]) {

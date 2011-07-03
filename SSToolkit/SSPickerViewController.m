@@ -10,16 +10,14 @@
 
 @implementation SSPickerViewController
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize selectedKey = _selectedKey;
 @synthesize keys = _keys;
 @synthesize currentIndexPath = _currentIndexPath;
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (id)init {
 	self = [super initWithStyle:UITableViewStyleGrouped];
@@ -35,8 +33,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIViewController Methods
+#pragma mark - UIViewController Methods
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -51,8 +48,7 @@
 }
 
 
-#pragma mark -
-#pragma mark SSPickerViewController
+#pragma mark - SSPickerViewController
 
 // This method should be overridden by a subclass
 - (void)loadKeys {
@@ -67,8 +63,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UITableViewDelegate
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
@@ -77,8 +72,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UITableViewDataSource
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;

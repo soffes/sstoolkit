@@ -15,8 +15,7 @@
 
 @implementation SSCollectionViewItem
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize imageView = _imageView;
 @synthesize textLabel = _textLabel;
@@ -29,8 +28,7 @@
 @synthesize indexPath = _indexPath;
 @synthesize collectionView = _collectionView;
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	self.collectionView = nil;
@@ -45,8 +43,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIResponder
+#pragma mark - UIResponder
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	[self setHighlighted:YES animated:NO];
@@ -67,8 +64,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (id)initWithFrame:(CGRect)frame {
     return [self initWithStyle:SSCollectionViewItemStyleDefault reuseIdentifier:nil];
@@ -82,8 +78,7 @@
 }
 
 
-#pragma mark -
-#pragma mark SSCollectionViewItem
+#pragma mark - SSCollectionViewItem
 
 - (id)initWithStyle:(SSCollectionViewItemStyle)style reuseIdentifier:(NSString *)aReuseIdentifier {
 	if ((self = [super initWithFrame:CGRectZero])) {

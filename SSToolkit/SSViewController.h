@@ -8,8 +8,7 @@
 
 #import "SSModalViewController.h"
 
-/**
- @brief UIViewController subclass that displaying custom modals and
+/** UIViewController subclass that displaying custom modals and
  other nice enhancements.
  
  Note: Currently only iPad is supported.

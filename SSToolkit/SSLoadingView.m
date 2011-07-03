@@ -14,8 +14,7 @@ static CGFloat indicatorRightMargin = 8.0f;
 
 @implementation SSLoadingView
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize activityIndicatorView = _activityIndicatorView;
 
@@ -68,8 +67,7 @@ static CGFloat indicatorRightMargin = 8.0f;
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {	
 	[_font release];
@@ -81,8 +79,7 @@ static CGFloat indicatorRightMargin = 8.0f;
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {

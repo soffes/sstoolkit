@@ -13,8 +13,7 @@ static SSHUDWindow *kHUDWindow = nil;
 
 @implementation SSHUDWindow
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize hidesVignette = _hidesVignette;
 
@@ -25,8 +24,7 @@ static SSHUDWindow *kHUDWindow = nil;
 }
 
 
-#pragma mark -
-#pragma mark Class Methods
+#pragma mark - Class Methods
 
 + (SSHUDWindow *)defaultWindow {
 	if (!kHUDWindow) {
@@ -36,8 +34,7 @@ static SSHUDWindow *kHUDWindow = nil;
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (id)init {
 	if ((self = [super initWithFrame:[[UIScreen mainScreen] bounds]])) {
@@ -48,8 +45,7 @@ static SSHUDWindow *kHUDWindow = nil;
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (void)drawRect:(CGRect)rect {
 	if (_hidesVignette) {

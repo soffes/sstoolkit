@@ -39,8 +39,7 @@ static CGFloat kLoadingBackgroundWidth = 49.0f;
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_innerView release];
@@ -48,8 +47,7 @@ static CGFloat kLoadingBackgroundWidth = 49.0f;
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (id)initWithFrame:(CGRect)aFrame {
 	if ((self = [super initWithFrame:aFrame])) {
@@ -69,8 +67,7 @@ static CGFloat kLoadingBackgroundWidth = 49.0f;
 }
 
 
-#pragma mark -
-#pragma mark Private Methods
+#pragma mark - Private Methods
 
 - (void)_setupAnimation {
 	

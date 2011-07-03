@@ -15,14 +15,12 @@
 
 @implementation SSRatingPickerViewController
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize scrollView = _scrollView;
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_scrollView release];
@@ -30,8 +28,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - UIViewController
 
 - (void)loadView {
 	[super loadView];
@@ -58,8 +55,7 @@
 }
 
 
-#pragma mark -
-#pragma mark SSViewController
+#pragma mark - SSViewController
 
 - (void)layoutViewsWithOrientation:(UIInterfaceOrientation)orientation {
 	
@@ -71,8 +67,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Getters
+#pragma mark - Getters
 
 - (SSRatingPicker *)ratingPicker {
 	return _scrollView.ratingPicker;

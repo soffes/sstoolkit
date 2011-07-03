@@ -24,8 +24,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 
 @implementation SSViewController
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize modalParentViewController = _modalParentViewController;
 @synthesize customModalViewController = _customModalViewController;
@@ -34,8 +33,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 @synthesize originOffsetForViewInCustomModal = _originOffsetForViewInCustomModal;
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (id)init {
 	if ((self = [super init])) {
@@ -53,8 +51,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 }
 
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - UIViewController
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
 	[UIView beginAnimations:@"rotate" context:self];
@@ -69,8 +66,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 }
 
 
-#pragma mark -
-#pragma mark Layout
+#pragma mark - Layout
 
 - (void)layoutViews {
 	[self layoutViewsWithOrientation:self.interfaceOrientation];
@@ -111,8 +107,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 }
 
 
-#pragma mark -
-#pragma mark Modal
+#pragma mark - Modal
 
 - (void)presentCustomModalViewController:(UIViewController<SSModalViewController> *)viewController {
 	[self presentCustomModalViewController:viewController animated:YES];
@@ -278,8 +273,7 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 }
 
 
-#pragma mark -
-#pragma mark Private Methods
+#pragma mark - Private Methods
 
 - (void)_cleanUpModal {
 	[_modalContainerBackgroundView removeFromSuperview];

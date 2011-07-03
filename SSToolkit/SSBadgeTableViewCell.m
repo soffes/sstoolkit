@@ -11,14 +11,12 @@
 
 @implementation SSBadgeTableViewCell
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize badgeView = _badgeView;
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_badgeView release];
@@ -26,8 +24,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UITableView
+#pragma mark - UITableView
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {

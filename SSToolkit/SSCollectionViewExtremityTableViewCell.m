@@ -10,8 +10,7 @@
 
 @implementation SSCollectionViewExtremityTableViewCell
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize extrimityView = _extrimityView;
 
@@ -23,8 +22,7 @@
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_extrimityView release];
@@ -32,16 +30,14 @@
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (void)layoutSubviews {
 	_extrimityView.frame = self.bounds;
 }
 
 
-#pragma mark -
-#pragma mark UITableViewCell
+#pragma mark - UITableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	if ((self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])) {
@@ -63,8 +59,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Initializer
+#pragma mark - Initializer
 
 - (id)initWithReuseIdentifier:(NSString *)aReuseIdentifier {
 	self = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:aReuseIdentifier];

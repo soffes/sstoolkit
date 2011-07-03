@@ -6,10 +6,7 @@
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
-/**
- @brief Simple UIView for drawing top and bottom borders with optional insets in a view.
- */
-
+/// Simple UIView for drawing top and bottom borders with optional insets in a view.
 @interface SSBordererView : UIView {
 	
 @private
@@ -20,23 +17,35 @@
 	UIColor *_bottomBorderColor;
 }
 
-/**
- @brief The top border color. The default is <code>nil</code>.
+///-----------------------------
+/// @name Drawing the Top Border
+///-----------------------------
+
+/** The top border color. The default is `nil`.
+ 
+ @see bottomBorderColor
  */
 @property (nonatomic, retain) UIColor *topBorderColor;
 
-/**
- @brief The top inset color. The default is <code>nil</code>.
+/** The top inset color. The default is `nil`.
+ 
+ @see bottomInsetColor
  */
 @property (nonatomic, retain) UIColor *topInsetColor;
 
-/**
- @brief The bottom inset color. The default is <code>nil</code>.
+///--------------------------------
+/// @name Drawing the Bottom Border
+///--------------------------------
+
+/** The bottom inset color. The default is `nil`.
+ 
+ @see topInsetColor
  */
 @property (nonatomic, retain) UIColor *bottomInsetColor;
 
-/**
- @brief The bottom border color. The default is <code>nil</code>.
+/** The bottom border color. The default is `nil`.
+ 
+ @see topBorderColor
  */
 @property (nonatomic, retain) UIColor *bottomBorderColor;
 

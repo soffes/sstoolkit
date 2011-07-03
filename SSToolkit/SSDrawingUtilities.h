@@ -9,15 +9,13 @@
 #ifndef SSDRAWINGUTILITIES
 #define SSDRAWINGUTILITIES
 
-/**
- A macro that converts a number from degress to radians.
+/** A macro that converts a number from degress to radians.
  @param d number in degrees
  @returns The number converted to radians.
  */
 #define DEGREES_TO_RADIANS(d) ((d) * 0.0174532925199432958f)
 
-/**
- A macro that converts a number from radians to degrees.
+/** A macro that converts a number from radians to degrees.
  @param r number in radians
  @returns The number converted to degrees.
  */

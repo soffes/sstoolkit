@@ -18,8 +18,7 @@
 
 @implementation SSSwitch
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize on = _on;
 
@@ -182,8 +181,7 @@
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_leftHandleImage release];
@@ -204,8 +202,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
@@ -270,8 +267,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Switch
+#pragma mark - Switch
 
 - (void)setOn:(BOOL)on animated:(BOOL)animated {
 	_on = on;
@@ -303,8 +299,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Private Methods
+#pragma mark - Private Methods
 
 - (void)_layoutSubviewsWithHandlePosition:(CGFloat)x {	
 	CGFloat width = self.frame.size.width;

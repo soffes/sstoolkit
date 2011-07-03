@@ -11,8 +11,7 @@
 
 @implementation SSAddressBarTextFieldBackgroundViewInnerView
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (id)initWithFrame:(CGRect)aFrame {
 	if ((self = [super initWithFrame:aFrame])) {

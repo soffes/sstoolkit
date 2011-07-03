@@ -93,8 +93,7 @@
 }
 
 
-#pragma mark -
-#pragma mark CAAnimation Delegate
+#pragma mark - CAAnimation Delegate
 
 - (void)animationDidStart:(CAAnimation *)animation {
 	id<SSAnimatedImageViewDelegate> delegate = [animation valueForKey:@"SSAnimatedImageViewDelegate"];

@@ -20,8 +20,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 
 @implementation SSSegmentedControl
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 - (NSUInteger)numberOfSegments {
 	return [_segments count];
@@ -144,8 +143,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_segments release];
@@ -162,8 +160,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
-#pragma mark -
-#pragma mark UIResponder
+#pragma mark - UIResponder
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	UITouch *touch = [touches anyObject];
@@ -191,8 +188,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
@@ -321,8 +317,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
-#pragma mark -
-#pragma mark Initializer
+#pragma mark - Initializer
 
 - (id)initWithItems:(NSArray *)items {
 	if ((self = [self initWithFrame:CGRectZero])) {
@@ -341,8 +336,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
-#pragma mark -
-#pragma mark Segments
+#pragma mark - Segments
 
 - (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)segment {
 	if ((NSInteger)([self numberOfSegments] - 1) < (NSInteger)segment) {
@@ -409,8 +403,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
-#pragma mark -
-#pragma mark Private Methods
+#pragma mark - Private Methods
 
 - (NSMutableDictionary *)_metaForSegmentIndex:(NSUInteger)index {
 	if (!_segmentMeta) {

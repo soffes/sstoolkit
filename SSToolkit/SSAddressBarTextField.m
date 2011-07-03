@@ -13,8 +13,7 @@
 
 @implementation SSAddressBarTextField
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize loading = _loading;
 
@@ -33,8 +32,7 @@
 @synthesize stopButton = _stopButton;
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	self.reloadButton = nil;
@@ -44,8 +42,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIView
+#pragma mark - UIView
 
 - (id)initWithFrame:(CGRect)aFrame {
 	if ((self = [super initWithFrame:aFrame])) {
@@ -97,8 +94,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UITextField
+#pragma mark - UITextField
 
 - (CGRect)rightViewRectForBounds:(CGRect)bounds {
 	CGSize size = self.frame.size;
