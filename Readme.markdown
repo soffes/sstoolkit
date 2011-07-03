@@ -86,7 +86,7 @@ Huge thanks to [our contributors](http://github.com/samsoffes/sstoolkit/contribu
 [SSTextField]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTextField.h
 [SSTextView]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTextView.h
 [SSTableViewCell]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSTableViewCell.h
-[SSDrawingMacros]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSDrawingMacros.h
+[SSDrawingUtilities]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSDrawingUtilities.h
 [SSConcurrentOperation]: http://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSConcurrentOperation.h
 [SSKeychain]: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/SSKeychain.h
 [SSCatalog]: https://github.com/samsoffes/sstoolkit/tree/master/SSCatalog/
