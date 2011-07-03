@@ -4,6 +4,8 @@ SSToolkit makes life easier. It is made up of various view controllers, views, a
 
 If you're using this in your project, I'd love to hear about it! [Send me an email](mailto:sam@samsoff.es) and let me know which pieces you're using and such.
 
+**Read the [SSToolkit Documentation](http://sstoolk.it/documentation).**
+
 ## Classes
 
 ### Views
@@ -38,7 +40,7 @@ If you're using this in your project, I'd love to hear about it! [Send me an ema
 
 ### Misc
 
-* [SSDrawingMacros][] - random macros for drawing and such
+* [SSDrawingUtilities][] - random macros for drawing and such
 * [SSConcurrentOperation][] - a simple wrapper for concurrent NSOperations
 
 ### Categories
