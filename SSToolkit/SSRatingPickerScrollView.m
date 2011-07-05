@@ -19,7 +19,7 @@
 
 @synthesize ratingPicker = _ratingPicker;
 @synthesize titleTextField = _titleTextField;
-@synthesize reviewTextField = _reviewTextField;
+@synthesize reviewTextView = _reviewTextView;
 
 #pragma mark - NSObject
 
@@ -29,7 +29,7 @@
 	[_ratingPicker release];
 	[_titleTextField release];
 	[_lineView release];
-	[_reviewTextField release];
+	[_reviewTextView release];
 	[super dealloc];
 }
 
@@ -39,6 +39,7 @@
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
 		self.backgroundColor = [UIColor whiteColor];
+		self.alwaysBounceVertical = YES;
 		
 		UIFont *font = [UIFont systemFontOfSize:17.0f];
 		UIColor *topColor = [UIColor colorWithRed:0.878f green:0.890f blue:0.906f alpha:1.0f];

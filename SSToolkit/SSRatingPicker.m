@@ -21,7 +21,7 @@
 
 @synthesize selectedNumberOfStars = _selectedNumberOfStars;
 
-- (void)setselectedNumberOfStars:(CGFloat)selectedNumberOfStars {
+- (void)setSelectedNumberOfStars:(CGFloat)selectedNumberOfStars {
 	if (_selectedNumberOfStars == selectedNumberOfStars) {
 		return;
 	}
@@ -177,7 +177,7 @@
 
 #pragma mark - Private Methods
 
-- (void)_setselectedNumberOfStarsWithTouch:(UITouch *)touch {
+- (void)_setSelectedNumberOfStarsWithTouch:(UITouch *)touch {
 	CGPoint point = [touch locationInView:self];
 	
 	CGFloat totalWidth = (_starSize.width * (CGFloat)_totalNumberOfStars) + 

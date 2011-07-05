@@ -13,16 +13,26 @@
 @class SSTextField;
 @class SSTextView;
 
-@interface SSRatingPickerViewController : SSViewController {
+@interface SSRatingPickerViewController : SSViewController
 
-@private
-	
-    SSRatingPickerScrollView *_scrollView;
-}
+///----------------------------------
+/// @name Accessing the Rating Picker
+///----------------------------------
 
-@property (nonatomic, retain, readonly) UIScrollView *scrollView;
+/** The rating picker. (read-only)
+ 
+ All of the rating picker's values are the default values of `SSRatingPicker`.
+ */
 @property (nonatomic, retain, readonly) SSRatingPicker *ratingPicker;
+
+///-------------------------------
+/// @name Accessing the Text Input
+///-------------------------------
+
+/// The text field for the title. (read-only)
 @property (nonatomic, retain, readonly) SSTextField *titleTextField;
-@property (nonatomic, retain, readonly) SSTextView *reviewTextField;
+
+/// The text view for the review.  (read-only)
+@property (nonatomic, retain, readonly) SSTextView *reviewTextView;
 
 @end

@@ -25,6 +25,6 @@
 
 @property (nonatomic, retain, readonly) SSRatingPicker *ratingPicker;
 @property (nonatomic, retain, readonly) SSTextField *titleTextField;
-@property (nonatomic, retain, readonly) SSTextView *reviewTextField;
+@property (nonatomic, retain, readonly) SSTextView *reviewTextView;
 
 @end

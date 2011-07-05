@@ -13,31 +13,40 @@
 #import "SSTextView.h"
 #import "UIScreen+SSToolkitAdditions.h"
 
+@interface SSRatingPickerViewController ()
+@property (nonatomic, retain, readonly) SSRatingPickerScrollView *scrollView;
+@end
+
 @implementation SSRatingPickerViewController
 
 #pragma mark - Accessors
 
-@synthesize scrollView = _scrollView;
+- (SSRatingPickerScrollView *)scrollView {
+	return (SSRatingPickerScrollView *)self.view;
+}
 
 
-#pragma mark - NSObject
+- (SSRatingPicker *)ratingPicker {
+	return self.scrollView.ratingPicker;
+}
 
-- (void)dealloc {
-	[_scrollView release];
-	[super dealloc];
+
+- (SSTextField *)titleTextField {
+	return self.scrollView.titleTextField;
+}
+
+
+- (SSTextView *)reviewTextView {
+	return self.scrollView.reviewTextView;
 }
 
 
 #pragma mark - UIViewController
 
 - (void)loadView {
-	[super loadView];
-	
-	self.view.backgroundColor = [UIColor whiteColor];
-	self.view.autoresizesSubviews = NO;
-	
-	_scrollView = [[SSRatingPickerScrollView alloc] initWithFrame:CGRectZero];
-	[self.view addSubview:_scrollView];
+	SSRatingPickerScrollView *scrollView = [[SSRatingPickerScrollView alloc] initWithFrame:CGRectZero];
+	self.view = scrollView;
+	[scrollView release];
 }
 
 
@@ -63,24 +72,7 @@
 	BOOL landscape = UIInterfaceOrientationIsLandscape(orientation);
 	size.height -= landscape ? 214.0f : 280.0f;
 	
-	_scrollView.frame = CGRectMake(0.0f, 0.0f, size.width, size.height - 10.0f);
-}
-
-
-#pragma mark - Getters
-
-- (SSRatingPicker *)ratingPicker {
-	return _scrollView.ratingPicker;
-}
-
-
-- (SSTextField *)titleTextField {
-	return _scrollView.titleTextField;
-}
-
-
-- (SSTextView *)reviewTextField {
-	return _scrollView.reviewTextField;
+	self.view.frame = CGRectMake(0.0f, 0.0f, size.width, size.height - 10.0f);
 }
 
 @end
