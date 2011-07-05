@@ -11,7 +11,7 @@
 #import "UIView+SSToolkitAdditions.h"
 
 @interface SSRatingPicker (PrivateMethods)
-- (void)_setNumberOfStarsWithTouch:(UITouch *)touch;
+- (void)_setSelectedNumberOfStarsWithTouch:(UITouch *)touch;
 @end
 
 
@@ -19,26 +19,26 @@
 
 #pragma mark - Accessors
 
-@synthesize numberOfStars = _numberOfStars;
+@synthesize selectedNumberOfStars = _selectedNumberOfStars;
 
-- (void)setNumberOfStars:(CGFloat)numberOfStars {
-	if (_numberOfStars == numberOfStars) {
+- (void)setselectedNumberOfStars:(CGFloat)selectedNumberOfStars {
+	if (_selectedNumberOfStars == selectedNumberOfStars) {
 		return;
 	}
 	
-	CGFloat old = _numberOfStars;
-	_numberOfStars = numberOfStars;
+	CGFloat old = _selectedNumberOfStars;
+	_selectedNumberOfStars = selectedNumberOfStars;
 	
 	[self setNeedsDisplay];
 	
 	// Animate in the text label if necessary
-	if ((_numberOfStars > 0 && old == 0) || (_numberOfStars == 0 && old > 0)) {
+	if ((_selectedNumberOfStars > 0 && old == 0) || (_selectedNumberOfStars == 0 && old > 0)) {
 		[UIView beginAnimations:@"fadeTextLabel" context:nil];
 		
 		// TODO: Make animation parameters match Apple more
 		[UIView setAnimationDuration:0.2];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-		_textLabel.alpha = (_numberOfStars == 0.0f) ? 1.0f : 0.0f;
+		_textLabel.alpha = (_selectedNumberOfStars == 0.0f) ? 1.0f : 0.0f;
 		[UIView commitAnimations];
 	}
 	
@@ -48,7 +48,7 @@
 
 @synthesize totalNumberOfStars = _totalNumberOfStars;
 
-- (void)setTotalNumberOfStars:(NSUInteger)totalNumberOfStars {
+- (void)settotalNumberOfStars:(NSUInteger)totalNumberOfStars {
 	_totalNumberOfStars = totalNumberOfStars;
 	
 	[self setNeedsDisplay];
@@ -110,12 +110,12 @@
 #pragma mark - UIResponder
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	[self _setNumberOfStarsWithTouch:[touches anyObject]];
+	[self _setSelectedNumberOfStarsWithTouch:[touches anyObject]];
 }
 
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	[self _setNumberOfStarsWithTouch:[touches anyObject]];
+	[self _setSelectedNumberOfStarsWithTouch:[touches anyObject]];
 }
 
 
@@ -131,20 +131,18 @@
 		self.filledStarImage = [UIImage imageNamed:@"orange-star.png" bundle:kSSToolkitBundleName];
 		self.starSize = CGSizeMake(21.0f, 36.0f);
 		self.starSpacing = 19.0f;
-		self.numberOfStars = 0.0f;
+		self.selectedNumberOfStars = 0.0f;
 		self.totalNumberOfStars = 5;
 		
-		UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-		label.textColor = [UIColor colorWithRed:0.612f green:0.620f blue:0.624f alpha:1.0f];
-		label.shadowColor = [UIColor whiteColor];
-		label.shadowOffset = CGSizeMake(0.0f, 1.0f);
-		label.backgroundColor = [UIColor clearColor];
-		label.text = @"Tap a Star to Rate";
-		label.font = [UIFont boldSystemFontOfSize:10.0f];
-		label.textAlignment = UITextAlignmentCenter;
-		self.textLabel = label;
-		[self addSubview:label];
-		[label release];
+		_textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+		_textLabel.textColor = [UIColor colorWithRed:0.612f green:0.620f blue:0.624f alpha:1.0f];
+		_textLabel.shadowColor = [UIColor whiteColor];
+		_textLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+		_textLabel.backgroundColor = [UIColor clearColor];
+		_textLabel.text = @"Tap a Star to Rate";
+		_textLabel.font = [UIFont boldSystemFontOfSize:10.0f];
+		_textLabel.textAlignment = UITextAlignmentCenter;
+		[self addSubview:_textLabel];
 	}
 	return self;
 }
@@ -169,7 +167,7 @@
 	CGPoint origin = CGPointMake(roundf((rect.size.width - totalWidth) / 2.0f), 10.0f); // TODO: don't hard code the 10
 	
 	for (NSUInteger i = 0; i < _totalNumberOfStars; i++) {
-		UIImage *image = (roundf(_numberOfStars) >= i + 1) ? _filledStarImage : _emptyStarImage;
+		UIImage *image = (roundf(_selectedNumberOfStars) >= i + 1) ? _filledStarImage : _emptyStarImage;
 		
 		[image drawInRect:CGRectMake(origin.x + (_starSize.width + _starSpacing) * (CGFloat)i, origin.y, 
 									 _starSize.width, _starSize.height)];
@@ -179,7 +177,7 @@
 
 #pragma mark - Private Methods
 
-- (void)_setNumberOfStarsWithTouch:(UITouch *)touch {
+- (void)_setselectedNumberOfStarsWithTouch:(UITouch *)touch {
 	CGPoint point = [touch locationInView:self];
 	
 	CGFloat totalWidth = (_starSize.width * (CGFloat)_totalNumberOfStars) + 
@@ -187,17 +185,17 @@
 	CGFloat left = roundf((self.frame.size.width - totalWidth) / 2.0f);
 	
 	if (point.x < left) {
-		self.numberOfStars = 0.0f;
+		self.selectedNumberOfStars = 0.0f;
 		return;
 	}
 	
 	if (point.x >= left + totalWidth) {
-		self.numberOfStars = (CGFloat)_totalNumberOfStars;
+		self.selectedNumberOfStars = (CGFloat)_totalNumberOfStars;
 		return;
 	}
 	
 	// TODO: Improve
-	self.numberOfStars = ceilf((point.x - left) / (_starSize.width + _starSpacing));
+	self.selectedNumberOfStars = ceilf((point.x - left) / (_starSize.width + _starSpacing));
 }
 
 @end

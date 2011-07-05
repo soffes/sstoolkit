@@ -41,8 +41,7 @@ typedef enum {
 /// @name Accessing the Badge Label
 ///--------------------------------
 
-/** The badge text label.
- */
+/// The badge text label.
 @property (nonatomic, retain, readonly) SSLabel *textLabel;
 
 ///-------------------------------------
