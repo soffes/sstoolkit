@@ -8,7 +8,8 @@
 
 #import "SSViewController.h"
 
-/** The SSTableViewController class creates a controller object that manages a table view.
+/**
+ The SSTableViewController class creates a controller object that manages a table view.
  
  This class is a SSViewController subclass that is a drop-in replacement for UITableViewController.
  */
@@ -20,11 +21,13 @@
 	BOOL _clearsSelectionOnViewWillAppear;
 }
 
-/** Returns the table view managed by the controller object.
+/**
+ Returns the table view managed by the controller object.
  */
 @property (nonatomic, retain) UITableView *tableView;
 
-/** A Boolean value indicating if the controller clears the selection when the table appears.
+/**
+ A Boolean value indicating if the controller clears the selection when the table appears.
  
  The default value of this property is YES. When YES, the table view controller clears the table's
  current selection when it receives a viewWillAppear: message. Setting this property to `NO`
@@ -32,7 +35,8 @@
  */
 @property (nonatomic) BOOL clearsSelectionOnViewWillAppear;
 
-/** Initializes a table-view controller to manage a table view of a given style.
+/**
+ Initializes a table-view controller to manage a table view of a given style.
  
  @param style A constant that specifies the style of table view that the controller object
  is to manage (UITableViewStylePlain or UITableViewStyleGrouped).

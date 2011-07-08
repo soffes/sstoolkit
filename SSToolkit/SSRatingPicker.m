@@ -127,8 +127,8 @@
 		self.opaque = YES;
 		self.contentMode = UIViewContentModeRedraw;
 		
-		self.emptyStarImage = [UIImage imageNamed:@"gray-star.png" bundle:kSSToolkitBundleName];
-		self.filledStarImage = [UIImage imageNamed:@"orange-star.png" bundle:kSSToolkitBundleName];
+		self.emptyStarImage = [UIImage imageNamed:@"gray-star.png" bundleName:kSSToolkitBundleName];
+		self.filledStarImage = [UIImage imageNamed:@"orange-star.png" bundleName:kSSToolkitBundleName];
 		self.starSize = CGSizeMake(21.0f, 36.0f);
 		self.starSpacing = 19.0f;
 		self.selectedNumberOfStars = 0.0f;

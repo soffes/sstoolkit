@@ -53,7 +53,7 @@ static SSHUDWindow *kHUDWindow = nil;
 	}
 	
 	NSString *imageName = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? @"SSVignetteiPad.png" : @"SSVignetteiPhone.png";
-	UIImage *image = [UIImage imageNamed:imageName bundle:kSSToolkitBundleName];
+	UIImage *image = [UIImage imageNamed:imageName bundleName:kSSToolkitBundleName];
 	
 	CGSize screenSize = [[UIScreen mainScreen] bounds].size;
 	[image drawInRect:CGRectMake(roundf((screenSize.width - image.size.width) / 2.0f), 

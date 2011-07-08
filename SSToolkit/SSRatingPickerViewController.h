@@ -19,7 +19,8 @@
 /// @name Accessing the Rating Picker
 ///----------------------------------
 
-/** The rating picker. (read-only)
+/**
+ The rating picker. (read-only)
  
  All of the rating picker's values are the default values of `SSRatingPicker`.
  */
@@ -29,10 +30,14 @@
 /// @name Accessing the Text Input
 ///-------------------------------
 
-/// The text field for the title. (read-only)
+/**
+ The text field for the title. (read-only)
+ */
 @property (nonatomic, retain, readonly) SSTextField *titleTextField;
 
-/// The text view for the review.  (read-only)
+/**
+ The text view for the review.  (read-only)
+ */
 @property (nonatomic, retain, readonly) SSTextView *reviewTextView;
 
 @end

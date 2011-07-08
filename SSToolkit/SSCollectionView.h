@@ -23,7 +23,8 @@ typedef enum {
 @protocol SSCollectionViewDelegate;
 @protocol SSCollectionViewDataSource;
 
-/** Simple collection view.
+/**
+ Simple collection view.
  
  My goals are to be similar to UITableView and NSCollectionView when possible. Only scrolling vertically is currently
  supported.
@@ -52,71 +53,82 @@ typedef enum {
 	UITableView *_tableView;
 }
 
-/** The object that acts as the data source of the receiving collection view.
+/**
+ The object that acts as the data source of the receiving collection view.
  */
 @property (nonatomic, assign) id<SSCollectionViewDataSource> dataSource;
 
-/** The object that acts as the delegate of the receiving collection view.
+/**
+ The object that acts as the delegate of the receiving collection view.
  */
 @property (nonatomic, assign) id<SSCollectionViewDelegate> delegate;
 
-/** The style of the receiving collection view's headers and footers.
+/**
+ The style of the receiving collection view's headers and footers.
  
- Setting to `SSCollectionViewExtremitiesStyleFixed` will cause the headers and footer to behave like a
- `UITableView` with its style set to `UITableViewStylePlain`. Setting to
- `SSCollectionViewExtremitiesStyleScrolling` will cause the headers and footer to behave like a
- `UITableView` with its style set to `UITableViewStyleGrouped`. The default is
+ Setting to `SSCollectionViewExtremitiesStyleFixed` will cause the headers and footer to behave like a `UITableView`
+ with its style set to `UITableViewStylePlain`. Setting to `SSCollectionViewExtremitiesStyleScrolling` will cause the
+ headers and footer to behave like a `UITableView` with its style set to `UITableViewStyleGrouped`. The default is
  `SSCollectionViewExtremitiesStyleFixed`.
  */
 @property (nonatomic, assign) SSCollectionViewExtremitiesStyle extremitiesStyle;
 
-/** The minimum column spacing.
+/**
+ The minimum column spacing.
  
- The default is 0.
+ The default is `0.0`.
  */
 @property (nonatomic, assign) CGFloat minimumColumnSpacing;
 
-/** The spacing between each row in the receiver. This does not add space above the first row or below the last.
+/**
+ The spacing between each row in the receiver. This does not add space above the first row or below the last.
  
- The row spacing is in points. The default is 20.
+ The row spacing is in points. The default is `20.0`.
  */
 @property (nonatomic, assign) CGFloat rowSpacing;
 
-/** The background view of the collection view.
+/**
+ The background view of the collection view.
  */
 @property (nonatomic, retain) UIView *backgroundView;
 
-/** A Boolean value that determines whether selecting items is enabled.
+/**
+ A Boolean value that determines whether selecting items is enabled.
  
- If the value of this property is `YES`, selecting is enabled, and if it is `NO`, selecting is
- disabled. The default is `YES`.
+ If the value of this property is `YES`, selecting is enabled, and if it is `NO`, selecting is disabled. The default is
+ `YES`.
  */
 @property (nonatomic, assign) BOOL allowsSelection;
 
-/** The internal scroll view of the collection view. The delegate must not be overridden.
+/**
+ The internal scroll view of the collection view. The delegate must not be overridden.
  */
 @property (nonatomic, retain, readonly) UIScrollView *scrollView;
 
-/** The number of sections in the collection view.
+/**
+ The number of sections in the collection view.
  
  `SSCollectionView` gets the value returned by this method from its data source and caches it.
  */
 @property (nonatomic, assign, readonly) NSUInteger numberOfSections;
 
-/** Reloads the items and sections of the receiver.
+/**
+ Reloads the items and sections of the receiver.
  */
 - (void)reloadData;
 
-/** Returns a reusable collection view item object located by its identifier.
+/**
+ Returns a reusable collection view item object located by its identifier.
  
  @param identifier A string identifying the cell object to be reused.
  
- @return A `SSCollectionViewItem</code< object with the associated identifier or nil if no such object exists in
- the reusable-item queue.
+ @return A `SSCollectionViewItem` object with the associated identifier or nil if no such object exists in the
+ reusable-item queue.
  */
 - (SSCollectionViewItem *)dequeueReusableItemWithIdentifier:(NSString *)identifier;
 
-/** Returns the collection view item at the specified index path.
+/**
+ Returns the collection view item at the specified index path.
  
  @param indexPath The index path locating the item in the receiver.
  
@@ -126,7 +138,8 @@ typedef enum {
  */
 - (SSCollectionViewItem *)itemPathForIndex:(NSIndexPath *)indexPath;
 
-/** Returns an index path representing the row (index) and section of a given collection view item.
+/**
+ Returns an index path representing the row (index) and section of a given collection view item.
  
  @param item An item object of the collection view.
  
@@ -136,12 +149,14 @@ typedef enum {
  */
 - (NSIndexPath *)indexPathForItem:(SSCollectionViewItem *)item;
 
-/** Selects an item in the receiver identified by index path, optionally scrolling the item to a location in the
- receiver.
+/**
+ Selects an item in the receiver identified by index path, optionally scrolling the item to a location in the receiver.
  
  @param indexPath An index path identifying an item in the receiver.
+ 
  @param animated `YES` if you want to animate the selection and any change in position, `NO` if
  the change should be immediate.
+ 
  @param scrollPosition A constant that identifies a relative position in the receiving collection view (top, middle,
  bottom) for the row when scrolling concludes.
  
@@ -150,31 +165,38 @@ typedef enum {
  */
 - (void)selectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(SSCollectionViewScrollPosition)scrollPosition;
 
-/** Deselects a given item identified by index path, with an option to animate the deselection.
+/**
+ Deselects a given item identified by index path, with an option to animate the deselection.
  
  @param indexPath An index path identifying an item in the receiver.
+ 
  @param animated `YES` if you want to animate the deselection and `NO` if the change should be
  immediate.
  */
 - (void)deselectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
 
-/** Scrolls the receiver until an item identified by index path is at a particular location on the screen.
+/**
+ Scrolls the receiver until an item identified by index path is at a particular location on the screen.
  
  @param indexPath An index path that identifies an item in the table view by its row index and its section index.
+ 
  @param scrollPosition A constant that identifies a relative position in the receiving collection view (top, middle,
  bottom) for row when scrolling concludes.
+ 
  @param animated `YES` if you want to animate the change in position, `NO` if it should be
  immediate.
  */
 - (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(SSCollectionViewScrollPosition)scrollPosition animated:(BOOL)animated;
 
-/** Reloads the specified item.
+/**
+ Reloads the specified item.
  
  @param indexPaths An index path that identifies an item in the collection view by its row index and its section index.
  */
 - (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
 
-/** Returns the number of item (collection view items) in a specified section.
+/**
+ Returns the number of item (collection view items) in a specified section.
  
  @param section An index number that identifies a section of the collection.
  
@@ -182,7 +204,8 @@ typedef enum {
  */
 - (NSUInteger)numberOfItemsInSection:(NSUInteger)section;
 
-/** Returns the drawing area for a specified section of the receiver.
+/**
+ Returns the drawing area for a specified section of the receiver.
  
  @param section An index number identifying a section of the collection view.
  
@@ -198,7 +221,8 @@ typedef enum {
  */
 - (CGRect)rectForHeaderInSection:(NSUInteger)section;
 
-/** Returns the drawing area for the footer of the specified section.
+/**
+ Returns the drawing area for the footer of the specified section.
  
  @param section An index number identifying a section of the collection view.
  

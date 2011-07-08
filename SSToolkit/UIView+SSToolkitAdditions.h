@@ -6,6 +6,9 @@
 //  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
+/**
+ Provides extensions to `UIView` for various common tasks.
+ */
 @interface UIView (SSToolkitAdditions)
 
 - (UIImage *)imageRepresentation;

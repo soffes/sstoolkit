@@ -10,7 +10,11 @@
 
 @implementation UIImage (SSToolkitAdditions)
 
-+ (UIImage *)imageNamed:(NSString *)imageName bundle:(NSString *)bundleName {
++ (UIImage *)imageNamed:(NSString *)imageName bundleName:(NSString *)bundleName {
+	if (!bundleName) {
+		return [UIImage imageNamed:imageName];
+	}
+	
 	NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
 	NSString *bundlePath = [resourcePath stringByAppendingPathComponent:bundleName];
 	NSString *imagePath = [bundlePath stringByAppendingPathComponent:imageName];
@@ -18,19 +22,11 @@
 }
 
 
-- (UIImage *)initWithImage:(UIImage *)image croppedToRect:(CGRect)rect {
-	CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], rect);
-	UIImage *cropped = [[UIImage alloc] initWithCGImage:imageRef];
-	CGImageRelease(imageRef);
-	return cropped; // retained
-}
-
-
 - (UIImage *)imageCroppedToRect:(CGRect)rect {
 	CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], rect);
 	UIImage *cropped = [UIImage imageWithCGImage:imageRef];
 	CGImageRelease(imageRef);
-	return cropped; // autoreleased
+	return cropped;
 }
 
 
@@ -42,6 +38,11 @@
 
 - (NSInteger)rightCapWidth {
 	return (NSInteger)self.size.width - (self.leftCapWidth + 1);
+}
+
+
+- (NSInteger)bottomCapHeight {
+	return (NSInteger)self.size.height - (self.topCapHeight + 1);
 }
 
 @end

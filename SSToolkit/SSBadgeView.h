@@ -14,7 +14,8 @@ typedef enum {
 
 @class SSLabel;
 
-/** Badge view.
+/**
+ Badge view.
  
  Provides the accesory view for a SSBadgeTableViewCell, available through the `badgeView` property.
  
@@ -41,14 +42,17 @@ typedef enum {
 /// @name Accessing the Badge Label
 ///--------------------------------
 
-/// The badge text label.
+/**
+ The badge text label.
+ */
 @property (nonatomic, retain, readonly) SSLabel *textLabel;
 
 ///-------------------------------------
 /// @name Accessing the Badge Attributes
 ///-------------------------------------
 
-/** The badge's background color.
+/**
+ The badge's background color.
  
  The default value of this property is grayish blue (that matches Mail.app).
  
@@ -56,19 +60,22 @@ typedef enum {
  */
 @property (nonatomic, retain) UIColor *badgeColor;
 
-/** The badge's background color while its cell is highlighted.
+/**
+ The badge's background color while its cell is highlighted.
  
  The default value of this property is white.
  */
 @property (nonatomic, retain) UIColor *highlightedBadgeColor;
 
-/** The corner radius used when rendering the badge's outline.
+/**
+ The corner radius used when rendering the badge's outline.
  
  The default value of this property is 10.
  */
 @property (nonatomic, assign) CGFloat cornerRadius;
 
-/** The badge's horizontal alignment within the accesoryView frame.
+/**
+ The badge's horizontal alignment within the accesoryView frame.
  
  This will position the badge in the view's bounds accordinly.
  
@@ -76,7 +83,8 @@ typedef enum {
  */
 @property (nonatomic, assign) SSBadgeViewAlignment badgeAlignment;
 
-/** A Boolean value indicating whether the receiver should be drawn with a highlight.
+/**
+ A Boolean value indicating whether the receiver should be drawn with a highlight.
  
  Setting this property causes the receiver to redraw with the appropriate highlight state.
  
@@ -88,7 +96,8 @@ typedef enum {
 /// @name Drawing Images
 ///---------------------
 
-/** The badge's background image.
+/**
+ The badge's background image.
  
  The default value of this property is `nil`. If the value is non-nil, it will be draw instead of the color.
  
@@ -96,7 +105,8 @@ typedef enum {
  */
 @property (nonatomic, retain) UIImage *badgeImage;
 
-/** The badge's background image while its cell is highlighted.
+/**
+ The badge's background image while its cell is highlighted.
  
  The default value of this property is `nil`. If the value is non-nil, it will be draw instead of the color.
  
@@ -108,7 +118,8 @@ typedef enum {
 /// @name Defaults
 ///---------------
 
-/** The default badge color.
+/**
+ The default badge color.
  
  @return A color with its value set to the default badge color.
  */

@@ -69,7 +69,7 @@
 		UIButton *aReloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		aReloadButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
 		aReloadButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-		[aReloadButton setImage:[UIImage imageNamed:@"SSAddressBarTextFieldReload.png" bundle:kSSToolkitBundleName] forState:UIControlStateNormal];
+		[aReloadButton setImage:[UIImage imageNamed:@"SSAddressBarTextFieldReload.png" bundleName:kSSToolkitBundleName] forState:UIControlStateNormal];
 		self.reloadButton = aReloadButton;
 		self.rightView = _reloadButton;
 		
@@ -77,7 +77,7 @@
 		UIButton *aStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		aStopButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
 		aStopButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-		[aStopButton setImage:[UIImage imageNamed:@"SSAddressBarTextFieldStop.png" bundle:kSSToolkitBundleName] forState:UIControlStateNormal];
+		[aStopButton setImage:[UIImage imageNamed:@"SSAddressBarTextFieldStop.png" bundleName:kSSToolkitBundleName] forState:UIControlStateNormal];
 		self.stopButton = aStopButton;
 		
 		self.loading = NO;

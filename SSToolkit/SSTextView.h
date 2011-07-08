@@ -6,7 +6,9 @@
 //  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
-/// UITextView subclass that adds placeholder support like UITextField has.
+/**
+ UITextView subclass that adds placeholder support like UITextField has.
+ */
 @interface SSTextView : UITextView {
 	
 @private
@@ -17,13 +19,15 @@
 	BOOL _shouldDrawPlaceholder;
 }
 
-/** The string that is displayed when there is no other text in the text view.
+/**
+ The string that is displayed when there is no other text in the text view.
  
  The default value is `nil`.
  */
 @property (nonatomic, retain) NSString *placeholder;
 
-/** The color of the placeholder.
+/**
+ The color of the placeholder.
  
  The default is `[UIColor lightGrayColor]`.
  */

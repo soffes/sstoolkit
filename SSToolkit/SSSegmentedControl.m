@@ -197,10 +197,10 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 		_segments = [[NSMutableArray alloc] init];
 		_momentary = NO;
 		
-		self.buttonImage = [[UIImage imageNamed:@"UISegmentBarButton.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
-		self.highlightedButtonImage = [[UIImage imageNamed:@"UISegmentBarButtonHighlighted.png" bundle:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
-		self.dividerImage = [UIImage imageNamed:@"UISegmentBarDivider.png" bundle:kSSToolkitBundleName];
-		self.highlightedDividerImage = [UIImage imageNamed:@"UISegmentBarDividerHighlighted.png" bundle:kSSToolkitBundleName];
+		self.buttonImage = [[UIImage imageNamed:@"UISegmentBarButton.png" bundleName:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+		self.highlightedButtonImage = [[UIImage imageNamed:@"UISegmentBarButtonHighlighted.png" bundleName:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+		self.dividerImage = [UIImage imageNamed:@"UISegmentBarDivider.png" bundleName:kSSToolkitBundleName];
+		self.highlightedDividerImage = [UIImage imageNamed:@"UISegmentBarDividerHighlighted.png" bundleName:kSSToolkitBundleName];
 		self.selectedSegmentIndex = SSSegmentedControlNoSegment;
 		
 		_font = [[UIFont boldSystemFontOfSize:12.0f] retain];

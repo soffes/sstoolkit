@@ -6,6 +6,9 @@
 //  Copyright 2009-2011 Sam Soffes. All rights reserved.
 //
 
+/**
+ Provides extensions to `NSString` for various common tasks.
+ */
 @interface NSString (SSToolkitAdditions)
 
 - (BOOL)containsString:(NSString *)string;

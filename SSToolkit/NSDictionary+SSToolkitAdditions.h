@@ -6,6 +6,9 @@
 //  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
+/**
+ Provides extensions to `NSDictionary` for various common tasks.
+ */
 @interface NSDictionary (SSToolkitAdditions)
 
 + (NSDictionary *)dictionaryWithFormEncodedString:(NSString *)encodedString;

@@ -6,7 +6,8 @@
 //  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
-/** Don't under estimate this class. It draws lines, but they are awesome.
+/**
+ Don't under estimate this class. It draws lines, but they are awesome.
  
  The recommended height is `2.0` points if you are using the inset and `1.0` if you are not.
  
@@ -26,13 +27,15 @@
 /// @name Drawing Lines
 ///--------------------
 
-/** The primary color of the line.
+/**
+ The primary color of the line.
  
  The default is `[UIColor grayColor]`.
  */
 @property (nonatomic, retain) UIColor *lineColor;
 
-/** The color of the line inset.
+/**
+ The color of the line inset.
  
  The default is 50% opaque white.
  */
@@ -42,7 +45,8 @@
 /// @name Drawing Dashes
 ///---------------------
 
-/** A float that specifies how far into the dash pattern the line starts, in points.
+/**
+ A float that specifies how far into the dash pattern the line starts, in points.
  
  For example, passing a value of 3 means the line is drawn with the dash pattern starting at 3 points from its
  beginning. Passing a value of 0 draws a line starting with the beginning of a dash pattern.
@@ -51,7 +55,8 @@
  */
 @property (nonatomic, assign) CGFloat dashPhase;
 
-/** An array of values that specify the lengths of the painted segments and unpainted segments, respectively, of the
+/**
+ An array of values that specify the lengths of the painted segments and unpainted segments, respectively, of the
  dash pattern—or `nil` for no dash pattern.
  
  For example, passing an array with the values [2,3] sets a dash pattern that alternates between a 2 point long painted

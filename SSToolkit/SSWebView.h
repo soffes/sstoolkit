@@ -8,7 +8,8 @@
 
 @protocol SSWebViewDelegate;
 
-/** This class pushes UIWebView to its limits and many common and usually difficult tasks very simple.
+/**
+ This class pushes UIWebView to its limits and many common and usually difficult tasks very simple.
 
  Note that this class doesn't actually inherit from UIWebView, but instead forwards all of UIWebView's public methods to
  an internal instance. It has been designed to be a drop in replacement for UIWebView.
@@ -37,10 +38,11 @@
 /// @name Controlling the Appearance
 ///---------------------------------
 
-/** A Boolean value that controls whether the web view draws shadows around the outside of its content.
+/**
+ A Boolean value that controls whether the web view draws shadows around the outside of its content.
 
- If the value of this property is `YES`, the web view will the shadows around the outside of its content. If
- the value is `NO`, shadows will be displayed like normal. The default value is `NO`.
+ If the value of this property is `YES`, the web view will the shadows around the outside of its content. If the value
+ is `NO`, shadows will be displayed like normal. The default value is `NO`.
 
  Note: This isn't 100% reliable since it is very hacky underneath.
  */
@@ -50,7 +52,8 @@
 /// @name Setting the Delegate
 ///---------------------------
 
-/** The receiver's `delegate`.
+/**
+ The receiver's `delegate`.
 
  The `delegate` is sent messages when content is loading.
  */
@@ -60,7 +63,8 @@
 /// @name Loading Content
 ///----------------------
 
-/** Sets the main page contents, MIME type, content encoding, and base URL.
+/**
+ Sets the main page contents, MIME type, content encoding, and base URL.
  
  @param data The content for the main page.
  
@@ -72,7 +76,8 @@
  */
 - (void)loadData:(NSData *)data MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)encodingName baseURL:(NSURL *)baseURL;
 
-/** Sets the main page content and base URL.
+/**
+ Sets the main page content and base URL.
  
  @param string The content for the main page.
  
@@ -80,12 +85,13 @@
  */
 - (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL;
 
-/** Connects to a given URL by initiating an asynchronous client request.
+/**
+ Connects to a given URL by initiating an asynchronous client request.
  
  @param aRequest A URL request identifying the location of the content to load.
  
- To stop this load, use the stopLoading method. To see whether the receiver is done loading the
- content, use the loading property.
+ To stop this load, use the stopLoading method. To see whether the receiver is done loading the content, use the loading
+ property.
  
  @see request
  @see stopLoading
@@ -94,7 +100,8 @@
  */
 - (void)loadRequest:(NSURLRequest *)aRequest;
 
-/** Sets the main page content.
+/**
+ Sets the main page content.
  
  @param string The content for the main page.
  
@@ -104,7 +111,8 @@
  */
 - (void)loadHTMLString:(NSString *)string;
 
-/** Connects to a given URL by initiating an asynchronous client request.
+/**
+ Connects to a given URL by initiating an asynchronous client request.
  
  @param aURL A URL identifying the location of the content to load.
  
@@ -120,7 +128,8 @@
  */
 - (void)loadURL:(NSURL *)aURL;
 
-/** Connects to a given URL by initiating an asynchronous client request.
+/**
+ Connects to a given URL by initiating an asynchronous client request.
  
  @param string A string containing a URL identifying the location of the content to load.
  
@@ -136,30 +145,34 @@
  */
 - (void)loadURLString:(NSString *)string;
 
-/** The URL request identifying the location of the content to load. (read-only)
+/**
+ The URL request identifying the location of the content to load. (read-only)
  */
 @property (nonatomic, readonly, retain) NSURLRequest *request;
 
-/** The last NSURLRequest that the web view loaded. (read-only)
+/**
+ The last NSURLRequest that the web view loaded. (read-only)
  */
 @property (nonatomic, retain, readonly) NSURLRequest *lastRequest;
 
-/** A Boolean value indicating whether the receiver is done loading content. (read-only)
+/**
+ A Boolean value indicating whether the receiver is done loading content. (read-only)
  
  If `YES`, the receiver is still loading content; otherwise, `NO`.
  */
 @property (nonatomic, readonly, getter=isLoading) BOOL loading;
 
-/** Returns whether the web view is loading a page. (read-only)
+/**
+ Returns whether the web view is loading a page. (read-only)
  
- This will return `YES` when the first NSURLRequest starts and `NO` when there are no more
- requests loading.
+ This will return `YES` when the first NSURLRequest starts and `NO` when there are no more requests loading.
  
  Note: Setting this isn't 100% reliable since it is very hacky underneath.
  */
 @property (nonatomic, readonly, getter=isLoadingPage) BOOL loadingPage;
 
-/** Stops the loading of any web content managed by the receiver.
+/**
+ Stops the loading of any web content managed by the receiver.
  
  Stops any content in the process of being loaded by the main frame or any of its children frames. Does nothing if no
  content is being loaded.
@@ -179,23 +192,27 @@
 /// @name Moving Back and Forward
 ///------------------------------
 
-/** A Boolean value indicating whether the receiver can move backward. (read-only)
+/**
+ A Boolean value indicating whether the receiver can move backward. (read-only)
 
  If `YES`, able to move backward; otherwise, `NO`.
  */
 @property (nonatomic, readonly) BOOL canGoBack;
 
-/** A Boolean value indicating whether the receiver can move forward. (read-only)
+/**
+ A Boolean value indicating whether the receiver can move forward. (read-only)
 
  If `YES`, able to move forward; otherwise, `NO`.
  */
 @property (nonatomic, readonly) BOOL canGoForward;
 
-/** Loads the previous location in the back-forward list.
+/**
+ Loads the previous location in the back-forward list.
  */
 - (void)goBack;
 
-/** Loads the next location in the back-forward list.
+/**
+ Loads the next location in the back-forward list.
  */
 - (void)goForward;
 
@@ -203,14 +220,16 @@
 /// @name Setting Web Content Properties
 ///-------------------------------------
 
-/** A Boolean value determining whether the webpage scales to fit the view and the user can change the scale.
+/**
+ A Boolean value determining whether the webpage scales to fit the view and the user can change the scale.
 
  If `YES`, the webpage is scaled to fit and the user can zoom in and zoom out. If `NO`, user
  zooming is disabled. The default value is `NO`.
  */
 @property (nonatomic, assign) BOOL scalesPageToFit;
 
-/** The scroll view associated with the web view. (read-only)
+/**
+ The scroll view associated with the web view. (read-only)
  
  Your application can access the scroll view if it wants to customize the scrolling behavior of the web view.
  */
@@ -220,7 +239,8 @@
 /// @name Running JavaScript
 ///-------------------------
 
-/** Returns the result of running a script.
+/**
+ Returns the result of running a script.
  
  @param script The script to run.
  
@@ -240,11 +260,11 @@
 /// @name Using the JavaScript Console
 ///-----------------------------------
 
-/** A Boolean value that controls whether `console.log` messages are intercepted.
+/**
+ A Boolean value that controls whether `console.log` messages are intercepted.
  
- If the value of this property is `YES`, the web view will inject some JavaScript after the DOM has loaded
- that replaces `console.log` with a custom implementation that will NSLog the `console.log`
- messages.
+ If the value of this property is `YES`, the web view will inject some JavaScript after the DOM has loaded that replaces
+ `console.log` with a custom implementation that will NSLog the `console.log` messages.
  
  Note: This isn't 100% reliable since it is very hacky underneath.
  */
@@ -254,7 +274,8 @@
 /// @name Detecting Types of Data
 ///------------------------------
 
-/** The types of data converted to clickable URLs in the web view's content.
+/**
+ The types of data converted to clickable URLs in the web view's content.
  
  You can use this property to specify the types of data (phone numbers, http links, email address, and so on) that
  should be automatically converted to clickable URLs in the web view. When clicked, the web view opens the application
@@ -266,13 +287,15 @@
 /// @name Managing Media Playback
 ///------------------------------
 
-/** A Boolean value that determines whether HTML5 videos play inline or use the native full-screen controller.
+/**
+ A Boolean value that determines whether HTML5 videos play inline or use the native full-screen controller.
 
  The default value on iPhone is `NO`.
  */
 @property (nonatomic, assign) BOOL allowsInlineMediaPlayback;
 
-/** A Boolean value that determines whether HTML5 videos can play automatically or require the user to start playing them.
+/**
+ A Boolean value that determines whether HTML5 videos can play automatically or require the user to start playing them.
 
  The default value on both iPad and iPhone is `YES`.
  */
@@ -299,7 +322,8 @@
 /// @name Resetting State
 ///----------------------
 
-/** Destroys the internal `UIWebView` and recreates.
+/**
+ Destroys the internal `UIWebView` and recreates.
 
  All of the properties are maintained across the reset.
  */
@@ -308,19 +332,108 @@
 @end
 
 
+/**
+ The `SSWebViewDelegate` protocol defines methods that a delegate of a `SSWebView` object can optionally implement to
+ intervene when web content is loaded.
+ 
+ @warning **Important:** Before releasing an instance of `SSWebView` for which you have set a delegate, you must first
+ set the `SSWebView` delegate property to `nil` before disposing of the `SSWebView` instance. This can be done, for
+ example, in the `dealloc` method where you dispose of the `SSWebView`.
+ */
 @protocol SSWebViewDelegate <NSObject>
 
 @optional
 
-// SSWebViewDelegate
+///--------------------
+/// @name Loading Pages
+///--------------------
+
+/**
+ Sent before a web view begins loading a page.
+ 
+ @param aWebView The web view that started loading its page.
+ 
+ @see webViewDidFinishLoadingPage:
+ @see webViewDidLoadDOM:
+ @see webViewDidStartLoad:
+ */
 - (void)webViewDidStartLoadingPage:(SSWebView *)aWebView;
+
+/**
+ Sent after a web view finishes loading its DOM.
+ 
+ Note: This isn't 100% reliable.
+ 
+ @param aWebView The web view that finished loading its DOM.
+ 
+ @see webViewDidStartLoadingPage:
+ @see webViewDidFinishLoadingPage:
+ */
 - (void)webViewDidLoadDOM:(SSWebView *)aWebView;
+
+/**
+ Sent after a web view finishes loading a page.
+ 
+ @param aWebView The web view that finished loading its page.
+ 
+ @see webViewDidStartLoadingPage:
+ @see webViewDidLoadDOM:
+ @see webViewDidFinishLoad:
+ */
 - (void)webViewDidFinishLoadingPage:(SSWebView *)aWebView;
 
-// UIWebViewDelegate
+///----------------------
+/// @name Loading Content
+///----------------------
+
+/**
+ Sent if a web view failed to load a frame.
+ 
+ @param aWebView The web view that failed to load a frame.
+ 
+ @param error The error that occurred during loading.
+ 
+ @see webView:shouldStartLoadWithRequest:navigationType:
+ @see webViewDidStartLoad:
+ @see webViewDidFinishLoad:
+ */
 - (void)webView:(SSWebView *)aWebView didFailLoadWithError:(NSError *)error;
+
+/**
+ Sent before a web view begins loading a frame.
+ 
+ @param aWebView The web view that is about to load a new frame.
+ 
+ @param aRequest The content location.
+ 
+ @param navigationType The type of user action that started the load request.
+ 
+ @see webViewDidStartLoad:
+ @see webViewDidFinishLoad:
+ @see webView:didFailLoadWithError:
+ */
 - (BOOL)webView:(SSWebView *)aWebView shouldStartLoadWithRequest:(NSURLRequest *)aRequest navigationType:(UIWebViewNavigationType)navigationType;
+
+/**
+ Sent after a web view finishes loading a frame.
+ 
+ @param aWebView The web view has finished loading.
+ 
+ @see webView:shouldStartLoadWithRequest:navigationType:
+ @see webViewDidStartLoad:
+ @see webView:didFailLoadWithError:
+ */
 - (void)webViewDidFinishLoad:(SSWebView *)aWebView;
+
+/**
+ Sent after a web view starts loading a frame.
+ 
+ @param aWebView The web view that has begun loading a new frame.
+ 
+ @see webView:shouldStartLoadWithRequest:navigationType:
+ @see webViewDidFinishLoad:
+ @see webView:didFailLoadWithError:
+ */
 - (void)webViewDidStartLoad:(SSWebView *)aWebView;
 
 @end

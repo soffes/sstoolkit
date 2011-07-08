@@ -6,10 +6,10 @@
 //  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
-/** A simple wrapper for concurrent NSOperations
+/**
+ A simple wrapper for concurrent NSOperations
  
- Subclasses should override the start and stop methods. Here is
- a basic example.
+ Subclasses should override the start and stop methods. Here is a basic example.
  
  <pre><code>- (void)start {
      [super start];
@@ -33,7 +33,8 @@
     BOOL _isFinished;
 }
 
-/** Finishes the receiver's task.
+/**
+ Finishes the receiver's task.
  
  Subclasses must implement their own versions of `finish` to clean up anything before the operation completes. After
  performing the class-specific functionality, the subclass method should incorporate superclass versions of `finish`

@@ -6,6 +6,9 @@
 //  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
+/**
+ Provides extensions to `NSDate` for various common tasks.
+ */
 @interface NSDate (SSToolkitAdditions)
 
 + (NSDate *)dateFromISO8601String:(NSString *)string;

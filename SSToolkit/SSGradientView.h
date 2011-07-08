@@ -13,7 +13,9 @@ typedef enum {
 	SSGradientViewDirectionVertical
 } SSGradientViewDirection;
 
-/// Simple `UIView` wrapper for `CGGradient`.
+/**
+ Simple `UIView` wrapper for `CGGradient`.
+ */
 @interface SSGradientView : SSBordererView {
 	
 @private
@@ -29,21 +31,24 @@ typedef enum {
 /// @name Drawing the Gradient
 ///-------------------------
 
-/** An array of `UIColor` objects used to draw the gradient. If the value is `nil`, the
- `backgroundColor` will be drawn instead of a gradient.
+/**
+ An array of `UIColor` objects used to draw the gradient. If the value is `nil`, the `backgroundColor` will be drawn
+ instead of a gradient.
  
  The default is `nil`.
  */
 @property (nonatomic, copy) NSArray *colors;
 
-/** An optional array of `NSNumber` objects defining the location of each gradient stop.
+/**
+ An optional array of `NSNumber` objects defining the location of each gradient stop.
  
  The gradient stops are specified as values between `0` and `1`. The values must be monotonically
  increasing. If `nil`, the stops are spread uniformly across the range. Defaults to `nil`.
  */
 @property (nonatomic, copy) NSArray *locations;
 
-/** The direction of the gradient.
+/**
+ The direction of the gradient.
  
  The default is `SSGradientViewDirectionHorizontal`.
  */
@@ -53,13 +58,15 @@ typedef enum {
 /// @name Deprecated Methods
 ///-------------------------
 
-/** The top gradient color. This method is deprecated.
+/**
+ The top gradient color. This method is deprecated.
  
  The default is `nil`.
  */
 @property (nonatomic, retain) UIColor *topColor;
 
-/** The bottom gradient color. This method is deprecated.
+/**
+ The bottom gradient color. This method is deprecated.
  
  The default is `nil`.
  */
