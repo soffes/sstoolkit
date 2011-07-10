@@ -13,6 +13,9 @@
 @class SSTextField;
 @class SSTextView;
 
+/**
+ Creates a controller object that manages a rating picker.
+ */
 @interface SSRatingPickerViewController : SSViewController
 
 ///----------------------------------

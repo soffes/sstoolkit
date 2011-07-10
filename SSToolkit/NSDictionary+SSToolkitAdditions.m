@@ -12,6 +12,10 @@
 @implementation NSDictionary (SSToolkitAdditions)
 
 + (NSDictionary *)dictionaryWithFormEncodedString:(NSString *)encodedString {
+	if (!encodedString) {
+		return nil;
+	}
+	
 	NSMutableDictionary *result = [NSMutableDictionary dictionary];
 	NSArray *pairs = [encodedString componentsSeparatedByString:@"&"];
 	

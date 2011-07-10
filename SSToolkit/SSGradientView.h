@@ -8,8 +8,14 @@
 
 #import "SSBordererView.h"
 
+/**
+ The direction the gradient.
+ */
 typedef enum {
+	/** The gradient is horizontal. */
 	SSGradientViewDirectionHorizontal,
+	
+	/** The gradient is verticle. */
 	SSGradientViewDirectionVertical
 } SSGradientViewDirection;
 

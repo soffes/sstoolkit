@@ -9,10 +9,31 @@
 #ifndef SSTOOLKITDEFINES
 #define SSTOOLKITDEFINES
 
+/**
+ The name of the SSToolkit bundle.
+ 
+ Mainly used for accessing images in various `UIControl`'s.
+ */
 extern NSString *const kSSToolkitBundleName;
+
+/**
+ `SSCollectionView` exception name for `nil` `SSCollectionViewItem` objects.
+ */
 extern NSString *const kSSCollectionViewNilItemExceptionName;
+
+/**
+ `SSCollectionView` exception reason for `nil` `SSCollectionViewItem` objects.
+ */
 extern NSString *const kSSCollectionViewNilItemExceptionReason;
+
+/**
+ `SSCollectionView` exception name for missing `SSCollectionViewItem` size.
+ */
 extern NSString *const kSSCollectionViewMissingItemSizeExceptionName;
+
+/**
+ `SSCollectionView` exception reason for missing `SSCollectionViewItem` size.
+ */
 extern NSString *const kSSCollectionViewMissingItemSizeExceptionReason;
 
 #endif

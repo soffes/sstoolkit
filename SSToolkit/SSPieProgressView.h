@@ -6,7 +6,9 @@
 //  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
-/// Pie chart style progress pie chart similar to the one in Xcode 3's status bar.
+/**
+ Pie chart style progress pie chart similar to the one in Xcode 3's status bar.
+ */
 @interface SSPieProgressView : UIView {
 
 @private

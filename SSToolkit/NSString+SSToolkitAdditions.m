@@ -77,13 +77,6 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 }
 
 
-#pragma mark Localization Methods
-
-+ (NSString *)localizedString:(NSString *)key {
-	return [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:key];
-}
-
-
 #pragma mark HTML Methods
 
 - (NSString *)escapeHTML {
@@ -114,9 +107,9 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 			case '"':
 				[s appendString:@"&quot;"];
 				break;
-				//			case '…':
-				//				[s appendString:@"&hellip;"];
-				//				break;
+//			case '…':
+//				[s appendString:@"&hellip;"];
+//				break;
 			case '&':
 				[s appendString:@"&amp;"];
 				break;

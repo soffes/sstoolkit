@@ -35,7 +35,22 @@
 /// @name Cropping
 ///---------------
 
+/**
+ Creates and returns a new cropped image object.
+ 
+ @param rect A rectangle whose coordinates specify the area to create an image from in points.
+ 
+ @return A new cropped image object.
+ */
 - (UIImage *)imageCroppedToRect:(CGRect)rect;
+
+/**
+ Creates and returns a new image object that is cropped to the center of the image.
+ 
+ The length of the sides of square are the length of the shortest side of the image.
+ 
+ @return A new square image object.
+ */
 - (UIImage *)squareImage;
 
 ///-----------------

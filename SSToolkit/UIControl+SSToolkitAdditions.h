@@ -11,6 +11,9 @@
  */
 @interface UIControl (SSToolkitAdditions)
 
+/**
+ Removes all targets and actions for all events from an internal dispatch table.
+ */
 - (void)removeAllTargets;
 
 @end

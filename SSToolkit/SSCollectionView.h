@@ -8,20 +8,40 @@
 
 #import "SSCollectionViewItem.h"
 
+/**
+ The position in the collection view (top, middle, bottom) to which a given item is scrolled.
+ */
 typedef enum {
+	/**
+	 The collection view scrolls the items of interest to be fully visible with a minimum of movement. If the item is
+	 already fully visible, no scrolling occurs. For example, if the item is above the visible area, the behavior is
+	 identical to that specified by `SSCollectionViewScrollPositionTop`. This is the default.
+	 */
 	SSCollectionViewScrollPositionNone = UITableViewScrollPositionNone,
+	
+	/** The collection view scrolls the item of interest to the top of the visible collection view. */
 	SSCollectionViewScrollPositionTop = UITableViewScrollPositionTop,
+	
+	/** The collection view scrolls the item of interest to the middle of the visible collection view. */
 	SSCollectionViewScrollPositionMiddle = UITableViewScrollPositionMiddle,
+	
+	/** The collection view scrolls the item of interest to the bottom of the visible collection view. */
 	SSCollectionViewScrollPositionBottom = UITableViewScrollPositionBottom
 } SSCollectionViewScrollPosition;
 
+/**
+ The style of how headers and footers scroll.
+ */
 typedef enum {
+	/** Headers and footer to behave like a `UITableView` with its style set to `UITableViewStylePlain`. */
 	SSCollectionViewExtremitiesStyleFixed = UITableViewStylePlain,
+	
+	/** Headers and footer to behave like a `UITableView` with its style set to `UITableViewStyleGrouped`. */
 	SSCollectionViewExtremitiesStyleScrolling = UITableViewStyleGrouped
 } SSCollectionViewExtremitiesStyle;
 
-@protocol SSCollectionViewDelegate;
 @protocol SSCollectionViewDataSource;
+@protocol SSCollectionViewDelegate;
 
 /**
  Simple collection view.

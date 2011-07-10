@@ -11,19 +11,36 @@
  */
 @interface NSString (SSToolkitAdditions)
 
+///------------------------
+/// @name Checking Contents
+///------------------------
+
 - (BOOL)containsString:(NSString *)string;
+
+///--------------
+/// @name Hashing
+///--------------
+
 - (NSString *)MD5Sum;
 - (NSString *)SHA1Sum;
+
+///-------------------------
+/// @name Comparing Versions
+///-------------------------
+
 - (NSComparisonResult)compareToVersionString:(NSString *)version;
 
-// Localization
-+ (NSString *)localizedString:(NSString*)key;
+///-----------------------------------
+/// @name HTML Escaping and Unescaping
+///-----------------------------------
 
-// HTML
 - (NSString *)escapeHTML;
 - (NSString *)unescapeHTML;
 
-// URL
+///----------------------------------
+/// @name URL Encoding and Unencoding
+///----------------------------------
+
 - (NSString *)URLEncodedString;
 - (NSString *)URLEncodedParameterString;
 - (NSString *)URLDecodedString;
@@ -31,10 +48,16 @@
 - (NSString *)stringByEscapingForURLQuery;
 - (NSString *)stringByUnescapingFromURLQuery;
 
-// Base64
+///----------------------
+/// @name Base64 Encoding
+///----------------------
+
 - (NSString *)base64EncodedString;
 
-// Trimming
+///---------------
+/// @name Trimming
+///---------------
+
 - (NSString *)stringByTrimmingLeadingCharactersInSet:(NSCharacterSet *)characterSet;
 - (NSString *)stringByTrimmingLeadingWhitespaceAndNewlineCharacters;
 - (NSString *)stringByTrimmingTrailingCharactersInSet:(NSCharacterSet *)characterSet;

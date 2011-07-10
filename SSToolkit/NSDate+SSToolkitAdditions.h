@@ -11,13 +11,20 @@
  */
 @interface NSDate (SSToolkitAdditions)
 
+///---------------
+/// @name ISO 8601
+///---------------
+
 + (NSDate *)dateFromISO8601String:(NSString *)string;
 - (NSString *)ISO8601String;
+
+///---------------
+/// @name Time Ago
+///---------------
 
 + (NSString *)timeAgoInWordsFromTimeInterval:(NSTimeInterval)intervalInSeconds includingSeconds:(BOOL)includeSeconds;
 - (NSString *)timeAgoInWords;
 - (NSString *)timeAgoInWordsIncludingSeconds:(BOOL)includeSeconds;
-
 - (NSString *)briefTimeAgoInWords;
 
 @end

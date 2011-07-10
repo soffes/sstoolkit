@@ -11,6 +11,11 @@
  */
 @interface NSURL (SSToolkitAdditions)
 
+/**
+ Returns a new dictionary that contains a dictionary for the receivers query string.
+ 
+ @return A new dictionary that contains a dictionary for the form encoded string.
+ */
 - (NSDictionary *)queryDictionary;
 
 @end

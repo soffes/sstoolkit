@@ -6,9 +6,17 @@
 //  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
+/**
+ The vertical alignment of text within a label.
+ */
 typedef enum {
+	/** Aligns the text vertically at the top in the label (the default). */
 	SSLabelVerticalTextAlignmentTop = UIControlContentVerticalAlignmentTop,
+	
+	/** Aligns the text vertically in the center of the label. */
 	SSLabelVerticalTextAlignmentMiddle = UIControlContentVerticalAlignmentCenter,
+	
+	/** Aligns the text vertically at the bottom in the label. */
 	SSLabelVerticalTextAlignmentBottom = UIControlContentVerticalAlignmentBottom
 } SSLabelVerticalTextAlignment;
 

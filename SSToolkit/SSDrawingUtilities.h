@@ -9,6 +9,10 @@
 #ifndef SSDRAWINGUTILITIES
 #define SSDRAWINGUTILITIES
 
+///-----------------------------------
+/// @name Degree and Radian Conversion
+///-----------------------------------
+
 /**
  A macro that converts a number from degress to radians.
  
@@ -29,7 +33,22 @@
 
 #endif
 
+/**
+ Limits a float to the `min` or `max` value. The float is between `min` and `max` it will be returned unchanged.
+ 
+ @param f The float to limit.
+ 
+ @param min The minumum value for the float.
+ 
+ @param max The minumum value for the float.
+ 
+ @return A float limited to the `min` or `max` value.
+ */
 extern CGFloat SSFLimit(CGFloat f, CGFloat min, CGFloat max);
+
+///-----------------------------
+/// @name Rectangle Manipulation
+///-----------------------------
 
 extern CGRect CGRectSetX(CGRect rect, CGFloat x);
 extern CGRect CGRectSetY(CGRect rect, CGFloat y);
@@ -42,7 +61,21 @@ extern CGRect CGRectSetZeroSize(CGRect rect);
 extern CGSize CGSizeAspectScaleToSize(CGSize size, CGSize toSize);
 extern CGRect CGRectAddPoint(CGRect rect, CGPoint point);
 
+///---------------------------------
+/// @name Drawing Rounded Rectangles
+///---------------------------------
+
 extern void SSDrawRoundedRect(CGContextRef context, CGRect rect, CGFloat cornerRadius);
+
+///-------------------------
+/// @name Creating Gradients
+///-------------------------
+
 extern CGGradientRef SSCreateGradientWithColors(NSArray *colors);
 extern CGGradientRef SSCreateGradientWithColorsAndLocations(NSArray *colors, NSArray *locations);
+
+///------------------------
+/// @name Drawing Gradients
+///------------------------
+
 extern void SSDrawGradientInRect(CGContextRef context, CGGradientRef gradient, CGRect rect);

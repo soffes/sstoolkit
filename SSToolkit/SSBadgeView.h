@@ -6,9 +6,17 @@
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
+/**
+ Options for aligning the badge horizontally.
+ */
 typedef enum {
+	/** Align badge along the left edge. */
 	SSBadgeViewAlignmentLeft = UITextAlignmentLeft,
+	
+	/** Align badge equally along both sides of the center line. */
 	SSBadgeViewAlignmentCenter = UITextAlignmentCenter,
+	
+	/** Align badge along the right edge. */
 	SSBadgeViewAlignmentRight = UITextAlignmentRight
 } SSBadgeViewAlignment;
 

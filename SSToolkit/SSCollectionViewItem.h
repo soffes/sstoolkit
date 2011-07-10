@@ -6,9 +6,12 @@
 //  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
+/**
+ An enumeration for the various styles of items.
+ */
 typedef enum {
-	SSCollectionViewItemStyleDefault, // = UITableViewCellStyleDefault,
-	SSCollectionViewItemStyleSubtitle, // = UITableViewCellStyleSubtitle,
+	SSCollectionViewItemStyleDefault = UITableViewCellStyleDefault,
+	SSCollectionViewItemStyleSubtitle = UITableViewCellStyleSubtitle,
 	SSCollectionViewItemStyleBlank,
 	SSCollectionViewItemStyleImage
 } SSCollectionViewItemStyle;

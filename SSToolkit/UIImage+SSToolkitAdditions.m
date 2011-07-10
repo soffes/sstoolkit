@@ -23,6 +23,10 @@
 
 
 - (UIImage *)imageCroppedToRect:(CGRect)rect {
+	// CGImageCreateWithImageInRect's rect parameter is in pixels of the image's coordinates system. Convert to points.
+	CGFloat scale = self.scale;
+	rect = CGRectMake(rect.origin.x *scale, rect.origin.y * scale, rect.size.width * scale, rect.size.height * scale);
+	
 	CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], rect);
 	UIImage *cropped = [UIImage imageWithCGImage:imageRef];
 	CGImageRelease(imageRef);
@@ -31,7 +35,8 @@
 
 
 - (UIImage *)squareImage {
-	CGFloat shortestSide = (self.size.width <= self.size.height ? self.size.width : self.size.height) * self.scale;
+	CGSize imageSize = self.size;
+	CGFloat shortestSide = fminf(imageSize.width, imageSize.height);
 	return [self imageCroppedToRect:CGRectMake(0.0f, 0.0f, shortestSide, shortestSide)];
 }
 
