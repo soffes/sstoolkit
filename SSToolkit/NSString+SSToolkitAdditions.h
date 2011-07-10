@@ -53,6 +53,7 @@
 ///----------------------
 
 - (NSString *)base64EncodedString;
++ (NSString *)stringWithBase64String:(NSString *)base64String;
 
 ///---------------
 /// @name Trimming

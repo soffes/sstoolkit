@@ -7,9 +7,8 @@
 //
 
 #import "NSString+SSToolkitAdditions.h"
-#include <CommonCrypto/CommonDigest.h>
-
-static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"; 
+#import "NSData+SSToolkitAdditions.h"
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation NSString (SSToolkitAdditions)
 
@@ -77,7 +76,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 }
 
 
-#pragma mark HTML Methods
+#pragma mark - HTML Methods
 
 - (NSString *)escapeHTML {
 	NSMutableString *s = [NSMutableString string];
@@ -236,49 +235,24 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 }
 
 
-#pragma mark Base64 Methods
+#pragma mark - Base64 Methods
 
 - (NSString *)base64EncodedString  {
     if ([self length] == 0) {
-        return @"";
-	}
-	
-    const char *source = [self UTF8String];
-    NSUInteger strlength  = strlen(source);
-    
-    char *characters = malloc(((strlength + 2) / 3) * 4);
-    if (characters == NULL) {
         return nil;
 	}
 	
-    NSUInteger length = 0;
-    NSUInteger i = 0;
-	
-    while (i < strlength) {
-        char buffer[3] = {0,0,0};
-        short bufferLength = 0;
-        while (bufferLength < 3 && i < strlength) {
-            buffer[bufferLength++] = source[i++];
-		}
-        characters[length++] = encodingTable[(buffer[0] & 0xFC) >> 2];
-        characters[length++] = encodingTable[((buffer[0] & 0x03) << 4) | ((buffer[1] & 0xF0) >> 4)];
-        if (bufferLength > 1) {
-            characters[length++] = encodingTable[((buffer[1] & 0x0F) << 2) | ((buffer[2] & 0xC0) >> 6)];
-		} else {
-			characters[length++] = '=';
-		}
-        if (bufferLength > 2) {
-            characters[length++] = encodingTable[buffer[2] & 0x3F];
-		} else {
-			characters[length++] = '=';
-		}
-    }
-    
-    return [[[NSString alloc] initWithBytesNoCopy:characters length:length encoding:NSASCIIStringEncoding freeWhenDone:YES] autorelease];
+	return [[self dataUsingEncoding:NSUTF8StringEncoding] base64EncodedString];
 }
 
 
-#pragma mark Trimming Methods
++ (NSString *)stringWithBase64String:(NSString *)base64String {
+	return [[[NSString alloc] initWithData:[NSData dataWithBase64String:base64String] encoding:NSUTF8StringEncoding]
+			autorelease];
+}
+
+
+#pragma mark - Trimming Methods
 
 - (NSString *)stringByTrimmingLeadingCharactersInSet:(NSCharacterSet *)characterSet {
     NSRange rangeOfFirstWantedCharacter = [self rangeOfCharacterFromSet:[characterSet invertedSet]];

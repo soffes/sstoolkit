@@ -18,4 +18,11 @@
  */
 - (NSString *)MD5Sum;
 
+///-----------------------------------
+/// @name Base64 Encoding and Decoding
+///-----------------------------------
+
+- (NSString *)base64EncodedString;
++ (NSData *)dataWithBase64String:(NSString *)base64String;
+
 @end
