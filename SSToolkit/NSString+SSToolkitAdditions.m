@@ -17,29 +17,16 @@
 }
 
 - (NSString *)MD5Sum {
-	unsigned char digest[CC_MD5_DIGEST_LENGTH], i;
-	CC_MD5([self UTF8String], [self lengthOfBytesUsingEncoding:NSUTF8StringEncoding], digest);
-	NSMutableString *ms = [NSMutableString string];
-	for (i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
-		[ms appendFormat: @"%02x", (int)(digest[i])];
-	}
-	return [[ms copy] autorelease];
+	const char *cstr = [self cStringUsingEncoding:NSUTF8StringEncoding];
+	NSData *data = [NSData dataWithBytes:cstr length:self.length];
+	return [data MD5Sum];
 }
 
 
-// Inspired by http://spitzkoff.com/craig/?p=122
 - (NSString *)SHA1Sum {
 	const char *cstr = [self cStringUsingEncoding:NSUTF8StringEncoding];
 	NSData *data = [NSData dataWithBytes:cstr length:self.length];
-	NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
-	uint8_t digest[CC_SHA1_DIGEST_LENGTH];
-	
-	CC_SHA1(data.bytes, data.length, digest);
-	for (NSInteger i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
-		[output appendFormat:@"%02x", digest[i]];
-	}
-	
-	return output;
+	return [data SHA1Sum];
 }
 
 

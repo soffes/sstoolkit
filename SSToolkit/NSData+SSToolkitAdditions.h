@@ -11,12 +11,23 @@
  */
 @interface NSData (SSToolkitAdditions)
 
+///--------------
+/// @name Hashing
+///--------------
+
 /**
  Returns a string of the MD5 sum of the receiver.
  
  @return The string of the MD5 sum of the receiver.
  */
 - (NSString *)MD5Sum;
+
+/**
+ Returns a string of the SHA1 sum of the receiver.
+ 
+ @return The string of the SHA1 sum of the receiver.
+ */
+- (NSString *)SHA1Sum;
 
 ///-----------------------------------
 /// @name Base64 Encoding and Decoding

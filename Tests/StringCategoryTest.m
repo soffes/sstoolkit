@@ -50,6 +50,10 @@
 	GHAssertEquals([@"1.0.0" compareToVersionString:@"0.0.1"], NSOrderedDescending, nil);
 	GHAssertEquals([@"3.2" compareToVersionString:@"4.2"], NSOrderedAscending, nil);
 	GHAssertEquals([@"3.2.1" compareToVersionString:@"4.2.1"], NSOrderedAscending, nil);
+	
+	GHAssertEquals([@"10.4" compareToVersionString:@"10.3"], NSOrderedDescending, nil);
+	GHAssertEquals([@"10.5" compareToVersionString:@"10.5.0"], NSOrderedSame, nil);
+	GHAssertEquals([@"10.4 Build 8L127" compareToVersionString:@"10.4 Build 8P135"], NSOrderedAscending, nil);
 }
 
 
