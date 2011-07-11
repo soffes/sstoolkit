@@ -153,58 +153,16 @@
 }
 
 
-#pragma mark URL Methods
+#pragma mark - URL Escaping and Unescaping
 
-- (NSString *)URLEncodedString {
-	return [(NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-																(CFStringRef)self,
-																NULL,
-																CFSTR("!*'();:@&=+$,/?%#[]"),
-																kCFStringEncodingUTF8) autorelease];
-}
-
-
-- (NSString *)URLEncodedParameterString {
-    NSString *result = (NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                                           (CFStringRef)self,
-                                                                           NULL,
-                                                                           CFSTR(":/=,!$&'()*+;[]@#?"),
-                                                                           kCFStringEncodingUTF8);
-	return [result autorelease];
-}
-
-
-- (NSString*)URLDecodedString {
-	return [(NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
-																				(CFStringRef)self,
-																				CFSTR(""),
-																				kCFStringEncodingUTF8) autorelease];
-}
-
-
-- (NSString *)removeQuotes {
-	NSUInteger length = [self length];
-	NSString *ret = self;
-	if ([self characterAtIndex:0] == '"') {
-		ret = [ret substringFromIndex:1];
-	}
-	if ([self characterAtIndex:length - 1] == '"') {
-		ret = [ret substringToIndex:length - 2];
-	}
-	
-	return ret;
-}
-
-
-- (NSString*)stringByEscapingForURLQuery {
+- (NSString *)stringByEscapingForURLQuery {
 	NSString *result = self;
 
-	CFStringRef originalAsCFString = (CFStringRef) self;
-	CFStringRef leaveAlone = CFSTR(" ");
-	CFStringRef toEscape = CFSTR("\n\r?[]()$,!'*;:@&=#%+/");
+	static CFStringRef leaveAlone = CFSTR(" ");
+	static CFStringRef toEscape = CFSTR("\n\r:/=,!$&'()*+;[]@#?%");
 
-	CFStringRef escapedStr;
-	escapedStr = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, originalAsCFString, leaveAlone, toEscape, kCFStringEncodingUTF8);
+	CFStringRef escapedStr = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)self, leaveAlone,
+																	 toEscape, kCFStringEncodingUTF8);
 
 	if (escapedStr) {
 		NSMutableString *mutable = [NSMutableString stringWithString:(NSString *)escapedStr];
@@ -217,8 +175,40 @@
 }
 
 
-- (NSString*)stringByUnescapingFromURLQuery {
-	return [[self stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByReplacingOccurrencesOfString:@"+" withString:@" "];
+- (NSString *)stringByUnescapingFromURLQuery {
+	return [[self stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+			stringByReplacingOccurrencesOfString:@"+" withString:@" "];
+}
+
+
+#pragma mark - URL Encoding and Unencoding (Deprecated)
+
+- (NSString *)URLEncodedString {
+	static CFStringRef toEscape = CFSTR(":/=,!$&'()*+;[]@#?%");
+	return [(NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+																(CFStringRef)self,
+																NULL,
+																toEscape,
+																kCFStringEncodingUTF8) autorelease];
+}
+
+
+- (NSString *)URLEncodedParameterString {
+	static CFStringRef toEscape = CFSTR(":/=,!$&'()*+;[]@#?");
+    NSString *result = (NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                           (CFStringRef)self,
+                                                                           NULL,
+                                                                           toEscape,
+                                                                           kCFStringEncodingUTF8);
+	return [result autorelease];
+}
+
+
+- (NSString *)URLDecodedString {
+	return [(NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
+																				(CFStringRef)self,
+																				CFSTR(""),
+																				kCFStringEncodingUTF8) autorelease];
 }
 
 
@@ -241,6 +231,18 @@
 
 #pragma mark - Trimming Methods
 
+- (NSString *)stringByTrimmingCharactersInSet:(NSCharacterSet *)characterSet {
+	return [[self stringByTrimmingLeadingCharactersInSet:characterSet]
+			stringByTrimmingTrailingCharactersInSet:characterSet];
+}
+
+
+- (NSString *)stringByTrimmingWhitespaceAndNewlineCharacters {
+	return [[self stringByTrimmingLeadingWhitespaceAndNewlineCharacters]
+			stringByTrimmingTrailingWhitespaceAndNewlineCharacters];
+}
+
+
 - (NSString *)stringByTrimmingLeadingCharactersInSet:(NSCharacterSet *)characterSet {
     NSRange rangeOfFirstWantedCharacter = [self rangeOfCharacterFromSet:[characterSet invertedSet]];
     if (rangeOfFirstWantedCharacter.location == NSNotFound) {
@@ -261,7 +263,7 @@
     if (rangeOfLastWantedCharacter.location == NSNotFound) {
         return @"";
     }
-    return [self substringToIndex:rangeOfLastWantedCharacter.location+1]; // non-inclusive
+    return [self substringToIndex:rangeOfLastWantedCharacter.location + 1]; // Non-inclusive
 }
 
 

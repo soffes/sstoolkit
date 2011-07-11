@@ -11,13 +11,13 @@
 
 @implementation NSDate (SSToolkitAdditions)
 
-+ (NSDate *)dateFromISO8601String:(NSString *)string {
-	if (!string) {
++ (NSDate *)dateFromISO8601String:(NSString *)iso8601String {
+	if (!iso8601String) {
 		return nil;
 	}
 	
 	struct tm tm;
-	strptime([string cStringUsingEncoding:NSUTF8StringEncoding], "%Y-%m-%dT%H:%M:%S%z", &tm);
+	strptime([iso8601String cStringUsingEncoding:NSUTF8StringEncoding], "%Y-%m-%dT%H:%M:%S%z", &tm);
 //	tm.tm_isdst = -1;
 	time_t t = mktime(&tm);
 	

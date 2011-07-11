@@ -69,15 +69,56 @@
 - (NSString *)unescapeHTML;
 
 ///----------------------------------
-/// @name URL Encoding and Unencoding
+/// @name URL Escaping and Unescaping
 ///----------------------------------
 
-- (NSString *)URLEncodedString;
-- (NSString *)URLEncodedParameterString;
-- (NSString *)URLDecodedString;
-- (NSString *)removeQuotes;
+/**
+ Returns a new string escaped for a URL query parameter.
+ 
+ The following characters are escaped: `\n\r:/=,!$&'()*+;[]@#?%`. Spaces are escaped to the `+` character. (`+` is
+ escaped to `%2B`).
+ 
+ @return A new string escaped for a URL query parameter.
+ */
 - (NSString *)stringByEscapingForURLQuery;
+
+/**
+ Returns a new string unescaped from a URL query parameter.
+ 
+ `+` characters are unescaped to spaces.
+ 
+ @return A new string escaped for a URL query parameter.
+ */
 - (NSString *)stringByUnescapingFromURLQuery;
+
+///-----------------------------------------------
+/// @name URL Encoding and Unencoding (Deprecated)
+///-----------------------------------------------
+
+/**
+ Returns a new string encoded for a URL. (Deprecated)
+ 
+ The following characters are encoded: `:/=,!$&'()*+;[]@#?%`.
+ 
+ @return A new string escaped for a URL.
+ */
+- (NSString *)URLEncodedString;
+
+/**
+ Returns a new string encoded for a URL parameter. (Deprecated)
+ 
+ The following characters are encoded: `:/=,!$&'()*+;[]@#?`.
+ 
+ @return A new string escaped for a URL parameter.
+ */
+- (NSString *)URLEncodedParameterString;
+
+/**
+ Returns a new string decoded from a URL.
+ 
+ @return A new string decoded from a URL.
+ */
+- (NSString *)URLDecodedString;
 
 ///----------------------
 /// @name Base64 Encoding
@@ -106,9 +147,52 @@
 /// @name Trimming
 ///---------------
 
+/**
+ Returns a new string by trimming leading and trailing characters in a given `NSCharacterSet`.
+ 
+ @param characterSet Character set to trim characters
+ 
+ @return A new string by trimming leading and trailing characters in `characterSet`
+ */
+- (NSString *)stringByTrimmingCharactersInSet:(NSCharacterSet *)characterSet;
+
+/**
+ Returns a new string by trimming leading and trailing whitespace and newline characters.
+  
+ @return A new string by trimming leading and trailing whitespace and newline characters 
+ */
+- (NSString *)stringByTrimmingWhitespaceAndNewlineCharacters;
+
+/**
+ Returns a new string by trimming leading characters in a given `NSCharacterSet`.
+ 
+ @param characterSet Character set to trim characters
+ 
+ @return A new string by trimming leading characters in `characterSet`
+ */
 - (NSString *)stringByTrimmingLeadingCharactersInSet:(NSCharacterSet *)characterSet;
+
+/**
+ Returns a new string by trimming leading whitespace and newline characters.
+ 
+ @return A new string by trimming leading whitespace and newline characters 
+ */
 - (NSString *)stringByTrimmingLeadingWhitespaceAndNewlineCharacters;
+
+/**
+ Returns a new string by trimming trailing characters in a given `NSCharacterSet`.
+ 
+ @param characterSet Character set to trim characters
+ 
+ @return A new string by trimming trailing characters in `characterSet`
+ */
 - (NSString *)stringByTrimmingTrailingCharactersInSet:(NSCharacterSet *)characterSet;
+
+/**
+ Returns a new string by trimming trailing whitespace and newline characters.
+ 
+ @return A new string by trimming trailing whitespace and newline characters 
+ */
 - (NSString *)stringByTrimmingTrailingWhitespaceAndNewlineCharacters;
 
 @end
