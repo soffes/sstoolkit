@@ -65,7 +65,22 @@
 /// @name HTML Escaping and Unescaping
 ///-----------------------------------
 
+/**
+ Returns a new string with any HTML escaped.
+ 
+ @return A new string with any HTML escaped.
+ 
+ @see unescapeHTML
+ */
 - (NSString *)escapeHTML;
+
+/**
+ Returns a new string with any HTML unescaped.
+ 
+ @return A new string with any HTML unescaped.
+ 
+ @see escapeHTML
+ */
 - (NSString *)unescapeHTML;
 
 ///----------------------------------
@@ -79,6 +94,8 @@
  escaped to `%2B`).
  
  @return A new string escaped for a URL query parameter.
+ 
+ @see stringByUnescapingFromURLQuery
  */
 - (NSString *)stringByEscapingForURLQuery;
 
@@ -88,6 +105,8 @@
  `+` characters are unescaped to spaces.
  
  @return A new string escaped for a URL query parameter.
+ 
+ @see stringByEscapingForURLQuery
  */
 - (NSString *)stringByUnescapingFromURLQuery;
 

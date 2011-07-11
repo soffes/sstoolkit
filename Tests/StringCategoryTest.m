@@ -14,13 +14,9 @@
 @implementation StringCategoryTest
 
 // To test:
-//+ (NSString *)localizedString:(NSString*)key;
-//- (NSString *)escapeHTML;
-//- (NSString *)unescapeHTML;
 //- (NSString *)URLEncodedString;
 //- (NSString *)URLEncodedParameterString;
 //- (NSString *)URLDecodedString;
-//- (NSString *)removeQuotes;
 
 - (void)testContainsString {
 	NSString *string = @"alexanderthegreat";
@@ -72,6 +68,15 @@
 	encodedString = @"aHR0cDovL3d3dy5jb2NvYWRldi5jb20vaW5kZXgucGw/QmFzZVNpeHR5Rm91cg==";
 	GHAssertEqualObjects(encodedString, [unencodedString base64EncodedString], nil);
 	GHAssertEqualObjects(unencodedString, [NSString stringWithBase64String:encodedString], nil);
+}
+
+
+- (void)testEscapingAndUnescapingHTML {
+	NSString *html = @"<a href=\"http://example.com/?ruby%3F=yes&amp;var=T\">example</a>";
+	NSString *escapedHtml = @"&lt;a href=&quot;http://example.com/?ruby%3F=yes&amp;amp;var=T&quot;&gt;example&lt;/a&gt;";
+	
+	GHAssertEqualObjects([html escapeHTML], escapedHtml, nil);
+	GHAssertEqualObjects([escapedHtml unescapeHTML], html, nil);
 }
 
 
