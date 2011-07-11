@@ -31,60 +31,31 @@
 
 
 - (void)fadeOut {
-	[self fadeAlphaTo:0.0f andPerformSelector:NULL withObject:nil];
+	UIView *view = [self retain];
+	[UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+		view.alpha = 0.0f;
+	} completion:nil];
+	[view autorelease];
 }
 
 
-- (void)fadeOutAndPerformSelector:(SEL)selector {
-	[self fadeAlphaTo:0.0f andPerformSelector:selector withObject:nil];
-}
-
-
-- (void)fadeOutAndPerformSelector:(SEL)selector withObject:(id)object {
-	[self fadeAlphaTo:0.0f andPerformSelector:selector withObject:object];
+- (void)fadeOutAndRemoveFromSuperview {
+	UIView *view = [self retain];
+	[UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+		view.alpha = 0.0f;
+	} completion:^(BOOL finished) {
+		[view removeFromSuperview];
+	}];
+	[view autorelease];
 }
 
 
 - (void)fadeIn {
-	[self fadeAlphaTo:1.0f andPerformSelector:NULL withObject:nil];
-}
-
-
-- (void)fadeInAndPerformSelector:(SEL)selector {
-	[self fadeAlphaTo:1.0f andPerformSelector:selector withObject:nil];
-}
-
-
-- (void)fadeInAndPerformSelector:(SEL)selector withObject:(id)object {
-	[self fadeAlphaTo:1.0f andPerformSelector:selector withObject:object];
-}
-
-
-- (void)fadeAlphaTo:(CGFloat)targetAlpha {
-	[self fadeAlphaTo:targetAlpha andPerformSelector:NULL withObject:nil];
-}
-
-
-- (void)fadeAlphaTo:(CGFloat)targetAlpha andPerformSelector:(SEL)selector {
-	[self fadeAlphaTo:targetAlpha andPerformSelector:selector withObject:nil];
-}
-
-
-- (void)fadeAlphaTo:(CGFloat)targetAlpha andPerformSelector:(SEL)selector withObject:(id)object {
-	// Don't fade and perform selector if alpha is already target alpha
-	if (self.alpha == targetAlpha) {
-		return;
-	}
-	
-	// Perform fade
-	[UIView beginAnimations:@"fadealpha" context:nil];
-	self.alpha = targetAlpha;
-	[UIView commitAnimations];
-	
-	// Perform selector after animation
-	if (selector) {
-		[self performSelector:selector withObject:object afterDelay:0.21];
-	}
+	UIView *view = [self retain];
+	[UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+		view.alpha = 1.0f;
+	} completion:nil];
+	[view autorelease];
 }
 
 
@@ -95,6 +66,10 @@
 	UIView *superview = nil;
 	while (view) {
 		superview = [view superview];
+		if (!superview) {
+			break;
+		}
+		
 		[superviews addObject:superview];
 		view = superview;
 	}
