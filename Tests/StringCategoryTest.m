@@ -77,12 +77,13 @@
 
 - (void)testStringByEscapingForURLQuery {
 	GHAssertEqualObjects([@"I want a 27-inch iMac!" stringByEscapingForURLQuery], @"I+want+a+27-inch+iMac%21", nil);
+	GHAssertEqualObjects([@"myemail+category@gmail.com" stringByEscapingForURLQuery], @"myemail%2Bcategory%40gmail.com", nil);
 }
 
 
 - (void)testStringByUnescapingFromURLQuery {
 	GHAssertEqualObjects([@"I+want+a+27-inch+iMac%21" stringByUnescapingFromURLQuery], @"I want a 27-inch iMac!", nil);
-	GHAssertEqualObjects([@"myemail%2bcategory%40gmail.com" stringByUnescapingFromURLQuery], @"myemail+category@gmail.com", nil);
+	GHAssertEqualObjects([@"myemail%2Bcategory%40gmail.com" stringByUnescapingFromURLQuery], @"myemail+category@gmail.com", nil);
 }
 
 
