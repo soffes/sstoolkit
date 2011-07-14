@@ -199,13 +199,14 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 
 - (SSCollectionViewItem *)itemPathForIndex:(NSIndexPath *)indexPath {
-	for (SSCollectionViewItem *item in _visibleItems) {
-		if ([item.indexPath isEqual:indexPath]) {
-			return item;
+	__block SSCollectionViewItem *item = nil;
+	[_visibleItems enumerateObjectsUsingBlock:^(id object, BOOL *stop) {
+		if ([[(SSCollectionViewItem *)object indexPath] isEqual:indexPath]) {
+			item = object;
+			*stop = YES;
 		}
-	}	
-	
-	return nil;
+	}];	
+	return item;
 }
 
 
@@ -264,13 +265,13 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 - (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths {
 	NSMutableArray *rowIndexPaths = [[NSMutableArray alloc] init];
-	for (NSIndexPath *itemIndexPath in indexPaths) {
+	[indexPaths enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
+		NSIndexPath *itemIndexPath = (NSIndexPath *)object;
 		NSIndexPath *rowIndexPath = [self _cellIndexPathFromItemIndexPath:itemIndexPath];
 		if (![rowIndexPaths containsObject:rowIndexPath]) {
 			[rowIndexPaths addObject:rowIndexPath];
 		}
-	}
-	
+	}];
 	[_tableView reloadRowsAtIndexPaths:rowIndexPaths withRowAnimation:UITableViewRowAnimationFade];	
 	[rowIndexPaths release];
 }
@@ -333,9 +334,9 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 
 - (void)_reuseItems:(NSArray *)items {
-	for (SSCollectionViewItem *item in items) {
-		[self _reuseItem:item];
-	}
+	[items enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
+		[self _reuseItem:(SSCollectionViewItem *)object];
+	}];
 }
 
 

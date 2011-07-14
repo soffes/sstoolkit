@@ -48,11 +48,11 @@
 
 - (NSString *)stringWithFormEncodedComponents {
 	NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:[self count]];
-	for (NSString *key in self) {
+	[self enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop) {
 		[arguments addObject:[NSString stringWithFormat:@"%@=%@",
 							  [key stringByEscapingForURLQuery],
-							  [[[self objectForKey:key] description] stringByEscapingForURLQuery]]];
-	}
+							  [[object description] stringByEscapingForURLQuery]]];
+	}];
 	
 	return [arguments componentsJoinedByString:@"&"];
 }

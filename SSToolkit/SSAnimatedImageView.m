@@ -20,9 +20,9 @@
 	CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"contents"];
 	NSMutableArray *values = [[NSMutableArray alloc] initWithCapacity:[images count]];
 	
-	for (UIImage *image in images) {
-		[values addObject:(id)image.CGImage];
-	}
+	[images enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
+		[values addObject:(id)[(UIImage *)object CGImage]];
+	}];
 	
 	animation.values = values;
 	[values release];
@@ -62,25 +62,24 @@
 	
 	if (keyTimes) {
 		NSMutableArray *keyTimesAsPercent = [[NSMutableArray alloc] initWithCapacity:[keyTimes count]];
-		NSTimeInterval totalDuration = 0.0;
+		__block NSTimeInterval totalDuration = 0.0;
+		__block CGFloat totalSoFar = 0.0f;
 		
-		for (NSNumber *frameTime in keyTimes) {
-			totalDuration += [frameTime floatValue];
-		}
-		
-		CGFloat totalSoFar = 0.0;
-		
-		for (NSNumber *frameTime in keyTimes) {
+		[keyTimes enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
+			CGFloat keyTime = [object floatValue];
+			totalDuration += keyTime;
+			
 			// For discrete timing, the first one is always 0.0
-			if (totalSoFar == 0.0) {
-				[keyTimesAsPercent addObject:[NSNumber numberWithFloat:0.0]];
-				totalSoFar += [frameTime floatValue];
+			if (totalSoFar == 0.0f) {
+				[keyTimesAsPercent addObject:[NSNumber numberWithFloat:0.0f]];
+				totalSoFar += keyTime;
 			} else {
-				[keyTimesAsPercent addObject:[NSNumber numberWithFloat:(totalSoFar/totalDuration)]];
-				totalSoFar += [frameTime floatValue];
+				[keyTimesAsPercent addObject:[NSNumber numberWithFloat:(totalSoFar / totalDuration)]];
+				totalSoFar += keyTime;
 			}
-		}
-		[keyTimesAsPercent addObject:[NSNumber numberWithFloat:1.0]];
+		}];
+		
+		[keyTimesAsPercent addObject:[NSNumber numberWithFloat:1.0f]];
 		
 		animation.keyTimes = keyTimesAsPercent;
 		[keyTimesAsPercent release];

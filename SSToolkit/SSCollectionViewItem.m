@@ -111,22 +111,22 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 	_selected = selected;
 	
-	for (UIView *view in [self subviews]) {
-		if ([view respondsToSelector:@selector(setSelected:)]) {
-			[(UIControl *)view setSelected:selected];
+	[[self subviews] enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
+		if ([object respondsToSelector:@selector(setSelected:)]) {
+			[(UIControl *)object setSelected:selected];
 		}
-	}
+	}];
 }
 
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
 	_highlighted = highlighted;
 	
-	for (UIView *view in [self subviews]) {
-		if ([view respondsToSelector:@selector(setHighlighted:)]) {
-			[(UIControl *)view setHighlighted:highlighted];
+	[[self subviews] enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
+		if ([object respondsToSelector:@selector(setHighlighted:)]) {
+			[(UIControl *)object setHighlighted:highlighted];
 		}
-	}	
+	}];
 }
 
 

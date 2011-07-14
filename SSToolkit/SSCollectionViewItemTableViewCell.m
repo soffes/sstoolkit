@@ -29,9 +29,9 @@
 		return;
 	}
 	
-	for (SSCollectionViewItem *item in _items) {
-		[self addSubview:item];
-	}
+	[_items enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
+		[self addSubview:(UIView *)object];
+	}];
 	
 	[self setNeedsLayout];
 }
@@ -51,12 +51,14 @@
 #pragma mark - UIView
 
 - (void)layoutSubviews {
-	CGFloat x = _itemSpacing;
+	__block CGFloat x = _itemSpacing;
 	
-	for (SSCollectionViewItem *item in _items) {
+	[_items enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
+		SSCollectionViewItem *item = (SSCollectionViewItem *)object;
+		
 		item.frame = CGRectMake(x, 0.0f, _itemSize.width, _itemSize.height);
 		x += _itemSize.width + _itemSpacing;
-	}
+	}];
 }
 
 

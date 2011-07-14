@@ -113,9 +113,9 @@ CGGradientRef SSCreateGradientWithColorsAndLocations(NSArray *colors, NSArray *l
 	}
 	
 	NSMutableArray *gradientColors = [[NSMutableArray alloc] initWithCapacity:colorsCount];
-	for (UIColor *color in colors) {
-		[gradientColors addObject:(id)color.CGColor];
-	}
+	[colors enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
+		[gradientColors addObject:(id)[(UIColor *)object CGColor]];
+	}];
 	
 	CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)gradientColors, gradientLocations);
 	

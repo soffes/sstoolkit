@@ -321,16 +321,13 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 
 - (id)initWithItems:(NSArray *)items {
 	if ((self = [self initWithFrame:CGRectZero])) {
-		NSInteger index = 0;
-		for (id item in items) {
-			if ([item isKindOfClass:[NSString class]]) {
-				[self setTitle:item forSegmentAtIndex:(NSUInteger)index];
-				index++;
-			} else if ([item isKindOfClass:[UIImage class]]) {
-				[self setImage:item forSegmentAtIndex:(NSUInteger)index];
-				index++;
+		[items enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
+			if ([object isKindOfClass:[NSString class]]) {
+				[self setTitle:object forSegmentAtIndex:index];
+			} else if ([object isKindOfClass:[UIImage class]]) {
+				[self setImage:object forSegmentAtIndex:index];
 			}
-		}
+		}];
 	}
 	return self;
 }

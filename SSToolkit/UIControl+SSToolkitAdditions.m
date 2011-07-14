@@ -11,9 +11,9 @@
 @implementation UIControl (SSToolkitAdditions)
 
 - (void)removeAllTargets {
-	for (id target in [self allTargets]) {
-		[self removeTarget:target action:NULL forControlEvents:UIControlEventAllEvents];
-	}
+	[[self allTargets] enumerateObjectsUsingBlock:^(id object, BOOL *stop) {
+		[self removeTarget:object action:NULL forControlEvents:UIControlEventAllEvents];
+	}];
 }
 
 @end
