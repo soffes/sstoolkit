@@ -231,13 +231,13 @@
 
 #pragma mark - Trimming Methods
 
-- (NSString *)stringByTrimmingCharactersInSet:(NSCharacterSet *)characterSet {
+- (NSString *)stringByTrimmingLeadingAndTrailingCharactersInSet:(NSCharacterSet *)characterSet {
 	return [[self stringByTrimmingLeadingCharactersInSet:characterSet]
 			stringByTrimmingTrailingCharactersInSet:characterSet];
 }
 
 
-- (NSString *)stringByTrimmingWhitespaceAndNewlineCharacters {
+- (NSString *)stringByTrimmingLeadingAndTrailingWhitespaceAndNewlineCharacters {
 	return [[self stringByTrimmingLeadingWhitespaceAndNewlineCharacters]
 			stringByTrimmingTrailingWhitespaceAndNewlineCharacters];
 }

@@ -173,14 +173,14 @@
  
  @return A new string by trimming leading and trailing characters in `characterSet`
  */
-- (NSString *)stringByTrimmingCharactersInSet:(NSCharacterSet *)characterSet;
+- (NSString *)stringByTrimmingLeadingAndTrailingCharactersInSet:(NSCharacterSet *)characterSet;
 
 /**
  Returns a new string by trimming leading and trailing whitespace and newline characters.
   
  @return A new string by trimming leading and trailing whitespace and newline characters 
  */
-- (NSString *)stringByTrimmingWhitespaceAndNewlineCharacters;
+- (NSString *)stringByTrimmingLeadingAndTrailingWhitespaceAndNewlineCharacters;
 
 /**
  Returns a new string by trimming leading characters in a given `NSCharacterSet`.
