@@ -113,6 +113,20 @@ typedef enum {
 @property (nonatomic, retain) UIView *backgroundView;
 
 /**
+ Returns an accessory view that is displayed above the collection.
+ 
+ The default value is `nil`. The collection header view is different from a section header.
+ */
+@property (nonatomic, retain) UIView *collectionHeaderView;
+
+/**
+ Returns an accessory view that is displayed below the collection.
+ 
+ The default value is `nil`. The collection footer view is different from a section footer.
+ */
+@property (nonatomic, retain) UIView *collectionFooterView;
+
+/**
  A Boolean value that determines whether selecting items is enabled.
  
  If the value of this property is `YES`, selecting is enabled, and if it is `NO`, selecting is disabled. The default is

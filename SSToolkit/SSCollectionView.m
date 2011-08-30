@@ -88,14 +88,34 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 }
 
 
-- (void)setBackgroundColor:(UIColor *)color {
-	[super setBackgroundColor:color];
-	_tableView.backgroundColor = color;
+- (void)setBackgroundView:(UIView *)background {
+	_tableView.backgroundView = background;
 }
 
 
-- (void)setBackgroundView:(UIView *)background {
-	_tableView.backgroundView = background;
+- (UIView *)collectionHeaderView {
+	return _tableView.tableHeaderView;
+}
+
+
+- (void)setCollectionHeaderView:(UIView *)collectionHeaderView {
+	_tableView.tableHeaderView = collectionHeaderView;
+}
+
+
+- (UIView *)collectionFooterView {
+	return _tableView.tableFooterView;
+}
+
+
+- (void)setCollectionFooterView:(UIView *)collectionFooterView {
+	_tableView.tableFooterView = collectionFooterView;
+}
+
+
+- (void)setBackgroundColor:(UIColor *)color {
+	[super setBackgroundColor:color];
+	_tableView.backgroundColor = color;
 }
 
 
