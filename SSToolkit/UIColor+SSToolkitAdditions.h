@@ -12,6 +12,26 @@
 @interface UIColor (SSToolkitAdditions)
 
 /**
+ Creates and returns an UIColor object containing a given value.
+ 
+ @param hex The value for the new color. The `#` sign is optional.
+ 
+ @return An UIColor object containing a value.
+ 
+ The alpha value will be `1.0`.
+ */
++ (UIColor *)colorWithHexString:(NSString *)hex;
+
+/**
+ Returns the receiver's value as a hex string.
+ 
+ @return The receiver's value as a hex string.
+ 
+ The value will be `nil` if the color is in a color space other than Grayscale or RGB. The `#` sign is omitted.
+ */
+- (NSString *)hexStringValue;
+
+/**
  The receiver's red component value. (read-only)
  
  The value of this property is a floating-point number in the range `0.0` to `1.0`. `-1.0` is returned if the color is
