@@ -10,8 +10,8 @@
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		B20AC0691267988600687143 /* SSTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B20AC0671267988600687143 /* SSTableViewController.h */; };
 		B20AC06A1267988600687143 /* SSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC0681267988600687143 /* SSTableViewController.m */; };
-		B2136B3C13ABCC0C00FEBCFD /* SSBordererView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2136B3A13ABCC0C00FEBCFD /* SSBordererView.h */; };
-		B2136B3D13ABCC0C00FEBCFD /* SSBordererView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2136B3B13ABCC0C00FEBCFD /* SSBordererView.m */; };
+		B2136B3C13ABCC0C00FEBCFD /* SSBorderedView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2136B3A13ABCC0C00FEBCFD /* SSBorderedView.h */; };
+		B2136B3D13ABCC0C00FEBCFD /* SSBorderedView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2136B3B13ABCC0C00FEBCFD /* SSBorderedView.m */; };
 		B215045F10583A7300409ED4 /* SSToolkit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B215045E10583A7300409ED4 /* SSToolkit_Prefix.pch */; };
 		B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215051110583BBB00409ED4 /* UIKit.framework */; };
 		B21D2E00121F2FE500161E66 /* SSDrawingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B21D2DFF121F2FE500161E66 /* SSDrawingUtilities.m */; };
@@ -147,8 +147,8 @@
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B20AC0671267988600687143 /* SSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTableViewController.h; sourceTree = "<group>"; };
 		B20AC0681267988600687143 /* SSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTableViewController.m; sourceTree = "<group>"; };
-		B2136B3A13ABCC0C00FEBCFD /* SSBordererView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSBordererView.h; sourceTree = "<group>"; };
-		B2136B3B13ABCC0C00FEBCFD /* SSBordererView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSBordererView.m; sourceTree = "<group>"; };
+		B2136B3A13ABCC0C00FEBCFD /* SSBorderedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSBorderedView.h; sourceTree = "<group>"; };
+		B2136B3B13ABCC0C00FEBCFD /* SSBorderedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSBorderedView.m; sourceTree = "<group>"; };
 		B215045E10583A7300409ED4 /* SSToolkit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSToolkit_Prefix.pch; sourceTree = "<group>"; };
 		B215051110583BBB00409ED4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B21D2DFF121F2FE500161E66 /* SSDrawingUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDrawingUtilities.m; sourceTree = "<group>"; };
@@ -458,8 +458,8 @@
 				B290355913B9236E00CCAFC9 /* SSAnimatedImageView.m */,
 				B2EA9F6012F4A5E100C929D6 /* SSBadgeView.h */,
 				B2EA9F6112F4A5E100C929D6 /* SSBadgeView.m */,
-				B2136B3A13ABCC0C00FEBCFD /* SSBordererView.h */,
-				B2136B3B13ABCC0C00FEBCFD /* SSBordererView.m */,
+				B2136B3A13ABCC0C00FEBCFD /* SSBorderedView.h */,
+				B2136B3B13ABCC0C00FEBCFD /* SSBorderedView.m */,
 				B27B1A1912241D3400111EA2 /* SSCollectionView.h */,
 				B27B1A1A12241D3400111EA2 /* SSCollectionView.m */,
 				B27B1A2012241D6F00111EA2 /* SSCollectionViewItem.h */,
@@ -627,7 +627,7 @@
 				B2FC71BB1330424F00D4FCCF /* SSCollectionViewItemInternal.h in Headers */,
 				B2D8829413328EEF006B3F55 /* SSHUDWindow.h in Headers */,
 				B25C8E611394327000DE7BFF /* SSCollectionViewExtremityTableViewCell.h in Headers */,
-				B2136B3C13ABCC0C00FEBCFD /* SSBordererView.h in Headers */,
+				B2136B3C13ABCC0C00FEBCFD /* SSBorderedView.h in Headers */,
 				B280E25F13BA76A300FCDA5C /* SSAnimatedImageView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -779,7 +779,7 @@
 				B2ABC6931329D14300521D20 /* SSCollectionViewItemTableViewCell.m in Sources */,
 				B2D8829513328EEF006B3F55 /* SSHUDWindow.m in Sources */,
 				B25C8E601394327000DE7BFF /* SSCollectionViewExtremityTableViewCell.m in Sources */,
-				B2136B3D13ABCC0C00FEBCFD /* SSBordererView.m in Sources */,
+				B2136B3D13ABCC0C00FEBCFD /* SSBorderedView.m in Sources */,
 				B280E25D13BA769C00FCDA5C /* SSAnimatedImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

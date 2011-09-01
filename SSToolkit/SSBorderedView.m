@@ -1,15 +1,15 @@
 //
-//  SSBordererView.m
+//  SSBorderedView.m
 //  SSToolkit
 //
 //  Created by Sam Soffes on 6/17/11.
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
-#import "SSBordererView.h"
+#import "SSBorderedView.h"
 #import "SSDrawingUtilities.h"
 
-@implementation SSBordererView
+@implementation SSBorderedView
 
 #pragma mark - Accessors
 
