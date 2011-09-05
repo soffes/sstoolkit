@@ -81,8 +81,9 @@
 @synthesize leftHandleImage = _leftHandleImage;
 
 - (void)setLeftHandleImage:(UIImage *)leftHandleImage {
+	[leftHandleImage retain];
 	[_leftHandleImage release];
-	_leftHandleImage = [leftHandleImage retain];
+	_leftHandleImage = leftHandleImage;
 	
 	[self setNeedsDisplay];
 }
@@ -91,8 +92,9 @@
 @synthesize leftHandleImageHighlighted = _leftHandleImageHighlighted;
 
 - (void)setLeftHandleImageHighlighted:(UIImage *)leftHandleImageHighlighted {
+	[leftHandleImageHighlighted retain];
 	[_leftHandleImageHighlighted release];
-	_leftHandleImageHighlighted = [leftHandleImageHighlighted retain];
+	_leftHandleImageHighlighted = leftHandleImageHighlighted;
 	
 	[self setNeedsDisplay];
 }
@@ -101,8 +103,9 @@
 @synthesize centerHandleImage = _centerHandleImage;
 
 - (void)setCenterHandleImage:(UIImage *)centerHandleImage {
+	[centerHandleImage retain];
 	[_centerHandleImage release];
-	_centerHandleImage = [centerHandleImage retain];
+	_centerHandleImage = centerHandleImage;
 	
 	[self setNeedsDisplay];
 }
@@ -111,8 +114,9 @@
 @synthesize centerHandleImageHighlighted = _centerHandleImageHighlighted;
 
 - (void)setCenterHandleImageHighlighted:(UIImage *)centerHandleImageHighlighted {
+	[centerHandleImageHighlighted retain];
 	[_centerHandleImageHighlighted release];
-	_centerHandleImageHighlighted = [centerHandleImageHighlighted retain];
+	_centerHandleImageHighlighted = centerHandleImageHighlighted;
 	
 	[self setNeedsDisplay];
 }
@@ -121,8 +125,9 @@
 @synthesize rightHandleImage = _rightHandleImage;
 
 - (void)setRightHandleImage:(UIImage *)rightHandleImage {
+	[rightHandleImage retain];
 	[_rightHandleImage release];
-	_rightHandleImage = [rightHandleImage retain];
+	_rightHandleImage = rightHandleImage;
 	
 	[self setNeedsDisplay];
 }
@@ -131,8 +136,9 @@
 @synthesize rightHandleImageHighlighted = _rightHandleImageHighlighted;
 
 - (void)setRightHandleImageHighlighted:(UIImage *)rightHandleImageHighlighted {
+	[rightHandleImageHighlighted retain];
 	[_rightHandleImageHighlighted release];
-	_rightHandleImageHighlighted = [rightHandleImageHighlighted retain];
+	_rightHandleImageHighlighted = rightHandleImageHighlighted;
 	
 	[self setNeedsDisplay];
 }

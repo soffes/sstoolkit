@@ -19,8 +19,9 @@
 @synthesize badgeColor = _badgeColor;
 
 - (void)setBadgeColor:(UIColor *)badgeColor {
+	[badgeColor retain];
 	[_badgeColor release];
-	_badgeColor = [badgeColor retain];
+	_badgeColor = badgeColor;
 	
 	[self setNeedsDisplay];
 }
@@ -29,8 +30,9 @@
 @synthesize highlightedBadgeColor = _highlightedBadgeColor;
 
 - (void)setHighlightedBadgeColor:(UIColor *)highlightedBadgeColor {
+	[highlightedBadgeColor retain];
 	[_highlightedBadgeColor release];
-	_highlightedBadgeColor = [highlightedBadgeColor retain];
+	_highlightedBadgeColor = highlightedBadgeColor;
 	
 	[self setNeedsDisplay];
 }
@@ -38,8 +40,9 @@
 @synthesize badgeImage = _badgeImage;
 
 - (void)setBadgeImage:(UIImage *)badgeImage {
+	[badgeImage retain];
 	[_badgeImage release];
-	_badgeImage = [badgeImage retain];
+	_badgeImage = badgeImage;
 	
 	[self setNeedsDisplay];
 }
@@ -47,8 +50,9 @@
 @synthesize highlightedBadgeImage = _highlightedBadgeImage;
 
 - (void)setHighlightedBadgeImage:(UIImage *)highlightedBadgeImage {
+	[highlightedBadgeImage retain];
 	[_highlightedBadgeImage release];
-	_highlightedBadgeImage = [highlightedBadgeImage retain];
+	_highlightedBadgeImage = highlightedBadgeImage
 	
 	[self setNeedsDisplay];
 }

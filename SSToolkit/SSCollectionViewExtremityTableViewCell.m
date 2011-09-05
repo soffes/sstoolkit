@@ -15,9 +15,10 @@
 @synthesize extrimityView = _extrimityView;
 
 - (void)setExtrimityView:(UIView *)view {
+	[view retain];
 	[_extrimityView removeFromSuperview];
 	[_extrimityView release];
-	_extrimityView = [view retain];
+	_extrimityView = view;
 	[self addSubview:_extrimityView];
 }
 

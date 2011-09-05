@@ -16,8 +16,9 @@
 @synthesize topBorderColor = _topBorderColor;
 
 - (void)setTopBorderColor:(UIColor *)topBorderColor {
+	[topBorderColor retain];
 	[_topBorderColor release];
-	_topBorderColor = [topBorderColor retain];
+	_topBorderColor = topBorderColor;
 	
 	[self setNeedsDisplay];
 }
@@ -26,8 +27,9 @@
 @synthesize topInsetColor = _topInsetColor;
 
 - (void)setTopInsetColor:(UIColor *)topInsetColor {
+	[topInsetColor retain];
 	[_topInsetColor release];
-	_topInsetColor = [topInsetColor retain];
+	_topInsetColor = topInsetColor;
 	
 	[self setNeedsDisplay];
 }
@@ -36,8 +38,9 @@
 @synthesize bottomInsetColor = _bottomInsetColor;
 
 - (void)setBottomInsetColor:(UIColor *)bottomInsetColor {
+	[bottomInsetColor retain];
 	[_bottomInsetColor release];
-	_bottomInsetColor = [bottomInsetColor retain];
+	_bottomInsetColor = bottomInsetColor;
 	
 	[self setNeedsDisplay];
 }
@@ -46,8 +49,9 @@
 @synthesize bottomBorderColor = _bottomBorderColor;
 
 - (void)setBottomBorderColor:(UIColor *)bottomBorderColor {
+	[bottomBorderColor retain];
 	[_bottomBorderColor release];
-	_bottomBorderColor = [bottomBorderColor retain];
+	_bottomBorderColor = bottomBorderColor;
 	
 	[self setNeedsDisplay];
 }
