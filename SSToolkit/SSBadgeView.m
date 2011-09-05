@@ -52,7 +52,7 @@
 - (void)setHighlightedBadgeImage:(UIImage *)highlightedBadgeImage {
 	[highlightedBadgeImage retain];
 	[_highlightedBadgeImage release];
-	_highlightedBadgeImage = highlightedBadgeImage
+	_highlightedBadgeImage = highlightedBadgeImage;
 	
 	[self setNeedsDisplay];
 }
