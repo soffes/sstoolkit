@@ -445,7 +445,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	NSUInteger startIndex = itemsPerRow * row;
 	NSUInteger endIndex = (NSUInteger)fmin(totalItems, startIndex + itemsPerRow);
 	
-	NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:endIndex - startIndex];
+	NSMutableArray *items = [[[NSMutableArray alloc] initWithCapacity:endIndex - startIndex] autorelease];
 	
 	for (NSUInteger i = startIndex; i < endIndex; i++) {
 		NSIndexPath *itemIndexPath = [NSIndexPath indexPathForRow:i inSection:rowIndexPath.section];
@@ -464,7 +464,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 		[items addObject:item];
 	}
 	
-	return [items autorelease];
+	return items;
 }
 
 
