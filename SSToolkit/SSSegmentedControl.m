@@ -30,8 +30,9 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize buttonImage = _buttonImage;
 
 - (void)setButtonImage:(UIImage *)buttonImage {
+	[buttonImage retain];
 	[_buttonImage release];
-	_buttonImage = [buttonImage retain];
+	_buttonImage = buttonImage;
 	
 	[self setNeedsDisplay];
 }
@@ -40,8 +41,9 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize highlightedButtonImage = _highlightedButtonImage;
 
 - (void)setHighlightedButtonImage:(UIImage *)highlightedButtonImage {
+	[highlightedButtonImage retain];
 	[_highlightedButtonImage release];
-	_highlightedButtonImage = [highlightedButtonImage retain];
+	_highlightedButtonImage = highlightedButtonImage;
 	
 	[self setNeedsDisplay];
 }
@@ -50,8 +52,9 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize dividerImage = _dividerImage;
 
 - (void)setDividerImage:(UIImage *)dividerImage {
+	[dividerImage retain];
 	[_dividerImage release];
-	_dividerImage = [dividerImage retain];
+	_dividerImage = dividerImage;
 	
 	[self setNeedsDisplay];
 }
@@ -60,8 +63,9 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize highlightedDividerImage = _highlightedDividerImage;
 
 - (void)setHighlightedDividerImage:(UIImage *)highlightedDividerImage {
+	[highlightedDividerImage retain];
 	[_highlightedDividerImage release];
-	_highlightedDividerImage = [highlightedDividerImage retain];
+	_highlightedDividerImage = highlightedDividerImage;
 	
 	[self setNeedsDisplay];
 }
@@ -70,8 +74,9 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize font = _font;
 
 - (void)setFont:(UIFont *)font {
+	[font retain];
 	[_font release];
-	_font = [font retain];
+	_font = font;
 	
 	[self setNeedsDisplay];
 }
@@ -80,8 +85,9 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize textColor = _textColor;
 
 - (void)setTextColor:(UIColor *)textColor {
+	[textColor retain];
 	[_textColor release];
-	_textColor = [textColor retain];
+	_textColor = textColor;
 	
 	[self setNeedsDisplay];
 }
@@ -89,8 +95,9 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize disabledTextColor = _disabledTextColor;
 
 - (void)setDisabledTextColor:(UIColor *)disabledTextColor {
+	[disabledTextColor retain];
 	[_disabledTextColor release];
-	_disabledTextColor = [disabledTextColor retain];
+	_disabledTextColor = disabledTextColor;
 	
 	[self setNeedsDisplay];
 }
@@ -99,8 +106,9 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize textShadowColor = _textShadowColor;
 
 - (void)setTextShadowColor:(UIColor *)textShadowColor {
+	[textShadowColor retain];
 	[_textShadowColor release];
-	_textShadowColor = [textShadowColor retain];
+	_textShadowColor = textShadowColor;
 	
 	[self setNeedsDisplay];
 }

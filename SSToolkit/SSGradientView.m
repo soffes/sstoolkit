@@ -21,8 +21,9 @@
 @synthesize colors = _colors;
 
 - (void)setColors:(NSArray *)colors {
+	[colors retain];
 	[_colors release];
-	_colors = [colors retain];
+	_colors = colors;
 	[self _refreshGradient];
 }
 
@@ -30,8 +31,9 @@
 @synthesize locations = _locations;
 
 - (void)setLocations:(NSArray *)locations {
+	[locations retain];
 	[_locations release];
-	_locations = [locations retain];
+	_locations = locations;
 	[self _refreshGradient];
 }
 
