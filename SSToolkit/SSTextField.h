@@ -15,7 +15,7 @@
 	
 	UIEdgeInsets _textEdgeInsets;
 	UIEdgeInsets _clearButtonEdgeInsets;
-	UIColor *_placeholderColor;
+	UIColor *_placeholderTextColor;
 }
 
 /**
