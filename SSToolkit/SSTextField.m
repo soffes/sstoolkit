@@ -15,6 +15,25 @@
 
 @synthesize textEdgeInsets = _textEdgeInsets;
 @synthesize clearButtonEdgeInsets = _clearButtonEdgeInsets;
+@synthesize placeholderTextColor = _placeholderTextColor;
+
+- (void)setPlaceholderTextColor:(UIColor *)placeholderTextColor {
+	[placeholderTextColor retain];
+	[_placeholderTextColor release];
+	_placeholderTextColor = placeholderTextColor;
+	
+	if (!self.text && self.placeholder) {
+		[self setNeedsDisplay];
+	}
+}
+
+
+#pragma mark - NSObject
+
+- (void)dealloc {
+	[_placeholderTextColor release];
+	[super dealloc];
+}
 
 
 #pragma mark - UIView
@@ -44,6 +63,17 @@
 	CGRect rect = [super clearButtonRectForBounds:bounds];
 	rect = CGRectSetY(rect, rect.origin.y + _clearButtonEdgeInsets.top);
 	return CGRectSetX(rect, rect.origin.x + _clearButtonEdgeInsets.right);
+}
+
+
+- (void)drawPlaceholderInRect:(CGRect)rect {
+	if (!_placeholderTextColor) {
+		[super drawPlaceholderInRect:rect];
+		return;
+	}
+	
+    [_placeholderTextColor setFill];
+    [self.placeholder drawInRect:rect withFont:self.font lineBreakMode:UILineBreakModeTailTruncation alignment:self.textAlignment];
 }
 
 @end
