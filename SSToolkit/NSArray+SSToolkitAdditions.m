@@ -7,6 +7,7 @@
 //
 
 #import "NSArray+SSToolkitAdditions.h"
+#import "NSData+SSToolkitAdditions.h"
 
 @interface NSArray (SSToolkitPrivateAdditions)
 - (NSData *)_prehashData;

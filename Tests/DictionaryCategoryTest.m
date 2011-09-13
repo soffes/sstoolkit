@@ -42,15 +42,19 @@
 								 @"value5", @"key5",
 								 nil];
 	
-	NSDictionary *dictionary2 = [NSDictionary dictionaryWithObjectsAndKeys:
-								 @"value3", @"key3",
-								 @"value4", @"key4",
-								 @"value5", @"key5",
-								 @"value2", @"key2",
-								 @"value1", @"key1",
-								 nil];
+	NSMutableDictionary *dictionary2 = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+										@"value3", @"key3",
+										@"value4", @"key4",
+										@"value5", @"key5",
+										@"value1", @"key1",
+										nil];
+	[dictionary2 setObject:@"value2" forKey:@"key2"];
 	
-	GHAssertEqualObjects([dictionary1 MD5Sum], [dictionary2 MD5Sum], nil);
+	NSString *sum1 = [dictionary1 MD5Sum];
+	NSString *sum2 = [dictionary2 MD5Sum];
+	GHAssertNotNil(sum1, nil);
+	GHAssertNotNil(sum2, nil);
+	GHAssertEqualObjects(sum1, sum2, nil);
 }
 
 
@@ -63,15 +67,19 @@
 								 @"value5", @"key5",
 								 nil];
 	
-	NSDictionary *dictionary2 = [NSDictionary dictionaryWithObjectsAndKeys:
-								 @"value3", @"key3",
-								 @"value4", @"key4",
-								 @"value5", @"key5",
-								 @"value2", @"key2",
-								 @"value1", @"key1",
-								 nil];
+	NSMutableDictionary *dictionary2 = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+										@"value3", @"key3",
+										@"value4", @"key4",
+										@"value5", @"key5",
+										@"value1", @"key1",
+										nil];
+	[dictionary2 setObject:@"value2" forKey:@"key2"];
 	
-	GHAssertEqualObjects([dictionary1 SHA1Sum], [dictionary2 SHA1Sum], nil);
+	NSString *sum1 = [dictionary1 SHA1Sum];
+	NSString *sum2 = [dictionary2 SHA1Sum];
+	GHAssertNotNil(sum1, nil);
+	GHAssertNotNil(sum2, nil);
+	GHAssertEqualObjects(sum1, sum2, nil);
 }
 
 @end
