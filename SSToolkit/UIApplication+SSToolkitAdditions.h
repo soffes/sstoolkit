@@ -11,13 +11,38 @@
  */
 @interface UIApplication (SSToolkitAdditions)
 
-/** Checks for pirated application indicators.
- 
- This isn't bulletproof, but should catch a lot of cases. Thanks @marcoarment: http://twitter.com/marcoarment/status/27965461020
- 
- @return `YES` if the application may be pirated. `NO` if it is probably not pirated.
+///------------------
+/// @name Directories
+///------------------
+
+/**
+ Returns the file URL of the documents directory.
  */
-- (BOOL)isPirated;
+@property (nonatomic, retain, readonly) NSURL *documentsDirectoryURL;
+
+/**
+ Returns the file URL of the caches directory.
+ */
+@property (nonatomic, retain, readonly) NSURL *cachesDirectoryURL;
+
+/**
+ Returns the file URL of the downloads directory.
+ */
+@property (nonatomic, retain, readonly) NSURL *downloadsDirectoryURL;
+
+/**
+ Returns the file URL of the library directory.
+ */
+@property (nonatomic, retain, readonly) NSURL *libraryDirectoryURL;
+
+/**
+ Returns the file URL of the application support directory.
+ */
+@property (nonatomic, retain, readonly) NSURL *applicationSupportDirectoryURL;
+
+///----------------
+/// @name Utilities
+///----------------
 
 /**
  Aggregates calls to settings `networkActivityIndicatorVisible` to avoid flashing of the indicator in the status bar.
@@ -30,5 +55,15 @@
  @param inProgress A Boolean value that turns an indicator of network activity on or off.
  */
 - (void)setNetworkActivity:(BOOL)inProgress;
+
+/** Checks for pirated application indicators.
+ 
+ This isn't bulletproof, but should catch a lot of cases.
+ 
+ Thanks Marco Arment: <http://twitter.com/marcoarment/status/27965461020>
+ 
+ @return `YES` if the application may be pirated. `NO` if it is probably not pirated.
+ */
+- (BOOL)isPirated;
 
 @end
