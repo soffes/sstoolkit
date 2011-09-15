@@ -49,33 +49,33 @@
 }
 
 
-- (void)testColorWithHexString {
+- (void)testColorWithHex {
 	UIColor *red = [UIColor redColor];
-	GHAssertEqualObjects(red, [UIColor colorWithHexString:@"ff0000"], nil);
-	GHAssertEqualObjects(red, [UIColor colorWithHexString:@"f00"], nil);
+	GHAssertEqualObjects(red, [UIColor colorWithHex:@"ff0000"], nil);
+	GHAssertEqualObjects(red, [UIColor colorWithHex:@"f00"], nil);
 	
 	UIColor *green = [UIColor greenColor];
-	GHAssertEqualObjects(green, [UIColor colorWithHexString:@"00ff00"], nil);
-	GHAssertEqualObjects(green, [UIColor colorWithHexString:@"0f0"], nil);
+	GHAssertEqualObjects(green, [UIColor colorWithHex:@"00ff00"], nil);
+	GHAssertEqualObjects(green, [UIColor colorWithHex:@"0f0"], nil);
 	
 	UIColor *blue = [UIColor blueColor];
-	GHAssertEqualObjects(blue, [UIColor colorWithHexString:@"0000ff"], nil);
-	GHAssertEqualObjects(blue, [UIColor colorWithHexString:@"00f"], nil);
+	GHAssertEqualObjects(blue, [UIColor colorWithHex:@"0000ff"], nil);
+	GHAssertEqualObjects(blue, [UIColor colorWithHex:@"00f"], nil);
 }
 
 
-- (void)testHexString {
+- (void)testHexValue {
 	UIColor *red = [UIColor redColor];
-	GHAssertEqualObjects([red hexStringValue], @"ff0000", nil);
+	GHAssertEqualObjects([red hexValue], @"ff0000", nil);
 	
 	UIColor *green = [UIColor greenColor];
-	GHAssertEqualObjects([green hexStringValue], @"00ff00", nil);
+	GHAssertEqualObjects([green hexValue], @"00ff00", nil);
 	
 	UIColor *blue = [UIColor blueColor];
-	GHAssertEqualObjects([blue hexStringValue], @"0000ff", nil);
+	GHAssertEqualObjects([blue hexValue], @"0000ff", nil);
 	
 	UIColor *white = [UIColor whiteColor];
-	GHAssertEqualObjects([white hexStringValue], @"ffffff", nil);
+	GHAssertEqualObjects([white hexValue], @"ffffff", nil);
 }
 
 @end

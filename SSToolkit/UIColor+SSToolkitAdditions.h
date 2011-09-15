@@ -20,7 +20,7 @@
  
  The alpha value will be `1.0`.
  */
-+ (UIColor *)colorWithHexString:(NSString *)hex;
++ (UIColor *)colorWithHex:(NSString *)hex;
 
 /**
  Returns the receiver's value as a hex string.
@@ -29,7 +29,7 @@
  
  The value will be `nil` if the color is in a color space other than Grayscale or RGB. The `#` sign is omitted.
  */
-- (NSString *)hexStringValue;
+- (NSString *)hexValue;
 
 /**
  The receiver's red component value. (read-only)

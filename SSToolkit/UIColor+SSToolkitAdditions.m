@@ -17,7 +17,7 @@ static NSUInteger integerFromHexString(NSString *string) {
 @implementation UIColor (SSToolkitAdditions)
 
 // Adapted from https://github.com/Cocoanetics/NSAttributedString-Additions-for-HTML
-+ (UIColor *)colorWithHexString:(NSString *)hex {
++ (UIColor *)colorWithHex:(NSString *)hex {
 	// Remove `#`
 	if ([[hex substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"#"]) {
 		hex = [hex substringFromIndex:1];
@@ -41,7 +41,7 @@ static NSUInteger integerFromHexString(NSString *string) {
 
 
 // Inspired by https://github.com/Cocoanetics/NSAttributedString-Additions-for-HTML
-- (NSString *)hexStringValue {
+- (NSString *)hexValue {
 	CGColorRef color = self.CGColor;
 	size_t count = CGColorGetNumberOfComponents(color);
 	const CGFloat *components = CGColorGetComponents(color);
