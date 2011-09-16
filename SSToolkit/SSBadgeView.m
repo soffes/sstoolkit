@@ -80,6 +80,7 @@
 
 - (void)setHighlighted:(BOOL)highlighted {
 	_highlighted = highlighted;
+	_textLabel.highlighted = highlighted;
 	
 	[self setNeedsDisplay];
 }
