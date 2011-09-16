@@ -15,7 +15,26 @@
 	
 	UIEdgeInsets _textEdgeInsets;
 	UIEdgeInsets _clearButtonEdgeInsets;
+	UIColor *_placeholderTextColor;
 }
+
+///------------------------------------
+/// @name Accessing the Text Attributes
+///------------------------------------
+
+/**
+ The color of the placeholder text.
+ 
+ This property applies to the entire placeholder text string. The default value for this property is set by the system.
+ Setting this property to `nil` will use the system placeholder text color.
+ 
+ The default value is `nil`.
+ */
+@property (nonatomic, retain) UIColor *placeholderTextColor;
+
+///------------------------------
+/// @name Drawing and Positioning
+///------------------------------
 
 /**
  The inset or outset margins for the edges of the text content drawing rectangle.

@@ -6,7 +6,7 @@
 //  Copyright 2009-2011 Sam Soffes. All rights reserved.
 //
 
-#import "SSBordererView.h"
+#import "SSBorderedView.h"
 
 /**
  The direction the gradient.
@@ -22,7 +22,7 @@ typedef enum {
 /**
  Simple `UIView` wrapper for `CGGradient`.
  */
-@interface SSGradientView : SSBordererView {
+@interface SSGradientView : SSBorderedView {
 	
 @private
 	

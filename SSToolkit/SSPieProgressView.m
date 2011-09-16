@@ -35,8 +35,9 @@ CGFloat const kAngleOffset = -90.0f;
 @synthesize pieBorderColor = _pieBorderColor;
 
 - (void)setPieBorderColor:(UIColor *)pieBorderColor {
+	[pieBorderColor retain];
 	[_pieBorderColor release];
-	_pieBorderColor = [pieBorderColor retain];
+	_pieBorderColor = pieBorderColor;
 	
 	[self setNeedsDisplay];
 }
@@ -45,8 +46,9 @@ CGFloat const kAngleOffset = -90.0f;
 @synthesize pieFillColor = _pieFillColor;
 
 - (void)setPieFillColor:(UIColor *)pieFillColor {
+	[pieFillColor retain];
 	[_pieFillColor release];
-	_pieFillColor = [pieFillColor retain];
+	_pieFillColor = pieFillColor;
 	
 	[self setNeedsDisplay];
 }
@@ -55,8 +57,9 @@ CGFloat const kAngleOffset = -90.0f;
 @synthesize pieBackgroundColor = _pieBackgroundColor;
 
 - (void)setPieBackgroundColor:(UIColor *)pieBackgroundColor {
+	[pieBackgroundColor retain];
 	[_pieBackgroundColor release];
-	_pieBackgroundColor = [pieBackgroundColor retain];
+	_pieBackgroundColor = pieBackgroundColor;
 	
 	[self setNeedsDisplay];
 }

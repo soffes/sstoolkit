@@ -8,6 +8,11 @@
 
 #import "NSDictionary+SSToolkitAdditions.h"
 #import "NSString+SSToolkitAdditions.h"
+#import "NSData+SSToolkitAdditions.h"
+
+@interface NSDictionary (SSToolkitPrivateAdditions)
+- (NSData *)_prehashData;
+@end
 
 @implementation NSDictionary (SSToolkitAdditions)
 
@@ -55,6 +60,25 @@
 	}];
 	
 	return [arguments componentsJoinedByString:@"&"];
+}
+
+
+- (NSString *)MD5Sum {
+	return [[self _prehashData] MD5Sum];
+}
+
+
+- (NSString *)SHA1Sum {
+	return [[self _prehashData] SHA1Sum];
+}
+
+@end
+
+
+@implementation NSDictionary (SSToolkitPrivateAdditions)
+
+- (NSData *)_prehashData {
+	return [NSPropertyListSerialization dataWithPropertyList:self format:NSPropertyListBinaryFormat_v1_0 options:0 error:nil];
 }
 
 @end

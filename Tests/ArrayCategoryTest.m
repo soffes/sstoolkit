@@ -23,4 +23,30 @@
 	[array release];
 }
 
+
+- (void)testMD5Sum {
+	NSArray *array1 = [NSArray arrayWithObjects:@"value1", @"value2", @"value3", @"value4", @"value5", nil];
+	NSMutableArray *array2 = [NSMutableArray arrayWithObjects:@"value1", @"value2", @"value3", @"value4", nil];
+	[array2 addObject:@"value5"];
+		
+	NSString *sum1 = [array1 MD5Sum];
+	NSString *sum2 = [array2 MD5Sum];
+	GHAssertNotNil(sum1, nil);
+	GHAssertNotNil(sum2, nil);
+	GHAssertEqualObjects(sum1, sum2, nil);
+}
+
+
+- (void)testSHA1Sum {
+	NSArray *array1 = [NSArray arrayWithObjects:@"value1", @"value2", @"value3", @"value4", @"value5", nil];
+	NSMutableArray *array2 = [NSMutableArray arrayWithObjects:@"value1", @"value2", @"value3", @"value4", nil];
+	[array2 addObject:@"value5"];
+	
+	NSString *sum1 = [array1 SHA1Sum];
+	NSString *sum2 = [array2 SHA1Sum];
+	GHAssertNotNil(sum1, nil);
+	GHAssertNotNil(sum2, nil);
+	GHAssertEqualObjects(sum1, sum2, nil);
+}
+
 @end

@@ -1,5 +1,5 @@
 //
-//  SSBordererView.h
+//  SSBorderedView.h
 //  SSToolkit
 //
 //  Created by Sam Soffes on 6/17/11.
@@ -9,7 +9,7 @@
 /**
  Simple UIView for drawing top and bottom borders with optional insets in a view.
  */
-@interface SSBordererView : UIView {
+@interface SSBorderedView : UIView {
 	
 @private
 	

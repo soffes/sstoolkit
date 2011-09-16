@@ -14,7 +14,7 @@
 // Views
 #import "SSAnimatedImageView.h"
 #import "SSBadgeView.h"
-#import "SSBordererView.h"
+#import "SSBorderedView.h"
 #import "SSCollectionView.h"
 #import "SSCollectionViewItem.h"
 #import "SSGradientView.h"
@@ -55,7 +55,7 @@
 // Views
 #import <SSToolkit/SSAnimatedImageView.h>
 #import <SSToolkit/SSBadgeView.h>
-#import <SSToolkit/SSBordererView.h>
+#import <SSToolkit/SSBorderedView.h>
 #import <SSToolkit/SSCollectionView.h>
 #import <SSToolkit/SSCollectionViewItem.h>
 #import <SSToolkit/SSGradientView.h>

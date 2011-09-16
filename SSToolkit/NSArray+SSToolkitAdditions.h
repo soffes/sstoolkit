@@ -40,4 +40,28 @@
  */
 - (NSArray *)shuffledArray;
 
+///--------------
+/// @name Hashing
+///--------------
+
+/**
+ Returns a string of the MD5 sum of the receiver.
+ 
+ @return The string of the MD5 sum of the receiver.
+ 
+ Internally, `NSPropertyListSerialization` is used to created the hash. Only objects that can be serialized should be
+ contained in the receiver when calling this method.
+ */
+- (NSString *)MD5Sum;
+
+/**
+ Returns a string of the SHA1 sum of the receiver.
+ 
+ @return The string of the SHA1 sum of the receiver.
+ 
+ Internally, `NSPropertyListSerialization` is used to created the hash. Only objects that can be serialized should be
+ contained in the receiver when calling this method.
+ */
+- (NSString *)SHA1Sum;
+
 @end

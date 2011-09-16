@@ -13,8 +13,9 @@
 @synthesize lineColor = _lineColor;
 
 - (void)setLineColor:(UIColor *)lineColor {
+	[lineColor retain];
 	[_lineColor release];
-	_lineColor = [lineColor retain];
+	_lineColor = lineColor;
 	
 	[self setNeedsDisplay];
 }
@@ -23,8 +24,9 @@
 @synthesize insetColor = _insetColor;
 
 - (void)setInsetColor:(UIColor *)insetColor {
+	[insetColor retain];
 	[_insetColor release];
-	_insetColor = [insetColor retain];
+	_insetColor = insetColor;
 	
 	[self setNeedsDisplay];
 }
@@ -42,7 +44,7 @@
 @synthesize dashLengths = _dashLengths;
 
 - (void)setDashLengths:(NSArray *)dashLengths {
-	[_dashLengths release];
+	[_dashLengths autorelease];
 	_dashLengths = [dashLengths copy];
 	
 	[self setNeedsDisplay];
