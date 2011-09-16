@@ -11,6 +11,19 @@
 
 @implementation NSURL (SSToolkitAdditions)
 
++ (id)URLWithFormat:(NSString *)format, ... {
+	va_list arguments;
+    va_start(arguments, format);
+	NSString *string = [[NSString alloc] initWithFormat:format arguments:arguments];
+	va_end(arguments);
+	
+	NSURL *url = [NSURL URLWithString:string];
+	[string release];
+	
+	return url;
+}
+
+
 - (NSDictionary *)queryDictionary {
 	 return [NSDictionary dictionaryWithFormEncodedString:self.query];
 }

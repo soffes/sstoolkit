@@ -13,6 +13,15 @@
 
 @implementation URLCategoryTest
 
+- (void)testURLWithFormat {
+	NSURL *url1 = [NSURL URLWithString:[NSString stringWithFormat:@"http://sstoolk.it/documentation/Categories/%@(SSToolkitAdditions).html", @"NSURL"]];
+	NSURL *url2 = [NSURL URLWithFormat:@"http://sstoolk.it/documentation/Categories/%@(SSToolkitAdditions).html", @"NSURL"];
+	
+	GHAssertNotNil(url2, nil);
+	GHAssertEqualObjects(url1, url2, nil);
+}
+
+
 - (void)testQueryDictionary {
 	NSURL *url = [[NSURL alloc] initWithString:@"http://sstoolk.it/test?foo=bar&awesome=true"];
 	NSDictionary *dictionary = [[NSDictionary alloc] initWithObjectsAndKeys:
