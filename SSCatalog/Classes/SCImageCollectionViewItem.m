@@ -7,6 +7,7 @@
 //
 
 #import "SCImageCollectionViewItem.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation SCImageCollectionViewItem
 
@@ -15,11 +16,11 @@
 
 @synthesize imageURL = _imageURL;
 
-- (void)setImageURL:(NSString *)url {
+- (void)setImageURL:(NSURL *)url {
 	[_imageURL release];
 	_imageURL = [url retain];
 	
-	self.imageView.image = [[JMImageCache sharedCache] imageForURL:_imageURL delegate:self];
+	[self.imageView setImageWithURL:url placeholderImage:nil];
 }
 
 
@@ -46,17 +47,6 @@
 - (void)prepareForReuse {
 	[super prepareForReuse];
 	self.imageURL = nil;
-}
-
-
-#pragma mark -
-#pragma mark JMImageCacheDelegate
-
-- (void)cache:(JMImageCache *)cache didDownloadImage:(UIImage *)image forURL:(NSString *)url {
-	if ([url isEqualToString:_imageURL]) {
-		self.imageView.image = image;
-		[self setNeedsDisplay];
-	}
 }
 
 @end

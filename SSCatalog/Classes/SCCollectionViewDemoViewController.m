@@ -65,7 +65,7 @@
 	
 	CGFloat size = 80.0f * [[UIScreen mainScreen] scale];
 	NSInteger i = (50 * indexPath.section) + indexPath.row;
-	item.imageURL = [NSString stringWithFormat:@"http://www.gravatar.com/avatar/%i?s=%0.f&d=identicon", i, size];
+	item.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.gravatar.com/avatar/%i?s=%0.f&d=identicon", i, size]];
 	
 	return item;
 }

@@ -6,16 +6,14 @@
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
-#import "JMImageCache.h"
-
-@interface SCImageCollectionViewItem : SSCollectionViewItem <JMImageCacheDelegate> {
+@interface SCImageCollectionViewItem : SSCollectionViewItem {
 
 @private
 	
-	NSString *_imageURL;
+	NSURL *_imageURL;
 }
 
-@property (nonatomic, retain) NSString *imageURL;
+@property (nonatomic, retain) NSURL *imageURL;
 
 - (id)initWithReuseIdentifier:(NSString *)aReuseIdentifier;
 
