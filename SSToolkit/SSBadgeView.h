@@ -32,7 +32,7 @@ typedef enum {
  more flexible resizing.
  */
 
-@interface SSBadgeView : UIControl {
+@interface SSBadgeView : UIView {
 
 @private
 	
