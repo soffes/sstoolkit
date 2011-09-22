@@ -720,6 +720,30 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 }
 
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+	// Make sure extremities are on top
+	if ([cell isKindOfClass:[SSCollectionViewExtremityTableViewCell class]]) {
+		// Put it under the scroll bar. I know this is awful.
+		[cell removeFromSuperview];
+		[tableView insertSubview:cell atIndex:[[tableView subviews] count] - 2];
+		return;
+	}
+	
+	// Forward delegate message for items if the delegate implements the delegate
+	if ([_delegate respondsToSelector:@selector(collectionView:willDisplayItem:atIndexPath:)]) {
+		NSArray *items = [self _itemsForRowIndexPath:indexPath];
+		if (!items) {
+			return;
+		}
+		
+		// Send for each item
+		for (SSCollectionViewItem *item in items) {
+			[_delegate collectionView:self willDisplayItem:item atIndexPath:item.indexPath];
+		}
+	}
+}
+
+
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
