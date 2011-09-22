@@ -27,13 +27,13 @@ extern NSString *const kSSCollectionViewNilItemExceptionName;
 extern NSString *const kSSCollectionViewNilItemExceptionReason;
 
 /**
- `SSCollectionView` exception name for missing `SSCollectionViewItem` size.
+ `SSCollectionView` exception name for missing or invalid `SSCollectionViewItem` size.
  */
-extern NSString *const kSSCollectionViewMissingItemSizeExceptionName;
+extern NSString *const SSCollectionViewInvalidItemSizeExceptionName;
 
 /**
- `SSCollectionView` exception reason for missing `SSCollectionViewItem` size.
+ `SSCollectionView` exception reason for missing or invalid `SSCollectionViewItem` size.
  */
-extern NSString *const kSSCollectionViewMissingItemSizeExceptionReason;
+extern NSString *const SSCollectionViewInvalidItemSizeExceptionReason;
 
 #endif

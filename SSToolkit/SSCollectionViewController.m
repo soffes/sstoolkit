@@ -66,7 +66,7 @@
 #pragma mark - SSCollectionViewDelegate
 
 - (CGSize)collectionView:(SSCollectionView *)aCollectionView itemSizeForSection:(NSUInteger)section {
-	return CGSizeZero;
+	return CGSizeMake(50.0f, 50.0f);
 }
 
 @end

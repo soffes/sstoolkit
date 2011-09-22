@@ -367,11 +367,15 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	}
 	
 	if ([_delegate respondsToSelector:@selector(collectionView:itemSizeForSection:)] == NO) {
-		[[NSException exceptionWithName:kSSCollectionViewMissingItemSizeExceptionName reason:kSSCollectionViewMissingItemSizeExceptionReason userInfo:nil] raise];
+		[[NSException exceptionWithName:SSCollectionViewInvalidItemSizeExceptionName reason:SSCollectionViewInvalidItemSizeExceptionReason userInfo:nil] raise];
 		return CGSizeZero;
 	}
 	
 	CGSize itemSize = [_delegate collectionView:self itemSizeForSection:section];
+	if (CGSizeEqualToSize(itemSize, CGSizeZero)) {
+		[[NSException exceptionWithName:SSCollectionViewInvalidItemSizeExceptionName reason:SSCollectionViewInvalidItemSizeExceptionReason userInfo:nil] raise];
+		return CGSizeZero;
+	}
 	[self _setSectionInfoItem:[NSValue valueWithCGSize:itemSize] forKey:kSSCollectionViewSectionItemSizeKey section:section];
 	
 	return itemSize;
