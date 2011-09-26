@@ -16,6 +16,10 @@
 @implementation NSArray (SSToolkitAdditions)
 
 - (id)firstObject {
+	if ([self count] == 0) {
+	    return nil;
+	}
+	
 	return [self objectAtIndex:0];
 }
 
