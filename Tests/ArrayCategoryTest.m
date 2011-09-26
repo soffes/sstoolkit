@@ -21,6 +21,10 @@
 	NSArray *array = [[NSArray alloc] initWithObjects:@"foo", @"bar", nil];
 	GHAssertEqualObjects([array firstObject], @"foo", nil);
 	[array release];
+	
+	array = [[NSArray alloc] init];
+	GHAssertNil([array firstObject], nil);
+	[array release];
 }
 
 
