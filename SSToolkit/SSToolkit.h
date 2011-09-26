@@ -68,7 +68,7 @@
 #import <SSToolkit/SSWebView.h>
 
 // Cells
-#import <SSToolkit/SSBadgeTableViewCell.h>b
+#import <SSToolkit/SSBadgeTableViewCell.h>
 
 // Controls
 #import <SSToolkit/SSAddressBarTextField.h>
