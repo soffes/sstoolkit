@@ -195,6 +195,10 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 #pragma mark - SSCollectionView
 
 - (void)reloadData {
+	if (![self superview]) {
+		return;
+	}
+	
 	[_sectionCache removeAllObjects];
 	[_tableView reloadData];
 }
