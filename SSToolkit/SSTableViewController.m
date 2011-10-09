@@ -69,7 +69,7 @@
 
 - (void)layoutViewsWithOrientation:(UIInterfaceOrientation)orientation {
 	[super layoutViewsWithOrientation:orientation];
-	self.tableView.frame = CGRectSetZeroOrigin(self.view.frame);
+	self.tableView.frame = self.view.bounds;
 }
 
 

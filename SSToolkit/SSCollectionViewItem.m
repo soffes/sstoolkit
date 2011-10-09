@@ -41,6 +41,7 @@
 	_backgroundView.hidden = _selected || !_selectedBackgroundView;
 	
 	[self insertSubview:backgroundView atIndex:0];
+	[self setNeedsLayout];
 }
 
 
@@ -56,6 +57,8 @@
 	} else {
 		[self insertSubview:_selectedBackgroundView atIndex:0];
 	}
+	
+	[self setNeedsLayout];
 }
 
 
@@ -89,7 +92,7 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	[self setHighlighted:YES animated:NO];
 	
-	if (CGRectContainsPoint(CGRectSetZeroOrigin(self.frame), [[touches anyObject] locationInView:self])) {
+	if (CGRectContainsPoint(self.bounds, [[touches anyObject] locationInView:self])) {
 		[self.collectionView selectItemAtIndexPath:self.indexPath animated:YES scrollPosition:SSCollectionViewScrollPositionNone];
 	}
 }
@@ -103,8 +106,11 @@
 
 
 - (void)layoutSubviews {
+	_backgroundView.frame = self.bounds;
+	_selectedBackgroundView.frame = self.bounds;
+	
 	if (_style == SSCollectionViewItemStyleImage) {
-		_imageView.frame = CGRectSetZeroOrigin(self.frame);
+		_imageView.frame = self.bounds;
 	}
 }
 

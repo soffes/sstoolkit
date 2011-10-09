@@ -174,7 +174,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 		_reuseableItems = [[NSMutableDictionary alloc] init];
 		_sectionCache = [[NSMutableDictionary alloc] init];
 		
-		_tableView = [[UITableView alloc] initWithFrame:CGRectSetZeroOrigin(frame)];
+		_tableView = [[UITableView alloc] initWithFrame:self.bounds];
 		_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		_tableView.dataSource = self;
 		_tableView.delegate = self;
