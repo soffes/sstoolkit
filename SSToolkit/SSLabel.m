@@ -8,6 +8,10 @@
 
 #import "SSLabel.h"
 
+@interface SSLabel ()
+- (void)_initialize;
+@end
+
 @implementation SSLabel
 
 #pragma mark - Accessors
@@ -32,10 +36,17 @@
 
 #pragma mark - UIView
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if ((self = [super initWithCoder:aDecoder])) {
+		[self _initialize];
+	}
+	return self;
+}
+
+
 - (id)initWithFrame:(CGRect)aFrame {
 	if ((self = [super initWithFrame:aFrame])) {
-		self.verticalTextAlignment = SSLabelVerticalTextAlignmentMiddle;
-		self.textEdgeInsets = UIEdgeInsetsZero;
+		[self _initialize];
 	}
 	return self;
 }
@@ -55,6 +66,14 @@
 	}
 		
 	[super drawTextInRect:rect];
+}
+
+
+#pragma mark - Private
+
+- (void)_initialize {
+	self.verticalTextAlignment = SSLabelVerticalTextAlignmentMiddle;
+	self.textEdgeInsets = UIEdgeInsetsZero;
 }
 
 @end

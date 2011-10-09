@@ -28,8 +28,13 @@ static CGFloat kIndicatorSize = 40.0;
 #pragma mark - Accessors
 
 @synthesize textLabel = _textLabel;
-
 @synthesize textLabelHidden = _textLabelHidden;
+@synthesize activityIndicator = _activityIndicator;
+@synthesize hudSize = _hudSize;
+@synthesize loading = _loading;
+@synthesize successful = _successful;
+@synthesize completeImage = _completeImage;
+@synthesize failImage = _failImage;
 
 - (void)setTextLabelHidden:(BOOL)hidden {
 	_textLabelHidden = hidden;
@@ -38,21 +43,12 @@ static CGFloat kIndicatorSize = 40.0;
 }
 
 
-@synthesize activityIndicator = _activityIndicator;
-@synthesize hudSize = _hudSize;
-
-@synthesize loading = _loading;
-
 - (void)setLoading:(BOOL)isLoading {
 	_loading = isLoading;
 	_activityIndicator.alpha = _loading ? 1.0 : 0.0;
 	[self setNeedsDisplay];
 }
 
-
-@synthesize successful = _successful;
-@synthesize completeImage = _completeImage;
-@synthesize failImage = _failImage;
 
 - (BOOL)hidesVignette {
 	return _hudWindow.hidesVignette;

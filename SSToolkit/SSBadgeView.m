@@ -10,6 +10,10 @@
 #import "SSLabel.h"
 #import "SSDrawingUtilities.h"
 
+@interface SSBadgeView ()
+- (void)_initialize;
+@end
+
 @implementation SSBadgeView
 
 #pragma mark - Accessors
@@ -17,6 +21,12 @@
 @synthesize textLabel = _textLabel;
 
 @synthesize badgeColor = _badgeColor;
+@synthesize highlightedBadgeColor = _highlightedBadgeColor;
+@synthesize badgeImage = _badgeImage;
+@synthesize highlightedBadgeImage = _highlightedBadgeImage;
+@synthesize cornerRadius = _cornerRadius;
+@synthesize badgeAlignment = _badgeAlignment;
+@synthesize highlighted = _highlighted;
 
 - (void)setBadgeColor:(UIColor *)badgeColor {
 	[badgeColor retain];
@@ -27,8 +37,6 @@
 }
 
 
-@synthesize highlightedBadgeColor = _highlightedBadgeColor;
-
 - (void)setHighlightedBadgeColor:(UIColor *)highlightedBadgeColor {
 	[highlightedBadgeColor retain];
 	[_highlightedBadgeColor release];
@@ -37,7 +45,6 @@
 	[self setNeedsDisplay];
 }
 
-@synthesize badgeImage = _badgeImage;
 
 - (void)setBadgeImage:(UIImage *)badgeImage {
 	[badgeImage retain];
@@ -47,7 +54,6 @@
 	[self setNeedsDisplay];
 }
 
-@synthesize highlightedBadgeImage = _highlightedBadgeImage;
 
 - (void)setHighlightedBadgeImage:(UIImage *)highlightedBadgeImage {
 	[highlightedBadgeImage retain];
@@ -58,8 +64,6 @@
 }
 
 
-@synthesize cornerRadius = _cornerRadius;
-
 - (void)setCornerRadius:(CGFloat)cornerRadius {
 	_cornerRadius = cornerRadius;
 	
@@ -67,16 +71,12 @@
 }
 
 
-@synthesize badgeAlignment = _badgeAlignment;
-
 - (void)setBadgeAlignment:(SSBadgeViewAlignment)badgeAlignment {
 	_badgeAlignment = badgeAlignment;
 	
 	[self setNeedsDisplay];
 }
 
-
-@synthesize highlighted = _highlighted;
 
 - (void)setHighlighted:(BOOL)highlighted {
 	_highlighted = highlighted;
@@ -107,23 +107,17 @@
 
 #pragma mark - UIView
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if ((self = [super initWithCoder:aDecoder])) {
+		[self _initialize];
+	}
+	return self;
+}
+
+
 - (id)initWithFrame:(CGRect)rect {
 	if ((self = [super initWithFrame:rect])) {
-		self.backgroundColor = [UIColor whiteColor];
-		self.opaque = YES;
-		
-		_textLabel = [[SSLabel alloc] initWithFrame:CGRectZero];
-		_textLabel.text = @"0";
-		_textLabel.textColor = [UIColor whiteColor];
-		_textLabel.highlightedTextColor = [UIColor colorWithRed:0.125f green:0.369f blue:0.871f alpha:1.0f];
-		_textLabel.font = [UIFont boldSystemFontOfSize:16.0f];
-		_textLabel.textAlignment = UITextAlignmentCenter;
-		
-		self.badgeColor = [[self class] defaultBadgeColor];
-		self.highlightedBadgeColor = [UIColor whiteColor];
-		self.cornerRadius = 10.0f;
-		self.badgeAlignment = SSBadgeViewAlignmentCenter;
-		self.highlighted = NO;
+		[self _initialize];
 	}
 	return self;
 }
@@ -188,6 +182,27 @@
 	} else {
 		[_textLabel removeObserver:self forKeyPath:@"text"];
 	}
+}
+
+
+#pragma mark - Private
+
+- (void)_initialize {
+	self.backgroundColor = [UIColor whiteColor];
+	self.opaque = YES;
+	
+	_textLabel = [[SSLabel alloc] initWithFrame:CGRectZero];
+	_textLabel.text = @"0";
+	_textLabel.textColor = [UIColor whiteColor];
+	_textLabel.highlightedTextColor = [UIColor colorWithRed:0.125f green:0.369f blue:0.871f alpha:1.0f];
+	_textLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+	_textLabel.textAlignment = UITextAlignmentCenter;
+	
+	self.badgeColor = [[self class] defaultBadgeColor];
+	self.highlightedBadgeColor = [UIColor whiteColor];
+	self.cornerRadius = 10.0f;
+	self.badgeAlignment = SSBadgeViewAlignmentCenter;
+	self.highlighted = NO;
 }
 
 

@@ -31,6 +31,7 @@ static NSString *kSSCollectionViewSectionFooterHeightKey = @"SSCollectionViewSec
 static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSectionItemSize";
 
 @interface SSCollectionView (PrivateMethods)
+- (void)_initialize;
 - (void)_reuseItem:(SSCollectionViewItem *)item;
 - (void)_reuseItems:(NSArray *)items;
 
@@ -162,24 +163,17 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 #pragma mark - UIView
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super initWithCoder:aDecoder])) {
+		[self _initialize];
+    }
+    return self;
+}
+
+
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
-		self.backgroundColor = [UIColor whiteColor];
-		self.opaque = YES;
-		
-		_minimumColumnSpacing = 10.0f;
-		_rowSpacing = 20.0f;
-		_allowsSelection = YES;
-		_visibleItems = [[NSMutableSet alloc] init];
-		_reuseableItems = [[NSMutableDictionary alloc] init];
-		_sectionCache = [[NSMutableDictionary alloc] init];
-		
-		_tableView = [[UITableView alloc] initWithFrame:self.bounds];
-		_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-		_tableView.dataSource = self;
-		_tableView.delegate = self;
-		_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-		[self addSubview:_tableView];
+		[self _initialize];
     }
     return self;
 }
@@ -346,6 +340,26 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 
 #pragma mark - Private Methods
+
+- (void)_initialize {
+	self.backgroundColor = [UIColor whiteColor];
+	self.opaque = YES;
+	
+	_minimumColumnSpacing = 10.0f;
+	_rowSpacing = 20.0f;
+	_allowsSelection = YES;
+	_visibleItems = [[NSMutableSet alloc] init];
+	_reuseableItems = [[NSMutableDictionary alloc] init];
+	_sectionCache = [[NSMutableDictionary alloc] init];
+	
+	_tableView = [[UITableView alloc] initWithFrame:self.bounds];
+	_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	_tableView.dataSource = self;
+	_tableView.delegate = self;
+	_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	[self addSubview:_tableView];
+}
+
 
 - (void)_reuseItem:(SSCollectionViewItem *)item {
 	[_visibleItems removeObject:item];

@@ -10,7 +10,8 @@
 #import "UIImage+SSToolkitAdditions.h"
 #import "UIView+SSToolkitAdditions.h"
 
-@interface SSRatingPicker (PrivateMethods)
+@interface SSRatingPicker ()
+- (void)_initialize;
 - (void)_setSelectedNumberOfStarsWithTouch:(UITouch *)touch;
 @end
 
@@ -115,28 +116,17 @@
 
 #pragma mark - UIView
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if ((self = [super initWithCoder:aDecoder])) {
+		[self _initialize];
+	}
+	return self;
+}
+
+
 - (id)initWithFrame:(CGRect)rect {
 	if ((self = [super initWithFrame:rect])) {
-		self.backgroundColor = [UIColor whiteColor];
-		self.opaque = YES;
-		self.contentMode = UIViewContentModeRedraw;
-		
-		self.emptyStarImage = [UIImage imageNamed:@"gray-star.png" bundleName:kSSToolkitBundleName];
-		self.filledStarImage = [UIImage imageNamed:@"orange-star.png" bundleName:kSSToolkitBundleName];
-		self.starSize = CGSizeMake(21.0f, 36.0f);
-		self.starSpacing = 19.0f;
-		self.selectedNumberOfStars = 0.0f;
-		self.totalNumberOfStars = 5;
-		
-		_textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-		_textLabel.textColor = [UIColor colorWithRed:0.612f green:0.620f blue:0.624f alpha:1.0f];
-		_textLabel.shadowColor = [UIColor whiteColor];
-		_textLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-		_textLabel.backgroundColor = [UIColor clearColor];
-		_textLabel.text = @"Tap a Star to Rate";
-		_textLabel.font = [UIFont boldSystemFontOfSize:10.0f];
-		_textLabel.textAlignment = UITextAlignmentCenter;
-		[self addSubview:_textLabel];
+		[self _initialize];
 	}
 	return self;
 }
@@ -169,7 +159,31 @@
 }
 
 
-#pragma mark - Private Methods
+#pragma mark - Private
+
+- (void)_initialize {
+	self.backgroundColor = [UIColor whiteColor];
+	self.opaque = YES;
+	self.contentMode = UIViewContentModeRedraw;
+	
+	self.emptyStarImage = [UIImage imageNamed:@"gray-star.png" bundleName:kSSToolkitBundleName];
+	self.filledStarImage = [UIImage imageNamed:@"orange-star.png" bundleName:kSSToolkitBundleName];
+	self.starSize = CGSizeMake(21.0f, 36.0f);
+	self.starSpacing = 19.0f;
+	self.selectedNumberOfStars = 0.0f;
+	self.totalNumberOfStars = 5;
+	
+	_textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+	_textLabel.textColor = [UIColor colorWithRed:0.612f green:0.620f blue:0.624f alpha:1.0f];
+	_textLabel.shadowColor = [UIColor whiteColor];
+	_textLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+	_textLabel.backgroundColor = [UIColor clearColor];
+	_textLabel.text = @"Tap a Star to Rate";
+	_textLabel.font = [UIFont boldSystemFontOfSize:10.0f];
+	_textLabel.textAlignment = UITextAlignmentCenter;
+	[self addSubview:_textLabel];
+}
+
 
 - (void)_setSelectedNumberOfStarsWithTouch:(UITouch *)touch {
 	CGPoint point = [touch locationInView:self];

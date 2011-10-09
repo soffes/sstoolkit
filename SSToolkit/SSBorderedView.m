@@ -14,6 +14,10 @@
 #pragma mark - Accessors
 
 @synthesize topBorderColor = _topBorderColor;
+@synthesize topInsetColor = _topInsetColor;
+@synthesize bottomInsetColor = _bottomInsetColor;
+@synthesize bottomBorderColor = _bottomBorderColor;
+
 
 - (void)setTopBorderColor:(UIColor *)topBorderColor {
 	[topBorderColor retain];
@@ -24,8 +28,6 @@
 }
 
 
-@synthesize topInsetColor = _topInsetColor;
-
 - (void)setTopInsetColor:(UIColor *)topInsetColor {
 	[topInsetColor retain];
 	[_topInsetColor release];
@@ -35,8 +37,6 @@
 }
 
 
-@synthesize bottomInsetColor = _bottomInsetColor;
-
 - (void)setBottomInsetColor:(UIColor *)bottomInsetColor {
 	[bottomInsetColor retain];
 	[_bottomInsetColor release];
@@ -45,8 +45,6 @@
 	[self setNeedsDisplay];
 }
 
-
-@synthesize bottomBorderColor = _bottomBorderColor;
 
 - (void)setBottomBorderColor:(UIColor *)bottomBorderColor {
 	[bottomBorderColor retain];

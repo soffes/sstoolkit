@@ -12,7 +12,8 @@
 
 static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 
-@interface SSSegmentedControl (PrivateMethods)
+@interface SSSegmentedControl ()
+- (void)_initialize;
 - (NSMutableDictionary *)_metaForSegmentIndex:(NSUInteger)index;
 - (id)_metaValueForKey:(NSString *)key segmentIndex:(NSUInteger)index;
 - (void)_setMetaValue:(id)value forKey:(NSString *)key segmentIndex:(NSUInteger)index;
@@ -203,32 +204,23 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 
 #pragma mark - UIView
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if ((self = [super initWithCoder:aDecoder])) {
+		[self _initialize];
+	}
+	return self;
+}
+
+
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
-		self.backgroundColor = [UIColor clearColor];
-		
-		_segments = [[NSMutableArray alloc] init];
-		_momentary = NO;
-		
-		self.buttonImage = [[UIImage imageNamed:@"UISegmentBarButton.png" bundleName:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
-		self.highlightedButtonImage = [[UIImage imageNamed:@"UISegmentBarButtonHighlighted.png" bundleName:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
-		self.dividerImage = [UIImage imageNamed:@"UISegmentBarDivider.png" bundleName:kSSToolkitBundleName];
-		self.highlightedDividerImage = [UIImage imageNamed:@"UISegmentBarDividerHighlighted.png" bundleName:kSSToolkitBundleName];
-		self.selectedSegmentIndex = SSSegmentedControlNoSegment;
-		
-		_font = [[UIFont boldSystemFontOfSize:12.0f] retain];
-		_textColor = [[UIColor whiteColor] retain];
-		_disabledTextColor = [[UIColor colorWithWhite:0.561f alpha:1.0f] retain];
-		_textShadowColor = [[UIColor colorWithWhite:0.0f alpha:0.5f] retain];
-		_textShadowOffset = CGSizeMake(0.0f, -1.0f);
-		_textEdgeInsets = UIEdgeInsetsMake(-1.0f, 0.0f, 0.0f, 0.0f);
+		[self _initialize];
 	}
 	return self;
 }
 
 
 - (void)drawRect:(CGRect)frame {
-	
 	static CGFloat dividerWidth = 1.0f;
 	
 	NSInteger count = (NSInteger)[self numberOfSegments];
@@ -413,7 +405,28 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 }
 
 
-#pragma mark - Private Methods
+#pragma mark - Private
+
+- (void)_initialize {
+	self.backgroundColor = [UIColor clearColor];
+	
+	_segments = [[NSMutableArray alloc] init];
+	_momentary = NO;
+	
+	self.buttonImage = [[UIImage imageNamed:@"UISegmentBarButton.png" bundleName:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+	self.highlightedButtonImage = [[UIImage imageNamed:@"UISegmentBarButtonHighlighted.png" bundleName:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+	self.dividerImage = [UIImage imageNamed:@"UISegmentBarDivider.png" bundleName:kSSToolkitBundleName];
+	self.highlightedDividerImage = [UIImage imageNamed:@"UISegmentBarDividerHighlighted.png" bundleName:kSSToolkitBundleName];
+	self.selectedSegmentIndex = SSSegmentedControlNoSegment;
+	
+	_font = [[UIFont boldSystemFontOfSize:12.0f] retain];
+	_textColor = [[UIColor whiteColor] retain];
+	_disabledTextColor = [[UIColor colorWithWhite:0.561f alpha:1.0f] retain];
+	_textShadowColor = [[UIColor colorWithWhite:0.0f alpha:0.5f] retain];
+	_textShadowOffset = CGSizeMake(0.0f, -1.0f);
+	_textEdgeInsets = UIEdgeInsetsMake(-1.0f, 0.0f, 0.0f, 0.0f);
+}
+
 
 - (NSMutableDictionary *)_metaForSegmentIndex:(NSUInteger)index {
 	if (!_segmentMeta) {

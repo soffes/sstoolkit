@@ -10,6 +10,7 @@
 #import "SSDrawingUtilities.h"
 
 @interface SSGradientView ()
+- (void)_initialize;
 - (void)_refreshGradient;
 @end
 
@@ -22,6 +23,9 @@
 #pragma mark - Accessors
 
 @synthesize colors = _colors;
+@synthesize locations = _locations;
+@synthesize direction = _direction;
+
 
 - (void)setColors:(NSArray *)colors {
 	[colors retain];
@@ -31,8 +35,6 @@
 }
 
 
-@synthesize locations = _locations;
-
 - (void)setLocations:(NSArray *)locations {
 	[locations retain];
 	[_locations release];
@@ -40,8 +42,6 @@
 	[self _refreshGradient];
 }
 
-
-@synthesize direction = _direction;
 
 - (void)setDirection:(SSGradientViewDirection)direction {
 	_direction = direction;
@@ -131,10 +131,17 @@
 
 #pragma mark - UIView
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	if ((self = [super initWithCoder:aDecoder])) {
+		[self _initialize];
+	}
+	return self;
+}
+
 
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
-		_direction = SSGradientViewDirectionVertical;
+		[self _initialize];
 	}
 	return self;
 }
@@ -156,7 +163,12 @@
 }
 
 
-#pragma mark - Gradient Methods
+#pragma mark - Private
+
+- (void)_initialize {
+	_direction = SSGradientViewDirectionVertical;
+}
+
 
 - (void)_refreshGradient {
 	CGGradientRelease(_gradient);

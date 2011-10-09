@@ -9,6 +9,10 @@
 #import "SSTextField.h"
 #import "SSDrawingUtilities.h"
 
+@interface SSTextField ()
+- (void)_initialize;
+@end
+
 @implementation SSTextField
 
 #pragma mark - Accessors
@@ -38,10 +42,17 @@
 
 #pragma mark - UIView
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super initWithCoder:aDecoder])) {
+        [self _initialize];
+    }
+    return self;
+}
+
+
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
-        _textEdgeInsets = UIEdgeInsetsZero;
-		_clearButtonEdgeInsets = UIEdgeInsetsZero;
+        [self _initialize];
     }
     return self;
 }
@@ -74,6 +85,14 @@
 	
     [_placeholderTextColor setFill];
     [self.placeholder drawInRect:rect withFont:self.font lineBreakMode:UILineBreakModeTailTruncation alignment:self.textAlignment];
+}
+
+
+#pragma mark - Private
+
+- (void)_initialize {
+	_textEdgeInsets = UIEdgeInsetsZero;
+	_clearButtonEdgeInsets = UIEdgeInsetsZero;
 }
 
 @end
