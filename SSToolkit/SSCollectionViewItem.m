@@ -33,6 +33,32 @@
 @synthesize indexPath = _indexPath;
 @synthesize collectionView = _collectionView;
 
+- (void)setBackgroundView:(UIView *)backgroundView {
+	[backgroundView retain];
+	[_backgroundView release];
+	_backgroundView = backgroundView;
+	
+	_backgroundView.hidden = _selected || !_selectedBackgroundView;
+	
+	[self insertSubview:backgroundView atIndex:0];
+}
+
+
+- (void)setSelectedBackgroundView:(UIView *)selectedBackgroundView {
+	[selectedBackgroundView retain];
+	[_selectedBackgroundView release];
+	_selectedBackgroundView = selectedBackgroundView;
+	
+	_selectedBackgroundView.hidden = !_selected;
+	
+	if (_backgroundView) {
+		[self insertSubview:_selectedBackgroundView aboveSubview:_backgroundView];
+	} else {
+		[self insertSubview:_selectedBackgroundView atIndex:0];
+	}
+}
+
+
 #pragma mark - NSObject
 
 - (void)dealloc {
@@ -116,22 +142,41 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 	_selected = selected;
 	
-	[[self subviews] enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
-		if ([object respondsToSelector:@selector(setSelected:)]) {
-			[(UIControl *)object setSelected:selected];
+	void (^changes)(void) = ^{
+		for (UIView *view in [self subviews]) {
+			if ([view respondsToSelector:@selector(setSelected:)]) {
+				[(UIControl *)view setSelected:_selected];
+			}
 		}
-	}];
+		
+		_backgroundView.hidden = _selected || !_selectedBackgroundView;
+		_selectedBackgroundView.hidden = !_selected;
+	};
+	
+	if (animated) {
+		[UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:changes completion:nil];
+	} else {
+		changes();
+	}
 }
 
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
 	_highlighted = highlighted;
 	
-	[[self subviews] enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
-		if ([object respondsToSelector:@selector(setHighlighted:)]) {
-			[(UIControl *)object setHighlighted:highlighted];
+	void (^changes)(void) = ^{
+		for (UIView *view in [self subviews]) {
+			if ([view respondsToSelector:@selector(setHighlighted:)]) {
+				[(UIControl *)view setHighlighted:_highlighted];
+			}
 		}
-	}];
+	};
+	
+	if (animated) {
+		[UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:changes completion:nil];
+	} else {
+		changes();
+	}
 }
 
 
