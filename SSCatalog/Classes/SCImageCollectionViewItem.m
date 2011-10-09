@@ -16,10 +16,15 @@
 @synthesize imageURL = _imageURL;
 
 - (void)setImageURL:(NSURL *)url {
+	[url retain];
 	[_imageURL release];
-	_imageURL = [url retain];
+	_imageURL = url;
 	
-	[self.imageView setImageWithURL:url placeholderImage:nil];
+	if (_imageURL) {
+		[self.imageView setImageWithURL:url placeholderImage:nil];
+	} else {
+		self.imageView.image = nil;
+	}
 }
 
 

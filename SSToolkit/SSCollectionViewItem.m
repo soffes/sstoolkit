@@ -111,6 +111,8 @@
 	
 	if (_style == SSCollectionViewItemStyleImage) {
 		_imageView.frame = self.bounds;
+	} else if (_style == SSCollectionViewItemStyleDefault) {
+		_textLabel.frame = self.bounds;
 	}
 }
 
@@ -123,9 +125,11 @@
 		_reuseIdentifier = [aReuseIdentifier copy];
 		
 		if (_style != SSCollectionViewItemStyleBlank) {
-			_detailTextLabel = [[SSLabel alloc] initWithFrame:CGRectZero];
-			_detailTextLabel.textAlignment = UITextAlignmentCenter;
-			[self addSubview:_detailTextLabel];
+			if (_style == SSCollectionViewItemStyleSubtitle) {
+				_detailTextLabel = [[SSLabel alloc] initWithFrame:CGRectZero];
+				_detailTextLabel.textAlignment = UITextAlignmentCenter;
+				[self addSubview:_detailTextLabel];
+			}
 			
 			_textLabel = [[SSLabel alloc] initWithFrame:CGRectZero];
 			_textLabel.textAlignment = UITextAlignmentCenter;
