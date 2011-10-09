@@ -60,16 +60,18 @@
 
 
 - (void)setEmptyStarImage:(UIImage *)emptyStarImage {
+	[emptyStarImage retain];
 	[_emptyStarImage release];
-	_emptyStarImage = [emptyStarImage retain];
+	_emptyStarImage = emptyStarImage;
 	
 	[self setNeedsDisplay];
 }
 
 
 - (void)setFilledStarImage:(UIImage *)filledStarImage {
+	[filledStarImage retain];
 	[_filledStarImage release];
-	_filledStarImage = [filledStarImage retain];
+	_filledStarImage = filledStarImage;
 	
 	[self setNeedsDisplay];
 }
