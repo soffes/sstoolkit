@@ -11,12 +11,7 @@
 /**
  Table view cell that displays a `SSBadgeView` as its accessory.
  */
-@interface SSBadgeTableViewCell : UITableViewCell {
-
-@private
-	
-	SSBadgeView *_badgeView;
-}
+@interface SSBadgeTableViewCell : UITableViewCell
 
 /**
  A view that indicates some status to the user. (read-only)

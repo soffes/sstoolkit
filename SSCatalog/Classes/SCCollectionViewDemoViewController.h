@@ -6,9 +6,7 @@
 //  Copyright 2010 Sam Soffes. All rights reserved.
 //
 
-@interface SCCollectionViewDemoViewController : SSCollectionViewController {
-
-}
+@interface SCCollectionViewDemoViewController : SSCollectionViewController
 
 + (NSString *)title;
 

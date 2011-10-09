@@ -6,15 +6,7 @@
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
-@class SSSegmentedControl;
-
-@interface SCSegmentedControlDemoViewController : UIViewController {
- 
-@private	
-
-	UISegmentedControl *_systemSegmentedControl;
-	SSSegmentedControl *_customSegmentedControl;
-}
+@interface SCSegmentedControlDemoViewController : UIViewController
 
 + (NSString *)title;
 

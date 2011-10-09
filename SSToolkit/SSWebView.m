@@ -16,7 +16,12 @@
 - (void)_DOMLoaded;
 @end
 
-@implementation SSWebView
+@implementation SSWebView {
+	UIWebView *_webView;
+	NSUInteger _requestCount;
+	BOOL _testedDOM;
+}
+
 
 #pragma mark - Accessors
 

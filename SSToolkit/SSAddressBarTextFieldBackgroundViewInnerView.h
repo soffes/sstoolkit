@@ -7,5 +7,4 @@
 //
 
 @interface SSAddressBarTextFieldBackgroundViewInnerView : UIView
-
 @end

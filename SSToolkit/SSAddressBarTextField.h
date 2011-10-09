@@ -8,18 +8,7 @@
 
 #import "SSTextField.h"
 
-@class SSAddressBarTextFieldBackgroundView;
-
-@interface SSAddressBarTextField : SSTextField {
-
-@private
-	
-	BOOL _loading;
-	UIButton *_reloadButton;
-	UIButton *_stopButton;
-	
-	SSAddressBarTextFieldBackgroundView *_textFieldBackgroundView;
-}
+@interface SSAddressBarTextField : SSTextField
 
 @property (nonatomic, assign, getter=isLoading) BOOL loading;
 @property (nonatomic, retain) UIButton *reloadButton;

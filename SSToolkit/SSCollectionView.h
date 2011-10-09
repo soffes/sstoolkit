@@ -55,23 +55,7 @@ typedef enum {
  instead of row. This is done to make working with other classes that use NSIndexPath (like NSFetchedResultsController)
  easier.
  */
-@interface SSCollectionView : UIView <UITableViewDataSource, UITableViewDelegate> {
-	
-@private
-	
-	id<SSCollectionViewDelegate> _delegate;
-	id<SSCollectionViewDataSource> _dataSource;
-	
-	SSCollectionViewExtremitiesStyle _extremitiesStyle;
-	CGFloat _minimumColumnSpacing;
-	CGFloat _rowSpacing;
-	BOOL _allowsSelection;
-	NSMutableSet *_visibleItems;
-	NSMutableDictionary *_reuseableItems;
-	NSMutableDictionary *_sectionCache;
-	
-	UITableView *_tableView;
-}
+@interface SSCollectionView : UIView <UITableViewDataSource, UITableViewDelegate>
 
 /**
  The object that acts as the data source of the receiving collection view.

@@ -20,6 +20,12 @@
 #pragma mark - Accessors
 
 @synthesize selectedNumberOfStars = _selectedNumberOfStars;
+@synthesize totalNumberOfStars = _totalNumberOfStars;
+@synthesize emptyStarImage = _emptyStarImage;
+@synthesize filledStarImage = _filledStarImage;
+@synthesize starSize = _starSize;
+@synthesize starSpacing = _starSpacing;
+@synthesize textLabel = _textLabel;
 
 - (void)setSelectedNumberOfStars:(CGFloat)selectedNumberOfStars {
 	if (_selectedNumberOfStars == selectedNumberOfStars) {
@@ -46,16 +52,12 @@
 }
 
 
-@synthesize totalNumberOfStars = _totalNumberOfStars;
-
 - (void)settotalNumberOfStars:(NSUInteger)totalNumberOfStars {
 	_totalNumberOfStars = totalNumberOfStars;
 	
 	[self setNeedsDisplay];
 }
 
-
-@synthesize emptyStarImage = _emptyStarImage;
 
 - (void)setEmptyStarImage:(UIImage *)emptyStarImage {
 	[_emptyStarImage release];
@@ -65,8 +67,6 @@
 }
 
 
-@synthesize filledStarImage = _filledStarImage;
-
 - (void)setFilledStarImage:(UIImage *)filledStarImage {
 	[_filledStarImage release];
 	_filledStarImage = [filledStarImage retain];
@@ -75,16 +75,12 @@
 }
 
 
-@synthesize starSize = _starSize;
-
 - (void)setStarSize:(CGSize)starSize {
 	_starSize = starSize;
 	
 	[self setNeedsDisplay];
 }
 
-
-@synthesize starSpacing = _starSpacing;
 
 - (void)setStarSpacing:(CGFloat)starSpacing {
 	_starSpacing = starSpacing;
@@ -93,11 +89,7 @@
 }
 
 
-@synthesize textLabel = _textLabel;
-
-
-#pragma mark
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_emptyStarImage release];

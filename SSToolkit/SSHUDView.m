@@ -20,7 +20,10 @@ static CGFloat kIndicatorSize = 40.0;
 - (void)_removeWindow;
 @end
 
-@implementation SSHUDView
+@implementation SSHUDView {
+	SSHUDWindow *_hudWindow;
+}
+
 
 #pragma mark - Accessors
 

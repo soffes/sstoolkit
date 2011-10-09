@@ -14,7 +14,10 @@
 @end
 
 
-@implementation SSGradientView
+@implementation SSGradientView {
+	CGGradientRef _gradient;
+}
+
 
 #pragma mark - Accessors
 

@@ -6,9 +6,7 @@
 //  Copyright 2010 Sam Soffes. All rights reserved.
 //
 
-@interface SCLoadingViewDemoViewController : UIViewController {
-
-}
+@interface SCLoadingViewDemoViewController : UIViewController
 
 + (NSString *)title;
 

@@ -22,16 +22,7 @@ typedef enum {
 /**
  Simple `UIView` wrapper for `CGGradient`.
  */
-@interface SSGradientView : SSBorderedView {
-	
-@private
-	
-	NSArray *_colors;
-	NSArray *_locations;
-	SSGradientViewDirection _direction;
-
-	CGGradientRef _gradient;
-}
+@interface SSGradientView : SSBorderedView
 
 ///---------------------------
 /// @name Drawing the Gradient

@@ -13,13 +13,7 @@
  
  This class is a SSViewController subclass that is a drop-in replacement for UITableViewController.
  */
-@interface SSTableViewController : SSViewController <UITableViewDataSource, UITableViewDelegate> {
-
-@private
-	
-	UITableView *_tableView;
-	BOOL _clearsSelectionOnViewWillAppear;
-}
+@interface SSTableViewController : SSViewController <UITableViewDataSource, UITableViewDelegate>
 
 /**
  Returns the table view managed by the controller object.

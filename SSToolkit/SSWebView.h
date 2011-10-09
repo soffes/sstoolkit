@@ -16,23 +16,7 @@
 
  Things of interest are the SSWebView properties and the extra `delegate` methods.
  */
-@interface SSWebView : UIView <UIWebViewDelegate> {
-
-@private
-	NSUInteger _requestCount;
-
-@private
-
-	id<SSWebViewDelegate> _delegate;
-
-	UIWebView *_webView;
-	NSURLRequest *_lastRequest;
-	BOOL _loadingPage;
-	BOOL _shadowsHidden;
-	BOOL _consoleEnabled;
-
-	BOOL _testedDOM;
-}
+@interface SSWebView : UIView <UIWebViewDelegate>
 
 ///---------------------------------
 /// @name Controlling the Appearance

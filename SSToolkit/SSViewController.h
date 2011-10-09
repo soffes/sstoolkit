@@ -14,23 +14,10 @@
  
  Note: Currently only iPad is supported.
  */
-@interface SSViewController : UIViewController <SSModalViewController> {
-
-@private
-	
-	SSViewController *_modalParentViewController;
-	UIViewController<SSModalViewController> *_customModalViewController;
-	BOOL _dismissCustomModalOnVignetteTap;
-	CGSize _contentSizeForViewInCustomModal;
-	CGPoint _originOffsetForViewInCustomModal;
-		
-	UIView *_modalContainerView;
-	UIImageView *_modalContainerBackgroundView;
-	UIButton *_vignetteButton;
-}
+@interface SSViewController : UIViewController <SSModalViewController>
 
 @property (nonatomic, assign) SSViewController *modalParentViewController;
-@property (nonatomic, retain, readonly) UIViewController *customModalViewController;
+@property (nonatomic, retain, readonly) UIViewController<SSModalViewController> *customModalViewController;
 @property (nonatomic, assign) BOOL dismissCustomModalOnVignetteTap;
 @property (nonatomic, assign) CGSize contentSizeForViewInCustomModal;
 @property (nonatomic, assign) CGPoint originOffsetForViewInCustomModal;

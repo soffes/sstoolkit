@@ -6,9 +6,7 @@
 //  Copyright 2010 Sam Soffes. All rights reserved.
 //
 
-@interface SCSwitchDemoViewController : UIViewController {
-
-}
+@interface SCSwitchDemoViewController : UIViewController
 
 + (NSString *)title;
 

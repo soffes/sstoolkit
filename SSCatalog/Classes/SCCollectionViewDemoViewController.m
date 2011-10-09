@@ -11,16 +11,14 @@
 
 @implementation SCCollectionViewDemoViewController
 
-#pragma mark -
-#pragma mark Class Methods
+#pragma mark - Class Methods
 
 + (NSString *)title {
 	return @"Collection View";
 }
 
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -38,8 +36,7 @@
 }
 
 
-#pragma mark -
-#pragma mark SSCollectionViewDataSource
+#pragma mark - SSCollectionViewDataSource
 
 - (NSUInteger)numberOfSectionsInCollectionView:(SSCollectionView *)aCollectionView {
 	return 10;
@@ -79,8 +76,7 @@
 }
 
 
-#pragma mark -
-#pragma mark SSCollectionViewDelegate
+#pragma mark - SSCollectionViewDelegate
 
 - (CGSize)collectionView:(SSCollectionView *)aCollectionView itemSizeForSection:(NSUInteger)section {
 	return CGSizeMake(80.0f, 80.0f);

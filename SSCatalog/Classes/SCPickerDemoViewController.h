@@ -6,12 +6,7 @@
 //  Copyright 2009 Sam Soffes, Inc. All rights reserved.
 //
 
-@interface SCPickerDemoViewController : UITableViewController {
-	
-@private
-	
-	NSString *_selectedAbbreviation;
-}
+@interface SCPickerDemoViewController : UITableViewController
 
 @property (nonatomic, retain) NSString *selectedAbbreviation;
 

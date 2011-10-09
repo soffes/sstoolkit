@@ -13,14 +13,7 @@
  A subclass should override the `- (void)loadObjects` and `- (NSString *)cellTextForObject:(id)anObject` methods to
  customize this class.
  */
-@interface SSPickerViewController : UITableViewController {
-
-@private
-	
-	NSArray *_keys;
-	id _selectedKey;
-	NSIndexPath *_currentIndexPath;
-}
+@interface SSPickerViewController : UITableViewController
 
 @property (nonatomic, retain) NSArray *keys;
 @property (nonatomic, retain) id selectedKey;

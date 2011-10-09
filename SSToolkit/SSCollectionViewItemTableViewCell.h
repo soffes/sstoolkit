@@ -8,15 +8,7 @@
 
 @class SSCollectionView;
 
-@interface SSCollectionViewItemTableViewCell : UITableViewCell {
-
-@private
-	
-	CGSize _itemSize;
-	CGFloat _itemSpacing;
-	NSArray *_items;
-	SSCollectionView *_collectionView;
-}
+@interface SSCollectionViewItemTableViewCell : UITableViewCell
 
 @property (nonatomic, assign) CGSize itemSize;
 @property (nonatomic, assign) CGFloat itemSpacing;

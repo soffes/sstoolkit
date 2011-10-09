@@ -18,7 +18,12 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 - (void)_setMetaValue:(id)value forKey:(NSString *)key segmentIndex:(NSUInteger)index;
 @end
 
-@implementation SSSegmentedControl
+@implementation SSSegmentedControl {
+	NSMutableArray *_segments;
+	NSInteger _selectedSegmentIndex;
+	NSMutableDictionary *_segmentMeta;
+}
+
 
 #pragma mark - Accessors
 

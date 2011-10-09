@@ -11,11 +11,16 @@
 #import "SSDrawingUtilities.h"
 #import "UIImage+SSToolkitAdditions.h"
 
-@implementation SSAddressBarTextField
+@implementation SSAddressBarTextField {
+	SSAddressBarTextFieldBackgroundView *_textFieldBackgroundView;
+}
+
 
 #pragma mark - Accessors
 
 @synthesize loading = _loading;
+@synthesize reloadButton = _reloadButton;
+@synthesize stopButton = _stopButton;
 
 - (void)setLoading:(BOOL)isLoading {
 	if (_loading == isLoading) {
@@ -26,10 +31,6 @@
 	self.rightView = _loading ? _stopButton : _reloadButton;
 	_textFieldBackgroundView.loading = _loading;
 }
-
-
-@synthesize reloadButton = _reloadButton;
-@synthesize stopButton = _stopButton;
 
 
 #pragma mark - NSObject

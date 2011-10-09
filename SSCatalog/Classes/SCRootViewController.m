@@ -17,10 +17,12 @@ static NSString *const kClassesKey =  @"classes";
 + (id)setup;
 @end
 
-@implementation SCRootViewController
+@implementation SCRootViewController {
+	NSArray *_viewControllers;
+}
 
-#pragma mark -
-#pragma mark NSObject
+
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_viewControllers release];
@@ -28,8 +30,7 @@ static NSString *const kClassesKey =  @"classes";
 }
 
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -77,8 +78,7 @@ static NSString *const kClassesKey =  @"classes";
 }
 
 
-#pragma mark -
-#pragma mark UITableViewDataSource
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [_viewControllers count];
@@ -112,8 +112,7 @@ static NSString *const kClassesKey =  @"classes";
 }
 
 
-#pragma mark -
-#pragma mark UITableViewDelegate
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[self.tableView deselectRowAtIndexPath:indexPath animated:YES];

@@ -6,12 +6,7 @@
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
-@interface SSHUDWindow : UIWindow {
-
-@private
-	
-	BOOL _hidesVignette;
-}
+@interface SSHUDWindow : UIWindow
 
 @property (nonatomic, assign) BOOL hidesVignette;
 

@@ -8,18 +8,19 @@
 
 #import "SCHUDViewDemoViewController.h"
 
-@implementation SCHUDViewDemoViewController
+@implementation SCHUDViewDemoViewController {
+	SSHUDView *_hud;
+}
 
-#pragma mark -
-#pragma mark Class Methods
+
+#pragma mark - Class Methods
 
 + (NSString *)title {
 	return @"HUD View";
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_hud release];
@@ -27,8 +28,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -55,8 +55,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Actions
+#pragma mark - Actions
 
 - (void)complete:(id)sender {
 	[_hud completeWithTitle:@"Finished"];

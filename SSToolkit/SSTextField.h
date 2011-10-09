@@ -9,14 +9,7 @@
 /**
  Simple UITextField subclass to adds text insets.
  */
-@interface SSTextField : UITextField {
-
-@private
-	
-	UIEdgeInsets _textEdgeInsets;
-	UIEdgeInsets _clearButtonEdgeInsets;
-	UIColor *_placeholderTextColor;
-}
+@interface SSTextField : UITextField
 
 ///------------------------------------
 /// @name Accessing the Text Attributes

@@ -22,25 +22,7 @@ typedef enum {
 /**
  View for display in a collection view.
  */
-@interface SSCollectionViewItem : UIView {
-
-@private
-	
-	SSCollectionViewItemStyle _style;
-	
-	NSString *_reuseIdentifier;
-	UIImageView *_imageView;
-	SSLabel *_textLabel;
-	SSLabel *_detailTextLabel;
-	UIView *_backgroundView;
-	UIView *_selectedBackgroundView;
-
-	BOOL _selected;
-	BOOL _highlighted;
-	
-	SSCollectionView *_collectionView;
-	NSIndexPath *_indexPath;
-}
+@interface SSCollectionViewItem : UIView
 
 /**
  Returns the image view of the collection view item. (read-only)

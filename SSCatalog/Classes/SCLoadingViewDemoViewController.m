@@ -10,16 +10,14 @@
 
 @implementation SCLoadingViewDemoViewController
 
-#pragma mark -
-#pragma mark Class Methods
+#pragma mark - Class Methods
 
 + (NSString *)title {
 	return @"Loading View";
 }
 
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];

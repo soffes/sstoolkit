@@ -9,15 +9,7 @@
 /**
  UITextView subclass that adds placeholder support like UITextField has.
  */
-@interface SSTextView : UITextView {
-	
-@private
-	
-	NSString *_placeholder;
-	UIColor *_placeholderColor;
-
-	BOOL _shouldDrawPlaceholder;
-}
+@interface SSTextView : UITextView
 
 /**
  The string that is displayed when there is no other text in the text view.

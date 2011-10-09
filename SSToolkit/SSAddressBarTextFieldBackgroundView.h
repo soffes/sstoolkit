@@ -6,15 +6,7 @@
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
-@class SSAddressBarTextFieldBackgroundViewInnerView;
-
-@interface SSAddressBarTextFieldBackgroundView : UIView {
-	
-@private
-	
-	BOOL _loading;
-	SSAddressBarTextFieldBackgroundViewInnerView *_innerView;
-}
+@interface SSAddressBarTextFieldBackgroundView : UIView
 
 @property (nonatomic, assign, getter=isLoading) BOOL loading;
 

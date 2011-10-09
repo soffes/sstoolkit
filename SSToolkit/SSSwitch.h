@@ -17,35 +17,7 @@ typedef enum {
 	SSSwitchLabelStyleAlwaysView,	// Always use views
 } SSSwitchLabelStyle;
 
-@interface SSSwitch : UIControl {
-	
-@private
-	
-	BOOL _on;
-	SSSwitchStyle _style;
-	UIButton *_handle;
-	UIImage *_leftHandleImage;
-	UIImage *_leftHandleImageHighlighted;
-	UIImage *_centerHandleImage;
-	UIImage *_centerHandleImageHighlighted;
-	UIImage *_rightHandleImage;
-	UIImage *_rightHandleImageHighlighted;
-	CGFloat _handleWidth;
-	CGFloat _handleShadowWidth;
-	UIImageView *_onBackgroundImageView;
-	UILabel *_onLabel;
-	UIView *_onView;
-	UIImageView *_offBackgroundImageView;
-	UILabel *_offLabel;
-	UIView *_offView;
-	UIEdgeInsets _trackEdgeInsets;
-	SSSwitchLabelStyle _switchLabelStyle;
-	
-	UIView *_labelMaskView;
-	BOOL _dragging;
-	CGFloat _dragOffset;
-	NSInteger _hitCount;
-}
+@interface SSSwitch : UIControl
 
 @property (nonatomic, assign, getter=isOn) BOOL on;
 @property (nonatomic, assign) SSSwitchStyle style;

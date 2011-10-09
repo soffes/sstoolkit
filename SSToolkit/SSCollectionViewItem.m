@@ -13,7 +13,12 @@
 #import "SSLabel.h"
 #import "SSDrawingUtilities.h"
 
-@implementation SSCollectionViewItem
+@implementation SSCollectionViewItem {
+	SSCollectionViewItemStyle _style;
+	SSCollectionView *_collectionView;
+	NSIndexPath *_indexPath;
+}
+
 
 #pragma mark - Accessors
 

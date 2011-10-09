@@ -7,20 +7,17 @@
 //
 
 #import "SCSwitchDemoViewController.h"
-#import <SSToolkit/SSSwitch.h>
 
 @implementation SCSwitchDemoViewController
 
-#pragma mark -
-#pragma mark Class Methods
+#pragma mark - Class Methods
 
 + (NSString *)title {
 	return @"Switch";
 }
 
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];

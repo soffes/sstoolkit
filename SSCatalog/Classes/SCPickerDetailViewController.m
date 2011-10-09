@@ -11,8 +11,7 @@
 
 @implementation SCPickerDetailViewController
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -20,8 +19,7 @@
 }
 
 
-#pragma mark -
-#pragma mark SSPickerViewController
+#pragma mark - SSPickerViewController
 
 - (void)loadKeys {
 	self.keys = [[NSTimeZone abbreviationDictionary] allKeys];
@@ -41,8 +39,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UITableViewDelegate
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[super tableView:tableView didSelectRowAtIndexPath:indexPath];

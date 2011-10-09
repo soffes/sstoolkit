@@ -11,22 +11,19 @@
 
 @implementation SCPickerDemoViewController
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize selectedAbbreviation = _selectedAbbreviation;
 
 
-#pragma mark -
-#pragma mark Class Methods
+#pragma mark - Class Methods
 
 + (NSString *)title {
 	return @"Settings Picker";
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (id)init {
 	return self = [super initWithStyle:UITableViewStyleGrouped];
@@ -39,8 +36,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -63,8 +59,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UITableViewDataSource
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
@@ -92,8 +87,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UITableViewDelegate
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	SCPickerDetailViewController *viewController = [[SCPickerDetailViewController alloc] initWithStyle:UITableViewStyleGrouped];

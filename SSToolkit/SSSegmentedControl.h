@@ -15,27 +15,7 @@ enum {
 	SSSegmentedControlNoSegment = UISegmentedControlNoSegment
 };
 
-@interface SSSegmentedControl : UIControl {
-
-@private
-	
-	NSMutableArray *_segments;
-	NSInteger _selectedSegmentIndex;
-	BOOL _momentary;
-	NSMutableDictionary *_segmentMeta;
-	
-	UIImage *_buttonImage;
-	UIImage *_highlightedButtonImage;
-	UIImage *_dividerImage;
-	UIImage *_highlightedDividerImage;
-	
-	UIFont *_font;
-	UIColor *_textColor;
-	UIColor *_disabledTextColor;
-	UIColor *_textShadowColor;
-	CGSize _textShadowOffset;
-	UIEdgeInsets _textEdgeInsets;
-}
+@interface SSSegmentedControl : UIControl
 
 @property (nonatomic, assign, readonly) NSUInteger numberOfSegments;
 @property (nonatomic, assign) NSInteger selectedSegmentIndex;

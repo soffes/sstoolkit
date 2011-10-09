@@ -6,23 +6,7 @@
 //  Copyright 2009-2011 Sam Soffes. All rights reserved.
 //
 
-@class SSHUDWindow;
-
-@interface SSHUDView : UIView {
-	
-@private
-	
-	SSHUDWindow *_hudWindow;
-	UILabel *_textLabel;
-	UIActivityIndicatorView *_activityIndicator;
-	UIImage *_completeImage;
-	UIImage *_failImage;
-	
-	CGSize _hudSize;
-	BOOL _textLabelHidden;
-	BOOL _loading;
-	BOOL _successful;
-}
+@interface SSHUDView : UIView
 
 @property (nonatomic, retain, readonly) UILabel *textLabel;
 @property (nonatomic, assign) BOOL textLabelHidden;

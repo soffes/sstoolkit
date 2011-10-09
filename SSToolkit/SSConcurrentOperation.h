@@ -25,13 +25,7 @@
  
  This allows for convenient handling of asynchronous calls in an operation.
  */
-@interface SSConcurrentOperation : NSOperation {
-
-@private
-	
-    BOOL _isExecuting;
-    BOOL _isFinished;
-}
+@interface SSConcurrentOperation : NSOperation
 
 /**
  Finishes the receiver's task.

@@ -8,18 +8,20 @@
 
 #import "SCPieProgressViewDemoViewController.h"
 
-@implementation SCPieProgressViewDemoViewController
+@implementation SCPieProgressViewDemoViewController {
+	SSPieProgressView *_progressView7;
+	NSTimer *_timer;
+}
 
-#pragma mark -
-#pragma mark Class Methods
+
+#pragma mark - Class Methods
 
 + (NSString *)title {
 	return @"Pie Progress View";
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_progressView7 release];
@@ -29,8 +31,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -89,8 +90,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Timer
+#pragma mark - Timer
 
 - (void)incrementProgress:(NSTimer *)timer {
 	_progressView7.progress = _progressView7.progress + 0.01;

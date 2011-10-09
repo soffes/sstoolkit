@@ -6,12 +6,7 @@
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
-@interface SCImageCollectionViewItem : SSCollectionViewItem {
-
-@private
-	
-	NSURL *_imageURL;
-}
+@interface SCImageCollectionViewItem : SSCollectionViewItem
 
 @property (nonatomic, retain) NSURL *imageURL;
 

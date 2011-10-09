@@ -22,7 +22,11 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 @end
 
 
-@implementation SSViewController
+@implementation SSViewController {
+	UIView *_modalContainerView;
+	UIImageView *_modalContainerBackgroundView;
+	UIButton *_vignetteButton;
+}
 
 #pragma mark - Accessors
 

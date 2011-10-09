@@ -32,19 +32,7 @@ typedef enum {
  more flexible resizing.
  */
 
-@interface SSBadgeView : UIView {
-
-@private
-	
-	SSLabel *_textLabel;
-	UIColor *_badgeColor;
-	UIColor *_highlightedBadgeColor;
-	UIImage *_badgeImage;
-	UIImage *_highlightedBadgeImage;
-	CGFloat _cornerRadius;
-	SSBadgeViewAlignment _badgeAlignment;
-	BOOL _highlighted;
-}
+@interface SSBadgeView : UIView
 
 ///--------------------------------
 /// @name Accessing the Badge Label

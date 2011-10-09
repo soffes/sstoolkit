@@ -8,18 +8,20 @@
 
 #import "SCGradientViewDemoViewController.h"
 
-@implementation SCGradientViewDemoViewController
+@implementation SCGradientViewDemoViewController {
+	BOOL _blue;
+	SSGradientView *_gradientView;
+}
 
-#pragma mark -
-#pragma mark Class Methods
+
+#pragma mark - Class Methods
 
 + (NSString *)title {
 	return @"Gradient View";
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_gradientView release];
@@ -27,8 +29,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -75,8 +76,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Actions
+#pragma mark - Actions
 
 - (void)changeColor:(id)sender {
 	if (_blue) {

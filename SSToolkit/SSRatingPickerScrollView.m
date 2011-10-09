@@ -13,7 +13,12 @@
 #import "SSTextView.h"
 #import "SSDrawingUtilities.h"
 
-@implementation SSRatingPickerScrollView
+@implementation SSRatingPickerScrollView {
+	UIView *_topView;
+	SSGradientView *_gradientView;
+	UIView *_lineView;
+}
+
 
 #pragma mark - Accessors
 

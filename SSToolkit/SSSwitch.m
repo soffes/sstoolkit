@@ -16,7 +16,13 @@
 - (void)_handleDraggingEnded:(id)sender;
 @end
 
-@implementation SSSwitch
+@implementation SSSwitch {
+	UIView *_labelMaskView;
+	BOOL _dragging;
+	CGFloat _dragOffset;
+	NSInteger _hitCount;
+}
+
 
 #pragma mark - Accessors
 

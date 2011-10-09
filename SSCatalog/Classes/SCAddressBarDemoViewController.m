@@ -8,18 +8,22 @@
 
 #import "SCAddressBarDemoViewController.h"
 
-@implementation SCAddressBarDemoViewController
+@implementation SCAddressBarDemoViewController {
+	SSGradientView *_headerView;
+	UILabel *_titleLabel;
+	SSAddressBarTextField *_addressBar;
+	SSWebView *_webView;
+}
 
-#pragma mark -
-#pragma mark Class Methods
+
+#pragma mark - Class Methods
 
 + (NSString *)title {
 	return @"Address bar";
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	_webView.delegate = nil;
@@ -31,8 +35,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -85,8 +88,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UITextFieldDelegate
+#pragma mark - UITextFieldDelegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
 	[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(_removeGrayView) object:nil];
@@ -116,8 +118,7 @@
 }
 
 
-#pragma mark -
-#pragma mark SSWebViewDelegate
+#pragma mark - SSWebViewDelegate
 
 - (void)webViewDidStartLoadingPage:(SSWebView *)aWebView {
 	_addressBar.loading = YES;

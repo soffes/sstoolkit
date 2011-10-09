@@ -6,9 +6,7 @@
 //  Copyright 2010 Sam Soffes, Inc. All rights reserved.
 //
 
-@interface SCLineViewDemoViewController : UIViewController {
-
-}
+@interface SCLineViewDemoViewController : UIViewController
 
 + (NSString *)title;
 

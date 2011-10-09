@@ -6,12 +6,7 @@
 //  Copyright 2009 Sam Soffes, Inc. All rights reserved.
 //
 
-@interface SCHUDViewDemoViewController : UIViewController {
-
-@private
-	
-	SSHUDView *_hud;
-}
+@interface SCHUDViewDemoViewController : UIViewController
 
 + (NSString *)title;
 

@@ -6,9 +6,7 @@
 //  Copyright 2011 Sam Soffes, Inc. All rights reserved.
 //
 
-@interface SCBadgeTableViewCellDemoViewController : UITableViewController {
-
-}
+@interface SCBadgeTableViewCellDemoViewController : UITableViewController
 
 + (NSString *)title;
 

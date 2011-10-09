@@ -6,11 +6,7 @@
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
-#import <SSToolkit/SSRatingPickerViewController.h>
-
-@interface SSRatingDemoViewController : SSRatingPickerViewController {
-    
-}
+@interface SSRatingDemoViewController : SSRatingPickerViewController
 
 + (NSString *)title;
 

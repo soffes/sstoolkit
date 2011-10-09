@@ -12,17 +12,7 @@
  
  This view will automatically center the text and the activity indicator.
  */
-@interface SSLoadingView : UIView {
-
-@private
-	
-	UIActivityIndicatorView *_activityIndicatorView;
-	NSString *_text;
-	UIFont *_font;
-	UIColor *_textColor;
-	UIColor *_shadowColor;
-	CGSize _shadowOffset;
-}
+@interface SSLoadingView : UIView
 
 /**
  A view that indicates loading activity to the user. (read-only)

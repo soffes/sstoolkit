@@ -6,17 +6,7 @@
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
-#import <SSToolkit/SSToolkit.h>
-
-@interface SCAddressBarDemoViewController : UIViewController <UITextFieldDelegate, SSWebViewDelegate> {
-    
-@private
-	
-	SSGradientView *_headerView;
-	UILabel *_titleLabel;
-	SSAddressBarTextField *_addressBar;
-	SSWebView *_webView;
-}
+@interface SCAddressBarDemoViewController : UIViewController <UITextFieldDelegate, SSWebViewDelegate>
 
 + (NSString *)title;
 

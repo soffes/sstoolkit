@@ -12,12 +12,7 @@
 /**
  Creates a controller object that manages a collection view.
  */
-@interface SSCollectionViewController : SSViewController <SSCollectionViewDataSource, SSCollectionViewDelegate> {
-
-@private
-	
-	SSCollectionView *_collectionView;
-}
+@interface SSCollectionViewController : SSViewController <SSCollectionViewDataSource, SSCollectionViewDelegate>
 
 /**
  Returns the table view managed by the controller object. (read-only)

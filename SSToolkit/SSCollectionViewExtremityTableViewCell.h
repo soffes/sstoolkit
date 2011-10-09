@@ -6,12 +6,7 @@
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
-@interface SSCollectionViewExtremityTableViewCell : UITableViewCell {
-
-@private
-	
-	UIView *_extrimityView;
-}
+@interface SSCollectionViewExtremityTableViewCell : UITableViewCell
 
 @property (nonatomic, retain) UIView *extrimityView;
 

@@ -12,14 +12,7 @@
  The indicator will slide in from the left when loading and then back out when it is complete. This is great for a view
  that shows some sort of status that can refresh.
  */
-@interface SSIndicatorLabel : UIView {
-
-@private	
-
-	UILabel *_textLabel;
-	UIActivityIndicatorView *_activityIndicatorView;
-	BOOL _loading;
-}
+@interface SSIndicatorLabel : UIView
 
 /**
  Returns the label used for the main textual content of the view. (read-only)

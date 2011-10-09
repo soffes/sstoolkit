@@ -6,13 +6,7 @@
 //  Copyright 2009 Sam Soffes, Inc. All rights reserved.
 //
 
-@interface SCGradientViewDemoViewController : UIViewController {
-
-@private
-	
-	BOOL _blue;
-	SSGradientView *_gradientView;
-}
+@interface SCGradientViewDemoViewController : UIViewController
 
 + (NSString *)title;
 

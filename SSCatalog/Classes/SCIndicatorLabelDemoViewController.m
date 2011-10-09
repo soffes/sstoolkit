@@ -8,18 +8,27 @@
 
 #import "SCIndicatorLabelDemoViewController.h"
 
-@implementation SCIndicatorLabelDemoViewController
+@implementation SCIndicatorLabelDemoViewController {
+	SSIndicatorLabel *_indicatorLabel;
+}
 
-#pragma mark -
-#pragma mark Class Methods
+
+#pragma mark - Class Methods
 
 + (NSString *)title {
 	return @"Indicator Label";
 }
 
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - NSObject
+
+- (void)dealloc {
+	[_indicatorLabel release];
+	[super dealloc];
+}
+
+
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -64,8 +73,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Actions
+#pragma mark - Actions
 
 - (void)start:(id)sender {
 	[_indicatorLabel startWithText:@"Loading something..."];

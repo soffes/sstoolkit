@@ -14,7 +14,10 @@
 @end
 
 
-@implementation SSTextView
+@implementation SSTextView {
+	BOOL _shouldDrawPlaceholder;
+}
+
 
 #pragma mark - Accessors
 

@@ -19,9 +19,12 @@ static CGFloat kLoadingBackgroundWidth = 49.0f;
 
 @end
 
-@implementation SSAddressBarTextFieldBackgroundView
+@implementation SSAddressBarTextFieldBackgroundView {
+	SSAddressBarTextFieldBackgroundViewInnerView *_innerView;
+}
 
-@synthesize loading;
+
+@synthesize loading = _loading;
 
 - (void)setLoading:(BOOL)isLoading {
 	if (_loading == isLoading) {

@@ -15,18 +15,7 @@
  To receive changes when the `selectedNumberOfStars` changes, add a target for the `UIControlEventValueChanged` control
  event (similar to `UISegmentedControl`).
  */
-@interface SSRatingPicker : UIControl {
-
-@private
-	
-	CGFloat _selectedNumberOfStars;
-	NSUInteger _totalNumberOfStars;
-	UIImage *_emptyStarImage;
-	UIImage *_filledStarImage;
-	CGSize _starSize;
-	CGFloat _starSpacing;
-	UILabel *_textLabel;
-}
+@interface SSRatingPicker : UIControl
 
 ///------------------------------------
 /// @name Accessing the Star Attributes

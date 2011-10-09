@@ -6,12 +6,7 @@
 //  Copyright 2010 Sam Soffes. All rights reserved.
 //
 
-@interface SCIndicatorLabelDemoViewController : UIViewController {
-
-@private
-	
-	SSIndicatorLabel *_indicatorLabel;
-}
+@interface SCIndicatorLabelDemoViewController : UIViewController
 
 + (NSString *)title;
 

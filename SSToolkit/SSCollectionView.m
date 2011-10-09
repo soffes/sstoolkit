@@ -48,11 +48,22 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 - (void)_setSectionInfoItem:(id)object forKey:(NSString *)key section:(NSUInteger)section;
 @end
 
-@implementation SSCollectionView
+@implementation SSCollectionView {
+	NSMutableSet *_visibleItems;
+	NSMutableDictionary *_reuseableItems;
+	NSMutableDictionary *_sectionCache;
+	
+	UITableView *_tableView;
+}
 
 #pragma mark - Accessors
 
 @synthesize dataSource = _dataSource;
+@synthesize delegate = _delegate;
+@synthesize minimumColumnSpacing = _minimumColumnSpacing;
+@synthesize rowSpacing = _rowSpacing;
+@synthesize allowsSelection = _allowsSelection;
+@synthesize extremitiesStyle = _extremitiesStyle;
 
 - (void)setDataSource:(id<SSCollectionViewDataSource>)dataSource {
 	_dataSource = dataSource;
@@ -63,8 +74,6 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 }
 
 
-@synthesize delegate = _delegate;
-
 - (void)setDelegate:(id<SSCollectionViewDelegate>)delegate {
 	_delegate = delegate;
 	
@@ -73,10 +82,6 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	}
 }
 
-
-@synthesize minimumColumnSpacing = _minimumColumnSpacing;
-@synthesize rowSpacing = _rowSpacing;
-@synthesize allowsSelection = _allowsSelection;
 
 - (UIScrollView *)scrollView {
 	return _tableView;
@@ -118,8 +123,6 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	_tableView.backgroundColor = color;
 }
 
-
-@synthesize extremitiesStyle = _extremitiesStyle;
 
 - (void)setExtremitiesStyle:(SSCollectionViewExtremitiesStyle)style {
 	if (_extremitiesStyle == style) {

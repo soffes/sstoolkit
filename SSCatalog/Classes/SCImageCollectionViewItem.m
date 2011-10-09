@@ -11,8 +11,7 @@
 
 @implementation SCImageCollectionViewItem
 
-#pragma mark -
-#pragma mark Accessors
+#pragma mark - Accessors
 
 @synthesize imageURL = _imageURL;
 
@@ -24,8 +23,7 @@
 }
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_imageURL release];
@@ -33,8 +31,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Initializer
+#pragma mark - Initializer
 
 - (id)initWithReuseIdentifier:(NSString *)aReuseIdentifier {
 	if ((self = [super initWithStyle:SSCollectionViewItemStyleImage reuseIdentifier:aReuseIdentifier])) {

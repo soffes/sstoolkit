@@ -8,7 +8,11 @@
 
 #import "SSConcurrentOperation.h"
 
-@implementation SSConcurrentOperation
+@implementation SSConcurrentOperation {
+	BOOL _isExecuting;
+    BOOL _isFinished;
+}
+
 
 #pragma mark - NSObject
 

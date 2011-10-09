@@ -9,17 +9,19 @@
 #import "SCAppDelegate.h"
 #import "SCRootViewController.h"
 
-@implementation SCAppDelegate
+@implementation SCAppDelegate {
+	UIWindow *_window;
+	UINavigationController *_navigationController;
+}
 
-#pragma mark -
-#pragma mark Accessors
+
+#pragma mark - Accessors
 
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
 
 
-#pragma mark -
-#pragma mark NSObject
+#pragma mark - NSObject
 
 - (void)dealloc {
 	[_navigationController release];
@@ -28,8 +30,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIApplicationDelegate
+#pragma mark - UIApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
 
