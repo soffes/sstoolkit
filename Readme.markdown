@@ -10,6 +10,9 @@ If you're using this in your project, I'd love to hear about it! [Send me an ema
 
 ### Views
 
+* [SSAnimatedImageView][] - easily create timed or keyframed animations
+* [SSBadgeView][] - badge accessory view for table cells, similar to Mail.app unread counts
+* [SSBorderedView][] - draw boxes with top and bottom borders with optional insets
 * [SSCollectionView][] - simple collection view modeled after UITableView and NSCollectionView
 * [SSGradientView][] - easily create gradients with optional borders and insets
 * [SSHUDView][] - simple heads-up display

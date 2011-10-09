@@ -50,8 +50,6 @@
 		B24E9E52121DC29A0085F81E /* SSGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E14121DC29A0085F81E /* SSGradientView.m */; };
 		B24E9E53121DC29A0085F81E /* SSHUDView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E15121DC29A0085F81E /* SSHUDView.h */; };
 		B24E9E54121DC29A0085F81E /* SSHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E16121DC29A0085F81E /* SSHUDView.m */; };
-		B24E9E55121DC29A0085F81E /* SSIndicatorLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E17121DC29A0085F81E /* SSIndicatorLabel.h */; };
-		B24E9E56121DC29A0085F81E /* SSIndicatorLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E18121DC29A0085F81E /* SSIndicatorLabel.m */; };
 		B24E9E59121DC29A0085F81E /* SSLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E1B121DC29A0085F81E /* SSLabel.h */; };
 		B24E9E5A121DC29A0085F81E /* SSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E1C121DC29A0085F81E /* SSLabel.m */; };
 		B24E9E5B121DC29A0085F81E /* SSLineView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E1D121DC29A0085F81E /* SSLineView.h */; };
@@ -189,8 +187,6 @@
 		B24E9E14121DC29A0085F81E /* SSGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSGradientView.m; sourceTree = "<group>"; };
 		B24E9E15121DC29A0085F81E /* SSHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSHUDView.h; sourceTree = "<group>"; };
 		B24E9E16121DC29A0085F81E /* SSHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSHUDView.m; sourceTree = "<group>"; };
-		B24E9E17121DC29A0085F81E /* SSIndicatorLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSIndicatorLabel.h; sourceTree = "<group>"; };
-		B24E9E18121DC29A0085F81E /* SSIndicatorLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSIndicatorLabel.m; sourceTree = "<group>"; };
 		B24E9E1B121DC29A0085F81E /* SSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLabel.h; sourceTree = "<group>"; };
 		B24E9E1C121DC29A0085F81E /* SSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSLabel.m; sourceTree = "<group>"; };
 		B24E9E1D121DC29A0085F81E /* SSLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLineView.h; sourceTree = "<group>"; };
@@ -468,8 +464,6 @@
 				B24E9E14121DC29A0085F81E /* SSGradientView.m */,
 				B24E9E15121DC29A0085F81E /* SSHUDView.h */,
 				B24E9E16121DC29A0085F81E /* SSHUDView.m */,
-				B24E9E17121DC29A0085F81E /* SSIndicatorLabel.h */,
-				B24E9E18121DC29A0085F81E /* SSIndicatorLabel.m */,
 				B24E9E1B121DC29A0085F81E /* SSLabel.h */,
 				B24E9E1C121DC29A0085F81E /* SSLabel.m */,
 				B24E9E1D121DC29A0085F81E /* SSLineView.h */,
@@ -584,7 +578,6 @@
 				B24E9E50121DC29A0085F81E /* SSDrawingUtilities.h in Headers */,
 				B24E9E51121DC29A0085F81E /* SSGradientView.h in Headers */,
 				B24E9E53121DC29A0085F81E /* SSHUDView.h in Headers */,
-				B24E9E55121DC29A0085F81E /* SSIndicatorLabel.h in Headers */,
 				B24E9E59121DC29A0085F81E /* SSLabel.h in Headers */,
 				B24E9E5B121DC29A0085F81E /* SSLineView.h in Headers */,
 				B24E9E5D121DC29A0085F81E /* SSLoadingView.h in Headers */,
@@ -739,7 +732,6 @@
 				B24E9E4C121DC29A0085F81E /* NSURL+SSToolkitAdditions.m in Sources */,
 				B24E9E52121DC29A0085F81E /* SSGradientView.m in Sources */,
 				B24E9E54121DC29A0085F81E /* SSHUDView.m in Sources */,
-				B24E9E56121DC29A0085F81E /* SSIndicatorLabel.m in Sources */,
 				B24E9E5A121DC29A0085F81E /* SSLabel.m in Sources */,
 				B24E9E5C121DC29A0085F81E /* SSLineView.m in Sources */,
 				B24E9E5E121DC29A0085F81E /* SSLoadingView.m in Sources */,

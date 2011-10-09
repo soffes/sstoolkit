@@ -19,7 +19,6 @@
 #import "SSCollectionViewItem.h"
 #import "SSGradientView.h"
 #import "SSHUDView.h"
-#import "SSIndicatorLabel.h"
 #import "SSLabel.h"
 #import "SSLineView.h"
 #import "SSLoadingView.h"
@@ -60,7 +59,6 @@
 #import <SSToolkit/SSCollectionViewItem.h>
 #import <SSToolkit/SSGradientView.h>
 #import <SSToolkit/SSHUDView.h>
-#import <SSToolkit/SSIndicatorLabel.h>
 #import <SSToolkit/SSLabel.h>
 #import <SSToolkit/SSLineView.h>
 #import <SSToolkit/SSLoadingView.h>

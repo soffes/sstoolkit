@@ -19,7 +19,6 @@
 		B24E9EB2121DC35B0085F81E /* SCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9EA9121DC35B0085F81E /* SCRootViewController.m */; };
 		B25541EE12FF22B500D6E187 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B25541ED12FF22B500D6E187 /* Default-Landscape~ipad.png */; };
 		B25541F012FF22BA00D6E187 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B25541EF12FF22BA00D6E187 /* Default-Portrait~ipad.png */; };
-		B2572FEC12924C28001FC061 /* SCIndicatorLabelDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2572FEB12924C28001FC061 /* SCIndicatorLabelDemoViewController.m */; };
 		B257303D1292524F001FC061 /* SCLoadingViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B257303C1292524F001FC061 /* SCLoadingViewDemoViewController.m */; };
 		B27B1A581224228000111EA2 /* SCCollectionViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B1A571224228000111EA2 /* SCCollectionViewDemoViewController.m */; };
 		B28C6D0B12FBE96600667755 /* SSRatingDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28C6D0A12FBE96600667755 /* SSRatingDemoViewController.m */; };
@@ -107,8 +106,6 @@
 		B24E9EC5121DC3CF0085F81E /* SSToolkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSToolkit.xcodeproj; path = ../SSToolkit.xcodeproj; sourceTree = SOURCE_ROOT; };
 		B25541ED12FF22B500D6E187 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		B25541EF12FF22BA00D6E187 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
-		B2572FEA12924C28001FC061 /* SCIndicatorLabelDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIndicatorLabelDemoViewController.h; sourceTree = "<group>"; };
-		B2572FEB12924C28001FC061 /* SCIndicatorLabelDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIndicatorLabelDemoViewController.m; sourceTree = "<group>"; };
 		B257303B1292524F001FC061 /* SCLoadingViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLoadingViewDemoViewController.h; sourceTree = "<group>"; };
 		B257303C1292524F001FC061 /* SCLoadingViewDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLoadingViewDemoViewController.m; sourceTree = "<group>"; };
 		B27B1A561224228000111EA2 /* SCCollectionViewDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCollectionViewDemoViewController.h; sourceTree = "<group>"; };
@@ -300,8 +297,6 @@
 				B24E9E9B121DC35B0085F81E /* SCGradientViewDemoViewController.m */,
 				B24E9E9C121DC35B0085F81E /* SCHUDViewDemoViewController.h */,
 				B24E9E9D121DC35B0085F81E /* SCHUDViewDemoViewController.m */,
-				B2572FEA12924C28001FC061 /* SCIndicatorLabelDemoViewController.h */,
-				B2572FEB12924C28001FC061 /* SCIndicatorLabelDemoViewController.m */,
 				B24E9E9E121DC35B0085F81E /* SCLineViewDemoViewController.h */,
 				B24E9E9F121DC35B0085F81E /* SCLineViewDemoViewController.m */,
 				B257303B1292524F001FC061 /* SCLoadingViewDemoViewController.h */,
@@ -486,7 +481,6 @@
 				B24E9EB1121DC35B0085F81E /* SCPieProgressViewDemoViewController.m in Sources */,
 				B24E9EB2121DC35B0085F81E /* SCRootViewController.m in Sources */,
 				B27B1A581224228000111EA2 /* SCCollectionViewDemoViewController.m in Sources */,
-				B2572FEC12924C28001FC061 /* SCIndicatorLabelDemoViewController.m in Sources */,
 				B257303D1292524F001FC061 /* SCLoadingViewDemoViewController.m in Sources */,
 				B2B3CEEF1296F78D001BAC94 /* SCSwitchDemoViewController.m in Sources */,
 				E7FD242712F4FFC5006A6691 /* SCBadgeTableViewCellDemoViewController.m in Sources */,
