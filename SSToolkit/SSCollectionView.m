@@ -420,11 +420,11 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 	// Check for headers and footers
 	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
-		if ([self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:section]) {
+		if ([self _extremityViewForSection:section type:SSCollectionViewCellTypeHeader]) {
 			rows++;
 		}
 
-		if ([self _sectionInfoItemForKey:kSSCollectionViewSectionFooterViewKey section:section]) {
+		if ([self _extremityViewForSection:section type:SSCollectionViewCellTypeFooter]) {
 			rows++;
 		}
 	}
