@@ -20,6 +20,7 @@
 	[_extrimityView release];
 	_extrimityView = view;
 	[self addSubview:_extrimityView];
+	[self setNeedsLayout];
 }
 
 

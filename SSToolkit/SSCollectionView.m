@@ -201,6 +201,10 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	
 	[_sectionCache removeAllObjects];
 	[_tableView reloadData];
+	
+	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
+		
+	}
 }
 
 
@@ -517,20 +521,41 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 
 - (UIView *)_extremityViewForSection:(NSUInteger)section type:(SSCollectionViewCellType)type {
-	// Note: It might be good for this method to check if the cache has been set and hit the delegate if not. For now,
-	// we are relying on UITableView to hit the delegate in the correct order.
+	BOOL isHeader = (type == SSCollectionViewCellTypeHeader);
+	NSString *key = isHeader ? kSSCollectionViewSectionHeaderViewKey : kSSCollectionViewSectionFooterViewKey;
+	id extremity = [self _sectionInfoItemForKey:key section:section];
 	
-	// Header
-	if (type == SSCollectionViewCellTypeHeader) {
-		return [self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:section];
+	// If the extremeity isn't cached, hit the delegate
+	if (!extremity) {
+		// Header
+		if (isHeader) {
+			if ([_delegate respondsToSelector:@selector(collectionView:viewForHeaderInSection:)]) {
+				extremity = [_delegate collectionView:self viewForHeaderInSection:section];
+			}
+		}
+		
+		// Footer
+		else {
+			if ([_delegate respondsToSelector:@selector(collectionView:viewForFooterInSection:)]) {
+				extremity = [_delegate collectionView:self viewForFooterInSection:section];
+			}
+		}
+		
+		// Handle nil
+		if (!extremity) {
+			extremity = [NSNull null];
+		}
+		
+		// Cache
+		[self _setSectionInfoItem:extremity forKey:key section:section];
 	}
 	
-	// Footer
-	else if (type == SSCollectionViewCellTypeFooter) {
-		return [self _sectionInfoItemForKey:kSSCollectionViewSectionFooterViewKey section:section];
+	// Return nil instead of null
+	if (extremity == [NSNull null]) {
+		return nil;
 	}
 	
-	return nil;
+	return extremity;
 }
 
 
@@ -728,8 +753,11 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	// Make sure extremities are on top
 	if ([cell isKindOfClass:[SSCollectionViewExtremityTableViewCell class]]) {
 		// Put it under the scroll bar. I know this is awful.
-		[cell removeFromSuperview];
-		[tableView insertSubview:cell atIndex:[[tableView subviews] count] - 2];
+		NSArray *subviews = [tableView subviews];
+		if ([subviews count] > 2) {
+			[cell removeFromSuperview];
+			[tableView insertSubview:cell atIndex:[subviews count] - 2];
+		}
 		return;
 	}
 	
