@@ -6,9 +6,10 @@
 //  Copyright 2009 Sam Soffes, Inc. All rights reserved.
 //
 
+#import "SCAppDelegate.h"
+
 int main(int argc, char *argv[]) {
-    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-    int retVal = UIApplicationMain(argc, argv, nil, @"SCAppDelegate");
-    [pool release];
-    return retVal;
+    @autoreleasepool {
+		return UIApplicationMain(argc, argv, nil, NSStringFromClass([SCAppDelegate class]));
+	}
 }
