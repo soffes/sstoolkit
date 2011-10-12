@@ -38,7 +38,7 @@
 	[_backgroundView release];
 	_backgroundView = backgroundView;
 	
-	_backgroundView.hidden = _selected || !_selectedBackgroundView;
+	_backgroundView.hidden = _selected && _selectedBackgroundView;
 	
 	[self insertSubview:backgroundView atIndex:0];
 	[self setNeedsLayout];
@@ -159,7 +159,7 @@
 			}
 		}
 		
-		_backgroundView.hidden = _selected || !_selectedBackgroundView;
+		_backgroundView.hidden = _selected && _selectedBackgroundView;
 		_selectedBackgroundView.hidden = !_selected;
 	};
 	
