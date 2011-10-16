@@ -31,24 +31,41 @@ static const short _base64DecodingTable[256] = {
 
 @implementation NSData (SSToolkitAdditions)
 
+
 - (NSString *)MD5Sum {
-	unsigned char digest[CC_MD5_DIGEST_LENGTH], i;
+	unsigned char digest[CC_MD5_DIGEST_LENGTH];
 	CC_MD5(self.bytes, self.length, digest);
-	NSMutableString *ms = [NSMutableString string];
-	for (i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
-		[ms appendFormat: @"%02x", (int)(digest[i])];
+	char digestHexString[(CC_MD5_DIGEST_LENGTH * 2)];
+	for (NSInteger i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+		int high = (digest[i] >> 4) & 0xf, low = (digest[i] >> 0) & 0xf;
+		digestHexString[(i * 2) + 0] = (high < 0xa) ? '0' + high : 'a' + (high - 10);
+		digestHexString[(i * 2) + 1] = (low  < 0xa) ? '0' + low  : 'a' + (low  - 10);
 	}
-	return [[ms copy] autorelease];
+	return([[[NSString alloc] initWithBytes:digestHexString length:(CC_MD5_DIGEST_LENGTH * 2) encoding:NSMacOSRomanStringEncoding] autorelease]);
 }
 
 - (NSString *)SHA1Sum {
-	NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
 	uint8_t digest[CC_SHA1_DIGEST_LENGTH];
 	CC_SHA1(self.bytes, self.length, digest);
+	char digestHexString[(CC_SHA1_DIGEST_LENGTH * 2)];
 	for (NSInteger i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
-		[output appendFormat:@"%02x", digest[i]];
+		int high = (digest[i] >> 4) & 0xf, low = (digest[i] >> 0) & 0xf;
+		digestHexString[(i * 2) + 0] = (high < 0xa) ? '0' + high : 'a' + (high - 10);
+		digestHexString[(i * 2) + 1] = (low  < 0xa) ? '0' + low  : 'a' + (low  - 10);
 	}
-	return output;
+	return([[[NSString alloc] initWithBytes:digestHexString length:(CC_SHA1_DIGEST_LENGTH * 2) encoding:NSMacOSRomanStringEncoding] autorelease]);
+}
+
+- (NSString *)SHA256Sum {
+	uint8_t digest[CC_SHA256_DIGEST_LENGTH];
+	CC_SHA1(self.bytes, self.length, digest);
+	char digestHexString[(CC_SHA256_DIGEST_LENGTH * 2)];
+	for (NSInteger i = 0; i < CC_SHA256_DIGEST_LENGTH; i++) {
+		int high = (digest[i] >> 4) & 0xf, low = (digest[i] >> 0) & 0xf;
+		digestHexString[(i * 2) + 0] = (high < 0xa) ? '0' + high : 'a' + (high - 10);
+		digestHexString[(i * 2) + 1] = (low  < 0xa) ? '0' + low  : 'a' + (low  - 10);
+	}
+	return([[[NSString alloc] initWithBytes:digestHexString length:(CC_SHA256_DIGEST_LENGTH * 2) encoding:NSMacOSRomanStringEncoding] autorelease]);
 }
 
 
