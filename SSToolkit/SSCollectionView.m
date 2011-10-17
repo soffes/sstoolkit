@@ -31,7 +31,7 @@ static NSString *kSSCollectionViewSectionHeaderHeightKey = @"SSCollectionViewSec
 static NSString *kSSCollectionViewSectionFooterHeightKey = @"SSCollectionViewSectionFooterHeight";
 static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSectionItemSize";
 
-@interface SSCollectionView (PrivateMethods)
+@interface SSCollectionView () <UITableViewDataSource, UITableViewDelegate>
 - (void)_initialize;
 - (void)_reuseItem:(SSCollectionViewItem *)item;
 - (void)_reuseItems:(NSArray *)items;
@@ -224,7 +224,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 }
 
 
-- (SSCollectionViewItem *)itemPathForIndex:(NSIndexPath *)indexPath {
+- (SSCollectionViewItem *)itemForIndexPath:(NSIndexPath *)indexPath {
 	__block SSCollectionViewItem *item = nil;
 	[_visibleItems enumerateObjectsUsingBlock:^(id object, BOOL *stop) {
 		if ([[(SSCollectionViewItem *)object indexPath] isEqual:indexPath]) {
@@ -248,7 +248,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	}
 	
 	// Select
-	SSCollectionViewItem *item = [self itemPathForIndex:indexPath];
+	SSCollectionViewItem *item = [self itemForIndexPath:indexPath];
 	[item setHighlighted:NO animated:NO];
 	[item setSelected:YES animated:YES];
 	
@@ -272,7 +272,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	}
 	
 	// Deselect
-	SSCollectionViewItem *item = [self itemPathForIndex:indexPath];
+	SSCollectionViewItem *item = [self itemForIndexPath:indexPath];
 	[item setHighlighted:NO animated:NO];
 	[item setSelected:NO animated:YES];
 	
@@ -337,6 +337,20 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 - (CGRect)rectForFooterInSection:(NSUInteger)section {
 	return [_tableView rectForFooterInSection:(NSInteger)section];
+}
+
+
+- (NSArray *)visibleItems {
+	return [_visibleItems allObjects];
+}
+
+
+- (NSArray *)indexPathsForVisibleRows {
+	NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:[_visibleItems count]];
+	for (SSCollectionViewItem *item in _visibleItems) {
+		[indexPaths addObject:[self indexPathForItem:item]];
+	}
+	return [indexPaths autorelease];
 }
 
 
