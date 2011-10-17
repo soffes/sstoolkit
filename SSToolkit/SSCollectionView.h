@@ -138,9 +138,9 @@ typedef enum {
 /**
  Returns a reusable collection view item object located by its identifier.
  
- @param identifier A string identifying the cell object to be reused.
+ @param identifier A string identifying the item object to be reused.
  
- @return A `SSCollectionViewItem` object with the associated identifier or nil if no such object exists in the
+ @return A `SSCollectionViewItem` object with the associated identifier or `nil` if no such object exists in the
  reusable-item queue.
  */
 - (SSCollectionViewItem *)dequeueReusableItemWithIdentifier:(NSString *)identifier;
@@ -150,7 +150,8 @@ typedef enum {
  
  @param indexPath The index path locating the item in the receiver.
  
- @return An object representing a cell of the table or nil if the cell is not visible or indexPath is out of range.
+ @return An object representing an item of the collection or `nil` if the item is not visible or `indexPath` is out of
+ range.
  
  @see indexPathForItem:
  */
@@ -161,7 +162,7 @@ typedef enum {
  
  @param item An item object of the collection view.
  
- @return An index path representing the row and section of the cell or nil if the index path is invalid.
+ @return An index path representing the row and section of the item or `nil` if the index path is invalid.
  
  @see itemPathForIndex:
  */
