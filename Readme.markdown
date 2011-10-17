@@ -4,7 +4,20 @@ SSToolkit makes life easier. It is made up of various view controllers, views, a
 
 If you're using this in your project, I'd love to hear about it! [Send me an email](mailto:sam@samsoff.es) and let me know which pieces you're using and such.
 
-**Read the [SSToolkit Documentation](http://sstoolk.it/documentation).**
+## Documentation
+
+Install the documentation into Xcode with the following steps:
+
+1. Open Xcode Preferences
+2. Choose Downloads
+3. Choose the Documentation tab
+4. Clip the plus button in the bottom right and enter the following URL:
+    
+        http://docs.sstoolk.it/com.samsoffes.sstoolkit.atom
+
+Be sure you have the docset selected in the organizer to see results for SSToolkit.
+
+You can also **read the [SSToolkit Documentation](http://sstoolk.it/documentation) online.**
 
 ## Classes
 
