@@ -12,6 +12,7 @@
 #import "SSCollectionViewItemInternal.h"
 #import "SSCollectionViewItemTableViewCell.h"
 #import "SSCollectionViewExtremityTableViewCell.h"
+#import "SSCollectionViewTableView.h"
 #import "SSDrawingUtilities.h"
 #import "UIView+SSToolkitAdditions.h"
 
@@ -54,7 +55,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	NSMutableDictionary *_reuseableItems;
 	NSMutableDictionary *_sectionCache;
 	
-	UITableView *_tableView;
+	SSCollectionViewTableView *_tableView;
 }
 
 #pragma mark - Accessors
@@ -352,11 +353,11 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	_reuseableItems = [[NSMutableDictionary alloc] init];
 	_sectionCache = [[NSMutableDictionary alloc] init];
 	
-	_tableView = [[UITableView alloc] initWithFrame:self.bounds];
+	_tableView = [[SSCollectionViewTableView alloc] initWithFrame:self.bounds];
 	_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	_tableView.dataSource = self;
-	_tableView.delegate = self;
 	_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	[_tableView _setDataSource:self];
+	[_tableView _setDelegate:self];
 	[self addSubview:_tableView];
 }
 
