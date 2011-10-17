@@ -171,6 +171,9 @@ typedef enum {
 /**
  Selects an item in the receiver identified by index path, optionally scrolling the item to a location in the receiver.
  
+ Calling this method does cause the delegate to receive a `collectionView:willSelectRowAtIndexPath:` and
+ `collectionView:didSelectRowAtIndexPath:` message, which differs from `UITableView`.
+ 
  @param indexPath An index path identifying an item in the receiver.
  
  @param animated `YES` if you want to animate the selection and any change in position, `NO` if
@@ -178,9 +181,6 @@ typedef enum {
  
  @param scrollPosition A constant that identifies a relative position in the receiving collection view (top, middle,
  bottom) for the row when scrolling concludes.
- 
- Calling this method does cause the delegate to receive a `collectionView:willSelectRowAtIndexPath:` and
- `collectionView:didSelectRowAtIndexPath:` message, which differs from `UITableView`.
  */
 - (void)selectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(SSCollectionViewScrollPosition)scrollPosition;
 
@@ -284,18 +284,18 @@ typedef enum {
 /**
  Asks the data source for an item to insert in a particular location of the collection view. (required)
  
+ The returned `SSCollectionViewItem` object is frequently one that the application reuses for performance reasons. You
+ should fetch a previously created item object that is marked for reuse by sending a
+ `dequeueReusableItemWithIdentifier:` message to `aCollectionView`. The identifier for a reusable item object is
+ assigned when the delegate initializes the item object by calling the `initWithStyle:reuseIdentifier:` method of
+ `SSCollectionViewItem`.
+ 
  @param aCollectionView A collection view object requesting the item.
  
  @param indexPath An index path locating an item in `aCollectionView`.
  
  @return An object inheriting from `SSCollectionViewItem` that the collection view can use for the specified row. An
  assertion is raised if you return `nil`.
- 
- The returned `SSCollectionViewItem` object is frequently one that the application reuses for performance reasons. You
- should fetch a previously created item object that is marked for reuse by sending a
- `dequeueReusableItemWithIdentifier:` message to `aCollectionView`. The identifier for a reusable item object is
- assigned when the delegate initializes the item object by calling the `initWithStyle:reuseIdentifier:` method of
- `SSCollectionViewItem`.
  */
 - (SSCollectionViewItem *)collectionView:(SSCollectionView *)aCollectionView itemForIndexPath:(NSIndexPath *)indexPath;
 
@@ -330,16 +330,16 @@ typedef enum {
 /**
  Asks the delegate for the size to use for an item in a specified location.
  
+ The method allows the `delegate` to specify items with varying sizes per section. This is a required method.
+ 
+ @warning **Important:** Due to an underlying implementation detail, you should not return sizes with their width or
+ height greater than `2009`.
+ 
  @param aCollectionView The collection view object requesting this information.
  
  @param An index path that locates a item in `aCollectionView`.
  
  @return A value that specifies the size (in points) that item should be.
- 
- The method allows the `delegate` to specify items with varying sizes per section. This is a required method.
- 
- @warning **Important:** Due to an underlying implementation detail, you should not return sizes with their width or
- height greater than `2009`.
  
  @exception NSException Thrown if a zero size is returned.
  */
@@ -350,19 +350,20 @@ typedef enum {
 /**
  Tells the delegate the collection view is about to draw an item for a particular index path.
  
- @param aCollectionView The collection view object informing the delegate of this impending event.
- 
- @param item A collection view item object that `aCollectionView` is going to use when drawing the item.
- 
- @param indexPath An index path locating the item in `aCollectionView`.
- 
  A collection view sends this message to its `delegate` just before it uses item to draw a portion of a row, thereby
  permitting the `delegate` to customize the `item` object before it is displayed. This method gives the `delegate` a
  chance to override state-based properties set earlier by the collection view, such as selection and background color.
  After the `delegate` returns, the collection view sets only the alpha and frame properties, and then only when
  animating items as they slide in or out.
  
+ @param aCollectionView The collection view object informing the delegate of this impending event.
+ 
+ @param item A collection view item object that `aCollectionView` is going to use when drawing the item.
+ 
+ @param indexPath An index path locating the item in `aCollectionView`.
+ 
  @see collectionView:itemForIndexPath:
+ 
  @see prepareForReuse
  */ 
 - (void)collectionView:(SSCollectionView *)aCollectionView willDisplayItem:(SSCollectionViewItem *)item atIndexPath:(NSIndexPath *)indexPath;
@@ -374,6 +375,9 @@ typedef enum {
 /**
  Tells the delegate that a specified item is about to be selected.
  
+ This method is not called until users touch an item and then lift their finger; the item isn't selected until then,
+ although it is highlighted on touch-down.
+ 
  @param aCollectionView A collection view object informing the delegate about the impending selection.
  
  @param indexPath An index path locating the row in `aCollectionView`.
@@ -381,10 +385,8 @@ typedef enum {
  @return An index-path object that confirms or alters the selected item. Return an `NSIndexPath` object other than
  `indexPath` if you want another item to be selected. Return `nil` if you don't want the item selected.
  
- This method is not called until users touch an item and then lift their finger; the item isn't selected until then,
- although it is highlighted on touch-down.
- 
  @see collectionView:didSelectItemAtIndexPath:
+ 
  @see collectionView:willDeselectItemAtIndexPath:
  */
 - (void)collectionView:(SSCollectionView *)aCollectionView willSelectItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -392,13 +394,14 @@ typedef enum {
 /**
  Tells the delegate that the specified item is now selected.
  
- @param aCollectionView A collection view object informing the `delegate` about the new item selection.
- 
- @param indexPath An index path locating the new selected item in `aCollectionView`.
- 
  The delegate handles selections in this method.
  
+ @param aCollectionView A collection view object informing the `delegate` about the new item selection.
+ 
+ @param indexPath An index path locating the new selected item in `aCollectionView`. 
+ 
  @see collectionView:willSelectItemAtIndexPath:
+ 
  @see collectionView:didDeselectItemAtIndexPath:
  */
 - (void)collectionView:(SSCollectionView *)aCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -406,17 +409,18 @@ typedef enum {
 /**
  Tells the delegate that a specified item is about to be deselected.
  
+ This method is only called if there is an existing selection when the user tries to select a different item. The
+ `delegate` is sent this method for the previously selected item.
+ 
  @param aCollectionView A collection view object informing the delegate about the impending selection.
  
  @param indexPath An index path locating the item in `aCollectionView` to be deselected.
  
  @return An index-path object that confirms or alters the deselected item. Return an `NSIndexPath` object other than
- `indexPath` if you want another item to be deselected. Return `nil` if you don't want the item deselected.
- 
- This method is only called if there is an existing selection when the user tries to select a different item. The
- `delegate` is sent this method for the previously selected item.
+ `indexPath` if you want another item to be deselected. Return `nil` if you don't want the item deselected. 
  
  @see collectionView:didDeselectItemAtIndexPath:
+ 
  @see collectionView:willSelectItemAtIndexPath:
  */
 - (void)collectionView:(SSCollectionView *)aCollectionView willDeselectItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -424,13 +428,14 @@ typedef enum {
 /**
  Tells the delegate that the specified item is now deselected.
  
+ The delegate handles item deselections in this method.
+ 
  @param aCollectionView A collection view object informing the `delegate` about the item deselection.
 
  @param indexPath An index path locating the deselected item in `aCollectionView`.
  
- The delegate handles item deselections in this method.
- 
  @see collectionView:willDeselectItemAtIndexPath:
+ 
  @see collectionView:didSelectItemAtIndexPath:
  */ 
 - (void)collectionView:(SSCollectionView *)aCollectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -443,14 +448,14 @@ typedef enum {
 /**
  Asks the delegate for a view object to display in the header of the specified section of the collection view.
  
+ The returned object can be a `UILabel` or `UIImageView` object, as well as a custom view. This method only works
+ correctly when `collectionView:heightForHeaderInSection:` is also implemented.
+ 
  @param aCollectionView The collection view object asking for the view object.
  
  @param section An index number identifying a section of `aCollectionView`.
 
  @return A view object to be displayed in the header of section.
- 
- The returned object can be a `UILabel` or `UIImageView` object, as well as a custom view. This method only works
- correctly when `collectionView:heightForHeaderInSection:` is also implemented.
  
  @see collectionView:heightForHeaderInSection:
  */
@@ -459,14 +464,14 @@ typedef enum {
 /**
  Asks the delegate for a view object to display in the fotter of the specified section of the collection view.
  
+ The returned object can be a `UILabel` or `UIImageView` object, as well as a custom view. This method only works
+ correctly when `collectionView:heightForFooterInSection:` is also implemented.
+ 
  @param aCollectionView The collection view object asking for the view object.
  
  @param section An index number identifying a section of `aCollectionView`.
  
  @return A view object to be displayed in the footer of section.
- 
- The returned object can be a `UILabel` or `UIImageView` object, as well as a custom view. This method only works
- correctly when `collectionView:heightForFooterInSection:` is also implemented.
  
  @see collectionView:heightForFooterInSection:
  */
@@ -475,13 +480,13 @@ typedef enum {
 /**
  Asks the delegate for the height to use for the header of a particular section.
  
+ This method allows the delegate to specify section header with varying heights.
+ 
  @param aCollectionView The collection view object requesting this information.
  
  @param section An index number identifying a section of `aCollectionView`.
  
  @return A floating-point value that specifies the height (in points) of the header for section.
- 
- This method allows the delegate to specify section header with varying heights.
  
  @see collectionView:viewForHeaderInSection:
  */
@@ -490,13 +495,13 @@ typedef enum {
 /**
  Asks the delegate for the height to use for the footer of a particular section.
  
+ This method allows the delegate to specify section footers with varying heights.
+ 
  @param aCollectionView The collection view object requesting this information.
  
  @param section An index number identifying a section of `aCollectionView`.
  
  @return A floating-point value that specifies the height (in points) of the footer for section.
- 
- This method allows the delegate to specify section footers with varying heights.
  
  @see collectionView:viewForFooterInSection:
  */
