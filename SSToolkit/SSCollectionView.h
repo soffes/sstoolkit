@@ -46,26 +46,65 @@ typedef enum {
 /**
  Simple collection view.
  
- My goals are to be similar to UITableView and NSCollectionView when possible. Only scrolling vertically is currently
- supported.
+ My goals are to be similar to `UITableView` and `NSCollectionView` when possible. Only scrolling vertically is
+ currently supported.
  
  Editing will be my next focus. Then animating changes when data changes and an option to disable that.
  
- Note: NSIndexPath is uses the same way UITableView uses it. The `row` property is used to specify the item
- instead of row. This is done to make working with other classes that use NSIndexPath (like NSFetchedResultsController)
- easier.
+ Note: `NSIndexPath` is uses the same way `UITableView` uses it. The `row` property is used to specify the item
+ instead of row. This is done to make working with other classes that use `NSIndexPath` (like
+ `NSFetchedResultsController`) easier.
  */
-@interface SSCollectionView : UIView <UITableViewDataSource, UITableViewDelegate>
+@interface SSCollectionView : UIView
+
+///------------------------------
+/// Configuring a Collection View
+///------------------------------
 
 /**
- The object that acts as the data source of the receiving collection view.
+ Returns a reusable collection view item object located by its identifier.
+ 
+ @param identifier A string identifying the item object to be reused.
+ 
+ @return A `SSCollectionViewItem` object with the associated identifier or `nil` if no such object exists in the
+ reusable-item queue.
  */
-@property (nonatomic, assign) id<SSCollectionViewDataSource> dataSource;
+- (SSCollectionViewItem *)dequeueReusableItemWithIdentifier:(NSString *)identifier;
 
 /**
- The object that acts as the delegate of the receiving collection view.
+ Returns the number of item (collection view items) in a specified section.
+ 
+ @param section An index number that identifies a section of the collection.
+ 
+ @return The number of items in the section.
  */
-@property (nonatomic, assign) id<SSCollectionViewDelegate> delegate;
+- (NSUInteger)numberOfItemsInSection:(NSUInteger)section;
+
+/**
+ The number of sections in the collection view.
+ 
+ `SSCollectionView` gets the value returned by this method from its data source and caches it.
+ */
+@property (nonatomic, assign, readonly) NSUInteger numberOfSections;
+
+/**
+ The background view of the collection view.
+ */
+@property (nonatomic, retain) UIView *backgroundView;
+
+/**
+ Returns an accessory view that is displayed above the collection.
+ 
+ The default value is `nil`. The collection header view is different from a section header.
+ */
+@property (nonatomic, retain) UIView *collectionHeaderView;
+
+/**
+ Returns an accessory view that is displayed below the collection.
+ 
+ The default value is `nil`. The collection footer view is different from a section footer.
+ */
+@property (nonatomic, retain) UIView *collectionFooterView;
 
 /**
  The style of the receiving collection view's headers and footers.
@@ -91,59 +130,10 @@ typedef enum {
  */
 @property (nonatomic, assign) CGFloat rowSpacing;
 
-/**
- The background view of the collection view.
- */
-@property (nonatomic, retain) UIView *backgroundView;
 
-/**
- Returns an accessory view that is displayed above the collection.
- 
- The default value is `nil`. The collection header view is different from a section header.
- */
-@property (nonatomic, retain) UIView *collectionHeaderView;
-
-/**
- Returns an accessory view that is displayed below the collection.
- 
- The default value is `nil`. The collection footer view is different from a section footer.
- */
-@property (nonatomic, retain) UIView *collectionFooterView;
-
-/**
- A Boolean value that determines whether selecting items is enabled.
- 
- If the value of this property is `YES`, selecting is enabled, and if it is `NO`, selecting is disabled. The default is
- `YES`.
- */
-@property (nonatomic, assign) BOOL allowsSelection;
-
-/**
- The internal scroll view of the collection view. The delegate must not be overridden.
- */
-@property (nonatomic, retain, readonly) UIScrollView *scrollView;
-
-/**
- The number of sections in the collection view.
- 
- `SSCollectionView` gets the value returned by this method from its data source and caches it.
- */
-@property (nonatomic, assign, readonly) NSUInteger numberOfSections;
-
-/**
- Reloads the items and sections of the receiver.
- */
-- (void)reloadData;
-
-/**
- Returns a reusable collection view item object located by its identifier.
- 
- @param identifier A string identifying the item object to be reused.
- 
- @return A `SSCollectionViewItem` object with the associated identifier or `nil` if no such object exists in the
- reusable-item queue.
- */
-- (SSCollectionViewItem *)dequeueReusableItemWithIdentifier:(NSString *)identifier;
+///-----------------------------
+/// Accessing Items and Sections
+///-----------------------------
 
 /**
  Returns the collection view item at the specified index path.
@@ -155,7 +145,7 @@ typedef enum {
  
  @see indexPathForItem:
  */
-- (SSCollectionViewItem *)itemPathForIndex:(NSIndexPath *)indexPath;
+- (SSCollectionViewItem *)itemForIndexPath:(NSIndexPath *)indexPath;
 
 /**
  Returns an index path representing the row (index) and section of a given collection view item.
@@ -167,6 +157,44 @@ typedef enum {
  @see itemPathForIndex:
  */
 - (NSIndexPath *)indexPathForItem:(SSCollectionViewItem *)item;
+
+/**
+ Returns the collection view items that are visible in the receiver.
+ 
+ @return An array containing `SSCollectionViewItem` objects, each representing a visible item in the receiving
+ collection view. The array's order is undefined.
+ */
+- (NSArray *)visibleItems;
+
+/**
+ Returns an array of index paths each identifying a visible item in the receiver.
+ 
+ @return An array of `NSIndexPath` objects each representing a row index and section index that together identify a
+ visible item in the collection view. Returns `nil` if no items are visible. The array's order is undefined.
+ */ 
+- (NSArray *)indexPathsForVisibleRows;
+
+///------------------------------
+/// Scrolling the Collection View
+///------------------------------
+
+/**
+ Scrolls the receiver until an item identified by index path is at a particular location on the screen.
+ 
+ @param indexPath An index path that identifies an item in the table view by its row index and its section index.
+ 
+ @param scrollPosition A constant that identifies a relative position in the receiving collection view (top, middle,
+ bottom) for row when scrolling concludes.
+ 
+ @param animated `YES` if you want to animate the change in position, `NO` if it should be
+ immediate.
+ */
+- (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(SSCollectionViewScrollPosition)scrollPosition animated:(BOOL)animated;
+
+
+///--------------------
+/// Managing Selections
+///--------------------
 
 /**
  Selects an item in the receiver identified by index path, optionally scrolling the item to a location in the receiver.
@@ -195,17 +223,21 @@ typedef enum {
 - (void)deselectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
 
 /**
- Scrolls the receiver until an item identified by index path is at a particular location on the screen.
+ A Boolean value that determines whether selecting items is enabled.
  
- @param indexPath An index path that identifies an item in the table view by its row index and its section index.
- 
- @param scrollPosition A constant that identifies a relative position in the receiving collection view (top, middle,
- bottom) for row when scrolling concludes.
- 
- @param animated `YES` if you want to animate the change in position, `NO` if it should be
- immediate.
+ If the value of this property is `YES`, selecting is enabled, and if it is `NO`, selecting is disabled. The default is
+ `YES`.
  */
-- (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(SSCollectionViewScrollPosition)scrollPosition animated:(BOOL)animated;
+@property (nonatomic, assign) BOOL allowsSelection;
+
+///------------------------------
+/// Reloading the Collection View
+///------------------------------
+
+/**
+ Reloads the items and sections of the receiver.
+ */
+- (void)reloadData;
 
 /**
  Reloads the specified item.
@@ -214,14 +246,10 @@ typedef enum {
  */
 - (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
 
-/**
- Returns the number of item (collection view items) in a specified section.
- 
- @param section An index number that identifies a section of the collection.
- 
- @return The number of items in the section.
- */
-- (NSUInteger)numberOfItemsInSection:(NSUInteger)section;
+
+///-----------------------------------------------
+/// Accessing Drawing Areas of the Collection View
+///-----------------------------------------------
 
 /**
  Returns the drawing area for a specified section of the receiver.
@@ -232,14 +260,6 @@ typedef enum {
  */
 - (CGRect)rectForSection:(NSUInteger)section;
 
-/** Returns the drawing area for the header of the specified section.
- 
- @param section An index number identifying a section of the collection view.
- 
- @return A rectangle defining the area in which the collection view draws the section header.
- */
-- (CGRect)rectForHeaderInSection:(NSUInteger)section;
-
 /**
  Returns the drawing area for the footer of the specified section.
  
@@ -248,6 +268,29 @@ typedef enum {
  @return A rectangle defining the area in which the collection view draws the section footer.
  */
 - (CGRect)rectForFooterInSection:(NSUInteger)section;
+
+/** Returns the drawing area for the header of the specified section.
+ 
+ @param section An index number identifying a section of the collection view.
+ 
+ @return A rectangle defining the area in which the collection view draws the section header.
+ */
+- (CGRect)rectForHeaderInSection:(NSUInteger)section;
+
+
+///------------------------------------------
+/// Managing the Delegate and the Data Source
+///------------------------------------------
+
+/**
+ The object that acts as the data source of the receiving collection view.
+ */
+@property (nonatomic, assign) id<SSCollectionViewDataSource> dataSource;
+
+/**
+ The object that acts as the delegate of the receiving collection view.
+ */
+@property (nonatomic, assign) id<SSCollectionViewDelegate> delegate;
 
 @end
 
@@ -311,6 +354,16 @@ typedef enum {
  @see collectionView:numberOfItemsInSection:
  */
 - (NSUInteger)numberOfSectionsInCollectionView:(SSCollectionView *)aCollectionView;
+
+///-------------------------
+/// Acessing the Scroll View
+///-------------------------
+
+/**
+ The internal scroll view of the collection view. This should only be used to inspect its state. Its attributes must not
+ be overridden.
+ */
+@property (nonatomic, retain, readonly) UIScrollView *scrollView;
 
 @end
 
