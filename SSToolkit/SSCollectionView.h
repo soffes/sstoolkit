@@ -262,6 +262,10 @@ typedef enum {
  */
 @protocol SSCollectionViewDataSource <NSObject>
 
+///------------------------------
+/// Configuring a Collection View
+///------------------------------
+
 @required
 
 /**
@@ -272,6 +276,8 @@ typedef enum {
  @param section An index number identifying a section in `aCollectionView`.
  
  @return The number of items in `section`.
+ 
+ @see numberOfSectionsInCollectionView:
  */
 - (NSUInteger)collectionView:(SSCollectionView *)aCollectionView numberOfItemsInSection:(NSUInteger)section;
 
@@ -301,28 +307,199 @@ typedef enum {
  @param aCollectionView An object representing the collection view requesting this information.
  
  @return The number of sections in `aCollectionView`. The default value is `1`.
+ 
+ @see collectionView:numberOfItemsInSection:
  */
 - (NSUInteger)numberOfSectionsInCollectionView:(SSCollectionView *)aCollectionView;
 
 @end
 
 
+/**
+ The delegate of a `SSCollectionView` object must adopt the `SSCollectionViewDelegate` protocol. Optional methods of the
+ protocol allow the delegate to manage selections, configure section headings and footers, and perform other actions.
+ */
 @protocol SSCollectionViewDelegate <NSObject, UIScrollViewDelegate>
+
+///------------------------------------------
+/// Configuring Items for the Collection View
+///------------------------------------------
 
 @required
 
+/**
+ Asks the delegate for the size to use for an item in a specified location.
+ 
+ @param aCollectionView The collection view object requesting this information.
+ 
+ @param An index path that locates a item in `aCollectionView`.
+ 
+ @return A value that specifies the size (in points) that item should be.
+ 
+ The method allows the `delegate` to specify items with varying sizes per section. This is a required method.
+ 
+ @warning **Important:** Due to an underlying implementation detail, you should not return sizes with their width or
+ height greater than `2009`.
+ 
+ @exception NSException Thrown if a zero size is returned.
+ */
 - (CGSize)collectionView:(SSCollectionView *)aCollectionView itemSizeForSection:(NSUInteger)section;
 
 @optional
 
-- (UIView *)collectionView:(SSCollectionView *)aCollectionView viewForHeaderInSection:(NSUInteger)section;
-- (CGFloat)collectionView:(SSCollectionView *)aCollectionView heightForHeaderInSection:(NSUInteger)section;
-- (UIView *)collectionView:(SSCollectionView *)aCollectionView viewForFooterInSection:(NSUInteger)section;
-- (CGFloat)collectionView:(SSCollectionView *)aCollectionView heightForFooterInSection:(NSUInteger)section;
-- (void)collectionView:(SSCollectionView *)aCollectionView willSelectItemAtIndexPath:(NSIndexPath *)indexPath;
-- (void)collectionView:(SSCollectionView *)aCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
-- (void)collectionView:(SSCollectionView *)aCollectionView willDeselectItemAtIndexPath:(NSIndexPath *)indexPath;
-- (void)collectionView:(SSCollectionView *)aCollectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath;
+/**
+ Tells the delegate the collection view is about to draw an item for a particular index path.
+ 
+ @param aCollectionView The collection view object informing the delegate of this impending event.
+ 
+ @param item A collection view item object that `aCollectionView` is going to use when drawing the item.
+ 
+ @param indexPath An index path locating the item in `aCollectionView`.
+ 
+ A collection view sends this message to its `delegate` just before it uses item to draw a portion of a row, thereby
+ permitting the `delegate` to customize the `item` object before it is displayed. This method gives the `delegate` a
+ chance to override state-based properties set earlier by the collection view, such as selection and background color.
+ After the `delegate` returns, the collection view sets only the alpha and frame properties, and then only when
+ animating items as they slide in or out.
+ 
+ @see collectionView:itemForIndexPath:
+ @see prepareForReuse
+ */ 
 - (void)collectionView:(SSCollectionView *)aCollectionView willDisplayItem:(SSCollectionViewItem *)item atIndexPath:(NSIndexPath *)indexPath;
+
+///--------------------
+/// Managing Selections
+///--------------------
+
+/**
+ Tells the delegate that a specified item is about to be selected.
+ 
+ @param aCollectionView A collection view object informing the delegate about the impending selection.
+ 
+ @param indexPath An index path locating the row in `aCollectionView`.
+ 
+ @return An index-path object that confirms or alters the selected item. Return an `NSIndexPath` object other than
+ `indexPath` if you want another item to be selected. Return `nil` if you don't want the item selected.
+ 
+ This method is not called until users touch an item and then lift their finger; the item isn't selected until then,
+ although it is highlighted on touch-down.
+ 
+ @see collectionView:didSelectItemAtIndexPath:
+ @see collectionView:willDeselectItemAtIndexPath:
+ */
+- (void)collectionView:(SSCollectionView *)aCollectionView willSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+
+/**
+ Tells the delegate that the specified item is now selected.
+ 
+ @param aCollectionView A collection view object informing the `delegate` about the new item selection.
+ 
+ @param indexPath An index path locating the new selected item in `aCollectionView`.
+ 
+ The delegate handles selections in this method.
+ 
+ @see collectionView:willSelectItemAtIndexPath:
+ @see collectionView:didDeselectItemAtIndexPath:
+ */
+- (void)collectionView:(SSCollectionView *)aCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+
+/**
+ Tells the delegate that a specified item is about to be deselected.
+ 
+ @param aCollectionView A collection view object informing the delegate about the impending selection.
+ 
+ @param indexPath An index path locating the item in `aCollectionView` to be deselected.
+ 
+ @return An index-path object that confirms or alters the deselected item. Return an `NSIndexPath` object other than
+ `indexPath` if you want another item to be deselected. Return `nil` if you don't want the item deselected.
+ 
+ This method is only called if there is an existing selection when the user tries to select a different item. The
+ `delegate` is sent this method for the previously selected item.
+ 
+ @see collectionView:didDeselectItemAtIndexPath:
+ @see collectionView:willSelectItemAtIndexPath:
+ */
+- (void)collectionView:(SSCollectionView *)aCollectionView willDeselectItemAtIndexPath:(NSIndexPath *)indexPath;
+
+/**
+ Tells the delegate that the specified item is now deselected.
+ 
+ @param aCollectionView A collection view object informing the `delegate` about the item deselection.
+
+ @param indexPath An index path locating the deselected item in `aCollectionView`.
+ 
+ The delegate handles item deselections in this method.
+ 
+ @see collectionView:willDeselectItemAtIndexPath:
+ @see collectionView:didSelectItemAtIndexPath:
+ */ 
+- (void)collectionView:(SSCollectionView *)aCollectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath;
+
+
+///--------------------------------------------
+/// Modifying the Header and Footer of Sections
+///--------------------------------------------
+
+/**
+ Asks the delegate for a view object to display in the header of the specified section of the collection view.
+ 
+ @param aCollectionView The collection view object asking for the view object.
+ 
+ @param section An index number identifying a section of `aCollectionView`.
+
+ @return A view object to be displayed in the header of section.
+ 
+ The returned object can be a `UILabel` or `UIImageView` object, as well as a custom view. This method only works
+ correctly when `collectionView:heightForHeaderInSection:` is also implemented.
+ 
+ @see collectionView:heightForHeaderInSection:
+ */
+- (UIView *)collectionView:(SSCollectionView *)aCollectionView viewForHeaderInSection:(NSUInteger)section;
+
+/**
+ Asks the delegate for a view object to display in the fotter of the specified section of the collection view.
+ 
+ @param aCollectionView The collection view object asking for the view object.
+ 
+ @param section An index number identifying a section of `aCollectionView`.
+ 
+ @return A view object to be displayed in the footer of section.
+ 
+ The returned object can be a `UILabel` or `UIImageView` object, as well as a custom view. This method only works
+ correctly when `collectionView:heightForFooterInSection:` is also implemented.
+ 
+ @see collectionView:heightForFooterInSection:
+ */
+- (UIView *)collectionView:(SSCollectionView *)aCollectionView viewForFooterInSection:(NSUInteger)section;
+
+/**
+ Asks the delegate for the height to use for the header of a particular section.
+ 
+ @param aCollectionView The collection view object requesting this information.
+ 
+ @param section An index number identifying a section of `aCollectionView`.
+ 
+ @return A floating-point value that specifies the height (in points) of the header for section.
+ 
+ This method allows the delegate to specify section header with varying heights.
+ 
+ @see collectionView:viewForHeaderInSection:
+ */
+- (CGFloat)collectionView:(SSCollectionView *)aCollectionView heightForHeaderInSection:(NSUInteger)section;
+
+/**
+ Asks the delegate for the height to use for the footer of a particular section.
+ 
+ @param aCollectionView The collection view object requesting this information.
+ 
+ @param section An index number identifying a section of `aCollectionView`.
+ 
+ @return A floating-point value that specifies the height (in points) of the footer for section.
+ 
+ This method allows the delegate to specify section footers with varying heights.
+ 
+ @see collectionView:viewForFooterInSection:
+ */
+- (CGFloat)collectionView:(SSCollectionView *)aCollectionView heightForFooterInSection:(NSUInteger)section;
 
 @end
