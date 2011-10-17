@@ -251,16 +251,57 @@ typedef enum {
 
 @end
 
-
+/**
+ The `SSCollectionViewDataSource` protocol is adopted by an object that mediates the application's data model for a
+ `SSCollectionView` object. The data source provides the collection view object with the information it needs to
+ construct and modify a collection view.
+ 
+ As a representative of the data model, the data source supplies minimal information about the collection view's
+ appearance. The collection view object's delegate—an object adopting the `SSCollectionViewDelegate` protocol—provides
+ that information.
+ */
 @protocol SSCollectionViewDataSource <NSObject>
 
 @required
 
+/**
+ Tells the data source to return the number of items in a given section of a collection view. (required)
+ 
+ @param aCollectionView The collection view object requesting this information.
+ 
+ @param section An index number identifying a section in `aCollectionView`.
+ 
+ @return The number of items in `section`.
+ */
 - (NSUInteger)collectionView:(SSCollectionView *)aCollectionView numberOfItemsInSection:(NSUInteger)section;
+
+/**
+ Asks the data source for an item to insert in a particular location of the collection view. (required)
+ 
+ @param aCollectionView A collection view object requesting the item.
+ 
+ @param indexPath An index path locating an item in `aCollectionView`.
+ 
+ @return An object inheriting from `SSCollectionViewItem` that the collection view can use for the specified row. An
+ assertion is raised if you return `nil`.
+ 
+ The returned `SSCollectionViewItem` object is frequently one that the application reuses for performance reasons. You
+ should fetch a previously created item object that is marked for reuse by sending a
+ `dequeueReusableItemWithIdentifier:` message to `aCollectionView`. The identifier for a reusable item object is
+ assigned when the delegate initializes the item object by calling the `initWithStyle:reuseIdentifier:` method of
+ `SSCollectionViewItem`.
+ */
 - (SSCollectionViewItem *)collectionView:(SSCollectionView *)aCollectionView itemForIndexPath:(NSIndexPath *)indexPath;
 
 @optional
 
+/**
+ Asks the data source to return the number of sections in the table view.
+ 
+ @param aCollectionView An object representing the collection view requesting this information.
+ 
+ @return The number of sections in `aCollectionView`. The default value is `1`.
+ */
 - (NSUInteger)numberOfSectionsInCollectionView:(SSCollectionView *)aCollectionView;
 
 @end
