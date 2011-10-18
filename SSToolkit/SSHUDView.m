@@ -282,11 +282,12 @@ static CGFloat kIndicatorSize = 40.0;
 	[UIView setAnimationDuration:0.2];
 	self.alpha = 0.0f;
 	[UIView commitAnimations];
-	
+
+	[UIView beginAnimations:@"SSHUDViewFadeOutWindow" context:nil];
+	_hudWindow.alpha = 0.0f;
+	[UIView commitAnimations];
+
 	if (animated) {
-		[UIView beginAnimations:@"SSHUDViewFadeOutWindow" context:nil];
-		_hudWindow.alpha = 0.0f;
-		[UIView commitAnimations];
 		[self performSelector:@selector(_removeWindow) withObject:nil afterDelay:0.3];
 	} else {
 		[self _removeWindow];
