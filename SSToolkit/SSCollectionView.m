@@ -337,6 +337,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 		NSNumber *row = [section objectForKey:@"row"];
 		if (!row || indexPath.row < [row integerValue]) {
 			[section setObject:[NSNumber numberWithInteger:indexPath.row] forKey:@"row"];
+			[section setObject:[update objectForKey:@"animation"] forKey:@"animation"];
 		}
 		
 		// Update delta
@@ -351,8 +352,42 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	}
 	
 	// Process each section and apply table view updates
-	for (NSNumber *index in sections) {
-		// TODO
+	for (NSNumber *key in sections) {
+		NSDictionary *section = [sections objectForKey:key];
+		NSInteger sectionIndex = [key integerValue];
+		
+		// Add or delete cells
+		NSInteger delta = [[section objectForKey:@"delta"] integerValue];
+		NSInteger rows = [_tableView numberOfRowsInSection:sectionIndex];
+		UITableViewRowAnimation animation = (UITableViewRowAnimation)[[section objectForKey:@"animation"] integerValue];
+		if (delta != 0) {			
+			// Add rows
+			if (delta > 0) {
+				for (NSInteger i = 1; i <= delta; i++) {
+					NSArray *indexPaths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:rows + i inSection:sectionIndex]];
+					[_tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:animation];
+				}
+			}
+			
+			// Delete rows
+			else {
+				for (NSInteger i = delta; i > 0; i--) {
+					NSArray *indexPaths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:rows - i inSection:sectionIndex]];
+					[_tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:animation];
+				}
+			}
+		}
+		
+		// Reload changed cells
+		NSNumber *top = [section objectForKey:@"row"];
+		if (top) {
+			NSInteger topIndex = [top integerValue];
+			NSInteger topRow = [self _cellIndexPathFromItemIndexPath:[NSIndexPath indexPathForRow:topIndex inSection:sectionIndex]].row;
+			for (NSInteger i = topRow; i < rows + delta; i++) {
+				NSArray *indexPaths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:i inSection:sectionIndex]];
+				[_tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:animation];
+			}
+		}
 	}
 	
 	// Apply updates
