@@ -269,13 +269,114 @@ typedef enum {
 /// @name Inserting, Deleting, and Moving Items and Sections
 ///---------------------------------------------------------
 
+/**
+ Begin a series of method calls that insert, delete, or select items and sections of the receiver.
+ 
+ Call this method if you want subsequent insertions, deletion, and selection operations (for example,
+ `itemForIndexPath:` and `indexPathsForVisibleItems`) to be animated simultaneously. This group of methods must conclude
+ with an invocation of `endUpdates`. These method pairs can be nested. If you do not make the insertion, deletion, and
+ selection calls inside this block, collection view attributes such as item count might become invalid. You should not
+ call `reloadData` within the group; if you call this method within the group, you will need to perform any animations
+ yourself.
+ 
+ @see endUpdates
+ 
+ @warning This functionality was introduced in version 0.1.1 and still considered in development. During development,
+ it has proven to be stable, but use with care.
+ */
 - (void)beginUpdates;
+
+/**
+ Conclude a series of method calls that insert, delete, select, or reload items and sections of the receiver.
+ 
+ You call this method to bracket a series of method calls that began with `beginUpdates` and that consist of operations
+ to insert, delete, select, and reload items and sections of the collection view. When you call `endUpdates`,
+ SSCollectionView animates the operations simultaneously. Invocations of `beginUpdates` and `endUpdates` can be nested.
+ If you do not make the insertion, deletion, and selection calls inside this block, collection view attributes such as
+ item count might become invalid.
+ 
+ @see beginUpdates
+ 
+ @warning Currently only row-based animations are preformed. Eventually item-based animations will be supported.
+ */
 - (void)endUpdates;
+
+/**
+ Inserts items in the receiver at the locations identified by an array of index paths, with an option to animate the
+ insertion.
+ 
+ Note the behavior of this method when it is called in an animation block defined by the `beginUpdates` and `endUpdates`
+ methods. SSCollectionView defers any insertions of items or sections until after it has handled the deletions of rows
+ or sections. This happens regardless of ordering of the insertion and deletion method calls. This is unlike inserting
+ or removing an item in a mutable array, where the operation can affect the array index used for the successive
+ insertion or removal operation.
+ 
+ @param indexPaths An array of NSIndexPath objects each representing a item index and section index that together
+ identify an item in the collection view.
+ 
+ @param animation A constant that either specifies the kind of animation to perform when inserting the item or requests
+ no animation. See `SSCollectionViewItemAnimation` in the header file for more.
+ 
+ @warning Currently, this is only supported inside of a `beginUpdates` and `endUpdates` animation block.
+ */
 - (void)insertItemsAtIndexPaths:(NSArray *)indexPaths withItemAnimation:(SSCollectionViewItemAnimation)animation;
+
+/**
+ Deletes the items specified by an array of index paths, with an option to animate the deletion.
+ 
+ Note the behavior of this method when it is called in an animation block defined by the `beginUpdates` and `endUpdates`
+ methods. SSCollectionView defers any insertions of items or sections until after it has handled the deletions of rows
+ or sections. This happens regardless of ordering of the insertion and deletion method calls. This is unlike inserting
+ or removing an item in a mutable array, where the operation can affect the array index used for the successive
+ insertion or removal operation.
+ 
+ @param indexPaths An array of NSIndexPath objects each representing a item index and section index that together
+ identify an item in the collection view.
+ 
+ @param animation A constant that either specifies the kind of animation to perform when inserting the item or requests
+ no animation. See `SSCollectionViewItemAnimation` in the header file for more.
+ 
+ @warning Currently, this is only supported inside of a `beginUpdates` and `endUpdates` animation block.
+ */
 - (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths withItemAnimation:(SSCollectionViewItemAnimation)animation;
+
+/**
+ Inserts one or more sections in the receiver, with an option to animate the insertion.
+ 
+ Note the behavior of this method when it is called in an animation block defined by the `beginUpdates` and `endUpdates`
+ methods. SSCollectionView defers any insertions of items or sections until after it has handled the deletions of rows
+ or sections. This happens regardless of ordering of the insertion and deletion method calls. This is unlike inserting
+ or removing an item in a mutable array, where the operation can affect the array index used for the successive
+ insertion or removal operation.
+ 
+ @param sections An index set that specifies the sections to insert in the receiving collection view. If a section
+ already exists at the specified index location, it is moved down one index location.
+ 
+ @param animation A constant that indicates how the insertion is to be animated, for example, fade in or slide in from
+ the left. See `SSCollectionViewItemAnimation` in the header file for more.
+ 
+ @warning Currently, this is only supported inside of a `beginUpdates` and `endUpdates` animation block.
+ */
 - (void)insertSections:(NSIndexSet *)sections withItemAnimation:(SSCollectionViewItemAnimation)animation;
+
+/**
+ Deletes one or more sections in the receiver, with an option to animate the deletion.
+ 
+ Note the behavior of this method when it is called in an animation block defined by the `beginUpdates` and `endUpdates`
+ methods. SSCollectionView defers any insertions of items or sections until after it has handled the deletions of rows
+ or sections. This happens regardless of ordering of the insertion and deletion method calls. This is unlike inserting
+ or removing an item in a mutable array, where the operation can affect the array index used for the successive
+ insertion or removal operation.
+ 
+ @param sections An index set that specifies the sections to insert in the receiving collection view. If a section
+ already exists at the specified index location, it is moved down one index location.
+ 
+ @param animation A constant that indicates how the insertion is to be animated, for example, fade in or slide in from
+ the left. See `SSCollectionViewItemAnimation` in the header file for more.
+ 
+ @warning Currently, this is only supported inside of a `beginUpdates` and `endUpdates` animation block.
+ */
 - (void)deleteSections:(NSIndexSet *)sections withItemAnimation:(SSCollectionViewItemAnimation)animation;
-- (void)moveSection:(NSInteger)section toSection:(NSInteger)newSection;
 
 
 ///------------------------------------

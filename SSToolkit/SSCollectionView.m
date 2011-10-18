@@ -450,11 +450,6 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 }
 
 
-- (void)moveSection:(NSInteger)section toSection:(NSInteger)newSection {
-	[_tableView moveSection:section toSection:newSection];
-}
-
-
 #pragma mark - Reloading the Collection View
 
 - (void)reloadData {
