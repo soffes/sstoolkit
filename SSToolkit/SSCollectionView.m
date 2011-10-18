@@ -51,11 +51,13 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 @end
 
 @implementation SSCollectionView {
+	SSCollectionViewTableView *_tableView;
+	
 	NSMutableSet *_visibleItems;
 	NSMutableDictionary *_reuseableItems;
 	NSMutableDictionary *_sectionCache;
-	
-	SSCollectionViewTableView *_tableView;
+	NSMutableArray *_updates;
+	NSUInteger _updatesDepth;
 }
 
 #pragma mark - Accessors
@@ -157,6 +159,10 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	[_sectionCache removeAllObjects];
 	[_sectionCache release];
 	_sectionCache = nil;
+	
+	[_updates removeAllObjects];
+	[_updates release];
+	_updates = nil;
 	
 	[super dealloc];
 }
@@ -351,6 +357,112 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 		[indexPaths addObject:[self indexPathForItem:item]];
 	}
 	return [indexPaths autorelease];
+}
+
+
+#pragma mark - Inserting, Deleting, and Moving Items and Sections
+
+- (void)beginUpdates {
+	[_tableView beginUpdates];
+	
+	// TODO: This should be thread safe and it currently is not
+	if (!_updates) {
+		_updates = [[NSMutableArray alloc] init];
+	}
+	
+	// Update blocks can be nested
+	_updatesDepth++;
+	[_updates insertObject:[NSMutableArray array] atIndex:_updatesDepth];
+}
+
+
+- (void)endUpdates {
+	// Aggregate all item internal updates
+	NSMutableDictionary *sections = [[NSMutableDictionary alloc] init];
+	for (NSDictionary *update in [_updates objectAtIndex:_updatesDepth]) {
+		NSIndexPath *indexPath = [update objectForKey:@"indexPath"];
+		NSNumber *key = [NSNumber numberWithInteger:indexPath.section];
+		
+		NSMutableDictionary *section = [sections objectForKey:key];
+		if (!section) {
+			[sections setObject:[NSMutableDictionary dictionary] forKey:key];
+		}
+		
+		// Update row closest to the top
+		NSNumber *row = [section objectForKey:@"row"];
+		if (!row || indexPath.row < [row integerValue]) {
+			[section setObject:[NSNumber numberWithInteger:indexPath.row] forKey:@"row"];
+		}
+		
+		// Update delta
+		NSInteger delta = [[section objectForKey:@"delta"] integerValue];
+		if ([[update objectForKey:@"type"] isEqualToString:@"insert"]) {
+			delta++;
+		} else if ([[update objectForKey:@"type"] isEqualToString:@"delete"]) {
+			delta--;
+		}
+		
+		[section setObject:[NSNumber numberWithInteger:delta] forKey:@"delta"];
+	}
+	
+	// Process each section and apply table view updates
+	for (NSNumber *index in sections) {
+		// TODO
+	}
+	
+	// Apply updates
+	[_tableView endUpdates];
+	
+	// Clean up internal representation
+	[_updates removeObjectAtIndex:_updatesDepth];
+	_updatesDepth--;
+}
+
+
+- (void)insertItemsAtIndexPaths:(NSArray *)indexPaths withItemAnimation:(SSCollectionViewItemAnimation)animation {
+	if (_updatesDepth == 0) {
+		[[NSException exceptionWithName:@"SSCollectionViewNoUpdatesBlockException" reason:@"You must call `insertItemsAtIndexPaths:withItemAnimation:` in a `beginUpdates`/`endUpdates` block." userInfo:nil] raise];
+		return;
+	}
+	
+	for (NSIndexPath *indexPath in indexPaths) {
+		[[_updates objectAtIndex:_updatesDepth] addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+														   @"insert", @"type",
+														   indexPath, @"indexPath",
+														   [NSNumber numberWithInteger:(NSInteger)animation], @"animation",
+														   nil]];
+	}
+}
+
+
+- (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths withItemAnimation:(SSCollectionViewItemAnimation)animation {
+	if (_updatesDepth == 0) {
+		[[NSException exceptionWithName:@"SSCollectionViewNoUpdatesBlockException" reason:@"You must call `deleteItemsAtIndexPaths:withItemAnimation:` in a `beginUpdates`/`endUpdates` block." userInfo:nil] raise];
+		return;
+	}
+	
+	for (NSIndexPath *indexPath in indexPaths) {
+		[[_updates objectAtIndex:_updatesDepth] addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+														   @"delete", @"type",
+														   indexPath, @"indexPath",
+														   [NSNumber numberWithInteger:(NSInteger)animation], @"animation",
+														   nil]];
+	}
+}
+
+
+- (void)insertSections:(NSIndexSet *)sections withItemAnimation:(SSCollectionViewItemAnimation)animation {
+	[_tableView insertSections:sections withRowAnimation:(UITableViewRowAnimation)animation];
+}
+
+
+- (void)deleteSections:(NSIndexSet *)sections withItemAnimation:(SSCollectionViewItemAnimation)animation {
+	[_tableView deleteSections:sections withRowAnimation:(UITableViewRowAnimation)animation];
+}
+
+
+- (void)moveSection:(NSInteger)section toSection:(NSInteger)newSection {
+	[_tableView moveSection:section toSection:newSection];
 }
 
 
