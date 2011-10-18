@@ -29,6 +29,7 @@
  */
 - (id)randomObject;
 
+
 ///--------------------------
 /// @name Deriving New Arrays
 ///--------------------------
@@ -39,6 +40,7 @@
  @return A new array containing the receiving array's elements rearranged in a random order.
  */
 - (NSArray *)shuffledArray;
+
 
 ///--------------
 /// @name Hashing

@@ -25,13 +25,13 @@
 /**
  Start an image animation.
  
+ The duration is set to the appropriate length for playing the images at 30fps.
+ 
  @param animationName The named of the animation.
  
  @param images An array of `UIImage` objects that will be animated.
  
  @param delegate The delegate of the animation.
- 
- The duration is set to the appropriate length for playing the images at 30fps.
  */
 - (void)startImageAnimation:(NSString *)animationName images:(NSArray *)images delegate:(id<SSAnimatedImageViewDelegate>)delegate;
 
@@ -51,12 +51,15 @@
  */
 - (void)startImageAnimation:(NSString *)animationName images:(NSArray *)images duration:(NSTimeInterval)duration repeatCount:(NSUInteger)repeatCount delegate:(id<SSAnimatedImageViewDelegate>)delegate;
 
+
 ///--------------------------------
 /// @name Starting Timed Animations
 ///--------------------------------
 
 /**
  Start a timed image animation with repeat count.
+ 
+ See `CAKeyframeAnimation`'s documentation for more information on how to specify `keyTimes`.
  
  @param animationName The named of the animation.
  
@@ -67,8 +70,6 @@
  @param repeatCount The number of times the animation repeats. Specify `0` to repeat indefinitely.
  
  @param delegate The delegate of the animation.
- 
- See `CAKeyframeAnimation`'s documentation for more information on how to specify `keyTimes`.
  */
 - (void)startTimedImageAnimation:(NSString *)animationName images:(NSArray *)images keyTimes:(NSArray *)keyTimes repeatCount:(NSUInteger)repeatCount delegate:(id<SSAnimatedImageViewDelegate>)delegate;
 

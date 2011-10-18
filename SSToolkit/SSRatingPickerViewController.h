@@ -29,6 +29,7 @@
  */
 @property (nonatomic, retain, readonly) SSRatingPicker *ratingPicker;
 
+
 ///-------------------------------
 /// @name Accessing the Text Input
 ///-------------------------------

@@ -25,6 +25,7 @@
  */
 @property (nonatomic, retain) UIColor *placeholderTextColor;
 
+
 ///------------------------------
 /// @name Drawing and Positioning
 ///------------------------------

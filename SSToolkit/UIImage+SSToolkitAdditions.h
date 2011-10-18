@@ -31,6 +31,7 @@
  */
 + (UIImage *)imageNamed:(NSString *)imageName bundleName:(NSString *)bundleName;
 
+
 ///---------------
 /// @name Cropping
 ///---------------
@@ -52,6 +53,7 @@
  @return A new square image object.
  */
 - (UIImage *)squareImage;
+
 
 ///-----------------
 /// @name Stretching

@@ -17,6 +17,7 @@
  */
 @interface SSRatingPicker : UIControl
 
+
 ///------------------------------------
 /// @name Accessing the Star Attributes
 ///------------------------------------
@@ -63,6 +64,7 @@
  The default is `19.0`.
  */
 @property (nonatomic, assign) CGFloat starSpacing;
+
 
 ///-------------------------------
 /// @name Accessing the Text Label

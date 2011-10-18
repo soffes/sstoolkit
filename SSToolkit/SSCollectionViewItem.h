@@ -122,24 +122,18 @@ typedef enum {
 /**
  Sets the selected state of the item, optionally animating the transition between states.
  
+ The selection affects the appearance of labels, image, and background. When the the selected state of a cell to `YES`,
+ it draws the background for selected items with its title in its `highlightedTextColor`.
+ 
  @param selected `YES` to set the item as selected, `NO` to set it as unselected. The default is `NO`.
  
  @param animated `YES` to animate the transition between selected states, `NO` to make the transition immediate.
- 
- The selection affects the appearance of labels, image, and background. When the the selected state of a cell to `YES`,
- it draws the background for selected items with its title in its `highlightedTextColor`.
  */
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated;
 
 /**
  Sets the highlighted state of the item, optionally animating the transition between states.
  
- @param highlighted `YES` to set the item as highlighted, `NO` to set it as
- unhighlighted. The default is `NO`.
- 
- @param animated `YES` to animate the transition between highlighted states, `NO`
- to make the transition immediate.
-
  Highlights or unhighlights the item, animating the transition between regular and highlighted state if animated is
  `YES`. Highlighting affects the appearance of the items's labels, image, and background.
  
@@ -148,6 +142,12 @@ typedef enum {
  image using the `imageView` property and set the `UIImageView` object's `highlightedImage` property.
  
  A custom table item may override this method to make any transitory appearance changes.
+ 
+ @param highlighted `YES` to set the item as highlighted, `NO` to set it as
+ unhighlighted. The default is `NO`.
+ 
+ @param animated `YES` to animate the transition between highlighted states, `NO`
+ to make the transition immediate.
  */
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated;
 

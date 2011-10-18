@@ -24,6 +24,7 @@
  */
 - (BOOL)containsString:(NSString *)string;
 
+
 ///--------------
 /// @name Hashing
 ///--------------
@@ -41,6 +42,7 @@
  @return The string of the SHA1 sum of the receiver.
  */
 - (NSString *)SHA1Sum;
+
 
 ///-------------------------
 /// @name Comparing Versions
@@ -60,6 +62,7 @@
  @return A comparison result for the reciever and a given `version`
  */
 - (NSComparisonResult)compareToVersionString:(NSString *)version;
+
 
 ///-----------------------------------
 /// @name HTML Escaping and Unescaping
@@ -82,6 +85,7 @@
  @see escapeHTML
  */
 - (NSString *)unescapeHTML;
+
 
 ///----------------------------------
 /// @name URL Escaping and Unescaping
@@ -109,6 +113,7 @@
  @see stringByEscapingForURLQuery
  */
 - (NSString *)stringByUnescapingFromURLQuery;
+
 
 ///-----------------------------------------------
 /// @name URL Encoding and Unencoding (Deprecated)
@@ -139,6 +144,7 @@
  */
 - (NSString *)URLDecodedString;
 
+
 ///----------------------
 /// @name Base64 Encoding
 ///----------------------
@@ -161,6 +167,7 @@
  @return String contained in `base64String`
  */
 + (NSString *)stringWithBase64String:(NSString *)base64String;
+
 
 ///---------------
 /// @name Trimming

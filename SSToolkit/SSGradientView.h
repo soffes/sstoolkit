@@ -26,7 +26,7 @@ typedef enum {
 
 ///---------------------------
 /// @name Drawing the Gradient
-///-------------------------
+///---------------------------
 
 /**
  An array of `UIColor` objects used to draw the gradient. If the value is `nil`, the `backgroundColor` will be drawn
@@ -50,6 +50,7 @@ typedef enum {
  The default is `SSGradientViewDirectionHorizontal`.
  */
 @property (nonatomic, assign) SSGradientViewDirection direction;
+
 
 ///-------------------------
 /// @name Deprecated Methods

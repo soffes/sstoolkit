@@ -43,6 +43,7 @@ typedef enum {
  */
 @property (nonatomic, retain, readonly) SSLabel *textLabel;
 
+
 ///-------------------------------------
 /// @name Accessing the Badge Attributes
 ///-------------------------------------
@@ -88,6 +89,7 @@ typedef enum {
  */
 @property (nonatomic, assign, getter=isHighlighted) BOOL highlighted;
 
+
 ///---------------------
 /// @name Drawing Images
 ///---------------------
@@ -109,6 +111,7 @@ typedef enum {
  Setting a strechable image for this property is recommended.
  */
 @property (nonatomic, retain) UIImage *highlightedBadgeImage;
+
 
 ///---------------
 /// @name Defaults

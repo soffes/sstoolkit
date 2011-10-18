@@ -22,6 +22,7 @@
  */
 - (UIImage *)imageRepresentation;
 
+
 ///-------------------------
 /// @name Hiding and Showing
 ///-------------------------
@@ -35,6 +36,7 @@
  Sets the `alpha` value of the receiver to `1.0`.
  */
 - (void)show;
+
 
 ///------------------------
 /// @name Fading In and Out
@@ -60,6 +62,7 @@
  The receiver will fade in in `0.2` seconds.
  */
 - (void)fadeIn;
+
 
 ///----------------------------------
 /// @name Managing the View Hierarchy
