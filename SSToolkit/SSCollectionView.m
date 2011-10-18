@@ -57,7 +57,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	NSMutableDictionary *_reuseableItems;
 	NSMutableDictionary *_sectionCache;
 	NSMutableArray *_updates;
-	NSUInteger _updatesDepth;
+	NSInteger _updatesDepth;
 }
 
 #pragma mark - Accessors
@@ -313,82 +313,95 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	// TODO: This should be thread safe and it currently is not
 	if (!_updates) {
 		_updates = [[NSMutableArray alloc] init];
+		_updatesDepth = -1;
 	}
 	
 	// Update blocks can be nested
 	_updatesDepth++;
-	[_updates insertObject:[NSMutableArray array] atIndex:_updatesDepth];
+	[_updates addObject:[NSMutableArray array]];
 }
 
 
 - (void)endUpdates {
-	// Aggregate all item internal updates
-	NSMutableDictionary *sections = [[NSMutableDictionary alloc] init];
-	for (NSDictionary *update in [_updates objectAtIndex:_updatesDepth]) {
-		NSIndexPath *indexPath = [update objectForKey:@"indexPath"];
-		NSNumber *key = [NSNumber numberWithInteger:indexPath.section];
-		
-		NSMutableDictionary *section = [sections objectForKey:key];
-		if (!section) {
-			[sections setObject:[NSMutableDictionary dictionary] forKey:key];
-		}
-		
-		// Update row closest to the top
-		NSNumber *row = [section objectForKey:@"row"];
-		if (!row || indexPath.row < [row integerValue]) {
-			[section setObject:[NSNumber numberWithInteger:indexPath.row] forKey:@"row"];
-			[section setObject:[update objectForKey:@"animation"] forKey:@"animation"];
-		}
-		
-		// Update delta
-		NSInteger delta = [[section objectForKey:@"delta"] integerValue];
-		if ([[update objectForKey:@"type"] isEqualToString:@"insert"]) {
-			delta++;
-		} else if ([[update objectForKey:@"type"] isEqualToString:@"delete"]) {
-			delta--;
-		}
-		
-		[section setObject:[NSNumber numberWithInteger:delta] forKey:@"delta"];
-	}
+//	NSLog(@"updates: %@", [_updates objectAtIndex:_updatesDepth]);
+//	
+//	// Aggregate all item internal updates
+//	NSMutableDictionary *sections = [[NSMutableDictionary alloc] init];
+//	for (NSDictionary *update in [_updates objectAtIndex:_updatesDepth]) {
+//		NSIndexPath *indexPath = [update objectForKey:@"indexPath"];
+//		NSNumber *key = [NSNumber numberWithInteger:indexPath.section];
+//		
+//		NSMutableDictionary *section = [sections objectForKey:key];
+//		if (!section) {
+//			section = [NSMutableDictionary dictionary];
+//			[sections setObject:section forKey:key];
+//		}
+//		
+//		// Update row closest to the top
+//		NSNumber *row = [section objectForKey:@"row"];
+//		if (!row || indexPath.row < [row integerValue]) {
+//			[section setObject:[NSNumber numberWithInteger:indexPath.row] forKey:@"row"];
+//			[section setObject:[update objectForKey:@"animation"] forKey:@"animation"];
+//		}
+//		
+//		// Update delta
+//		NSInteger delta = [[section objectForKey:@"delta"] integerValue];
+//		if ([[update objectForKey:@"type"] isEqualToString:@"insert"]) {
+//			delta++;
+//		} else if ([[update objectForKey:@"type"] isEqualToString:@"delete"]) {
+//			delta--;
+//		}
+//		
+//		[section setObject:[NSNumber numberWithInteger:delta] forKey:@"delta"];
+//	}
+//	
+//	NSLog(@"sections: %@", sections);
+//	
+//	// Process each section and apply table view updates
+//	for (NSNumber *key in sections) {
+//		NSDictionary *section = [sections objectForKey:key];
+//		NSInteger sectionIndex = [key integerValue];
+//		
+//		// Add or delete cells
+//		NSInteger delta = [[section objectForKey:@"delta"] integerValue];
+//		NSInteger rows = [_tableView numberOfRowsInSection:sectionIndex];
+//		UITableViewRowAnimation animation = (UITableViewRowAnimation)[[section objectForKey:@"animation"] integerValue];
+//		if (delta != 0) {			
+//			// Add rows
+//			if (delta > 0) {
+//				for (NSInteger i = 1; i <= delta; i++) {
+//					NSLog(@"Add row: %@", [NSIndexPath indexPathForRow:rows + i inSection:sectionIndex]);
+//					NSArray *indexPaths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:rows + i inSection:sectionIndex]];
+//					[_tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:animation];
+//				}
+//			}
+//			
+//			// Delete rows
+//			else {
+//				for (NSInteger i = delta; i > 0; i--) {
+//					NSLog(@"Delete row: %@", [NSIndexPath indexPathForRow:rows - i inSection:sectionIndex]);
+//					NSArray *indexPaths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:rows - i inSection:sectionIndex]];
+//					[_tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:animation];
+//				}
+//			}
+//		}
+//		
+//		// Reload changed cells
+//		NSNumber *top = [section objectForKey:@"row"];
+//		if (top) {
+//			NSInteger topIndex = [top integerValue];
+//			NSInteger topRow = [self _cellIndexPathFromItemIndexPath:[NSIndexPath indexPathForRow:topIndex inSection:sectionIndex]].row;
+//			for (NSInteger i = topRow; i < rows + delta; i++) {
+//				NSLog(@"Reload row: %@", [NSIndexPath indexPathForRow:i inSection:sectionIndex]);
+//				NSArray *indexPaths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:i inSection:sectionIndex]];
+//				[_tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:animation];
+//			}
+//		}
+//	}
 	
-	// Process each section and apply table view updates
-	for (NSNumber *key in sections) {
-		NSDictionary *section = [sections objectForKey:key];
-		NSInteger sectionIndex = [key integerValue];
-		
-		// Add or delete cells
-		NSInteger delta = [[section objectForKey:@"delta"] integerValue];
-		NSInteger rows = [_tableView numberOfRowsInSection:sectionIndex];
-		UITableViewRowAnimation animation = (UITableViewRowAnimation)[[section objectForKey:@"animation"] integerValue];
-		if (delta != 0) {			
-			// Add rows
-			if (delta > 0) {
-				for (NSInteger i = 1; i <= delta; i++) {
-					NSArray *indexPaths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:rows + i inSection:sectionIndex]];
-					[_tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:animation];
-				}
-			}
-			
-			// Delete rows
-			else {
-				for (NSInteger i = delta; i > 0; i--) {
-					NSArray *indexPaths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:rows - i inSection:sectionIndex]];
-					[_tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:animation];
-				}
-			}
-		}
-		
-		// Reload changed cells
-		NSNumber *top = [section objectForKey:@"row"];
-		if (top) {
-			NSInteger topIndex = [top integerValue];
-			NSInteger topRow = [self _cellIndexPathFromItemIndexPath:[NSIndexPath indexPathForRow:topIndex inSection:sectionIndex]].row;
-			for (NSInteger i = topRow; i < rows + delta; i++) {
-				NSArray *indexPaths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:i inSection:sectionIndex]];
-				[_tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:animation];
-			}
-		}
-	}
+	// TODO:
+	// * Remove extremities from row calculations
+	// * Calculate row delta using number of items per row
 	
 	// Apply updates
 	[_tableView endUpdates];
@@ -400,7 +413,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 
 - (void)insertItemsAtIndexPaths:(NSArray *)indexPaths withItemAnimation:(SSCollectionViewItemAnimation)animation {
-	if (_updatesDepth == 0) {
+	if (_updatesDepth < 0) {
 		[[NSException exceptionWithName:@"SSCollectionViewNoUpdatesBlockException" reason:@"You must call `insertItemsAtIndexPaths:withItemAnimation:` in a `beginUpdates`/`endUpdates` block." userInfo:nil] raise];
 		return;
 	}
@@ -416,7 +429,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 
 - (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths withItemAnimation:(SSCollectionViewItemAnimation)animation {
-	if (_updatesDepth == 0) {
+	if (_updatesDepth < 0) {
 		[[NSException exceptionWithName:@"SSCollectionViewNoUpdatesBlockException" reason:@"You must call `deleteItemsAtIndexPaths:withItemAnimation:` in a `beginUpdates`/`endUpdates` block." userInfo:nil] raise];
 		return;
 	}
