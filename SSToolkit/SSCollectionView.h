@@ -40,6 +40,33 @@ typedef enum {
 	SSCollectionViewExtremitiesStyleScrolling = UITableViewStyleGrouped
 } SSCollectionViewExtremitiesStyle;
 
+
+/**
+ The type of animation when items are inserted or deleted.
+ */
+typedef enum {
+	/** The inserted or deleted item or items fades into or out of the collection view. */
+	SSCollectionViewItemAnimationFade = UITableViewRowAnimationFade,
+	
+	/** The inserted item or items slides in from the right; the deleted item or items slides out to the right. */
+	SSCollectionViewItemAnimationRight = UITableViewRowAnimationRight,
+	
+	/** The inserted item or items slides in from the left; the deleted item or items slides out to the left. */
+	SSCollectionViewItemAnimationLeft = UITableViewRowAnimationLeft,
+	
+	/** The inserted item or items slides in from the top; the deleted item or items slides out toward the top. */
+	SSCollectionViewItemAnimationTop = UITableViewRowAnimationTop,
+	
+	/** The inserted item or itemsslides in from the bottom; the deleted item or items slides out toward the bottom. */
+	SSCollectionViewItemAnimationBottom = UITableViewRowAnimationBottom,
+	
+	/** No animation is performed. The new item value appears as if the cell had just been reloaded. */
+	SSCollectionViewItemAnimationNone = UITableViewRowAnimationNone,
+	
+	/** The collection view attempts to keep the old and new items centered in the space they did or will occupy. */
+	SSCollectionViewItemAnimationMiddle = UITableViewRowAnimationMiddle
+} SSCollectionViewItemAnimation;
+
 @protocol SSCollectionViewDataSource;
 @protocol SSCollectionViewDelegate;
 
@@ -191,6 +218,12 @@ typedef enum {
  */
 - (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(SSCollectionViewScrollPosition)scrollPosition animated:(BOOL)animated;
 
+/**
+ The internal scroll view of the collection view. This should only be used to inspect its state or scrolling. Changing
+ the value of its attributes is undefined.
+ */
+@property (nonatomic, retain, readonly) UIScrollView *scrollView;
+
 
 ///--------------------
 /// Managing Selections
@@ -229,6 +262,18 @@ typedef enum {
  `YES`.
  */
 @property (nonatomic, assign) BOOL allowsSelection;
+
+///---------------------------------------------------
+/// Inserting, Deleting, and Moving Items and Sections
+///---------------------------------------------------
+
+- (void)beginUpdates;
+- (void)endUpdates;
+- (void)insertItemsAtIndexPaths:(NSArray *)indexPaths withItemAnimation:(SSCollectionViewItemAnimation)animation;
+- (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths withItemAnimation:(SSCollectionViewItemAnimation)animation;
+- (void)insertSections:(NSIndexSet *)sections withItemAnimation:(SSCollectionViewItemAnimation)animation;
+- (void)deleteSections:(NSIndexSet *)sections withItemAnimation:(SSCollectionViewItemAnimation)animation;
+- (void)moveSection:(NSInteger)section toSection:(NSInteger)newSection;
 
 ///------------------------------
 /// Reloading the Collection View
@@ -354,16 +399,6 @@ typedef enum {
  @see collectionView:numberOfItemsInSection:
  */
 - (NSUInteger)numberOfSectionsInCollectionView:(SSCollectionView *)aCollectionView;
-
-///-------------------------
-/// Acessing the Scroll View
-///-------------------------
-
-/**
- The internal scroll view of the collection view. This should only be used to inspect its state. Its attributes must not
- be overridden.
- */
-@property (nonatomic, retain, readonly) UIScrollView *scrollView;
 
 @end
 
