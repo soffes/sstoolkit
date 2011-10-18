@@ -46,6 +46,7 @@
  */
 extern CGFloat SSFLimit(CGFloat f, CGFloat min, CGFloat max);
 
+
 ///-----------------------------
 /// @name Rectangle Manipulation
 ///-----------------------------
@@ -61,11 +62,13 @@ extern CGRect CGRectSetZeroSize(CGRect rect);
 extern CGSize CGSizeAspectScaleToSize(CGSize size, CGSize toSize);
 extern CGRect CGRectAddPoint(CGRect rect, CGPoint point);
 
+
 ///---------------------------------
 /// @name Drawing Rounded Rectangles
 ///---------------------------------
 
 extern void SSDrawRoundedRect(CGContextRef context, CGRect rect, CGFloat cornerRadius);
+
 
 ///-------------------------
 /// @name Creating Gradients
@@ -73,6 +76,7 @@ extern void SSDrawRoundedRect(CGContextRef context, CGRect rect, CGFloat cornerR
 
 extern CGGradientRef SSCreateGradientWithColors(NSArray *colors);
 extern CGGradientRef SSCreateGradientWithColorsAndLocations(NSArray *colors, NSArray *locations);
+
 
 ///------------------------
 /// @name Drawing Gradients

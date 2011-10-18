@@ -84,9 +84,9 @@ typedef enum {
  */
 @interface SSCollectionView : UIView
 
-///------------------------------
-/// Configuring a Collection View
-///------------------------------
+///------------------------------------
+/// @name Configuring a Collection View
+///------------------------------------
 
 /**
  Returns a reusable collection view item object located by its identifier.
@@ -158,9 +158,9 @@ typedef enum {
 @property (nonatomic, assign) CGFloat rowSpacing;
 
 
-///-----------------------------
-/// Accessing Items and Sections
-///-----------------------------
+///-----------------------------------
+/// @name Accessing Items and Sections
+///-----------------------------------
 
 /**
  Returns the collection view item at the specified index path.
@@ -201,9 +201,10 @@ typedef enum {
  */ 
 - (NSArray *)indexPathsForVisibleRows;
 
-///------------------------------
-/// Scrolling the Collection View
-///------------------------------
+
+///------------------------------------
+/// @name Scrolling the Collection View
+///------------------------------------
 
 /**
  Scrolls the receiver until an item identified by index path is at a particular location on the screen.
@@ -225,9 +226,9 @@ typedef enum {
 @property (nonatomic, retain, readonly) UIScrollView *scrollView;
 
 
-///--------------------
-/// Managing Selections
-///--------------------
+///--------------------------
+/// @name Managing Selections
+///--------------------------
 
 /**
  Selects an item in the receiver identified by index path, optionally scrolling the item to a location in the receiver.
@@ -263,9 +264,10 @@ typedef enum {
  */
 @property (nonatomic, assign) BOOL allowsSelection;
 
-///---------------------------------------------------
-/// Inserting, Deleting, and Moving Items and Sections
-///---------------------------------------------------
+
+///---------------------------------------------------------
+/// @name Inserting, Deleting, and Moving Items and Sections
+///---------------------------------------------------------
 
 - (void)beginUpdates;
 - (void)endUpdates;
@@ -275,9 +277,10 @@ typedef enum {
 - (void)deleteSections:(NSIndexSet *)sections withItemAnimation:(SSCollectionViewItemAnimation)animation;
 - (void)moveSection:(NSInteger)section toSection:(NSInteger)newSection;
 
-///------------------------------
-/// Reloading the Collection View
-///------------------------------
+
+///------------------------------------
+/// @name Reloading the Collection View
+///------------------------------------
 
 /**
  Reloads the items and sections of the receiver.
@@ -292,9 +295,9 @@ typedef enum {
 - (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
 
 
-///-----------------------------------------------
-/// Accessing Drawing Areas of the Collection View
-///-----------------------------------------------
+///-----------------------------------------------------
+/// @name Accessing Drawing Areas of the Collection View
+///-----------------------------------------------------
 
 /**
  Returns the drawing area for a specified section of the receiver.
@@ -323,9 +326,9 @@ typedef enum {
 - (CGRect)rectForHeaderInSection:(NSUInteger)section;
 
 
-///------------------------------------------
-/// Managing the Delegate and the Data Source
-///------------------------------------------
+///------------------------------------------------
+/// @name Managing the Delegate and the Data Source
+///------------------------------------------------
 
 /**
  The object that acts as the data source of the receiving collection view.
@@ -350,9 +353,9 @@ typedef enum {
  */
 @protocol SSCollectionViewDataSource <NSObject>
 
-///------------------------------
-/// Configuring a Collection View
-///------------------------------
+///------------------------------------
+/// @name Configuring a Collection View
+///------------------------------------
 
 @required
 
@@ -409,9 +412,9 @@ typedef enum {
  */
 @protocol SSCollectionViewDelegate <NSObject, UIScrollViewDelegate>
 
-///------------------------------------------
-/// Configuring Items for the Collection View
-///------------------------------------------
+///------------------------------------------------
+/// @name Configuring Items for the Collection View
+///------------------------------------------------
 
 @required
 
@@ -451,14 +454,14 @@ typedef enum {
  @param indexPath An index path locating the item in `aCollectionView`.
  
  @see collectionView:itemForIndexPath:
- 
  @see prepareForReuse
  */ 
 - (void)collectionView:(SSCollectionView *)aCollectionView willDisplayItem:(SSCollectionViewItem *)item atIndexPath:(NSIndexPath *)indexPath;
 
-///--------------------
-/// Managing Selections
-///--------------------
+
+///--------------------------
+/// @name Managing Selections
+///--------------------------
 
 /**
  Tells the delegate that a specified item is about to be selected.
@@ -474,7 +477,6 @@ typedef enum {
  `indexPath` if you want another item to be selected. Return `nil` if you don't want the item selected.
  
  @see collectionView:didSelectItemAtIndexPath:
- 
  @see collectionView:willDeselectItemAtIndexPath:
  */
 - (void)collectionView:(SSCollectionView *)aCollectionView willSelectItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -489,7 +491,6 @@ typedef enum {
  @param indexPath An index path locating the new selected item in `aCollectionView`. 
  
  @see collectionView:willSelectItemAtIndexPath:
- 
  @see collectionView:didDeselectItemAtIndexPath:
  */
 - (void)collectionView:(SSCollectionView *)aCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -508,7 +509,6 @@ typedef enum {
  `indexPath` if you want another item to be deselected. Return `nil` if you don't want the item deselected. 
  
  @see collectionView:didDeselectItemAtIndexPath:
- 
  @see collectionView:willSelectItemAtIndexPath:
  */
 - (void)collectionView:(SSCollectionView *)aCollectionView willDeselectItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -523,15 +523,14 @@ typedef enum {
  @param indexPath An index path locating the deselected item in `aCollectionView`.
  
  @see collectionView:willDeselectItemAtIndexPath:
- 
  @see collectionView:didSelectItemAtIndexPath:
  */ 
 - (void)collectionView:(SSCollectionView *)aCollectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath;
 
 
-///--------------------------------------------
-/// Modifying the Header and Footer of Sections
-///--------------------------------------------
+///--------------------------------------------------
+/// @name Modifying the Header and Footer of Sections
+///--------------------------------------------------
 
 /**
  Asks the delegate for a view object to display in the header of the specified section of the collection view.

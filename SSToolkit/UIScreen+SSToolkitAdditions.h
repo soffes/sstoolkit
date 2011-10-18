@@ -36,6 +36,7 @@
  */
 - (CGRect)boundsForOrientation:(UIInterfaceOrientation)orientation;
 
+
 ///------------------------
 /// @name Screen Attributes
 ///------------------------

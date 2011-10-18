@@ -29,6 +29,7 @@
  */
 @property (nonatomic, retain) UIColor *topInsetColor;
 
+
 ///--------------------------------
 /// @name Drawing the Bottom Border
 ///--------------------------------
