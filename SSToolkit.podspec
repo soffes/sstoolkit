@@ -12,8 +12,15 @@ Pod::Spec.new do |s|
                    'handy classes are SSCollectionView, SSGradientView, SSSwitch, and many more.'
 
   s.resources    = 'Resources'
-  s.source_files = 'SSToolkit'
+  s.source_files = 'SSToolkit/**/*.{h,m}'
 
   s.frameworks   = 'QuartzCore', 'CoreGraphics'
   s.xcconfig     = { 'OTHER_LDFLAGS' => '-all_load -ObjC' }
+
+  def s.post_install
+    prefix_header = config.project_pods_root + 'Pods-Prefix.pch'
+    prefix_header.open('a') do |file|
+      file.puts(%{#ifdef __OBJC__\n#import "SSToolkitDefines.h"\n#endif})
+    end
+  end
 end
