@@ -1,0 +1,4 @@
+Pod::File.new do |f|
+  f.platform = :ios
+  f.dependency 'AFNetworking'
+end
