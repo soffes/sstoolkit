@@ -17,14 +17,14 @@
 
 /**
  The top border color. The default is `nil`.
- 
+
  @see bottomBorderColor
  */
 @property (nonatomic, retain) UIColor *topBorderColor;
 
 /**
  The top inset color. The default is `nil`.
- 
+
  @see bottomInsetColor
  */
 @property (nonatomic, retain) UIColor *topInsetColor;
@@ -36,14 +36,14 @@
 
 /**
  The bottom inset color. The default is `nil`.
- 
+
  @see topInsetColor
  */
 @property (nonatomic, retain) UIColor *bottomInsetColor;
 
 /**
  The bottom border color. The default is `nil`.
- 
+
  @see topBorderColor
  */
 @property (nonatomic, retain) UIColor *bottomBorderColor;

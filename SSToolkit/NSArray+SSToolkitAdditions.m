@@ -19,7 +19,7 @@
 	if ([self count] == 0) {
 	    return nil;
 	}
-	
+
 	return [self objectAtIndex:0];
 }
 
@@ -30,9 +30,9 @@
 
 
 - (NSArray *)shuffledArray {
-	
+
 	NSMutableArray *array = [NSMutableArray arrayWithCapacity:[self count]];
-	
+
 	NSMutableArray *copy = [self mutableCopy];
 	while ([copy count] > 0) {
 		NSUInteger index = arc4random() % [copy count];
@@ -40,7 +40,7 @@
 		[array addObject:objectToMove];
 		[copy removeObjectAtIndex:index];
 	}
-	
+
 	[copy release];
 	return array;
 }

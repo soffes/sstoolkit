@@ -1,17 +1,17 @@
 // AFRestClient.m
 //
 // Copyright (c) 2011 Gowalla (http://gowalla.com/)
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -41,25 +41,25 @@ static NSStringEncoding const kAFRestClientStringEncoding = NSUTF8StringEncoding
     if (!self) {
         return nil;
     }
-    
+
     self.operationQueue = [[[NSOperationQueue alloc] init] autorelease];
 	[self.operationQueue setMaxConcurrentOperationCount:2];
-	
+
 	self.defaultHeaders = [NSMutableDictionary dictionary];
-    
+
     // Accept HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
 	[self setDefaultHeader:@"Accept" value:@"application/json"];
-    
+
 	// Accept-Encoding HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3
 	[self setDefaultHeader:@"Accept-Encoding" value:@"gzip"];
-	
+
 	// Accept-Language HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4
 	NSString *preferredLanguageCodes = [[NSLocale preferredLanguages] componentsJoinedByString:@", "];
 	[self setDefaultHeader:@"Accept-Language" value:[NSString stringWithFormat:@"%@, en-us;q=0.8", preferredLanguageCodes]];
-	
+
 	// User-Agent Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43
 	[self setDefaultHeader:@"User-Agent" value:[NSString stringWithFormat:@"%@/%@ (%@, %@ %@, %@, Scale/%f)", [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey], [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey], @"unknown", [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion], [[UIDevice currentDevice] model], ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] ? [[UIScreen mainScreen] scale] : 1.0)]];
-    
+
     return self;
 }
 
@@ -73,7 +73,7 @@ static NSStringEncoding const kAFRestClientStringEncoding = NSUTF8StringEncoding
     if ([self class] == [AFRestClient class]) {
 		[NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 	}
-    
+
     return nil;
 }
 
@@ -101,11 +101,11 @@ static NSStringEncoding const kAFRestClientStringEncoding = NSUTF8StringEncoding
 
 #pragma mark -
 
-- (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters {	
+- (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters {
 	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
 	NSMutableDictionary *headers = [NSMutableDictionary dictionaryWithDictionary:self.defaultHeaders];
 	NSURL *url = [NSURL URLWithString:path relativeToURL:[[self class] baseURL]];
-	
+
     if (parameters) {
         NSMutableArray *mutableParameterComponents = [NSMutableArray array];
         for (id key in [parameters allKeys]) {
@@ -113,7 +113,7 @@ static NSStringEncoding const kAFRestClientStringEncoding = NSUTF8StringEncoding
             [mutableParameterComponents addObject:component];
         }
         NSString *queryString = [mutableParameterComponents componentsJoinedByString:@"&"];
-        
+
         if ([method isEqualToString:@"GET"]) {
             url = [NSURL URLWithString:[[url absoluteString] stringByAppendingFormat:[path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@", queryString]];
         } else {
@@ -122,12 +122,12 @@ static NSStringEncoding const kAFRestClientStringEncoding = NSUTF8StringEncoding
             [request setHTTPBody:[queryString dataUsingEncoding:NSUTF8StringEncoding]];
         }
     }
-    
+
 	[request setURL:url];
 	[request setHTTPMethod:method];
 	[request setHTTPShouldHandleCookies:NO];
 	[request setAllHTTPHeaderFields:headers];
-    
+
 	return request;
 }
 
@@ -135,7 +135,7 @@ static NSStringEncoding const kAFRestClientStringEncoding = NSUTF8StringEncoding
 	if ([request URL] == nil || [[request URL] isEqual:[NSNull null]]) {
 		return;
 	}
-    
+
     AFHTTPRequestOperation *operation = [AFJSONRequestOperation operationWithRequest:request success:success failure:failure];
     [self.operationQueue addOperation:operation];
 }

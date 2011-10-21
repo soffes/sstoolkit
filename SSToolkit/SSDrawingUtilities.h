@@ -15,18 +15,18 @@
 
 /**
  A macro that converts a number from degress to radians.
- 
+
  @param d number in degrees
- 
+
  @return The number converted to radians.
  */
 #define DEGREES_TO_RADIANS(d) ((d) * 0.0174532925199432958f)
 
 /**
  A macro that converts a number from radians to degrees.
- 
+
  @param r number in radians
- 
+
  @return The number converted to degrees.
  */
 #define RADIANS_TO_DEGREES(r) ((r) * 57.29577951308232f)
@@ -35,13 +35,13 @@
 
 /**
  Limits a float to the `min` or `max` value. The float is between `min` and `max` it will be returned unchanged.
- 
+
  @param f The float to limit.
- 
+
  @param min The minumum value for the float.
- 
+
  @param max The minumum value for the float.
- 
+
  @return A float limited to the `min` or `max` value.
  */
 extern CGFloat SSFLimit(CGFloat f, CGFloat min, CGFloat max);

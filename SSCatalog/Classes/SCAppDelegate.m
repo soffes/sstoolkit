@@ -32,10 +32,10 @@
 
 #pragma mark - UIApplicationDelegate
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {    
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
 
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	
+
 	SCRootViewController *viewController = [[SCRootViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	UINavigationController *aNavigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
 
@@ -43,7 +43,7 @@
 
 	[viewController release];
 	[aNavigationController release];
-	
+
 	[_window addSubview:_navigationController.view];
     [_window makeKeyAndVisible];
 }

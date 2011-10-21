@@ -11,7 +11,7 @@
 
 /**
  The name of the SSToolkit bundle.
- 
+
  Mainly used for accessing images in various `UIControl`'s.
  */
 extern NSString *const kSSToolkitBundleName;

@@ -33,7 +33,7 @@
   UITextView *textView_;
 
   GHTestNode *testNode_;
-  
+
   GHTestRunner *runner_;
 }
 

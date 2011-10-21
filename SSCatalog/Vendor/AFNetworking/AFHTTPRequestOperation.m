@@ -1,17 +1,17 @@
 // AFHTTPOperation.m
 //
 // Copyright (c) 2011 Gowalla (http://gowalla.com/)
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -120,21 +120,21 @@ static NSThread *_networkRequestThread = nil;
 
 + (NSThread *)networkRequestThread {
     static dispatch_once_t oncePredicate;
-    
+
     dispatch_once(&oncePredicate, ^{
         _networkRequestThread = [[NSThread alloc] initWithTarget:self selector:@selector(networkRequestThreadEntryPoint:) object:nil];
         [_networkRequestThread start];
     });
-        
+
     return _networkRequestThread;
 }
 
-+ (id)operationWithRequest:(NSURLRequest *)urlRequest 
++ (id)operationWithRequest:(NSURLRequest *)urlRequest
                 completion:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSData *data, NSError *error))completion
 {
     AFHTTPRequestOperation *operation = [[[self alloc] initWithRequest:urlRequest] autorelease];
     operation.completion = completion;
-    
+
     return operation;
 }
 
@@ -154,9 +154,9 @@ static NSThread *_networkRequestThread = nil;
             completion(request, response, error);
         }
     }];
-    
+
     operation.outputStream = outputStream;
-    
+
     return operation;
 }
 
@@ -165,27 +165,27 @@ static NSThread *_networkRequestThread = nil;
     if (!self) {
 		return nil;
     }
-        
+
     self.request = urlRequest;
-	
+
     self.runLoopModes = [NSSet setWithObjects:NSRunLoopCommonModes, nil];
-        
+
     self.state = AFHTTPOperationReadyState;
-	
+
     return self;
 }
 
 - (void)dealloc {
     [_runLoopModes release];
-    
+
     [_request release];
     [_response release];
     [_responseBody release];
     [_dataAccumulator release];
     [_outputStream release]; _outputStream = nil;
-    
+
     [_connection release]; _connection = nil;
-	
+
     [_uploadProgress release];
     [_downloadProgress release];
     [_completion release];
@@ -205,20 +205,20 @@ static NSThread *_networkRequestThread = nil;
     if (self.state == state) {
         return;
     }
-    
+
     if (!AFHTTPOperationStateTransitionIsValid(self.state, state)) {
         return;
     }
-    
+
     NSString *oldStateKey = AFKeyPathFromOperationState(self.state);
     NSString *newStateKey = AFKeyPathFromOperationState(state);
-    
+
     [self willChangeValueForKey:newStateKey];
     [self willChangeValueForKey:oldStateKey];
     _state = state;
     [self didChangeValueForKey:oldStateKey];
     [self didChangeValueForKey:newStateKey];
-    
+
     switch (state) {
         case AFHTTPOperationExecutingState:
             [[AFNetworkActivityIndicatorManager sharedManager] startAnimating];
@@ -237,7 +237,7 @@ static NSThread *_networkRequestThread = nil;
     [self willChangeValueForKey:@"isCancelled"];
     _cancelled = YES;
     [self didChangeValueForKey:@"isCancelled"];
-    
+
     self.state = AFHTTPOperationFinishedState;
 }
 
@@ -267,7 +267,7 @@ static NSThread *_networkRequestThread = nil;
     if (![self isReady]) {
         return;
     }
-        
+
     self.state = AFHTTPOperationExecutingState;
 
     [self performSelector:@selector(operationDidStart) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:YES modes:[self.runLoopModes allObjects]];
@@ -275,13 +275,13 @@ static NSThread *_networkRequestThread = nil;
 
 - (void)operationDidStart {
     self.connection = [[[NSURLConnection alloc] initWithRequest:self.request delegate:self startImmediately:NO] autorelease];
-    
+
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
     for (NSString *runLoopMode in self.runLoopModes) {
         [self.connection scheduleInRunLoop:runLoop forMode:runLoopMode];
         [self.outputStream scheduleInRunLoop:runLoop forMode:runLoopMode];
     }
-    
+
     [self.connection start];
 }
 
@@ -289,21 +289,21 @@ static NSThread *_networkRequestThread = nil;
     if ([self isFinished]) {
         return;
     }
-    
+
     [super cancel];
-    
+
     self.cancelled = YES;
-    
+
     [self.connection cancel];
 }
 
 - (void)finish {
     self.state = AFHTTPOperationFinishedState;
-    
+
     if ([self isCancelled]) {
         return;
     }
-    
+
     if (self.completion) {
         self.completion(self.request, self.response, self.responseBody, self.error);
     }
@@ -311,11 +311,11 @@ static NSThread *_networkRequestThread = nil;
 
 #pragma mark - NSURLConnection
 
-- (void)connection:(NSURLConnection *)connection 
-didReceiveResponse:(NSURLResponse *)response 
+- (void)connection:(NSURLConnection *)connection
+didReceiveResponse:(NSURLResponse *)response
 {
     self.response = (NSHTTPURLResponse *)response;
-    
+
     if (self.outputStream) {
         [self.outputStream open];
     } else {
@@ -324,11 +324,11 @@ didReceiveResponse:(NSURLResponse *)response
     }
 }
 
-- (void)connection:(NSURLConnection *)connection 
-    didReceiveData:(NSData *)data 
+- (void)connection:(NSURLConnection *)connection
+    didReceiveData:(NSData *)data
 {
     self.totalBytesRead += [data length];
-    
+
     if (self.outputStream) {
         if ([self.outputStream hasSpaceAvailable]) {
             const uint8_t *dataBuffer = [data bytes];
@@ -337,13 +337,13 @@ didReceiveResponse:(NSURLResponse *)response
     } else {
         [self.dataAccumulator appendData:data];
     }
-    
+
     if (self.downloadProgress) {
         self.downloadProgress(self.totalBytesRead, self.response.expectedContentLength);
     }
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {        
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     if (self.outputStream) {
         [self.outputStream close];
     } else {
@@ -354,23 +354,23 @@ didReceiveResponse:(NSURLResponse *)response
     [self finish];
 }
 
-- (void)connection:(NSURLConnection *)connection 
-  didFailWithError:(NSError *)error 
-{      
+- (void)connection:(NSURLConnection *)connection
+  didFailWithError:(NSError *)error
+{
     self.error = error;
-    
+
     if (self.outputStream) {
         [self.outputStream close];
     } else {
         [_dataAccumulator release]; _dataAccumulator = nil;
     }
-    
+
     [self finish];
 }
 
-- (void)connection:(NSURLConnection *)connection 
-   didSendBodyData:(NSInteger)bytesWritten 
- totalBytesWritten:(NSInteger)totalBytesWritten 
+- (void)connection:(NSURLConnection *)connection
+   didSendBodyData:(NSInteger)bytesWritten
+ totalBytesWritten:(NSInteger)totalBytesWritten
 totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
 {
     if (self.uploadProgress) {
@@ -378,13 +378,13 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
     }
 }
 
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection 
-                  willCacheResponse:(NSCachedURLResponse *)cachedResponse 
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
+                  willCacheResponse:(NSCachedURLResponse *)cachedResponse
 {
     if ([self isCancelled]) {
         return nil;
     }
-    
+
     return cachedResponse;
 }
 

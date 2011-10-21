@@ -35,7 +35,7 @@
 	// Break version into fields (separated by '.')
 	NSMutableArray *leftFields  = [[NSMutableArray alloc] initWithArray:[self  componentsSeparatedByString:@"."]];
 	NSMutableArray *rightFields = [[NSMutableArray alloc] initWithArray:[version componentsSeparatedByString:@"."]];
-	
+
 	// Implict ".0" in case version doesn't have the same number of '.'
 	if ([leftFields count] < [rightFields count]) {
 		while ([leftFields count] != [rightFields count]) {
@@ -46,7 +46,7 @@
 			[rightFields addObject:@"0"];
 		}
 	}
-	
+
 	// Do a numeric comparison on each field
 	for (NSUInteger i = 0; i < [leftFields count]; i++) {
 		NSComparisonResult result = [[leftFields objectAtIndex:i] compare:[rightFields objectAtIndex:i] options:NSNumericSearch];
@@ -56,9 +56,9 @@
 			return result;
 		}
 	}
-	
+
 	[leftFields release];
-	[rightFields release];	
+	[rightFields release];
 	return NSOrderedSame;
 }
 
@@ -67,22 +67,22 @@
 
 - (NSString *)escapeHTML {
 	NSMutableString *s = [NSMutableString string];
-	
+
 	NSUInteger start = 0;
 	NSUInteger len = [self length];
 	NSCharacterSet *chs = [NSCharacterSet characterSetWithCharactersInString:@"<>&\""];
-	
+
 	while (start < len) {
 		NSRange r = [self rangeOfCharacterFromSet:chs options:0 range:NSMakeRange(start, len-start)];
 		if (r.location == NSNotFound) {
 			[s appendString:[self substringFromIndex:start]];
 			break;
 		}
-		
+
 		if (start < r.location) {
 			[s appendString:[self substringWithRange:NSMakeRange(start, r.location-start)]];
 		}
-		
+
 		switch ([self characterAtIndex:r.location]) {
 			case '<':
 				[s appendString:@"&lt;"];
@@ -100,10 +100,10 @@
 				[s appendString:@"&amp;"];
 				break;
 		}
-		
+
 		start = r.location + 1;
 	}
-	
+
 	return s;
 }
 
@@ -112,19 +112,19 @@
 	NSMutableString *s = [NSMutableString string];
 	NSMutableString *target = [[self mutableCopy] autorelease];
 	NSCharacterSet *chs = [NSCharacterSet characterSetWithCharactersInString:@"&"];
-	
+
 	while ([target length] > 0) {
 		NSRange r = [target rangeOfCharacterFromSet:chs];
 		if (r.location == NSNotFound) {
 			[s appendString:target];
 			break;
 		}
-		
+
 		if (r.location > 0) {
 			[s appendString:[target substringToIndex:r.location]];
 			[target deleteCharactersInRange:NSMakeRange(0, r.location)];
 		}
-		
+
 		if ([target hasPrefix:@"&lt;"]) {
 			[s appendString:@"<"];
 			[target deleteCharactersInRange:NSMakeRange(0, 4)];
@@ -148,7 +148,7 @@
 			[target deleteCharactersInRange:NSMakeRange(0, 1)];
 		}
 	}
-	
+
 	return s;
 }
 
@@ -171,7 +171,7 @@
 		[mutable replaceOccurrencesOfString:@" " withString:@"+" options:0 range:NSMakeRange(0, [mutable length])];
 		result = mutable;
 	}
-	return result;  
+	return result;
 }
 
 
@@ -218,7 +218,7 @@
     if ([self length] == 0) {
         return nil;
 	}
-	
+
 	return [[self dataUsingEncoding:NSUTF8StringEncoding] base64EncodedString];
 }
 

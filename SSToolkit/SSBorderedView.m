@@ -23,7 +23,7 @@
 	[topBorderColor retain];
 	[_topBorderColor release];
 	_topBorderColor = topBorderColor;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -32,7 +32,7 @@
 	[topInsetColor retain];
 	[_topInsetColor release];
 	_topInsetColor = topInsetColor;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -41,7 +41,7 @@
 	[bottomInsetColor retain];
 	[_bottomInsetColor release];
 	_bottomInsetColor = bottomInsetColor;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -50,7 +50,7 @@
 	[bottomBorderColor retain];
 	[_bottomBorderColor release];
 	_bottomBorderColor = bottomBorderColor;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -71,9 +71,9 @@
 - (void)drawRect:(CGRect)rect {
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextClipToRect(context, rect);
-		
+
 	CGContextSetLineWidth(context, 1.0f);
-	
+
 	if (_topBorderColor) {
 		// Top inset
 		if (_topInsetColor) {
@@ -82,14 +82,14 @@
 			CGContextAddLineToPoint(context, rect.size.width, 1.0f);
 			CGContextStrokePath(context);
 		}
-		
+
 		// Top border
 		CGContextSetStrokeColorWithColor(context, _topBorderColor.CGColor);
 		CGContextMoveToPoint(context, 0.0f, 0.5f);
 		CGContextAddLineToPoint(context, rect.size.width, 0.0f);
 		CGContextStrokePath(context);
 	}
-	
+
 	if (_bottomBorderColor) {
 		// Bottom inset
 		if (_bottomInsetColor) {
@@ -98,7 +98,7 @@
 			CGContextAddLineToPoint(context, rect.size.width, rect.size.height - 1.0f);
 			CGContextStrokePath(context);
 		}
-		
+
 		// Bottom border
 		CGContextSetStrokeColorWithColor(context, _bottomBorderColor.CGColor);
 		CGContextMoveToPoint(context, 0.0f, rect.size.height - 0.5f);

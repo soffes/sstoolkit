@@ -51,34 +51,34 @@
 
 /**
  Sets the main page contents, MIME type, content encoding, and base URL.
- 
+
  @param data The content for the main page.
- 
+
  @param MIMEType The MIME type of the content.
- 
+
  @param encodingName The IANA encoding name as in utf-8 or utf-16.
- 
+
  @param baseURL The base URL for the content.
  */
 - (void)loadData:(NSData *)data MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)encodingName baseURL:(NSURL *)baseURL;
 
 /**
  Sets the main page content and base URL.
- 
+
  @param string The content for the main page.
- 
+
  @param baseURL The base URL for the content.
  */
 - (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL;
 
 /**
  Connects to a given URL by initiating an asynchronous client request.
- 
+
  To stop this load, use the stopLoading method. To see whether the receiver is done loading the content, use the loading
  property.
- 
+
  @param aRequest A URL request identifying the location of the content to load.
- 
+
  @see request
  @see stopLoading
  @see loading
@@ -88,23 +88,23 @@
 
 /**
  Sets the main page content.
- 
+
  The baseURL is set to `http://localhost`.
- 
+
  @param string The content for the main page.
- 
+
  @see loadHTMLString:baseURL:
  */
 - (void)loadHTMLString:(NSString *)string;
 
 /**
  Connects to a given URL by initiating an asynchronous client request.
- 
+
  To stop this load, use the stopLoading method. To see whether the receiver is done loading the content, use the loading
  property.
- 
+
  @param aURL A URL identifying the location of the content to load.
- 
+
  @see loadURLString:
  @see loadRequest:
  @see request
@@ -116,12 +116,12 @@
 
 /**
  Connects to a given URL by initiating an asynchronous client request.
- 
+
  To stop this load, use the stopLoading method. To see whether the receiver is done loading the content, use the loading
  property.
- 
+
  @param string A string containing a URL identifying the location of the content to load.
- 
+
  @see loadURL:
  @see loadRequest:
  @see request
@@ -143,30 +143,30 @@
 
 /**
  A Boolean value indicating whether the receiver is done loading content. (read-only)
- 
+
  If `YES`, the receiver is still loading content; otherwise, `NO`.
  */
 @property (nonatomic, readonly, getter=isLoading) BOOL loading;
 
 /**
  Returns whether the web view is loading a page. (read-only)
- 
+
  This will return `YES` when the first NSURLRequest starts and `NO` when there are no more requests loading.
- 
+
  Note: Setting this isn't 100% reliable since it is very hacky underneath.
  */
 @property (nonatomic, readonly, getter=isLoadingPage) BOOL loadingPage;
 
 /**
  Stops the loading of any web content managed by the receiver.
- 
+
  Stops any content in the process of being loaded by the main frame or any of its children frames. Does nothing if no
  content is being loaded.
  */
 - (void)stopLoading;
 
 /** Reloads the current page.
- 
+
  @see request
  @see loading
  @see loadRequest:
@@ -217,7 +217,7 @@
 
 /**
  The scroll view associated with the web view. (read-only)
- 
+
  Your application can access the scroll view if it wants to customize the scrolling behavior of the web view.
  */
 @property (nonatomic, retain, readonly) UIScrollView *scrollView;
@@ -229,17 +229,17 @@
 
 /**
  Returns the result of running a script.
- 
+
  JavaScript execution time is limited to 10 seconds for each top-level entry point. If your script executes for more
  than 10 seconds, the web view stops executing the script. This is likely to occur at a random place in your code, so
  unintended consequences may result. This limit is imposed because JavaScript execution may cause the main thread to
  block, so when scripts are running, the user is not able to interact with the webpage.
- 
+
  JavaScript allocations are also limited to 10 MB. The web view raises an exception if you exceed this limit on the
  total memory allocation for JavaScript.
- 
+
  @param script The script to run.
- 
+
  @return The result of running script or `nil` if it fails.
  */
 - (NSString *)stringByEvaluatingJavaScriptFromString:(NSString *)script;
@@ -251,10 +251,10 @@
 
 /**
  A Boolean value that controls whether `console.log` messages are intercepted.
- 
+
  If the value of this property is `YES`, the web view will inject some JavaScript after the DOM has loaded that replaces
  `console.log` with a custom implementation that will NSLog the `console.log` messages.
- 
+
  Note: This isn't 100% reliable since it is very hacky underneath.
  */
 @property (nonatomic, assign) BOOL consoleEnabled;
@@ -266,7 +266,7 @@
 
 /**
  The types of data converted to clickable URLs in the web view's content.
- 
+
  You can use this property to specify the types of data (phone numbers, http links, email address, and so on) that
  should be automatically converted to clickable URLs in the web view. When clicked, the web view opens the application
  responsible for handling the URL type and passes it the URL.
@@ -328,7 +328,7 @@
 /**
  The `SSWebViewDelegate` protocol defines methods that a delegate of a `SSWebView` object can optionally implement to
  intervene when web content is loaded.
- 
+
  @warning **Important:** Before releasing an instance of `SSWebView` for which you have set a delegate, you must first
  set the `SSWebView` delegate property to `nil` before disposing of the `SSWebView` instance. This can be done, for
  example, in the `dealloc` method where you dispose of the `SSWebView`.
@@ -343,9 +343,9 @@
 
 /**
  Sent before a web view begins loading a page.
- 
+
  @param aWebView The web view that started loading its page.
- 
+
  @see webViewDidFinishLoadingPage:
  @see webViewDidLoadDOM:
  @see webViewDidStartLoad:
@@ -354,11 +354,11 @@
 
 /**
  Sent after a web view finishes loading its DOM.
- 
+
  Note: This isn't 100% reliable.
- 
+
  @param aWebView The web view that finished loading its DOM.
- 
+
  @see webViewDidStartLoadingPage:
  @see webViewDidFinishLoadingPage:
  */
@@ -366,9 +366,9 @@
 
 /**
  Sent after a web view finishes loading a page.
- 
+
  @param aWebView The web view that finished loading its page.
- 
+
  @see webViewDidStartLoadingPage:
  @see webViewDidLoadDOM:
  @see webViewDidFinishLoad:
@@ -382,11 +382,11 @@
 
 /**
  Sent if a web view failed to load a frame.
- 
+
  @param aWebView The web view that failed to load a frame.
- 
+
  @param error The error that occurred during loading.
- 
+
  @see webView:shouldStartLoadWithRequest:navigationType:
  @see webViewDidStartLoad:
  @see webViewDidFinishLoad:
@@ -395,13 +395,13 @@
 
 /**
  Sent before a web view begins loading a frame.
- 
+
  @param aWebView The web view that is about to load a new frame.
- 
+
  @param aRequest The content location.
- 
+
  @param navigationType The type of user action that started the load request.
- 
+
  @see webViewDidStartLoad:
  @see webViewDidFinishLoad:
  @see webView:didFailLoadWithError:
@@ -410,9 +410,9 @@
 
 /**
  Sent after a web view finishes loading a frame.
- 
+
  @param aWebView The web view has finished loading.
- 
+
  @see webView:shouldStartLoadWithRequest:navigationType:
  @see webViewDidStartLoad:
  @see webView:didFailLoadWithError:
@@ -421,9 +421,9 @@
 
 /**
  Sent after a web view starts loading a frame.
- 
+
  @param aWebView The web view that has begun loading a new frame.
- 
+
  @see webView:shouldStartLoadWithRequest:navigationType:
  @see webViewDidFinishLoad:
  @see webView:didFailLoadWithError:

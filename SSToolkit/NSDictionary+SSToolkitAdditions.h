@@ -17,9 +17,9 @@
 
 /**
  Returns a new dictionary that contains a dictionary for a form encoded string.
- 
+
  @param encodedString A string of form encoded compontents.
- 
+
  @return A new dictionary that contains a dictionary for the form encoded string, or `nil` if `encodedString` is an
  invalid representation of a dictionary.
  */
@@ -32,7 +32,7 @@
 
 /**
  Returns a string of form encoded components for using as the query string in a URL.
- 
+
  @return A string of form encoded compontents.
  */
 - (NSString *)stringWithFormEncodedComponents;
@@ -44,20 +44,20 @@
 
 /**
  Returns a string of the MD5 sum of the receiver.
- 
+
  Internally, `NSPropertyListSerialization` is used to created the hash. Only objects that can be serialized should be
  contained in the receiver when calling this method.
- 
+
  @return The string of the MD5 sum of the receiver.
  */
 - (NSString *)MD5Sum;
 
 /**
  Returns a string of the SHA1 sum of the receiver.
- 
+
  Internally, `NSPropertyListSerialization` is used to created the hash. Only objects that can be serialized should be
  contained in the receiver when calling this method.
- 
+
  @return The string of the SHA1 sum of the receiver.
  */
 - (NSString *)SHA1Sum;

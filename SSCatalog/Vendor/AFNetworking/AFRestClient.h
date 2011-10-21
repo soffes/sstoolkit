@@ -1,17 +1,17 @@
 // AFRestClient.h
 //
 // Copyright (c) 2011 Gowalla (http://gowalla.com/)
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -42,50 +42,50 @@
 - (void)setAuthorizationHeaderWithToken:(NSString *)token;
 - (void)clearAuthorizationHeader;
 
-- (NSMutableURLRequest *)requestWithMethod:(NSString *)method 
+- (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                       path:(NSString *)path parameters:(NSDictionary *)parameters;
 
-- (void)enqueueHTTPOperationWithRequest:(NSURLRequest *)request 
-                                success:(void (^)(id response))success 
+- (void)enqueueHTTPOperationWithRequest:(NSURLRequest *)request
+                                success:(void (^)(id response))success
                                 failure:(void (^)(NSError *error))failure;
 
 - (void)cancelHTTPOperationsWithRequest:(NSURLRequest *)request;
 
 - (void)cancelAllHTTPOperations;
 
-- (void)getPath:(NSString *)path 
-     parameters:(NSDictionary *)parameters 
+- (void)getPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
         success:(void (^)(id response))success;
 
-- (void)getPath:(NSString *)path 
-     parameters:(NSDictionary *)parameters 
-        success:(void (^)(id response))success 
+- (void)getPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+        success:(void (^)(id response))success
         failure:(void (^)(NSError *error))failure;
 
-- (void)postPath:(NSString *)path 
-      parameters:(NSDictionary *)parameters 
+- (void)postPath:(NSString *)path
+      parameters:(NSDictionary *)parameters
          success:(void (^)(id response))success;
 
-- (void)postPath:(NSString *)path 
-      parameters:(NSDictionary *)parameters 
-         success:(void (^)(id response))success 
+- (void)postPath:(NSString *)path
+      parameters:(NSDictionary *)parameters
+         success:(void (^)(id response))success
          failure:(void (^)(NSError *error))failure;
 
-- (void)putPath:(NSString *)path 
-     parameters:(NSDictionary *)parameters 
+- (void)putPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
         success:(void (^)(id response))success;
 
-- (void)putPath:(NSString *)path 
-     parameters:(NSDictionary *)parameters 
-        success:(void (^)(id response))success 
+- (void)putPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+        success:(void (^)(id response))success
         failure:(void (^)(NSError *error))failure;
 
-- (void)deletePath:(NSString *)path 
-        parameters:(NSDictionary *)parameters 
+- (void)deletePath:(NSString *)path
+        parameters:(NSDictionary *)parameters
            success:(void (^)(id response))success;
 
-- (void)deletePath:(NSString *)path 
-        parameters:(NSDictionary *)parameters 
-           success:(void (^)(id response))success 
+- (void)deletePath:(NSString *)path
+        parameters:(NSDictionary *)parameters
+           success:(void (^)(id response))success
            failure:(void (^)(NSError *error))failure;
 @end

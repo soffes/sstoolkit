@@ -43,7 +43,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	
+
 	// TODO: Only reload if data is empty
 	[self.tableView reloadData];
 

@@ -16,7 +16,7 @@
 
 * Added `- (NSArray *)indexPathsForVisibleRows` to SSCollectionView
 
-* Added begin/end updates to SSCollection with the following methods:    
+* Added begin/end updates to SSCollection with the following methods:
 
         - (void)beginUpdates;
         - (void)endUpdates;

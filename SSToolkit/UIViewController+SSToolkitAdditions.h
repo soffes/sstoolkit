@@ -17,14 +17,14 @@
 
 /**
  Present a `UIAlertView` with an error messagae.
- 
+
  @param error Error to present.
  */
 - (void)displayError:(NSError *)error;
 
 /**
  Present a `UIAlertView` with an error messagae.
- 
+
  @param string Error string to present.
  */
 - (void)displayErrorString:(NSString *)string;

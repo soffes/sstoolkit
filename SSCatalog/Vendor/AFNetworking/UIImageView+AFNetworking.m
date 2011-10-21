@@ -1,17 +1,17 @@
 // UIImageView+AFNetworking.m
 //
 // Copyright (c) 2011 Gowalla (http://gowalla.com/)
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -51,38 +51,38 @@ static NSString * const kUIImageViewImageRequestObjectKey = @"_af_imageRequestOp
 
 + (NSOperationQueue *)sharedImageRequestOperationQueue {
     static NSOperationQueue *_imageRequestOperationQueue = nil;
-    
+
     if (!_imageRequestOperationQueue) {
         _imageRequestOperationQueue = [[NSOperationQueue alloc] init];
         [_imageRequestOperationQueue setMaxConcurrentOperationCount:6];
     }
-    
+
     return _imageRequestOperationQueue;
 }
 
 #pragma mark -
- 
+
 - (void)setImageWithURL:(NSURL *)url {
     [self setImageWithURL:url placeholderImage:nil];
 }
 
-- (void)setImageWithURL:(NSURL *)url 
-       placeholderImage:(UIImage *)placeholderImage 
+- (void)setImageWithURL:(NSURL *)url
+       placeholderImage:(UIImage *)placeholderImage
 {
     [self setImageWithURL:url placeholderImage:placeholderImage imageSize:self.frame.size options:AFImageRequestDefaultOptions];
 }
 
-- (void)setImageWithURL:(NSURL *)url 
-       placeholderImage:(UIImage *)placeholderImage 
-              imageSize:(CGSize)imageSize 
-                options:(AFImageRequestOptions)options 
+- (void)setImageWithURL:(NSURL *)url
+       placeholderImage:(UIImage *)placeholderImage
+              imageSize:(CGSize)imageSize
+                options:(AFImageRequestOptions)options
 {
     [self setImageWithURL:url placeholderImage:placeholderImage imageSize:imageSize options:options block:nil];
 }
 
-- (void)setImageWithURL:(NSURL *)url 
-       placeholderImage:(UIImage *)placeholderImage 
-              imageSize:(CGSize)imageSize 
+- (void)setImageWithURL:(NSURL *)url
+       placeholderImage:(UIImage *)placeholderImage
+              imageSize:(CGSize)imageSize
                 options:(AFImageRequestOptions)options
                   block:(void (^)(UIImage *image, BOOL cacheUsed))block
 {
@@ -91,21 +91,21 @@ static NSString * const kUIImageViewImageRequestObjectKey = @"_af_imageRequestOp
     } else {
         [self cancelImageRequestOperation];
     }
-    
+
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLCacheStorageAllowed timeoutInterval:30.0];
     [request setHTTPShouldHandleCookies:NO];
     [request setHTTPShouldUsePipelining:YES];
-    
+
     UIImage *cachedImage = [[AFImageCache sharedImageCache] cachedImageForRequest:request imageSize:imageSize options:options];
     if (cachedImage) {
         self.image = cachedImage;
-        
+
         if (block) {
             block(cachedImage, YES);
         }
     } else {
         self.image = placeholderImage;
-        
+
         self.imageRequestOperation = [AFImageRequestOperation operationWithRequest:request imageSize:imageSize options:options success:^(UIImage *image) {
             if (self.imageRequestOperation && ![self.imageRequestOperation isCancelled]) {
                 if (block) {
@@ -116,10 +116,10 @@ static NSString * const kUIImageViewImageRequestObjectKey = @"_af_imageRequestOp
                     self.image = image;
                 } else {
                     self.image = placeholderImage;
-                }                
+                }
             }
         }];
-        
+
         [[[self class] sharedImageRequestOperationQueue] addOperation:self.imageRequestOperation];
     }
 }

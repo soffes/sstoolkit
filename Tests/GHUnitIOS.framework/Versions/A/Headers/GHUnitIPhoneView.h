@@ -30,16 +30,16 @@
 
 @interface GHUnitIPhoneView : UIView {
   UISearchBar *searchBar_;
-  
+
   UITableView *tableView_;
-  
+
   //! Status label at bottom of the view
   UILabel *statusLabel_;
- 
+
   UISegmentedControl *filterControl_;
-    
-  UIToolbar *runToolbar_;  
-  
+
+  UIToolbar *runToolbar_;
+
   UIView *footerView_;
 }
 

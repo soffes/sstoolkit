@@ -37,9 +37,9 @@
 //  Licensed under the Apache License, Version 2.0 (the "License"); you may not
 //  use this file except in compliance with the License.  You may obtain a copy
 //  of the License at
-// 
+//
 //  http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 //  Unless required by applicable law or agreed to in writing, software
 //  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 //  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
@@ -57,13 +57,13 @@ extern NSString *const GHTestFailureException;
 #import <Foundation/Foundation.h>
 
 @interface NSException(GHUTestFailureExceptions)
-+ (NSException *)ghu_failureInFile:(NSString *)filename 
-                        atLine:(int)lineNumber 
++ (NSException *)ghu_failureInFile:(NSString *)filename
+                        atLine:(int)lineNumber
                withDescription:(NSString *)formatString, ...;
-+ (NSException *)ghu_failureInCondition:(NSString *)condition 
-                             isTrue:(BOOL)isTrue 
-                             inFile:(NSString *)filename 
-                             atLine:(int)lineNumber 
++ (NSException *)ghu_failureInCondition:(NSString *)condition
+                             isTrue:(BOOL)isTrue
+                             inFile:(NSString *)filename
+                             atLine:(int)lineNumber
                     withDescription:(NSString *)formatString, ...;
 + (NSException *)ghu_failureInEqualityBetweenObject:(id)left
                                       andObject:(id)right
@@ -75,20 +75,20 @@ extern NSString *const GHTestFailureException;
                                                inFile:(NSString *)filename
                                                atLine:(int)lineNumber
                                       withDescription:(NSString *)formatString, ...;
-+ (NSException *)ghu_failureInEqualityBetweenValue:(NSValue *)left 
-                                      andValue:(NSValue *)right 
-                                  withAccuracy:(NSValue *)accuracy 
-                                        inFile:(NSString *)filename 
++ (NSException *)ghu_failureInEqualityBetweenValue:(NSValue *)left
+                                      andValue:(NSValue *)right
+                                  withAccuracy:(NSValue *)accuracy
+                                        inFile:(NSString *)filename
                                         atLine:(int) ineNumber
                                withDescription:(NSString *)formatString, ...;
-+ (NSException *)ghu_failureInRaise:(NSString *)expression 
-                         inFile:(NSString *)filename 
++ (NSException *)ghu_failureInRaise:(NSString *)expression
+                         inFile:(NSString *)filename
                          atLine:(int)lineNumber
                 withDescription:(NSString *)formatString, ...;
-+ (NSException *)ghu_failureInRaise:(NSString *)expression 
-                      exception:(NSException *)exception 
-                         inFile:(NSString *)filename 
-                         atLine:(int)lineNumber 
++ (NSException *)ghu_failureInRaise:(NSString *)expression
+                      exception:(NSException *)exception
+                         inFile:(NSString *)filename
+                         atLine:(int)lineNumber
                 withDescription:(NSString *)formatString, ...;
 @end
 

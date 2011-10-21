@@ -56,9 +56,9 @@
 		CGFloat top = [[self.locations objectAtIndex:0] floatValue];
 		return 1.0f - (2.0f * top);
 	}
-		
+
 	NSLog(@"[SSGradientView] `gradientScale` is deprecated. Using `gradientScale` with more than one location is not supported.");
-	return 0.0f;	
+	return 0.0f;
 }
 
 
@@ -66,7 +66,7 @@
 	if ([self.colors count] != 2) {
 		return;
 	}
-	
+
 	CGFloat top = (1.0f - gradientScale) / 2.0f;
 	CGFloat bottom = top + gradientScale;
 	self.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:top], [NSNumber numberWithFloat:bottom], nil];
@@ -90,7 +90,7 @@
 		[newColors release];
 		return;
 	}
-	
+
 	self.colors = [NSArray arrayWithObject:topColor];
 }
 
@@ -121,7 +121,7 @@
 - (void)dealloc {
 	[_colors release];
 	[_locations release];
-	
+
 	CGGradientRelease(_gradient);
 	_gradient = nil;
 
@@ -150,7 +150,7 @@
 - (void)drawRect:(CGRect)rect {
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextClipToRect(context, rect);
-	
+
 	// Gradient
 	if (_gradient) {
 		CGPoint start = CGPointMake(0.0f, 0.0f);
@@ -158,7 +158,7 @@
 					   CGPointMake(rect.size.width, 0.0f));
 		CGContextDrawLinearGradient(context, _gradient, start, end, 0);
 	}
-	
+
 	[super drawRect:rect];
 }
 
@@ -173,9 +173,9 @@
 - (void)_refreshGradient {
 	CGGradientRelease(_gradient);
 	_gradient = SSCreateGradientWithColorsAndLocations(_colors, _locations);
-	
+
 	// Redraw
-	[self setNeedsDisplay];	
+	[self setNeedsDisplay];
 }
 
 @end

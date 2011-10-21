@@ -26,7 +26,7 @@ static CGFloat indicatorRightMargin = 8.0f;
 
 #pragma mark - NSObject
 
-- (void)dealloc {	
+- (void)dealloc {
 	[_textLabel release];
 	[_activityIndicatorView release];
 	[super dealloc];
@@ -52,28 +52,28 @@ static CGFloat indicatorRightMargin = 8.0f;
 
 
 - (void)drawRect:(CGRect)rect {
-	
+
 	CGRect frame = self.frame;
-	
+
 	// Calculate sizes
 	CGSize maxSize = CGSizeMake(frame.size.width - (interiorPadding * 2.0f) - indicatorSize - indicatorRightMargin,
 								indicatorSize);
-	
+
 	CGSize textSize = [_textLabel.text sizeWithFont:_textLabel.font constrainedToSize:maxSize
 									  lineBreakMode:UILineBreakModeWordWrap];
-	
+
 	// Calculate position
 	CGFloat totalWidth = textSize.width + indicatorSize + indicatorRightMargin;
 	NSInteger y = (NSInteger)((frame.size.height / 2.0f) - (indicatorSize / 2.0f));
-	
+
 	// Position the indicator
 	_activityIndicatorView.frame = CGRectMake((NSInteger)((frame.size.width - totalWidth) / 2.0f), y, indicatorSize,
 											  indicatorSize);
-	
+
 	// Calculate text position
 	CGRect textRect = CGRectMake(_activityIndicatorView.frame.origin.x + indicatorSize + indicatorRightMargin, y,
 								 textSize.width, textSize.height);
-	
+
 	// Draw text
 	[_textLabel drawTextInRect:textRect];
 }
@@ -87,16 +87,16 @@ static CGFloat indicatorRightMargin = 8.0f;
 	self.backgroundColor = [UIColor whiteColor];
 	self.opaque = YES;
 	self.contentMode = UIViewContentModeRedraw;
-	
+
 	// Setup label
 	_textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-	
+
 	// Setup the indicator
 	_activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 	_activityIndicatorView.hidesWhenStopped = NO;
 	[_activityIndicatorView startAnimating];
 	[self addSubview:_activityIndicatorView];
-	
+
 	// Defaults
 	_textLabel.text = @"Loading...";
 	_textLabel.font = [UIFont systemFontOfSize:16.0f];

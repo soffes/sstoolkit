@@ -30,7 +30,7 @@
 #import "GHTestViewModel.h"
 
 @interface GHUnitIPhoneTableViewDataSource : GHTestViewModel <UITableViewDataSource> {
-  
+
 }
 
 - (GHTestNode *)nodeForIndexPath:(NSIndexPath *)indexPath;

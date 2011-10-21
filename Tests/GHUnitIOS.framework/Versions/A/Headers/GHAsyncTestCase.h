@@ -39,35 +39,35 @@ enum {
 
 /*!
  Asynchronous test case with wait and notify.
- 
+
  If notify occurs before wait has started (if it was a synchronous call), this test
  case will still work.
 
  Be sure to call prepare before the asynchronous method (otherwise an exception will raise).
- 
+
  @code
- 
+
  @interface MyAsyncTest : GHAsyncTestCase { }
  @end
- 
+
  @implementation MyAsyncTest
- 
+
  - (void)testSuccess {
    [self prepare];
-   
+
    // Do asynchronous task here
    [self performSelector:@selector(_succeed) withObject:nil afterDelay:0.1];
-   
+
    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
  }
- 
+
  - (void)_succeed {
    // Notice the forSelector points to the test above. This is so that
    // stray notifies don't error or falsely succeed other tests.
    // To ignore the check, forSelector can be NULL.
    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testSuccess)];
  }
- 
+
  @end
  @endcode
  */
@@ -75,22 +75,22 @@ enum {
 
   NSInteger waitForStatus_;
   NSInteger notifiedStatus_;
-  
+
   BOOL prepared_; // Whether prepared was called before waitForStatus:timeout:
   NSRecursiveLock *lock_; // Lock to synchronize on
   SEL waitSelector_; // The selector we are waiting on
-    
+
   NSArray *_runLoopModes;
 }
 
 /*!
- Run loop modes to run while waiting; 
+ Run loop modes to run while waiting;
  Defaults to NSDefaultRunLoopMode, NSRunLoopCommonModes, NSConnectionReplyMode
  */
-@property (retain, nonatomic) NSArray *runLoopModes; 
+@property (retain, nonatomic) NSArray *runLoopModes;
 
 /*!
- Prepare before calling the asynchronous method. 
+ Prepare before calling the asynchronous method.
  */
 - (void)prepare;
 
@@ -102,10 +102,10 @@ enum {
 
 /*!
  Wait for notification of status or timeout.
- 
+
  Be sure to prepare before calling your asynchronous method.
- For example, 
- 
+ For example,
+
  @code
   - (void)testFoo {
     [self prepare];
@@ -113,13 +113,13 @@ enum {
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
   }
  @endcode
- 
- @param status kGHUnitWaitStatusSuccess, kGHUnitWaitStatusFailure or custom status 
+
+ @param status kGHUnitWaitStatusSuccess, kGHUnitWaitStatusFailure or custom status
  @param timeout Timeout in seconds
  */
 - (void)waitForStatus:(NSInteger)status timeout:(NSTimeInterval)timeout;
 
-/*! 
+/*!
  @deprecated
  */
 - (void)waitFor:(NSInteger)status timeout:(NSTimeInterval)timeout;
@@ -146,7 +146,7 @@ enum {
 - (void)notify:(NSInteger)status;
 
 /*!
- Run the run loops for the specified interval. 
+ Run the run loops for the specified interval.
  @param interval
  @author Adapted from Robert Palmer, pauseForTimeout
  */

@@ -24,15 +24,15 @@
 	[_items makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	[_items release];
 	_items = [someItems retain];
-	
+
 	if (_items == nil) {
 		return;
 	}
-	
+
 	[_items enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
 		[self addSubview:(UIView *)object];
 	}];
-	
+
 	[self setNeedsLayout];
 }
 
@@ -52,10 +52,10 @@
 
 - (void)layoutSubviews {
 	__block CGFloat x = _itemSpacing;
-	
+
 	[_items enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
 		SSCollectionViewItem *item = (SSCollectionViewItem *)object;
-		
+
 		item.frame = CGRectMake(x, 0.0f, _itemSize.width, _itemSize.height);
 		x += _itemSize.width + _itemSpacing;
 	}];
@@ -73,7 +73,7 @@
 		self.detailTextLabel.hidden = YES;
 		self.imageView.hidden = YES;
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
-		
+
 		_itemSize = CGSizeZero;
 		_itemSpacing = 0.0f;
 	}

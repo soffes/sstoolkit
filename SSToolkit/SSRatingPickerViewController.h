@@ -24,7 +24,7 @@
 
 /**
  The rating picker. (read-only)
- 
+
  All of the rating picker's values are the default values of `SSRatingPicker`.
  */
 @property (nonatomic, retain, readonly) SSRatingPicker *ratingPicker;

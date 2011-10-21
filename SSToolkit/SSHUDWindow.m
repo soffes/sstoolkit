@@ -51,14 +51,14 @@ static SSHUDWindow *kHUDWindow = nil;
 	if (_hidesVignette) {
 		return;
 	}
-	
+
 	NSString *imageName = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? @"SSVignetteiPad.png" : @"SSVignetteiPhone.png";
 	UIImage *image = [UIImage imageNamed:imageName bundleName:kSSToolkitBundleName];
-	
+
 	CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-	[image drawInRect:CGRectMake(roundf((screenSize.width - image.size.width) / 2.0f), 
-								 roundf((screenSize.height - image.size.height) / 2.0f), 
-								 image.size.width, image.size.height)];	
+	[image drawInRect:CGRectMake(roundf((screenSize.width - image.size.width) / 2.0f),
+								 roundf((screenSize.height - image.size.height) / 2.0f),
+								 image.size.width, image.size.height)];
 }
 
 @end

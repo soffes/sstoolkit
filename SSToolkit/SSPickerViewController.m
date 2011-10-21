@@ -37,9 +37,9 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
+
 	[self loadKeys];
-	
+
 	if(self.selectedKey != nil) {
 		self.currentIndexPath = [NSIndexPath indexPathForRow:[self.keys indexOfObject:self.selectedKey] inSection:0];
 		[self.tableView reloadData];

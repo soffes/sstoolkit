@@ -60,12 +60,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"cell";
-	
+
 	SSBadgeTableViewCell *cell = (SSBadgeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 	if (cell == nil) {
 		cell = [[[SSBadgeTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
 	}
-	
+
 	if (indexPath.section == 0) {
 		switch (indexPath.row) {
 			case 0: {
@@ -74,21 +74,21 @@
 				cell.badgeView.badgeColor = [SSBadgeView defaultBadgeColor];
 				break;
 			}
-			
+
 			case 1: {
 				cell.textLabel.text = @"Unread Count";
 				cell.badgeView.textLabel.text = @"3";
 				cell.badgeView.badgeColor = [UIColor colorWithRed:0.969f green:0.082f blue:0.078f alpha:1.0f];
 				break;
 			}
-			
+
 			case 2: {
 				cell.textLabel.text = @"Text Badge";
 				cell.badgeView.textLabel.text = @"New";
 				cell.badgeView.badgeColor = [UIColor colorWithRed:0.388f green:0.686f blue:0.239f alpha:1.0f];
 				break;
 			}
-			
+
 			case 3: {
 				cell.textLabel.text = @"Nil value";
 				cell.badgeView.textLabel.text = nil;
@@ -102,7 +102,7 @@
 		cell.badgeView.textLabel.text = [NSNumberFormatter localizedStringFromNumber:number numberStyle:NSNumberFormatterDecimalStyle];
 		cell.badgeView.badgeColor = [SSBadgeView defaultBadgeColor];
 	}
-	
+
 	return cell;
 }
 

@@ -33,7 +33,7 @@ CGFloat const kAngleOffset = -90.0f;
 
 - (void)setPieBorderWidth:(CGFloat)pieBorderWidth {
 	_pieBorderWidth = pieBorderWidth;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -42,7 +42,7 @@ CGFloat const kAngleOffset = -90.0f;
 	[pieBorderColor retain];
 	[_pieBorderColor release];
 	_pieBorderColor = pieBorderColor;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -50,7 +50,7 @@ CGFloat const kAngleOffset = -90.0f;
 	[pieFillColor retain];
 	[_pieFillColor release];
 	_pieFillColor = pieFillColor;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -59,7 +59,7 @@ CGFloat const kAngleOffset = -90.0f;
 	[pieBackgroundColor retain];
 	[_pieBackgroundColor release];
 	_pieBackgroundColor = pieBackgroundColor;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -102,11 +102,11 @@ CGFloat const kAngleOffset = -90.0f;
 - (void)drawRect:(CGRect)rect {
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextClipToRect(context, rect);
-	
+
 	// Background
 	[_pieBackgroundColor set];
 	CGContextFillEllipseInRect(context, rect);
-	
+
 	// Fill
 	[_pieFillColor set];
 	if (_progress > 0.0f) {
@@ -122,12 +122,12 @@ CGFloat const kAngleOffset = -90.0f;
 		CGContextAddArc(context, center.x, center.y, radius, DEGREES_TO_RADIANS(kAngleOffset), angle, false);
 		CGContextDrawPath(context, kCGPathEOFill);
 	}
-	
+
 	// Border
 	[_pieBorderColor set];
 	CGContextSetLineWidth(context, _pieBorderWidth);
 	CGRect pieInnerRect = CGRectMake(_pieBorderWidth / 2.0f, _pieBorderWidth / 2.0f, rect.size.width - _pieBorderWidth, rect.size.height - _pieBorderWidth);
-	CGContextStrokeEllipseInRect(context, pieInnerRect);	
+	CGContextStrokeEllipseInRect(context, pieInnerRect);
 }
 
 
@@ -135,7 +135,7 @@ CGFloat const kAngleOffset = -90.0f;
 
 - (void)_initialize {
 	self.backgroundColor = [UIColor clearColor];
-	
+
 	self.progress = 0.0f;
 	self.pieBorderWidth = 2.0f;
 	self.pieBorderColor = [[self class] defaultPieColor];

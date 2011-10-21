@@ -19,7 +19,7 @@
 	[url retain];
 	[_imageURL release];
 	_imageURL = url;
-	
+
 	if (_imageURL) {
 		[self.imageView setImageWithURL:url placeholderImage:nil];
 	} else {

@@ -6,7 +6,7 @@
 //  Copyright 2009-2011 Sam Soffes. All rights reserved.
 //
 
-// This setting of 1 is best if you copy the source into your project. 
+// This setting of 1 is best if you copy the source into your project.
 // The build transforms the 1 to a 0 when building the framework and static lib.
 
 #if 1

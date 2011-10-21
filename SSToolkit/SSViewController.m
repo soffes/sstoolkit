@@ -81,28 +81,28 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 	if (!_customModalViewController) {
 		return;
 	}
-	
+
 	CGSize screenSize;
-	
+
 	// TODO: Make this not iPad specific
-	
+
 	// Landscape
 	if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
 		screenSize = CGSizeMake(1024.0f, 768.0f);
 		_vignetteButton.frame = CGRectMake(0.0f, -128.0f, 1024.0f, 1024.0f);
 	}
-	
+
 	// Portrait
 	else {
 		screenSize = CGSizeMake(768.0f, 1024.0f);
 		_vignetteButton.frame = CGRectMake(-128.0f, 0.0f, 1024.0f, 1024.0f);
 	}
-	
+
 	CGSize modalSize = kSSViewControllerDefaultContentSizeForViewInCustomModal;
 	if ([_customModalViewController respondsToSelector:@selector(contentSizeForViewInCustomModal)]) {
 		modalSize = [_customModalViewController contentSizeForViewInCustomModal];
 	}
-	
+
 	CGPoint originOffset = CGPointZero;
 	if ([_customModalViewController respondsToSelector:@selector(originOffsetForViewInCustomModal)]) {
 		originOffset = [_customModalViewController originOffsetForViewInCustomModal];
@@ -120,69 +120,69 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 
 - (void)presentCustomModalViewController:(UIViewController<SSModalViewController> *)viewController animated:(BOOL)animated {
 	_customModalViewController = [viewController retain];
-	
+
 	if (_customModalViewController == nil) {
 		return;
 	}
-	
+
 	_customModalViewController.modalParentViewController = self;
-	
+
 	CGSize modalSize = kSSViewControllerDefaultContentSizeForViewInCustomModal;
 	if ([_customModalViewController respondsToSelector:@selector(contentSizeForViewInCustomModal)]) {
 		modalSize = [_customModalViewController contentSizeForViewInCustomModal];
 	}
-	
+
 	if (_vignetteButton == nil) {
 		_vignetteButton = [[UIButton alloc] initWithFrame:CGRectZero];
 		[_vignetteButton setImage:[UIImage imageNamed:@"SSVignetteiPad.png" bundleName:kSSToolkitBundleName] forState:UIControlStateNormal];
 		_vignetteButton.adjustsImageWhenHighlighted = NO;
 		_vignetteButton.alpha = 0.0f;
 	}
-	
+
 	[self.view addSubview:_vignetteButton];
 	[_vignetteButton fadeIn];
-	
+
 	if (_modalContainerBackgroundView == nil) {
 		UIImage *modalBackgroundImage = [[UIImage imageNamed:@"SSViewControllerFormBackground.png" bundleName:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:43 topCapHeight:45];
 		_modalContainerBackgroundView = [[UIImageView alloc] initWithImage:modalBackgroundImage];
 		_modalContainerBackgroundView.autoresizesSubviews = NO;
 		_modalContainerBackgroundView.userInteractionEnabled = YES;
 	}
-	
+
 	[self.view addSubview:_modalContainerBackgroundView];
-	
+
 	if (_modalContainerView == nil) {
 		_modalContainerView = [[UIView alloc] initWithFrame:CGRectMake(kSSViewControllerModalPadding, kSSViewControllerModalPadding, modalSize.width, modalSize.height)];
 		_modalContainerView.layer.cornerRadius = 5.0f;
 		_modalContainerView.clipsToBounds = YES;
 		[_modalContainerBackgroundView addSubview:_modalContainerView];
 	}
-	
+
 	UIView *modalView = _customModalViewController.view;
 	[_modalContainerView addSubview:modalView];
 	modalView.frame = CGRectMake(0.0f, 0.0f, modalSize.width, modalSize.height);
-	
+
 	CGSize screenSize;
 	if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft || self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
 		screenSize = CGSizeMake(1024.0f, 768.0f);
 	} else {
 		screenSize = CGSizeMake(768.0f, 1024.0f);
 	}
-	
+
 	CGPoint originOffset = CGPointZero;
 	if ([_customModalViewController respondsToSelector:@selector(originOffsetForViewInCustomModal)]) {
 		originOffset = [_customModalViewController originOffsetForViewInCustomModal];
 	}
-	
+
 	_modalContainerBackgroundView.frame = CGRectMake((roundf(screenSize.width - modalSize.width - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0f) + originOffset.x, (roundf(screenSize.height - modalSize.height - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0f) + originOffset.y + screenSize.height, modalSize.width + kSSViewControllerModalPadding + kSSViewControllerModalPadding, modalSize.height + kSSViewControllerModalPadding + kSSViewControllerModalPadding);
-	
-	
+
+
 	if ([_customModalViewController respondsToSelector:@selector(viewWillAppear:)]) {
 		[_customModalViewController viewWillAppear:animated];
 	}
-	
+
 	[self customModalWillAppear:animated];
-	
+
 	if (animated) {
 		[UIView beginAnimations:@"com.samsoffes.sstoolkit.ssviewcontroller.present-modal" context:self];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -190,9 +190,9 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 		[UIView setAnimationDelegate:self];
 		[UIView setAnimationDidStopSelector:@selector(_presentModalAnimationDidStop:finished:context:)];
 	}
-	
+
 	[self layoutViews];
-	
+
 	if (animated) {
 		[UIView commitAnimations];
 	} else {
@@ -213,18 +213,18 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 	} else {
 		screenSize = CGSizeMake(768.0f, 1024.0f);
 	}
-	
+
 	CGSize modalSize = kSSViewControllerDefaultContentSizeForViewInCustomModal;
 	if ([_customModalViewController respondsToSelector:@selector(contentSizeForViewInCustomModal)]) {
 		modalSize = [_customModalViewController contentSizeForViewInCustomModal];
 	}
-	
+
 	if ([_customModalViewController respondsToSelector:@selector(viewWillDisappear:)]) {
 		[_customModalViewController viewWillDisappear:animated];
 	}
-	
-	[self customModalWillDisappear:animated];	
-	
+
+	[self customModalWillDisappear:animated];
+
 	if (animated) {
 		[UIView beginAnimations:@"com.samsoffes.sstoolkit.ssviewcontroller.dismiss-modal" context:self];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -234,21 +234,21 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 	} else {
 		[self _dismissModalAnimationDidStop:nil finished:nil context:nil];
 	}
-	
+
 	_modalContainerBackgroundView.frame = CGRectMake(roundf(screenSize.width - modalSize.width - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0f, (roundf(screenSize.height - modalSize.height - kSSViewControllerModalPadding - kSSViewControllerModalPadding) / 2.0f) + screenSize.height, modalSize.width + kSSViewControllerModalPadding + kSSViewControllerModalPadding, modalSize.height + kSSViewControllerModalPadding + kSSViewControllerModalPadding);
-	
+
 	if (animated) {
 		[UIView commitAnimations];
-		
+
 		[UIView beginAnimations:@"com.samsoffes.sstoolkit.ssviewcontroller.remove-vignette" context:self];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 		[UIView setAnimationDelay:0.2];
 		[UIView setAnimationDelegate:self];
 		[UIView setAnimationDidStopSelector:@selector(_dismissVignetteAnimationDidStop:finished:context:)];
 	}
-	
+
 	_vignetteButton.alpha = 0.0f;
-	
+
 	if (animated) {
 		[UIView commitAnimations];
 	} else {
@@ -283,14 +283,14 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 	[_modalContainerBackgroundView removeFromSuperview];
 	[_modalContainerBackgroundView release];
 	_modalContainerBackgroundView = nil;
-	
+
 	[_vignetteButton removeFromSuperview];
 	[_vignetteButton release];
 	_vignetteButton = nil;
-	
+
 	[_customModalViewController release];
 	_customModalViewController = nil;
-	
+
 	[_modalContainerView release];
 	_modalContainerView = nil;
 }
@@ -298,13 +298,13 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 
 - (void)_presentModalAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
 	BOOL animated = (animationID != nil);
-	
+
 	if ([_customModalViewController respondsToSelector:@selector(viewDidAppear:)]) {
 		[_customModalViewController viewDidAppear:animated];
 	}
-	
+
 	[self customModalDidAppear:animated];
-	
+
 	if ([_customModalViewController respondsToSelector:@selector(dismissCustomModalOnVignetteTap)] && [_customModalViewController dismissCustomModalOnVignetteTap] == YES) {
 		[_vignetteButton addTarget:self action:@selector(dismissCustomModalViewController) forControlEvents:UIControlEventTouchUpInside];
 	}
@@ -313,11 +313,11 @@ static CGSize const kSSViewControllerDefaultContentSizeForViewInCustomModal = {5
 
 - (void)_dismissModalAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
 	BOOL animated = (animationID != nil);
-		
+
 	if ([_customModalViewController respondsToSelector:@selector(viewDidDisappear:)]) {
 		[_customModalViewController viewDidDisappear:animated];
 	}
-	
+
 	[self customModalDidDisappear:animated];
 }
 

@@ -36,9 +36,9 @@
 //  Licensed under the Apache License, Version 2.0 (the "License"); you may not
 //  use this file except in compliance with the License.  You may obtain a copy
 //  of the License at
-// 
+//
 //  http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 //  Unless required by applicable law or agreed to in writing, software
 //  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 //  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
@@ -59,14 +59,14 @@
 #define GHTestLog(...) [self log:[NSString stringWithFormat:__VA_ARGS__, nil]]
 
 /*!
- The base class for a test case. 
- 
+ The base class for a test case.
+
  @code
  @interface MyTest : GHTestCase {}
  @end
- 
+
  @implementation MyTest
- 
+
  // Run before each test method
  - (void)setUp { }
 
@@ -78,30 +78,30 @@
 
  // Run before the tests are run for this class
  - (void)tearDownClass { }
- 
+
  // Tests are prefixed by 'test' and contain no arguments and no return value
- - (void)testA { 
+ - (void)testA {
    GHTestLog(@"Log with a test with the GHTestLog(...) for test specific logging.");
  }
 
  // Another test; Tests are run in lexical order
  - (void)testB { }
- 
+
  // Override any exceptions; By default exceptions are raised, causing a test failure
  - (void)failWithException:(NSException *)exception { }
- 
+
  @end
  @endcode
 
  */
 @interface GHTestCase : NSObject {
   id<GHTestCaseLogWriter> logWriter_; // weak
-  
+
   SEL currentSelector_;
 }
 
 //! The current test selector
-@property (assign, nonatomic) SEL currentSelector; 
+@property (assign, nonatomic) SEL currentSelector;
 @property (assign, nonatomic) id<GHTestCaseLogWriter> logWriter;
 
 // GTM_BEGIN
@@ -111,7 +111,7 @@
 //! Run after each test method
 - (void)tearDown;
 
-/*! 
+/*!
  By default exceptions are raised, causing a test failure
  @brief Override any exceptions
  @param exception Exception that was raised by test

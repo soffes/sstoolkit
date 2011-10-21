@@ -20,19 +20,19 @@
 	if (!encodedString) {
 		return nil;
 	}
-	
+
 	NSMutableDictionary *result = [NSMutableDictionary dictionary];
 	NSArray *pairs = [encodedString componentsSeparatedByString:@"&"];
-	
+
 	for (NSString *kvp in pairs) {
 		if ([kvp length] == 0) {
 			continue;
 		}
-		
+
 		NSRange pos = [kvp rangeOfString:@"="];
 		NSString *key;
 		NSString *val;
-		
+
 		if (pos.location == NSNotFound) {
 			key = [kvp stringByUnescapingFromURLQuery];
 			val = @"";
@@ -40,11 +40,11 @@
 			key = [[kvp substringToIndex:pos.location] stringByUnescapingFromURLQuery];
 			val = [[kvp substringFromIndex:pos.location + pos.length] stringByUnescapingFromURLQuery];
 		}
-		
+
 		if (!key || !val) {
 			continue; // I'm sure this will bite my arse one day
 		}
-		
+
 		[result setObject:val forKey:key];
 	}
 	return result;
@@ -58,7 +58,7 @@
 							  [key stringByEscapingForURLQuery],
 							  [[object description] stringByEscapingForURLQuery]]];
 	}];
-	
+
 	return [arguments componentsJoinedByString:@"&"];
 }
 

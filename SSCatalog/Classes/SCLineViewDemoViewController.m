@@ -23,22 +23,22 @@
 	[super viewDidLoad];
 	self.title = [[self class] title];
 	self.view.backgroundColor = [UIColor colorWithRed:0.851f green:0.859f blue:0.882f alpha:1.0f];
-	
+
 	SSLineView *lineView1 = [[SSLineView alloc] initWithFrame:CGRectMake(20.0f, 20.0f, 280.0f, 2.0f)];
 	[self.view addSubview:lineView1];
 	[lineView1 release];
-	
+
 	SSLineView *lineView2 = [[SSLineView alloc] initWithFrame:CGRectMake(20.0f, 42.0f, 280.0f, 2.0f)];
 	lineView2.lineColor = [UIColor blueColor];
 	[self.view addSubview:lineView2];
 	[lineView2 release];
-	
+
 	SSLineView *lineView3 = [[SSLineView alloc] initWithFrame:CGRectMake(20.0f, 64.0f, 280.0f, 2.0f)];
 	lineView3.lineColor = [UIColor orangeColor];
 	lineView3.dashLengths = [NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0f], [NSNumber numberWithFloat:2.0f], nil];
 	[self.view addSubview:lineView3];
 	[lineView3 release];
-	
+
 	SSLineView *lineView4 = [[SSLineView alloc] initWithFrame:CGRectMake(20.0f, 86.0f, 280.0f, 2.0f)];
 	lineView4.lineColor = [UIColor greenColor];
 	lineView4.dashLengths = [NSArray arrayWithObjects:[NSNumber numberWithFloat:2.0f], [NSNumber numberWithFloat:2.0f], nil];

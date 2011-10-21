@@ -15,16 +15,16 @@
 
 - (void)testRemoveAllTargets {
 	NSString *anotherObject = @"hi";
-	
+
 	UIControl *control = [[UIControl alloc] initWithFrame:CGRectZero];
 	[control addTarget:self action:@selector(description) forControlEvents:UIControlEventTouchUpInside];
 	[control addTarget:anotherObject action:@selector(description) forControlEvents:UIControlEventTouchUpInside];
-	
+
 	NSSet *targets = [NSSet setWithObjects:self, anotherObject, nil];
 	GHAssertEqualObjects([control allTargets], targets, nil);
-	
+
 	[control removeAllTargets];
-	
+
 	GHAssertTrue([[control allTargets] count] == 0, nil);
 }
 

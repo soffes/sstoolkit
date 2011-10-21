@@ -15,12 +15,12 @@ namespace :docs do
   task :clean do
     `rm -rf Documentation`
   end
-  
+
   desc 'Install docs'
   task :install => [:'docs:clean'] do
     `appledoc #{appledoc_options.join(' ')} --create-docset --install-docset SSToolkit/*.h`
   end
-  
+
   desc 'Publish docs'
   task :publish => [:'docs:clean'] do
     extra_options = [

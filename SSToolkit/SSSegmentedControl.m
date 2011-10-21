@@ -39,7 +39,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	[buttonImage retain];
 	[_buttonImage release];
 	_buttonImage = buttonImage;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -50,7 +50,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	[highlightedButtonImage retain];
 	[_highlightedButtonImage release];
 	_highlightedButtonImage = highlightedButtonImage;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -61,7 +61,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	[dividerImage retain];
 	[_dividerImage release];
 	_dividerImage = dividerImage;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -72,7 +72,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	[highlightedDividerImage retain];
 	[_highlightedDividerImage release];
 	_highlightedDividerImage = highlightedDividerImage;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -83,7 +83,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	[font retain];
 	[_font release];
 	_font = font;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -94,7 +94,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	[textColor retain];
 	[_textColor release];
 	_textColor = textColor;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -104,7 +104,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	[disabledTextColor retain];
 	[_disabledTextColor release];
 	_disabledTextColor = disabledTextColor;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -115,7 +115,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	[textShadowColor retain];
 	[_textShadowColor release];
 	_textShadowColor = textShadowColor;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -124,7 +124,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 
 - (void)setTextShadowOffset:(CGSize)textShadowOffset {
 	_textShadowOffset = textShadowOffset;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -133,7 +133,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 
 - (void)setTextEdgeInsets:(UIEdgeInsets)textEdgeInsets {
 	_textEdgeInsets = textEdgeInsets;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -144,7 +144,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	if (_selectedSegmentIndex == index) {
 		return;
 	}
-	
+
 	_selectedSegmentIndex = index;
 	[self setNeedsDisplay];
 	[self sendActionsForControlEvents:UIControlEventValueChanged];
@@ -179,12 +179,12 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	UITouch *touch = [touches anyObject];
 	CGFloat x = [touch locationInView:self].x;
-	
+
 	// Ignore touches that don't matter
 	if (x < 0 || x > self.frame.size.width) {
 		return;
 	}
-	
+
 	NSUInteger index = (NSUInteger)floorf((CGFloat)x / (self.frame.size.width / (CGFloat)[self numberOfSegments]));
 	if ([self isEnabledForSegmentAtIndex:index]) {
 		self.selectedSegmentIndex = (NSInteger)index;
@@ -196,7 +196,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	if (!_momentary) {
 		return;
 	}
-	
+
 	_selectedSegmentIndex = UISegmentedControlNoSegment;
 	[self setNeedsDisplay];
 }
@@ -222,42 +222,42 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 
 - (void)drawRect:(CGRect)frame {
 	static CGFloat dividerWidth = 1.0f;
-	
+
 	NSInteger count = (NSInteger)[self numberOfSegments];
 	CGSize size = frame.size;
 	CGFloat segmentWidth = roundf((size.width - count - 1) / (CGFloat)count);
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	
+
 	for (NSInteger i = 0; i < count; i++) {
 		CGContextSaveGState(context);
-		
+
 		id item = [_segments objectAtIndex:(NSUInteger)i];
 		BOOL enabled = [self isEnabledForSegmentAtIndex:(NSUInteger)i];
-		
+
 		CGFloat x = (segmentWidth * (CGFloat)i + (((CGFloat)i + 1) * dividerWidth));
-		
+
 		// Draw dividers
 		if (i > 0) {
-			
+
 			NSInteger p  = i - 1;
 			UIImage *dividerImage = nil;
-			
+
 			// Selected divider
 			if ((p >= 0 && p == _selectedSegmentIndex) || i == _selectedSegmentIndex) {
 				dividerImage = _highlightedDividerImage;
 			}
-			
+
 			// Normal divider
 			else {
 				dividerImage = _dividerImage;
 			}
-			
+
 			[dividerImage drawInRect:CGRectMake(x - 1.0f, 0.0f, dividerWidth, size.height)];
 		}
-		
+
 		CGRect segmentRect = CGRectMake(x, 0.0f, segmentWidth, size.height);
 		CGContextClipToRect(context, segmentRect);
-		
+
 		// Background
 		UIImage *backgroundImage = nil;
 		CGRect backgroundRect = segmentRect;
@@ -266,47 +266,47 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 		} else {
 			backgroundImage = _buttonImage;
 		}
-		
+
 		CGFloat capWidth = backgroundImage.leftCapWidth;
-		
+
 		// First segment
 		if (i == 0) {
 			backgroundRect = CGRectSetWidth(backgroundRect, backgroundRect.size.width + capWidth);
 		}
-		
+
 		// Last segment
 		else if (i == count - 1) {
 			backgroundRect = CGRectMake(backgroundRect.origin.x - capWidth, backgroundRect.origin.y,
 										backgroundRect.size.width + capWidth, backgroundRect.size.height);
 		}
-		
+
 		// Middle segment
 		else {
 			backgroundRect = CGRectMake(backgroundRect.origin.x - capWidth, backgroundRect.origin.y,
 										backgroundRect.size.width + capWidth + capWidth, backgroundRect.size.height);
 		}
-		
+
 		[backgroundImage drawInRect:backgroundRect];
-		
+
 		// Strings
 		if ([item isKindOfClass:[NSString class]]) {
 			NSString *string = (NSString *)item;
 			CGSize textSize = [string sizeWithFont:_font constrainedToSize:CGSizeMake(segmentWidth, size.height) lineBreakMode:UILineBreakModeTailTruncation];
 			CGRect textRect = CGRectMake(x, roundf((size.height - textSize.height) / 2.0f), segmentWidth, size.height);
 			textRect = UIEdgeInsetsInsetRect(textRect, _textEdgeInsets);
-			
+
 			if (enabled) {
 				[_textShadowColor set];
 				[string drawInRect:CGRectAddPoint(textRect, CGPointMake(_textShadowOffset.width, _textShadowOffset.height)) withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
-				
+
 				[_textColor set];
 			} else {
 				[_disabledTextColor set];
 			}
-			
+
 			[string drawInRect:textRect withFont:_font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
 		}
-		
+
 		// Images
 		else if ([item isKindOfClass:[UIImage class]]) {
 			UIImage *image = (UIImage *)item;
@@ -316,7 +316,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 										  imageSize.width, imageSize.height);
 			[image drawInRect:imageRect blendMode:kCGBlendModeNormal alpha:enabled ? 1.0f : 0.5f];
 		}
-		
+
 		CGContextRestoreGState(context);
 	}
 }
@@ -346,7 +346,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	} else {
 		[_segments replaceObjectAtIndex:segment withObject:title];
 	}
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -355,12 +355,12 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	if ([self numberOfSegments] - 1 >= segment) {
 		return nil;
 	}
-	
+
 	id item = [_segments objectAtIndex:segment];
 	if ([item isKindOfClass:[NSString class]]) {
 		return item;
 	}
-	
+
 	return nil;
 }
 
@@ -371,7 +371,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	} else {
 		[_segments replaceObjectAtIndex:segment withObject:image];
 	}
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -380,19 +380,19 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	if ([self numberOfSegments] - 1 >= segment) {
 		return nil;
 	}
-	
+
 	id item = [_segments objectAtIndex:segment];
 	if ([item isKindOfClass:[UIImage class]]) {
 		return item;
 	}
-	
+
 	return nil;
 }
 
 
 - (void)setEnabled:(BOOL)enabled forSegmentAtIndex:(NSUInteger)segment {
 	[self _setMetaValue:[NSNumber numberWithBool:enabled] forKey:kSSSegmentedControlEnabledKey segmentIndex:segment];
-	
+
 }
 
 
@@ -409,16 +409,16 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 
 - (void)_initialize {
 	self.backgroundColor = [UIColor clearColor];
-	
+
 	_segments = [[NSMutableArray alloc] init];
 	_momentary = NO;
-	
+
 	self.buttonImage = [[UIImage imageNamed:@"UISegmentBarButton.png" bundleName:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
 	self.highlightedButtonImage = [[UIImage imageNamed:@"UISegmentBarButtonHighlighted.png" bundleName:kSSToolkitBundleName] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
 	self.dividerImage = [UIImage imageNamed:@"UISegmentBarDivider.png" bundleName:kSSToolkitBundleName];
 	self.highlightedDividerImage = [UIImage imageNamed:@"UISegmentBarDividerHighlighted.png" bundleName:kSSToolkitBundleName];
 	self.selectedSegmentIndex = SSSegmentedControlNoSegment;
-	
+
 	_font = [[UIFont boldSystemFontOfSize:12.0f] retain];
 	_textColor = [[UIColor whiteColor] retain];
 	_disabledTextColor = [[UIColor colorWithWhite:0.561f alpha:1.0f] retain];
@@ -432,7 +432,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	if (!_segmentMeta) {
 		return nil;
 	}
-	
+
 	NSString *key = [NSString stringWithFormat:@"%i", index];
 	return [_segmentMeta objectForKey:key];
 }
@@ -449,13 +449,13 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	if (!meta) {
 		meta = [NSMutableDictionary dictionary];
 	}
-	
+
 	[meta setValue:value forKey:key];
-	
+
 	if (!_segmentMeta) {
 		_segmentMeta = [[NSMutableDictionary alloc] init];
 	}
-	
+
 	[_segmentMeta setValue:meta forKey:[NSString stringWithFormat:@"%i", index]];
 	[self setNeedsDisplay];
 }

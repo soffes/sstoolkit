@@ -16,10 +16,10 @@
     va_start(arguments, format);
 	NSString *string = [[NSString alloc] initWithFormat:format arguments:arguments];
 	va_end(arguments);
-	
+
 	NSURL *url = [NSURL URLWithString:string];
 	[string release];
-	
+
 	return url;
 }
 

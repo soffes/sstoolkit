@@ -9,7 +9,7 @@
 /**
  An easy view to show loading similar to the loading screens in the iTunes or App Store applications. The view is
  intended to cover another view while it is loading and the removed once loading is complete.
- 
+
  This view will automatically center the text and the activity indicator.
  */
 @interface SSLoadingView : UIView

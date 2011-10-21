@@ -35,7 +35,7 @@
 	[super viewDidLoad];
 	self.title = [[self class] title];
 	self.view.backgroundColor = [UIColor whiteColor];
-	
+
 	// Gradient view
 	_gradientView = [[SSGradientView alloc] initWithFrame:CGRectMake(20.0f, 20.0f, 280.0f, 280.0f)];
 	_gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -47,14 +47,14 @@
 							nil];
 	_gradientView.bottomBorderColor = [UIColor colorWithRed:0.428f green:0.479f blue:0.520f alpha:1.0f];
 	[self.view addSubview:_gradientView];
-	
+
 	// Change color button
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	button.frame = CGRectMake(20.0f, 320.0f, 280.0f, 37.0f);
 	[button setTitle:@"Change Color" forState:UIControlStateNormal];
 	[button addTarget:self action:@selector(changeColor:) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:button];
-	
+
 	// Scale slider
 	UISlider *scaleSlider = [[UISlider alloc] initWithFrame:CGRectMake(20.0f, 377.0f, 280.0f, 20.0f)];
 	scaleSlider.value = 1.0f;
@@ -63,7 +63,7 @@
 	[scaleSlider addTarget:self action:@selector(updateScale:) forControlEvents:UIControlEventValueChanged];
 	[self.view addSubview:scaleSlider];
 	[scaleSlider release];
-	
+
 	_blue = YES;
 }
 
@@ -90,7 +90,7 @@
 								[UIColor colorWithRed:0.514f green:0.568f blue:0.617f alpha:1.0f],
 								nil];
 	}
-	
+
 	_blue = !_blue;
 }
 

@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.title = [[self class] title];
-	
+
 	self.collectionView.extremitiesStyle = SSCollectionViewExtremitiesStyleScrolling;
 }
 
@@ -50,16 +50,16 @@
 
 - (SSCollectionViewItem *)collectionView:(SSCollectionView *)aCollectionView itemForIndexPath:(NSIndexPath *)indexPath {
 	static NSString *const itemIdentifier = @"itemIdentifier";
-	
+
 	SCImageCollectionViewItem *item = (SCImageCollectionViewItem *)[aCollectionView dequeueReusableItemWithIdentifier:itemIdentifier];
 	if (item == nil) {
 		item = [[[SCImageCollectionViewItem alloc] initWithReuseIdentifier:itemIdentifier] autorelease];
 	}
-	
+
 	CGFloat size = 80.0f * [[UIScreen mainScreen] scale];
 	NSInteger i = (50 * indexPath.section) + indexPath.row;
 	item.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.gravatar.com/avatar/%i?s=%0.f&d=identicon", i, size]];
-	
+
 	return item;
 }
 

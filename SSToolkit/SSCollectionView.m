@@ -52,7 +52,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 @implementation SSCollectionView {
 	SSCollectionViewTableView *_tableView;
-	
+
 	NSMutableSet *_visibleItems;
 	NSMutableDictionary *_reuseableItems;
 	NSMutableDictionary *_sectionCache;
@@ -74,27 +74,27 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 - (void)dealloc {
 	self.dataSource = nil;
 	self.delegate = nil;
-	
+
 	[_visibleItems removeAllObjects];
 	[_visibleItems release];
 	_visibleItems = nil;
-	
+
 	[_reuseableItems removeAllObjects];
 	[_reuseableItems release];
 	_reuseableItems = nil;
-	
+
 	_tableView.dataSource = nil;
 	_tableView.delegate = nil;
 	[_tableView release];
-	
+
 	[_sectionCache removeAllObjects];
 	[_sectionCache release];
 	_sectionCache = nil;
-	
+
 	[_updates removeAllObjects];
 	[_updates release];
 	_updates = nil;
-	
+
 	[super dealloc];
 }
 
@@ -120,7 +120,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 - (void)setFrame:(CGRect)frame {
 	BOOL shouldReload = (CGSizeEqualToSize(frame.size, self.frame.size) == NO);
 	[super setFrame:frame];
-	
+
 	if (shouldReload) {
 		[self reloadData];
 	}
@@ -139,22 +139,22 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	if (!identifier) {
 		return nil;
 	}
-	
+
 	NSMutableArray *items = [_reuseableItems objectForKey:identifier];
 	if (!items || [items count] == 0) {
 		return nil;
 	}
-	
+
 	SSCollectionViewItem *item = [[items lastObject] retain];
 	[items removeObject:item];
-	
+
 	[item prepareForReuse];
 	return [item autorelease];
 }
 
 
 - (NSUInteger)numberOfItemsInSection:(NSUInteger)section {
-	NSNumber *items = [self _sectionInfoItemForKey:kSSCollectionViewSectionNumberOfItemsKey section:section];	
+	NSNumber *items = [self _sectionInfoItemForKey:kSSCollectionViewSectionNumberOfItemsKey section:section];
 	if (!items) {
 		if ([_dataSource respondsToSelector:@selector(collectionView:numberOfItemsInSection:)] == NO) {
 			return 0;
@@ -170,7 +170,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	if ([_dataSource respondsToSelector:@selector(numberOfSectionsInCollectionView:)]) {
 		return [_dataSource numberOfSectionsInCollectionView:self];
 	}
-	
+
 	return 1;
 }
 
@@ -209,7 +209,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	if (_extremitiesStyle == style) {
 		return;
 	}
-	
+
 	_extremitiesStyle = style;
 	[self reloadData];
 }
@@ -224,7 +224,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 			item = object;
 			*stop = YES;
 		}
-	}];	
+	}];
 	return item;
 }
 
@@ -268,18 +268,18 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	if ([self.delegate respondsToSelector:@selector(collectionView:willSelectItemAtIndexPath:)]) {
 		[self.delegate collectionView:self willSelectItemAtIndexPath:indexPath];
 	}
-	
+
 	// Select
 	SSCollectionViewItem *item = [self itemForIndexPath:indexPath];
 	[item setHighlighted:NO animated:NO];
 	[item setSelected:YES animated:YES];
-	
+
 	// Scroll to position
 	if (scrollPosition == SSCollectionViewScrollPositionTop || scrollPosition == SSCollectionViewScrollPositionMiddle ||
 		scrollPosition == SSCollectionViewScrollPositionBottom) {
 		[self scrollToItemAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
 	}
-	
+
 	// Notify delegate that it did selection
 	if ([self.delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
 		[self.delegate collectionView:self didSelectItemAtIndexPath:indexPath];
@@ -292,12 +292,12 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	if ([self.delegate respondsToSelector:@selector(collectionView:willDeselectItemAtIndexPath:)]) {
 		[self.delegate collectionView:self willDeselectItemAtIndexPath:indexPath];
 	}
-	
+
 	// Deselect
 	SSCollectionViewItem *item = [self itemForIndexPath:indexPath];
 	[item setHighlighted:NO animated:NO];
 	[item setSelected:NO animated:YES];
-	
+
 	// Notify delegate that it did deselection
 	if ([self.delegate respondsToSelector:@selector(collectionView:didDeselectItemAtIndexPath:)]) {
 		[self.delegate collectionView:self didDeselectItemAtIndexPath:indexPath];
@@ -309,13 +309,13 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 - (void)beginUpdates {
 	[_tableView beginUpdates];
-	
+
 	// TODO: This should be thread safe and it currently is not
 	if (!_updates) {
 		_updates = [[NSMutableArray alloc] init];
 		_updatesDepth = -1;
 	}
-	
+
 	// Update blocks can be nested
 	_updatesDepth++;
 	[_updates addObject:[NSMutableArray array]];
@@ -328,20 +328,20 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	for (NSDictionary *update in [_updates objectAtIndex:_updatesDepth]) {
 		NSIndexPath *indexPath = [update objectForKey:@"indexPath"];
 		NSNumber *key = [NSNumber numberWithInteger:indexPath.section];
-		
+
 		NSMutableDictionary *section = [sections objectForKey:key];
 		if (!section) {
 			section = [NSMutableDictionary dictionary];
 			[sections setObject:section forKey:key];
 		}
-		
+
 		// Update item closest to the top
 		NSNumber *item = [section objectForKey:@"item"];
 		if (!item || indexPath.row < [item integerValue]) {
 			[section setObject:[NSNumber numberWithInteger:indexPath.row] forKey:@"item"];
 			[section setObject:[update objectForKey:@"animation"] forKey:@"animation"];
 		}
-		
+
 		// Update delta
 		NSInteger delta = [[section objectForKey:@"delta"] integerValue];
 		if ([[update objectForKey:@"type"] isEqualToString:@"insert"]) {
@@ -349,27 +349,27 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 		} else if ([[update objectForKey:@"type"] isEqualToString:@"delete"]) {
 			delta--;
 		}
-		
+
 		[section setObject:[NSNumber numberWithInteger:delta] forKey:@"delta"];
 	}
-	
+
 	// Process each section that has changes and apply table view updates
 	for (NSNumber *key in sections) {
 		NSDictionary *section = [sections objectForKey:key];
 		NSInteger sectionIndex = [key integerValue];
-		
+
 		// Add or delete cells
 		NSInteger itemsDelta = [[section objectForKey:@"delta"] integerValue];
 		NSInteger totalItems = [self numberOfItemsInSection:sectionIndex];
 		NSInteger itemsPerRow = [self _numberOfItemsPerRowForSection:sectionIndex];
-		
+
 		NSInteger rows = itemsPerRow == 0 ? 0 : (NSInteger)ceilf((CGFloat)totalItems / (CGFloat)itemsPerRow);
-		
+
 		totalItems += itemsDelta;
 		NSInteger rowsDelta = rows - (itemsPerRow == 0 ? 0 : (NSInteger)ceilf((CGFloat)totalItems / (CGFloat)itemsPerRow));
-		
+
 		UITableViewRowAnimation animation = (UITableViewRowAnimation)[[section objectForKey:@"animation"] integerValue];
-		if (rowsDelta != 0) {			
+		if (rowsDelta != 0) {
 			// Add rows
 			if (rowsDelta > 0) {
 				for (NSInteger i = 1; i <= rowsDelta; i++) {
@@ -377,7 +377,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 					[_tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:animation];
 				}
 			}
-			
+
 			// Delete rows
 			else {
 				for (NSInteger i = rowsDelta; i > 0; i--) {
@@ -386,7 +386,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 				}
 			}
 		}
-		
+
 		// Reload changed cells
 		NSNumber *top = [section objectForKey:@"item"];
 		if (top) {
@@ -398,10 +398,10 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 			}
 		}
 	}
-	
+
 	// Apply updates
 	[_tableView endUpdates];
-	
+
 	// Clean up internal representation
 	[_updates removeObjectAtIndex:_updatesDepth];
 	_updatesDepth--;
@@ -413,7 +413,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 		[[NSException exceptionWithName:@"SSCollectionViewNoUpdatesBlockException" reason:@"You must call `insertItemsAtIndexPaths:withItemAnimation:` in a `beginUpdates`/`endUpdates` block." userInfo:nil] raise];
 		return;
 	}
-	
+
 	for (NSIndexPath *indexPath in indexPaths) {
 		[[_updates objectAtIndex:_updatesDepth] addObject:[NSDictionary dictionaryWithObjectsAndKeys:
 														   @"insert", @"type",
@@ -429,7 +429,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 		[[NSException exceptionWithName:@"SSCollectionViewNoUpdatesBlockException" reason:@"You must call `deleteItemsAtIndexPaths:withItemAnimation:` in a `beginUpdates`/`endUpdates` block." userInfo:nil] raise];
 		return;
 	}
-	
+
 	for (NSIndexPath *indexPath in indexPaths) {
 		[[_updates objectAtIndex:_updatesDepth] addObject:[NSDictionary dictionaryWithObjectsAndKeys:
 														   @"delete", @"type",
@@ -456,12 +456,12 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	if (![self superview]) {
 		return;
 	}
-	
+
 	[_sectionCache removeAllObjects];
 	[_tableView reloadData];
-	
+
 	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
-		
+
 	}
 }
 
@@ -475,7 +475,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 			[rowIndexPaths addObject:rowIndexPath];
 		}
 	}];
-	[_tableView reloadRowsAtIndexPaths:rowIndexPaths withRowAnimation:UITableViewRowAnimationFade];	
+	[_tableView reloadRowsAtIndexPaths:rowIndexPaths withRowAnimation:UITableViewRowAnimationFade];
 	[rowIndexPaths release];
 }
 
@@ -501,7 +501,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 - (void)setDataSource:(id<SSCollectionViewDataSource>)dataSource {
 	_dataSource = dataSource;
-	
+
 	if (_delegate && _dataSource) {
 		[self reloadData];
 	}
@@ -510,7 +510,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 - (void)setDelegate:(id<SSCollectionViewDelegate>)delegate {
 	_delegate = delegate;
-	
+
 	if (_delegate && _dataSource) {
 		[self reloadData];
 	}
@@ -522,14 +522,14 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 - (void)_initialize {
 	self.backgroundColor = [UIColor whiteColor];
 	self.opaque = YES;
-	
+
 	_minimumColumnSpacing = 10.0f;
 	_rowSpacing = 20.0f;
 	_allowsSelection = YES;
 	_visibleItems = [[NSMutableSet alloc] init];
 	_reuseableItems = [[NSMutableDictionary alloc] init];
 	_sectionCache = [[NSMutableDictionary alloc] init];
-	
+
 	_tableView = [[SSCollectionViewTableView alloc] initWithFrame:self.bounds];
 	_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -541,17 +541,17 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 - (void)_reuseItem:(SSCollectionViewItem *)item {
 	[_visibleItems removeObject:item];
-	
+
 	if (!item.reuseIdentifier) {
 		NSLog(@"[SSCollectionView] Your item identifier is nil. You should really provide a reuse identifier.");
 		return;
 	}
-	
+
 	NSMutableArray *items = [_reuseableItems objectForKey:item.reuseIdentifier];
 	if (!items) {
 		[_reuseableItems setObject:[NSMutableArray array] forKey:item.reuseIdentifier];
 	}
-	
+
 	[items addObject:item];
 }
 
@@ -568,19 +568,19 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	if (size) {
 		return [size CGSizeValue];
 	}
-	
+
 	if ([_delegate respondsToSelector:@selector(collectionView:itemSizeForSection:)] == NO) {
 		[[NSException exceptionWithName:SSCollectionViewInvalidItemSizeExceptionName reason:SSCollectionViewInvalidItemSizeExceptionReason userInfo:nil] raise];
 		return CGSizeZero;
 	}
-	
+
 	CGSize itemSize = [_delegate collectionView:self itemSizeForSection:section];
 	if (CGSizeEqualToSize(itemSize, CGSizeZero)) {
 		[[NSException exceptionWithName:SSCollectionViewInvalidItemSizeExceptionName reason:SSCollectionViewInvalidItemSizeExceptionReason userInfo:nil] raise];
 		return CGSizeZero;
 	}
 	[self _setSectionInfoItem:[NSValue valueWithCGSize:itemSize] forKey:kSSCollectionViewSectionItemSizeKey section:section];
-	
+
 	return itemSize;
 }
 
@@ -590,7 +590,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	if (items) {
 		return [items unsignedIntegerValue];
 	}
-	
+
 	CGSize itemSize = [self _itemSizeForSection:section];
 	NSUInteger itemsPerRow = (NSUInteger)floorf(self.frame.size.width / (itemSize.width + _minimumColumnSpacing));
 	[self _setSectionInfoItem:[NSNumber numberWithUnsignedInteger:itemsPerRow] forKey:kSSCollectionViewSectionNumberOfItemsPerRowsKey section:section];
@@ -640,56 +640,56 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 - (NSArray *)_itemsForRowIndexPath:(NSIndexPath *)rowIndexPath {
 	NSUInteger totalItems = [self numberOfItemsInSection:rowIndexPath.section];
 	NSUInteger itemsPerRow = [self _numberOfItemsPerRowForSection:rowIndexPath.section];
-	
+
 	NSUInteger row = (NSUInteger)rowIndexPath.row;
-	
+
 	// Check for header
 	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling &&
 		[self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:rowIndexPath.section]) {
 		row--;
 	}
-	
+
 	NSUInteger startIndex = itemsPerRow * row;
 	NSUInteger endIndex = (NSUInteger)fmin(totalItems, startIndex + itemsPerRow);
-	
+
 	NSMutableArray *items = [[[NSMutableArray alloc] initWithCapacity:endIndex - startIndex] autorelease];
-	
+
 	for (NSUInteger i = startIndex; i < endIndex; i++) {
 		NSIndexPath *itemIndexPath = [NSIndexPath indexPathForRow:i inSection:rowIndexPath.section];
 		SSCollectionViewItem *item = [_dataSource collectionView:self itemForIndexPath:itemIndexPath];
 		if (item == nil) {
-			NSException *exception = [NSException exceptionWithName:kSSCollectionViewNilItemExceptionName 
+			NSException *exception = [NSException exceptionWithName:kSSCollectionViewNilItemExceptionName
 															 reason:kSSCollectionViewNilItemExceptionReason userInfo:nil];
 			[exception raise];
 			return nil;
 		}
-		
+
 		item.tag = (NSInteger)i;
 		item.indexPath = itemIndexPath;
 		item.collectionView = self;
 		[_visibleItems addObject:item];
 		[items addObject:item];
 	}
-	
+
 	return items;
 }
 
 
 - (NSIndexPath *)_cellIndexPathFromItemIndexPath:(NSIndexPath *)rowIndexPath {
 	NSUInteger itemsPerRow = [self _numberOfItemsPerRowForSection:rowIndexPath.section];
-	
+
 	// Avoid division by zero
 	if (itemsPerRow == 0) {
 		return nil;
-	}	
-	
+	}
+
 	NSUInteger row = (NSUInteger)floor(rowIndexPath.row / itemsPerRow);
 	NSUInteger offset = 0;
 	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling &&
 		[self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:rowIndexPath.row]) {
 		offset = 1;
 	}
-	
+
 	return [NSIndexPath indexPathForRow:(row + offset) inSection:rowIndexPath.section];
 }
 
@@ -699,7 +699,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleFixed) {
 		return SSCollectionViewCellTypeRow;
 	}
-	
+
 	// Check for header
 	if (indexPath.row == 0 && [self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderViewKey section:indexPath.section]) {
 		return SSCollectionViewCellTypeHeader;
@@ -710,7 +710,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	if (hasFooter && (NSUInteger)indexPath.row == [self _numberOfRowsInSection:indexPath.section] - 1) {
 		return SSCollectionViewCellTypeFooter;
 	}
-	
+
 	return SSCollectionViewCellTypeRow;
 }
 
@@ -719,7 +719,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	BOOL isHeader = (type == SSCollectionViewCellTypeHeader);
 	NSString *key = isHeader ? kSSCollectionViewSectionHeaderViewKey : kSSCollectionViewSectionFooterViewKey;
 	id extremity = [self _sectionInfoItemForKey:key section:section];
-	
+
 	// If the extremeity isn't cached, hit the delegate
 	if (!extremity) {
 		// Header
@@ -728,28 +728,28 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 				extremity = [_delegate collectionView:self viewForHeaderInSection:section];
 			}
 		}
-		
+
 		// Footer
 		else {
 			if ([_delegate respondsToSelector:@selector(collectionView:viewForFooterInSection:)]) {
 				extremity = [_delegate collectionView:self viewForFooterInSection:section];
 			}
 		}
-		
+
 		// Handle nil
 		if (!extremity) {
 			extremity = [NSNull null];
 		}
-		
+
 		// Cache
 		[self _setSectionInfoItem:extremity forKey:key section:section];
 	}
-	
+
 	// Return nil instead of null
 	if (extremity == [NSNull null]) {
 		return nil;
 	}
-	
+
 	return extremity;
 }
 
@@ -760,11 +760,11 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	if (dictionary) {
 		return dictionary;
 	}
-	
+
 	dictionary = [[NSMutableDictionary alloc] init];
 	[_sectionCache setObject:dictionary forKey:sectionKey];
 	[dictionary release];
-	
+
 	return dictionary;
 }
 
@@ -803,32 +803,32 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)rowIndexPath {
 	static NSString *itemCellIdentifier = @"SSCollectionViewItemTableViewCellIdentifier";
 	static NSString *extremityCellIdentifier = @"SSCollectionViewExtremityTableViewCellIdentifier";
-	
+
 	SSCollectionViewCellType cellType = [self _cellTypeForRowIndexPath:rowIndexPath];
-	
+
 	// Extremities
 	if (cellType != SSCollectionViewCellTypeRow) {
 		SSCollectionViewExtremityTableViewCell *cell = (SSCollectionViewExtremityTableViewCell *)[_tableView dequeueReusableCellWithIdentifier:extremityCellIdentifier];
 		if (!cell) {
 			cell = [[[SSCollectionViewExtremityTableViewCell alloc] initWithReuseIdentifier:extremityCellIdentifier] autorelease];
 		}
-		
+
 		cell.extrimityView = [self _extremityViewForSection:rowIndexPath.section type:cellType];
-		
+
 		return cell;
 	}
-	
-	// Normal row	
+
+	// Normal row
 	SSCollectionViewItemTableViewCell *cell = (SSCollectionViewItemTableViewCell *)[_tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
 	if (!cell) {
 		cell = [[[SSCollectionViewItemTableViewCell alloc] initWithReuseIdentifier:itemCellIdentifier] autorelease];
 		cell.collectionView = self;
 	}
-	
+
 	cell.itemSize = [self _itemSizeForSection:rowIndexPath.section];
 	cell.itemSpacing = [self _itemSpacingForSection:rowIndexPath.section];
 	cell.items = [self _itemsForRowIndexPath:rowIndexPath];
-	
+
 	return cell;
 }
 
@@ -839,12 +839,12 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	// If scrolling extremity style, provide the height for the extermity
 	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
 		SSCollectionViewCellType cellType = [self _cellTypeForRowIndexPath:rowIndexPath];
-		
+
 		// Header
 		if (cellType == SSCollectionViewCellTypeHeader) {
 			return [[self _sectionInfoItemForKey:kSSCollectionViewSectionHeaderHeightKey section:rowIndexPath.section] floatValue];
 		}
-		
+
 		// Footer
 		else if (cellType == SSCollectionViewCellTypeFooter) {
 			return [[self _sectionInfoItemForKey:kSSCollectionViewSectionFooterHeightKey section:rowIndexPath.section] floatValue];
@@ -864,15 +864,15 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 			UIView *view = [_delegate collectionView:self viewForHeaderInSection:(NSUInteger)section];
 			[self _setSectionInfoItem:view forKey:kSSCollectionViewSectionHeaderViewKey section:(NSUInteger)section];
 		}
-		
+
 		return nil;
 	}
-	
+
 	// If the collection view's delegate provides a header, forward it to the table view
 	if ([_delegate respondsToSelector:@selector(collectionView:viewForHeaderInSection:)]) {
 		return [_delegate collectionView:self viewForHeaderInSection:(NSUInteger)section];
 	}
-	
+
 	// Default to none
 	return nil;
 }
@@ -881,7 +881,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 	// If scrolling extremity style, don't use table view's header since we will draw it in a cell
 	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
-		
+
 		// Hit delegate and cache result for use later
 		if ([_delegate respondsToSelector:@selector(collectionView:heightForHeaderInSection:)]) {
 			CGFloat height = [_delegate collectionView:self heightForHeaderInSection:(NSUInteger)section];
@@ -889,12 +889,12 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 		}
 		return 0.0f;
 	}
-	
+
 	// If the collection view's delegate provides a header height, forward it to the table view
 	if ([_delegate respondsToSelector:@selector(collectionView:heightForHeaderInSection:)]) {
 		return [_delegate collectionView:self heightForHeaderInSection:(NSUInteger)section];
 	}
-	
+
 	// Default to none
 	return 0.0f;
 }
@@ -903,7 +903,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
 	// If scrolling extremity style, don't use table view's footer since we will draw it in a cell
 	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
-		
+
 		// Hit delegate and cache result for use later
 		if ([_delegate respondsToSelector:@selector(collectionView:viewForFooterInSection:)]) {
 			UIView *view = [_delegate collectionView:self viewForFooterInSection:(NSUInteger)section];
@@ -911,12 +911,12 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 		}
 		return nil;
 	}
-	
+
 	// If the collection view's delegate provides a footer, forward it to the table view
 	if ([_delegate respondsToSelector:@selector(collectionView:viewForFooterInSection:)]) {
 		return [_delegate collectionView:self viewForFooterInSection:(NSUInteger)section];
 	}
-	
+
 	// Default to none
 	return nil;
 }
@@ -925,7 +925,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
 	// If scrolling extremity style, don't use table view's footer since we will draw it in a cell
 	if (_extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling) {
-		
+
 		// Hit delegate and cache result for use later
 		if ([_delegate respondsToSelector:@selector(collectionView:heightForFooterInSection:)]) {
 			CGFloat height = [_delegate collectionView:self heightForFooterInSection:(NSUInteger)section];
@@ -933,12 +933,12 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 		}
 		return 0.0f;
 	}
-	
+
 	// If the collection view's delegate provides a footer height, forward it to the table view
 	if ([_delegate respondsToSelector:@selector(collectionView:heightForFooterInSection:)]) {
 		return [_delegate collectionView:self heightForFooterInSection:(NSUInteger)section];
 	}
-	
+
 	// Default to none
 	return 0.0f;
 }
@@ -955,14 +955,14 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 		}
 		return;
 	}
-	
+
 	// Forward delegate message for items if the delegate implements the delegate
 	if ([_delegate respondsToSelector:@selector(collectionView:willDisplayItem:atIndexPath:)]) {
 		NSArray *items = [self _itemsForRowIndexPath:indexPath];
 		if (!items) {
 			return;
 		}
-		
+
 		// Send for each item
 		for (SSCollectionViewItem *item in items) {
 			[_delegate collectionView:self willDisplayItem:item atIndexPath:item.indexPath];
@@ -1019,7 +1019,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	if ([_delegate respondsToSelector:@selector(scrollViewShouldScrollToTop:)]) {
 		return [_delegate scrollViewShouldScrollToTop:aScrollView];
 	}
-	
+
 	return YES;
 }
 

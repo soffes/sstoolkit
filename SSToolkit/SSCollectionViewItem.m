@@ -37,9 +37,9 @@
 	[backgroundView retain];
 	[_backgroundView release];
 	_backgroundView = backgroundView;
-	
+
 	_backgroundView.hidden = _selected && _selectedBackgroundView;
-	
+
 	[self insertSubview:backgroundView atIndex:0];
 	[self setNeedsLayout];
 }
@@ -49,15 +49,15 @@
 	[selectedBackgroundView retain];
 	[_selectedBackgroundView release];
 	_selectedBackgroundView = selectedBackgroundView;
-	
+
 	_selectedBackgroundView.hidden = !_selected;
-	
+
 	if (_backgroundView) {
 		[self insertSubview:_selectedBackgroundView aboveSubview:_backgroundView];
 	} else {
 		[self insertSubview:_selectedBackgroundView atIndex:0];
 	}
-	
+
 	[self setNeedsLayout];
 }
 
@@ -91,7 +91,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	[self setHighlighted:YES animated:NO];
-	
+
 	if (CGRectContainsPoint(self.bounds, [[touches anyObject] locationInView:self])) {
 		[self.collectionView selectItemAtIndexPath:self.indexPath animated:YES scrollPosition:SSCollectionViewScrollPositionNone];
 	}
@@ -108,7 +108,7 @@
 - (void)layoutSubviews {
 	_backgroundView.frame = self.bounds;
 	_selectedBackgroundView.frame = self.bounds;
-	
+
 	if (_style == SSCollectionViewItemStyleImage) {
 		_imageView.frame = self.bounds;
 	} else if (_style == SSCollectionViewItemStyleDefault) {
@@ -123,22 +123,22 @@
 	if ((self = [super initWithFrame:CGRectZero])) {
 		_style = style;
 		_reuseIdentifier = [aReuseIdentifier copy];
-		
+
 		if (_style != SSCollectionViewItemStyleBlank) {
 			if (_style == SSCollectionViewItemStyleSubtitle) {
 				_detailTextLabel = [[SSLabel alloc] initWithFrame:CGRectZero];
 				_detailTextLabel.textAlignment = UITextAlignmentCenter;
 				[self addSubview:_detailTextLabel];
 			}
-			
+
 			_textLabel = [[SSLabel alloc] initWithFrame:CGRectZero];
 			_textLabel.textAlignment = UITextAlignmentCenter;
 			[self addSubview:_textLabel];
-			
+
 			_imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
 			[self addSubview:_imageView];
 		}
-		
+
     }
     return self;
 }
@@ -151,18 +151,18 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 	_selected = selected;
-	
+
 	void (^changes)(void) = ^{
 		for (UIView *view in [self subviews]) {
 			if ([view respondsToSelector:@selector(setSelected:)]) {
 				[(UIControl *)view setSelected:_selected];
 			}
 		}
-		
+
 		_backgroundView.hidden = _selected && _selectedBackgroundView;
 		_selectedBackgroundView.hidden = !_selected;
 	};
-	
+
 	if (animated) {
 		[UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:changes completion:nil];
 	} else {
@@ -173,7 +173,7 @@
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
 	_highlighted = highlighted;
-	
+
 	void (^changes)(void) = ^{
 		for (UIView *view in [self subviews]) {
 			if ([view respondsToSelector:@selector(setHighlighted:)]) {
@@ -181,7 +181,7 @@
 			}
 		}
 	};
-	
+
 	if (animated) {
 		[UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:changes completion:nil];
 	} else {
