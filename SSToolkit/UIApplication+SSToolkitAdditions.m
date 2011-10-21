@@ -21,9 +21,9 @@
 		[self performSelectorOnMainThread:@selector(_setNetworkActivityWithNumber:) withObject:[NSNumber numberWithBool:inProgress] waitUntilDone:NO];
 		return;
 	}
-	
+
 	[[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(_setNetworkActivityIndicatorHidden) object:nil];
-	
+
 	if (inProgress == YES) {
 		if (self.networkActivityIndicatorVisible == NO) {
 			self.networkActivityIndicatorVisible = inProgress;
@@ -68,7 +68,7 @@
 @implementation UIApplication (MSPrivateAdditions)
 
 - (void)_setNetworkActivityWithNumber:(NSNumber *)number {
-	[self setNetworkActivity:[number boolValue]];	
+	[self setNetworkActivity:[number boolValue]];
 }
 
 

@@ -31,7 +31,7 @@
 		return;
 	}
 	_loading = isLoading;
-	
+
 	self.rightView = _loading ? _stopButton : _reloadButton;
 	_textFieldBackgroundView.loading = _loading;
 }
@@ -67,7 +67,7 @@
 
 - (void)layoutSubviews {
 	[super layoutSubviews];
-	
+
 	CGSize size = self.frame.size;
 	_textFieldBackgroundView.frame = CGRectMake(1.0f, 1.0f, size.width - 2.0f, size.height - 2.0f);
 }
@@ -97,11 +97,11 @@
 	self.enablesReturnKeyAutomatically = YES;
 	self.rightViewMode = UITextFieldViewModeUnlessEditing;
 	self.textEdgeInsets = UIEdgeInsetsMake(0.0f, 5.0f, 0.0f, 26.0f);
-	
+
 	// Background view
 	_textFieldBackgroundView = [[SSAddressBarTextFieldBackgroundView alloc] initWithFrame:CGRectZero];
 	[self insertSubview:_textFieldBackgroundView aboveSubview:[[self subviews] objectAtIndex:0]];
-	
+
 	// Refresh button
 	UIButton *aReloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	aReloadButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -109,14 +109,14 @@
 	[aReloadButton setImage:[UIImage imageNamed:@"SSAddressBarTextFieldReload.png" bundleName:kSSToolkitBundleName] forState:UIControlStateNormal];
 	self.reloadButton = aReloadButton;
 	self.rightView = _reloadButton;
-	
+
 	// Stop button
 	UIButton *aStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	aStopButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
 	aStopButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 	[aStopButton setImage:[UIImage imageNamed:@"SSAddressBarTextFieldStop.png" bundleName:kSSToolkitBundleName] forState:UIControlStateNormal];
 	self.stopButton = aStopButton;
-	
+
 	self.loading = NO;
 }
 

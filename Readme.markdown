@@ -12,7 +12,7 @@ Install the documentation into Xcode with the following steps:
 2. Choose Downloads
 3. Choose the Documentation tab
 4. Click the plus button in the bottom right and enter the following URL:
-    
+
         http://docs.sstoolk.it/com.samsoffes.sstoolkit.atom
 
 5. Click Install next the new row reading "SSKeychain Documentation". (If you don't see it and didn't get an error, try restarting Xcode.)

@@ -34,7 +34,7 @@
 /*!
  Test for running in the context of an NSOperationQueue.
  */
-@interface GHTestOperation : NSOperation { 
+@interface GHTestOperation : NSOperation {
   id<GHTest> test_;
   GHTestOptions options_;
 }

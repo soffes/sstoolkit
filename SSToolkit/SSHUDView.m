@@ -69,7 +69,7 @@ static CGFloat kIndicatorSize = 40.0;
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
-    
+
 	[self _removeWindow];
 	[_activityIndicator release];
 	[_textLabel release];
@@ -88,18 +88,18 @@ static CGFloat kIndicatorSize = 40.0;
 
 - (void)drawRect:(CGRect)rect {
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	
+
 	// Draw rounded rectangle
 	CGContextSetRGBFillColor(context, 0.0f, 0.0f, 0.0f, 0.5f);
 	CGRect rrect = CGRectMake(0.0f, 0.0f, _hudSize.width, _hudSize.height);
 	SSDrawRoundedRect(context, rrect, 14.0f);
-	
+
 	// Image
 	if (_loading == NO) {
 		[[UIColor whiteColor] set];
-		
+
 		UIImage *image = _successful ? _completeImage : _failImage;
-		
+
 		if (image) {
 			CGSize imageSize = image.size;
 			CGRect imageRect = CGRectMake(roundf((_hudSize.width - imageSize.width) / 2.0f),
@@ -108,7 +108,7 @@ static CGFloat kIndicatorSize = 40.0;
 			[image drawInRect:imageRect];
 			return;
 		}
-		
+
 		NSString *dingbat = _successful ? @"✔" : @"✘";
 		UIFont *dingbatFont = [UIFont systemFontOfSize:60.0f];
 		CGSize dingbatSize = [dingbat sizeWithFont:dingbatFont];
@@ -124,7 +124,7 @@ static CGFloat kIndicatorSize = 40.0;
 	_activityIndicator.frame = CGRectMake(roundf((_hudSize.width - kIndicatorSize) / 2.0f),
 										  roundf((_hudSize.height - kIndicatorSize) / 2.0f),
 										  kIndicatorSize, kIndicatorSize);
-	
+
 	if (_textLabelHidden) {
 		_textLabel.frame = CGRectZero;
 	} else {
@@ -144,15 +144,15 @@ static CGFloat kIndicatorSize = 40.0;
 - (id)initWithTitle:(NSString *)aTitle loading:(BOOL)isLoading {
 	if ((self = [super initWithFrame:CGRectZero])) {
 		self.backgroundColor = [UIColor clearColor];
-		
+
 		_hudSize = CGSizeMake(172.0f, 172.0f);
-		
+
 		// Indicator
 		_activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 		_activityIndicator.alpha = 0.0;
 		[_activityIndicator startAnimating];
 		[self addSubview:_activityIndicator];
-		
+
 		// Text Label
 		_textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 		_textLabel.font = [UIFont boldSystemFontOfSize:14];
@@ -164,10 +164,10 @@ static CGFloat kIndicatorSize = 40.0;
 		_textLabel.lineBreakMode = UILineBreakModeTailTruncation;
 		_textLabel.text = aTitle ? aTitle : @"Loading";
 		[self addSubview:_textLabel];
-		
+
 		// Loading
 		self.loading = isLoading;
-        
+
         // Orientation
         [self _setTransformForCurrentOrientation:NO];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_deviceOrientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
@@ -178,39 +178,39 @@ static CGFloat kIndicatorSize = 40.0;
 
 - (void)show {
 	[self retain];
-	
+
 	if (!_hudWindow) {
 		_hudWindow = [SSHUDWindow defaultWindow];
 	}
-	
+
 	_hudWindow.alpha = 0.0f;
 	self.alpha = 0.0f;
 	[_hudWindow addSubview:self];
 	[_hudWindow makeKeyAndVisible];
-	
+
 	[UIView beginAnimations:@"SSHUDViewFadeInWindow" context:nil];
 	_hudWindow.alpha = 1.0f;
 	[UIView commitAnimations];
-	
+
 	CGSize windowSize = _hudWindow.frame.size;
-	CGRect contentFrame = CGRectMake(roundf((windowSize.width - _hudSize.width) / 2.0f), 
+	CGRect contentFrame = CGRectMake(roundf((windowSize.width - _hudSize.width) / 2.0f),
 									 roundf((windowSize.height - _hudSize.height) / 2.0f) + 10.0f,
 									 _hudSize.width, _hudSize.height);
-	
-    
+
+
     CGFloat offset = 20.0f;
     if (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
         self.frame = CGRectSetY(contentFrame, contentFrame.origin.y + offset);
     } else {
         self.frame = CGRectSetX(contentFrame, contentFrame.origin.x + offset);
     }
-	
+
 	[UIView beginAnimations:@"SSHUDViewFadeInContentAlpha" context:nil];
 	[UIView setAnimationDelay:0.1];
 	[UIView setAnimationDuration:0.2];
 	self.alpha = 1.0f;
 	[UIView commitAnimations];
-	
+
 	[UIView beginAnimations:@"SSHUDViewFadeInContentFrame" context:nil];
 	[UIView setAnimationDelay:0.1];
 	[UIView setAnimationDuration:0.3];
@@ -276,7 +276,7 @@ static CGFloat kIndicatorSize = 40.0;
         self.frame = CGRectSetX(contentFrame, contentFrame.origin.x + offset);
     }
 	[UIView commitAnimations];
-	
+
 	[UIView beginAnimations:@"SSHUDViewFadeOutContentAlpha" context:nil];
 	[UIView setAnimationDelay:0.1];
 	[UIView setAnimationDuration:0.2];
@@ -300,32 +300,32 @@ static CGFloat kIndicatorSize = 40.0;
 - (void)_setTransformForCurrentOrientation:(BOOL)animated {
 	UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
 	NSInteger degrees = 0;
-    
+
     // Landscape left
 	if (orientation == UIInterfaceOrientationLandscapeLeft) {
 		degrees = -90;
 	}
-	
+
 	// Landscape right
 	if (orientation == UIInterfaceOrientationLandscapeRight) {
 		degrees = 90;
 	}
-	
+
 	// Portrait upside down
 	else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
 		degrees = 180;
 	}
-    
+
     CGAffineTransform rotationTransform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(degrees));
-    
+
 	if (animated) {
 		[UIView beginAnimations:@"SSHUDViewRotationTransform" context:nil];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 		[UIView setAnimationDuration:0.3];
 	}
-    
+
 	[self setTransform:rotationTransform];
-    
+
     if (animated) {
 		[UIView commitAnimations];
 	}
@@ -338,10 +338,10 @@ static CGFloat kIndicatorSize = 40.0;
 }
 
 
-- (void)_removeWindow {	
+- (void)_removeWindow {
 	[_hudWindow resignKeyWindow];
 	_hudWindow = nil;
-	
+
 	// Return focus to the first window
 	[[[[UIApplication sharedApplication] windows] objectAtIndex:0] makeKeyWindow];
 }

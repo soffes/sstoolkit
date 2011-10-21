@@ -1,17 +1,17 @@
 // AFJSONRequestOperation.m
 //
 // Copyright (c) 2011 Gowalla (http://gowalla.com/)
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,22 +30,22 @@ static dispatch_queue_t json_request_operation_processing_queue() {
     if (af_json_request_operation_processing_queue == NULL) {
         af_json_request_operation_processing_queue = dispatch_queue_create("com.alamofire.json-request.processing", 0);
     }
-    
+
     return af_json_request_operation_processing_queue;
 }
 
 @implementation AFJSONRequestOperation
 
-+ (id)operationWithRequest:(NSURLRequest *)urlRequest                
++ (id)operationWithRequest:(NSURLRequest *)urlRequest
                    success:(void (^)(id JSON))success
 {
     return [self operationWithRequest:urlRequest success:success failure:nil];
 }
 
-+ (id)operationWithRequest:(NSURLRequest *)urlRequest 
++ (id)operationWithRequest:(NSURLRequest *)urlRequest
                    success:(void (^)(id JSON))success
                    failure:(void (^)(NSError *error))failure
-{    
+{
     return [self operationWithRequest:urlRequest acceptableStatusCodes:[self defaultAcceptableStatusCodes] acceptableContentTypes:[self defaultAcceptableContentTypes] success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         if (success) {
             success(JSON);
@@ -63,25 +63,25 @@ static dispatch_queue_t json_request_operation_processing_queue() {
                    success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success
                    failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error))failure
 {
-    return [self operationWithRequest:urlRequest completion:^(NSURLRequest *request, NSHTTPURLResponse *response, NSData *data, NSError *error) {        
+    return [self operationWithRequest:urlRequest completion:^(NSURLRequest *request, NSHTTPURLResponse *response, NSData *data, NSError *error) {
         if (!error) {
             if (![acceptableStatusCodes containsIndex:[response statusCode]]) {
                 NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
                 [userInfo setValue:[NSString stringWithFormat:NSLocalizedString(@"Expected status code %@, got %d", nil), acceptableStatusCodes, [response statusCode]] forKey:NSLocalizedDescriptionKey];
                 [userInfo setValue:[request URL] forKey:NSURLErrorFailingURLErrorKey];
-                
+
                 error = [[[NSError alloc] initWithDomain:AFNetworkingErrorDomain code:NSURLErrorBadServerResponse userInfo:userInfo] autorelease];
             }
-            
+
             if (![acceptableContentTypes containsObject:[response MIMEType]]) {
                 NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
                 [userInfo setValue:[NSString stringWithFormat:NSLocalizedString(@"Expected content type %@, got %@", nil), acceptableContentTypes, [response MIMEType]] forKey:NSLocalizedDescriptionKey];
                 [userInfo setValue:[request URL] forKey:NSURLErrorFailingURLErrorKey];
-                
+
                 error = [[[NSError alloc] initWithDomain:AFNetworkingErrorDomain code:NSURLErrorCannotDecodeContentData userInfo:userInfo] autorelease];
             }
         }
-        
+
         if (error) {
             if (failure) {
                 failure(request, response, error);
@@ -103,7 +103,7 @@ static dispatch_queue_t json_request_operation_processing_queue() {
 #else
                 JSON = [[JSONDecoder decoder] objectWithData:data error:&JSONError];
 #endif
-                
+
                 dispatch_sync(dispatch_get_main_queue(), ^(void) {
                     if (JSONError) {
                         if (failure) {

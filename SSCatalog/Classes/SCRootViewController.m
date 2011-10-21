@@ -34,7 +34,7 @@ static NSString *const kClassesKey =  @"classes";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+
 	self.title = @"SSCatalog";
 
     _viewControllers = [[NSArray alloc] initWithObjects:
@@ -90,18 +90,18 @@ static NSString *const kClassesKey =  @"classes";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     static NSString *cellIdentifier = @"cell";
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];    }
-	
+
 	Class klass = [[NSBundle mainBundle] classNamed:[[[_viewControllers objectAtIndex:indexPath.section] objectForKey:kClassesKey] objectAtIndex:indexPath.row]];
-		
+
 	cell.textLabel.text = [klass title];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	
+
     return cell;
 }
 
@@ -115,7 +115,7 @@ static NSString *const kClassesKey =  @"classes";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-	
+
 	Class klass = [[NSBundle mainBundle] classNamed:[[[_viewControllers objectAtIndex:indexPath.section] objectForKey:kClassesKey] objectAtIndex:indexPath.row]];
 	UIViewController *viewController = [[klass alloc] init];
 	[self.navigationController pushViewController:viewController animated:YES];

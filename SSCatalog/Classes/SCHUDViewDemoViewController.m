@@ -34,14 +34,14 @@
 	[super viewDidLoad];
 	self.title = [[self class] title];
 	self.view.backgroundColor = [UIColor whiteColor];
-	
+
 	// Show HUD
 	_hud = [[SSHUDView alloc] initWithTitle:@"Loading..."];
 //	_hud.hudSize = CGSizeMake(60.0f, 60.0f);
 //	_hud.textLabelHidden = YES;
 //	_hud.hidesVignette = YES;
 	[_hud show];
-	
+
 	// After 2 seconds, complete action
 	[self performSelector:@selector(complete:) withObject:nil afterDelay:2.0];
 }

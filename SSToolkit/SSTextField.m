@@ -25,7 +25,7 @@
 	[placeholderTextColor retain];
 	[_placeholderTextColor release];
 	_placeholderTextColor = placeholderTextColor;
-	
+
 	if (!self.text && self.placeholder) {
 		[self setNeedsDisplay];
 	}
@@ -82,7 +82,7 @@
 		[super drawPlaceholderInRect:rect];
 		return;
 	}
-	
+
     [_placeholderTextColor setFill];
     [self.placeholder drawInRect:rect withFont:self.font lineBreakMode:UILineBreakModeTailTruncation alignment:self.textAlignment];
 }

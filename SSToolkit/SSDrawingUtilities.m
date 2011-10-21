@@ -56,15 +56,15 @@ CGRect CGRectSetZeroSize(CGRect rect) {
 CGSize CGSizeAspectScaleToSize(CGSize size, CGSize toSize) {
 	// Probably a more efficient way to do this...
 	CGFloat aspect = 1.0f;
-	
+
 	if (size.width > toSize.width) {
 		aspect = toSize.width / size.width;
 	}
-	
+
 	if (size.height > toSize.height) {
 		aspect = fminf(toSize.height / size.height, aspect);
 	}
-	
+
 	return CGSizeMake(size.width * aspect, size.height * aspect);
 }
 
@@ -78,13 +78,13 @@ void SSDrawRoundedRect(CGContextRef context, CGRect rect, CGFloat cornerRadius) 
 	CGPoint min = CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect));
 	CGPoint mid = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 	CGPoint max = CGPointMake(CGRectGetMaxX(rect), CGRectGetMaxY(rect));
-	
+
 	CGContextMoveToPoint(context, min.x, mid.y);
 	CGContextAddArcToPoint(context, min.x, min.y, mid.x, min.y, cornerRadius);
 	CGContextAddArcToPoint(context, max.x, min.y, max.x, mid.y, cornerRadius);
 	CGContextAddArcToPoint(context, max.x, max.y, mid.x, max.y, cornerRadius);
 	CGContextAddArcToPoint(context, min.x, max.y, min.x, mid.y, cornerRadius);
-	
+
 	CGContextClosePath(context);
 	CGContextFillPath(context);
 }
@@ -100,9 +100,9 @@ CGGradientRef SSCreateGradientWithColorsAndLocations(NSArray *colors, NSArray *l
 	if (colorsCount < 2) {
 		return nil;
 	}
-	
+
 	CGColorSpaceRef colorSpace = CGColorGetColorSpace([[colors objectAtIndex:0] CGColor]);
-	
+
 	CGFloat *gradientLocations = NULL;
 	NSUInteger locationsCount = [locations count];
 	if (locationsCount == colorsCount) {
@@ -111,19 +111,19 @@ CGGradientRef SSCreateGradientWithColorsAndLocations(NSArray *colors, NSArray *l
 			gradientLocations[i] = [[locations objectAtIndex:i] floatValue];
 		}
 	}
-	
+
 	NSMutableArray *gradientColors = [[NSMutableArray alloc] initWithCapacity:colorsCount];
 	[colors enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
 		[gradientColors addObject:(id)[(UIColor *)object CGColor]];
 	}];
-	
+
 	CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)gradientColors, gradientLocations);
-	
+
 	[gradientColors release];
 	if (gradientLocations) {
 		free(gradientLocations);
 	}
-	
+
 	return gradient;
 }
 

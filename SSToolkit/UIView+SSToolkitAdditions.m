@@ -61,7 +61,7 @@
 
 - (NSArray *)superviews {
 	NSMutableArray *superviews = [[NSMutableArray alloc] init];
-	
+
 	UIView *view = self;
 	UIView *superview = nil;
 	while (view) {
@@ -69,11 +69,11 @@
 		if (!superview) {
 			break;
 		}
-		
+
 		[superviews addObject:superview];
 		view = superview;
 	}
-	
+
 	return [superviews autorelease];
 }
 
@@ -85,7 +85,7 @@
 		superview = [view superview];
 		if ([superview isKindOfClass:superviewClass]) {
 			return superview;
-		}		
+		}
 		view = superview;
 	}
 	return nil;

@@ -67,11 +67,11 @@
 #pragma mark - SSViewController
 
 - (void)layoutViewsWithOrientation:(UIInterfaceOrientation)orientation {
-	
+
 	CGSize size = [[UIScreen mainScreen] boundsForOrientation:orientation].size;
 	BOOL landscape = UIInterfaceOrientationIsLandscape(orientation);
 	size.height -= landscape ? 214.0f : 280.0f;
-	
+
 	self.view.frame = CGRectMake(0.0f, 0.0f, size.width, size.height - 10.0f);
 }
 

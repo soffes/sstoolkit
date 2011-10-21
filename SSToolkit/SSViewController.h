@@ -11,7 +11,7 @@
 /**
  UIViewController subclass that displaying custom modals and
  other nice enhancements.
- 
+
  Note: Currently only iPad is supported.
  */
 @interface SSViewController : UIViewController <SSModalViewController>

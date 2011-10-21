@@ -29,7 +29,7 @@
 
 - (void)setTextEdgeInsets:(UIEdgeInsets)textEdgeInsets {
 	_textEdgeInsets = textEdgeInsets;
-	
+
 	[self setNeedsLayout];
 }
 
@@ -56,7 +56,7 @@
 
 - (void)drawTextInRect:(CGRect)rect {
 	rect = UIEdgeInsetsInsetRect(rect, _textEdgeInsets);
-	
+
 	if (self.verticalTextAlignment == SSLabelVerticalTextAlignmentTop) {
 		CGSize sizeThatFits = [self sizeThatFits:rect.size];
 		rect = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, sizeThatFits.height);
@@ -64,7 +64,7 @@
 		CGSize sizeThatFits = [self sizeThatFits:rect.size];
 		rect = CGRectMake(rect.origin.x, rect.origin.y + (rect.size.height - sizeThatFits.height), rect.size.width, sizeThatFits.height);
 	}
-		
+
 	[super drawTextInRect:rect];
 }
 

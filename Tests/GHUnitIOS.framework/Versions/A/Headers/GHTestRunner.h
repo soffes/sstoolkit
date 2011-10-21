@@ -37,9 +37,9 @@
 //  Licensed under the Apache License, Version 2.0 (the "License"); you may not
 //  use this file except in compliance with the License.  You may obtain a copy
 //  of the License at
-// 
+//
 //  http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 //  Unless required by applicable law or agreed to in writing, software
 //  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 //  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
@@ -68,22 +68,22 @@
 
 /*!
  Runs the tests.
- Tests are run a separate thread though delegates are called on the 
+ Tests are run a separate thread though delegates are called on the
  main thread by default (see #delegateOnMainThread).
  */
-@interface GHTestRunner : NSObject <GHTestDelegate> { 
-  
+@interface GHTestRunner : NSObject <GHTestDelegate> {
+
   id<GHTest> test_; // The test to run; Could be a GHTestGroup (suite), GHTestGroup (test case), or GHTest (target/selector)
-  
+
   NSObject<GHTestRunnerDelegate> *delegate_; // weak
-    
-  GHTestOptions options_; 
-  
+
+  GHTestOptions options_;
+
   BOOL running_;
   BOOL cancelling_;
-  
+
   NSTimeInterval startInterval_;
-  
+
   NSOperationQueue *operationQueue_; //! If running a suite in operation queue
 }
 

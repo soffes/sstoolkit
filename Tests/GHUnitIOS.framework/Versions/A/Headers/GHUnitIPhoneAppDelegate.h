@@ -31,8 +31,8 @@
 
 @interface GHUnitIPhoneAppDelegate : NSObject <UIApplicationDelegate> {
   UIWindow *window_;
-  
-  UINavigationController *navigationController_;  
+
+  UINavigationController *navigationController_;
 }
 
 @end

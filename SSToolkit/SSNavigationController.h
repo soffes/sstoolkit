@@ -12,10 +12,10 @@
 
 /**
  UINavigationController subclass that comforms to the SSModalViewController protocol.
- 
- This class contains a dirty hack to position it's navigation bar correctly when in a custom modal that is created with 
+
+ This class contains a dirty hack to position it's navigation bar correctly when in a custom modal that is created with
  the SSViewController class.
- 
+
  @see SSViewController
  @see SSModalViewController
  */

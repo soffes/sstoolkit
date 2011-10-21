@@ -18,16 +18,16 @@
 								@"value1", @"key1",
 								@"value2", @"key2",
 								nil];
-	
+
 	NSString *string = [dictionary stringWithFormEncodedComponents];
 	GHAssertEqualObjects([NSDictionary dictionaryWithFormEncodedString:string], dictionary, nil);
-	
+
 	// Go nuts
 	dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
 				  @"£™¢£∞¢§∞¶•§ª¶º!@#$%^&*()", @"œ∑´∞®†¥¨ˆø",
 				  @"ÎÍÏ˝ÓÔÒÚ˜Â¯", @"ç√≈∫˜µ≤∆˚¬˙©",
 				  nil];
-	
+
 	string = [dictionary stringWithFormEncodedComponents];
 	GHAssertEqualObjects([NSDictionary dictionaryWithFormEncodedString:string], dictionary, nil);
 }
@@ -41,7 +41,7 @@
 								 @"value4", @"key4",
 								 @"value5", @"key5",
 								 nil];
-	
+
 	NSMutableDictionary *dictionary2 = [NSMutableDictionary dictionaryWithObjectsAndKeys:
 										@"value3", @"key3",
 										@"value4", @"key4",
@@ -49,7 +49,7 @@
 										@"value1", @"key1",
 										nil];
 	[dictionary2 setObject:@"value2" forKey:@"key2"];
-	
+
 	NSString *sum1 = [dictionary1 MD5Sum];
 	NSString *sum2 = [dictionary2 MD5Sum];
 	GHAssertNotNil(sum1, nil);
@@ -66,7 +66,7 @@
 								 @"value4", @"key4",
 								 @"value5", @"key5",
 								 nil];
-	
+
 	NSMutableDictionary *dictionary2 = [NSMutableDictionary dictionaryWithObjectsAndKeys:
 										@"value3", @"key3",
 										@"value4", @"key4",
@@ -74,7 +74,7 @@
 										@"value1", @"key1",
 										nil];
 	[dictionary2 setObject:@"value2" forKey:@"key2"];
-	
+
 	NSString *sum1 = [dictionary1 SHA1Sum];
 	NSString *sum2 = [dictionary2 SHA1Sum];
 	GHAssertNotNil(sum1, nil);

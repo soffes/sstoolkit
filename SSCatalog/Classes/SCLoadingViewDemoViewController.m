@@ -23,9 +23,9 @@
 	[super viewDidLoad];
 	self.title = [[self class] title];
 	self.view.backgroundColor = [UIColor colorWithRed:0.851f green:0.859f blue:0.882f alpha:1.0f];
-	
+
 	CGSize size = self.view.frame.size;
-	
+
 	SSLoadingView *loadingView = [[SSLoadingView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
 	[self.view addSubview:loadingView];
 	[loadingView release];

@@ -35,10 +35,10 @@
 	if ([string isEqual:_placeholder]) {
 		return;
 	}
-	
+
 	[_placeholder release];
 	_placeholder = [string retain];
-	
+
 	[self _updateShouldDrawPlaceholder];
 }
 
@@ -47,7 +47,7 @@
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:self];
-	
+
 	[_placeholder release];
 	[_placeholderColor release];
 	[super dealloc];
@@ -74,7 +74,7 @@
 
 - (void)drawRect:(CGRect)rect {
 	[super drawRect:rect];
-	
+
 	if (_shouldDrawPlaceholder) {
 		[_placeholderColor set];
 		[_placeholder drawInRect:CGRectMake(8.0f, 8.0f, self.frame.size.width - 16.0f, self.frame.size.height - 16.0f) withFont:self.font];
@@ -86,7 +86,7 @@
 
 - (void)_initialize {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_textChanged:) name:UITextViewTextDidChangeNotification object:self];
-	
+
 	self.placeholderColor = [UIColor colorWithWhite:0.702f alpha:1.0f];
 	_shouldDrawPlaceholder = NO;
 }
@@ -95,7 +95,7 @@
 - (void)_updateShouldDrawPlaceholder {
 	BOOL prev = _shouldDrawPlaceholder;
 	_shouldDrawPlaceholder = self.placeholder && self.placeholderColor && self.text.length == 0;
-	
+
 	if (prev != _shouldDrawPlaceholder) {
 		[self setNeedsDisplay];
 	}
@@ -103,7 +103,7 @@
 
 
 - (void)_textChanged:(NSNotification *)notificaiton {
-	[self _updateShouldDrawPlaceholder];	
+	[self _updateShouldDrawPlaceholder];
 }
 
 @end

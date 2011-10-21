@@ -37,16 +37,16 @@
 	UIView *three = [[UIView alloc] initWithFrame:CGRectZero];
 	UIView *four = [[UIView alloc] initWithFrame:CGRectZero];
 	UIView *five = [[UIView alloc] initWithFrame:CGRectZero];
-	
+
 	[four addSubview:five];
 	[three addSubview:four];
 	[two addSubview:three];
 	[one addSubview:two];
-	
+
 	NSArray *superviews = [[NSArray alloc] initWithObjects:four, three, two, one, nil];
-	
+
 	GHAssertEqualObjects([five superviews], superviews, nil);
-	
+
 	[superviews release];
 	[one release];
 	[two release];
@@ -62,14 +62,14 @@
 	UIView *three = [[UIView alloc] initWithFrame:CGRectZero];
 	UIView *four = [[UIView alloc] initWithFrame:CGRectZero];
 	UIView *five = [[UIView alloc] initWithFrame:CGRectZero];
-	
+
 	[four addSubview:five];
 	[three addSubview:four];
 	[two addSubview:three];
 	[one addSubview:two];
-	
+
 	GHAssertEqualObjects([five firstSuperviewOfClass:[SSLineView class]], two, nil);
-	
+
 	[one release];
 	[two release];
 	[three release];

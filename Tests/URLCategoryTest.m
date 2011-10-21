@@ -16,14 +16,14 @@
 - (void)testURLWithFormat {
 	NSURL *url1 = [NSURL URLWithString:@"http://sstoolk.it/documentation/Categories/NSURL(SSToolkitAdditions).html"];
 	NSURL *url2 = [NSURL URLWithFormat:@"http://sstoolk.it/documentation/Categories/%@(SSToolkitAdditions).html", @"NSURL"];
-	
+
 	GHAssertNotNil(url2, nil);
 	GHAssertEqualObjects(url1, url2, nil);
-	
-	
+
+
 	url1 = [NSURL URLWithString:@"http://www.google.com/search?client=safari&rls=en&q=SSToolkit&ie=UTF-8&oe=UTF-8"];
 	url2 = [NSURL URLWithFormat:@"http://www.google.com/search?client=%@&rls=en&q=%@&ie=UTF-8&oe=UTF-8", @"safari", @"SSToolkit"];
-	
+
 	GHAssertNotNil(url2, nil);
 	GHAssertEqualObjects(url1, url2, nil);
 }
@@ -35,9 +35,9 @@
 								@"bar", @"foo",
 								@"true", @"awesome",
 								nil];
-	
+
 	GHAssertEqualObjects([url queryDictionary], dictionary, nil);
-	
+
 	[url release];
 	[dictionary release];
 }

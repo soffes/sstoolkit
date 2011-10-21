@@ -23,7 +23,7 @@
 	[lineColor retain];
 	[_lineColor release];
 	_lineColor = lineColor;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -32,14 +32,14 @@
 	[insetColor retain];
 	[_insetColor release];
 	_insetColor = insetColor;
-	
+
 	[self setNeedsDisplay];
 }
 
 
 - (void)setDashPhase:(CGFloat)dashPhase {
 	_dashPhase = dashPhase;
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -47,7 +47,7 @@
 - (void)setDashLengths:(NSArray *)dashLengths {
 	[_dashLengths autorelease];
 	_dashLengths = [dashLengths copy];
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -79,20 +79,20 @@
 }
 
 
-- (void)drawRect:(CGRect)rect {	
+- (void)drawRect:(CGRect)rect {
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextClipToRect(context, rect);
 	CGContextSetLineWidth(context, 2.0f);
-	
+
 	if (_dashLengths) {
 		NSUInteger dashLengthsCount = [_dashLengths count];
 		CGFloat *lengths = (CGFloat *)malloc(sizeof(CGFloat) * dashLengthsCount);
 		for (NSUInteger i = 0; i < dashLengthsCount; i++) {
 			lengths[i] = [[_dashLengths objectAtIndex:i] floatValue];
 		}
-		
+
 		CGContextSetLineDash(context, _dashPhase, lengths, dashLengthsCount);
-		
+
 		free(lengths);
 	}
 
@@ -103,7 +103,7 @@
 		CGContextAddLineToPoint(context, rect.size.width, 1.0f);
 		CGContextStrokePath(context);
 	}
-	
+
 	// Top border
 	CGContextSetStrokeColorWithColor(context, _lineColor.CGColor);
 	CGContextMoveToPoint(context, 0.0f, 0.0f);
@@ -118,7 +118,7 @@
 	self.backgroundColor = [UIColor clearColor];
 	self.opaque = NO;
 	self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	
+
 	self.lineColor = [UIColor grayColor];
 	self.insetColor = [UIColor colorWithWhite:1.0f alpha:0.5f];
 }

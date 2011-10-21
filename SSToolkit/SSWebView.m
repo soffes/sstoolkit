@@ -148,7 +148,7 @@
 
 - (void)_initialize {
 	[self reset];
-	
+
 	_loadingPage = NO;
 	_shadowsHidden = NO;
 	_consoleEnabled = NO;

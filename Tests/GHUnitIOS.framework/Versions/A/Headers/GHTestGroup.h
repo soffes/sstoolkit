@@ -45,8 +45,8 @@
 /*!
  @brief A collection of tests (or test groups).
 
- A test group is a collection of id<GHTest>, that may represent a set of test case methods. 
- 
+ A test group is a collection of id<GHTest>, that may represent a set of test case methods.
+
  For example, if you had the following GHTestCase.
 
  @code
@@ -55,33 +55,33 @@
  - (void)testBar;
  @end
  @endcode
- 
- The GHTestGroup would consist of and array of GHTest, [FooTest#testFoo and FooTest#testBar], 
+
+ The GHTestGroup would consist of and array of GHTest, [FooTest#testFoo and FooTest#testBar],
  each test being a target and selector pair.
 
  A test group may also consist of a group of groups (since GHTestGroup conforms to GHTest),
  and this might represent a GHTestSuite.
  */
 @interface GHTestGroup : NSObject <GHTestDelegate, GHTestGroup> {
-  
+
   NSObject<GHTestDelegate> *delegate_; // weak
   id<GHTestGroup> parent_; // weak
-  
+
   NSMutableArray */*of id<GHTest>*/children_;
-    
+
   NSString *name_; // The name of the test group (usually the class name of the test case
   NSTimeInterval interval_; // Total time of child tests
   GHTestStatus status_; // Current status of the group (current status of running or completed child tests)
   GHTestStats stats_; // Current stats for the group (aggregate of child test stats)
-  
+
   BOOL didSetUpClass_;
-  
+
   GHTestOptions options_;
-  
+
   // Set if test is created from initWithTestCase:delegate:
   // Allows use to perform setUpClass and tearDownClass (once per test case run)
-  id testCase_; 
-  
+  id testCase_;
+
   NSException *exception_; // If exception happens in group setUpClass/tearDownClass
 }
 
@@ -109,7 +109,7 @@
 /*!
  Create test group from a single test.
  @param testCase
- @param selector Test to run 
+ @param selector Test to run
  @param delegate
  */
 - (id)initWithTestCase:(id)testCase selector:(SEL)selector delegate:(id<GHTestDelegate>)delegate;

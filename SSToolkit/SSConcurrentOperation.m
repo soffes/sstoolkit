@@ -54,10 +54,10 @@
 - (void)finish {
     [self willChangeValueForKey:@"isExecuting"];
     [self willChangeValueForKey:@"isFinished"];
-    
+
     _isExecuting = NO;
     _isFinished = YES;
-    
+
     [self didChangeValueForKey:@"isExecuting"];
     [self didChangeValueForKey:@"isFinished"];
 }

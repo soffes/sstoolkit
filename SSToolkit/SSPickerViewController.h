@@ -9,7 +9,7 @@
 /**
  This is an abstract class for displaying a `UITableView` with a list of items for the user to choose similar to
  Settings.app.
- 
+
  A subclass should override the `- (void)loadObjects` and `- (NSString *)cellTextForObject:(id)anObject` methods to
  customize this class.
  */

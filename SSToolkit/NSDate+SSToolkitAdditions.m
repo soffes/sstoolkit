@@ -15,12 +15,12 @@
 	if (!iso8601String) {
 		return nil;
 	}
-	
+
 	struct tm tm;
 	strptime([iso8601String cStringUsingEncoding:NSUTF8StringEncoding], "%Y-%m-%dT%H:%M:%S%z", &tm);
 //	tm.tm_isdst = -1;
 	time_t t = mktime(&tm);
-	
+
 	return [NSDate dateWithTimeIntervalSince1970:t + [[NSTimeZone localTimeZone] secondsFromGMT]];
 }
 
@@ -28,12 +28,12 @@
 - (NSString *)ISO8601String {
 	struct tm *timeinfo;
 	char buffer[80];
-	
+
 	time_t rawtime = (time_t)[self timeIntervalSince1970];
 	timeinfo = gmtime(&rawtime);
-	
+
 	strftime(buffer, 80, "%Y-%m-%dT%H:%M:%SZ", timeinfo);
-	
+
 	return [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
 }
 
@@ -41,7 +41,7 @@
 //	Adapted from http://github.com/gabriel/gh-kit/blob/master/Classes/GHNSString+TimeInterval.m
 + (NSString *)timeAgoInWordsFromTimeInterval:(NSTimeInterval)intervalInSeconds includingSeconds:(BOOL)includeSeconds {
 	NSTimeInterval intervalInMinutes = round(intervalInSeconds / 60.0f);
-	
+
 	if (intervalInMinutes >= 0 && intervalInMinutes <= 1) {
 		if (!includeSeconds) {
 			return intervalInMinutes <= 0 ? @"less than a minute" : @"1 minute";
@@ -58,7 +58,7 @@
 			return @"less than a minute";
 	 	} else {
 			return @"1 minute";
-		}		
+		}
 	} else if (intervalInMinutes >= 2 && intervalInMinutes <= 44) {
 		return [NSString stringWithFormat:@"%.0f minutes", intervalInMinutes];
 	} else if (intervalInMinutes >= 45 && intervalInMinutes <= 89) {
@@ -85,7 +85,7 @@
 - (NSString *)briefTimeAgoInWords {
 	NSTimeInterval intervalInSeconds = fabs([self timeIntervalSinceNow]);
 	NSTimeInterval intervalInMinutes = round(intervalInSeconds / 60.0f);
-	
+
 	if (intervalInMinutes >= 0 && intervalInMinutes < 60) {
 		return [NSString stringWithFormat:@"%.0fm", intervalInMinutes];
 	} else if (intervalInMinutes >= 60 && intervalInMinutes < 1440) {
@@ -107,7 +107,7 @@
 
 
 - (NSString *)timeAgoInWordsIncludingSeconds:(BOOL)includeSeconds {
-	return [[self class] timeAgoInWordsFromTimeInterval:fabs([self timeIntervalSinceNow]) includingSeconds:includeSeconds];		
+	return [[self class] timeAgoInWordsFromTimeInterval:fabs([self timeIntervalSinceNow]) includingSeconds:includeSeconds];
 }
 
 
