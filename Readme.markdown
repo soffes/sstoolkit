@@ -68,7 +68,7 @@ For usage instructions, see [the usage guide on the SSToolkit website](http://ss
 
 ## Demo
 
-[SSCatalog](https://github.com/samsoffes/sstoolkit/tree/master/SSCatalog) is included with SSToolkit. There is an iPhone application target and an universal iPad/iPhone application target to demonstrate the various features of SSToolkit.
+[SSCatalog](https://github.com/samsoffes/sscatalog) is an example application of various SSToolkit features. It is an universal iPad/iPhone application.
 
 ## Links
 
