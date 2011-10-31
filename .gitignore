@@ -4,4 +4,6 @@
 *.perspectivev3
 *.xcworkspace
 xcuserdata
+DerivedData
 Documentation
+SSCatalog/Pods
