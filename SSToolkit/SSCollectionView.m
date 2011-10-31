@@ -399,6 +399,8 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 		}
 	}
 	
+	[sections release];
+	
 	// Apply updates
 	[_tableView endUpdates];
 	
