@@ -1,5 +1,14 @@
 # SSToolkit Changelog
 
+### Version 0.1.2
+
+[Released October 31, 2011](https://github.com/samsoffes/sstoolkit/tree/0.1.2)
+
+* Fix bug in HUD view not dismissing
+* Fix leak in collection view
+* Move SSCollection view to it's own repo
+
+
 ### Version 0.1.1
 
 [Released October 18, 2011](https://github.com/samsoffes/sstoolkit/tree/0.1.1)
