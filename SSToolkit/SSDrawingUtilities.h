@@ -75,7 +75,9 @@ extern void SSDrawRoundedRect(CGContextRef context, CGRect rect, CGFloat cornerR
 ///-------------------------
 
 extern CGGradientRef SSCreateGradientWithColors(NSArray *colors);
+extern CGGradientRef SSCreateGradientWithColorsAndScale(NSArray *colors, CGFloat scale);
 extern CGGradientRef SSCreateGradientWithColorsAndLocations(NSArray *colors, NSArray *locations);
+extern NSArray *SSGradientLocationsWithScale(CGFloat scale);
 
 
 ///------------------------

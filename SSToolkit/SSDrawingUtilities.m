@@ -95,6 +95,11 @@ CGGradientRef SSCreateGradientWithColors(NSArray *colors) {
 }
 
 
+CGGradientRef SSCreateGradientWithColorsAndScale(NSArray *colors, CGFloat scale) {
+	return SSCreateGradientWithColorsAndLocations(colors, SSGradientLocationsWithScale(scale));
+}
+
+
 CGGradientRef SSCreateGradientWithColorsAndLocations(NSArray *colors, NSArray *locations) {
 	NSUInteger colorsCount = [colors count];
 	if (colorsCount < 2) {
@@ -125,6 +130,15 @@ CGGradientRef SSCreateGradientWithColorsAndLocations(NSArray *colors, NSArray *l
 	}
 	
 	return gradient;
+}
+
+
+NSArray *SSGradientLocationsWithScale(CGFloat scale) {
+	CGFloat top = fmaxf((1.0f - scale) / 2.0f, 0.0f);
+	CGFloat bottom = top + (scale > 1.0f ? scale - 1.0f : scale);
+	NSArray *locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:top], [NSNumber numberWithFloat:bottom], nil];
+	NSLog(@"Locations: %@", locations);
+	return locations;
 }
 
 
