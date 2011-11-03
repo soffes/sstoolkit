@@ -47,7 +47,7 @@ typedef enum {
 /**
  The direction of the gradient.
  
- The default is `SSGradientViewDirectionHorizontal`.
+ The default is `SSGradientViewDirectionVertical`.
  */
 @property (nonatomic, assign) SSGradientViewDirection direction;
 
