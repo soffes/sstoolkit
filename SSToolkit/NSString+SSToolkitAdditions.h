@@ -169,6 +169,15 @@
 + (NSString *)stringWithBase64String:(NSString *)base64String;
 
 
+///------------------------
+/// @name Generating a UUID
+///------------------------
+
+/**
+ Returns a new string containing a Universally Unique Identifier.
+ */
++ (NSString *)stringWithUUID;
+
 ///---------------
 /// @name Trimming
 ///---------------

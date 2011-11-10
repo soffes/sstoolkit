@@ -48,6 +48,8 @@
 // Misc
 #import "SSDrawingUtilities.h"
 #import "SSConcurrentOperation.h"
+#import "SSManagedOperation.h"
+#import "SSManagedOperationQueue.h"
 
 #else
 
@@ -88,5 +90,8 @@
 // Misc
 #import <SSToolkit/SSDrawingUtilities.h>
 #import <SSToolkit/SSConcurrentOperation.h>
+#import <SSToolkit/SSManagedOperation.h>
+#import <SSToolkit/SSManagedOperationQueue.h>
+
 
 #endif

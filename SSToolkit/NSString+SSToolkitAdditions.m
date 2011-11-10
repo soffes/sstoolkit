@@ -212,7 +212,7 @@
 }
 
 
-#pragma mark - Base64 Methods
+#pragma mark - Base64 Encoding
 
 - (NSString *)base64EncodedString  {
     if ([self length] == 0) {
@@ -229,7 +229,18 @@
 }
 
 
-#pragma mark - Trimming Methods
+
+#pragma mark - Generating a UUID
+
++ (NSString *)stringWithUUID {
+	CFUUIDRef uuid = CFUUIDCreate(NULL);
+	CFStringRef string = CFUUIDCreateString(NULL, uuid);
+	CFRelease(uuid);
+	return [(NSString *)string autorelease];
+}
+
+
+#pragma mark - Trimming
 
 - (NSString *)stringByTrimmingLeadingAndTrailingCharactersInSet:(NSCharacterSet *)characterSet {
 	return [[self stringByTrimmingLeadingCharactersInSet:characterSet]

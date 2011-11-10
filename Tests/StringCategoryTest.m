@@ -92,6 +92,13 @@
 }
 
 
+- (void)testUUID {
+	NSString *uuid1 = [NSString stringWithUUID];
+	NSString *uuid2 = [NSString stringWithUUID];
+	GHAssertNotEqualObjects(uuid1, uuid2, nil);
+}
+
+
 - (void)testStringByTrimmingLeadingCharactersInSet {
     NSCharacterSet *letterCharSet = [NSCharacterSet letterCharacterSet];
     GHAssertEqualObjects([@"zip90210zip" stringByTrimmingLeadingCharactersInSet:letterCharSet], @"90210zip", nil);
