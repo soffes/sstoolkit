@@ -63,6 +63,11 @@
 }
 
 
+- (NSMutableDictionary *)deepMutableCopy {
+	return (NSMutableDictionary *)CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)self, kCFPropertyListMutableContainers);
+}
+
+
 - (NSString *)MD5Sum {
 	return [[self _prehashData] MD5Sum];
 }

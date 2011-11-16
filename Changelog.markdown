@@ -2,6 +2,12 @@
 
 ### Version 0.1.2
 
+*Unreleased*
+
+* Add `deepMutableCopy` to `NSDictionary` and `NSArray`
+
+### Version 0.1.2
+
 [Released October 31, 2011](https://github.com/samsoffes/sstoolkit/tree/0.1.2)
 
 * Fix bug in HUD view not dismissing

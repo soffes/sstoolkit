@@ -37,6 +37,20 @@
  */
 - (NSString *)stringWithFormEncodedComponents;
 
+///--------------------------
+/// @name Deriving New Arrays
+///--------------------------
+
+/**
+ Returns the object returned by `mutableCopyWithZone:` where the zone is `nil`.
+ 
+ This differs from `mutableCopy` in that it makes any contained `NSArray` objects or `NSDictionary` objects mutable as
+ well. The returned dictionary follows standard memory management conventions for copied objects. You are responsible
+ for releasing it.
+ 
+ @return The object returned by the `NSMutableCopying` protocol method `mutableCopyWithZone:`, where the zone is `nil`.
+ */
+- (NSMutableDictionary *)deepMutableCopy CF_RETURNS_RETAINED;
 
 ///--------------
 /// @name Hashing
