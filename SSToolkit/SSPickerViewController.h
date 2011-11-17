@@ -12,6 +12,8 @@
  
  A subclass should override the `- (void)loadObjects` and `- (NSString *)cellTextForObject:(id)anObject` methods to
  customize this class.
+ 
+ A subclass can optionally override `- (void)cellImageForKey:(id)key` to show an image in the cell.
  */
 @interface SSPickerViewController : UITableViewController
 
@@ -21,5 +23,6 @@
 
 - (void)loadKeys;
 - (NSString *)cellTextForKey:(id)key;
+- (UIImage *)cellImageForKey:(id)key;
 
 @end
