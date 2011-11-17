@@ -62,6 +62,10 @@
 	return key;
 }
 
+// This method should be overridden by a subclass
+- (UIImage *)cellImageForKey:(id)key {
+    return nil;
+}
 
 #pragma mark - UITableViewDelegate
 
@@ -94,6 +98,7 @@
     }
 	id key = [self.keys objectAtIndex:indexPath.row];
 	cell.textLabel.text = [self cellTextForKey:key];
+    cell.imageView.image = [self cellImageForKey:key];
 	if([key isEqual:self.selectedKey] == YES) {
 		cell.accessoryType = UITableViewCellAccessoryCheckmark;
 	} else {
