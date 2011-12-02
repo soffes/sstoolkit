@@ -72,38 +72,30 @@
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextClipToRect(context, rect);
 		
-	CGContextSetLineWidth(context, 1.0f);
+	CGSize size = rect.size;
 	
 	if (_topBorderColor) {
 		// Top inset
 		if (_topInsetColor) {
-			CGContextSetStrokeColorWithColor(context, _topInsetColor.CGColor);
-			CGContextMoveToPoint(context, 0.0f, 1.5f);
-			CGContextAddLineToPoint(context, rect.size.width, 1.0f);
-			CGContextStrokePath(context);
+			CGContextSetFillColorWithColor(context, _topInsetColor.CGColor);
+			CGContextFillRect(context, CGRectMake(0.0f, 1.0f, size.width, 1.0f));
 		}
 		
 		// Top border
-		CGContextSetStrokeColorWithColor(context, _topBorderColor.CGColor);
-		CGContextMoveToPoint(context, 0.0f, 0.5f);
-		CGContextAddLineToPoint(context, rect.size.width, 0.0f);
-		CGContextStrokePath(context);
+		CGContextSetFillColorWithColor(context, _topBorderColor.CGColor);
+		CGContextFillRect(context, CGRectMake(0.0f, 0.0f, size.width, 1.0f));
 	}
 	
 	if (_bottomBorderColor) {
 		// Bottom inset
 		if (_bottomInsetColor) {
-			CGContextSetStrokeColorWithColor(context, _bottomInsetColor.CGColor);
-			CGContextMoveToPoint(context, 0.0f, rect.size.height - 1.5f);
-			CGContextAddLineToPoint(context, rect.size.width, rect.size.height - 1.0f);
-			CGContextStrokePath(context);
+			CGContextSetFillColorWithColor(context, _bottomInsetColor.CGColor);
+			CGContextFillRect(context, CGRectMake(0.0f, rect.size.height - 2.0f, size.width, 1.0f));
 		}
 		
 		// Bottom border
-		CGContextSetStrokeColorWithColor(context, _bottomBorderColor.CGColor);
-		CGContextMoveToPoint(context, 0.0f, rect.size.height - 0.5f);
-		CGContextAddLineToPoint(context, rect.size.width, rect.size.height);
-		CGContextStrokePath(context);
+		CGContextSetFillColorWithColor(context, _bottomBorderColor.CGColor);
+		CGContextFillRect(context, CGRectMake(0.0f, rect.size.height - 1.0f, size.width, 1.0f));
 	}
 }
 
