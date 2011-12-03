@@ -4,6 +4,7 @@
 
 *Unreleased*
 
+* Add `NSAssert` in SSCollectionView for a `nil` `reuseIdentifier`. This used to be an `NSLog`. It was changed to an assert because you really need to provide one or your performance will be just awful. Be user to add `NS_BLOCK_ASSERTIONS` in your release build to avoid crashing just incase you missed one somewhere.
 * Add `deepMutableCopy` to `NSDictionary` and `NSArray`
 
 ### Version 0.1.2
