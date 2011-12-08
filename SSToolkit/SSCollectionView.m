@@ -68,6 +68,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 @synthesize rowSpacing = _rowSpacing;
 @synthesize allowsSelection = _allowsSelection;
 @synthesize extremitiesStyle = _extremitiesStyle;
+@synthesize rowBackgroundColor = _rowBackgroundColor;
 
 #pragma mark - NSObject
 
@@ -94,6 +95,9 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	[_updates removeAllObjects];
 	[_updates release];
 	_updates = nil;
+	
+	[_rowBackgroundColor release];
+	_rowBackgroundColor = nil;
 	
 	[super dealloc];
 }
@@ -944,6 +948,10 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (_rowBackgroundColor) {
+		cell.backgroundColor = _rowBackgroundColor;
+	}
+	
 	// Make sure extremities are on top
 	if ([cell isKindOfClass:[SSCollectionViewExtremityTableViewCell class]]) {
 		// Put it under the scroll bar. I know this is awful.

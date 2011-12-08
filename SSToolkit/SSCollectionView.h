@@ -158,6 +158,14 @@ typedef enum {
 @property (nonatomic, assign) CGFloat rowSpacing;
 
 
+/**
+ The background color of a row.
+ 
+ This will be the background of the collection view if `nil` is provided. The default is `nil`.
+ */
+@property (nonatomic, retain) UIColor *rowBackgroundColor;
+
+
 ///-----------------------------------
 /// @name Accessing Items and Sections
 ///-----------------------------------
