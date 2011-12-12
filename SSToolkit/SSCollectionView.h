@@ -82,7 +82,7 @@ typedef enum {
  instead of row. This is done to make working with other classes that use `NSIndexPath` (like
  `NSFetchedResultsController`) easier.
  */
-@interface SSCollectionView : UIView
+@interface SSCollectionView : UITableView
 
 ///------------------------------------
 /// @name Configuring a Collection View
@@ -442,12 +442,12 @@ typedef enum {
 /**
  The object that acts as the data source of the receiving collection view.
  */
-@property (nonatomic, assign) id<SSCollectionViewDataSource> dataSource;
+@property (nonatomic, assign) id<SSCollectionViewDataSource> collectionDataSource;
 
 /**
  The object that acts as the delegate of the receiving collection view.
  */
-@property (nonatomic, assign) id<SSCollectionViewDelegate> delegate;
+@property (nonatomic, assign) id<SSCollectionViewDelegate> collectionDelegate;
 
 @end
 

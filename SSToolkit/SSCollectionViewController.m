@@ -31,8 +31,8 @@
 
 
 - (void)dealloc {
-	_collectionView.dataSource = nil;
-	_collectionView.delegate = nil;
+	_collectionView.collectionDataSource = nil;
+	_collectionView.collectionDelegate = nil;
 	[_collectionView release];
 	[super dealloc];
 }
@@ -72,8 +72,8 @@
 - (void)_initialize {
 	_collectionView = [[SSCollectionView alloc] initWithFrame:CGRectZero];
 	_collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	_collectionView.dataSource = self;
-	_collectionView.delegate = self;
+	_collectionView.collectionDataSource = self;
+	_collectionView.collectionDelegate = self;
 }
 
 
