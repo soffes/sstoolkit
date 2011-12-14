@@ -8,20 +8,52 @@
 
 #import "NSDate+SSToolkitAdditions.h"
 #include <time.h>
+#include <xlocale.h>
 
 @implementation NSDate (SSToolkitAdditions)
 
-+ (NSDate *)dateFromISO8601String:(NSString *)iso8601String {
-	if (!iso8601String) {
-		return nil;
-	}
++ (NSDate *)dateFromISO8601String:(NSString *)iso8601 {
+    if (!iso8601) {
+        return nil;
+    }
 	
-	struct tm tm;
-	strptime([iso8601String cStringUsingEncoding:NSUTF8StringEncoding], "%Y-%m-%dT%H:%M:%S%z", &tm);
-//	tm.tm_isdst = -1;
-	time_t t = mktime(&tm);
+    const char *str = [iso8601 cStringUsingEncoding:NSUTF8StringEncoding];
 	
-	return [NSDate dateWithTimeIntervalSince1970:t + [[NSTimeZone localTimeZone] secondsFromGMT]];
+    char newStr[24];
+	
+    struct tm tm;
+    size_t len = strlen(str);
+    if (len == 0) {
+        return nil;
+    }
+	
+	// UTC
+    if (len == 20 && str[len - 1] == 'Z') {
+        strncpy(newStr, str, len - 1);
+        strncpy(newStr + len - 1, "+0000\0", 6);
+		
+    }
+	
+	// Timezone
+	else if (len == 24 && str[22] == ':') {
+        strncpy(newStr, str, 22);    
+        strncpy(newStr + 22, str + 23, 2);
+		
+    }
+	
+	// Poorly formatted timezone
+	else {
+        strncpy(newStr, str, fminf(24, len));
+    }
+	
+    if (strptime(newStr, "%FT%T%z", &tm) == NULL) {
+        return nil;
+    }
+	
+    time_t t; 
+    t = mktime(&tm);
+	
+    return [NSDate dateWithTimeIntervalSince1970:t];
 }
 
 
