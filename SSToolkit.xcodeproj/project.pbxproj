@@ -17,8 +17,6 @@
 		B21D2E00121F2FE500161E66 /* SSDrawingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B21D2DFF121F2FE500161E66 /* SSDrawingUtilities.m */; };
 		B227D2EA124931590078A059 /* NSDictionary+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B227D2E8124931590078A059 /* NSDictionary+SSToolkitAdditions.h */; };
 		B227D2EB124931590078A059 /* NSDictionary+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227D2E9124931590078A059 /* NSDictionary+SSToolkitAdditions.m */; };
-		B229B468144CE2F500F71626 /* SSCollectionViewTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = B229B466144CE2F500F71626 /* SSCollectionViewTableView.h */; };
-		B229B469144CE2F500F71626 /* SSCollectionViewTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B229B467144CE2F500F71626 /* SSCollectionViewTableView.m */; };
 		B23910571357DC7D00ADE21B /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23910551357DC7D00ADE21B /* GHUnitIOS.framework */; };
 		B23910601357DCF700ADE21B /* libSSToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libSSToolkit.a */; };
 		B23910621357DCF700ADE21B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23910611357DCF700ADE21B /* CoreGraphics.framework */; };
@@ -157,8 +155,6 @@
 		B21D2DFF121F2FE500161E66 /* SSDrawingUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDrawingUtilities.m; sourceTree = "<group>"; };
 		B227D2E8124931590078A059 /* NSDictionary+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B227D2E9124931590078A059 /* NSDictionary+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SSToolkitAdditions.m"; sourceTree = "<group>"; };
-		B229B466144CE2F500F71626 /* SSCollectionViewTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewTableView.h; sourceTree = "<group>"; };
-		B229B467144CE2F500F71626 /* SSCollectionViewTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionViewTableView.m; sourceTree = "<group>"; };
 		B239101D1357DC3E00ADE21B /* SSToolkitTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSToolkitTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23910551357DC7D00ADE21B /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
 		B23910561357DC7D00ADE21B /* SSToolkitTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SSToolkitTests-Info.plist"; sourceTree = "<group>"; };
@@ -560,8 +556,6 @@
 				B2D8829313328EEF006B3F55 /* SSHUDWindow.m */,
 				B279539C12FC6C6F00FFE28D /* SSRatingPickerScrollView.h */,
 				B279539D12FC6C6F00FFE28D /* SSRatingPickerScrollView.m */,
-				B229B466144CE2F500F71626 /* SSCollectionViewTableView.h */,
-				B229B467144CE2F500F71626 /* SSCollectionViewTableView.m */,
 			);
 			name = Private;
 			sourceTree = "<group>";
@@ -637,7 +631,6 @@
 				B25C8E611394327000DE7BFF /* SSCollectionViewExtremityTableViewCell.h in Headers */,
 				B2136B3C13ABCC0C00FEBCFD /* SSBorderedView.h in Headers */,
 				B280E25F13BA76A300FCDA5C /* SSAnimatedImageView.h in Headers */,
-				B229B468144CE2F500F71626 /* SSCollectionViewTableView.h in Headers */,
 				B24F7AC9146B2CB7003255E2 /* SSManagedOperationQueue.h in Headers */,
 				B24F7ACD146B2D54003255E2 /* SSManagedOperation.h in Headers */,
 			);
@@ -791,7 +784,6 @@
 				B25C8E601394327000DE7BFF /* SSCollectionViewExtremityTableViewCell.m in Sources */,
 				B2136B3D13ABCC0C00FEBCFD /* SSBorderedView.m in Sources */,
 				B280E25D13BA769C00FCDA5C /* SSAnimatedImageView.m in Sources */,
-				B229B469144CE2F500F71626 /* SSCollectionViewTableView.m in Sources */,
 				B24F7ACA146B2CB7003255E2 /* SSManagedOperationQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
