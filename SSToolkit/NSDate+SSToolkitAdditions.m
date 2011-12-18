@@ -10,26 +10,59 @@
 #include <time.h>
 #include <xlocale.h>
 
+#define ISO8601_MAX_LEN 25
+
 @implementation NSDate (SSToolkitAdditions)
 
 + (NSDate *)dateFromISO8601String:(NSString *)iso8601 {
-	static NSDateFormatter *utcDateFormatter = nil;
-	static NSDateFormatter *dateFormatter = nil;
+	if (!iso8601) {
+        return nil;
+    }
 	
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		utcDateFormatter = [[NSDateFormatter alloc] init];
-		[utcDateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
-		
-		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"];
-	});
+    const char *str = [iso8601 cStringUsingEncoding:NSUTF8StringEncoding];
 	
-	if ([iso8601 hasSuffix:@"Z"]) {
-		return [utcDateFormatter dateFromString:iso8601];
-	} else {
-		return [dateFormatter dateFromString:iso8601];
-	}
+    char newStr[ISO8601_MAX_LEN];
+    bzero(newStr, ISO8601_MAX_LEN);
+	
+    size_t len = strlen(str);
+    if (len == 0) {
+        return nil;
+    }
+	
+    // UTC dates ending with Z
+    if (len == 20 && str[len - 1] == 'Z') {
+        memcpy(newStr, str, len - 1);
+        memcpy(newStr + len - 1, "+0000", 5);
+    }
+	
+    // Timezone includes a semicolon (not supported by strptime)
+    else if (len == 25 && str[22] == ':') { 
+        memcpy(newStr, str, 22);    
+        memcpy(newStr + 22, str + 23, 2);
+    }
+	
+    // Fallback: date was already well-formatted OR any other case (bad-formatted)
+    else { 
+        memcpy(newStr, str, len > ISO8601_MAX_LEN - 1 ? ISO8601_MAX_LEN - 1 : len);	
+    }
+	
+    struct tm tm = {
+        .tm_sec = 0,
+        .tm_min = 0,
+        .tm_hour = 0,
+        .tm_mday = 0,
+        .tm_mon = 0,
+        .tm_year = 0,
+        .tm_wday = 0,
+        .tm_yday = 0,
+        .tm_isdst = -1,
+    };
+	
+    if (strptime_l(newStr, "%FT%T%z", &tm, NULL) == NULL) {
+        return nil;
+    }
+
+    return [NSDate dateWithTimeIntervalSince1970:mktime(&tm)];
 }
 
 
