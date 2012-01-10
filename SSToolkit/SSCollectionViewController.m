@@ -70,10 +70,13 @@
 #pragma mark - Private
 
 - (void)_initialize {
-	_collectionView = [[SSCollectionView alloc] initWithFrame:CGRectZero];
-	_collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	_collectionView.dataSource = self;
-	_collectionView.delegate = self;
+    if ( ! _collectionView )
+    {
+        _collectionView = [[SSCollectionView alloc] initWithFrame:CGRectZero];
+        _collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _collectionView.dataSource = self;
+        _collectionView.delegate = self;
+    }
 }
 
 
