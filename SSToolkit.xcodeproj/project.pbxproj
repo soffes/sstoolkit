@@ -87,9 +87,6 @@
 		B24E9E7E121DC29A0085F81E /* UIView+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E40121DC29A0085F81E /* UIView+SSToolkitAdditions.m */; };
 		B24E9E7F121DC29A0085F81E /* UIViewController+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E41121DC29A0085F81E /* UIViewController+SSToolkitAdditions.h */; };
 		B24E9E80121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E42121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m */; };
-		B24F7AC9146B2CB7003255E2 /* SSManagedOperationQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = B24F7AC7146B2CB7003255E2 /* SSManagedOperationQueue.h */; };
-		B24F7ACA146B2CB7003255E2 /* SSManagedOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B24F7AC8146B2CB7003255E2 /* SSManagedOperationQueue.m */; };
-		B24F7ACD146B2D54003255E2 /* SSManagedOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B24F7ACC146B2D54003255E2 /* SSManagedOperation.h */; };
 		B25C8E601394327000DE7BFF /* SSCollectionViewExtremityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B456FC139078B80060C279 /* SSCollectionViewExtremityTableViewCell.m */; };
 		B25C8E611394327000DE7BFF /* SSCollectionViewExtremityTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2B456FB139078B80060C279 /* SSCollectionViewExtremityTableViewCell.h */; };
 		B267D3451226CE0400B66519 /* SSCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B267D3431226CE0400B66519 /* SSCollectionViewController.h */; };
@@ -229,9 +226,6 @@
 		B24E9E40121DC29A0085F81E /* UIView+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B24E9E41121DC29A0085F81E /* UIViewController+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B24E9E42121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SSToolkitAdditions.m"; sourceTree = "<group>"; };
-		B24F7AC7146B2CB7003255E2 /* SSManagedOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSManagedOperationQueue.h; sourceTree = "<group>"; };
-		B24F7AC8146B2CB7003255E2 /* SSManagedOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSManagedOperationQueue.m; sourceTree = "<group>"; };
-		B24F7ACC146B2D54003255E2 /* SSManagedOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSManagedOperation.h; sourceTree = "<group>"; };
 		B267D3431226CE0400B66519 /* SSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewController.h; sourceTree = "<group>"; };
 		B267D3441226CE0400B66519 /* SSCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionViewController.m; sourceTree = "<group>"; };
 		B2721B9F132F136C00D762FD /* SSCollectionViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewInternal.h; sourceTree = "<group>"; };
@@ -531,9 +525,6 @@
 		B2601A8A122308E2005506D5 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				B24F7ACC146B2D54003255E2 /* SSManagedOperation.h */,
-				B24F7AC7146B2CB7003255E2 /* SSManagedOperationQueue.h */,
-				B24F7AC8146B2CB7003255E2 /* SSManagedOperationQueue.m */,
 				B24E9E10121DC29A0085F81E /* SSConcurrentOperation.h */,
 				B24E9E11121DC29A0085F81E /* SSConcurrentOperation.m */,
 				B24E9E12121DC29A0085F81E /* SSDrawingUtilities.h */,
@@ -639,8 +630,6 @@
 				B2136B3C13ABCC0C00FEBCFD /* SSBorderedView.h in Headers */,
 				B280E25F13BA76A300FCDA5C /* SSAnimatedImageView.h in Headers */,
 				B229B468144CE2F500F71626 /* SSCollectionViewTableView.h in Headers */,
-				B24F7AC9146B2CB7003255E2 /* SSManagedOperationQueue.h in Headers */,
-				B24F7ACD146B2D54003255E2 /* SSManagedOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,7 +782,6 @@
 				B2136B3D13ABCC0C00FEBCFD /* SSBorderedView.m in Sources */,
 				B280E25D13BA769C00FCDA5C /* SSAnimatedImageView.m in Sources */,
 				B229B469144CE2F500F71626 /* SSCollectionViewTableView.m in Sources */,
-				B24F7ACA146B2CB7003255E2 /* SSManagedOperationQueue.m in Sources */,
 				9EB278B114BBC4360077194C /* SSConcurrentOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
