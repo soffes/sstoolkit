@@ -322,16 +322,17 @@
 
 
 - (UIScrollView *)scrollView {
-#ifndef __IPHONE_5_0
-	for (UIView *view in [_webView subviews]) {
-		if ([view isKindOfClass:[UIScrollView class]]) {
-			return (UIScrollView *)view;
+	if (([[[UIDevice currentDevice] systemVersion] compare:@"5.0"] == NSOrderedAscending)) {
+		for (UIView *view in [_webView subviews]) {
+			if ([view isKindOfClass:[UIScrollView class]]) {
+				return (UIScrollView *)view;
+			}
 		}
+		return nil;
 	}
-	return nil;
-#else
-	return _webView.scrollView;
-#endif
+	else {
+		return _webView.scrollView;
+	}
 }
 
 
