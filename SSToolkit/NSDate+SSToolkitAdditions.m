@@ -18,7 +18,7 @@
 	}
 
 	const char *str = [iso8601 cStringUsingEncoding:NSUTF8StringEncoding];
-	char newStr[24];
+	char newStr[25];
 
 	struct tm tm;
 	size_t len = strlen(str);
@@ -29,7 +29,7 @@
 	// UTC
 	if (len == 20 && str[len - 1] == 'Z') {
 		strncpy(newStr, str, len - 1);
-		strncpy(newStr + len - 1, "+0000\0", 6);
+		strncpy(newStr + len - 1, "+0000", 5);
 	}
 
 	// Timezone
@@ -43,6 +43,9 @@
 		strncpy(newStr, str, len > 24 ? 24 : len);
 	}
 
+  // Add null terminator
+  newStr[sizeof(newStr) - 1] = 0;
+  
 	if (strptime(newStr, "%FT%T%z", &tm) == NULL) {
 		return nil;
 	}
