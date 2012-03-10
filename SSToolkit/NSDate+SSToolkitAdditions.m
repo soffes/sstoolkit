@@ -20,7 +20,6 @@
     }
 	
     const char *str = [iso8601 cStringUsingEncoding:NSUTF8StringEncoding];
-	
     char newStr[ISO8601_MAX_LEN];
     bzero(newStr, ISO8601_MAX_LEN);
 	
@@ -32,7 +31,7 @@
     // UTC dates ending with Z
     if (len == 20 && str[len - 1] == 'Z') {
         memcpy(newStr, str, len - 1);
-        memcpy(newStr + len - 1, "+0000", 5);
+	strncpy(newStr + len - 1, "+0000", 5);
     }
 	
     // Timezone includes a semicolon (not supported by strptime)
@@ -46,6 +45,9 @@
         memcpy(newStr, str, len > ISO8601_MAX_LEN - 1 ? ISO8601_MAX_LEN - 1 : len);	
     }
 	
+  // Add null terminator
+  newStr[sizeof(newStr) - 1] = 0;
+  
     struct tm tm = {
         .tm_sec = 0,
         .tm_min = 0,
