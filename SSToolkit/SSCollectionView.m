@@ -548,7 +548,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 - (void)_reuseItem:(SSCollectionViewItem *)item {
 	[_visibleItems removeObject:item];
 	
-	NSAssert(item.reuseIdentifier != nil, @"[SSCollectionView] Your item identifier is nil. You should really provide a reuse identifier.", nil);
+	NSAssert(item.reuseIdentifier != nil, @"[SSCollectionView] Your item identifier is nil. You should really provide a reuse identifier for %@", item);
 	
 	NSMutableArray *items = [_reuseableItems objectForKey:item.reuseIdentifier];
 	if (!items) {
