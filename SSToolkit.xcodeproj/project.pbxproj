@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		B20AC0691267988600687143 /* SSTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B20AC0671267988600687143 /* SSTableViewController.h */; };
-		B20AC06A1267988600687143 /* SSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC0681267988600687143 /* SSTableViewController.m */; };
 		B2136B3C13ABCC0C00FEBCFD /* SSBorderedView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2136B3A13ABCC0C00FEBCFD /* SSBorderedView.h */; };
 		B2136B3D13ABCC0C00FEBCFD /* SSBorderedView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2136B3B13ABCC0C00FEBCFD /* SSBorderedView.m */; };
 		B215045F10583A7300409ED4 /* SSToolkit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B215045E10583A7300409ED4 /* SSToolkit_Prefix.pch */; };
@@ -58,7 +56,6 @@
 		B24E9E5C121DC29A0085F81E /* SSLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E1E121DC29A0085F81E /* SSLineView.m */; };
 		B24E9E5D121DC29A0085F81E /* SSLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E1F121DC29A0085F81E /* SSLoadingView.h */; };
 		B24E9E5E121DC29A0085F81E /* SSLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E20121DC29A0085F81E /* SSLoadingView.m */; };
-		B24E9E65121DC29A0085F81E /* SSModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E27121DC29A0085F81E /* SSModalViewController.h */; };
 		B24E9E66121DC29A0085F81E /* SSPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E28121DC29A0085F81E /* SSPickerViewController.h */; };
 		B24E9E67121DC29A0085F81E /* SSPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E29121DC29A0085F81E /* SSPickerViewController.m */; };
 		B24E9E68121DC29A0085F81E /* SSPieProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E2A121DC29A0085F81E /* SSPieProgressView.h */; };
@@ -68,8 +65,6 @@
 		B24E9E6C121DC29A0085F81E /* SSTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E2E121DC29A0085F81E /* SSTextView.h */; };
 		B24E9E6D121DC29A0085F81E /* SSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E2F121DC29A0085F81E /* SSTextView.m */; };
 		B24E9E6E121DC29A0085F81E /* SSToolkit.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E30121DC29A0085F81E /* SSToolkit.h */; };
-		B24E9E6F121DC29A0085F81E /* SSViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E31121DC29A0085F81E /* SSViewController.h */; };
-		B24E9E70121DC29A0085F81E /* SSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E32121DC29A0085F81E /* SSViewController.m */; };
 		B24E9E71121DC29A0085F81E /* SSWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E33121DC29A0085F81E /* SSWebView.h */; };
 		B24E9E72121DC29A0085F81E /* SSWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E34121DC29A0085F81E /* SSWebView.m */; };
 		B24E9E73121DC29A0085F81E /* UIColor+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E35121DC29A0085F81E /* UIColor+SSToolkitAdditions.h */; };
@@ -107,14 +102,36 @@
 		B28219DE12FA8EB500BAF3C6 /* SSRatingPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B28219DC12FA8EB500BAF3C6 /* SSRatingPicker.m */; };
 		B28C6D0712FBE5C400667755 /* SSRatingPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B28C6D0512FBE5C400667755 /* SSRatingPickerViewController.h */; };
 		B28C6D0812FBE5C400667755 /* SSRatingPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B28C6D0612FBE5C400667755 /* SSRatingPickerViewController.m */; };
-		B2AAE65C1281B73E0068EE7F /* SSNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */; };
-		B2AAE65D1281B73E0068EE7F /* SSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */; };
 		B2ABC6921329D14300521D20 /* SSCollectionViewItemTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2ABC6901329D14300521D20 /* SSCollectionViewItemTableViewCell.h */; };
 		B2ABC6931329D14300521D20 /* SSCollectionViewItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ABC6911329D14300521D20 /* SSCollectionViewItemTableViewCell.m */; };
 		B2AE1134126F963300534CF2 /* UIApplication+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */; };
 		B2AE1135126F963300534CF2 /* UIApplication+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */; };
-		B2B3CED81296F637001BAC94 /* SSSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = B2B3CED61296F637001BAC94 /* SSSwitch.h */; };
-		B2B3CED91296F637001BAC94 /* SSSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B3CED71296F637001BAC94 /* SSSwitch.m */; };
+		B2C507EC151BA64400E94614 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C507EB151BA64400E94614 /* CoreFoundation.framework */; };
+		B2C507F2151BA64400E94614 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2C507F0151BA64400E94614 /* InfoPlist.strings */; };
+		B2C50814151BAB4000E94614 /* NSBundle+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C50812151BAB4000E94614 /* NSBundle+SSToolkitAdditions.h */; };
+		B2C50815151BAB4000E94614 /* NSBundle+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C50813151BAB4000E94614 /* NSBundle+SSToolkitAdditions.m */; };
+		B2C50816151BAE8800E94614 /* SSToolkit.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080F151BA6C500E94614 /* SSToolkit.strings */; };
+		B2C50817151BAE9000E94614 /* gray-star.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507F9151BA6C000E94614 /* gray-star.png */; };
+		B2C50818151BAE9000E94614 /* gray-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FA151BA6C000E94614 /* gray-star@2x.png */; };
+		B2C50819151BAE9000E94614 /* orange-star.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FB151BA6C000E94614 /* orange-star.png */; };
+		B2C5081A151BAE9000E94614 /* orange-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FC151BA6C000E94614 /* orange-star@2x.png */; };
+		B2C5081B151BAE9000E94614 /* SSAddressBarTextFieldBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FD151BA6C000E94614 /* SSAddressBarTextFieldBackground.png */; };
+		B2C5081C151BAE9000E94614 /* SSAddressBarTextFieldBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FE151BA6C000E94614 /* SSAddressBarTextFieldBackground@2x.png */; };
+		B2C5081D151BAE9000E94614 /* SSAddressBarTextFieldReload.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FF151BA6C000E94614 /* SSAddressBarTextFieldReload.png */; };
+		B2C5081E151BAE9000E94614 /* SSAddressBarTextFieldReload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50800151BA6C000E94614 /* SSAddressBarTextFieldReload@2x.png */; };
+		B2C5081F151BAE9000E94614 /* SSAddressBarTextFieldStop.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50801151BA6C000E94614 /* SSAddressBarTextFieldStop.png */; };
+		B2C50820151BAE9000E94614 /* SSAddressBarTextFieldStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50802151BA6C000E94614 /* SSAddressBarTextFieldStop@2x.png */; };
+		B2C50822151BAE9000E94614 /* SSVignetteiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50804151BA6C000E94614 /* SSVignetteiPad.png */; };
+		B2C50823151BAE9000E94614 /* SSVignetteiPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50805151BA6C000E94614 /* SSVignetteiPhone.png */; };
+		B2C50824151BAE9000E94614 /* SSVignetteiPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50806151BA6C000E94614 /* SSVignetteiPhone@2x.png */; };
+		B2C50825151BAE9000E94614 /* UISegmentBarButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50807151BA6C000E94614 /* UISegmentBarButton.png */; };
+		B2C50826151BAE9000E94614 /* UISegmentBarButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50808151BA6C000E94614 /* UISegmentBarButton@2x.png */; };
+		B2C50827151BAE9000E94614 /* UISegmentBarButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50809151BA6C000E94614 /* UISegmentBarButtonHighlighted.png */; };
+		B2C50828151BAE9000E94614 /* UISegmentBarButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080A151BA6C000E94614 /* UISegmentBarButtonHighlighted@2x.png */; };
+		B2C50829151BAE9000E94614 /* UISegmentBarDivider.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080B151BA6C000E94614 /* UISegmentBarDivider.png */; };
+		B2C5082A151BAE9000E94614 /* UISegmentBarDivider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080C151BA6C000E94614 /* UISegmentBarDivider@2x.png */; };
+		B2C5082B151BAE9000E94614 /* UISegmentBarDividerHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080D151BA6C000E94614 /* UISegmentBarDividerHighlighted.png */; };
+		B2C5082C151BAE9000E94614 /* UISegmentBarDividerHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080E151BA6C000E94614 /* UISegmentBarDividerHighlighted@2x.png */; };
 		B2D8829413328EEF006B3F55 /* SSHUDWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = B2D8829213328EEF006B3F55 /* SSHUDWindow.h */; };
 		B2D8829513328EEF006B3F55 /* SSHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D8829313328EEF006B3F55 /* SSHUDWindow.m */; };
 		B2D883C01332D636006B3F55 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D883BF1332D636006B3F55 /* QuartzCore.framework */; };
@@ -145,8 +162,6 @@
 
 /* Begin PBXFileReference section */
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		B20AC0671267988600687143 /* SSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTableViewController.h; sourceTree = "<group>"; };
-		B20AC0681267988600687143 /* SSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTableViewController.m; sourceTree = "<group>"; };
 		B2136B3A13ABCC0C00FEBCFD /* SSBorderedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSBorderedView.h; sourceTree = "<group>"; };
 		B2136B3B13ABCC0C00FEBCFD /* SSBorderedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSBorderedView.m; sourceTree = "<group>"; };
 		B215045E10583A7300409ED4 /* SSToolkit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSToolkit_Prefix.pch; sourceTree = "<group>"; };
@@ -172,7 +187,6 @@
 		B23910C31357E08E00ADE21B /* URLCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCategoryTest.m; sourceTree = "<group>"; };
 		B247ABAC1300930200971EC0 /* SSSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSegmentedControl.h; sourceTree = "<group>"; };
 		B247ABAD1300930200971EC0 /* SSSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSegmentedControl.m; sourceTree = "<group>"; };
-		B24E9E01121DC2910085F81E /* SSToolkit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SSToolkit.bundle; sourceTree = "<group>"; };
 		B24E9E05121DC29A0085F81E /* NSArray+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B24E9E06121DC29A0085F81E /* NSArray+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B24E9E07121DC29A0085F81E /* NSData+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SSToolkitAdditions.h"; sourceTree = "<group>"; };
@@ -197,7 +211,6 @@
 		B24E9E1E121DC29A0085F81E /* SSLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSLineView.m; sourceTree = "<group>"; };
 		B24E9E1F121DC29A0085F81E /* SSLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLoadingView.h; sourceTree = "<group>"; };
 		B24E9E20121DC29A0085F81E /* SSLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSLoadingView.m; sourceTree = "<group>"; };
-		B24E9E27121DC29A0085F81E /* SSModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSModalViewController.h; sourceTree = "<group>"; };
 		B24E9E28121DC29A0085F81E /* SSPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPickerViewController.h; sourceTree = "<group>"; };
 		B24E9E29121DC29A0085F81E /* SSPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPickerViewController.m; sourceTree = "<group>"; };
 		B24E9E2A121DC29A0085F81E /* SSPieProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPieProgressView.h; sourceTree = "<group>"; };
@@ -207,8 +220,6 @@
 		B24E9E2E121DC29A0085F81E /* SSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTextView.h; sourceTree = "<group>"; };
 		B24E9E2F121DC29A0085F81E /* SSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTextView.m; sourceTree = "<group>"; };
 		B24E9E30121DC29A0085F81E /* SSToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSToolkit.h; sourceTree = "<group>"; };
-		B24E9E31121DC29A0085F81E /* SSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSViewController.h; sourceTree = "<group>"; };
-		B24E9E32121DC29A0085F81E /* SSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSViewController.m; sourceTree = "<group>"; };
 		B24E9E33121DC29A0085F81E /* SSWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSWebView.h; sourceTree = "<group>"; };
 		B24E9E34121DC29A0085F81E /* SSWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSWebView.m; sourceTree = "<group>"; };
 		B24E9E35121DC29A0085F81E /* UIColor+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SSToolkitAdditions.h"; sourceTree = "<group>"; };
@@ -246,16 +257,42 @@
 		B290355913B9236E00CCAFC9 /* SSAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSAnimatedImageView.m; sourceTree = "<group>"; };
 		B2A5D4D5135873B300AC4BA7 /* ColorCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCategoryTest.m; sourceTree = "<group>"; };
 		B2A5D4DD1358748700AC4BA7 /* ControlCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlCategoryTest.m; sourceTree = "<group>"; };
-		B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSNavigationController.h; sourceTree = "<group>"; };
-		B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSNavigationController.m; sourceTree = "<group>"; };
 		B2ABC6901329D14300521D20 /* SSCollectionViewItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewItemTableViewCell.h; sourceTree = "<group>"; };
 		B2ABC6911329D14300521D20 /* SSCollectionViewItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionViewItemTableViewCell.m; sourceTree = "<group>"; };
 		B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+SSToolkitAdditions.m"; sourceTree = "<group>"; };
-		B2B3CED61296F637001BAC94 /* SSSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSwitch.h; sourceTree = "<group>"; };
-		B2B3CED71296F637001BAC94 /* SSSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSwitch.m; sourceTree = "<group>"; };
 		B2B456FB139078B80060C279 /* SSCollectionViewExtremityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewExtremityTableViewCell.h; sourceTree = "<group>"; };
 		B2B456FC139078B80060C279 /* SSCollectionViewExtremityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionViewExtremityTableViewCell.m; sourceTree = "<group>"; };
+		B2C507EA151BA64400E94614 /* SSToolkitResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSToolkitResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2C507EB151BA64400E94614 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		B2C507EF151BA64400E94614 /* SSToolkitResources-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SSToolkitResources-Info.plist"; sourceTree = "<group>"; };
+		B2C507F1151BA64400E94614 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B2C507F3151BA64400E94614 /* SSToolkitResources-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SSToolkitResources-Prefix.pch"; sourceTree = "<group>"; };
+		B2C507F9151BA6C000E94614 /* gray-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray-star.png"; sourceTree = "<group>"; };
+		B2C507FA151BA6C000E94614 /* gray-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray-star@2x.png"; sourceTree = "<group>"; };
+		B2C507FB151BA6C000E94614 /* orange-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange-star.png"; sourceTree = "<group>"; };
+		B2C507FC151BA6C000E94614 /* orange-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange-star@2x.png"; sourceTree = "<group>"; };
+		B2C507FD151BA6C000E94614 /* SSAddressBarTextFieldBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SSAddressBarTextFieldBackground.png; sourceTree = "<group>"; };
+		B2C507FE151BA6C000E94614 /* SSAddressBarTextFieldBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SSAddressBarTextFieldBackground@2x.png"; sourceTree = "<group>"; };
+		B2C507FF151BA6C000E94614 /* SSAddressBarTextFieldReload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SSAddressBarTextFieldReload.png; sourceTree = "<group>"; };
+		B2C50800151BA6C000E94614 /* SSAddressBarTextFieldReload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SSAddressBarTextFieldReload@2x.png"; sourceTree = "<group>"; };
+		B2C50801151BA6C000E94614 /* SSAddressBarTextFieldStop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SSAddressBarTextFieldStop.png; sourceTree = "<group>"; };
+		B2C50802151BA6C000E94614 /* SSAddressBarTextFieldStop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SSAddressBarTextFieldStop@2x.png"; sourceTree = "<group>"; };
+		B2C50804151BA6C000E94614 /* SSVignetteiPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SSVignetteiPad.png; sourceTree = "<group>"; };
+		B2C50805151BA6C000E94614 /* SSVignetteiPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SSVignetteiPhone.png; sourceTree = "<group>"; };
+		B2C50806151BA6C000E94614 /* SSVignetteiPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SSVignetteiPhone@2x.png"; sourceTree = "<group>"; };
+		B2C50807151BA6C000E94614 /* UISegmentBarButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISegmentBarButton.png; sourceTree = "<group>"; };
+		B2C50808151BA6C000E94614 /* UISegmentBarButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UISegmentBarButton@2x.png"; sourceTree = "<group>"; };
+		B2C50809151BA6C000E94614 /* UISegmentBarButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISegmentBarButtonHighlighted.png; sourceTree = "<group>"; };
+		B2C5080A151BA6C000E94614 /* UISegmentBarButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UISegmentBarButtonHighlighted@2x.png"; sourceTree = "<group>"; };
+		B2C5080B151BA6C000E94614 /* UISegmentBarDivider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISegmentBarDivider.png; sourceTree = "<group>"; };
+		B2C5080C151BA6C000E94614 /* UISegmentBarDivider@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UISegmentBarDivider@2x.png"; sourceTree = "<group>"; };
+		B2C5080D151BA6C000E94614 /* UISegmentBarDividerHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISegmentBarDividerHighlighted.png; sourceTree = "<group>"; };
+		B2C5080E151BA6C000E94614 /* UISegmentBarDividerHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UISegmentBarDividerHighlighted@2x.png"; sourceTree = "<group>"; };
+		B2C50810151BA6C500E94614 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSToolkit.strings; sourceTree = "<group>"; };
+		B2C50811151BA6D500E94614 /* SSToolkitResources-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SSToolkitResources-Info.plist"; sourceTree = "<group>"; };
+		B2C50812151BAB4000E94614 /* NSBundle+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+SSToolkitAdditions.h"; sourceTree = "<group>"; };
+		B2C50813151BAB4000E94614 /* NSBundle+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B2D8829213328EEF006B3F55 /* SSHUDWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSHUDWindow.h; sourceTree = "<group>"; };
 		B2D8829313328EEF006B3F55 /* SSHUDWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSHUDWindow.m; sourceTree = "<group>"; };
 		B2D883BF1332D636006B3F55 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = iphoneos3.0/System/Library/Frameworks/QuartzCore.framework; sourceTree = "<group>"; };
@@ -289,6 +326,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B2C507E7151BA64400E94614 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2C507EC151BA64400E94614 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AAC07C0554694100DB518D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -307,6 +352,7 @@
 			children = (
 				D2AAC07E0554694100DB518D /* libSSToolkit.a */,
 				B239101D1357DC3E00ADE21B /* SSToolkitTests.app */,
+				B2C507EA151BA64400E94614 /* SSToolkitResources.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -318,6 +364,7 @@
 				B215045D10583A7300409ED4 /* Other Sources */,
 				B22A2A7F10B4908D00EA6CD9 /* Resources */,
 				B23910541357DC7D00ADE21B /* Tests */,
+				B2C507ED151BA64400E94614 /* SSToolkitResources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -330,6 +377,7 @@
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 				B2D883BF1332D636006B3F55 /* QuartzCore.framework */,
 				B215051110583BBB00409ED4 /* UIKit.framework */,
+				B2C507EB151BA64400E94614 /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -345,7 +393,9 @@
 		B22A2A7F10B4908D00EA6CD9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B24E9E01121DC2910085F81E /* SSToolkit.bundle */,
+				B2C50811151BA6D500E94614 /* SSToolkitResources-Info.plist */,
+				B2C5080F151BA6C500E94614 /* SSToolkit.strings */,
+				B2C507F8151BA6C000E94614 /* Images */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -422,6 +472,8 @@
 				B24E9E0C121DC29A0085F81E /* NSString+SSToolkitAdditions.m */,
 				B24E9E0D121DC29A0085F81E /* NSURL+SSToolkitAdditions.h */,
 				B24E9E0E121DC29A0085F81E /* NSURL+SSToolkitAdditions.m */,
+				B2C50812151BAB4000E94614 /* NSBundle+SSToolkitAdditions.h */,
+				B2C50813151BAB4000E94614 /* NSBundle+SSToolkitAdditions.m */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -487,17 +539,10 @@
 			children = (
 				B267D3431226CE0400B66519 /* SSCollectionViewController.h */,
 				B267D3441226CE0400B66519 /* SSCollectionViewController.m */,
-				B2AAE65A1281B73E0068EE7F /* SSNavigationController.h */,
-				B2AAE65B1281B73E0068EE7F /* SSNavigationController.m */,
-				B24E9E27121DC29A0085F81E /* SSModalViewController.h */,
 				B24E9E28121DC29A0085F81E /* SSPickerViewController.h */,
 				B24E9E29121DC29A0085F81E /* SSPickerViewController.m */,
 				B28C6D0512FBE5C400667755 /* SSRatingPickerViewController.h */,
 				B28C6D0612FBE5C400667755 /* SSRatingPickerViewController.m */,
-				B20AC0671267988600687143 /* SSTableViewController.h */,
-				B20AC0681267988600687143 /* SSTableViewController.m */,
-				B24E9E31121DC29A0085F81E /* SSViewController.h */,
-				B24E9E32121DC29A0085F81E /* SSViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -515,8 +560,6 @@
 				B28219DC12FA8EB500BAF3C6 /* SSRatingPicker.m */,
 				B247ABAC1300930200971EC0 /* SSSegmentedControl.h */,
 				B247ABAD1300930200971EC0 /* SSSegmentedControl.m */,
-				B2B3CED61296F637001BAC94 /* SSSwitch.h */,
-				B2B3CED71296F637001BAC94 /* SSSwitch.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -557,6 +600,52 @@
 			name = Private;
 			sourceTree = "<group>";
 		};
+		B2C507ED151BA64400E94614 /* SSToolkitResources */ = {
+			isa = PBXGroup;
+			children = (
+				B2C507EE151BA64400E94614 /* Supporting Files */,
+			);
+			path = SSToolkitResources;
+			sourceTree = "<group>";
+		};
+		B2C507EE151BA64400E94614 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B2C507EF151BA64400E94614 /* SSToolkitResources-Info.plist */,
+				B2C507F0151BA64400E94614 /* InfoPlist.strings */,
+				B2C507F3151BA64400E94614 /* SSToolkitResources-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B2C507F8151BA6C000E94614 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B2C507F9151BA6C000E94614 /* gray-star.png */,
+				B2C507FA151BA6C000E94614 /* gray-star@2x.png */,
+				B2C507FB151BA6C000E94614 /* orange-star.png */,
+				B2C507FC151BA6C000E94614 /* orange-star@2x.png */,
+				B2C507FD151BA6C000E94614 /* SSAddressBarTextFieldBackground.png */,
+				B2C507FE151BA6C000E94614 /* SSAddressBarTextFieldBackground@2x.png */,
+				B2C507FF151BA6C000E94614 /* SSAddressBarTextFieldReload.png */,
+				B2C50800151BA6C000E94614 /* SSAddressBarTextFieldReload@2x.png */,
+				B2C50801151BA6C000E94614 /* SSAddressBarTextFieldStop.png */,
+				B2C50802151BA6C000E94614 /* SSAddressBarTextFieldStop@2x.png */,
+				B2C50804151BA6C000E94614 /* SSVignetteiPad.png */,
+				B2C50805151BA6C000E94614 /* SSVignetteiPhone.png */,
+				B2C50806151BA6C000E94614 /* SSVignetteiPhone@2x.png */,
+				B2C50807151BA6C000E94614 /* UISegmentBarButton.png */,
+				B2C50808151BA6C000E94614 /* UISegmentBarButton@2x.png */,
+				B2C50809151BA6C000E94614 /* UISegmentBarButtonHighlighted.png */,
+				B2C5080A151BA6C000E94614 /* UISegmentBarButtonHighlighted@2x.png */,
+				B2C5080B151BA6C000E94614 /* UISegmentBarDivider.png */,
+				B2C5080C151BA6C000E94614 /* UISegmentBarDivider@2x.png */,
+				B2C5080D151BA6C000E94614 /* UISegmentBarDividerHighlighted.png */,
+				B2C5080E151BA6C000E94614 /* UISegmentBarDividerHighlighted@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		B2EA9F5B12F4A5B900C929D6 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,13 +676,11 @@
 				B24E9E59121DC29A0085F81E /* SSLabel.h in Headers */,
 				B24E9E5B121DC29A0085F81E /* SSLineView.h in Headers */,
 				B24E9E5D121DC29A0085F81E /* SSLoadingView.h in Headers */,
-				B24E9E65121DC29A0085F81E /* SSModalViewController.h in Headers */,
 				B24E9E66121DC29A0085F81E /* SSPickerViewController.h in Headers */,
 				B24E9E68121DC29A0085F81E /* SSPieProgressView.h in Headers */,
 				B24E9E6A121DC29A0085F81E /* SSTextField.h in Headers */,
 				B24E9E6C121DC29A0085F81E /* SSTextView.h in Headers */,
 				B24E9E6E121DC29A0085F81E /* SSToolkit.h in Headers */,
-				B24E9E6F121DC29A0085F81E /* SSViewController.h in Headers */,
 				B24E9E71121DC29A0085F81E /* SSWebView.h in Headers */,
 				B24E9E73121DC29A0085F81E /* UIColor+SSToolkitAdditions.h in Headers */,
 				B24E9E75121DC29A0085F81E /* UIControl+SSToolkitAdditions.h in Headers */,
@@ -606,10 +693,7 @@
 				B27B1A2212241D6F00111EA2 /* SSCollectionViewItem.h in Headers */,
 				B267D3451226CE0400B66519 /* SSCollectionViewController.h in Headers */,
 				B227D2EA124931590078A059 /* NSDictionary+SSToolkitAdditions.h in Headers */,
-				B20AC0691267988600687143 /* SSTableViewController.h in Headers */,
 				B2AE1134126F963300534CF2 /* UIApplication+SSToolkitAdditions.h in Headers */,
-				B2AAE65C1281B73E0068EE7F /* SSNavigationController.h in Headers */,
-				B2B3CED81296F637001BAC94 /* SSSwitch.h in Headers */,
 				B2EA9F5E12F4A5C900C929D6 /* SSBadgeTableViewCell.h in Headers */,
 				B2EA9F6212F4A5E100C929D6 /* SSBadgeView.h in Headers */,
 				B28218BE12FA6AE100BAF3C6 /* SSToolkitDefines.h in Headers */,
@@ -629,6 +713,7 @@
 				B2136B3C13ABCC0C00FEBCFD /* SSBorderedView.h in Headers */,
 				B280E25F13BA76A300FCDA5C /* SSAnimatedImageView.h in Headers */,
 				B229B468144CE2F500F71626 /* SSCollectionViewTableView.h in Headers */,
+				B2C50814151BAB4000E94614 /* NSBundle+SSToolkitAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,6 +738,23 @@
 			productReference = B239101D1357DC3E00ADE21B /* SSToolkitTests.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B2C507E9151BA64400E94614 /* SSToolkitResources */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2C507F6151BA64400E94614 /* Build configuration list for PBXNativeTarget "SSToolkitResources" */;
+			buildPhases = (
+				B2C507E6151BA64400E94614 /* Sources */,
+				B2C507E7151BA64400E94614 /* Frameworks */,
+				B2C507E8151BA64400E94614 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SSToolkitResources;
+			productName = SSToolkitResources;
+			productReference = B2C507EA151BA64400E94614 /* SSToolkitResources.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		D2AAC07D0554694100DB518D /* SSToolkit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "SSToolkit" */;
@@ -676,6 +778,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = SS;
 				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = "Sam Soffes";
 			};
@@ -688,6 +791,7 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* TWToolkit */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
@@ -696,6 +800,7 @@
 			targets = (
 				D2AAC07D0554694100DB518D /* SSToolkit */,
 				B239101C1357DC3E00ADE21B /* SSToolkitTests */,
+				B2C507E9151BA64400E94614 /* SSToolkitResources */,
 			);
 		};
 /* End PBXProject section */
@@ -705,6 +810,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2C507E8151BA64400E94614 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2C507F2151BA64400E94614 /* InfoPlist.strings in Resources */,
+				B2C50816151BAE8800E94614 /* SSToolkit.strings in Resources */,
+				B2C50817151BAE9000E94614 /* gray-star.png in Resources */,
+				B2C50818151BAE9000E94614 /* gray-star@2x.png in Resources */,
+				B2C50819151BAE9000E94614 /* orange-star.png in Resources */,
+				B2C5081A151BAE9000E94614 /* orange-star@2x.png in Resources */,
+				B2C5081B151BAE9000E94614 /* SSAddressBarTextFieldBackground.png in Resources */,
+				B2C5081C151BAE9000E94614 /* SSAddressBarTextFieldBackground@2x.png in Resources */,
+				B2C5081D151BAE9000E94614 /* SSAddressBarTextFieldReload.png in Resources */,
+				B2C5081E151BAE9000E94614 /* SSAddressBarTextFieldReload@2x.png in Resources */,
+				B2C5081F151BAE9000E94614 /* SSAddressBarTextFieldStop.png in Resources */,
+				B2C50820151BAE9000E94614 /* SSAddressBarTextFieldStop@2x.png in Resources */,
+				B2C50822151BAE9000E94614 /* SSVignetteiPad.png in Resources */,
+				B2C50823151BAE9000E94614 /* SSVignetteiPhone.png in Resources */,
+				B2C50824151BAE9000E94614 /* SSVignetteiPhone@2x.png in Resources */,
+				B2C50825151BAE9000E94614 /* UISegmentBarButton.png in Resources */,
+				B2C50826151BAE9000E94614 /* UISegmentBarButton@2x.png in Resources */,
+				B2C50827151BAE9000E94614 /* UISegmentBarButtonHighlighted.png in Resources */,
+				B2C50828151BAE9000E94614 /* UISegmentBarButtonHighlighted@2x.png in Resources */,
+				B2C50829151BAE9000E94614 /* UISegmentBarDivider.png in Resources */,
+				B2C5082A151BAE9000E94614 /* UISegmentBarDivider@2x.png in Resources */,
+				B2C5082B151BAE9000E94614 /* UISegmentBarDividerHighlighted.png in Resources */,
+				B2C5082C151BAE9000E94614 /* UISegmentBarDividerHighlighted@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -728,6 +863,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B2C507E6151BA64400E94614 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AAC07B0554694100DB518D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -746,7 +888,6 @@
 				B24E9E69121DC29A0085F81E /* SSPieProgressView.m in Sources */,
 				B24E9E6B121DC29A0085F81E /* SSTextField.m in Sources */,
 				B24E9E6D121DC29A0085F81E /* SSTextView.m in Sources */,
-				B24E9E70121DC29A0085F81E /* SSViewController.m in Sources */,
 				B24E9E72121DC29A0085F81E /* SSWebView.m in Sources */,
 				B24E9E74121DC29A0085F81E /* UIColor+SSToolkitAdditions.m in Sources */,
 				B24E9E76121DC29A0085F81E /* UIControl+SSToolkitAdditions.m in Sources */,
@@ -760,10 +901,7 @@
 				B27B1A2312241D6F00111EA2 /* SSCollectionViewItem.m in Sources */,
 				B267D3461226CE0400B66519 /* SSCollectionViewController.m in Sources */,
 				B227D2EB124931590078A059 /* NSDictionary+SSToolkitAdditions.m in Sources */,
-				B20AC06A1267988600687143 /* SSTableViewController.m in Sources */,
 				B2AE1135126F963300534CF2 /* UIApplication+SSToolkitAdditions.m in Sources */,
-				B2AAE65D1281B73E0068EE7F /* SSNavigationController.m in Sources */,
-				B2B3CED91296F637001BAC94 /* SSSwitch.m in Sources */,
 				B2EA9F5F12F4A5C900C929D6 /* SSBadgeTableViewCell.m in Sources */,
 				B2EA9F6312F4A5E100C929D6 /* SSBadgeView.m in Sources */,
 				B28218BF12FA6AE100BAF3C6 /* SSToolkitDefines.m in Sources */,
@@ -781,6 +919,7 @@
 				B2136B3D13ABCC0C00FEBCFD /* SSBorderedView.m in Sources */,
 				B280E25D13BA769C00FCDA5C /* SSAnimatedImageView.m in Sources */,
 				B229B469144CE2F500F71626 /* SSCollectionViewTableView.m in Sources */,
+				B2C50815151BAB4000E94614 /* NSBundle+SSToolkitAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,6 +932,25 @@
 			targetProxy = B239105C1357DCDE00ADE21B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B2C507F0151BA64400E94614 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B2C507F1151BA64400E94614 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B2C5080F151BA6C500E94614 /* SSToolkit.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B2C50810151BA6C500E94614 /* en */,
+			);
+			name = SSToolkit.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB921F08733DC00010E9CD /* Debug */ = {
@@ -982,6 +1140,56 @@
 			};
 			name = Release;
 		};
+		B2C507F4151BA64400E94614 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SSToolkitResources/SSToolkitResources-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "Resources/SSToolkitResources-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		B2C507F5151BA64400E94614 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SSToolkitResources/SSToolkitResources-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "Resources/SSToolkitResources-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1011,6 +1219,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		B2C507F6151BA64400E94614 /* Build configuration list for PBXNativeTarget "SSToolkitResources" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2C507F4151BA64400E94614 /* Debug */,
+				B2C507F5151BA64400E94614 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

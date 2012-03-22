@@ -7,6 +7,7 @@
 //
 
 #import "NSDate+SSToolkitAdditions.h"
+#import "NSBundle+SSToolkitAdditions.h"
 #include <time.h>
 #include <xlocale.h>
 
@@ -70,7 +71,58 @@
 }
 
 
-//	Adapted from http://github.com/gabriel/gh-kit/blob/master/Classes/GHNSString+TimeInterval.m
+- (NSString *)briefTimeAgoInWords {
+	NSTimeInterval seconds = fabs([self timeIntervalSinceNow]);
+	
+	// Seconds
+	if (seconds < 60.0) {
+		if (seconds < 2.0) {
+			return SSToolkitLocalizedString(@"1s");
+		}
+		return [NSString stringWithFormat:SSToolkitLocalizedString(@"%ds"), (NSInteger)seconds];
+	}
+	
+	NSTimeInterval minutes = round(seconds / 60.0);
+	
+	// Minutes
+	if (minutes >= 0.0 && minutes < 60.0) {
+		if (minutes < 2.0) {
+			return SSToolkitLocalizedString(@"1m");
+		}
+		return [NSString stringWithFormat:SSToolkitLocalizedString(@"%dm"), (NSInteger)minutes];
+	}
+	
+	// Hours
+	else if (minutes >= 60.0 && minutes < 1440.0) {
+		NSInteger hours = (NSInteger)round(minutes / 60.0);
+		if (hours < 2) {
+			return SSToolkitLocalizedString(@"1h");
+		}
+		return [NSString stringWithFormat:SSToolkitLocalizedString(@"%dh"), hours];
+	}
+	
+	// Days
+	else if (minutes >= 1440.0 && minutes < 525600.0) {
+		NSInteger days = (NSInteger)round(minutes / 1440.0);
+		if (days < 2) {
+			return SSToolkitLocalizedString(@"1d");
+		}
+		return [NSString stringWithFormat:SSToolkitLocalizedString(@"%dd"), days];
+	}
+	
+	// Years
+	else if (minutes >= 525600.0) {
+		NSInteger years = (NSInteger)round(minutes / 525600.0);
+		if (years < 2) {
+			return SSToolkitLocalizedString(@"1y");
+		}
+		return [NSString stringWithFormat:SSToolkitLocalizedString(@"%dy"), years];
+	}
+	
+	return nil;
+}
+
+
 + (NSString *)timeAgoInWordsFromTimeInterval:(NSTimeInterval)intervalInSeconds includingSeconds:(BOOL)includeSeconds {
 	NSTimeInterval intervalInMinutes = round(intervalInSeconds / 60.0f);
 	
@@ -109,25 +161,6 @@
 		return @"about 1 year";
 	} else {
 		return [NSString stringWithFormat:@"over %.0f years", round(intervalInMinutes / 525600.0f)];
-	}
-	return nil;
-}
-
-
-- (NSString *)briefTimeAgoInWords {
-	NSTimeInterval intervalInSeconds = fabs([self timeIntervalSinceNow]);
-	NSTimeInterval intervalInMinutes = round(intervalInSeconds / 60.0f);
-	
-	if (intervalInMinutes >= 0 && intervalInMinutes < 60) {
-		return [NSString stringWithFormat:@"%.0fm", intervalInMinutes];
-	} else if (intervalInMinutes >= 60 && intervalInMinutes < 1440) {
-		return [NSString stringWithFormat:@"%.0fh", round(intervalInMinutes/60.0f)];
-	} else if (intervalInMinutes >= 1440 && intervalInMinutes <= 43199) {
-		return [NSString stringWithFormat:@"%.0fd", round(intervalInMinutes/1440.0f)];
-	} else if (intervalInMinutes >= 43200 && intervalInMinutes <= 525599) {
-		return [NSString stringWithFormat:@"%.0fmo", round(intervalInMinutes/43200.0f)];
-	} else if (intervalInMinutes >= 525600) {
-		return [NSString stringWithFormat:@"%.0fy", round(intervalInMinutes/525600.0f)];
 	}
 	return nil;
 }

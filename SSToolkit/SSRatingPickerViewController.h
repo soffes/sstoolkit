@@ -6,8 +6,6 @@
 //  Copyright 2011 Sam Soffes. All rights reserved.
 //
 
-#import "SSViewController.h"
-
 @class SSRatingPickerScrollView;
 @class SSRatingPicker;
 @class SSTextField;
@@ -16,7 +14,7 @@
 /**
  Creates a controller object that manages a rating picker.
  */
-@interface SSRatingPickerViewController : SSViewController
+@interface SSRatingPickerViewController : UIViewController
 
 ///----------------------------------
 /// @name Accessing the Rating Picker
