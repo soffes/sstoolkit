@@ -9,48 +9,6 @@
 // This setting of 1 is best if you copy the source into your project. The build transforms the 1 to a 0 when building
 // the framework and static lib. Thanks @stig
 
-#if 1
-
-// Views
-#import "SSAnimatedImageView.h"
-#import "SSBadgeView.h"
-#import "SSBorderedView.h"
-#import "SSCollectionView.h"
-#import "SSCollectionViewItem.h"
-#import "SSGradientView.h"
-#import "SSHUDView.h"
-#import "SSLabel.h"
-#import "SSLineView.h"
-#import "SSLoadingView.h"
-#import "SSPieProgressView.h"
-#import "SSWebView.h"
-
-// Cells
-#import "SSBadgeTableViewCell.h"
-
-// Controls
-#import "SSAddressBarTextField.h"
-#import "SSTextField.h"
-#import "SSTextView.h"
-#import "SSRatingPicker.h"
-#import "SSSegmentedControl.h"
-#import "SSSwitch.h"
-
-// View Controllers
-#import "SSCollectionViewController.h"
-#import "SSModalViewController.h"
-#import "SSNavigationController.h"
-#import "SSPickerViewController.h"
-#import "SSRatingPickerViewController.h"
-#import "SSTableViewController.h"
-#import "SSViewController.h"
-
-// Misc
-#import "SSDrawingUtilities.h"
-#import "SSConcurrentOperation.h"
-
-#else
-
 // Views
 #import <SSToolkit/SSAnimatedImageView.h>
 #import <SSToolkit/SSBadgeView.h>
@@ -74,19 +32,12 @@
 #import <SSToolkit/SSTextView.h>
 #import <SSToolkit/SSRatingPicker.h>
 #import <SSToolkit/SSSegmentedControl.h>
-#import <SSToolkit/SSSwitch.h>
 
 // View Controllers
 #import <SSToolkit/SSCollectionViewController.h>
-#import <SSToolkit/SSModalViewController.h>
-#import <SSToolkit/SSNavigationController.h>
 #import <SSToolkit/SSPickerViewController.h>
 #import <SSToolkit/SSRatingPickerViewController.h>
-#import <SSToolkit/SSTableViewController.h>
-#import <SSToolkit/SSViewController.h>
 
 // Misc
 #import <SSToolkit/SSDrawingUtilities.h>
 #import <SSToolkit/SSConcurrentOperation.h>
-
-#endif
