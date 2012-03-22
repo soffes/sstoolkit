@@ -107,7 +107,6 @@
 		B2AE1134126F963300534CF2 /* UIApplication+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AE1132126F963300534CF2 /* UIApplication+SSToolkitAdditions.h */; };
 		B2AE1135126F963300534CF2 /* UIApplication+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AE1133126F963300534CF2 /* UIApplication+SSToolkitAdditions.m */; };
 		B2C507EC151BA64400E94614 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C507EB151BA64400E94614 /* CoreFoundation.framework */; };
-		B2C507F2151BA64400E94614 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2C507F0151BA64400E94614 /* InfoPlist.strings */; };
 		B2C50814151BAB4000E94614 /* NSBundle+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C50812151BAB4000E94614 /* NSBundle+SSToolkitAdditions.h */; };
 		B2C50815151BAB4000E94614 /* NSBundle+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C50813151BAB4000E94614 /* NSBundle+SSToolkitAdditions.m */; };
 		B2C50816151BAE8800E94614 /* SSToolkit.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080F151BA6C500E94614 /* SSToolkit.strings */; };
@@ -817,7 +816,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2C507F2151BA64400E94614 /* InfoPlist.strings in Resources */,
 				B2C50816151BAE8800E94614 /* SSToolkit.strings in Resources */,
 				B2C50817151BAE9000E94614 /* gray-star.png in Resources */,
 				B2C50818151BAE9000E94614 /* gray-star@2x.png in Resources */,
@@ -1227,6 +1225,7 @@
 				B2C507F5151BA64400E94614 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
