@@ -265,9 +265,6 @@
 		B2B456FC139078B80060C279 /* SSCollectionViewExtremityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCollectionViewExtremityTableViewCell.m; sourceTree = "<group>"; };
 		B2C507EA151BA64400E94614 /* SSToolkitResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSToolkitResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2C507EB151BA64400E94614 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		B2C507EF151BA64400E94614 /* SSToolkitResources-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SSToolkitResources-Info.plist"; sourceTree = "<group>"; };
-		B2C507F1151BA64400E94614 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B2C507F3151BA64400E94614 /* SSToolkitResources-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SSToolkitResources-Prefix.pch"; sourceTree = "<group>"; };
 		B2C507F9151BA6C000E94614 /* gray-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray-star.png"; sourceTree = "<group>"; };
 		B2C507FA151BA6C000E94614 /* gray-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray-star@2x.png"; sourceTree = "<group>"; };
 		B2C507FB151BA6C000E94614 /* orange-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange-star.png"; sourceTree = "<group>"; };
@@ -364,7 +361,6 @@
 				B215045D10583A7300409ED4 /* Other Sources */,
 				B22A2A7F10B4908D00EA6CD9 /* Resources */,
 				B23910541357DC7D00ADE21B /* Tests */,
-				B2C507ED151BA64400E94614 /* SSToolkitResources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -598,24 +594,6 @@
 				B229B467144CE2F500F71626 /* SSCollectionViewTableView.m */,
 			);
 			name = Private;
-			sourceTree = "<group>";
-		};
-		B2C507ED151BA64400E94614 /* SSToolkitResources */ = {
-			isa = PBXGroup;
-			children = (
-				B2C507EE151BA64400E94614 /* Supporting Files */,
-			);
-			path = SSToolkitResources;
-			sourceTree = "<group>";
-		};
-		B2C507EE151BA64400E94614 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B2C507EF151BA64400E94614 /* SSToolkitResources-Info.plist */,
-				B2C507F0151BA64400E94614 /* InfoPlist.strings */,
-				B2C507F3151BA64400E94614 /* SSToolkitResources-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		B2C507F8151BA6C000E94614 /* Images */ = {
@@ -934,14 +912,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B2C507F0151BA64400E94614 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B2C507F1151BA64400E94614 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		B2C5080F151BA6C500E94614 /* SSToolkit.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
