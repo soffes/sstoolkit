@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Sam soffes. All rights reserved.
 //
 
+// All of these should be as short as possible
 "1s" = "1s"; // one second
 "%ds" = "%ds"; // several seconds
 "1m" = "1m"; // one minutes
