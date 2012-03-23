@@ -10,7 +10,9 @@
 #import "SSHUDWindow.h"
 #import "SSDrawingUtilities.h"
 #import "UIView+SSToolkitAdditions.h"
+#import "NSBundle+SSToolkitAdditions.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIImage+SSToolkitAdditions.h"
 
 static CGFloat kIndicatorSize = 40.0;
 
@@ -63,7 +65,7 @@ static CGFloat kIndicatorSize = 40.0;
 #pragma mark - NSObject
 
 - (id)init {
-	return [self initWithTitle:nil loading:YES];
+	return (self = [self initWithTitle:nil loading:YES]);
 }
 
 
@@ -82,7 +84,7 @@ static CGFloat kIndicatorSize = 40.0;
 #pragma mark - UIView
 
 - (id)initWithFrame:(CGRect)frame {
-	return [self initWithTitle:nil loading:YES];
+	return (self = [self initWithTitle:nil loading:YES]);
 }
 
 
@@ -162,11 +164,15 @@ static CGFloat kIndicatorSize = 40.0;
 		_textLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 		_textLabel.textAlignment = UITextAlignmentCenter;
 		_textLabel.lineBreakMode = UILineBreakModeTailTruncation;
-		_textLabel.text = aTitle ? aTitle : @"Loading";
+		_textLabel.text = aTitle ? aTitle : SSToolkitLocalizedString(@"Loading...");
 		[self addSubview:_textLabel];
 		
 		// Loading
 		self.loading = isLoading;
+		
+		// Images
+		self.completeImage = [UIImage imageNamed:@"hud-check.png" bundleName:kSSToolkitBundleName];
+		self.failImage = [UIImage imageNamed:@"hud-x.png" bundleName:kSSToolkitBundleName];
         
         // Orientation
         [self _setTransformForCurrentOrientation:NO];
@@ -178,7 +184,6 @@ static CGFloat kIndicatorSize = 40.0;
 
 - (void)show {
 	[self retain];
-	
 	if (!_hudWindow) {
 		_hudWindow = [SSHUDWindow defaultWindow];
 	}
