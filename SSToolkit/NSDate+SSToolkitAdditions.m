@@ -82,7 +82,7 @@
 }
 
 
-- (NSString *)briefTimeAgoInWords {
+- (NSString *)briefTimeInWords {
 	NSTimeInterval seconds = fabs([self timeIntervalSinceNow]);
 	
 	// Seconds
@@ -134,7 +134,7 @@
 }
 
 
-+ (NSString *)timeAgoInWordsFromTimeInterval:(NSTimeInterval)intervalInSeconds includingSeconds:(BOOL)includeSeconds {
++ (NSString *)timeInWordsFromTimeInterval:(NSTimeInterval)intervalInSeconds includingSeconds:(BOOL)includeSeconds {
 	NSTimeInterval intervalInMinutes = round(intervalInSeconds / 60.0f);
 	
 	if (intervalInMinutes >= 0 && intervalInMinutes <= 1) {
@@ -177,13 +177,13 @@
 }
 
 
-- (NSString *)timeAgoInWords {
-	return [self timeAgoInWordsIncludingSeconds:YES];
+- (NSString *)timeInWords {
+	return [self timeInWordsIncludingSeconds:YES];
 }
 
 
-- (NSString *)timeAgoInWordsIncludingSeconds:(BOOL)includeSeconds {
-	return [[self class] timeAgoInWordsFromTimeInterval:fabs([self timeIntervalSinceNow]) includingSeconds:includeSeconds];		
+- (NSString *)timeInWordsIncludingSeconds:(BOOL)includeSeconds {
+	return [[self class] timeInWordsFromTimeInterval:fabs([self timeIntervalSinceNow]) includingSeconds:includeSeconds];		
 }
 
 
