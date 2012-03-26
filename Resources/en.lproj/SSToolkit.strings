@@ -14,7 +14,7 @@
 "1h" = "1h"; // one hours
 "%dh" = "%dh"; // several hours
 "1d" = "1d"; // one day
-"%dd" = "%dd"; // several days
+"%@d" = "%@d"; // several days
 
 "less than a minute" = "less than a minute";
 "1 minute" = "1 minute";
