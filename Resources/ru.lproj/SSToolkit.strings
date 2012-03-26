@@ -1,0 +1,31 @@
+//
+//  SSToolkit.strings
+//  SSToolkits
+//
+//  Created by Sam Soffes on 3/26/12.
+//  Copyright (c) 2012 Sam soffes. All rights reserved.
+//
+
+// All of these should be as short as possible
+"1s" = "1c";   // one second
+"%ds" = "%dc";   // several seconds
+"1m" = "1м";   // one minutes
+"%dm" = "%dм";   // several minutes
+"1h" = "1ч";   // one hours
+"%dh" = "%dч";   // several hours
+"1d" = "1д";   // one day
+"%@d" = "%@д";   // several days
+
+"1 minute" = "1 мин";
+"%d minutes" = "меньше %d с";
+"half a minute" = "полминуты";
+"less than a minute" = "меньше минуты";
+"%d minutes" = "%d мин";
+"about 1 hour" = "около 1 ч";
+"about %d hours" = "около %d ч";
+"1 day" = "1 д.";
+"%d days" = "%d д.";
+"about 1 month" = "около 1 мес.";
+"%d months" = "%d мес.";
+"about 1 year" = "около 1 г.";
+"over %d years" = "в течение %d г.";

@@ -1,0 +1,31 @@
+//
+//  SSToolkit.strings
+//  SSToolkits
+//
+//  Created by Sam Soffes on 3/26/12.
+//  Copyright (c) 2012 Sam soffes. All rights reserved.
+//
+
+// All of these should be as short as possible
+"1s" = "1s";   // satu saat
+"%ds" = "%ds";   // beberapa saat
+"1m" = "1m";   // satu minit
+"%dm" = "%dm";   // beberapa minit
+"1h" = "1j";   // satu jam
+"%dh" = "%dj";   // beberapa jam
+"1d" = "1h";   // satu hari
+"%@d" = "%@h";   // several days
+
+"1 minute" = "1 minit";
+"%d minutes" = "kurang drp %d saat";
+"half a minute" = "setengah minit";
+"less than a minute" = "kurang drp satu minit";
+"%d minutes" = "%d minit";
+"about 1 hour" = "lebih kurang 1 jam";
+"about %d hours" = "lebih kurang %d jam";
+"1 day" = "1 hari";
+"%d days" = "%d hari";
+"about 1 month" = "lebih kurang 1 bulan";
+"%d months" = "%d bulan";
+"about 1 year" = "lebih kurang 1 tahun";
+"over %d years" = "melibihi %d tahun";

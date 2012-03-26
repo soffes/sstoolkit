@@ -1,0 +1,31 @@
+//
+//  SSToolkit.strings
+//  SSToolkits
+//
+//  Created by Sam Soffes on 3/26/12.
+//  Copyright (c) 2012 Sam soffes. All rights reserved.
+//
+
+// All of these should be as short as possible
+"1s" = "1秒";   // one second
+"%ds" = "%d秒";   // several seconds
+"1m" = "1分";   // one minutes
+"%dm" = "%d分";   // several minutes
+"1h" = "1小時";   // one hours
+"%dh" = "%d小時";   // several hours
+"1d" = "1天";   // one day
+"%@d" = "%@天";   // several days
+
+"1 minute" = "1分鍾";
+"%d minutes" = "少于 %d 秒";
+"half a minute" = "半分鍾";
+"less than a minute" = "少于一分鍾";
+"%d minutes" = "%d 分鍾";
+"about 1 hour" = "大約1小時";
+"about %d hours" = "大約%d 小時";
+"1 day" = "1天";
+"%d days" = "%d 天";
+"about 1 month" = "大約1個月";
+"%d months" = "%d 月";
+"about 1 year" = "大約1年";
+"over %d years" = "超過%d 年";

@@ -1,0 +1,31 @@
+//
+//  SSToolkit.strings
+//  SSToolkits
+//
+//  Created by Sam Soffes on 3/26/12.
+//  Copyright (c) 2012 Sam soffes. All rights reserved.
+//
+
+// All of these should be as short as possible
+"1s" = "1초";   // one second
+"%ds" = "%d초";   // several seconds
+"1m" = "1분";   // one minutes
+"%dm" = "%d분";   // several minutes
+"1h" = "1시";   // one hours
+"%dh" = "%d시";   // several hours
+"1d" = "1일";   // one day
+"%@d" = "%@일";   // several days
+
+"1 minute" = "1분";
+"%d minutes" = "%d초 미만";
+"half a minute" = "30초";
+"less than a minute" = "1분 미만";
+"%d minutes" = "%d분";
+"about 1 hour" = "약 1시간";
+"about %d hours" = "약 %d시간";
+"1 day" = "1일";
+"%d days" = "%d일";
+"about 1 month" = "약 1개월";
+"%d months" = "%d개월";
+"about 1 year" = "약 1년";
+"over %d years" = "%d년 이상";

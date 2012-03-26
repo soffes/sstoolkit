@@ -65,7 +65,7 @@
 	time_t rawtime = (time_t)[self timeIntervalSince1970];
 	timeinfo = gmtime(&rawtime);
 	
-	strftime(buffer, 80, "%Y-%m-%dT%H:%M:%SZ", timeinfo);
+	strftime(buffer, 80, "%Y-%m-%@T%H:%M:%SZ", timeinfo);
 	
 	return [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
 }
@@ -73,6 +73,15 @@
 
 - (NSString *)briefTimeInWords {
 	NSTimeInterval seconds = fabs([self timeIntervalSinceNow]);
+	
+	static NSNumberFormatter *numberFormatter = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		numberFormatter = [[NSNumberFormatter alloc] init];
+		numberFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+		numberFormatter.currencySymbol = @"";
+		numberFormatter.maximumFractionDigits = 0;
+	});
 	
 	// Seconds
 	if (seconds < 60.0) {
@@ -107,7 +116,8 @@
 		if (days < 2) {
 			return SSToolkitLocalizedString(@"1d");
 		}
-		return [NSString stringWithFormat:SSToolkitLocalizedString(@"%dd"), days];
+		return [NSString stringWithFormat:SSToolkitLocalizedString(@"%@d"),
+				[numberFormatter stringFromNumber:[NSNumber numberWithInteger:days]]];
 	}
 	
 	// Years
@@ -116,7 +126,8 @@
 		if (years < 2) {
 			return SSToolkitLocalizedString(@"1y");
 		}
-		return [NSString stringWithFormat:SSToolkitLocalizedString(@"%dy"), years];
+		return [NSString stringWithFormat:SSToolkitLocalizedString(@"%@y"),
+				[numberFormatter stringFromNumber:[NSNumber numberWithInteger:years]]];
 	}
 	
 	return nil;
@@ -128,39 +139,39 @@
 	
 	if (intervalInMinutes >= 0 && intervalInMinutes <= 1) {
 		if (!includeSeconds) {
-			return intervalInMinutes <= 0 ? @"less than a minute" : @"1 minute";
+			return intervalInMinutes <= 0 ? SSToolkitLocalizedString(@"less than a minute") : SSToolkitLocalizedString(@"1 minute");
 		}
 		if (intervalInSeconds >= 0 && intervalInSeconds < 5) {
-			return [NSString stringWithFormat:@"less than %d seconds", 5];
+			return [NSString stringWithFormat:SSToolkitLocalizedString(@"less than %d seconds"), 5];
 		} else if (intervalInSeconds >= 5 && intervalInSeconds < 10) {
-			return [NSString stringWithFormat:@"less than %d seconds", 10];
+			return [NSString stringWithFormat:SSToolkitLocalizedString(@"less than %d seconds"), 10];
 		} else if (intervalInSeconds >= 10 && intervalInSeconds < 20) {
-			return [NSString stringWithFormat:@"less than %d seconds", 20];
+			return [NSString stringWithFormat:@"%d seconds", 20];
 		} else if (intervalInSeconds >= 20 && intervalInSeconds < 40) {
-			return @"half a minute";
+			return SSToolkitLocalizedString(@"half a minute");
 		} else if (intervalInSeconds >= 40 && intervalInSeconds < 60) {
-			return @"less than a minute";
+			return SSToolkitLocalizedString(@"less than a minute");
 	 	} else {
-			return @"1 minute";
+			return SSToolkitLocalizedString(@"1 minute");
 		}		
 	} else if (intervalInMinutes >= 2 && intervalInMinutes <= 44) {
-		return [NSString stringWithFormat:@"%.0f minutes", intervalInMinutes];
+		return [NSString stringWithFormat:SSToolkitLocalizedString(@"%d minutes"), (NSInteger)intervalInMinutes];
 	} else if (intervalInMinutes >= 45 && intervalInMinutes <= 89) {
-		return @"about 1 hour";
+		return SSToolkitLocalizedString(@"about 1 hour");
 	} else if (intervalInMinutes >= 90 && intervalInMinutes <= 1439) {
-		return [NSString stringWithFormat:@"about %.0f hours", round(intervalInMinutes / 60.0f)];
+		return [NSString stringWithFormat:SSToolkitLocalizedString(@"about %d hours"), (NSInteger)round(intervalInMinutes / 60.0f)];
 	} else if (intervalInMinutes >= 1440 && intervalInMinutes <= 2879) {
-		return @"1 day";
+		return SSToolkitLocalizedString(@"1 day");
 	} else if (intervalInMinutes >= 2880 && intervalInMinutes <= 43199) {
-		return [NSString stringWithFormat:@"%.0f days", round(intervalInMinutes / 1440.0f)];
+		return [NSString stringWithFormat:SSToolkitLocalizedString(@"%d days"), (NSInteger)round(intervalInMinutes / 1440.0f)];
 	} else if (intervalInMinutes >= 43200 && intervalInMinutes <= 86399) {
-		return @"about 1 month";
+		return SSToolkitLocalizedString(@"about 1 month");
 	} else if (intervalInMinutes >= 86400 && intervalInMinutes <= 525599) {
-		return [NSString stringWithFormat:@"%.0f months", round(intervalInMinutes / 43200.0f)];
+		return [NSString stringWithFormat:SSToolkitLocalizedString(@"%d months"), (NSInteger)round(intervalInMinutes / 43200.0f)];
 	} else if (intervalInMinutes >= 525600 && intervalInMinutes <= 1051199) {
-		return @"about 1 year";
+		return SSToolkitLocalizedString(@"about 1 year");
 	} else {
-		return [NSString stringWithFormat:@"over %.0f years", round(intervalInMinutes / 525600.0f)];
+		return [NSString stringWithFormat:SSToolkitLocalizedString(@"over %d years"), (NSInteger)round(intervalInMinutes / 525600.0f)];
 	}
 	return nil;
 }
