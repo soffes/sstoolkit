@@ -145,6 +145,8 @@
 		B2EA9F5F12F4A5C900C929D6 /* SSBadgeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EA9F5D12F4A5C900C929D6 /* SSBadgeTableViewCell.m */; };
 		B2EA9F6212F4A5E100C929D6 /* SSBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2EA9F6012F4A5E100C929D6 /* SSBadgeView.h */; };
 		B2EA9F6312F4A5E100C929D6 /* SSBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EA9F6112F4A5E100C929D6 /* SSBadgeView.m */; };
+		B2F72A131534D54C00556B66 /* SSRateLimit.h in Headers */ = {isa = PBXBuildFile; fileRef = B2F72A111534D54C00556B66 /* SSRateLimit.h */; };
+		B2F72A141534D54C00556B66 /* SSRateLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F72A121534D54C00556B66 /* SSRateLimit.m */; };
 		B2FC71BB1330424F00D4FCCF /* SSCollectionViewItemInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FC71BA1330424F00D4FCCF /* SSCollectionViewItemInternal.h */; };
 		B2FC9F5213CA73AB001E3F17 /* ViewCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FC9F5113CA73AB001E3F17 /* ViewCategoryTest.m */; };
 		B2FD76E2151C412600C813FA /* hud-check.png in Resources */ = {isa = PBXBuildFile; fileRef = B2FD76DE151C404600C813FA /* hud-check.png */; };
@@ -322,6 +324,8 @@
 		B2EA9F5D12F4A5C900C929D6 /* SSBadgeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSBadgeTableViewCell.m; sourceTree = "<group>"; };
 		B2EA9F6012F4A5E100C929D6 /* SSBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSBadgeView.h; sourceTree = "<group>"; };
 		B2EA9F6112F4A5E100C929D6 /* SSBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSBadgeView.m; sourceTree = "<group>"; };
+		B2F72A111534D54C00556B66 /* SSRateLimit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRateLimit.h; sourceTree = "<group>"; };
+		B2F72A121534D54C00556B66 /* SSRateLimit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRateLimit.m; sourceTree = "<group>"; };
 		B2FC71BA1330424F00D4FCCF /* SSCollectionViewItemInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCollectionViewItemInternal.h; sourceTree = "<group>"; };
 		B2FC9F5113CA73AB001E3F17 /* ViewCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCategoryTest.m; sourceTree = "<group>"; };
 		B2FD76DE151C404600C813FA /* hud-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-check.png"; sourceTree = "<group>"; };
@@ -586,6 +590,8 @@
 		B2601A8A122308E2005506D5 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				B2F72A111534D54C00556B66 /* SSRateLimit.h */,
+				B2F72A121534D54C00556B66 /* SSRateLimit.m */,
 				B24E9E10121DC29A0085F81E /* SSConcurrentOperation.h */,
 				B24E9E11121DC29A0085F81E /* SSConcurrentOperation.m */,
 				B24E9E12121DC29A0085F81E /* SSDrawingUtilities.h */,
@@ -719,6 +725,7 @@
 				B280E25F13BA76A300FCDA5C /* SSAnimatedImageView.h in Headers */,
 				B229B468144CE2F500F71626 /* SSCollectionViewTableView.h in Headers */,
 				B2C50814151BAB4000E94614 /* NSBundle+SSToolkitAdditions.h in Headers */,
+				B2F72A131534D54C00556B66 /* SSRateLimit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -944,6 +951,7 @@
 				B229B469144CE2F500F71626 /* SSCollectionViewTableView.m in Sources */,
 				B2C50815151BAB4000E94614 /* NSBundle+SSToolkitAdditions.m in Sources */,
 				B26679B4151BB5D000BFDF6E /* SSConcurrentOperation.m in Sources */,
+				B2F72A141534D54C00556B66 /* SSRateLimit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
