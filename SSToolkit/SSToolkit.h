@@ -39,5 +39,6 @@
 #import <SSToolkit/SSRatingPickerViewController.h>
 
 // Misc
-#import <SSToolkit/SSDrawingUtilities.h>
 #import <SSToolkit/SSConcurrentOperation.h>
+#import <SSToolkit/SSDrawingUtilities.h>
+#import <SSToolkit/SSRateLimit.h>
