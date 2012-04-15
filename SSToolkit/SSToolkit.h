@@ -28,6 +28,7 @@
 
 // Controls
 #import <SSToolkit/SSAddressBarTextField.h>
+#import <SSToolkit/SSButton.h>
 #import <SSToolkit/SSTextField.h>
 #import <SSToolkit/SSTextView.h>
 #import <SSToolkit/SSRatingPicker.h>
