@@ -132,6 +132,8 @@
 		B2C5082A151BAE9000E94614 /* UISegmentBarDivider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080C151BA6C000E94614 /* UISegmentBarDivider@2x.png */; };
 		B2C5082B151BAE9000E94614 /* UISegmentBarDividerHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080D151BA6C000E94614 /* UISegmentBarDividerHighlighted.png */; };
 		B2C5082C151BAE9000E94614 /* UISegmentBarDividerHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080E151BA6C000E94614 /* UISegmentBarDividerHighlighted@2x.png */; };
+		B2C7ED6C153A5624006ABE73 /* SSButton.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C7ED6A153A5624006ABE73 /* SSButton.h */; };
+		B2C7ED6D153A5624006ABE73 /* SSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C7ED6B153A5624006ABE73 /* SSButton.m */; };
 		B2D8829413328EEF006B3F55 /* SSHUDWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = B2D8829213328EEF006B3F55 /* SSHUDWindow.h */; };
 		B2D8829513328EEF006B3F55 /* SSHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D8829313328EEF006B3F55 /* SSHUDWindow.m */; };
 		B2D883C01332D636006B3F55 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D883BF1332D636006B3F55 /* QuartzCore.framework */; };
@@ -311,6 +313,8 @@
 		B2C50811151BA6D500E94614 /* SSToolkitResources-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SSToolkitResources-Info.plist"; sourceTree = "<group>"; };
 		B2C50812151BAB4000E94614 /* NSBundle+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B2C50813151BAB4000E94614 /* NSBundle+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+SSToolkitAdditions.m"; sourceTree = "<group>"; };
+		B2C7ED6A153A5624006ABE73 /* SSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSButton.h; sourceTree = "<group>"; };
+		B2C7ED6B153A5624006ABE73 /* SSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSButton.m; sourceTree = "<group>"; };
 		B2D8829213328EEF006B3F55 /* SSHUDWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSHUDWindow.h; sourceTree = "<group>"; };
 		B2D8829313328EEF006B3F55 /* SSHUDWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSHUDWindow.m; sourceTree = "<group>"; };
 		B2D883BF1332D636006B3F55 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = iphoneos3.0/System/Library/Frameworks/QuartzCore.framework; sourceTree = "<group>"; };
@@ -573,6 +577,8 @@
 		B2601A791223086D005506D5 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				B2C7ED6A153A5624006ABE73 /* SSButton.h */,
+				B2C7ED6B153A5624006ABE73 /* SSButton.m */,
 				B2E2414E1301C71400F7DC3B /* SSAddressBarTextField.h */,
 				B2E2414F1301C71400F7DC3B /* SSAddressBarTextField.m */,
 				B24E9E2C121DC29A0085F81E /* SSTextField.h */,
@@ -726,6 +732,7 @@
 				B229B468144CE2F500F71626 /* SSCollectionViewTableView.h in Headers */,
 				B2C50814151BAB4000E94614 /* NSBundle+SSToolkitAdditions.h in Headers */,
 				B2F72A131534D54C00556B66 /* SSRateLimit.h in Headers */,
+				B2C7ED6C153A5624006ABE73 /* SSButton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -952,6 +959,7 @@
 				B2C50815151BAB4000E94614 /* NSBundle+SSToolkitAdditions.m in Sources */,
 				B26679B4151BB5D000BFDF6E /* SSConcurrentOperation.m in Sources */,
 				B2F72A141534D54C00556B66 /* SSRateLimit.m in Sources */,
+				B2C7ED6D153A5624006ABE73 /* SSButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
