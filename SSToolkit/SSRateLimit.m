@@ -8,21 +8,20 @@
 
 #import "SSRateLimit.h"
 
+@interface SSRateLimit ()
++ (NSMutableDictionary *)_dictionary;
+@end
+
 @implementation SSRateLimit
 
 + (BOOL)executeBlock:(void(^)(void))block name:(NSString *)name limit:(NSTimeInterval)limit {
-	static NSMutableDictionary *dictionary = nil;
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		dictionary = [[NSMutableDictionary alloc] init];
-	});
-	
 	// Prevent a nil block
 	if (!block) {
 		return NO;
 	}
 	
 	// Lookup last executed
+	NSMutableDictionary *dictionary = [self _dictionary];	
 	NSDate *last = [dictionary objectForKey:name];
 	NSTimeInterval timeInterval = [last timeIntervalSinceNow];
 	
@@ -35,6 +34,23 @@
 	block();
 	[dictionary setObject:[NSDate date] forKey:name];
 	return YES;
+}
+
+
++ (void)resetLimitForName:(NSString *)name {
+	[[self _dictionary] removeObjectForKey:name];
+}
+
+
+#pragma mark - Private
+
++ (NSMutableDictionary *)_dictionary {
+	static NSMutableDictionary *dictionary = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		dictionary = [[NSMutableDictionary alloc] init];
+	});
+	return dictionary;
 }
 
 @end

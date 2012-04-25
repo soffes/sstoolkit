@@ -26,4 +26,13 @@
  */
 + (BOOL)executeBlock:(void(^)(void))block name:(NSString *)name limit:(NSTimeInterval)limit;
 
+/**
+ Resets the time for a given name.
+ 
+ @param name A string identifying a block's stored time.
+ 
+ The next time a block with the same name is passed to `executeBlock:name:limit:` it will be executed.
+ */
++ (void)resetLimitForName:(NSString *)name;
+
 @end
