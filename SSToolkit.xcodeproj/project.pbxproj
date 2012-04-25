@@ -23,6 +23,31 @@
 		B23910641357DCF700ADE21B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23910631357DCF700ADE21B /* Foundation.framework */; };
 		B23910661357DCF700ADE21B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23910651357DCF700ADE21B /* UIKit.framework */; };
 		B23910811357DDA600ADE21B /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = B23910801357DDA600ADE21B /* GHUnitIOSTestMain.m */; };
+		B23F16001547C73D00638372 /* hud-check.png in Resources */ = {isa = PBXBuildFile; fileRef = B2FD76DE151C404600C813FA /* hud-check.png */; };
+		B23F16011547C73D00638372 /* hud-check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2FD76DF151C404600C813FA /* hud-check@2x.png */; };
+		B23F16021547C73D00638372 /* hud-x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2FD76E0151C404600C813FA /* hud-x.png */; };
+		B23F16031547C73D00638372 /* hud-x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2FD76E1151C404600C813FA /* hud-x@2x.png */; };
+		B23F16041547C73D00638372 /* gray-star.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507F9151BA6C000E94614 /* gray-star.png */; };
+		B23F16051547C73D00638372 /* gray-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FA151BA6C000E94614 /* gray-star@2x.png */; };
+		B23F16061547C73D00638372 /* orange-star.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FB151BA6C000E94614 /* orange-star.png */; };
+		B23F16071547C73D00638372 /* orange-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FC151BA6C000E94614 /* orange-star@2x.png */; };
+		B23F16081547C73D00638372 /* SSAddressBarTextFieldBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FD151BA6C000E94614 /* SSAddressBarTextFieldBackground.png */; };
+		B23F16091547C73D00638372 /* SSAddressBarTextFieldBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FE151BA6C000E94614 /* SSAddressBarTextFieldBackground@2x.png */; };
+		B23F160A1547C73D00638372 /* SSAddressBarTextFieldReload.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FF151BA6C000E94614 /* SSAddressBarTextFieldReload.png */; };
+		B23F160B1547C73D00638372 /* SSAddressBarTextFieldReload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50800151BA6C000E94614 /* SSAddressBarTextFieldReload@2x.png */; };
+		B23F160C1547C73D00638372 /* SSAddressBarTextFieldStop.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50801151BA6C000E94614 /* SSAddressBarTextFieldStop.png */; };
+		B23F160D1547C73D00638372 /* SSAddressBarTextFieldStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50802151BA6C000E94614 /* SSAddressBarTextFieldStop@2x.png */; };
+		B23F160E1547C73D00638372 /* SSVignetteiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50804151BA6C000E94614 /* SSVignetteiPad.png */; };
+		B23F160F1547C73D00638372 /* SSVignetteiPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50805151BA6C000E94614 /* SSVignetteiPhone.png */; };
+		B23F16101547C73D00638372 /* SSVignetteiPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50806151BA6C000E94614 /* SSVignetteiPhone@2x.png */; };
+		B23F16111547C73D00638372 /* UISegmentBarButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50807151BA6C000E94614 /* UISegmentBarButton.png */; };
+		B23F16121547C73D00638372 /* UISegmentBarButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50808151BA6C000E94614 /* UISegmentBarButton@2x.png */; };
+		B23F16131547C73D00638372 /* UISegmentBarButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50809151BA6C000E94614 /* UISegmentBarButtonHighlighted.png */; };
+		B23F16141547C73D00638372 /* UISegmentBarButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080A151BA6C000E94614 /* UISegmentBarButtonHighlighted@2x.png */; };
+		B23F16151547C73D00638372 /* UISegmentBarDivider.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080B151BA6C000E94614 /* UISegmentBarDivider.png */; };
+		B23F16161547C73D00638372 /* UISegmentBarDivider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080C151BA6C000E94614 /* UISegmentBarDivider@2x.png */; };
+		B23F16171547C73D00638372 /* UISegmentBarDividerHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080D151BA6C000E94614 /* UISegmentBarDividerHighlighted.png */; };
+		B23F16181547C73D00638372 /* UISegmentBarDividerHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080E151BA6C000E94614 /* UISegmentBarDividerHighlighted@2x.png */; };
 		B2453A181394AE5000275B6B /* ArrayCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B23910BF1357E07A00ADE21B /* ArrayCategoryTest.m */; };
 		B2453A191394AE5000275B6B /* ColorCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A5D4D5135873B300AC4BA7 /* ColorCategoryTest.m */; };
 		B2453A1A1394AE5000275B6B /* ControlCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A5D4DD1358748700AC4BA7 /* ControlCategoryTest.m */; };
@@ -111,27 +136,6 @@
 		B2C50814151BAB4000E94614 /* NSBundle+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C50812151BAB4000E94614 /* NSBundle+SSToolkitAdditions.h */; };
 		B2C50815151BAB4000E94614 /* NSBundle+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C50813151BAB4000E94614 /* NSBundle+SSToolkitAdditions.m */; };
 		B2C50816151BAE8800E94614 /* SSToolkit.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080F151BA6C500E94614 /* SSToolkit.strings */; };
-		B2C50817151BAE9000E94614 /* gray-star.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507F9151BA6C000E94614 /* gray-star.png */; };
-		B2C50818151BAE9000E94614 /* gray-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FA151BA6C000E94614 /* gray-star@2x.png */; };
-		B2C50819151BAE9000E94614 /* orange-star.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FB151BA6C000E94614 /* orange-star.png */; };
-		B2C5081A151BAE9000E94614 /* orange-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FC151BA6C000E94614 /* orange-star@2x.png */; };
-		B2C5081B151BAE9000E94614 /* SSAddressBarTextFieldBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FD151BA6C000E94614 /* SSAddressBarTextFieldBackground.png */; };
-		B2C5081C151BAE9000E94614 /* SSAddressBarTextFieldBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FE151BA6C000E94614 /* SSAddressBarTextFieldBackground@2x.png */; };
-		B2C5081D151BAE9000E94614 /* SSAddressBarTextFieldReload.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C507FF151BA6C000E94614 /* SSAddressBarTextFieldReload.png */; };
-		B2C5081E151BAE9000E94614 /* SSAddressBarTextFieldReload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50800151BA6C000E94614 /* SSAddressBarTextFieldReload@2x.png */; };
-		B2C5081F151BAE9000E94614 /* SSAddressBarTextFieldStop.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50801151BA6C000E94614 /* SSAddressBarTextFieldStop.png */; };
-		B2C50820151BAE9000E94614 /* SSAddressBarTextFieldStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50802151BA6C000E94614 /* SSAddressBarTextFieldStop@2x.png */; };
-		B2C50822151BAE9000E94614 /* SSVignetteiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50804151BA6C000E94614 /* SSVignetteiPad.png */; };
-		B2C50823151BAE9000E94614 /* SSVignetteiPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50805151BA6C000E94614 /* SSVignetteiPhone.png */; };
-		B2C50824151BAE9000E94614 /* SSVignetteiPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50806151BA6C000E94614 /* SSVignetteiPhone@2x.png */; };
-		B2C50825151BAE9000E94614 /* UISegmentBarButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50807151BA6C000E94614 /* UISegmentBarButton.png */; };
-		B2C50826151BAE9000E94614 /* UISegmentBarButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50808151BA6C000E94614 /* UISegmentBarButton@2x.png */; };
-		B2C50827151BAE9000E94614 /* UISegmentBarButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50809151BA6C000E94614 /* UISegmentBarButtonHighlighted.png */; };
-		B2C50828151BAE9000E94614 /* UISegmentBarButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080A151BA6C000E94614 /* UISegmentBarButtonHighlighted@2x.png */; };
-		B2C50829151BAE9000E94614 /* UISegmentBarDivider.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080B151BA6C000E94614 /* UISegmentBarDivider.png */; };
-		B2C5082A151BAE9000E94614 /* UISegmentBarDivider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080C151BA6C000E94614 /* UISegmentBarDivider@2x.png */; };
-		B2C5082B151BAE9000E94614 /* UISegmentBarDividerHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080D151BA6C000E94614 /* UISegmentBarDividerHighlighted.png */; };
-		B2C5082C151BAE9000E94614 /* UISegmentBarDividerHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C5080E151BA6C000E94614 /* UISegmentBarDividerHighlighted@2x.png */; };
 		B2C7ED6C153A5624006ABE73 /* SSButton.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C7ED6A153A5624006ABE73 /* SSButton.h */; };
 		B2C7ED6D153A5624006ABE73 /* SSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C7ED6B153A5624006ABE73 /* SSButton.m */; };
 		B2D8829413328EEF006B3F55 /* SSHUDWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = B2D8829213328EEF006B3F55 /* SSHUDWindow.h */; };
@@ -151,10 +155,6 @@
 		B2F72A141534D54C00556B66 /* SSRateLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F72A121534D54C00556B66 /* SSRateLimit.m */; };
 		B2FC71BB1330424F00D4FCCF /* SSCollectionViewItemInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FC71BA1330424F00D4FCCF /* SSCollectionViewItemInternal.h */; };
 		B2FC9F5213CA73AB001E3F17 /* ViewCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FC9F5113CA73AB001E3F17 /* ViewCategoryTest.m */; };
-		B2FD76E2151C412600C813FA /* hud-check.png in Resources */ = {isa = PBXBuildFile; fileRef = B2FD76DE151C404600C813FA /* hud-check.png */; };
-		B2FD76E3151C412600C813FA /* hud-check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2FD76DF151C404600C813FA /* hud-check@2x.png */; };
-		B2FD76E4151C412600C813FA /* hud-x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2FD76E0151C404600C813FA /* hud-x.png */; };
-		B2FD76E5151C412600C813FA /* hud-x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2FD76E1151C404600C813FA /* hud-x@2x.png */; };
 		B2FE26B9136684D400B97612 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FE26B8136684D400B97612 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -852,31 +852,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2C50816151BAE8800E94614 /* SSToolkit.strings in Resources */,
-				B2C50817151BAE9000E94614 /* gray-star.png in Resources */,
-				B2C50818151BAE9000E94614 /* gray-star@2x.png in Resources */,
-				B2C50819151BAE9000E94614 /* orange-star.png in Resources */,
-				B2C5081A151BAE9000E94614 /* orange-star@2x.png in Resources */,
-				B2C5081B151BAE9000E94614 /* SSAddressBarTextFieldBackground.png in Resources */,
-				B2C5081C151BAE9000E94614 /* SSAddressBarTextFieldBackground@2x.png in Resources */,
-				B2C5081D151BAE9000E94614 /* SSAddressBarTextFieldReload.png in Resources */,
-				B2C5081E151BAE9000E94614 /* SSAddressBarTextFieldReload@2x.png in Resources */,
-				B2C5081F151BAE9000E94614 /* SSAddressBarTextFieldStop.png in Resources */,
-				B2C50820151BAE9000E94614 /* SSAddressBarTextFieldStop@2x.png in Resources */,
-				B2C50822151BAE9000E94614 /* SSVignetteiPad.png in Resources */,
-				B2C50823151BAE9000E94614 /* SSVignetteiPhone.png in Resources */,
-				B2C50824151BAE9000E94614 /* SSVignetteiPhone@2x.png in Resources */,
-				B2C50825151BAE9000E94614 /* UISegmentBarButton.png in Resources */,
-				B2C50826151BAE9000E94614 /* UISegmentBarButton@2x.png in Resources */,
-				B2C50827151BAE9000E94614 /* UISegmentBarButtonHighlighted.png in Resources */,
-				B2C50828151BAE9000E94614 /* UISegmentBarButtonHighlighted@2x.png in Resources */,
-				B2C50829151BAE9000E94614 /* UISegmentBarDivider.png in Resources */,
-				B2C5082A151BAE9000E94614 /* UISegmentBarDivider@2x.png in Resources */,
-				B2C5082B151BAE9000E94614 /* UISegmentBarDividerHighlighted.png in Resources */,
-				B2C5082C151BAE9000E94614 /* UISegmentBarDividerHighlighted@2x.png in Resources */,
-				B2FD76E2151C412600C813FA /* hud-check.png in Resources */,
-				B2FD76E3151C412600C813FA /* hud-check@2x.png in Resources */,
-				B2FD76E4151C412600C813FA /* hud-x.png in Resources */,
-				B2FD76E5151C412600C813FA /* hud-x@2x.png in Resources */,
+				B23F16001547C73D00638372 /* hud-check.png in Resources */,
+				B23F16011547C73D00638372 /* hud-check@2x.png in Resources */,
+				B23F16021547C73D00638372 /* hud-x.png in Resources */,
+				B23F16031547C73D00638372 /* hud-x@2x.png in Resources */,
+				B23F16041547C73D00638372 /* gray-star.png in Resources */,
+				B23F16051547C73D00638372 /* gray-star@2x.png in Resources */,
+				B23F16061547C73D00638372 /* orange-star.png in Resources */,
+				B23F16071547C73D00638372 /* orange-star@2x.png in Resources */,
+				B23F16081547C73D00638372 /* SSAddressBarTextFieldBackground.png in Resources */,
+				B23F16091547C73D00638372 /* SSAddressBarTextFieldBackground@2x.png in Resources */,
+				B23F160A1547C73D00638372 /* SSAddressBarTextFieldReload.png in Resources */,
+				B23F160B1547C73D00638372 /* SSAddressBarTextFieldReload@2x.png in Resources */,
+				B23F160C1547C73D00638372 /* SSAddressBarTextFieldStop.png in Resources */,
+				B23F160D1547C73D00638372 /* SSAddressBarTextFieldStop@2x.png in Resources */,
+				B23F160E1547C73D00638372 /* SSVignetteiPad.png in Resources */,
+				B23F160F1547C73D00638372 /* SSVignetteiPhone.png in Resources */,
+				B23F16101547C73D00638372 /* SSVignetteiPhone@2x.png in Resources */,
+				B23F16111547C73D00638372 /* UISegmentBarButton.png in Resources */,
+				B23F16121547C73D00638372 /* UISegmentBarButton@2x.png in Resources */,
+				B23F16131547C73D00638372 /* UISegmentBarButtonHighlighted.png in Resources */,
+				B23F16141547C73D00638372 /* UISegmentBarButtonHighlighted@2x.png in Resources */,
+				B23F16151547C73D00638372 /* UISegmentBarDivider.png in Resources */,
+				B23F16161547C73D00638372 /* UISegmentBarDivider@2x.png in Resources */,
+				B23F16171547C73D00638372 /* UISegmentBarDividerHighlighted.png in Resources */,
+				B23F16181547C73D00638372 /* UISegmentBarDividerHighlighted@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
