@@ -50,7 +50,7 @@
  
  @return The object returned by the `NSMutableCopying` protocol method `mutableCopyWithZone:`, where the zone is `nil`.
  */
-- (NSMutableArray *)deepMutableCopy CF_RETURNS_RETAINED;
+- (NSMutableArray *)deepMutableCopy NS_RETURNS_RETAINED;
 
 ///--------------
 /// @name Hashing
