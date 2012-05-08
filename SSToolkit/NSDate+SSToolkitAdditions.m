@@ -76,7 +76,7 @@
 	time_t rawtime = (time_t)[self timeIntervalSince1970];
 	timeinfo = gmtime(&rawtime);
 	
-	strftime(buffer, 80, "%Y-%m-%@T%H:%M:%SZ", timeinfo);
+	strftime(buffer, 80, "%Y-%m-%dT%H:%M:%SZ", timeinfo);
 	
 	return [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
 }
