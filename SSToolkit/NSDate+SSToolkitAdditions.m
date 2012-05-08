@@ -32,7 +32,7 @@
     // UTC dates ending with Z
     if (len == 20 && str[len - 1] == 'Z') {
         memcpy(newStr, str, len - 1);
-	strncpy(newStr + len - 1, "+0000", 5);
+	strncpy(newStr + len - 1, "+0000\0", 6);
     }
 	
     // Timezone includes a semicolon (not supported by strptime)
