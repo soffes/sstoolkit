@@ -71,13 +71,7 @@ static CGFloat kIndicatorSize = 40.0;
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
-    
 	[self _removeWindow];
-	[_activityIndicator release];
-	[_textLabel release];
-	[_completeImage release];
-	[_failImage release];
-	[super dealloc];
 }
 
 
@@ -183,7 +177,7 @@ static CGFloat kIndicatorSize = 40.0;
 
 
 - (void)show {
-	[self retain];
+//	[self retain];
 	if (!_hudWindow) {
 		_hudWindow = [SSHUDWindow defaultWindow];
 	}
@@ -265,7 +259,7 @@ static CGFloat kIndicatorSize = 40.0;
 
 
 - (void)dismiss {
-	[self autorelease];
+//	[self autorelease];
 	[self dismissAnimated:YES];
 }
 

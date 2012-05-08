@@ -38,7 +38,7 @@ static const short _base64DecodingTable[256] = {
 	for (i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
 		[ms appendFormat: @"%02x", (int)(digest[i])];
 	}
-	return [[ms copy] autorelease];
+	return [ms copy];
 }
 
 - (NSString *)SHA1Sum {
@@ -77,7 +77,7 @@ static const short _base64DecodingTable[256] = {
         output[index + 3] = (i + 2) < length ? _base64EncodingTable[(value >> 0) & 0x3F] : '=';
     }
 	
-    return [[[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding] autorelease];
+    return [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
 }
 
 

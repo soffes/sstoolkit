@@ -42,8 +42,6 @@
 - (void)dealloc {
 	self.reloadButton = nil;
 	self.stopButton = nil;
-	[_textFieldBackgroundView release];
-	[super dealloc];
 }
 
 

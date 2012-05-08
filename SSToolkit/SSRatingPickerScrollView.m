@@ -26,18 +26,6 @@
 @synthesize titleTextField = _titleTextField;
 @synthesize reviewTextView = _reviewTextView;
 
-#pragma mark - NSObject
-
-- (void)dealloc {
-	[_topView release];
-	[_gradientView release];
-	[_ratingPicker release];
-	[_titleTextField release];
-	[_lineView release];
-	[_reviewTextView release];
-	[super dealloc];
-}
-
 
 #pragma mark - UIView
 

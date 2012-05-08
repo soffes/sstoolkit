@@ -109,7 +109,6 @@
 		B24E9E80121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E42121DC29A0085F81E /* UIViewController+SSToolkitAdditions.m */; };
 		B25C8E601394327000DE7BFF /* SSCollectionViewExtremityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B456FC139078B80060C279 /* SSCollectionViewExtremityTableViewCell.m */; };
 		B25C8E611394327000DE7BFF /* SSCollectionViewExtremityTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B2B456FB139078B80060C279 /* SSCollectionViewExtremityTableViewCell.h */; };
-		B26679B4151BB5D000BFDF6E /* SSConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E11121DC29A0085F81E /* SSConcurrentOperation.m */; };
 		B267D3451226CE0400B66519 /* SSCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B267D3431226CE0400B66519 /* SSCollectionViewController.h */; };
 		B267D3461226CE0400B66519 /* SSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B267D3441226CE0400B66519 /* SSCollectionViewController.m */; };
 		B2721BA0132F136C00D762FD /* SSCollectionViewInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = B2721B9F132F136C00D762FD /* SSCollectionViewInternal.h */; };
@@ -957,7 +956,6 @@
 				B2136B3D13ABCC0C00FEBCFD /* SSBorderedView.m in Sources */,
 				B280E25D13BA769C00FCDA5C /* SSAnimatedImageView.m in Sources */,
 				B229B469144CE2F500F71626 /* SSCollectionViewTableView.m in Sources */,
-				B24F7ACA146B2CB7003255E2 /* SSManagedOperationQueue.m in Sources */,
 				9EB278B114BBC4360077194C /* SSConcurrentOperation.m in Sources */,
 				B2C50815151BAB4000E94614 /* NSBundle+SSToolkitAdditions.m in Sources */,
 				B2F72A141534D54C00556B66 /* SSRateLimit.m in Sources */,
@@ -1010,6 +1008,7 @@
 					armv6,
 					armv7,
 				);
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/SSToolkit.dst;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
@@ -1056,6 +1055,7 @@
 					armv6,
 					armv7,
 				);
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/SSToolkit.dst;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_MODEL_TUNING = G5;

@@ -51,14 +51,10 @@
 	for (NSUInteger i = 0; i < [leftFields count]; i++) {
 		NSComparisonResult result = [[leftFields objectAtIndex:i] compare:[rightFields objectAtIndex:i] options:NSNumericSearch];
 		if (result != NSOrderedSame) {
-			[leftFields release];
-			[rightFields release];
 			return result;
 		}
 	}
 	
-	[leftFields release];
-	[rightFields release];	
 	return NSOrderedSame;
 }
 
@@ -110,7 +106,7 @@
 
 - (NSString *)unescapeHTML {
 	NSMutableString *s = [NSMutableString string];
-	NSMutableString *target = [[self mutableCopy] autorelease];
+	NSMutableString *target = [self mutableCopy];
 	NSCharacterSet *chs = [NSCharacterSet characterSetWithCharactersInString:@"&"];
 	
 	while ([target length] > 0) {
@@ -161,11 +157,11 @@
 	static CFStringRef leaveAlone = CFSTR(" ");
 	static CFStringRef toEscape = CFSTR("\n\r:/=,!$&'()*+;[]@#?%");
 
-	CFStringRef escapedStr = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)self, leaveAlone,
+	CFStringRef escapedStr = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)self, leaveAlone,
 																	 toEscape, kCFStringEncodingUTF8);
 
 	if (escapedStr) {
-		NSMutableString *mutable = [NSMutableString stringWithString:(NSString *)escapedStr];
+		NSMutableString *mutable = [NSMutableString stringWithString:(__bridge NSString *)escapedStr];
 		CFRelease(escapedStr);
 
 		[mutable replaceOccurrencesOfString:@" " withString:@"+" options:0 range:NSMakeRange(0, [mutable length])];
@@ -185,30 +181,29 @@
 
 - (NSString *)URLEncodedString {
 	static CFStringRef toEscape = CFSTR(":/=,!$&'()*+;[]@#?%");
-	return [(NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-																(CFStringRef)self,
-																NULL,
-																toEscape,
-																kCFStringEncodingUTF8) autorelease];
+	return (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+																				 (__bridge CFStringRef)self,
+																				 NULL,
+																				 toEscape,
+																				 kCFStringEncodingUTF8);
 }
 
 
 - (NSString *)URLEncodedParameterString {
 	static CFStringRef toEscape = CFSTR(":/=,!$&'()*+;[]@#?");
-    NSString *result = (NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                                           (CFStringRef)self,
-                                                                           NULL,
-                                                                           toEscape,
-                                                                           kCFStringEncodingUTF8);
-	return [result autorelease];
+    return (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+																				 (__bridge CFStringRef)self,
+																				 NULL,
+																				 toEscape,
+																				 kCFStringEncodingUTF8);
 }
 
 
 - (NSString *)URLDecodedString {
-	return [(NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
-																				(CFStringRef)self,
-																				CFSTR(""),
-																				kCFStringEncodingUTF8) autorelease];
+	return (__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
+																								 (__bridge CFStringRef)self,
+																								 CFSTR(""),
+																								 kCFStringEncodingUTF8);
 }
 
 
@@ -224,8 +219,7 @@
 
 
 + (NSString *)stringWithBase64String:(NSString *)base64String {
-	return [[[NSString alloc] initWithData:[NSData dataWithBase64String:base64String] encoding:NSUTF8StringEncoding]
-			autorelease];
+	return [[NSString alloc] initWithData:[NSData dataWithBase64String:base64String] encoding:NSUTF8StringEncoding];
 }
 
 
@@ -236,7 +230,7 @@
 	CFUUIDRef uuid = CFUUIDCreate(NULL);
 	CFStringRef string = CFUUIDCreateString(NULL, uuid);
 	CFRelease(uuid);
-	return [(NSString *)string autorelease];
+	return (__bridge_transfer NSString *)string;
 }
 
 

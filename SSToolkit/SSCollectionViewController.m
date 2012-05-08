@@ -33,8 +33,6 @@
 - (void)dealloc {
 	_collectionView.dataSource = nil;
 	_collectionView.delegate = nil;
-	[_collectionView release];
-	[super dealloc];
 }
 
 

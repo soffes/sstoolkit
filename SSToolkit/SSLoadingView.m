@@ -24,15 +24,6 @@ static CGFloat indicatorRightMargin = 8.0f;
 @synthesize activityIndicatorView = _activityIndicatorView;
 
 
-#pragma mark - NSObject
-
-- (void)dealloc {	
-	[_textLabel release];
-	[_activityIndicatorView release];
-	[super dealloc];
-}
-
-
 #pragma mark - UIView
 
 - (id)initWithCoder:(NSCoder *)aDecoder {

@@ -28,16 +28,12 @@
 
 
 - (void)setColors:(NSArray *)colors {
-	[colors retain];
-	[_colors release];
 	_colors = colors;
 	[self _refreshGradient];
 }
 
 
 - (void)setLocations:(NSArray *)locations {
-	[locations retain];
-	[_locations release];
 	_locations = locations;
 	[self _refreshGradient];
 }
@@ -87,7 +83,6 @@
 		NSMutableArray *newColors = [colors mutableCopy];
 		[newColors replaceObjectAtIndex:0 withObject:topColor];
 		self.colors = newColors;
-		[newColors release];
 		return;
 	}
 	
@@ -107,7 +102,6 @@
 		NSMutableArray *newColors = [colors mutableCopy];
 		[newColors replaceObjectAtIndex:count - 1 withObject:bottomColor];
 		self.colors = newColors;
-		[newColors release];
 	} else if (count == 1) {
 		self.colors = [NSArray arrayWithObjects:[colors objectAtIndex:0], bottomColor, nil];
 	} else {
@@ -119,13 +113,8 @@
 #pragma mark - NSObject
 
 - (void)dealloc {
-	[_colors release];
-	[_locations release];
-	
 	CGGradientRelease(_gradient);
 	_gradient = nil;
-
-	[super dealloc];
 }
 
 

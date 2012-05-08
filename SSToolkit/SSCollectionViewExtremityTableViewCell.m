@@ -15,20 +15,10 @@
 @synthesize extrimityView = _extrimityView;
 
 - (void)setExtrimityView:(UIView *)view {
-	[view retain];
 	[_extrimityView removeFromSuperview];
-	[_extrimityView release];
 	_extrimityView = view;
 	[self addSubview:_extrimityView];
 	[self setNeedsLayout];
-}
-
-
-#pragma mark - NSObject
-
-- (void)dealloc {
-	[_extrimityView release];
-	[super dealloc];
 }
 
 

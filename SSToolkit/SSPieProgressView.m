@@ -33,33 +33,23 @@ CGFloat const kAngleOffset = -90.0f;
 
 - (void)setPieBorderWidth:(CGFloat)pieBorderWidth {
 	_pieBorderWidth = pieBorderWidth;
-	
 	[self setNeedsDisplay];
 }
 
 
 - (void)setPieBorderColor:(UIColor *)pieBorderColor {
-	[pieBorderColor retain];
-	[_pieBorderColor release];
 	_pieBorderColor = pieBorderColor;
-	
 	[self setNeedsDisplay];
 }
 
 - (void)setPieFillColor:(UIColor *)pieFillColor {
-	[pieFillColor retain];
-	[_pieFillColor release];
 	_pieFillColor = pieFillColor;
-	
 	[self setNeedsDisplay];
 }
 
 
 - (void)setPieBackgroundColor:(UIColor *)pieBackgroundColor {
-	[pieBackgroundColor retain];
-	[_pieBackgroundColor release];
 	_pieBackgroundColor = pieBackgroundColor;
-	
 	[self setNeedsDisplay];
 }
 
@@ -68,16 +58,6 @@ CGFloat const kAngleOffset = -90.0f;
 
 + (UIColor *)defaultPieColor {
 	return [UIColor colorWithRed:0.612f green:0.710f blue:0.839f alpha:1.0f];
-}
-
-
-#pragma mark - NSObject
-
-- (void)dealloc {
-	[_pieBorderColor release];
-	[_pieFillColor release];
-	[_pieBackgroundColor release];
-	[super dealloc];
 }
 
 

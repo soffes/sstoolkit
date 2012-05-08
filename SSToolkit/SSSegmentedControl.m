@@ -36,10 +36,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize buttonImage = _buttonImage;
 
 - (void)setButtonImage:(UIImage *)buttonImage {
-	[buttonImage retain];
-	[_buttonImage release];
 	_buttonImage = buttonImage;
-	
 	[self setNeedsDisplay];
 }
 
@@ -47,10 +44,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize highlightedButtonImage = _highlightedButtonImage;
 
 - (void)setHighlightedButtonImage:(UIImage *)highlightedButtonImage {
-	[highlightedButtonImage retain];
-	[_highlightedButtonImage release];
 	_highlightedButtonImage = highlightedButtonImage;
-	
 	[self setNeedsDisplay];
 }
 
@@ -58,10 +52,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize dividerImage = _dividerImage;
 
 - (void)setDividerImage:(UIImage *)dividerImage {
-	[dividerImage retain];
-	[_dividerImage release];
 	_dividerImage = dividerImage;
-	
 	[self setNeedsDisplay];
 }
 
@@ -69,10 +60,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize highlightedDividerImage = _highlightedDividerImage;
 
 - (void)setHighlightedDividerImage:(UIImage *)highlightedDividerImage {
-	[highlightedDividerImage retain];
-	[_highlightedDividerImage release];
 	_highlightedDividerImage = highlightedDividerImage;
-	
 	[self setNeedsDisplay];
 }
 
@@ -80,10 +68,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize font = _font;
 
 - (void)setFont:(UIFont *)font {
-	[font retain];
-	[_font release];
 	_font = font;
-	
 	[self setNeedsDisplay];
 }
 
@@ -91,20 +76,14 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize textColor = _textColor;
 
 - (void)setTextColor:(UIColor *)textColor {
-	[textColor retain];
-	[_textColor release];
-	_textColor = textColor;
-	
+	_textColor = textColor;	
 	[self setNeedsDisplay];
 }
 
 @synthesize disabledTextColor = _disabledTextColor;
 
 - (void)setDisabledTextColor:(UIColor *)disabledTextColor {
-	[disabledTextColor retain];
-	[_disabledTextColor release];
-	_disabledTextColor = disabledTextColor;
-	
+	_disabledTextColor = disabledTextColor;	
 	[self setNeedsDisplay];
 }
 
@@ -112,10 +91,7 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 @synthesize textShadowColor = _textShadowColor;
 
 - (void)setTextShadowColor:(UIColor *)textShadowColor {
-	[textShadowColor retain];
-	[_textShadowColor release];
-	_textShadowColor = textShadowColor;
-	
+	_textShadowColor = textShadowColor;	
 	[self setNeedsDisplay];
 }
 
@@ -124,7 +100,6 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 
 - (void)setTextShadowOffset:(CGSize)textShadowOffset {
 	_textShadowOffset = textShadowOffset;
-	
 	[self setNeedsDisplay];
 }
 
@@ -133,7 +108,6 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 
 - (void)setTextEdgeInsets:(UIEdgeInsets)textEdgeInsets {
 	_textEdgeInsets = textEdgeInsets;
-	
 	[self setNeedsDisplay];
 }
 
@@ -154,23 +128,6 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 - (void)setFrame:(CGRect)rect {
 	[super setFrame:rect];
 	[self setNeedsDisplay];
-}
-
-
-#pragma mark - NSObject
-
-- (void)dealloc {
-	[_segments release];
-	[_buttonImage release];
-	[_highlightedButtonImage release];
-	[_dividerImage release];
-	[_highlightedDividerImage release];
-	[_font release];
-	[_textColor release];
-	[_disabledTextColor release];
-	[_textShadowColor release];
-	[_segmentMeta release];
-	[super dealloc];
 }
 
 
@@ -419,10 +376,10 @@ static NSString *kSSSegmentedControlEnabledKey = @"enabled";
 	self.highlightedDividerImage = [UIImage imageNamed:@"UISegmentBarDividerHighlighted.png" bundleName:kSSToolkitBundleName];
 	self.selectedSegmentIndex = SSSegmentedControlNoSegment;
 	
-	_font = [[UIFont boldSystemFontOfSize:12.0f] retain];
-	_textColor = [[UIColor whiteColor] retain];
-	_disabledTextColor = [[UIColor colorWithWhite:0.561f alpha:1.0f] retain];
-	_textShadowColor = [[UIColor colorWithWhite:0.0f alpha:0.5f] retain];
+	_font = [UIFont boldSystemFontOfSize:12.0f];
+	_textColor = [UIColor whiteColor];
+	_disabledTextColor = [UIColor colorWithWhite:0.561f alpha:1.0f];
+	_textShadowColor = [UIColor colorWithWhite:0.0f alpha:0.5f];
 	_textShadowOffset = CGSizeMake(0.0f, -1.0f);
 	_textEdgeInsets = UIEdgeInsetsMake(-1.0f, 0.0f, 0.0f, 0.0f);
 }

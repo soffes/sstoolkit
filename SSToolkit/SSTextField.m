@@ -22,21 +22,11 @@
 @synthesize placeholderTextColor = _placeholderTextColor;
 
 - (void)setPlaceholderTextColor:(UIColor *)placeholderTextColor {
-	[placeholderTextColor retain];
-	[_placeholderTextColor release];
 	_placeholderTextColor = placeholderTextColor;
 	
 	if (!self.text && self.placeholder) {
 		[self setNeedsDisplay];
 	}
-}
-
-
-#pragma mark - NSObject
-
-- (void)dealloc {
-	[_placeholderTextColor release];
-	[super dealloc];
 }
 
 
