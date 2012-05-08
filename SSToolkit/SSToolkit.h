@@ -29,7 +29,6 @@
 #import <SSToolkit/SSTextField.h>
 #import <SSToolkit/SSTextView.h>
 #import <SSToolkit/SSRatingPicker.h>
-#import <SSToolkit/SSSegmentedControl.h>
 
 // View Controllers
 #import <SSToolkit/SSCollectionViewController.h>

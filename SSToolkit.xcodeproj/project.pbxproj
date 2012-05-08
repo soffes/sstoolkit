@@ -57,8 +57,6 @@
 		B2453A1D1394AE5000275B6B /* DictionaryCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B23910A71357DED300ADE21B /* DictionaryCategoryTest.m */; };
 		B2453A1E1394AE5000275B6B /* StringCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B23910A81357DED300ADE21B /* StringCategoryTest.m */; };
 		B2453A1F1394AE5000275B6B /* URLCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B23910C31357E08E00ADE21B /* URLCategoryTest.m */; };
-		B247ABAE1300930200971EC0 /* SSSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = B247ABAC1300930200971EC0 /* SSSegmentedControl.h */; };
-		B247ABAF1300930200971EC0 /* SSSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B247ABAD1300930200971EC0 /* SSSegmentedControl.m */; };
 		B24E9E43121DC29A0085F81E /* NSArray+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E05121DC29A0085F81E /* NSArray+SSToolkitAdditions.h */; };
 		B24E9E44121DC29A0085F81E /* NSArray+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E06121DC29A0085F81E /* NSArray+SSToolkitAdditions.m */; };
 		B24E9E45121DC29A0085F81E /* NSData+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E9E07121DC29A0085F81E /* NSData+SSToolkitAdditions.h */; };
@@ -208,8 +206,6 @@
 		B23910BF1357E07A00ADE21B /* ArrayCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayCategoryTest.m; sourceTree = "<group>"; };
 		B23910C11357E08600ADE21B /* DataCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCategoryTest.m; sourceTree = "<group>"; };
 		B23910C31357E08E00ADE21B /* URLCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCategoryTest.m; sourceTree = "<group>"; };
-		B247ABAC1300930200971EC0 /* SSSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSegmentedControl.h; sourceTree = "<group>"; };
-		B247ABAD1300930200971EC0 /* SSSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSegmentedControl.m; sourceTree = "<group>"; };
 		B24E9E05121DC29A0085F81E /* NSArray+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		B24E9E06121DC29A0085F81E /* NSArray+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		B24E9E07121DC29A0085F81E /* NSData+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SSToolkitAdditions.h"; sourceTree = "<group>"; };
@@ -587,8 +583,6 @@
 				B24E9E2F121DC29A0085F81E /* SSTextView.m */,
 				B28219DB12FA8EB500BAF3C6 /* SSRatingPicker.h */,
 				B28219DC12FA8EB500BAF3C6 /* SSRatingPicker.m */,
-				B247ABAC1300930200971EC0 /* SSSegmentedControl.h */,
-				B247ABAD1300930200971EC0 /* SSSegmentedControl.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -718,7 +712,6 @@
 				B28C6D0712FBE5C400667755 /* SSRatingPickerViewController.h in Headers */,
 				B279539912FC67E300FFE28D /* UIScreen+SSToolkitAdditions.h in Headers */,
 				B279539E12FC6C6F00FFE28D /* SSRatingPickerScrollView.h in Headers */,
-				B247ABAE1300930200971EC0 /* SSSegmentedControl.h in Headers */,
 				B2E241541301C71400F7DC3B /* SSAddressBarTextField.h in Headers */,
 				B2E241561301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.h in Headers */,
 				B2E241581301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.h in Headers */,
@@ -946,7 +939,6 @@
 				B28C6D0812FBE5C400667755 /* SSRatingPickerViewController.m in Sources */,
 				B279539A12FC67E300FFE28D /* UIScreen+SSToolkitAdditions.m in Sources */,
 				B279539F12FC6C6F00FFE28D /* SSRatingPickerScrollView.m in Sources */,
-				B247ABAF1300930200971EC0 /* SSSegmentedControl.m in Sources */,
 				B2E241551301C71400F7DC3B /* SSAddressBarTextField.m in Sources */,
 				B2E241571301C71400F7DC3B /* SSAddressBarTextFieldBackgroundView.m in Sources */,
 				B2E241591301C71400F7DC3B /* SSAddressBarTextFieldBackgroundViewInnerView.m in Sources */,
