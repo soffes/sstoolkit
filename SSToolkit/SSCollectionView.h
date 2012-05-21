@@ -188,8 +188,6 @@ typedef enum {
  @param item An item object of the collection view.
  
  @return An index path representing the row and section of the item or `nil` if the index path is invalid.
- 
- @see itemPathForIndex:
  */
 - (NSIndexPath *)indexPathForItem:(SSCollectionViewItem *)item;
 
@@ -537,7 +535,7 @@ typedef enum {
  
  @param aCollectionView The collection view object requesting this information.
  
- @param An index path that locates a item in `aCollectionView`.
+ @param section The section to size items.
  
  @return A value that specifies the size (in points) that item should be.
  
@@ -561,9 +559,6 @@ typedef enum {
  @param item A collection view item object that `aCollectionView` is going to use when drawing the item.
  
  @param indexPath An index path locating the item in `aCollectionView`.
- 
- @see collectionView:itemForIndexPath:
- @see prepareForReuse
  */ 
 - (void)collectionView:(SSCollectionView *)aCollectionView willDisplayItem:(SSCollectionViewItem *)item atIndexPath:(NSIndexPath *)indexPath;
 

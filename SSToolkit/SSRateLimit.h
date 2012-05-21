@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 Sam Soffes. All rights reserved.
 //
 
+/**
+ Simple utility for only executing code every so often.
+ */
 @interface SSRateLimit : NSObject
 
 /**
