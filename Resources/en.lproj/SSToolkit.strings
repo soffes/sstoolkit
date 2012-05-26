@@ -16,7 +16,6 @@
 "1d" = "1d"; // one day
 "%@d" = "%@d"; // several days
 
-"less than a minute" = "less than a minute";
 "1 minute" = "1 minute";
 "less than %d seconds" = "less than %d seconds";
 "half a minute" = "half a minute";
