@@ -1,5 +1,13 @@
 # SSToolkit Changelog
 
+### Version 1.0.1
+
+[Released May 25, 2012](https://github.com/samsoffes/sstoolkit/tree/1.0.1)
+
+* Use strong and unsafe_unretained instead of retain and assign
+* Require ARC in podspec - [@fictorial](http://github.com/fictorial)
+* Some small fixes to localizable strings - [@massimoperi](http://github.com/massimoperi)
+
 ### Version 1.0.0
 
 [Released May 21, 2012](https://github.com/samsoffes/sstoolkit/tree/1.0.0)
