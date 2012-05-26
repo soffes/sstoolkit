@@ -17,11 +17,11 @@
 /**
  The text label that is displayed to the user.
  */
-@property (nonatomic, retain, readonly) UILabel *textLabel;
+@property (nonatomic, strong, readonly) UILabel *textLabel;
 
 /**
  A view that indicates loading activity to the user. (read-only)
  */
-@property (nonatomic, retain, readonly) UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, strong, readonly) UIActivityIndicatorView *activityIndicatorView;
 
 @end

@@ -25,7 +25,7 @@
  
  All of the rating picker's values are the default values of `SSRatingPicker`.
  */
-@property (nonatomic, retain, readonly) SSRatingPicker *ratingPicker;
+@property (nonatomic, strong, readonly) SSRatingPicker *ratingPicker;
 
 
 ///-------------------------------
@@ -35,11 +35,11 @@
 /**
  The text field for the title. (read-only)
  */
-@property (nonatomic, retain, readonly) SSTextField *titleTextField;
+@property (nonatomic, strong, readonly) SSTextField *titleTextField;
 
 /**
  The text view for the review.  (read-only)
  */
-@property (nonatomic, retain, readonly) SSTextView *reviewTextView;
+@property (nonatomic, strong, readonly) SSTextView *reviewTextView;
 
 @end

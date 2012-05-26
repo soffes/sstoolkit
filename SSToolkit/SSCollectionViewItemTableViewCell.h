@@ -12,8 +12,8 @@
 
 @property (nonatomic, assign) CGSize itemSize;
 @property (nonatomic, assign) CGFloat itemSpacing;
-@property (nonatomic, retain) NSArray *items;
-@property (nonatomic, assign) SSCollectionView *collectionView;
+@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, unsafe_unretained) SSCollectionView *collectionView;
 
 - (id)initWithReuseIdentifier:(NSString *)aReuseIdentifier;
 

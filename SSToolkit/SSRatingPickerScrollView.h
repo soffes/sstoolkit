@@ -13,8 +13,8 @@
 
 @interface SSRatingPickerScrollView : UIScrollView <UITextViewDelegate>
 
-@property (nonatomic, retain, readonly) SSRatingPicker *ratingPicker;
-@property (nonatomic, retain, readonly) SSTextField *titleTextField;
-@property (nonatomic, retain, readonly) SSTextView *reviewTextView;
+@property (nonatomic, strong, readonly) SSRatingPicker *ratingPicker;
+@property (nonatomic, strong, readonly) SSTextField *titleTextField;
+@property (nonatomic, strong, readonly) SSTextView *reviewTextView;
 
 @end

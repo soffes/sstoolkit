@@ -17,9 +17,9 @@
  */
 @interface SSPickerViewController : UITableViewController
 
-@property (nonatomic, retain) NSArray *keys;
-@property (nonatomic, retain) id selectedKey;
-@property (nonatomic, retain) NSIndexPath *currentIndexPath;
+@property (nonatomic, strong) NSArray *keys;
+@property (nonatomic, strong) id selectedKey;
+@property (nonatomic, strong) NSIndexPath *currentIndexPath;
 
 - (void)loadKeys;
 - (NSString *)cellTextForKey:(id)key;

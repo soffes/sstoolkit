@@ -11,7 +11,7 @@
 @interface SSAddressBarTextField : SSTextField
 
 @property (nonatomic, assign, getter=isLoading) BOOL loading;
-@property (nonatomic, retain) UIButton *reloadButton;
-@property (nonatomic, retain) UIButton *stopButton;
+@property (nonatomic, strong) UIButton *reloadButton;
+@property (nonatomic, strong) UIButton *stopButton;
 
 @end

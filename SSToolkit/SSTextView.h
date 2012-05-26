@@ -16,13 +16,13 @@
  
  The default value is `nil`.
  */
-@property (nonatomic, retain) NSString *placeholder;
+@property (nonatomic, strong) NSString *placeholder;
 
 /**
  The color of the placeholder.
  
  The default is `[UIColor lightGrayColor]`.
  */
-@property (nonatomic, retain) UIColor *placeholderColor;
+@property (nonatomic, strong) UIColor *placeholderColor;
 
 @end

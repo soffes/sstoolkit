@@ -20,14 +20,14 @@
  
  @see bottomBorderColor
  */
-@property (nonatomic, retain) UIColor *topBorderColor;
+@property (nonatomic, strong) UIColor *topBorderColor;
 
 /**
  The top inset color. The default is `nil`.
  
  @see bottomInsetColor
  */
-@property (nonatomic, retain) UIColor *topInsetColor;
+@property (nonatomic, strong) UIColor *topInsetColor;
 
 
 ///--------------------------------
@@ -39,13 +39,13 @@
  
  @see topInsetColor
  */
-@property (nonatomic, retain) UIColor *bottomInsetColor;
+@property (nonatomic, strong) UIColor *bottomInsetColor;
 
 /**
  The bottom border color. The default is `nil`.
  
  @see topBorderColor
  */
-@property (nonatomic, retain) UIColor *bottomBorderColor;
+@property (nonatomic, strong) UIColor *bottomBorderColor;
 
 @end

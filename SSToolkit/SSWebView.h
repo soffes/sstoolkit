@@ -134,12 +134,12 @@
 /**
  The URL request identifying the location of the content to load. (read-only)
  */
-@property (nonatomic, readonly, retain) NSURLRequest *request;
+@property (nonatomic, strong, readonly) NSURLRequest *request;
 
 /**
  The last NSURLRequest that the web view loaded. (read-only)
  */
-@property (nonatomic, retain, readonly) NSURLRequest *lastRequest;
+@property (nonatomic, strong, readonly) NSURLRequest *lastRequest;
 
 /**
  A Boolean value indicating whether the receiver is done loading content. (read-only)
@@ -220,7 +220,7 @@
  
  Your application can access the scroll view if it wants to customize the scrolling behavior of the web view.
  */
-@property (nonatomic, retain, readonly) UIScrollView *scrollView;
+@property (nonatomic, strong, readonly) UIScrollView *scrollView;
 
 
 ///-------------------------

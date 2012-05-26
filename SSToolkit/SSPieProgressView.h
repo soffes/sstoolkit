@@ -41,21 +41,21 @@
  
  @see defaultPieColor
  */
-@property (nonatomic, retain) UIColor *pieBorderColor;
+@property (nonatomic, strong) UIColor *pieBorderColor;
 
 /**
  The fill color.
  
  @see defaultPieColor
  */
-@property (nonatomic, retain) UIColor *pieFillColor;
+@property (nonatomic, strong) UIColor *pieFillColor;
 
 /**
  The background color.
  
  The default is white.
  */
-@property (nonatomic, retain) UIColor *pieBackgroundColor;
+@property (nonatomic, strong) UIColor *pieBackgroundColor;
 
 
 ///---------------

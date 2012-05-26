@@ -30,7 +30,7 @@ typedef enum {
  Returns the image view (`UIImageView` object) of the collection view item, which initially has no image set.
  `SSCollectionViewItem` creates the image view object when you create the item.
  */
-@property (nonatomic, retain) UIImageView *imageView;
+@property (nonatomic, strong) UIImageView *imageView;
 
 /**
  Returns the label used for the main textual content of the table cell. (read-only)
@@ -38,7 +38,7 @@ typedef enum {
  Holds the main label of the item. `SSCollectionViewItem` adds an appropriate label when you create the cell in a given
  item style.
  */
-@property (nonatomic, retain) SSLabel *textLabel;
+@property (nonatomic, strong) SSLabel *textLabel;
 
 /**
  Returns the secondary label of the collection view item. (read-only)
@@ -46,14 +46,14 @@ typedef enum {
  Holds the secondary label of the item. `SSCollectionViewItem` adds an appropriate label when you create the cell in a
  given item style.
  */
-@property (nonatomic, retain) SSLabel *detailTextLabel;
+@property (nonatomic, strong) SSLabel *detailTextLabel;
 
 /** The view used as the background of the item.
  
  The default is `nil`. `SSCollectionViewItem` adds the background view as a subview behind all other views and uses its
  current frame location.
  */
-@property (nonatomic, retain) UIView *backgroundView;
+@property (nonatomic, strong) UIView *backgroundView;
 
 /**
  The view used as the background of the item when it is selected.
@@ -63,7 +63,7 @@ typedef enum {
  is not `nil`, or behind all other views. Calling `setSelected:animated:` causes the `selectedBackground` view to
  animate in and out with an alpha fade.
  */
-@property (nonatomic, retain) UIView *selectedBackgroundView;
+@property (nonatomic, strong) UIView *selectedBackgroundView;
 
 /**
  A string used to identify an item that is reusable. (read-only)

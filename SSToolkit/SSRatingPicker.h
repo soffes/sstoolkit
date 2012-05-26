@@ -44,12 +44,12 @@
 /**
  The image draw for a star that is empty.
  */
-@property (nonatomic, retain) UIImage *emptyStarImage;
+@property (nonatomic, strong) UIImage *emptyStarImage;
 
 /**
  The image draw for a star that is filled.
  */
-@property (nonatomic, retain) UIImage *filledStarImage;
+@property (nonatomic, strong) UIImage *filledStarImage;
 
 /**
  The spacing of stars.
@@ -73,6 +73,6 @@
 /**
  The text label drawn under the stars when there is no rating selected. (read-only)
  */
-@property (nonatomic, retain, readonly) UILabel *textLabel;
+@property (nonatomic, strong, readonly) UILabel *textLabel;
 
 @end

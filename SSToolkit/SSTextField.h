@@ -23,7 +23,7 @@
  
  The default value is `nil`.
  */
-@property (nonatomic, retain) UIColor *placeholderTextColor;
+@property (nonatomic, strong) UIColor *placeholderTextColor;
 
 
 ///------------------------------

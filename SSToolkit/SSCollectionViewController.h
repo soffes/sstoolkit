@@ -16,6 +16,6 @@
 /**
  Returns the table view managed by the controller object. (read-only)
  */
-@property (nonatomic, retain, readonly) SSCollectionView *collectionView;
+@property (nonatomic, strong, readonly) SSCollectionView *collectionView;
 
 @end

@@ -24,14 +24,14 @@
  
  The default is `[UIColor grayColor]`.
  */
-@property (nonatomic, retain) UIColor *lineColor;
+@property (nonatomic, strong) UIColor *lineColor;
 
 /**
  The color of the line inset.
  
  The default is 50% opaque white.
  */
-@property (nonatomic, retain) UIColor *insetColor;
+@property (nonatomic, strong) UIColor *insetColor;
 
 
 ///---------------------

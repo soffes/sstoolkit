@@ -18,27 +18,27 @@
 /**
  Returns the file URL of the documents directory.
  */
-@property (nonatomic, retain, readonly) NSURL *documentsDirectoryURL;
+@property (nonatomic, strong, readonly) NSURL *documentsDirectoryURL;
 
 /**
  Returns the file URL of the caches directory.
  */
-@property (nonatomic, retain, readonly) NSURL *cachesDirectoryURL;
+@property (nonatomic, strong, readonly) NSURL *cachesDirectoryURL;
 
 /**
  Returns the file URL of the downloads directory.
  */
-@property (nonatomic, retain, readonly) NSURL *downloadsDirectoryURL;
+@property (nonatomic, strong, readonly) NSURL *downloadsDirectoryURL;
 
 /**
  Returns the file URL of the library directory.
  */
-@property (nonatomic, retain, readonly) NSURL *libraryDirectoryURL;
+@property (nonatomic, strong, readonly) NSURL *libraryDirectoryURL;
 
 /**
  Returns the file URL of the application support directory.
  */
-@property (nonatomic, retain, readonly) NSURL *applicationSupportDirectoryURL;
+@property (nonatomic, strong, readonly) NSURL *applicationSupportDirectoryURL;
 
 
 ///----------------

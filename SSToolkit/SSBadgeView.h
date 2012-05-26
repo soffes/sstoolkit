@@ -41,7 +41,7 @@ typedef enum {
 /**
  The badge text label.
  */
-@property (nonatomic, retain, readonly) SSLabel *textLabel;
+@property (nonatomic, strong, readonly) SSLabel *textLabel;
 
 
 ///-------------------------------------
@@ -55,14 +55,14 @@ typedef enum {
  
  @see defaultBadgeColor
  */
-@property (nonatomic, retain) UIColor *badgeColor;
+@property (nonatomic, strong) UIColor *badgeColor;
 
 /**
  The badge's background color while its cell is highlighted.
  
  The default value of this property is white.
  */
-@property (nonatomic, retain) UIColor *highlightedBadgeColor;
+@property (nonatomic, strong) UIColor *highlightedBadgeColor;
 
 /**
  The corner radius used when rendering the badge's outline.
@@ -101,7 +101,7 @@ typedef enum {
  
  Setting a strechable image for this property is recommended.
  */
-@property (nonatomic, retain) UIImage *badgeImage;
+@property (nonatomic, strong) UIImage *badgeImage;
 
 /**
  The badge's background image while its cell is highlighted.
@@ -110,7 +110,7 @@ typedef enum {
  
  Setting a strechable image for this property is recommended.
  */
-@property (nonatomic, retain) UIImage *highlightedBadgeImage;
+@property (nonatomic, strong) UIImage *highlightedBadgeImage;
 
 
 ///---------------

@@ -16,6 +16,6 @@
 /**
  A view that indicates some status to the user. (read-only)
  */
-@property (nonatomic, retain, readonly) SSBadgeView *badgeView;
+@property (nonatomic, strong, readonly) SSBadgeView *badgeView;
 
 @end
