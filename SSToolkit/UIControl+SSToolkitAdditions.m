@@ -19,12 +19,12 @@
 - (void)setTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
 {
 	NSSet *targets = [self allTargets];
-	[targets enumerateObjectsUsingBlock:^(id target, BOOL *stop) {
-		NSArray *actions = [self actionsForTarget:target forControlEvent:controlEvents];
-		[actions enumerateObjectsUsingBlock:^(NSString *action, NSUInteger idx, BOOL *stop) {
-			[self removeTarget:target action:NSSelectorFromString(action) forControlEvents:controlEvents];
-		}];
-	}];
+	for (id currentTarget in targets) {
+		NSArray *actions = [self actionsForTarget:currentTarget forControlEvent:controlEvents];
+		for (NSString *currentAction in actions) {
+			[self removeTarget:currentTarget action:NSSelectorFromString(currentAction) forControlEvents:controlEvents];
+		}
+	}
 	[self addTarget:target action:action forControlEvents:controlEvents];
 }
 
