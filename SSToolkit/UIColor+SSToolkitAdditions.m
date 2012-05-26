@@ -23,9 +23,11 @@
 @implementation UIColor (SSToolkitAdditions)
 
 + (UIColor *)colorWithHex:(NSString *)hex {
-	// Remove `#`
-	if ([[hex substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"#"]) {
+	// Remove `#` and `0x`
+	if ([hex hasPrefix:@"#"]) {
 		hex = [hex substringFromIndex:1];
+	} else if ([hex hasPrefix:@"0x"]) {
+		hex = [hex substringFromIndex:2];
 	}
 	
 	// Invalid if not 3, 6, or 8 characters

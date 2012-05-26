@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		962F5F5E156CCD1200408648 /* NSNumber+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 962F5F5B156CCD1200408648 /* NSNumber+SSToolkitAdditions.h */; };
+		962F5F5F156CCD1200408648 /* NSNumber+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 962F5F5C156CCD1200408648 /* NSNumber+SSToolkitAdditions.m */; };
+		962F5F60156CCD1200408648 /* UIColor+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 962F5F5D156CCD1200408648 /* UIColor+SSToolkitAdditions.m */; };
 		9EB278B114BBC4360077194C /* SSConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E11121DC29A0085F81E /* SSConcurrentOperation.m */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		B2136B3C13ABCC0C00FEBCFD /* SSBorderedView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2136B3A13ABCC0C00FEBCFD /* SSBorderedView.h */; };
@@ -167,6 +170,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		962F5F5B156CCD1200408648 /* NSNumber+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+SSToolkitAdditions.h"; sourceTree = "<group>"; };
+		962F5F5C156CCD1200408648 /* NSNumber+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+SSToolkitAdditions.m"; sourceTree = "<group>"; };
+		962F5F5D156CCD1200408648 /* UIColor+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B2136B3A13ABCC0C00FEBCFD /* SSBorderedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSBorderedView.h; sourceTree = "<group>"; };
 		B2136B3B13ABCC0C00FEBCFD /* SSBorderedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSBorderedView.m; sourceTree = "<group>"; };
@@ -483,6 +489,9 @@
 		B2601A711223079A005506D5 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				962F5F5B156CCD1200408648 /* NSNumber+SSToolkitAdditions.h */,
+				962F5F5C156CCD1200408648 /* NSNumber+SSToolkitAdditions.m */,
+				962F5F5D156CCD1200408648 /* UIColor+SSToolkitAdditions.m */,
 				B24E9E05121DC29A0085F81E /* NSArray+SSToolkitAdditions.h */,
 				B24E9E06121DC29A0085F81E /* NSArray+SSToolkitAdditions.m */,
 				B24E9E07121DC29A0085F81E /* NSData+SSToolkitAdditions.h */,
@@ -726,6 +735,7 @@
 				B2C50814151BAB4000E94614 /* NSBundle+SSToolkitAdditions.h in Headers */,
 				B2F72A131534D54C00556B66 /* SSRateLimit.h in Headers */,
 				B2C7ED6C153A5624006ABE73 /* SSButton.h in Headers */,
+				962F5F5E156CCD1200408648 /* NSNumber+SSToolkitAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -952,6 +962,8 @@
 				B2C50815151BAB4000E94614 /* NSBundle+SSToolkitAdditions.m in Sources */,
 				B2F72A141534D54C00556B66 /* SSRateLimit.m in Sources */,
 				B2C7ED6D153A5624006ABE73 /* SSButton.m in Sources */,
+				962F5F5F156CCD1200408648 /* NSNumber+SSToolkitAdditions.m in Sources */,
+				962F5F60156CCD1200408648 /* UIColor+SSToolkitAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
