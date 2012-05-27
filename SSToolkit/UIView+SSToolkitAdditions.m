@@ -74,16 +74,11 @@
 	return superviews;
 }
 
-
 - (id)firstSuperviewOfClass:(Class)superviewClass {
-	UIView *view = self;
-	UIView *superview = nil;
-	while (view) {
-		superview = [view superview];
-		if ([superview isKindOfClass:superviewClass]) {
-			return superview;
+	for (UIView *view = [self superview]; view != nil; view = [view superview]) {
+		if ([view isKindOfClass:superviewClass]) {
+			return view;
 		}		
-		view = superview;
 	}
 	return nil;
 }
