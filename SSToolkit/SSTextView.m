@@ -23,7 +23,7 @@
 #pragma mark - Accessors
 
 @synthesize placeholder = _placeholder;
-@synthesize placeholderColor = _placeholderColor;
+@synthesize placeholderTextColor = _placeholderTextColor;
 
 - (void)setText:(NSString *)string {
 	[super setText:string];
@@ -70,7 +70,7 @@
 	[super drawRect:rect];
 	
 	if (_shouldDrawPlaceholder) {
-		[_placeholderColor set];
+		[_placeholderTextColor set];
 		[_placeholder drawInRect:CGRectMake(8.0f, 8.0f, self.frame.size.width - 16.0f, self.frame.size.height - 16.0f) withFont:self.font];
 	}
 }
@@ -81,14 +81,14 @@
 - (void)_initialize {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_textChanged:) name:UITextViewTextDidChangeNotification object:self];
 	
-	self.placeholderColor = [UIColor colorWithWhite:0.702f alpha:1.0f];
+	self.placeholderTextColor = [UIColor colorWithWhite:0.702f alpha:1.0f];
 	_shouldDrawPlaceholder = NO;
 }
 
 
 - (void)_updateShouldDrawPlaceholder {
 	BOOL prev = _shouldDrawPlaceholder;
-	_shouldDrawPlaceholder = self.placeholder && self.placeholderColor && self.text.length == 0;
+	_shouldDrawPlaceholder = self.placeholder && self.placeholderTextColor && self.text.length == 0;
 	
 	if (prev != _shouldDrawPlaceholder) {
 		[self setNeedsDisplay];
