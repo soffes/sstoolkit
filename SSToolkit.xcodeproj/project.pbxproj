@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		962F5F5E156CCD1200408648 /* NSNumber+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 962F5F5B156CCD1200408648 /* NSNumber+SSToolkitAdditions.h */; };
 		962F5F5F156CCD1200408648 /* NSNumber+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 962F5F5C156CCD1200408648 /* NSNumber+SSToolkitAdditions.m */; };
-		962F5F60156CCD1200408648 /* UIColor+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 962F5F5D156CCD1200408648 /* UIColor+SSToolkitAdditions.m */; };
 		9EB278B114BBC4360077194C /* SSConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E11121DC29A0085F81E /* SSConcurrentOperation.m */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		B2136B3C13ABCC0C00FEBCFD /* SSBorderedView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2136B3A13ABCC0C00FEBCFD /* SSBorderedView.h */; };
@@ -801,7 +800,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SS;
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Sam Soffes";
 			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "SSToolkit" */;
@@ -963,7 +962,6 @@
 				B2F72A141534D54C00556B66 /* SSRateLimit.m in Sources */,
 				B2C7ED6D153A5624006ABE73 /* SSButton.m in Sources */,
 				962F5F5F156CCD1200408648 /* NSNumber+SSToolkitAdditions.m in Sources */,
-				962F5F60156CCD1200408648 /* UIColor+SSToolkitAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
