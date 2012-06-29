@@ -10,6 +10,7 @@
 
 @interface SSCollectionViewItemTableViewCell : UITableViewCell
 
+@property (nonatomic, assign) CGFloat initialSpacing;
 @property (nonatomic, assign) CGSize itemSize;
 @property (nonatomic, assign) CGFloat itemSpacing;
 @property (nonatomic, strong) NSArray *items;

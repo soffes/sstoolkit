@@ -151,12 +151,17 @@ typedef enum {
 @property (nonatomic, assign) CGFloat minimumColumnSpacing;
 
 /**
- The spacing between each row in the receiver. This does not add space above the first row or below the last.
+ The spacing between each row in the receiver. This does not add space above the first row unless `addRowSpacingToFirstRow` is `YES`.
  
  The row spacing is in points. The default is `20.0`.
  */
 @property (nonatomic, assign) CGFloat rowSpacing;
 
+
+/**
+ Optionally apply row spacing spacing before the first row, this uses the value of `rowSpacing` to determine the amount of spacing to add. The default is `NO`.
+*/
+@property (nonatomic, assign) BOOL addRowSpacingToFirstRow;
 
 /**
  The background color of a row.

@@ -69,6 +69,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 @synthesize allowsSelection = _allowsSelection;
 @synthesize extremitiesStyle = _extremitiesStyle;
 @synthesize rowBackgroundColor = _rowBackgroundColor;
+@synthesize addRowSpacingToFirstRow = _addRowSpacingToFirstRow;
 
 #pragma mark - NSObject
 
@@ -520,6 +521,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	
 	_minimumColumnSpacing = 10.0f;
 	_rowSpacing = 20.0f;
+    _addRowSpacingToFirstRow = NO;
 	_allowsSelection = YES;
 	_visibleItems = [[NSMutableSet alloc] init];
 	_reuseableItems = [[NSMutableDictionary alloc] init];
@@ -816,6 +818,16 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 		cell.collectionView = self;
 	}
 	
+    if (self.addRowSpacingToFirstRow && ([rowIndexPath row] == 0 || 
+                                         (self.extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling && [rowIndexPath row] == 1)))
+    {
+        cell.initialSpacing = _rowSpacing;
+    }
+    else 
+    {
+        cell.initialSpacing = 0.0f;
+    }
+    
 	cell.itemSize = [self _itemSizeForSection:rowIndexPath.section];
 	cell.itemSpacing = [self _itemSpacingForSection:rowIndexPath.section];
 	cell.items = [self _itemsForRowIndexPath:rowIndexPath];
@@ -843,7 +855,15 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	}
 
 	// Row
-	return [self _itemSizeForSection:rowIndexPath.section].height + _rowSpacing;
+    if (self.addRowSpacingToFirstRow && ([rowIndexPath row] == 0 || 
+                                         (self.extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling && [rowIndexPath row] == 1)))
+    {
+        return _rowSpacing + [self _itemSizeForSection:rowIndexPath.section].height + _rowSpacing;        
+    }
+    else 
+    {
+        return [self _itemSizeForSection:rowIndexPath.section].height + _rowSpacing;
+    }
 }
 
 
