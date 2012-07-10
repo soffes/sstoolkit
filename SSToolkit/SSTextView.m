@@ -96,7 +96,7 @@
 }
 
 
-- (void)_textChanged:(NSNotification *)notificaiton {
+- (void)_textChanged:(NSNotification *)notification {
 	[self _updateShouldDrawPlaceholder];	
 }
 
