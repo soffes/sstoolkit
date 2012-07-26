@@ -133,6 +133,9 @@ CGFloat const kAngleOffset = -90.0f;
 - (void)_initialize {
 	self.backgroundColor = [UIColor clearColor];
 	
+    self.angleOffset = 0.0f;
+    self.progressMin = 0.0f;
+    self.progressMax = 1.0f;
 	self.progress = 0.0f;
 	self.pieBorderWidth = 2.0f;
 	self.pieBorderColor = [[self class] defaultPieColor];
