@@ -19,15 +19,31 @@ CGFloat const kAngleOffset = -90.0f;
 
 #pragma mark - Accessors
 
+@synthesize angleOffset = _angleOffset;
 @synthesize progress = _progress;
+@synthesize progressMin = _progressMin;
+@synthesize progressMax = _progressMax;
 @synthesize pieBorderWidth = _pieBorderWidth;
 @synthesize pieBorderColor = _pieBorderColor;
 @synthesize pieFillColor = _pieFillColor;
 @synthesize pieBackgroundColor = _pieBackgroundColor;
 
 - (void)setProgress:(CGFloat)newProgress {
-	_progress = fmaxf(0.0f, fminf(1.0f, newProgress));
-	[self setNeedsDisplay];
+    
+    // scale the progress property to fit within our min/max values.
+    // e.g. if a progress of 1.0f is given, but our max = 0.7f, then scale 1.0 -> 0.7f;
+    CGFloat scaledProgress = (newProgress / ((1.0f - 0.0f) / (self.progressMax - self.progressMin))) + self.progressMin;
+
+    _progress = fmaxf(self.progressMin, fminf(self.progressMax, scaledProgress));
+    [self setNeedsDisplay];
+}
+
+- (void)setProgressMin:(CGFloat)progressMin {
+    _progressMin = fmaxf(0.0f, fminf(1.0f, progressMin));
+}
+
+- (void)setProgressMax:(CGFloat)progressMax {
+    _progressMax = fmaxf(0.0f, fminf(1.0f, progressMax));
 }
 
 
@@ -92,14 +108,15 @@ CGFloat const kAngleOffset = -90.0f;
 	if (_progress > 0.0f) {
 		CGPoint center = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 		CGFloat radius = center.y;
-		CGFloat angle = DEGREES_TO_RADIANS((360.0f * _progress) + kAngleOffset);
+		CGFloat angle = DEGREES_TO_RADIANS((360.0f * _progress) + kAngleOffset + self.angleOffset);
 		CGPoint points[3] = {
-			CGPointMake(center.x, 0.0f),
+			//CGPointMake(center.x, 0.0f), // top/center
+			CGPointMake(center.x + radius * cosf(DEGREES_TO_RADIANS(kAngleOffset + self.angleOffset)), center.y + radius * sinf(DEGREES_TO_RADIANS(kAngleOffset + self.angleOffset))),
 			center,
 			CGPointMake(center.x + radius * cosf(angle), center.y + radius * sinf(angle))
 		};
 		CGContextAddLines(context, points, sizeof(points) / sizeof(points[0]));
-		CGContextAddArc(context, center.x, center.y, radius, DEGREES_TO_RADIANS(kAngleOffset), angle, false);
+		CGContextAddArc(context, center.x, center.y, radius, DEGREES_TO_RADIANS(kAngleOffset + self.angleOffset), angle, false);
 		CGContextDrawPath(context, kCGPathEOFill);
 	}
 	
@@ -116,6 +133,9 @@ CGFloat const kAngleOffset = -90.0f;
 - (void)_initialize {
 	self.backgroundColor = [UIColor clearColor];
 	
+    self.angleOffset = 0.0f;
+    self.progressMin = 0.0f;
+    self.progressMax = 1.0f;
 	self.progress = 0.0f;
 	self.pieBorderWidth = 2.0f;
 	self.pieBorderColor = [[self class] defaultPieColor];
