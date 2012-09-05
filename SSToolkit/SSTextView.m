@@ -71,7 +71,7 @@
 	
 	if (_shouldDrawPlaceholder) {
 		[_placeholderTextColor set];
-		[_placeholder drawInRect:CGRectMake(8.0f, 8.0f, self.frame.size.width - 16.0f, self.frame.size.height - 16.0f) withFont:self.font];
+		[_placeholder drawInRect:CGRectMake(8.0f, 0.0f, self.frame.size.width - 16.0f, self.frame.size.height) withFont:self.font];
 	}
 }
 
