@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5841B48416013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5841B48216013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.h */; };
+		5841B48516013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5841B48316013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.m */; };
 		962F5F5E156CCD1200408648 /* NSNumber+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 962F5F5B156CCD1200408648 /* NSNumber+SSToolkitAdditions.h */; };
 		962F5F5F156CCD1200408648 /* NSNumber+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 962F5F5C156CCD1200408648 /* NSNumber+SSToolkitAdditions.m */; };
 		9EB278B114BBC4360077194C /* SSConcurrentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B24E9E11121DC29A0085F81E /* SSConcurrentOperation.m */; };
@@ -169,6 +171,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5841B48216013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SSToolkitAdditions.h"; sourceTree = "<group>"; };
+		5841B48316013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		962F5F5B156CCD1200408648 /* NSNumber+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		962F5F5C156CCD1200408648 /* NSNumber+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		962F5F5D156CCD1200408648 /* UIColor+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SSToolkitAdditions.m"; sourceTree = "<group>"; };
@@ -488,6 +492,8 @@
 		B2601A711223079A005506D5 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				5841B48216013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.h */,
+				5841B48316013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.m */,
 				962F5F5B156CCD1200408648 /* NSNumber+SSToolkitAdditions.h */,
 				962F5F5C156CCD1200408648 /* NSNumber+SSToolkitAdditions.m */,
 				962F5F5D156CCD1200408648 /* UIColor+SSToolkitAdditions.m */,
@@ -735,6 +741,7 @@
 				B2F72A131534D54C00556B66 /* SSRateLimit.h in Headers */,
 				B2C7ED6C153A5624006ABE73 /* SSButton.h in Headers */,
 				962F5F5E156CCD1200408648 /* NSNumber+SSToolkitAdditions.h in Headers */,
+				5841B48416013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -962,6 +969,7 @@
 				B2F72A141534D54C00556B66 /* SSRateLimit.m in Sources */,
 				B2C7ED6D153A5624006ABE73 /* SSButton.m in Sources */,
 				962F5F5F156CCD1200408648 /* NSNumber+SSToolkitAdditions.m in Sources */,
+				5841B48516013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
