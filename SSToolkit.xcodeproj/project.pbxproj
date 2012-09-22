@@ -42,9 +42,6 @@
 		B23F160B1547C73D00638372 /* SSAddressBarTextFieldReload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50800151BA6C000E94614 /* SSAddressBarTextFieldReload@2x.png */; };
 		B23F160C1547C73D00638372 /* SSAddressBarTextFieldStop.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50801151BA6C000E94614 /* SSAddressBarTextFieldStop.png */; };
 		B23F160D1547C73D00638372 /* SSAddressBarTextFieldStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50802151BA6C000E94614 /* SSAddressBarTextFieldStop@2x.png */; };
-		B23F160E1547C73D00638372 /* SSVignetteiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50804151BA6C000E94614 /* SSVignetteiPad.png */; };
-		B23F160F1547C73D00638372 /* SSVignetteiPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50805151BA6C000E94614 /* SSVignetteiPhone.png */; };
-		B23F16101547C73D00638372 /* SSVignetteiPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50806151BA6C000E94614 /* SSVignetteiPhone@2x.png */; };
 		B23F16111547C73D00638372 /* UISegmentBarButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50807151BA6C000E94614 /* UISegmentBarButton.png */; };
 		B23F16121547C73D00638372 /* UISegmentBarButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50808151BA6C000E94614 /* UISegmentBarButton@2x.png */; };
 		B23F16131547C73D00638372 /* UISegmentBarButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C50809151BA6C000E94614 /* UISegmentBarButtonHighlighted.png */; };
@@ -303,9 +300,6 @@
 		B2C50800151BA6C000E94614 /* SSAddressBarTextFieldReload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SSAddressBarTextFieldReload@2x.png"; sourceTree = "<group>"; };
 		B2C50801151BA6C000E94614 /* SSAddressBarTextFieldStop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SSAddressBarTextFieldStop.png; sourceTree = "<group>"; };
 		B2C50802151BA6C000E94614 /* SSAddressBarTextFieldStop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SSAddressBarTextFieldStop@2x.png"; sourceTree = "<group>"; };
-		B2C50804151BA6C000E94614 /* SSVignetteiPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SSVignetteiPad.png; sourceTree = "<group>"; };
-		B2C50805151BA6C000E94614 /* SSVignetteiPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SSVignetteiPhone.png; sourceTree = "<group>"; };
-		B2C50806151BA6C000E94614 /* SSVignetteiPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SSVignetteiPhone@2x.png"; sourceTree = "<group>"; };
 		B2C50807151BA6C000E94614 /* UISegmentBarButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISegmentBarButton.png; sourceTree = "<group>"; };
 		B2C50808151BA6C000E94614 /* UISegmentBarButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UISegmentBarButton@2x.png"; sourceTree = "<group>"; };
 		B2C50809151BA6C000E94614 /* UISegmentBarButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISegmentBarButtonHighlighted.png; sourceTree = "<group>"; };
@@ -656,9 +650,6 @@
 				B2C50800151BA6C000E94614 /* SSAddressBarTextFieldReload@2x.png */,
 				B2C50801151BA6C000E94614 /* SSAddressBarTextFieldStop.png */,
 				B2C50802151BA6C000E94614 /* SSAddressBarTextFieldStop@2x.png */,
-				B2C50804151BA6C000E94614 /* SSVignetteiPad.png */,
-				B2C50805151BA6C000E94614 /* SSVignetteiPhone.png */,
-				B2C50806151BA6C000E94614 /* SSVignetteiPhone@2x.png */,
 				B2C50807151BA6C000E94614 /* UISegmentBarButton.png */,
 				B2C50808151BA6C000E94614 /* UISegmentBarButton@2x.png */,
 				B2C50809151BA6C000E94614 /* UISegmentBarButtonHighlighted.png */,
@@ -875,9 +866,6 @@
 				B23F160B1547C73D00638372 /* SSAddressBarTextFieldReload@2x.png in Resources */,
 				B23F160C1547C73D00638372 /* SSAddressBarTextFieldStop.png in Resources */,
 				B23F160D1547C73D00638372 /* SSAddressBarTextFieldStop@2x.png in Resources */,
-				B23F160E1547C73D00638372 /* SSVignetteiPad.png in Resources */,
-				B23F160F1547C73D00638372 /* SSVignetteiPhone.png in Resources */,
-				B23F16101547C73D00638372 /* SSVignetteiPhone@2x.png in Resources */,
 				B23F16111547C73D00638372 /* UISegmentBarButton.png in Resources */,
 				B23F16121547C73D00638372 /* UISegmentBarButton@2x.png in Resources */,
 				B23F16131547C73D00638372 /* UISegmentBarButtonHighlighted.png in Resources */,
