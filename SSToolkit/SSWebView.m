@@ -31,6 +31,7 @@
 @synthesize consoleEnabled = _consoleEnabled;
 @synthesize lastRequest = _lastRequest;
 @synthesize loadingPage = _loadingPage;
+@synthesize shouldTestDOMLoaded = _shouldTestDOMLoaded;
 
 #pragma mark - NSObject
 
@@ -113,7 +114,7 @@
 
 	_webView.delegate = self;
 	[self addSubview:_webView];
-    
+	
 	_lastRequest = nil;
 }
 
@@ -150,6 +151,7 @@
 	_loadingPage = NO;
 	_shadowsHidden = NO;
 	_consoleEnabled = NO;
+	_shouldTestDOMLoaded = YES;
 }
 
 
@@ -286,14 +288,14 @@
 
 - (void)loadData:(NSData *)data MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)encodingName baseURL:(NSURL *)baseURL {
 	_lastRequest = nil;
-    
+	
 	[_webView loadData:data MIMEType:MIMEType textEncodingName:encodingName baseURL:baseURL];
 }
 
 
 - (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL {
 	_lastRequest = nil;
-    
+	
 	if (!baseURL) {
 		baseURL = [NSURL URLWithString:@"http://localhost/"];
 	}
@@ -303,7 +305,7 @@
 
 - (void)loadRequest:(NSURLRequest *)aRequest {
 	_lastRequest = nil;
-    
+	
 	[_webView loadRequest:aRequest];
 }
 
@@ -427,15 +429,17 @@
 	// Check DOM
 	if (_testedDOM == NO) {
 		_testedDOM = YES;
-
-        // The internal delegate will intercept this load and forward the event to the real delegate
-        // Crazy javascript from http://dean.edwards.name/weblog/2006/06/again
-		static NSString *testDOM = @"var _SSWebViewDOMLoadTimer=setInterval(function(){if(/loaded|complete/.test(document.readyState)){clearInterval(_SSWebViewDOMLoadTimer);location.href='x-sswebview://dom-loaded'}},10);";
-		[self stringByEvaluatingJavaScriptFromString:testDOM];
-
-		// Override console to pass messages to NSLog
-		if (_consoleEnabled) {
-			[self stringByEvaluatingJavaScriptFromString:@"console.log=function(msg){location.href='x-sswebview://log/?'+escape(msg.toString())}"];
+		
+		if (_shouldTestDOMLoaded == YES) {
+			// The internal delegate will intercept this load and forward the event to the real delegate
+			// Crazy javascript from http://dean.edwards.name/weblog/2006/06/again
+			static NSString *testDOM = @"var _SSWebViewDOMLoadTimer=setInterval(function(){if(/loaded|complete/.test(document.readyState)){clearInterval(_SSWebViewDOMLoadTimer);location.href='x-sswebview://dom-loaded'}},10);";
+			[self stringByEvaluatingJavaScriptFromString:testDOM];
+			
+			// Override console to pass messages to NSLog
+			if (_consoleEnabled) {
+				[self stringByEvaluatingJavaScriptFromString:@"console.log=function(msg){location.href='x-sswebview://log/?'+escape(msg.toString())}"];
+			}
 		}
 	}
 
