@@ -10,6 +10,16 @@
  Options for aligning the badge horizontally.
  */
 typedef enum {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_6_0
+	/** Align badge along the left edge. */
+	SSBadgeViewAlignmentLeft = NSTextAlignmentLeft,
+	
+	/** Align badge equally along both sides of the center line. */
+	SSBadgeViewAlignmentCenter = NSTextAlignmentCenter,
+	
+	/** Align badge along the right edge. */
+	SSBadgeViewAlignmentRight = NSTextAlignmentRight
+#else
 	/** Align badge along the left edge. */
 	SSBadgeViewAlignmentLeft = UITextAlignmentLeft,
 	
@@ -18,6 +28,7 @@ typedef enum {
 	
 	/** Align badge along the right edge. */
 	SSBadgeViewAlignmentRight = UITextAlignmentRight
+#endif
 } SSBadgeViewAlignment;
 
 @class SSLabel;

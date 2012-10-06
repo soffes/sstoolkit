@@ -50,8 +50,13 @@ static CGFloat indicatorRightMargin = 8.0f;
 	CGSize maxSize = CGSizeMake(frame.size.width - (interiorPadding * 2.0f) - indicatorSize - indicatorRightMargin,
 								indicatorSize);
 	
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_6_0
+	CGSize textSize = [_textLabel.text sizeWithFont:_textLabel.font constrainedToSize:maxSize
+									  lineBreakMode:NSLineBreakByWordWrapping];
+#else
 	CGSize textSize = [_textLabel.text sizeWithFont:_textLabel.font constrainedToSize:maxSize
 									  lineBreakMode:UILineBreakModeWordWrap];
+#endif
 	
 	// Calculate position
 	CGFloat totalWidth = textSize.width + indicatorSize + indicatorRightMargin;

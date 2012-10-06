@@ -115,12 +115,20 @@
 		if (_style != SSCollectionViewItemStyleBlank) {
 			if (_style == SSCollectionViewItemStyleSubtitle) {
 				_detailTextLabel = [[SSLabel alloc] initWithFrame:CGRectZero];
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_6_0
+				_detailTextLabel.textAlignment = NSTextAlignmentCenter;
+#else
 				_detailTextLabel.textAlignment = UITextAlignmentCenter;
+#endif
 				[self addSubview:_detailTextLabel];
 			}
 			
 			_textLabel = [[SSLabel alloc] initWithFrame:CGRectZero];
-			_textLabel.textAlignment = UITextAlignmentCenter;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_6_0
+            _textLabel.textAlignment = NSTextAlignmentCenter;
+#else
+            _textLabel.textAlignment = UITextAlignmentCenter;
+#endif
 			[self addSubview:_textLabel];
 			
 			_imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
