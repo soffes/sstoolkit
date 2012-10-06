@@ -162,7 +162,11 @@
 	_textLabel.backgroundColor = [UIColor clearColor];
 	_textLabel.text = @"Tap a Star to Rate";
 	_textLabel.font = [UIFont boldSystemFontOfSize:10.0f];
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_6_0
+	_textLabel.textAlignment = NSTextAlignmentCenter;
+#else
 	_textLabel.textAlignment = UITextAlignmentCenter;
+#endif
 	[self addSubview:_textLabel];
 }
 
