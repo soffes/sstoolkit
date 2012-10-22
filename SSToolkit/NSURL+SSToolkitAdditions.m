@@ -25,4 +25,17 @@
 	 return [NSDictionary dictionaryWithFormEncodedString:self.query];
 }
 
+
+- (NSURL*)URLByTrimmingHash
+{
+    NSUInteger hashLocation = [self.absoluteString rangeOfString:@"#" options:NSBackwardsSearch].location;
+	if (hashLocation != NSNotFound) {
+        NSString* urlString = [self.absoluteString substringToIndex:hashLocation];
+        return [NSURL URLWithString:urlString];
+    }
+    else {
+        return self;
+    }
+}
+
 @end

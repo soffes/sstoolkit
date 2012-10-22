@@ -38,4 +38,6 @@
  */
 - (NSDictionary *)queryDictionary;
 
+- (NSURL*)URLByTrimmingHash;
+
 @end

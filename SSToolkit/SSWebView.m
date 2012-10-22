@@ -8,6 +8,7 @@
 
 #import "SSWebView.h"
 #import "NSString+SSToolkitAdditions.h"
+#import "NSURL+SSToolkitAdditions.h"
 
 @interface SSWebView (PrivateMethods)
 - (void)_initialize;
@@ -406,9 +407,9 @@
 	if (should == NO) {
 		return NO;
 	}
-
+	
 	// Starting a new request
-	if ([[aRequest mainDocumentURL] isEqual:[_lastRequest mainDocumentURL]] == NO) {
+	if ([[[aRequest mainDocumentURL] URLByTrimmingHash] isEqual:[[_lastRequest mainDocumentURL] URLByTrimmingHash]] == NO) {
 		_lastRequest = aRequest;
 		_testedDOM = NO;
 
