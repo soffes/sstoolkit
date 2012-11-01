@@ -41,6 +41,24 @@
 }
 
 
+- (void)setContentInset:(UIEdgeInsets)contentInset {
+	[super setContentInset:contentInset];
+	[self _updateShouldDrawPlaceholder];
+}
+
+
+- (void)setFont:(UIFont *)font {
+	[super setFont:font];
+	[self _updateShouldDrawPlaceholder];
+}
+
+
+- (void)setTextAlignment:(NSTextAlignment)textAlignment {
+	[super setTextAlignment:textAlignment];
+	[self _updateShouldDrawPlaceholder];
+}
+
+
 #pragma mark - NSObject
 
 - (void)dealloc {
@@ -68,10 +86,20 @@
 
 - (void)drawRect:(CGRect)rect {
 	[super drawRect:rect];
-	
+
 	if (_shouldDrawPlaceholder) {
+		// Inset the rect
+		rect = UIEdgeInsetsInsetRect(rect, self.contentInset);
+
+		// TODO: This is hacky. Not sure why 8 is the magic number
+		if (self.contentInset.left == 0.0f) {
+			rect.origin.x += 8.0f;
+		}
+		rect.origin.y += 8.0f;
+
+		// Draw the text
 		[_placeholderTextColor set];
-		[_placeholder drawInRect:CGRectMake(8.0f, 8.0f, self.frame.size.width - 16.0f, self.frame.size.height - 16.0f) withFont:self.font];
+		[_placeholder drawInRect:rect withFont:self.font lineBreakMode:UILineBreakModeTailTruncation alignment:self.textAlignment];
 	}
 }
 
@@ -87,10 +115,10 @@
 
 
 - (void)_updateShouldDrawPlaceholder {
-	BOOL prev = _shouldDrawPlaceholder;
+	BOOL previous = _shouldDrawPlaceholder;
 	_shouldDrawPlaceholder = self.placeholder && self.placeholderTextColor && self.text.length == 0;
 	
-	if (prev != _shouldDrawPlaceholder) {
+	if (previous != _shouldDrawPlaceholder) {
 		[self setNeedsDisplay];
 	}
 }
