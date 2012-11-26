@@ -55,7 +55,8 @@ static SSHUDWindow *kHUDWindow = nil;
 
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGGradientRef gradient = SSCreateGradientWithColors(@[[UIColor colorWithWhite:0.0f alpha:0.1f], [UIColor colorWithWhite:0.0f alpha:0.5f]]);
-	CGContextDrawRadialGradient(context, gradient, self.center, 0.0f, self.center, fmaxf(self.bounds.size.width, self.bounds.size.height) / 2.0f, kCGGradientDrawsAfterEndLocation);
+    CGPoint centerPoint  = CGPointMake(self.bounds.size.width / 2.0 , self.bounds.size.height / 2.0);
+    CGContextDrawRadialGradient(context, gradient, centerPoint, 0.0f, centerPoint, fmaxf(self.bounds.size.width, self.bounds.size.height) / 2.0f, kCGGradientDrawsAfterEndLocation);
 	CGGradientRelease(gradient);
 }
 
