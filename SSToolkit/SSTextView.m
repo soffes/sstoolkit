@@ -10,15 +10,11 @@
 
 @interface SSTextView ()
 - (void)_initialize;
-- (void)_updateShouldDrawPlaceholder;
 - (void)_textChanged:(NSNotification *)notification;
 @end
 
 
-@implementation SSTextView {
-	BOOL _shouldDrawPlaceholder;
-}
-
+@implementation SSTextView
 
 #pragma mark - Accessors
 
