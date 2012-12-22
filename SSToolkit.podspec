@@ -14,8 +14,22 @@ Pod::Spec.new do |s|
   s.frameworks   = 'QuartzCore', 'CoreGraphics'
   s.requires_arc = true
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
+  s.preserve_paths = 'SSToolkit.xcodeproj', 'Resources'
 
   def s.post_install(target)
+    puts "\nGenerating SSToolkit resources bundle\n".yellow if config.verbose?
+    Dir.chdir File.join(config.project_pods_root, 'SSToolkit') do
+      command = "xcodebuild -project SSToolkit.xcodeproj -target SSToolkitResources CONFIGURATION_BUILD_DIR=../Resources"
+      command << " 2>&1 > /dev/null" unless config.verbose?
+      unless system(command)
+        raise ::Pod::Informative, "Failed to generate SSToolkit resources bundle"
+      end
+
+      File.open(File.join(config.project_pods_root, target.target_definition.copy_resources_script_name), 'a') do |file|
+        file.puts "install_resource 'Resources/SSToolkitResources.bundle'"
+      end
+    end
+    
     prefix_header = config.project_pods_root + target.prefix_header_filename
     prefix_header.open('a') do |file|
       file.puts(%{#ifdef __OBJC__\n#import "SSToolkitDefines.h"\n#endif})
