@@ -17,8 +17,8 @@
 "%@d" = "%@T";   // several days
 
 "1 minute" = "1 Minute";
-"%d minutes" = "weniger als %d Sekunden";
-"half a minute" = "halbe Minute";
+"less than %d seconds" = "weniger als %d Sekunden";
+"half a minute" = "eine halbe Minute";
 "less than a minute" = "unter einer Minute";
 "%d minutes" = "%d Minuten";
 "about 1 hour" = "etwa 1 Stunde";
