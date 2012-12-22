@@ -9,7 +9,6 @@ Pod::Spec.new do |s|
   s.description  = 'SSToolkit is a collection of well-documented iOS classes for making life ' \
                    'easier by solving common problems all iOS developers face. Some really ' \
                    'handy classes are SSCollectionView, SSGradientView, SSSwitch, and many more.'
-  s.resources    = 'Resources'
   s.source_files = 'SSToolkit/**/*.{h,m}'
   s.frameworks   = 'QuartzCore', 'CoreGraphics'
   s.requires_arc = true
