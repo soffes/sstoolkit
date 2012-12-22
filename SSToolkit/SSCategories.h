@@ -8,6 +8,7 @@
 
 // Foundation
 #import <SSToolkit/NSArray+SSToolkitAdditions.h>
+#import <SSToolkit/NSMutableArray+SSToolkitAdditions.h>
 #import <SSToolkit/NSData+SSToolkitAdditions.h>
 #import <SSToolkit/NSDate+SSToolkitAdditions.h>
 #import <SSToolkit/NSDictionary+SSToolkitAdditions.h>
