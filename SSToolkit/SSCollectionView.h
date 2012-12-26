@@ -583,7 +583,7 @@ typedef enum {
  @see collectionView:didSelectItemAtIndexPath:
  @see collectionView:willDeselectItemAtIndexPath:
  */
-- (void)collectionView:(SSCollectionView *)aCollectionView willSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+- (NSIndexPath *)collectionView:(SSCollectionView *)aCollectionView willSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 
 /**
  Tells the delegate that the specified item is now selected.
@@ -615,7 +615,7 @@ typedef enum {
  @see collectionView:didDeselectItemAtIndexPath:
  @see collectionView:willSelectItemAtIndexPath:
  */
-- (void)collectionView:(SSCollectionView *)aCollectionView willDeselectItemAtIndexPath:(NSIndexPath *)indexPath;
+- (NSIndexPath *)collectionView:(SSCollectionView *)aCollectionView willDeselectItemAtIndexPath:(NSIndexPath *)indexPath;
 
 /**
  Tells the delegate that the specified item is now deselected.
