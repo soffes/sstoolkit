@@ -38,4 +38,11 @@
  */
 + (void)resetLimitForName:(NSString *)name;
 
+/**
+ Resets the time for all of the names.
+ 
+ The next time a block with any name is passed to `executeBlock:name:limit:` it will be executed.
+ */
++ (void)resetAllLimits;
+
 @end
