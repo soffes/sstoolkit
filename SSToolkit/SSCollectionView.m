@@ -262,42 +262,46 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 - (void)selectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(SSCollectionViewScrollPosition)scrollPosition {
 	// Notify delegate that it will select
 	if ([self.delegate respondsToSelector:@selector(collectionView:willSelectItemAtIndexPath:)]) {
-		[self.delegate collectionView:self willSelectItemAtIndexPath:indexPath];
+		indexPath = [self.delegate collectionView:self willSelectItemAtIndexPath:indexPath];
 	}
 	
-	// Select
-	SSCollectionViewItem *item = [self itemForIndexPath:indexPath];
-	[item setHighlighted:NO animated:NO];
-	[item setSelected:YES animated:YES];
-	
-	// Scroll to position
-	if (scrollPosition == SSCollectionViewScrollPositionTop || scrollPosition == SSCollectionViewScrollPositionMiddle ||
-		scrollPosition == SSCollectionViewScrollPositionBottom) {
-		[self scrollToItemAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
-	}
-	
-	// Notify delegate that it did selection
-	if ([self.delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
-		[self.delegate collectionView:self didSelectItemAtIndexPath:indexPath];
-	}
+	// Select, if delegate hasn't set the indexPath to nil
+    if (indexPath) {
+        SSCollectionViewItem *item = [self itemForIndexPath:indexPath];
+        [item setHighlighted:NO animated:NO];
+        [item setSelected:YES animated:YES];
+        
+        // Scroll to position
+        if (scrollPosition == SSCollectionViewScrollPositionTop || scrollPosition == SSCollectionViewScrollPositionMiddle ||
+            scrollPosition == SSCollectionViewScrollPositionBottom) {
+            [self scrollToItemAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
+        }
+        
+        // Notify delegate that it did selection
+        if ([self.delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
+            [self.delegate collectionView:self didSelectItemAtIndexPath:indexPath];
+        }
+    }
 }
 
 
 - (void)deselectItemAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
 	// Notify delegate that it will deselect
 	if ([self.delegate respondsToSelector:@selector(collectionView:willDeselectItemAtIndexPath:)]) {
-		[self.delegate collectionView:self willDeselectItemAtIndexPath:indexPath];
+		indexPath = [self.delegate collectionView:self willDeselectItemAtIndexPath:indexPath];
 	}
 	
-	// Deselect
-	SSCollectionViewItem *item = [self itemForIndexPath:indexPath];
-	[item setHighlighted:NO animated:NO];
-	[item setSelected:NO animated:YES];
-	
-	// Notify delegate that it did deselection
-	if ([self.delegate respondsToSelector:@selector(collectionView:didDeselectItemAtIndexPath:)]) {
-		[self.delegate collectionView:self didDeselectItemAtIndexPath:indexPath];
-	}
+	// Deselect, if delegate hasn't set the indexPath to nil
+    if (indexPath) {
+        SSCollectionViewItem *item = [self itemForIndexPath:indexPath];
+        [item setHighlighted:NO animated:NO];
+        [item setSelected:NO animated:YES];
+        
+        // Notify delegate that it did deselection
+        if ([self.delegate respondsToSelector:@selector(collectionView:didDeselectItemAtIndexPath:)]) {
+            [self.delegate collectionView:self didDeselectItemAtIndexPath:indexPath];
+        }
+    }
 }
 
 
