@@ -453,7 +453,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 #pragma mark - Reloading the Collection View
 
 - (void)reloadData {
-	if (![self superview]) {
+	if (![self superview] || !_delegate || !_dataSource) {
 		return;
 	}
 	
@@ -501,18 +501,14 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 - (void)setDataSource:(id<SSCollectionViewDataSource>)dataSource {
 	_dataSource = dataSource;
 	
-	if (_delegate && _dataSource) {
-		[self reloadData];
-	}
+	[self reloadData];
 }
 
 
 - (void)setDelegate:(id<SSCollectionViewDelegate>)delegate {
 	_delegate = delegate;
 	
-	if (_delegate && _dataSource) {
-		[self reloadData];
-	}
+	[self reloadData];
 }
 
 
