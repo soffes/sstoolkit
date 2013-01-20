@@ -39,3 +39,6 @@
 #import <SSToolkit/SSConcurrentOperation.h>
 #import <SSToolkit/SSDrawingUtilities.h>
 #import <SSToolkit/SSRateLimit.h>
+
+// Categories
+#import <SSToolkit/SSCategories.h>
