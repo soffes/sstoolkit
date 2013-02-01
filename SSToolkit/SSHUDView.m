@@ -24,6 +24,7 @@ static CGFloat kIndicatorSize = 40.0;
 
 @implementation SSHUDView {
 	SSHUDWindow *_hudWindow;
+	UIWindow *_keyWindow;
 }
 
 
@@ -191,6 +192,15 @@ static CGFloat kIndicatorSize = 40.0;
 		_hudWindow = [SSHUDWindow defaultWindow];
 	}
 	
+	id<UIApplicationDelegate> delegate = [[UIApplication sharedApplication] delegate];
+	if ([delegate respondsToSelector:@selector(window)]) {
+        _keyWindow = [delegate performSelector:@selector(window)];
+	}
+	else {
+		// unable to get main window from app delegate
+		_keyWindow = [[UIApplication sharedApplication] keyWindow];
+	}
+	
 	_hudWindow.alpha = 0.0f;
 	self.alpha = 0.0f;
 	[_hudWindow addSubview:self];
@@ -350,8 +360,8 @@ static CGFloat kIndicatorSize = 40.0;
 	[_hudWindow resignKeyWindow];
 	_hudWindow = nil;
 	
-	// Return focus to the first window
-	[[[[UIApplication sharedApplication] windows] objectAtIndex:0] makeKeyWindow];
+	// Return focus to the main window
+	[_keyWindow makeKeyWindow];
 }
 
 @end
