@@ -34,6 +34,7 @@
 #import <SSToolkit/SSCollectionViewController.h>
 #import <SSToolkit/SSPickerViewController.h>
 #import <SSToolkit/SSRatingPickerViewController.h>
+#import <SSToolkit/SSWebViewController.h>
 
 // Misc
 #import <SSToolkit/SSConcurrentOperation.h>

@@ -7,6 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B460C5716D03A77004463C2 /* forward-button-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C5316D03A77004463C2 /* forward-button-mini.png */; };
+		3B460C5816D03A77004463C2 /* forward-button-mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C5416D03A77004463C2 /* forward-button-mini@2x.png */; };
+		3B460C5916D03A77004463C2 /* forward-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C5516D03A77004463C2 /* forward-button.png */; };
+		3B460C5A16D03A77004463C2 /* forward-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C5616D03A77004463C2 /* forward-button@2x.png */; };
+		3B460C6316D03A83004463C2 /* reload-button-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C5B16D03A83004463C2 /* reload-button-mini.png */; };
+		3B460C6416D03A83004463C2 /* reload-button-mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C5C16D03A83004463C2 /* reload-button-mini@2x.png */; };
+		3B460C6516D03A83004463C2 /* reload-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C5D16D03A83004463C2 /* reload-button.png */; };
+		3B460C6616D03A83004463C2 /* reload-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C5E16D03A83004463C2 /* reload-button@2x.png */; };
+		3B460C6716D03A83004463C2 /* safari-button-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C5F16D03A83004463C2 /* safari-button-mini.png */; };
+		3B460C6816D03A83004463C2 /* safari-button-mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C6016D03A83004463C2 /* safari-button-mini@2x.png */; };
+		3B460C6916D03A83004463C2 /* safari-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C6116D03A83004463C2 /* safari-button.png */; };
+		3B460C6A16D03A83004463C2 /* safari-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C6216D03A83004463C2 /* safari-button@2x.png */; };
+		3B460C7116D03BAF004463C2 /* stop-button-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C6D16D03BAF004463C2 /* stop-button-mini.png */; };
+		3B460C7216D03BAF004463C2 /* stop-button-mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C6E16D03BAF004463C2 /* stop-button-mini@2x.png */; };
+		3B460C7316D03BAF004463C2 /* stop-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C6F16D03BAF004463C2 /* stop-button.png */; };
+		3B460C7416D03BAF004463C2 /* stop-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C7016D03BAF004463C2 /* stop-button@2x.png */; };
+		3B460C7B16D04647004463C2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B460C7A16D04647004463C2 /* MessageUI.framework */; };
+		3BE6233616D0357800F9D662 /* SSWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BE6233416D0357800F9D662 /* SSWebViewController.h */; };
+		3BE6233716D0357800F9D662 /* SSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6233516D0357800F9D662 /* SSWebViewController.m */; };
+		3BE6242616D03A2A00F9D662 /* action-button-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BE6242216D03A2A00F9D662 /* action-button-mini.png */; };
+		3BE6242716D03A2A00F9D662 /* action-button-mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BE6242316D03A2A00F9D662 /* action-button-mini@2x.png */; };
+		3BE6242816D03A2A00F9D662 /* action-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BE6242416D03A2A00F9D662 /* action-button.png */; };
+		3BE6242916D03A2A00F9D662 /* action-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BE6242516D03A2A00F9D662 /* action-button@2x.png */; };
+		3BE6242E16D03A3700F9D662 /* back-button-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BE6242A16D03A3700F9D662 /* back-button-mini.png */; };
+		3BE6242F16D03A3700F9D662 /* back-button-mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BE6242B16D03A3700F9D662 /* back-button-mini@2x.png */; };
+		3BE6243016D03A3700F9D662 /* back-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BE6242C16D03A3700F9D662 /* back-button.png */; };
+		3BE6243116D03A3700F9D662 /* back-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BE6242D16D03A3700F9D662 /* back-button@2x.png */; };
 		5841B48416013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5841B48216013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.h */; };
 		5841B48516013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5841B48316013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.m */; };
 		962F5F5E156CCD1200408648 /* NSNumber+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 962F5F5B156CCD1200408648 /* NSNumber+SSToolkitAdditions.h */; };
@@ -168,6 +195,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B460C5316D03A77004463C2 /* forward-button-mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward-button-mini.png"; sourceTree = "<group>"; };
+		3B460C5416D03A77004463C2 /* forward-button-mini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward-button-mini@2x.png"; sourceTree = "<group>"; };
+		3B460C5516D03A77004463C2 /* forward-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward-button.png"; sourceTree = "<group>"; };
+		3B460C5616D03A77004463C2 /* forward-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward-button@2x.png"; sourceTree = "<group>"; };
+		3B460C5B16D03A83004463C2 /* reload-button-mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reload-button-mini.png"; sourceTree = "<group>"; };
+		3B460C5C16D03A83004463C2 /* reload-button-mini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reload-button-mini@2x.png"; sourceTree = "<group>"; };
+		3B460C5D16D03A83004463C2 /* reload-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reload-button.png"; sourceTree = "<group>"; };
+		3B460C5E16D03A83004463C2 /* reload-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reload-button@2x.png"; sourceTree = "<group>"; };
+		3B460C5F16D03A83004463C2 /* safari-button-mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safari-button-mini.png"; sourceTree = "<group>"; };
+		3B460C6016D03A83004463C2 /* safari-button-mini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safari-button-mini@2x.png"; sourceTree = "<group>"; };
+		3B460C6116D03A83004463C2 /* safari-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safari-button.png"; sourceTree = "<group>"; };
+		3B460C6216D03A83004463C2 /* safari-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safari-button@2x.png"; sourceTree = "<group>"; };
+		3B460C6D16D03BAF004463C2 /* stop-button-mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-button-mini.png"; sourceTree = "<group>"; };
+		3B460C6E16D03BAF004463C2 /* stop-button-mini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-button-mini@2x.png"; sourceTree = "<group>"; };
+		3B460C6F16D03BAF004463C2 /* stop-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-button.png"; sourceTree = "<group>"; };
+		3B460C7016D03BAF004463C2 /* stop-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-button@2x.png"; sourceTree = "<group>"; };
+		3B460C7A16D04647004463C2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		3BE6233416D0357800F9D662 /* SSWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSWebViewController.h; sourceTree = "<group>"; };
+		3BE6233516D0357800F9D662 /* SSWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSWebViewController.m; sourceTree = "<group>"; };
+		3BE6242216D03A2A00F9D662 /* action-button-mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-button-mini.png"; sourceTree = "<group>"; };
+		3BE6242316D03A2A00F9D662 /* action-button-mini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-button-mini@2x.png"; sourceTree = "<group>"; };
+		3BE6242416D03A2A00F9D662 /* action-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-button.png"; sourceTree = "<group>"; };
+		3BE6242516D03A2A00F9D662 /* action-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-button@2x.png"; sourceTree = "<group>"; };
+		3BE6242A16D03A3700F9D662 /* back-button-mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button-mini.png"; sourceTree = "<group>"; };
+		3BE6242B16D03A3700F9D662 /* back-button-mini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button-mini@2x.png"; sourceTree = "<group>"; };
+		3BE6242C16D03A3700F9D662 /* back-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button.png"; sourceTree = "<group>"; };
+		3BE6242D16D03A3700F9D662 /* back-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button@2x.png"; sourceTree = "<group>"; };
 		5841B48216013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SSToolkitAdditions.h"; sourceTree = "<group>"; };
 		5841B48316013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SSToolkitAdditions.m"; sourceTree = "<group>"; };
 		962F5F5B156CCD1200408648 /* NSNumber+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+SSToolkitAdditions.h"; sourceTree = "<group>"; };
@@ -344,6 +398,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B460C7B16D04647004463C2 /* MessageUI.framework in Frameworks */,
 				B23910571357DC7D00ADE21B /* GHUnitIOS.framework in Frameworks */,
 				B23910601357DCF700ADE21B /* libSSToolkit.a in Frameworks */,
 				B23910621357DCF700ADE21B /* CoreGraphics.framework in Frameworks */,
@@ -400,6 +455,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B460C7A16D04647004463C2 /* MessageUI.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 				B2D883BF1332D636006B3F55 /* QuartzCore.framework */,
 				B215051110583BBB00409ED4 /* UIKit.framework */,
@@ -568,6 +624,8 @@
 		B2601A78122307CD005506D5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3BE6233416D0357800F9D662 /* SSWebViewController.h */,
+				3BE6233516D0357800F9D662 /* SSWebViewController.m */,
 				B267D3431226CE0400B66519 /* SSCollectionViewController.h */,
 				B267D3441226CE0400B66519 /* SSCollectionViewController.m */,
 				B24E9E28121DC29A0085F81E /* SSPickerViewController.h */,
@@ -636,6 +694,30 @@
 		B2C507F8151BA6C000E94614 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3B460C6D16D03BAF004463C2 /* stop-button-mini.png */,
+				3B460C6E16D03BAF004463C2 /* stop-button-mini@2x.png */,
+				3B460C6F16D03BAF004463C2 /* stop-button.png */,
+				3B460C7016D03BAF004463C2 /* stop-button@2x.png */,
+				3B460C5B16D03A83004463C2 /* reload-button-mini.png */,
+				3B460C5C16D03A83004463C2 /* reload-button-mini@2x.png */,
+				3B460C5D16D03A83004463C2 /* reload-button.png */,
+				3B460C5E16D03A83004463C2 /* reload-button@2x.png */,
+				3B460C5F16D03A83004463C2 /* safari-button-mini.png */,
+				3B460C6016D03A83004463C2 /* safari-button-mini@2x.png */,
+				3B460C6116D03A83004463C2 /* safari-button.png */,
+				3B460C6216D03A83004463C2 /* safari-button@2x.png */,
+				3B460C5316D03A77004463C2 /* forward-button-mini.png */,
+				3B460C5416D03A77004463C2 /* forward-button-mini@2x.png */,
+				3B460C5516D03A77004463C2 /* forward-button.png */,
+				3B460C5616D03A77004463C2 /* forward-button@2x.png */,
+				3BE6242A16D03A3700F9D662 /* back-button-mini.png */,
+				3BE6242B16D03A3700F9D662 /* back-button-mini@2x.png */,
+				3BE6242C16D03A3700F9D662 /* back-button.png */,
+				3BE6242D16D03A3700F9D662 /* back-button@2x.png */,
+				3BE6242216D03A2A00F9D662 /* action-button-mini.png */,
+				3BE6242316D03A2A00F9D662 /* action-button-mini@2x.png */,
+				3BE6242416D03A2A00F9D662 /* action-button.png */,
+				3BE6242516D03A2A00F9D662 /* action-button@2x.png */,
 				B2FD76DE151C404600C813FA /* hud-check.png */,
 				B2FD76DF151C404600C813FA /* hud-check@2x.png */,
 				B2FD76E0151C404600C813FA /* hud-x.png */,
@@ -733,6 +815,7 @@
 				B2C7ED6C153A5624006ABE73 /* SSButton.h in Headers */,
 				962F5F5E156CCD1200408648 /* NSNumber+SSToolkitAdditions.h in Headers */,
 				5841B48416013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.h in Headers */,
+				3BE6233616D0357800F9D662 /* SSWebViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -874,6 +957,30 @@
 				B23F16161547C73D00638372 /* UISegmentBarDivider@2x.png in Resources */,
 				B23F16171547C73D00638372 /* UISegmentBarDividerHighlighted.png in Resources */,
 				B23F16181547C73D00638372 /* UISegmentBarDividerHighlighted@2x.png in Resources */,
+				3BE6242616D03A2A00F9D662 /* action-button-mini.png in Resources */,
+				3BE6242716D03A2A00F9D662 /* action-button-mini@2x.png in Resources */,
+				3BE6242816D03A2A00F9D662 /* action-button.png in Resources */,
+				3BE6242916D03A2A00F9D662 /* action-button@2x.png in Resources */,
+				3BE6242E16D03A3700F9D662 /* back-button-mini.png in Resources */,
+				3BE6242F16D03A3700F9D662 /* back-button-mini@2x.png in Resources */,
+				3BE6243016D03A3700F9D662 /* back-button.png in Resources */,
+				3BE6243116D03A3700F9D662 /* back-button@2x.png in Resources */,
+				3B460C5716D03A77004463C2 /* forward-button-mini.png in Resources */,
+				3B460C5816D03A77004463C2 /* forward-button-mini@2x.png in Resources */,
+				3B460C5916D03A77004463C2 /* forward-button.png in Resources */,
+				3B460C5A16D03A77004463C2 /* forward-button@2x.png in Resources */,
+				3B460C6316D03A83004463C2 /* reload-button-mini.png in Resources */,
+				3B460C6416D03A83004463C2 /* reload-button-mini@2x.png in Resources */,
+				3B460C6516D03A83004463C2 /* reload-button.png in Resources */,
+				3B460C6616D03A83004463C2 /* reload-button@2x.png in Resources */,
+				3B460C6716D03A83004463C2 /* safari-button-mini.png in Resources */,
+				3B460C6816D03A83004463C2 /* safari-button-mini@2x.png in Resources */,
+				3B460C6916D03A83004463C2 /* safari-button.png in Resources */,
+				3B460C6A16D03A83004463C2 /* safari-button@2x.png in Resources */,
+				3B460C7116D03BAF004463C2 /* stop-button-mini.png in Resources */,
+				3B460C7216D03BAF004463C2 /* stop-button-mini@2x.png in Resources */,
+				3B460C7316D03BAF004463C2 /* stop-button.png in Resources */,
+				3B460C7416D03BAF004463C2 /* stop-button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,6 +1065,7 @@
 				B2C7ED6D153A5624006ABE73 /* SSButton.m in Sources */,
 				962F5F5F156CCD1200408648 /* NSNumber+SSToolkitAdditions.m in Sources */,
 				5841B48516013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.m in Sources */,
+				3BE6233716D0357800F9D662 /* SSWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
