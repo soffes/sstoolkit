@@ -12,6 +12,9 @@
  The recommended height is `2.0` points if you are using the inset and `1.0` if you are not.
  
  The inset is drawn under the line if `insetColor` is not `nil`.
+ 	
+ If the CGRect supplied to -initWithFrame: has size.height > size.width, a 
+ vertical line will be drawn; otherwise horizontal.
  */
 @interface SSLineView : UIView
 

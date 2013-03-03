@@ -9,7 +9,11 @@
 #import "SSLineView.h"
 
 @interface SSLineView ()
+
+@property(nonatomic, assign) BOOL horizontal;
+
 - (void)_initialize;
+
 @end
 
 @implementation SSLineView
@@ -18,6 +22,7 @@
 @synthesize insetColor = _insetColor;
 @synthesize dashPhase = _dashPhase;
 @synthesize dashLengths = _dashLengths;
+@synthesize horizontal = _horizontal;
 
 - (void)setLineColor:(UIColor *)lineColor {
 	_lineColor = lineColor;
@@ -80,15 +85,24 @@
 	// Inset
 	if (_insetColor) {
 		CGContextSetStrokeColorWithColor(context, _insetColor.CGColor);
-		CGContextMoveToPoint(context, 0.0f, 1.0f);
-		CGContextAddLineToPoint(context, rect.size.width, 1.0f);
+		if (_horizontal) {
+			CGContextMoveToPoint(context, 0.0f, 1.0f);
+			CGContextAddLineToPoint(context, rect.size.width, 1.0f);
+		} else {
+			CGContextMoveToPoint(context, 1.0f, 0.0f);
+			CGContextAddLineToPoint(context, 1.0f, rect.size.height);
+		}
 		CGContextStrokePath(context);
 	}
 	
 	// Top border
 	CGContextSetStrokeColorWithColor(context, _lineColor.CGColor);
 	CGContextMoveToPoint(context, 0.0f, 0.0f);
-	CGContextAddLineToPoint(context, rect.size.width, 0.0f);
+	if (_horizontal) {
+		CGContextAddLineToPoint(context, rect.size.width, 0.0f);
+	} else {
+		CGContextAddLineToPoint(context, 0.0f, rect.size.height);
+	}
 	CGContextStrokePath(context);
 }
 
@@ -102,6 +116,7 @@
 	
 	self.lineColor = [UIColor grayColor];
 	self.insetColor = [UIColor colorWithWhite:1.0f alpha:0.5f];
+	self.horizontal = self.frame.size.width >= self.frame.size.height;
 }
 
 @end
