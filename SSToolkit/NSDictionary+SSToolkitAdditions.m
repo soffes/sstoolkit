@@ -77,6 +77,15 @@
 	return [[self _prehashData] SHA1Sum];
 }
 
+
+- (id)safeObjectForKey:(id)key {
+	id value = [self valueForKey:key];
+	if (value == [NSNull null]) {
+		return nil;
+	}
+	return value;
+}
+
 @end
 
 

@@ -31,16 +31,16 @@ For usage instructions, see [the usage guide on the SSToolkit website](http://ss
 
 ## Demo
 
-[SSCatalog](https://github.com/samsoffes/sscatalog) is a sample project that demonstrates several features of SSToolkit. It is an universal iPad/iPhone application.
+[SSCatalog](https://github.com/soffes/sscatalog) is a sample project that demonstrates several features of SSToolkit. It is an universal iPad/iPhone application.
 
 ## Links
 
 * [Homepage](http://sstoolk.it)
-* [Source code](https://github.com/samsoffes/sstoolkit)
+* [Source code](https://github.com/soffes/sstoolkit)
 * [Documentation](http://sstoolk.it/documentation/)
-* [Known bugs](https://github.com/samsoffes/sstoolkit/issues/labels/Bug)
-* [Future features](https://github.com/samsoffes/sstoolkit/issues/labels/Feature)
+* [Known bugs](https://github.com/soffes/sstoolkit/issues/labels/Bug)
+* [Future features](https://github.com/soffes/sstoolkit/issues/labels/Feature)
 
 ## Thanks
 
-Huge thanks to [our contributors](http://github.com/samsoffes/sstoolkit/contributors), [Jake Marsh](http://deallocatedobjects.com), and [Mike Rundle](http://flyosity.com).
+Huge thanks to [our contributors](http://github.com/soffes/sstoolkit/contributors), [Jake Marsh](http://deallocatedobjects.com), and [Mike Rundle](http://flyosity.com).

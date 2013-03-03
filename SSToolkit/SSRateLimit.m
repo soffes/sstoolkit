@@ -42,6 +42,11 @@
 }
 
 
++ (void)resetAllLimits {
+  [[self _dictionary] removeAllObjects];
+}
+
+
 #pragma mark - Private
 
 + (NSMutableDictionary *)_dictionary {

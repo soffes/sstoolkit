@@ -7,6 +7,7 @@
 //
 
 #import "SSHUDWindow.h"
+#import "SSDrawingUtilities.h"
 #import "UIImage+SSToolkitAdditions.h"
 
 static SSHUDWindow *kHUDWindow = nil;
@@ -51,14 +52,12 @@ static SSHUDWindow *kHUDWindow = nil;
 	if (_hidesVignette) {
 		return;
 	}
-	
-	NSString *imageName = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? @"SSVignetteiPad.png" : @"SSVignetteiPhone.png";
-	UIImage *image = [UIImage imageNamed:imageName bundleName:kSSToolkitBundleName];
-	
-	CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-	[image drawInRect:CGRectMake(roundf((screenSize.width - image.size.width) / 2.0f), 
-								 roundf((screenSize.height - image.size.height) / 2.0f), 
-								 image.size.width, image.size.height)];	
+
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGGradientRef gradient = SSCreateGradientWithColors(@[[UIColor colorWithWhite:0.0f alpha:0.1f], [UIColor colorWithWhite:0.0f alpha:0.5f]]);
+    CGPoint centerPoint  = CGPointMake(self.bounds.size.width / 2.0 , self.bounds.size.height / 2.0);
+    CGContextDrawRadialGradient(context, gradient, centerPoint, 0.0f, centerPoint, fmaxf(self.bounds.size.width, self.bounds.size.height) / 2.0f, kCGGradientDrawsAfterEndLocation);
+	CGGradientRelease(gradient);
 }
 
 @end

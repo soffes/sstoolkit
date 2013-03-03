@@ -169,7 +169,11 @@
 	_textLabel.textColor = [UIColor whiteColor];
 	_textLabel.highlightedTextColor = [UIColor colorWithRed:0.125f green:0.369f blue:0.871f alpha:1.0f];
 	_textLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_6_0
+	_textLabel.textAlignment = NSTextAlignmentCenter;
+#else
 	_textLabel.textAlignment = UITextAlignmentCenter;
+#endif
 	
 	self.badgeColor = [[self class] defaultBadgeColor];
 	self.highlightedBadgeColor = [UIColor whiteColor];

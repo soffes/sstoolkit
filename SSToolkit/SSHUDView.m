@@ -24,6 +24,7 @@ static CGFloat kIndicatorSize = 40.0;
 
 @implementation SSHUDView {
 	SSHUDWindow *_hudWindow;
+	UIWindow *_keyWindow;
 }
 
 
@@ -111,7 +112,11 @@ static CGFloat kIndicatorSize = 40.0;
 		CGRect dingbatRect = CGRectMake(roundf((_hudSize.width - dingbatSize.width) / 2.0f),
 										roundf((_hudSize.height - dingbatSize.height) / 2.0f),
 										dingbatSize.width, dingbatSize.height);
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_6_0
+		[dingbat drawInRect:dingbatRect withFont:dingbatFont lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
+#else
 		[dingbat drawInRect:dingbatRect withFont:dingbatFont lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
+#endif
 	}
 }
 
@@ -156,8 +161,13 @@ static CGFloat kIndicatorSize = 40.0;
 		_textLabel.textColor = [UIColor whiteColor];
 		_textLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.7f];
 		_textLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_6_0
+		_textLabel.textAlignment = NSTextAlignmentCenter;
+		_textLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+#else
 		_textLabel.textAlignment = UITextAlignmentCenter;
 		_textLabel.lineBreakMode = UILineBreakModeTailTruncation;
+#endif
 		_textLabel.text = aTitle ? aTitle : SSToolkitLocalizedString(@"Loading...");
 		[self addSubview:_textLabel];
 		
@@ -180,6 +190,15 @@ static CGFloat kIndicatorSize = 40.0;
 //	[self retain];
 	if (!_hudWindow) {
 		_hudWindow = [SSHUDWindow defaultWindow];
+	}
+	
+	id<UIApplicationDelegate> delegate = [[UIApplication sharedApplication] delegate];
+	if ([delegate respondsToSelector:@selector(window)]) {
+        _keyWindow = [delegate performSelector:@selector(window)];
+	}
+	else {
+		// unable to get main window from app delegate
+		_keyWindow = [[UIApplication sharedApplication] keyWindow];
 	}
 	
 	_hudWindow.alpha = 0.0f;
@@ -341,8 +360,8 @@ static CGFloat kIndicatorSize = 40.0;
 	[_hudWindow resignKeyWindow];
 	_hudWindow = nil;
 	
-	// Return focus to the first window
-	[[[[UIApplication sharedApplication] windows] objectAtIndex:0] makeKeyWindow];
+	// Return focus to the main window
+	[_keyWindow makeKeyWindow];
 }
 
 @end
