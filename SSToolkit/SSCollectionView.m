@@ -823,9 +823,9 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	}
 	
     if (self.addRowSpacingToFirstRow && ([rowIndexPath row] == 0 || (self.extremitiesStyle == SSCollectionViewExtremitiesStyleScrolling && [rowIndexPath row] == 1))) {
-        cell.initialSpacing = _rowSpacing;
+        cell.topSpacing = _rowSpacing;
     } else {
-        cell.initialSpacing = 0.0f;
+        cell.topSpacing = 0.0f;
     }
 
 	cell.itemSize = [self _itemSizeForSection:rowIndexPath.section];

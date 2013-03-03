@@ -17,7 +17,7 @@
 
 @synthesize itemSize = _itemSize;
 @synthesize itemSpacing = _itemSpacing;
-@synthesize initialSpacing = _initialSpacing;
+@synthesize topSpacing = _topSpacing;
 @synthesize items = _items;
 
 - (void)setItems:(NSArray *)someItems {
@@ -54,7 +54,7 @@
 	[_items enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop) {
 		SSCollectionViewItem *item = (SSCollectionViewItem *)object;
 		
-		item.frame = CGRectMake(x, _initialSpacing, _itemSize.width, _itemSize.height);
+		item.frame = CGRectMake(x, _topSpacing, _itemSize.width, _itemSize.height);
 		x += _itemSize.width + _itemSpacing;
 	}];
 }
@@ -74,7 +74,7 @@
 		
 		_itemSize = CGSizeZero;
 		_itemSpacing = 0.0f;
-        _initialSpacing = 0.0f;
+        _topSpacing = 0.0f;
 	}
 	return self;
 }
