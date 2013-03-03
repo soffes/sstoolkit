@@ -61,9 +61,11 @@
                          action:@selector(goForward)];
 	
 	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpace.width = 10.0;
 
 	self.toolbarItems = @[
-        flexibleSpace,
+        fixedSpace,
         _backBarButton,
         flexibleSpace,
         _forwardBarButton,
@@ -88,7 +90,7 @@
          style:UIBarButtonItemStylePlain
          target:self
          action:@selector(openActionSheet:)],
-        flexibleSpace,
+        fixedSpace
      ];
 	
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
