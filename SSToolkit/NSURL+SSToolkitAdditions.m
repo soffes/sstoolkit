@@ -13,7 +13,7 @@
 
 + (id)URLWithFormat:(NSString *)format, ... {
 	va_list arguments;
-    va_start(arguments, format);
+	va_start(arguments, format);
 	NSString *string = [[NSString alloc] initWithFormat:format arguments:arguments];
 	va_end(arguments);
 	
@@ -26,16 +26,15 @@
 }
 
 
-- (NSURL*)URLByTrimmingHash
-{
-    NSUInteger hashLocation = [self.absoluteString rangeOfString:@"#" options:NSBackwardsSearch].location;
+- (NSURL*)URLByTrimmingHash {
+	NSUInteger hashLocation = [self.absoluteString rangeOfString:@"#" options:NSBackwardsSearch].location;
 	if (hashLocation != NSNotFound) {
-        NSString* urlString = [self.absoluteString substringToIndex:hashLocation];
-        return [NSURL URLWithString:urlString];
-    }
-    else {
-        return self;
-    }
+		NSString* urlString = [self.absoluteString substringToIndex:hashLocation];
+		return [NSURL URLWithString:urlString];
+	}
+	else {
+		return self;
+	}
 }
 
 @end
