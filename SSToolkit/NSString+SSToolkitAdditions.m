@@ -16,6 +16,7 @@
 	return !NSEqualRanges([self rangeOfString:string], NSMakeRange(NSNotFound, 0));
 }
 
+
 - (NSString *)MD5Sum {
 	const char *cstr = [self cStringUsingEncoding:NSUTF8StringEncoding];
 	NSData *data = [NSData dataWithBytes:cstr length:self.length];
@@ -27,6 +28,13 @@
 	const char *cstr = [self cStringUsingEncoding:NSUTF8StringEncoding];
 	NSData *data = [NSData dataWithBytes:cstr length:self.length];
 	return [data SHA1Sum];
+}
+
+
+- (NSString *)SHA256Sum {
+	const char *cstr = [self cStringUsingEncoding:NSUTF8StringEncoding];
+	NSData *data = [NSData dataWithBytes:cstr length:self.length];
+	return [data SHA256Sum];
 }
 
 

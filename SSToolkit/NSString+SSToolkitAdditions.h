@@ -43,6 +43,13 @@
  */
 - (NSString *)SHA1Sum;
 
+/**
+ Returns a string of the SHA256 sum of the receiver.
+ 
+ @return The string of the SHA256 sum of the receiver.
+ */
+- (NSString *)SHA256Sum;
+
 
 ///-------------------------
 /// @name Comparing Versions
