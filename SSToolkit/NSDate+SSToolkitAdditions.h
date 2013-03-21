@@ -136,4 +136,23 @@
  */
 + (NSTimeInterval)yearInSeconds;
 
+
+///-------------------------
+/// @name Occurrence queries
+///-------------------------
+
+/**
+ Returns a Boolean value that indicates whether a given date occurs today.
+
+ @return YES if the date receiver occurs today, otherwise NO
+ */
+- (BOOL)occursToday;
+
+/**
+ Returns a Boolean value that indicates whether a given date occurs tomorrow.
+
+ @return YES if the date receiver occurs tomorrow, otherwise NO
+ */
+- (BOOL)occursTomorrow;
+
 @end
