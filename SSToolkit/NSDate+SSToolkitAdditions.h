@@ -90,4 +90,16 @@
  */
 + (NSString *)timeInWordsFromTimeInterval:(NSTimeInterval)intervalInSeconds includingSeconds:(BOOL)includeSeconds;
 
+
+///----------------------
+/// @name Time In Seconds
+///----------------------
+
+/**
+ Returns a UNIX timestamp, i.e. the number of seconds from the first instant of 1 January 1970, GMT.
+
+ @return The interval between now and the reference date, 1 January 1970, GMT
+ */
++ (NSTimeInterval)unix;
+
 @end
