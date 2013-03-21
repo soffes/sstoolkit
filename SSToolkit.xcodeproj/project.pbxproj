@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21AFC57816FB42F2009689DA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B460C7A16D04647004463C2 /* MessageUI.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		3B460C5716D03A77004463C2 /* forward-button-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C5316D03A77004463C2 /* forward-button-mini.png */; };
 		3B460C5816D03A77004463C2 /* forward-button-mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C5416D03A77004463C2 /* forward-button-mini@2x.png */; };
 		3B460C5916D03A77004463C2 /* forward-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C5516D03A77004463C2 /* forward-button.png */; };
@@ -420,6 +421,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21AFC57816FB42F2009689DA /* MessageUI.framework in Frameworks */,
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				B215051210583BBB00409ED4 /* UIKit.framework in Frameworks */,
 				B2D883C01332D636006B3F55 /* QuartzCore.framework in Frameworks */,
