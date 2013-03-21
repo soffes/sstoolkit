@@ -102,4 +102,38 @@
  */
 + (NSTimeInterval)unix;
 
+/**
+ Returns the number of seconds in a day
+
+ @return Number of seconds in a day
+ */
++ (NSTimeInterval)dayInSeconds;
+
+/**
+ Returns the number of seconds in a week
+
+ A week is considered to have 7 days, so that the value returned depends on dayInSeconds
+
+ @return Number of seconds in a week
+ */
++ (NSTimeInterval)weekInSeconds;
+
+/**
+ Returns the number of seconds in a month.
+
+ A month is considered to have 30 days, so that the value returned depends on dayInSeconds
+
+ @return Number of seconds in a month
+ */
++ (NSTimeInterval)monthInSeconds;
+
+/**
+ Returns the number of seconds in a year.
+
+ A year is considered to have 365 days, so that the value returned depends on dayInSeconds
+
+ @return Number of seconds in a year
+ */
++ (NSTimeInterval)yearInSeconds;
+
 @end

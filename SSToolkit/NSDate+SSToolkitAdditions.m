@@ -202,4 +202,24 @@
 	return [[NSDate date] timeIntervalSince1970];
 }
 
+
++ (NSTimeInterval)dayInSeconds {
+	return 86400;
+}
+
+
++ (NSTimeInterval)weekInSeconds {
+	return 7 * [NSDate dayInSeconds];
+}
+
+
++ (NSTimeInterval)monthInSeconds {
+	return 30 * [NSDate dayInSeconds];
+}
+
+
++ (NSTimeInterval)yearInSeconds {
+	return 365 * [NSDate dayInSeconds];
+}
+
 @end
