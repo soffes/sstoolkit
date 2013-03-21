@@ -198,4 +198,8 @@
 }
 
 
++ (NSTimeInterval)unix {
+	return [[NSDate date] timeIntervalSince1970];
+}
+
 @end
