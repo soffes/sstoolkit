@@ -222,4 +222,38 @@
 	return 365 * [NSDate dayInSeconds];
 }
 
+
+- (BOOL)occursToday {
+	// This could impact performance if used repeatedly, but NSCalendar is not
+	// thread-safe and caching it is risky
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+
+	NSDateComponents *todayComponents = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]];
+	NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:self];
+
+	if (dateComponents.day == todayComponents.day && dateComponents.month == todayComponents.month && dateComponents.year == todayComponents.year) {
+		return YES;
+	}
+	return NO;
+}
+
+
+- (BOOL)occursTomorrow {
+	// This could impact performance if used repeatedly, but NSCalendar is not
+	// thread-safe and caching it is risky
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+
+	NSDateComponents *dayIncrementComponents = [[NSDateComponents alloc] init];
+	[dayIncrementComponents setDay:1];
+	NSDate *tomorrow = [calendar dateByAddingComponents:dayIncrementComponents toDate:[NSDate date] options:0];
+
+	NSDateComponents *tomorrowComponents = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:tomorrow];
+	NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:self];
+
+	if (dateComponents.day == tomorrowComponents.day && dateComponents.month == tomorrowComponents.month && dateComponents.year == tomorrowComponents.year) {
+		return YES;
+	}
+	return NO;
+}
+
 @end

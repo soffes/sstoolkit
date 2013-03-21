@@ -40,4 +40,25 @@
 	GHAssertEqualObjects(string, [date ISO8601String], nil);
 }
 
+
+- (void)testOccursToday {
+	NSDate *now = [NSDate date];
+	GHAssertTrue([now occursToday], nil);
+
+	NSDate *tomorrow = [now dateByAddingTimeInterval:86400];
+	GHAssertFalse([tomorrow occursToday], nil);
+
+	NSDate *yesterday = [now dateByAddingTimeInterval:-86400];
+	GHAssertFalse([yesterday occursToday], nil);
+}
+
+
+- (void)testOccursTomorrow {
+	NSDate *now = [NSDate date];
+	GHAssertFalse([now occursTomorrow], nil);
+
+	NSDate *tomorrow = [now dateByAddingTimeInterval:86400];
+	GHAssertTrue([tomorrow occursTomorrow], nil);
+}
+
 @end
