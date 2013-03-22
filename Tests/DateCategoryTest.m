@@ -8,6 +8,8 @@
 
 #import <SSToolkit/NSDate+SSToolkitAdditions.h>
 
+#define DAYLIGHT_SAVING_TIME 3600.0
+
 @interface DateCategoryTest : GHTestCase
 @end
 
@@ -68,13 +70,14 @@
 	NSDate *midnight = [now dateAtMidnight];
 	GHAssertNotNil(midnight, nil);
 
+	NSUInteger components = (NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit);
+
 	NSCalendar *calendar = [NSCalendar currentCalendar];
-	NSDateComponents *midnightComponents = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit) fromDate:midnight];
+	NSDateComponents *midnightComponents = [calendar components:components fromDate:midnight];
 	GHAssertEquals(midnightComponents.hour, 0, nil);
 	GHAssertEquals(midnightComponents.minute, 0, nil);
 
-
-	NSDateComponents *nowComponents = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit) fromDate:now];
+	NSDateComponents *nowComponents = [calendar components:components fromDate:now];
 	GHAssertEquals(nowComponents.year, midnightComponents.year, nil);
 	GHAssertEquals(nowComponents.month, midnightComponents.month, nil);
 	GHAssertEquals(nowComponents.day, midnightComponents.day, nil);
@@ -84,55 +87,43 @@
 
 
 - (void)testSecondsInDay {
-	NSDate *todayDate = [NSDate date];
-	GHAssertEquals([todayDate secondsInDay], 86400.0, nil);
+	// Not sure if this could fail when testing on a day when daylight saving time applies
+	GHAssertEquals([[NSDate date] secondsInDay], 86400.0, nil);
 }
 
 
 - (void)testSecondsInWeek {
-	static const NSTimeInterval secondsInStandardWeek = 604800.0;
-	static const NSTimeInterval daylightSavingTime = 3600.0;
+	NSTimeInterval secondsInRegularWeek = 604800.0;	// 86400 * 7
 
 	NSTimeInterval valueToTest = [[NSDate date] secondsInWeek];
-	BOOL testWeek = (valueToTest == secondsInStandardWeek || valueToTest == (secondsInStandardWeek - daylightSavingTime) || valueToTest == (secondsInStandardWeek + daylightSavingTime));
+	BOOL testWeek = (valueToTest == secondsInRegularWeek || valueToTest == (secondsInRegularWeek - DAYLIGHT_SAVING_TIME) || valueToTest == (secondsInRegularWeek + DAYLIGHT_SAVING_TIME));
 	GHAssertTrue(testWeek, nil);
 }
 
 
 - (void)testSecondsInMonth {
-	static const NSTimeInterval secondsIn28DaysMonth = 2419200.0;
-	static const NSTimeInterval secondsIn29DaysMonth = 2505600.0;
-	static const NSTimeInterval secondsIn30DaysMonth = 2592000.0;
-	static const NSTimeInterval secondsIn31DaysMonth = 2678400.0;
-	static const NSTimeInterval daylightSavingTime = 3600.0;
+	NSTimeInterval secondsIn28DaysMonth = 2419200.0;	// 86400 * 28
+	NSTimeInterval secondsIn29DaysMonth = 2505600.0;	// 86400 * 29
+	NSTimeInterval secondsIn30DaysMonth = 2592000.0;	// 86400 * 30
+	NSTimeInterval secondsIn31DaysMonth = 2678400.0;	// 86400 * 31
 
 	NSTimeInterval valueToTest = [[NSDate date] secondsInMonth];
-	BOOL test28DaysMonth = (valueToTest == secondsIn28DaysMonth || valueToTest == (secondsIn28DaysMonth - daylightSavingTime) || valueToTest == (secondsIn28DaysMonth + daylightSavingTime));
-	BOOL test29DaysMonth = (valueToTest == secondsIn29DaysMonth || valueToTest == (secondsIn29DaysMonth - daylightSavingTime) || valueToTest == (secondsIn29DaysMonth + daylightSavingTime));
-	BOOL test30DaysMonth = (valueToTest == secondsIn30DaysMonth || valueToTest == (secondsIn30DaysMonth - daylightSavingTime) || valueToTest == (secondsIn30DaysMonth + daylightSavingTime));
-	BOOL test31DaysMonth = (valueToTest == secondsIn31DaysMonth || valueToTest == (secondsIn31DaysMonth - daylightSavingTime) || valueToTest == (secondsIn31DaysMonth + daylightSavingTime));
+	BOOL test28DaysMonth = (valueToTest == secondsIn28DaysMonth || valueToTest == (secondsIn28DaysMonth - DAYLIGHT_SAVING_TIME) || valueToTest == (secondsIn28DaysMonth + DAYLIGHT_SAVING_TIME));
+	BOOL test29DaysMonth = (valueToTest == secondsIn29DaysMonth || valueToTest == (secondsIn29DaysMonth - DAYLIGHT_SAVING_TIME) || valueToTest == (secondsIn29DaysMonth + DAYLIGHT_SAVING_TIME));
+	BOOL test30DaysMonth = (valueToTest == secondsIn30DaysMonth || valueToTest == (secondsIn30DaysMonth - DAYLIGHT_SAVING_TIME) || valueToTest == (secondsIn30DaysMonth + DAYLIGHT_SAVING_TIME));
+	BOOL test31DaysMonth = (valueToTest == secondsIn31DaysMonth || valueToTest == (secondsIn31DaysMonth - DAYLIGHT_SAVING_TIME) || valueToTest == (secondsIn31DaysMonth + DAYLIGHT_SAVING_TIME));
 
 	GHAssertTrue((test28DaysMonth || test29DaysMonth || test30DaysMonth || test31DaysMonth), nil);
 }
 
 
-- (void)testSecondsInQuarter {
-	static const NSTimeInterval secondsInQuarter = 7772400.0;
-	static const NSTimeInterval daylightSavingTime = 3600.0;
-
-	NSTimeInterval valueToTest = [[NSDate date] secondsInQuarter];
-	BOOL testSecondsInQuarter = (valueToTest == secondsInQuarter || valueToTest == (secondsInQuarter - daylightSavingTime) || valueToTest == (secondsInQuarter + daylightSavingTime));
-	GHAssertTrue(testSecondsInQuarter, nil);
-}
-
 - (void)testSecondsInYear {
-	static const NSTimeInterval secondsIn365DaysYear = 31536000.0;
-	static const NSTimeInterval secondsIn364DaysYear = 31449600.0;
-	static const NSTimeInterval daylightSavingTime = 3600.0;
+	static const NSTimeInterval secondsIn365DaysYear = 31536000.0;	// 86400 * 365
+	static const NSTimeInterval secondsIn364DaysYear = 31449600.0;	// 86400 * 364
 
 	NSTimeInterval valueToTest = [[NSDate date] secondsInYear];
-	BOOL test365DaysYear = (valueToTest == secondsIn365DaysYear || valueToTest == (secondsIn365DaysYear - daylightSavingTime) || valueToTest == (secondsIn365DaysYear + daylightSavingTime));
-	BOOL test364DaysYear = (valueToTest == secondsIn364DaysYear || valueToTest == (secondsIn364DaysYear - daylightSavingTime) || valueToTest == (secondsIn364DaysYear + daylightSavingTime));
+	BOOL test365DaysYear = (valueToTest == secondsIn365DaysYear || valueToTest == (secondsIn365DaysYear - DAYLIGHT_SAVING_TIME) || valueToTest == (secondsIn365DaysYear + DAYLIGHT_SAVING_TIME));
+	BOOL test364DaysYear = (valueToTest == secondsIn364DaysYear || valueToTest == (secondsIn364DaysYear - DAYLIGHT_SAVING_TIME) || valueToTest == (secondsIn364DaysYear + DAYLIGHT_SAVING_TIME));
 
 	GHAssertTrue((test365DaysYear || test364DaysYear), nil);
 }
