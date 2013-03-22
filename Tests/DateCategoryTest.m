@@ -116,6 +116,15 @@
 }
 
 
+- (void)testSecondsInQuarter {
+	static const NSTimeInterval secondsInQuarter = 7772400.0;
+	static const NSTimeInterval daylightSavingTime = 3600.0;
+
+	NSTimeInterval valueToTest = [[NSDate date] secondsInQuarter];
+	BOOL testSecondsInQuarter = (valueToTest == secondsInQuarter || valueToTest == (secondsInQuarter - daylightSavingTime) || valueToTest == (secondsInQuarter + daylightSavingTime));
+	GHAssertTrue(testSecondsInQuarter, nil);
+}
+
 - (void)testSecondsInYear {
 	static const NSTimeInterval secondsIn365DaysYear = 31536000.0;
 	static const NSTimeInterval secondsIn364DaysYear = 31449600.0;

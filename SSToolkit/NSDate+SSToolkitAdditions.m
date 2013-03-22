@@ -254,6 +254,21 @@
 }
 
 
+- (NSTimeInterval)secondsInQuarter {
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+
+	NSDateComponents *firstQuarterDayComponents = [calendar components:(NSYearCalendarUnit|NSQuarterCalendarUnit|NSDayCalendarUnit) fromDate:self];
+	firstQuarterDayComponents.day = 1;
+	NSDate *firstDayInQuarter = [calendar dateFromComponents:firstQuarterDayComponents];
+
+	NSDateComponents *quarterIncrementComponents = [[NSDateComponents alloc] init];
+	quarterIncrementComponents.month = 3;
+	NSDate *lastDayInQuarter = [calendar dateByAddingComponents:quarterIncrementComponents toDate:firstDayInQuarter options:0];
+
+	return [lastDayInQuarter timeIntervalSinceDate:firstDayInQuarter];
+}
+
+
 - (NSTimeInterval)secondsInYear {
 	NSCalendar *calendar = [NSCalendar currentCalendar];
 

@@ -136,6 +136,13 @@
 - (NSTimeInterval)secondsInMonth;
 
 /**
+ Returns the number of seconds in quarter when receiver takes place
+
+ @return Number of seconds in quarter when receiver takes place
+ */
+- (NSTimeInterval)secondsInQuarter;
+
+/**
  Returns the number of seconds in year when receiver takes place
 
  @return Number of seconds in year when receiver takes place
