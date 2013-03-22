@@ -61,4 +61,25 @@
 	GHAssertTrue([tomorrow occursTomorrow], nil);
 }
 
+
+- (void)testDateAtMidnight {
+	NSDate *now = [NSDate date];
+
+	NSDate *midnight = [now dateAtMidnight];
+	GHAssertNotNil(midnight, nil);
+
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+	NSDateComponents *midnightComponents = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit) fromDate:midnight];
+	GHAssertEquals(midnightComponents.hour, 0, nil);
+	GHAssertEquals(midnightComponents.minute, 0, nil);
+
+
+	NSDateComponents *nowComponents = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit) fromDate:now];
+	GHAssertEquals(nowComponents.year, midnightComponents.year, nil);
+	GHAssertEquals(nowComponents.month, midnightComponents.month, nil);
+	GHAssertEquals(nowComponents.day, midnightComponents.day, nil);
+	GHAssertNotEquals(nowComponents.hour, midnightComponents.hour, nil);
+	GHAssertNotEquals(nowComponents.minute, midnightComponents.minute, nil);
+}
+
 @end

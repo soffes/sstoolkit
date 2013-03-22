@@ -198,6 +198,16 @@
 }
 
 
+- (NSDate *)dateAtMidnight {
+	// This could impact performance if used repeatedly, but NSCalendar is not
+	// thread-safe and caching it is risky
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+
+	NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:self];
+	return [calendar dateFromComponents:dateComponents];
+}
+
+
 + (NSTimeInterval)unix {
 	return [[NSDate date] timeIntervalSince1970];
 }
