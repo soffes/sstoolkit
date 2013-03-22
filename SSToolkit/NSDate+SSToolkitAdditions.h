@@ -91,6 +91,18 @@
 + (NSString *)timeInWordsFromTimeInterval:(NSTimeInterval)intervalInSeconds includingSeconds:(BOOL)includeSeconds;
 
 
+///----------------------------
+/// @name Getting specific time
+///----------------------------
+
+/**
+ Returns an NSDate object set to midnight time for receiver date.
+
+ @return A NSDate object identical to receiver but with time set to 00:00
+ */
+- (NSDate *)dateAtMidnight;
+
+
 ///----------------------
 /// @name Time In Seconds
 ///----------------------
