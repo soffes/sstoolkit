@@ -199,8 +199,6 @@
 
 
 - (NSDate *)dateAtMidnight {
-	// This could impact performance if used repeatedly, but NSCalendar is not
-	// thread-safe and caching it is risky
 	NSCalendar *calendar = [NSCalendar currentCalendar];
 
 	NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:self];
@@ -213,29 +211,65 @@
 }
 
 
-+ (NSTimeInterval)dayInSeconds {
-	return 86400;
+- (NSTimeInterval)secondsInDay {
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+
+	NSDateComponents *dayIncrementComponents = [[NSDateComponents alloc] init];
+	[dayIncrementComponents setDay:1];
+	NSDate *tomorrowMidnight = [[calendar dateByAddingComponents:dayIncrementComponents toDate:self options:0] dateAtMidnight];
+
+	NSDate *midnight = [self dateAtMidnight];
+
+	return [tomorrowMidnight timeIntervalSinceDate:midnight];
 }
 
 
-+ (NSTimeInterval)weekInSeconds {
-	return 7 * [NSDate dayInSeconds];
+- (NSTimeInterval)secondsInWeek {
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+
+	NSDateComponents *firstWeekDayComponents = [calendar components:(NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSWeekCalendarUnit|NSWeekdayCalendarUnit) fromDate:self];
+	firstWeekDayComponents.weekday = 1;
+	NSDate *firstDayInWeek = [calendar dateFromComponents:firstWeekDayComponents];
+
+	NSDateComponents *weekIncrementComponents = [[NSDateComponents alloc] init];
+	[weekIncrementComponents setWeek:1];
+	NSDate *lastDayInWeek = [calendar dateByAddingComponents:weekIncrementComponents toDate:firstDayInWeek options:0];
+
+	return [lastDayInWeek timeIntervalSinceDate:firstDayInWeek];
 }
 
 
-+ (NSTimeInterval)monthInSeconds {
-	return 30 * [NSDate dayInSeconds];
+- (NSTimeInterval)secondsInMonth {
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+
+	NSDateComponents *firstMonthDayComponents = [calendar components:(NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:self];
+	firstMonthDayComponents.day = 1;
+	NSDate *firstDayInMonth = [calendar dateFromComponents:firstMonthDayComponents];
+
+	NSDateComponents *monthIncrementComponents = [[NSDateComponents alloc] init];
+	[monthIncrementComponents setMonth:1];
+	NSDate *lastDayInMonth = [calendar dateByAddingComponents:monthIncrementComponents toDate:firstDayInMonth options:0];
+
+	return [lastDayInMonth timeIntervalSinceDate:firstDayInMonth];
 }
 
 
-+ (NSTimeInterval)yearInSeconds {
-	return 365 * [NSDate dayInSeconds];
+- (NSTimeInterval)secondsInYear {
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+
+	NSDateComponents *firstYearDayComponents = [calendar components:(NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSDayCalendarUnit) fromDate:self];
+	firstYearDayComponents.day = 1;
+	NSDate *firstDayInYear = [calendar dateFromComponents:firstYearDayComponents];
+
+	NSDateComponents *yearIncrementComponents = [[NSDateComponents alloc] init];
+	[yearIncrementComponents setYear:1];
+	NSDate *lastDayInYear = [calendar dateByAddingComponents:yearIncrementComponents toDate:firstDayInYear options:0];
+
+	return [lastDayInYear timeIntervalSinceDate:firstDayInYear];
 }
 
 
 - (BOOL)occursToday {
-	// This could impact performance if used repeatedly, but NSCalendar is not
-	// thread-safe and caching it is risky
 	NSCalendar *calendar = [NSCalendar currentCalendar];
 
 	NSDateComponents *todayComponents = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]];
@@ -249,8 +283,6 @@
 
 
 - (BOOL)occursTomorrow {
-	// This could impact performance if used repeatedly, but NSCalendar is not
-	// thread-safe and caching it is risky
 	NSCalendar *calendar = [NSCalendar currentCalendar];
 
 	NSDateComponents *dayIncrementComponents = [[NSDateComponents alloc] init];
