@@ -145,10 +145,10 @@
 
 - (void)close:(id)sender {
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_5_0
-	if ([self.navigationController respondsToSelector:@selector(dismissViewControllerAnimated:completion:)])
-	{
-		[self.navigationController dismissViewControllerAnimated:YES completion:nil];
-	}
+    if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        return;
+    }
 #endif
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
 	[self.navigationController dismissModalViewControllerAnimated:YES];
@@ -191,14 +191,13 @@
 	[viewController setMessageBody:_webView.lastRequest.mainDocumentURL.absoluteString isHTML:NO];
 	
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_5_0
-	if ([self.navigationController respondsToSelector:@selector(presentViewController:animated:completion:)])
-	{
-		[self.navigationController presentViewController:viewController animated:YES completion:nil];
-		return;
-	}
+    if ([self respondsToSelector:@selector(presentViewController:animated:completion:)]) {
+        [self presentViewController:viewController animated:YES completion:nil];
+        return;
+    }
 #endif
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
-	[self.navigationController presentModalViewController:viewController animated:YES];
+    [self presentModalViewController:viewController animated:YES];
 #endif
 }
 
@@ -274,14 +273,13 @@
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_5_0
-	if ([controller respondsToSelector:@selector(dismissViewControllerAnimated:completion:)])
-	{
-		[controller dismissViewControllerAnimated:YES completion:nil];
-		return;
-	}
+    if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        return;
+    }
 #endif
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
-	[controller dismissModalViewControllerAnimated:YES];
+	[self.navigationController dismissModalViewControllerAnimated:YES];
 #endif
 }
 
