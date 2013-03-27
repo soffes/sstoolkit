@@ -212,75 +212,101 @@
 
 
 - (NSTimeInterval)secondsInDay {
-	NSCalendar *calendar = [NSCalendar currentCalendar];
-
-	NSDateComponents *dayIncrementComponents = [[NSDateComponents alloc] init];
-	[dayIncrementComponents setDay:1];
-	NSDate *tomorrowMidnight = [[calendar dateByAddingComponents:dayIncrementComponents toDate:self options:0] dateAtMidnight];
-
-	NSDate *midnight = [self dateAtMidnight];
-
-	return [tomorrowMidnight timeIntervalSinceDate:midnight];
+	return [self secondsInPeriod:NSDayCalendarUnit];
 }
 
 
 - (NSTimeInterval)secondsInWeek {
-	NSCalendar *calendar = [NSCalendar currentCalendar];
-
-	NSDateComponents *firstWeekDayComponents = [calendar components:(NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSWeekCalendarUnit|NSWeekdayCalendarUnit) fromDate:self];
-	firstWeekDayComponents.weekday = 1;
-	NSDate *firstDayInWeek = [calendar dateFromComponents:firstWeekDayComponents];
-
-	NSDateComponents *weekIncrementComponents = [[NSDateComponents alloc] init];
-	[weekIncrementComponents setWeek:1];
-	NSDate *lastDayInWeek = [calendar dateByAddingComponents:weekIncrementComponents toDate:firstDayInWeek options:0];
-
-	return [lastDayInWeek timeIntervalSinceDate:firstDayInWeek];
+	return [self secondsInPeriod:NSWeekCalendarUnit];
 }
 
 
 - (NSTimeInterval)secondsInMonth {
-	NSCalendar *calendar = [NSCalendar currentCalendar];
-
-	NSDateComponents *firstMonthDayComponents = [calendar components:(NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:self];
-	firstMonthDayComponents.day = 1;
-	NSDate *firstDayInMonth = [calendar dateFromComponents:firstMonthDayComponents];
-
-	NSDateComponents *monthIncrementComponents = [[NSDateComponents alloc] init];
-	[monthIncrementComponents setMonth:1];
-	NSDate *lastDayInMonth = [calendar dateByAddingComponents:monthIncrementComponents toDate:firstDayInMonth options:0];
-
-	return [lastDayInMonth timeIntervalSinceDate:firstDayInMonth];
+	return [self secondsInPeriod:NSMonthCalendarUnit];
 }
 
 
 - (NSTimeInterval)secondsInQuarter {
-	NSCalendar *calendar = [NSCalendar currentCalendar];
-
-	NSDateComponents *firstQuarterDayComponents = [calendar components:(NSYearCalendarUnit|NSQuarterCalendarUnit|NSDayCalendarUnit) fromDate:self];
-	firstQuarterDayComponents.day = 1;
-	NSDate *firstDayInQuarter = [calendar dateFromComponents:firstQuarterDayComponents];
-
-	NSDateComponents *quarterIncrementComponents = [[NSDateComponents alloc] init];
-	quarterIncrementComponents.month = 3;
-	NSDate *lastDayInQuarter = [calendar dateByAddingComponents:quarterIncrementComponents toDate:firstDayInQuarter options:0];
-
-	return [lastDayInQuarter timeIntervalSinceDate:firstDayInQuarter];
+	return [self secondsInPeriod:NSQuarterCalendarUnit];
 }
 
 
 - (NSTimeInterval)secondsInYear {
+	return [self secondsInPeriod:NSYearCalendarUnit];
+}
+
+/**
+ Returns the number of seconds in a time period
+
+ @param calendarUnit A NSCalendarUnit constant that sets the target period. Only year, quarter, month, week and day are currently supported
+
+ @return A NSTimeInterval value with the number of seconds that take place on a time period. If given calendarUnit value is not supported 0 is returned instead
+ */
+- (NSTimeInterval)secondsInPeriod:(NSCalendarUnit)calendarUnit {
+	NSUInteger datePeriodComponents = 0;
+
+	SEL dateOriginComponent = @selector(setDay:);
+	NSUInteger dateOrigin = 1;
+
+	SEL dateIncrementComponent = NULL;
+	NSUInteger dateIncrement = 1;
+
+	switch (calendarUnit) {
+		case NSYearCalendarUnit:
+			datePeriodComponents = (NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSDayCalendarUnit);
+			dateIncrementComponent = @selector(setYear:);
+			break;
+
+		case NSQuarterCalendarUnit:
+			datePeriodComponents = (NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSQuarterCalendarUnit|NSDayCalendarUnit);
+			dateIncrementComponent = @selector(setMonth:);
+			dateIncrement = 3;
+			break;
+
+		case NSMonthCalendarUnit:
+			datePeriodComponents = (NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit);
+			dateIncrementComponent = @selector(setMonth:);
+			break;
+
+		case NSWeekCalendarUnit:
+			datePeriodComponents = (NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSWeekCalendarUnit|NSWeekdayCalendarUnit);
+			dateOriginComponent = @selector(setWeekday:);
+			dateIncrementComponent = @selector(setWeek:);
+			break;
+
+		case NSDayCalendarUnit:
+			datePeriodComponents = (NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit);
+			dateOriginComponent = @selector(setHour:);
+			dateOrigin = 0;
+			dateIncrementComponent = @selector(setDay:);
+			break;
+
+		default:
+			return 0;
+			break;
+	}
+
+	// Get the first date of target period
 	NSCalendar *calendar = [NSCalendar currentCalendar];
+	NSDateComponents *firstDateComponents = [calendar components:datePeriodComponents fromDate:self];
 
-	NSDateComponents *firstYearDayComponents = [calendar components:(NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSDayCalendarUnit) fromDate:self];
-	firstYearDayComponents.day = 1;
-	NSDate *firstDayInYear = [calendar dateFromComponents:firstYearDayComponents];
+	NSInvocation *dateOriginInvocation = [NSInvocation invocationWithMethodSignature:[firstDateComponents methodSignatureForSelector:dateOriginComponent]];
+	[dateOriginInvocation setSelector:dateOriginComponent];
+	[dateOriginInvocation setTarget:firstDateComponents];
+	[dateOriginInvocation setArgument:&dateOrigin atIndex:2];
+	[dateOriginInvocation invoke];
+	NSDate *firstDate = [calendar dateFromComponents:firstDateComponents];
 
-	NSDateComponents *yearIncrementComponents = [[NSDateComponents alloc] init];
-	[yearIncrementComponents setYear:1];
-	NSDate *lastDayInYear = [calendar dateByAddingComponents:yearIncrementComponents toDate:firstDayInYear options:0];
+	// Get the last date of target period
+	NSDateComponents *dateIncrementComponents = [[NSDateComponents alloc] init];
+	NSInvocation *dateIncrementInvocation = [NSInvocation invocationWithMethodSignature:[dateIncrementComponents methodSignatureForSelector:dateIncrementComponent]];
+	[dateIncrementInvocation setSelector:dateIncrementComponent];
+	[dateIncrementInvocation setTarget:dateIncrementComponents];
+	[dateIncrementInvocation setArgument:&dateIncrement atIndex:2];
+	[dateIncrementInvocation invoke];
+	NSDate *lastDate = [calendar dateByAddingComponents:dateIncrementComponents toDate:firstDate options:0];
 
-	return [lastDayInYear timeIntervalSinceDate:firstDayInYear];
+	return [lastDate timeIntervalSinceDate:firstDate];
 }
 
 
