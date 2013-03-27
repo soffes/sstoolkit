@@ -237,4 +237,20 @@
  */
 - (NSString *)stringByTrimmingTrailingWhitespaceAndNewlineCharacters;
 
+
+///-----------------
+/// @name Truncating
+///-----------------
+
+/**
+ Returns a new string by truncating characters until matching width, adding an ellipsis at the end if necessary
+
+ Credits to a question in StackOverflow: http://stackoverflow.com/q/10693383/592454
+
+ @param width Width of truncated string
+ @param font Font to use to compute the width of truncated string
+ @return A new string by truncating characters until matching width, adding an ellipsis at the end. If font is nil then the same string is returned
+ */
+- (NSString *)stringByTruncatingToWidth:(CGFloat)width withFont:(UIFont *)font;
+
 @end
