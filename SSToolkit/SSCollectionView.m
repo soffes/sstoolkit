@@ -32,6 +32,9 @@ static NSString *kSSCollectionViewSectionFooterHeightKey = @"SSCollectionViewSec
 static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSectionItemSize";
 
 @interface SSCollectionView () <UITableViewDataSource, UITableViewDelegate>
+{
+	BOOL willReloadItemCount;
+}
 - (void)_initialize;
 - (void)_reuseItem:(SSCollectionViewItem *)item;
 - (void)_reuseItems:(NSArray *)items;
@@ -151,12 +154,13 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 
 - (NSUInteger)numberOfItemsInSection:(NSUInteger)section {
 	NSNumber *items = [self _sectionInfoItemForKey:kSSCollectionViewSectionNumberOfItemsKey section:section];	
-	if (!items) {
+	if (!items || willReloadItemCount) {
 		if ([_dataSource respondsToSelector:@selector(collectionView:numberOfItemsInSection:)] == NO) {
 			return 0;
 		}
 		items = [NSNumber numberWithUnsignedInteger:[_dataSource collectionView:self numberOfItemsInSection:section]];
 		[self _setSectionInfoItem:items forKey:kSSCollectionViewSectionNumberOfItemsKey section:section];
+willReloadItemCount= NO;
 	}
 	return [items unsignedIntegerValue];
 }
@@ -400,6 +404,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	}
 		
 	// Apply updates
+	willReloadItemCount = YES;
 	[_tableView endUpdates];
 	
 	// Clean up internal representation
@@ -522,6 +527,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 	self.backgroundColor = [UIColor whiteColor];
 	self.opaque = YES;
 	
+	willReloadItemCount = YES;
 	_minimumColumnSpacing = 10.0f;
 	_rowSpacing = 20.0f;
 	_allowsSelection = YES;
