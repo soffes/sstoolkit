@@ -27,6 +27,12 @@
 }
 
 
+- (void)insertText:(NSString *)string {
+	[super insertText:string];
+	[self setNeedsDisplay];
+}
+
+
 - (void)setPlaceholder:(NSString *)string {
 	if ([string isEqual:_placeholder]) {
 		return;
