@@ -33,6 +33,12 @@
 }
 
 
+- (void)setAttributedText:(NSAttributedString *)attributedText {
+	[super setAttributedText:attributedText];
+	[self setNeedsDisplay];
+}
+
+
 - (void)setPlaceholder:(NSString *)string {
 	if ([string isEqual:_placeholder]) {
 		return;
