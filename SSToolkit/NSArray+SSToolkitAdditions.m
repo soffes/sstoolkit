@@ -26,6 +26,10 @@
 
 
 - (id)randomObject {
+	if ([self count] == 0) {
+	    return nil;
+	}
+	
 	return [self objectAtIndex:arc4random_uniform([self count])];
 }
 
