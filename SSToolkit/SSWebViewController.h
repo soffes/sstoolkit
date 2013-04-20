@@ -12,6 +12,7 @@
 
 @interface SSWebViewController : UIViewController <SSWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
+@property (nonatomic, assign) BOOL useToolbar;
 @property (nonatomic, readonly, copy) NSURL *currentURL;
 
 - (void)loadURL:(NSURL *)url;
