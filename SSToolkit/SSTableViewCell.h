@@ -33,10 +33,21 @@
 /**
  Factory method to create and initialize cells
 
+ This is a shortcut for cellForTableView:style: that uses the UITableViewCellStyleDefault style
+
  @param tableView Table that requests a cell
  @return A SSTableViewCell object
  */
 + (instancetype)cellForTableView:(UITableView *)tableView;
+
+/**
+ Factory method to create and initialize cells
+
+ @param tableView Table that requests a cell
+ @param style Default style for the cell
+ @return A SSTableViewCell object
+ */
++ (instancetype)cellForTableView:(UITableView *)tableView style:(UITableViewCellStyle)style;
 
 /**
  Builds a unique cell identifier to use in subclasses of SSTableViewCell
@@ -55,6 +66,6 @@
  @param cellID Identifier of the cell
  @return A newly allocated SSTableViewCell object
  */
-- (instancetype)initWithCellIdentifier:(NSString *)cellID;
+- (instancetype)initWithCellIdentifier:(NSString *)cellID style:(UITableViewCellStyle)style;
 
 @end

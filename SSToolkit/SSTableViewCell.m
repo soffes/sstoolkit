@@ -13,10 +13,14 @@
 #pragma mark - Cell factory
 
 + (instancetype)cellForTableView:(UITableView *)tableView {
+	return [SSTableViewCell cellForTableView:tableView style:UITableViewCellStyleDefault];
+}
+
++ (instancetype)cellForTableView:(UITableView *)tableView style:(UITableViewCellStyle)style {
 	NSString *cellID = [self cellIdentifier];
 	SSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
 	if (cell == nil) {
-		cell = [[self alloc] initWithCellIdentifier:cellID];
+		cell = [[self alloc] initWithCellIdentifier:cellID style:style];
 	}
 	return cell;
 }
@@ -25,8 +29,8 @@
 	return NSStringFromClass([self class]);
 }
 
-- (instancetype)initWithCellIdentifier:(NSString *)cellID {
-	return [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+- (instancetype)initWithCellIdentifier:(NSString *)cellID style:(UITableViewCellStyle)style {
+	return [self initWithStyle:style reuseIdentifier:cellID];
 }
 
 @end
