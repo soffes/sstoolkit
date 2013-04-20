@@ -30,6 +30,16 @@
 
 @implementation SSWebViewController
 
+#pragma mark - NSObject
+
+- (id)init {
+	if ((self = [super init])) {
+		_useToolbar = YES;
+	}
+	return self;
+}
+
+
 #pragma mark - UIViewController
 
 - (void)viewDidLoad {
@@ -102,7 +112,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 
-	if (![_url isFileURL]) {
+	if (_useToolbar && ![_url isFileURL]) {
 		[self.navigationController setToolbarHidden:NO animated:animated];
 	}
 }
@@ -110,7 +120,10 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
-	[self.navigationController setToolbarHidden:YES animated:animated];
+
+	if (_useToolbar) {
+		[self.navigationController setToolbarHidden:YES animated:animated];
+	}
 }
 
 
@@ -241,7 +254,9 @@
 	self.title = url.absoluteString;
 	[self _updateBrowserUI];
 
-	[self.navigationController setToolbarHidden:[url isFileURL] animated:YES];
+	if (_useToolbar) {
+		[self.navigationController setToolbarHidden:[url isFileURL] animated:YES];
+	}
 }
 
 
