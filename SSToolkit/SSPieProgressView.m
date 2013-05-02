@@ -105,10 +105,10 @@ CGFloat const kAngleOffset = -90.0f;
 
 	// Math
 	CGPoint center = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
-	CGFloat radius = center.y;
+	CGFloat radius = floorf((rect.size.width - _pieBorderWidth) / 2);
 	CGFloat angle = DEGREES_TO_RADIANS((360.0f * _progress) + kAngleOffset);
 	CGPoint points[3] = {
-		CGPointMake(center.x, 0.0f),
+		CGPointMake(center.x, ceilf(_pieBorderWidth / 2)),
 		center,
 		CGPointMake(center.x + radius * cosf(angle), center.y + radius * sinf(angle))
 	};
