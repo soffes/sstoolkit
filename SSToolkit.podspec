@@ -15,6 +15,55 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.preserve_paths = 'SSToolkit.xcodeproj', 'Resources'
   s.prefix_header_contents = '#ifdef __OBJC__', '#import "SSToolkitDefines.h"', '#endif'
+  
+  s.subspec 'SSAddressBarTextField' do |sp|
+    sp.source_files = 'SSToolkit/SSAddressBarTextField'
+    sp.dependency 'SSToolkit/SSTextField'
+    sp.dependency 'SSToolkit/SSAddressBarTextFieldBackgroundView'
+    sp.dependency 'SSToolkit/SSDrawingUtilities'
+  end
+
+  s.subspec 'SSAddressBarTextFieldBackgroundView' do |sp|
+    sp.source_files = 'SSToolkit/SSAddressBarTextFieldBackgroundView'
+    sp.dependency 'SSToolkit/SSAddressBarTextFieldBackgroundViewInnerView'
+    sp.dependency 'SSToolkit/UIView+SSToolkitAdditions'
+  end
+
+  s.subspec 'SSAddressBarTextFieldBackgroundViewInnerView' do |sp|
+    sp.source_files = 'SSToolkit/SSAddressBarTextFieldBackgroundViewInnerView'
+    sp.dependency 'SSToolkit/UIImage+SSToolkitAdditions'
+  end
+
+  s.subspec 'SSBadgeView' do |sp|
+    sp.source_files = 'SSToolkit/SSBadgeView'
+    sp.dependency 'SSToolkit/SSLabel'
+    sp.dependency 'SSToolkit/SSDrawingUtilities'
+  end
+
+  s.subspec 'SSDrawingUtilities' do |sp|
+    sp.source_files = 'SSToolkit/SSDrawingUtilities'
+  end
+
+  s.subspec 'SSLabel' do |sp|
+    sp.source_files = 'SSToolkit/SSLabel'
+  end
+
+  s.subspec 'SSTextField' do |sp|
+    sp.source_files = 'SSToolkit/SSTextField'
+    sp.dependency 'SSToolkit/SSDrawingUtilities'
+  end
+
+  s.subspec 'SSTextView' do |sp|
+    sp.source_files = 'SSToolkit/SSTextView'
+  end
+
+  s.subspec 'UIImage+SSToolkitAdditions' do |sp|
+    sp.source_files = 'SSToolkit/UIImage+SSToolkitAdditions'
+  end
+
+  s.subspec 'UIView+SSToolkitAdditions' do |sp|
+    sp.source_files = 'SSToolkit/UIView+SSToolkitAdditions'
+  end
 
   def s.post_install(target_installer)
     puts "\nGenerating SSToolkit resources bundle\n".yellow if config.verbose?
