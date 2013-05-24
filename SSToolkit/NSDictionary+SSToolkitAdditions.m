@@ -79,11 +79,11 @@
 
 
 - (id)safeObjectForKey:(id)key {
-	id value = [self valueForKey:key];
-	if (value == [NSNull null]) {
+	id object = [self objectForKey:key];
+	if (object == [NSNull null]) {
 		return nil;
 	}
-	return value;
+	return object;
 }
 
 @end
