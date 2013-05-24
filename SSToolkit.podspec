@@ -123,52 +123,34 @@ Pod::Spec.new do |s|
 
   s.subspec 'SSCollectionView' do |sp|
     sp.source_files = 'SSToolkit/SSCollectionView'
-    sp.dependency 'SSToolkit/SSCollectionViewItem'
-    sp.dependency 'SSToolkit/SSCollectionViewInternal'
-    sp.dependency 'SSToolkit/SSCollectionViewItemInternal'
-    sp.dependency 'SSToolkit/SSCollectionViewItemTableViewCell'
-    sp.dependency 'SSToolkit/SSCollectionViewExtremityTableViewCell'
-    sp.dependency 'SSToolkit/SSCollectionViewTableView'
+    
+    sp.subspec 'SSCollectionViewItem' do |ssp|
+      ssp.source_files = 'SSToolkit/SSCollectionViewItem'
+      ssp.dependency 'SSToolkit/SSLabel'
+    end
+    
+    sp.subspec 'SSCollectionViewInternal' do |ssp|
+      ssp.source_files = 'SSToolkit/SSCollectionViewInternal'
+    end
+
+    sp.subspec 'SSCollectionViewItemInternal' do |ssp|
+      ssp.source_files = 'SSToolkit/SSCollectionViewItemInternal'
+    end
+
+    sp.subspec 'SSCollectionViewItemTableViewCell' do |ssp|
+      ssp.source_files = 'SSToolkit/SSCollectionViewItemTableViewCell'
+    end
+
+    sp.subspec 'SSCollectionViewExtremityTableViewCell' do |ssp|
+      ssp.source_files = 'SSToolkit/SSCollectionViewExtremityTableViewCell'
+    end
+
+    sp.subspec 'SSCollectionViewTableView' do |ssp|
+      ssp.source_files = 'SSToolkit/SSCollectionViewTableView'
+    end
+    
     sp.dependency 'SSToolkit/SSDrawingUtilities'
     sp.dependency 'SSToolkit/UIView+SSToolkitAdditions'
-  end
-
-  s.subspec 'SSCollectionViewController' do |sp|
-    sp.source_files = 'SSToolkit/SSCollectionViewController'
-    sp.dependency 'SSToolkit/SSCollectionView'
-    sp.dependency 'SSToolkit/SSDrawingUtilities'
-  end
-
-  s.subspec 'SSCollectionViewExtremityTableViewCell' do |sp|
-    sp.source_files = 'SSToolkit/SSCollectionViewExtremityTableViewCell'
-  end
-
-  s.subspec 'SSCollectionViewInternal' do |sp|
-    sp.source_files = 'SSToolkit/SSCollectionViewInternal'
-  end
-
-  s.subspec 'SSCollectionViewItem' do |sp|
-    sp.source_files = 'SSToolkit/SSCollectionViewItem'
-    sp.dependency 'SSToolkit/SSCollectionViewItemInternal'
-    sp.dependency 'SSToolkit/SSCollectionView'
-    sp.dependency 'SSToolkit/SSCollectionViewInternal'
-    sp.dependency 'SSToolkit/SSLabel'
-    sp.dependency 'SSToolkit/SSDrawingUtilities'
-  end
-
-  s.subspec 'SSCollectionViewItemInternal' do |sp|
-    sp.source_files = 'SSToolkit/SSCollectionViewItemInternal'
-  end
-
-  s.subspec 'SSCollectionViewItemTableViewCell' do |sp|
-    sp.source_files = 'SSToolkit/SSCollectionViewItemTableViewCell'
-    sp.dependency 'SSToolkit/SSCollectionViewItem'
-    sp.dependency 'SSToolkit/SSCollectionView'
-    sp.dependency 'SSToolkit/SSCollectionViewInternal'
-  end
-
-  s.subspec 'SSCollectionViewTableView' do |sp|
-    sp.source_files = 'SSToolkit/SSCollectionViewTableView'
   end
 
   s.subspec 'SSConcurrentOperation' do |sp|
@@ -191,12 +173,6 @@ Pod::Spec.new do |s|
     sp.dependency 'SSToolkit/SSDrawingUtilities'
     sp.dependency 'SSToolkit/UIView+SSToolkitAdditions'
     sp.dependency 'SSToolkit/NSBundle+SSToolkitAdditions'
-    sp.dependency 'SSToolkit/UIImage+SSToolkitAdditions'
-  end
-
-  s.subspec 'SSHUDWindow' do |sp|
-    sp.source_files = 'SSToolkit/SSHUDWindow'
-    sp.dependency 'SSToolkit/SSDrawingUtilities'
     sp.dependency 'SSToolkit/UIImage+SSToolkitAdditions'
   end
 
@@ -256,35 +232,6 @@ Pod::Spec.new do |s|
 
   s.subspec 'SSTextView' do |sp|
     sp.source_files = 'SSToolkit/SSTextView'
-  end
-
-  s.subspec 'SSToolkit' do |sp|
-    sp.source_files = 'SSToolkit/SSToolkit'
-    sp.dependency 'SSToolkit/SSAnimatedImageView'
-    sp.dependency 'SSToolkit/SSBadgeView'
-    sp.dependency 'SSToolkit/SSBorderedView'
-    sp.dependency 'SSToolkit/SSCollectionView'
-    sp.dependency 'SSToolkit/SSCollectionViewItem'
-    sp.dependency 'SSToolkit/SSGradientView'
-    sp.dependency 'SSToolkit/SSHUDView'
-    sp.dependency 'SSToolkit/SSLabel'
-    sp.dependency 'SSToolkit/SSLineView'
-    sp.dependency 'SSToolkit/SSLoadingView'
-    sp.dependency 'SSToolkit/SSPieProgressView'
-    sp.dependency 'SSToolkit/SSWebView'
-    sp.dependency 'SSToolkit/SSBadgeTableViewCell'
-    sp.dependency 'SSToolkit/SSAddressBarTextField'
-    sp.dependency 'SSToolkit/SSButton'
-    sp.dependency 'SSToolkit/SSTextField'
-    sp.dependency 'SSToolkit/SSTextView'
-    sp.dependency 'SSToolkit/SSRatingPicker'
-    sp.dependency 'SSToolkit/SSCollectionViewController'
-    sp.dependency 'SSToolkit/SSPickerViewController'
-    sp.dependency 'SSToolkit/SSRatingPickerViewController'
-    sp.dependency 'SSToolkit/SSWebViewController'
-    sp.dependency 'SSToolkit/SSConcurrentOperation'
-    sp.dependency 'SSToolkit/SSDrawingUtilities'
-    sp.dependency 'SSToolkit/SSRateLimit'
   end
 
   s.subspec 'SSToolkitDefines' do |sp|
