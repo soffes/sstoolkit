@@ -61,20 +61,18 @@ Pod::Spec.new do |s|
   
   s.subspec 'SSAddressBarTextField' do |sp|
     sp.source_files = 'SSToolkit/SSAddressBarTextField'
+    sp.subspec 'SSAddressBarTextFieldBackgroundView' do |ssp|
+      ssp.source_files = 'SSToolkit/SSAddressBarTextFieldBackgroundView'
+      ssp.subspec 'SSAddressBarTextFieldBackgroundViewInnerView' do |sbsp|
+        sbsp.source_files = 'SSToolkit/SSAddressBarTextFieldBackgroundViewInnerView'
+        sbsp.dependency 'SSToolkit/UIImage+SSToolkitAdditions'
+      end
+
+      ssp.dependency 'SSToolkit/UIView+SSToolkitAdditions'
+    end
+
     sp.dependency 'SSToolkit/SSTextField'
-    sp.dependency 'SSToolkit/SSAddressBarTextFieldBackgroundView'
     sp.dependency 'SSToolkit/SSDrawingUtilities'
-  end
-
-  s.subspec 'SSAddressBarTextFieldBackgroundView' do |sp|
-    sp.source_files = 'SSToolkit/SSAddressBarTextFieldBackgroundView'
-    sp.dependency 'SSToolkit/SSAddressBarTextFieldBackgroundViewInnerView'
-    sp.dependency 'SSToolkit/UIView+SSToolkitAdditions'
-  end
-
-  s.subspec 'SSAddressBarTextFieldBackgroundViewInnerView' do |sp|
-    sp.source_files = 'SSToolkit/SSAddressBarTextFieldBackgroundViewInnerView'
-    sp.dependency 'SSToolkit/UIImage+SSToolkitAdditions'
   end
 
   s.subspec 'SSAnimatedImageView' do |sp|
@@ -169,11 +167,14 @@ Pod::Spec.new do |s|
 
   s.subspec 'SSHUDView' do |sp|
     sp.source_files = 'SSToolkit/SSHUDView'
-    sp.dependency 'SSToolkit/SSHUDWindow'
-    sp.dependency 'SSToolkit/SSDrawingUtilities'
+    sp.subspec 'SSHUDWindow' do |ssp|
+      ssp.source_files = 'SSToolkit/SSHUDWindow'
+      ssp.dependency 'SSToolkit/SSDrawingUtilities'
+      ssp.dependency 'SSToolkit/UIImage+SSToolkitAdditions'
+    end
+
     sp.dependency 'SSToolkit/UIView+SSToolkitAdditions'
     sp.dependency 'SSToolkit/NSBundle+SSToolkitAdditions'
-    sp.dependency 'SSToolkit/UIImage+SSToolkitAdditions'
   end
 
   s.subspec 'SSLabel' do |sp|
@@ -207,21 +208,17 @@ Pod::Spec.new do |s|
     sp.dependency 'SSToolkit/UIView+SSToolkitAdditions'
   end
 
-  s.subspec 'SSRatingPickerScrollView' do |sp|
-    sp.source_files = 'SSToolkit/SSRatingPickerScrollView'
-    sp.dependency 'SSToolkit/SSGradientView'
-    sp.dependency 'SSToolkit/SSRatingPicker'
-    sp.dependency 'SSToolkit/SSTextField'
-    sp.dependency 'SSToolkit/SSTextView'
-    sp.dependency 'SSToolkit/SSDrawingUtilities'
-  end
-
   s.subspec 'SSRatingPickerViewController' do |sp|
     sp.source_files = 'SSToolkit/SSRatingPickerViewController'
-    sp.dependency 'SSToolkit/SSRatingPickerScrollView'
-    sp.dependency 'SSToolkit/SSRatingPicker'
-    sp.dependency 'SSToolkit/SSTextField'
-    sp.dependency 'SSToolkit/SSTextView'
+    sp.subspec 'SSRatingPickerScrollView' do |ssp|
+      ssp.source_files = 'SSToolkit/SSRatingPickerScrollView'
+      ssp.dependency 'SSToolkit/SSGradientView'
+      ssp.dependency 'SSToolkit/SSRatingPicker'
+      ssp.dependency 'SSToolkit/SSTextField'
+      ssp.dependency 'SSToolkit/SSTextView'
+      ssp.dependency 'SSToolkit/SSDrawingUtilities'
+    end
+
     sp.dependency 'SSToolkit/UIScreen+SSToolkitAdditions'
   end
 
