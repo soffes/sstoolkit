@@ -8,7 +8,7 @@
 
 @interface SSCollectionViewExtremityTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UIView *extrimityView;
+@property (nonatomic, strong) UIView *extremityView;
 
 - (id)initWithReuseIdentifier:(NSString *)aReuseIdentifier;
 
