@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = 'SSToolkit'
-  s.version      = '1.0.4'
+  s.version      = '1.1'
   s.platform     = :ios
   s.summary      = 'A collection of well-documented iOS classes for making life easier.'
   s.homepage     = 'http://sstoolk.it'
   s.author       = { 'Sam Soffes' => 'sam@soff.es' }
-  s.source       = { :git => 'https://github.com/soffes/sstoolkit.git', :tag => 'v1.0.4' }
+  s.source       = { :git => 'https://github.com/soffes/sstoolkit.git', :tag => "v#{s.version}" }
   s.description  = 'SSToolkit is a collection of well-documented iOS classes for making life ' \
                    'easier by solving common problems all iOS developers face. Some really ' \
                    'handy classes are SSCollectionView, SSGradientView, SSSwitch, and many more.'
@@ -213,12 +213,11 @@ Pod::Spec.new do |s|
     sp.subspec 'SSRatingPickerScrollView' do |ssp|
       ssp.source_files = 'SSToolkit/SSRatingPickerScrollView'
       ssp.dependency 'SSToolkit/SSGradientView'
-      ssp.dependency 'SSToolkit/SSRatingPicker'
       ssp.dependency 'SSToolkit/SSTextField'
       ssp.dependency 'SSToolkit/SSTextView'
-      ssp.dependency 'SSToolkit/SSDrawingUtilities'
     end
 
+    sp.dependency 'SSToolkit/SSRatingPicker'
     sp.dependency 'SSToolkit/UIScreen+SSToolkitAdditions'
   end
 
