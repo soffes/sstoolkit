@@ -281,9 +281,9 @@ Pod::Spec.new do |s|
     sp.source_files = 'SSToolkit/UIViewController+SSToolkitAdditions'
   end
 
-  def s.post_install(target_installer)
+  s.post_install do |target_installer|
     if Version.new(Pod::VERSION) >= Version.new('0.16.999')
-      sandbox_root = target.sandbox_dir
+      sandbox_root = target_installer.sandbox_dir
     else
       sandbox_root = config.project_pods_root
     end
