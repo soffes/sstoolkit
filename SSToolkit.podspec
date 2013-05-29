@@ -281,14 +281,10 @@ Pod::Spec.new do |s|
     sp.source_files = 'SSToolkit/UIViewController+SSToolkitAdditions'
   end
 
-  s.post_install do |target_installer|
-    if Version.new(Pod::VERSION) >= Version.new('0.16.999')
-      sandbox_root = target_installer.sandbox_dir
-    else
-      sandbox_root = config.project_pods_root
-    end
+  s.pre_install do |pod, target_definition|
+    pod_root = pod.root
 
-    Dir.chdir File.join(sandbox_root, 'SSToolkit') do
+    Dir.chdir File.join(pod_root, 'SSToolkit') do
       command = "xcodebuild -project SSToolkit.xcodeproj -target SSToolkitResources CONFIGURATION_BUILD_DIR=./"
       command << " 2>&1 > /dev/null"
       unless system(command)
@@ -296,11 +292,7 @@ Pod::Spec.new do |s|
       end
     end
 
-    if Version.new(Pod::VERSION) >= Version.new('0.16.999')
-      script_path = target_installer.copy_resources_script_path
-    else
-      script_path = File.join(config.project_pods_root, target_installer.target_definition.copy_resources_script_name)
-    end
+    script_path = target_definition.copy_resources_script_path
 
     File.open(script_path, 'a') do |file|
       file.puts "install_resource 'SSToolkit/SSToolkitResources.bundle'"
