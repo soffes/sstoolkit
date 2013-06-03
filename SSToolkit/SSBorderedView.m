@@ -50,7 +50,7 @@
 
 
 - (void)setLeftBorderColor:(UIColor *)leftBorderColor {
-	_bottomBorderColor = leftBorderColor;
+	_leftBorderColor = leftBorderColor;
 	[self setNeedsDisplay];
 }
 
