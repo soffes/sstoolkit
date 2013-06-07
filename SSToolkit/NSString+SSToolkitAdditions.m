@@ -17,6 +17,13 @@
 }
 
 
+- (BOOL)containsOnlyDigits {
+	if (self.length == 0) return YES;
+	NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
+	return ([nf numberFromString: self] == nil) ? NO : YES;
+}
+
+
 - (NSString *)MD5Sum {
 	const char *cstr = [self cStringUsingEncoding:NSUTF8StringEncoding];
 	NSData *data = [NSData dataWithBytes:cstr length:self.length];

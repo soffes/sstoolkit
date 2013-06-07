@@ -24,6 +24,12 @@
  */
 - (BOOL)containsString:(NSString *)string;
 
+/**
+ Returns a Boolean if the receiver contains only digits (localized decimal separator included).
+ 
+ @return A Boolean if the receiver contains only digits (localized decimal separator included).
+ */
+- (BOOL)containsOnlyDigits;
 
 ///--------------
 /// @name Hashing
