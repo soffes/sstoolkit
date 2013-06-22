@@ -17,10 +17,17 @@
 }
 
 
-- (BOOL)containsOnlyDigits {
-	if (self.length == 0) return YES;
+- (BOOL)isDecimal {
+	if (self.length == 0) return NO;
 	NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
 	return ([nf numberFromString: self] == nil) ? NO : YES;
+}
+
+
+- (BOOL)isInteger {
+	if (self.length == 0) return NO;
+	NSPredicate *numberPredicate = [NSPredicate predicateWithFormat: @"SELF MATCHES '^[0-9]+$'"];
+    return [numberPredicate evaluateWithObject: self];
 }
 
 
