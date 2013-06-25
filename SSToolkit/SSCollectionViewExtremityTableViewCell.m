@@ -12,12 +12,12 @@
 
 #pragma mark - Accessors
 
-@synthesize extrimityView = _extrimityView;
+@synthesize extremityView = _extremityView;
 
-- (void)setExtrimityView:(UIView *)view {
-	[_extrimityView removeFromSuperview];
-	_extrimityView = view;
-	[self addSubview:_extrimityView];
+- (void)setExtremityView:(UIView *)view {
+	[_extremityView removeFromSuperview];
+	_extremityView = view;
+	[self addSubview:_extremityView];
 	[self setNeedsLayout];
 }
 
@@ -25,7 +25,7 @@
 #pragma mark - UIView
 
 - (void)layoutSubviews {
-	_extrimityView.frame = self.bounds;
+	_extremityView.frame = self.bounds;
 }
 
 
@@ -47,7 +47,7 @@
 
 - (void)prepareForReuse {
 	[super prepareForReuse];
-	self.extrimityView = nil;
+	self.extremityView = nil;
 }
 
 
