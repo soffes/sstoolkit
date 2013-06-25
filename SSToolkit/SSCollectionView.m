@@ -808,7 +808,7 @@ static NSString *kSSCollectionViewSectionItemSizeKey = @"SSCollectionViewSection
 			cell = [[SSCollectionViewExtremityTableViewCell alloc] initWithReuseIdentifier:extremityCellIdentifier];
 		}
 		
-		cell.extrimityView = [self _extremityViewForSection:rowIndexPath.section type:cellType];
+		cell.extremityView = [self _extremityViewForSection:rowIndexPath.section type:cellType];
 		
 		return cell;
 	}
