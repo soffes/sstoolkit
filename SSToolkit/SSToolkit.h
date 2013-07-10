@@ -10,8 +10,6 @@
 #import <SSToolkit/SSAnimatedImageView.h>
 #import <SSToolkit/SSBadgeView.h>
 #import <SSToolkit/SSBorderedView.h>
-#import <SSToolkit/SSCollectionView.h>
-#import <SSToolkit/SSCollectionViewItem.h>
 #import <SSToolkit/SSGradientView.h>
 #import <SSToolkit/SSHUDView.h>
 #import <SSToolkit/SSLabel.h>
@@ -31,7 +29,6 @@
 #import <SSToolkit/SSRatingPicker.h>
 
 // View Controllers
-#import <SSToolkit/SSCollectionViewController.h>
 #import <SSToolkit/SSPickerViewController.h>
 #import <SSToolkit/SSRatingPickerViewController.h>
 #import <SSToolkit/SSWebViewController.h>
