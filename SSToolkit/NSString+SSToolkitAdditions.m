@@ -141,7 +141,10 @@
 		} else if ([target hasPrefix:@"&#39;"]) {
 			[s appendString:@"'"];
 			[target deleteCharactersInRange:NSMakeRange(0, 5)];
-		} else if ([target hasPrefix:@"&amp;"]) {
+		} else if ([target hasPrefix:@"&#039;"]) {
+            [s appendString:@"'"];
+            [target deleteCharactersInRange:NSMakeRange(0, 6)];
+        } else if ([target hasPrefix:@"&amp;"]) {
 			[s appendString:@"&"];
 			[target deleteCharactersInRange:NSMakeRange(0, 5)];
 		} else if ([target hasPrefix:@"&hellip;"]) {
