@@ -6,6 +6,8 @@
 //  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
 #import "SSTextView.h"
 
 @interface SSTextView ()
@@ -107,11 +109,23 @@
 
 		// Draw the text
 		[_placeholderTextColor set];
+		if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+        {
+            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+            paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+            paragraphStyle.alignment = self.textAlignment;
+            NSDictionary *attributes = @{NSFontAttributeName : self.font,
+                                         NSParagraphStyleAttributeName : paragraphStyle};
+            [_placeholder drawInRect:rect withAttributes:attributes];
+        }
+        else
+        {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_6_0
-		[_placeholder drawInRect:rect withFont:self.font lineBreakMode:NSLineBreakByTruncatingTail alignment:self.textAlignment];
+            [_placeholder drawInRect:rect withFont:self.font lineBreakMode:NSLineBreakByTruncatingTail alignment:self.textAlignment];
 #else
-		[_placeholder drawInRect:rect withFont:self.font lineBreakMode:UILineBreakModeTailTruncation alignment:self.textAlignment];
+            [_placeholder drawInRect:rect withFont:self.font lineBreakMode:UILineBreakModeTailTruncation alignment:self.textAlignment];
 #endif
+        }
 	}
 }
 
