@@ -6,6 +6,8 @@
 //  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
 #import "SSTextView.h"
 
 @interface SSTextView ()
@@ -107,7 +109,7 @@
 
 		// Draw the text
 		[_placeholderTextColor set];
-		if ([_placeholder respondsToSelector:@selector(drawInRect:withAttributes:)])
+		if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
         {
             NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
             paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
