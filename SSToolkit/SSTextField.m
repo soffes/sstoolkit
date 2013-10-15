@@ -74,11 +74,19 @@
 	}
 	
     [_placeholderTextColor setFill];
+    
+    //check iOS version is >= 7.0
+    if (([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending)) {
+        rect =  CGRectInset(rect, 0, (rect.size.height - self.font.lineHeight) / 2.0);
+        [self.placeholder drawInRect:rect withAttributes:@{NSFontAttributeName:self.font, UITextAttributeTextColor:_placeholderTextColor}];
+    }
+    else {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_6_0
-    [self.placeholder drawInRect:rect withFont:self.font lineBreakMode:NSLineBreakByTruncatingTail alignment:self.textAlignment];
+        [self.placeholder drawInRect:rect withFont:self.font lineBreakMode:NSLineBreakByTruncatingTail alignment:self.textAlignment];
 #else
-    [self.placeholder drawInRect:rect withFont:self.font lineBreakMode:UILineBreakModeTailTruncation alignment:self.textAlignment];
+        [self.placeholder drawInRect:rect withFont:self.font lineBreakMode:UILineBreakModeTailTruncation alignment:self.textAlignment];
 #endif
+    }
 }
 
 
