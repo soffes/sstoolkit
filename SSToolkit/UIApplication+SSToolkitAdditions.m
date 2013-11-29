@@ -8,12 +8,28 @@
 
 #import "UIApplication+SSToolkitAdditions.h"
 
+@interface UIApplication (MSPrivateAdditions)
+- (void)_setNetworkActivityWithNumber:(NSNumber *)number;
+- (void)_setNetworkActivityIndicatorHidden;
+@end
+
+@implementation UIApplication (MSPrivateAdditions)
+
+- (void)_setNetworkActivityWithNumber:(NSNumber *)number {
+	[self setNetworkActivity:[number boolValue]];
+}
+
+- (void)_setNetworkActivityIndicatorHidden {
+	self.networkActivityIndicatorVisible = NO;
+}
+
+@end
+
 @implementation UIApplication (SSToolkitAdditions)
 
 - (BOOL)isPirated {
 	return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"SignerIdentity"] != nil;
 }
-
 
 - (void)setNetworkActivity:(BOOL)inProgress {
 	// Ensure we're on the main thread
@@ -55,25 +71,6 @@
 
 - (NSURL *)applicationSupportDirectoryURL {
 	return [[[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
-}
-
-@end
-
-
-@interface UIApplication (MSPrivateAdditions)
-- (void)_setNetworkActivityWithNumber:(NSNumber *)number;
-- (void)_setNetworkActivityIndicatorHidden;
-@end
-
-@implementation UIApplication (MSPrivateAdditions)
-
-- (void)_setNetworkActivityWithNumber:(NSNumber *)number {
-	[self setNetworkActivity:[number boolValue]];	
-}
-
-
-- (void)_setNetworkActivityIndicatorHidden {
-	self.networkActivityIndicatorVisible = NO;
 }
 
 @end
