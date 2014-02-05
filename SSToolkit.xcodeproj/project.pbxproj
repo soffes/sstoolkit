@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		21AFC57816FB42F2009689DA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B460C7A16D04647004463C2 /* MessageUI.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		31923DA6172312D000850F02 /* UITableView+SSToolkitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 31923DA4172312D000850F02 /* UITableView+SSToolkitAdditions.h */; };
+		31923DA7172312D000850F02 /* UITableView+SSToolkitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 31923DA5172312D000850F02 /* UITableView+SSToolkitAdditions.m */; };
+		31DCA0301717271600005A39 /* SSTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 31DCA02E1717271600005A39 /* SSTableViewCell.h */; };
+		31DCA0311717271600005A39 /* SSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DCA02F1717271600005A39 /* SSTableViewCell.m */; };
 		3B460C5716D03A77004463C2 /* forward-button-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C5316D03A77004463C2 /* forward-button-mini.png */; };
 		3B460C5816D03A77004463C2 /* forward-button-mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C5416D03A77004463C2 /* forward-button-mini@2x.png */; };
 		3B460C5916D03A77004463C2 /* forward-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B460C5516D03A77004463C2 /* forward-button.png */; };
@@ -196,6 +200,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		31923DA4172312D000850F02 /* UITableView+SSToolkitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SSToolkitAdditions.h"; sourceTree = "<group>"; };
+		31923DA5172312D000850F02 /* UITableView+SSToolkitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SSToolkitAdditions.m"; sourceTree = "<group>"; };
+		31DCA02E1717271600005A39 /* SSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTableViewCell.h; sourceTree = "<group>"; };
+		31DCA02F1717271600005A39 /* SSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTableViewCell.m; sourceTree = "<group>"; };
 		3B460C5316D03A77004463C2 /* forward-button-mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward-button-mini.png"; sourceTree = "<group>"; };
 		3B460C5416D03A77004463C2 /* forward-button-mini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward-button-mini@2x.png"; sourceTree = "<group>"; };
 		3B460C5516D03A77004463C2 /* forward-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward-button.png"; sourceTree = "<group>"; };
@@ -584,6 +592,8 @@
 				B279539812FC67E300FFE28D /* UIScreen+SSToolkitAdditions.m */,
 				B24E9E3D121DC29A0085F81E /* UIScrollView+SSToolkitAdditions.h */,
 				B24E9E3E121DC29A0085F81E /* UIScrollView+SSToolkitAdditions.m */,
+				31923DA4172312D000850F02 /* UITableView+SSToolkitAdditions.h */,
+				31923DA5172312D000850F02 /* UITableView+SSToolkitAdditions.m */,
 				B24E9E3F121DC29A0085F81E /* UIView+SSToolkitAdditions.h */,
 				B24E9E40121DC29A0085F81E /* UIView+SSToolkitAdditions.m */,
 				B24E9E41121DC29A0085F81E /* UIViewController+SSToolkitAdditions.h */,
@@ -751,6 +761,8 @@
 			children = (
 				B2EA9F5C12F4A5C900C929D6 /* SSBadgeTableViewCell.h */,
 				B2EA9F5D12F4A5C900C929D6 /* SSBadgeTableViewCell.m */,
+				31DCA02E1717271600005A39 /* SSTableViewCell.h */,
+				31DCA02F1717271600005A39 /* SSTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -818,6 +830,8 @@
 				962F5F5E156CCD1200408648 /* NSNumber+SSToolkitAdditions.h in Headers */,
 				5841B48416013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.h in Headers */,
 				3BE6233616D0357800F9D662 /* SSWebViewController.h in Headers */,
+				31DCA0301717271600005A39 /* SSTableViewCell.h in Headers */,
+				31923DA6172312D000850F02 /* UITableView+SSToolkitAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1068,6 +1082,8 @@
 				962F5F5F156CCD1200408648 /* NSNumber+SSToolkitAdditions.m in Sources */,
 				5841B48516013CDE000C05BD /* NSMutableArray+SSToolkitAdditions.m in Sources */,
 				3BE6233716D0357800F9D662 /* SSWebViewController.m in Sources */,
+				31DCA0311717271600005A39 /* SSTableViewCell.m in Sources */,
+				31923DA7172312D000850F02 /* UITableView+SSToolkitAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
