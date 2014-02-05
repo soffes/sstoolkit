@@ -124,4 +124,17 @@
     GHAssertEqualObjects([@"\n hello \n" stringByTrimmingTrailingWhitespaceAndNewlineCharacters], @"\n hello", nil);
 }
 
+
+- (void)testStringByTruncatingToWidthWithFont {
+	UIFont *referenceFont = [UIFont systemFontOfSize:17];
+
+	NSString *testString = @"Lorem ipsum dolor sit amet, consectetur adipisicing elit";
+	GHAssertEqualObjects([testString stringByTruncatingToWidth:320 withFont:nil], testString, nil);
+	GHAssertEqualObjects([testString stringByTruncatingToWidth:1000 withFont:referenceFont], testString, nil);
+
+	NSString *truncatedString = @"Lorem ipsum...";
+	CGSize size = [truncatedString sizeWithFont:referenceFont];
+	GHAssertEqualObjects(truncatedString, [testString stringByTruncatingToWidth:size.width withFont:referenceFont], nil);
+}
+
 @end

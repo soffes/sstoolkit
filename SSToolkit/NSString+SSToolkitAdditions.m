@@ -284,4 +284,44 @@
     return [self stringByTrimmingTrailingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
+
+#pragma mark - Truncating
+
+- (NSString *)stringByTruncatingToWidth:(CGFloat)width withFont:(UIFont *)font {
+	if (font == nil) {
+		return self;
+	}
+
+	if ([self sizeWithFont:font].width <= width) {
+		return self;
+	}
+
+	static NSString * const ellipsis = @"...";
+	CGFloat truncatedWidth = width - [ellipsis sizeWithFont:font].width + 1;
+
+	CGFloat min = 0, max = self.length, mid;
+	while (min < max) {
+		mid = (min+max) / 2;
+
+		NSString *currentString = [[self substringWithRange:NSMakeRange(min, mid - min)] stringByTrimmingTrailingWhitespaceAndNewlineCharacters];
+		CGSize currentSize = [currentString sizeWithFont:font];
+
+		if (currentSize.width < truncatedWidth){
+			min = mid + 1;
+		} else if (currentSize.width > truncatedWidth) {
+			max = mid - 1;
+		} else {
+			min = mid;
+			break;
+		}
+	}
+
+	NSString *truncatedString = [[self substringWithRange:NSMakeRange(0, min)] stringByTrimmingTrailingWhitespaceAndNewlineCharacters];
+	if ([truncatedString sizeWithFont:font].width >= width) {
+		return truncatedString;
+	} else {
+		return [NSString stringWithFormat:@"%@%@", truncatedString, ellipsis];
+	}
+}
+
 @end
