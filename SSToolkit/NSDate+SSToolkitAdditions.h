@@ -90,4 +90,82 @@
  */
 + (NSString *)timeInWordsFromTimeInterval:(NSTimeInterval)intervalInSeconds includingSeconds:(BOOL)includeSeconds;
 
+
+///----------------------------
+/// @name Getting specific time
+///----------------------------
+
+/**
+ Returns an NSDate object set to midnight time for receiver date.
+
+ @return A NSDate object identical to receiver but with time set to 00:00
+ */
+- (NSDate *)dateAtMidnight;
+
+
+///----------------------
+/// @name Time In Seconds
+///----------------------
+
+/**
+ Returns a UNIX timestamp, i.e. the number of seconds from the first instant of 1 January 1970, GMT.
+
+ @return The interval between now and the reference date, 1 January 1970, GMT
+ */
++ (NSTimeInterval)unix;
+
+/**
+ Returns the number of seconds in day when receiver takes place
+
+ @return Number of seconds in day when receiver takes place
+ */
+- (NSTimeInterval)secondsInDay;
+
+/**
+ Returns the number of seconds in week when receiver takes place
+
+ @return Number of seconds in week when receiver takes place
+ */
+- (NSTimeInterval)secondsInWeek;
+
+/**
+ Returns the number of seconds in month when receiver takes place
+
+ @return Number of seconds in month when receiver takes place
+ */
+- (NSTimeInterval)secondsInMonth;
+
+/**
+ Returns the number of seconds in quarter when receiver takes place
+
+ @return Number of seconds in quarter when receiver takes place
+ */
+- (NSTimeInterval)secondsInQuarter;
+
+/**
+ Returns the number of seconds in year when receiver takes place
+
+ @return Number of seconds in year when receiver takes place
+ */
+- (NSTimeInterval)secondsInYear;
+
+
+///-------------------------
+/// @name Occurrence queries
+///-------------------------
+
+/**
+ Returns a Boolean value that indicates whether a given date occurs today.
+
+ @return YES if the date receiver occurs today, otherwise NO
+ */
+- (BOOL)occursToday;
+
+/**
+ Returns a Boolean value that indicates whether a given date occurs tomorrow.
+
+ @return YES if the date receiver occurs tomorrow, otherwise NO
+ */
+- (BOOL)occursTomorrow;
+
 @end
