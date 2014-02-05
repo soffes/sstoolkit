@@ -24,6 +24,19 @@
  */
 - (BOOL)containsString:(NSString *)string;
 
+/**
+ Returns a Boolean if the receiver is a decimal (localized decimal separator included).
+ 
+ @return A Boolean if the receiver is a decimal (localized decimal separator included).
+ */
+- (BOOL)isDecimal;
+
+/**
+ Returns a Boolean if the receiver is an integer.
+ 
+ @return A Boolean if the receiver is an integer.
+ */
+- (BOOL)isInteger;
 
 ///--------------
 /// @name Hashing

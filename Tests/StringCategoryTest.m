@@ -26,6 +26,28 @@
 }
 
 
+- (void)testIsDecimal {
+	NSString *nonDecimalString = [NSString stringWithFormat: @"%f test", 123.5f];
+	NSString *decimalString = [NSString stringWithFormat: @"%f", 123.5f];
+	
+	GHAssertTrue(![nonDecimalString isDecimal], nil);
+	GHAssertTrue([decimalString isDecimal], nil);
+	GHAssertFalse([nonDecimalString isDecimal], nil);
+	GHAssertFalse(![decimalString isDecimal], nil);
+}
+
+
+- (void)testIsInteger {
+	NSString *nonIntegerString = [NSString stringWithFormat: @"%i test", 123];
+	NSString *integerString = [NSString stringWithFormat: @"%i", 123];
+	
+	GHAssertTrue(![nonIntegerString isInteger], nil);
+	GHAssertTrue([integerString isInteger], nil);
+	GHAssertFalse([nonIntegerString isInteger], nil);
+	GHAssertFalse(![integerString isInteger], nil);
+}
+
+
 - (void)testMD5Sum {
 	GHAssertEqualObjects([@"sam" MD5Sum], @"332532dcfaa1cbf61e2a266bd723612c", nil);
 	

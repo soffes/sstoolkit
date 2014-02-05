@@ -17,6 +17,20 @@
 }
 
 
+- (BOOL)isDecimal {
+	if (self.length == 0) return NO;
+	NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
+	return ([nf numberFromString: self] == nil) ? NO : YES;
+}
+
+
+- (BOOL)isInteger {
+	if (self.length == 0) return NO;
+	NSPredicate *numberPredicate = [NSPredicate predicateWithFormat: @"SELF MATCHES '^[0-9]+$'"];
+    return [numberPredicate evaluateWithObject: self];
+}
+
+
 - (NSString *)MD5Sum {
 	const char *cstr = [self cStringUsingEncoding:NSUTF8StringEncoding];
 	NSData *data = [NSData dataWithBytes:cstr length:self.length];
