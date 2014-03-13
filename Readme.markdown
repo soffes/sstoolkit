@@ -1,46 +1,22 @@
 # SSToolkit
 
-SSToolkit makes life easier. It is made up of various view controllers, views, and categories that I use in all of my apps. Feel free to fork the repo and make it better.
+SSToolkit is a grab bag of iOS goodness. It used to be a giant collection of classes that I started in 2008. This was getting out of hand. That version is completely deprecated. ([Read more on that](https://github.com/soffes/sstoolkit/issues/189).)
 
-If you're using this in your project, I'd love to hear about it! [Send me an email](mailto:sam@samsoff.es) and let me know which pieces you're using and such.
+Now SSToolkit is made up of several libraries you can use independently. SSToolkit is now just a header file and a [podspec](http://cocoapods.org) with dependencies for each library.
 
-## Documentation
+Here’s what’s included:
 
-**Read the [SSToolkit Documentation](http://sstoolk.it/documentation) online.**
+* [SAMAddressBar](https://github.com/soffes/SAMAddressBar) — Clone of Safari's address bar from iOS 6.
+* [SAMBadgeView](https://github.com/soffes/SAMBadgeView) — Simple badge view.
+* [SAMGradientView](https://github.com/soffes/SAMGradientView) — Easy gradients in UIKit.
+* [SAMHUDView](https://github.com/soffes/SAMHUDView) — Kinda okay HUD.
+* [SAMLabel](https://github.com/soffes/SAMLabel) — UILabel with vertical alignment and text insets.
+* [SAMLoadingView](https://github.com/soffes/SAMLoadingView) — Simple loading view.
+* [SAMCircleProgressView](https://github.com/soffes/SAMCircleProgressView) — Determinate, circular progress view.
+* [SAMRateLimit](https://github.com/soffes/SAMRateLimit) — Simple utility for only executing code every so often.
+* [SAMTextField](https://github.com/soffes/SAMTextField) — Handy UITextField additions like insetting text.
+* [SAMTextView](https://github.com/soffes/SAMTextView) — Add a placeholder to UITextView.
+* [SAMWebView](https://github.com/soffes/SAMWebView) — Push UIWebView to its limits.
+* [SAMCategories](https://github.com/soffes/SAMCategories) — A collection of useful Foundation and UIKit categories.
 
-Install the documentation into Xcode with the following steps:
-
-1. Open Xcode Preferences
-2. Choose Downloads
-3. Choose the Documentation tab
-4. Click the plus button in the bottom right and enter the following URL:
-    
-        http://docs.sstoolk.it/com.samsoffes.sstoolkit.atom
-
-5. Click Install next the new row reading "SSToolkit Documentation". (If you don't see it and didn't get an error, try restarting Xcode.)
-
-Be sure you have the docset selected in the organizer to see results for SSToolkit.
-
-## Adding SSToolkit to your project
-
-For installation instructions, see [the getting started guide on the SSToolkit website](http://sstoolk.it/#getting-started).
-
-## Usage
-
-For usage instructions, see [the usage guide on the SSToolkit website](http://sstoolk.it/#usage).
-
-## Demo
-
-[SSCatalog](https://github.com/soffes/sscatalog) is a sample project that demonstrates several features of SSToolkit. It is an universal iPad/iPhone application.
-
-## Links
-
-* [Homepage](http://sstoolk.it)
-* [Source code](https://github.com/soffes/sstoolkit)
-* [Documentation](http://sstoolk.it/documentation/)
-* [Known bugs](https://github.com/soffes/sstoolkit/issues/labels/Bug)
-* [Future features](https://github.com/soffes/sstoolkit/issues/labels/Feature)
-
-## Thanks
-
-Huge thanks to [our contributors](http://github.com/soffes/sstoolkit/contributors), [Jake Marsh](http://deallocatedobjects.com), and [Mike Rundle](http://flyosity.com).
+Several of these libraries have had big improvements since their abstraction from SSToolkit.
