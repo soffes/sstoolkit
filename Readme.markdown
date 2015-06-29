@@ -1,8 +1,8 @@
 # SSToolkit
 
-SSToolkit is a grab bag of iOS goodness. It used to be a giant collection of classes that I started in 2008. This was getting out of hand. That version is completely deprecated. ([Read more on that](https://github.com/soffes/sstoolkit/issues/189).)
+SSToolkit was a grab bag of iOS goodies. It was a giant collection of classes that I started in 2008. This was getting out of hand. **That version is completely deprecated.** ([Read more on that](https://github.com/soffes/sstoolkit/issues/189).)
 
-Now SSToolkit is made up of several libraries you can use independently. SSToolkit is now just a header file and a [podspec](http://cocoapods.org) with dependencies for each library.
+Now SSToolkit is made up of several libraries you can use independently. SSToolkit is now just a header file and a [podspec](http://cocoapods.org) with dependencies for each library. I don't recommend using the `SSToolkit` pod.
 
 Here’s what’s included:
 
